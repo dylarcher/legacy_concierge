@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.0] - 2024-12-02
+
+Initial versioned release with automated GitHub Pages deployment system. Features comprehensive web component architecture for Legacy Concierge healthcare platform with custom navigation, hero sections, service cards, and responsive layouts.
+
+### Added
+
+- Automated versioned build system for GitHub Pages deployments
+- Version management scripts for cleanup and index generation
+- Themed version history page with changelog integration
+- 404 error page with automatic redirect to version index
+
 ## [Unreleased]
 
 ### Removed

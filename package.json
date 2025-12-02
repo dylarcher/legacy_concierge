@@ -46,7 +46,7 @@
 	},
 	"scripts": {
 		"build": "vite build && node bin/generate-sitemap.js",
-		"build:gh-pages": "VITE_BASE_PATH=/legacy_concierge/v1.02/ vite build",
+		"build:gh-pages": "node bin/manage-versions.js && node bin/build-gh-pages.js && node bin/generate-version-index.js",
 		"dev": "vite",
 		"lint": "biome check",
 		"lint:fix": "biome check --write",
@@ -58,7 +58,10 @@
 		"analyze:unused": "bun run bin/find-unused-tailwind.js",
 		"analyze:bundle": "bun run build && open .tmp/bundle-report.html",
 		"validate:tailwind": "bun run bin/validate-tailwind-classes.js",
-		"validate:all": "bun run lint && bun run lint:css && bun run validate:tailwind"
+		"validate:all": "bun run lint && bun run lint:css && bun run validate:tailwind",
+		"version:build": "node bin/build-gh-pages.js",
+		"version:cleanup": "node bin/manage-versions.js",
+		"version:list": "node bin/manage-versions.js --list"
 	},
 	"type": "module",
 	"types": "types/global.d.ts",
