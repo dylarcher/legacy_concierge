@@ -81,7 +81,7 @@ async function runViteBuild(version) {
 	};
 
 	try {
-		const { stdout, stderr } = await execAsync("vite build", {
+		const { stdout, stderr } = await execAsync("npx vite build", {
 			cwd: ROOT_DIR,
 			env,
 		});
