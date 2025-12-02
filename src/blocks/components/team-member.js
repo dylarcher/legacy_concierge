@@ -35,6 +35,11 @@ class TeamMember extends BaseComponent {
 		this.render();
 	}
 
+	attributeChangedCallback(name, oldValue, newValue) {
+		if (oldValue !== newValue) {
+			this.render();
+		}
+	}
 	render() {
 		const bgImage = this.getAttribute("bg-image") || "";
 		const bgPosition = this.getAttribute("bg-position") || "left center";
