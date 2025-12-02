@@ -2,7 +2,6 @@
 import defaultHeroImage from "../../assets/media/images/blue-green-waves-brown-beach.png";
 import videoMp4 from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.mp4?url";
 import videoWebm from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.webm?url";
-import { resolveImagePath } from "../../utility/img-refs-map.js";
 import { BaseComponent, defineElement } from "../_base.js";
 
 /**
@@ -31,8 +30,6 @@ export const BANNER_TEMPLATE = () => `
 				<video autoplay loop muted playsinline class="absolute inset-0 -z-10 size-full object-cover object-right md:object-center" poster="${defaultHeroImage}">
 					<source src="${videoMp4}" type="video/mp4">
 					<source src="${videoWebm}" type="video/webm">
-					<source src="${videoMov}" type="video/mov">
-					<source src="${videoOgv}" type="video/ogv">
 					<img role="presentation" src="${defaultHeroImage}" alt="Scenic beach with blue-green waves and a brown sandy shore" class="size-full object-cover object-right md:object-center" />
 				</video>
 
@@ -218,7 +215,7 @@ export class HeroBanner extends BaseComponent {
 			this.getAttribute("description") ||
 			"Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.";
 		const imagePath = this.getAttribute("image");
-		const image = imagePath ? resolveImagePath(imagePath) : defaultHeroImage;
+		const image = imagePath || defaultHeroImage;
 		const imageAlt = this.getAttribute("image-alt") || "";
 		const primaryCta = this.getAttribute("primary-cta");
 		const primaryHref = this.getAttribute("primary-href") || "#";
