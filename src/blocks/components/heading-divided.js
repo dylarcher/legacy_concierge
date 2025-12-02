@@ -38,12 +38,15 @@ class HeadingDivided extends BaseComponent {
 
 		this.replaceChildren(
 			h("div", { class: containerClasses }, [
-				h(level, { class: headingClasses }, [h("slot")]),
+				(() => {
+					const allowedLevels = ["h1", "h2", "h3", "h4", "h5", "h6"];
+					const tag = allowedLevels.includes(level) ? level : "h2";
+					return h(tag, { class: headingClasses }, [h("slot")]);
+				})(),
 				h("div", { class: dividerClasses }),
 			]),
 		);
 	}
 }
-
 export { HeadingDivided };
 defineElement("heading-divided", HeadingDivided);
