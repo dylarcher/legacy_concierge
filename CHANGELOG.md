@@ -6,6 +6,53 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Changed
+
+- Updated all image references to use WebP format for better compression
+- Updated all media asset paths from `.png` to `.webp` across HTML, JS files
+- Redesigned `docs/index.html` version history page with minimal, clean aesthetic
+
+## [0.3.1] - 2024-12-02
+
+### Fixed
+
+- **hero.js** - Removed missing `img-refs-map.js` import that caused 500 errors
+- **hero.js** - Removed undefined `videoMov`/`videoOgv` template variables
+- **hero.js** - Updated default image import from `.png` to `.webp`
+
+### Changed
+
+- **Media optimization** - Reduced media folder from 71MB to 37MB (48% reduction)
+  - Main images resized to max 1600px width
+  - Grayscale/muted images resized to max 1200px width
+  - All PNGs optimized with quality 85, metadata stripped
+  - All WebP versions regenerated with quality 80
+  - Videos re-encoded: MP4 with CRF 28, WebM with VP9 CRF 32
+
+### Removed
+
+- Deleted `src/utils/img-refs-map.js` (no longer needed)
+- Deleted legacy video formats (`.mov`, `.ogv`)
+- Deleted PNG brand assets (replaced with SVG)
+
+## [0.3.0] - 2024-12-02
+
+Navigation restructure with dropdown menus, click-outside functionality, and dialog components moved outside header for proper viewport coverage.
+
+### Added
+
+- Dropdown menus in navigation with keyboard navigation
+- Click-outside functionality to close dropdowns
+- Dark mode support with `prefers-color-scheme` media query
+- Updated all HTML pages to support `"light dark"` color-scheme
+
+### Fixed
+
+- Dialog components moved outside header for proper viewport coverage
+- Event listener memory leaks in nav.js and dropdown.js
+
 ## [0.2.0] - 2024-12-02
 
 Initial versioned release with automated GitHub Pages deployment system. Features comprehensive web component architecture for Legacy Concierge healthcare platform with custom navigation, hero sections, service cards, and responsive layouts.
@@ -17,79 +64,18 @@ Initial versioned release with automated GitHub Pages deployment system. Feature
 - Themed version history page with changelog integration
 - 404 error page with automatic redirect to version index
 
-## [Unreleased]
+## [0.1.0] - 2024-11-30
 
-### Removed
-
-- Console debugging statements from production code
-  - `blocks/node/forms/input/main.js` - removed `console.info(uniqueId)`
-  - `blocks/node/forms/checkbox/main.js` - removed `console.info(uniqueId)`
-  - `blocks/node/forms/radio/main.js` - removed `console.info(uniqueId)`
-  - `blocks/node/dropdown/main.js` - removed `console.info(FocusTrap)`
-  - `blocks/node/menu/main.js` - removed `console.info(uniqueId)`
-  - `blocks/node/index.js` - removed `console.log(...)`
-- All inline comments (`//`) and block comments (`/* */`) from JavaScript files
-  - Preserved JSDoc documentation blocks (`/** */`)
-
-### Fixed
-
-- Added missing `--gradient-card` CSS variable in `style.css`
-- Fixed event listener memory leaks in `blocks/regions/nav.js` and `blocks/node/dropdown/main.js`
-  - Properly store bound handler references
-  - Clean up listeners in `disconnectedCallback()`
-
-### Changed
-
-- **Method Naming**: Replaced abbreviated method names with verbose, human-readable names
-  - `h()` -> `createElement()`
-  - `svg()` -> `createSVGElement()`
-  - `clsx()` -> `combineClassNames()`
-  - `_setupEvents()` -> `#initializeEventListeners()`
-  - `_injectStyles()` -> `#injectComponentStyles()`
-  - `_updateState()` -> `#updateCheckedState()`
-  - `_handleKeydown()` -> `#handleKeyboardNavigation()`
-  - And more (see `docs/NAMING_CONVENTIONS.md`)
-
-- **Variable Naming**: Updated to verbose, descriptive names
-  - `el` -> `element`
-  - `fn` -> `callback`
-  - `attrs` -> `attributes`
-  - `val` -> `value`
-  - `e` -> `event` (in event handlers)
-
-- **Private Fields**: Converted underscore-prefixed methods to ES private class fields
-  - `_privateMethod()` -> `#privateMethod()`
+Initial development release with core web components and Tailwind CSS 4 integration.
 
 ### Added
 
-- `blocks/elements/colors.js` - Shared color definitions extracted from button, checkbox, and radio components
-- SVG icon factory functions in `blocks/elements/icons.js`
-  - `createSearchIcon()`
-  - `createMenuIcon()`
-  - `createCloseIcon()`
-- Comprehensive JSDoc documentation for all methods with parameters or return values
-- `docs/ARCHITECTURE.md` - Component hierarchy and design patterns
-- `docs/NAMING_CONVENTIONS.md` - Coding standards and naming rules
-
----
-
-## Complexity Report
-
-### High Cognitive Complexity Areas
-
-| File | Method | Lines | Recommendation |
-|------|--------|-------|----------------|
-| `blocks/regions/nav.js` | `render()` | 304 | Consider decomposing into smaller methods |
-| `blocks/regions/hero.js` | `render()` | 204 | Consider extracting conditional branches |
-| `blocks/node/dropdown/main.js` | `#handleKeyboardNavigation()` | 40 | Consider command pattern |
-
-### Patterns Appearing 3+ Times (Future Abstraction Candidates)
-
-1. **Child Node Wrapping Pattern** (10+ occurrences)
-   - Files: text.js, dropdown.js, checkbox.js, radio.js, footer.js, menu.js
-
-2. **Data Attribute Toggle Pattern** (8+ occurrences)
-   - Files: dropdown.js, menu.js, button.js, text.js, checkbox.js, radio.js
-
-3. **Lifecycle Boilerplate** (25+ components)
-   - Standard `connectedCallback()` and `attributeChangedCallback()` pattern
+- BaseComponent class with DOM utilities (`createElement`, `createSVGElement`, `combineClassNames`)
+- Core components: navigation, hero banner, footer
+- Form elements: input, checkbox, radio, select, switch, textarea
+- UI components: card, dialog, drawer, dropdown, avatar, badge
+- Shared color definitions in `blocks/elements/colors.js`
+- SVG icon factory functions
+- Comprehensive JSDoc documentation
+- `docs/ARCHITECTURE.md` - Component hierarchy
+- `docs/NAMING_CONVENTIONS.md` - Coding standards
