@@ -3,6 +3,7 @@ node_modules/
 
 # Build output
 releases/
+samples/
 output/
 build/
 dist/

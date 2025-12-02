@@ -16,9 +16,9 @@
 		"stylelint-config-standard": "^39.0.1",
 		"stylelint-config-tailwindcss": "^1.0.0",
 		"typescript": "^5.9.3",
-		"vite": "^7.2.4",
+		"vite": "7.2.6",
 		"vite-bundle-analyzer": "^1.2.3",
-		"vitest": "^4.0.14"
+		"vitest": "4.0.15"
 	},
 	"displayName": "Legacy Concierge",
 	"exports": {
@@ -45,7 +45,7 @@
 		"url": "git+ssh://github.com/dylarcher/legacy_concierge.git"
 	},
 	"scripts": {
-		"build": "vite build",
+		"build": "vite build && node bin/generate-sitemap.js",
 		"build:gh-pages": "VITE_BASE_PATH=/legacy_concierge/v1/ vite build",
 		"dev": "vite",
 		"lint": "biome check",
