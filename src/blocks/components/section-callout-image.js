@@ -12,6 +12,9 @@ class SectionCalloutImage extends BaseComponent {
 		this.render();
 	}
 
+	attributeChangedCallback(name, oldValue, newValue) {
+		this.render();
+	}
 	render() {
 		const bgImage = this.getAttribute("bg-image") || "";
 		const bgPosition = this.getAttribute("bg-position") || "center";
@@ -62,7 +65,7 @@ class SectionCalloutImage extends BaseComponent {
 				[
 					h("div", { class: overlayClasses }),
 					h("div", { class: contentClasses }, [
-						h("div", { class: textClasses }, [h("slot")]),
+						h("div", { class: textClasses }, [document.createElement("slot")]),
 					]),
 				],
 			),
