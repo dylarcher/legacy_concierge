@@ -2,22 +2,21 @@
 
 /**
  * Build script for GitHub Pages with versioned deployment
- * 
+ *
  * Reads version from package.json, builds the site with versioned base path,
  * and outputs to docs/v{version}/ directory for GitHub Pages deployment.
- * 
+ *
  * Usage:
  *   node bin/build-gh-pages.js [--force]
- * 
+ *
  * Options:
  *   --force    Overwrite existing version directory if it exists
  */
 
-import { readFile } from "node:fs/promises";
-import { rename, rm, access } from "node:fs/promises";
+import { exec } from "node:child_process";
+import { access, readFile, rename, rm } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { exec } from "node:child_process";
 import { promisify } from "node:util";
 
 const execAsync = promisify(exec);
@@ -45,11 +44,11 @@ async function getPackageVersion() {
 	const packageJsonPath = join(ROOT_DIR, "package.json");
 	const content = await readFile(packageJsonPath, "utf-8");
 	const pkg = JSON.parse(content);
-	
+
 	if (!pkg.version) {
 		throw new Error("No version found in package.json");
 	}
-	
+
 	return pkg.version;
 }
 
@@ -75,18 +74,18 @@ async function exists(path) {
 async function runViteBuild(version) {
 	const basePath = `/legacy_concierge/v${version}/`;
 	console.log(`Building with base path: ${basePath}`);
-	
+
 	const env = {
 		...process.env,
 		VITE_BASE_PATH: basePath,
 	};
-	
+
 	try {
 		const { stdout, stderr } = await execAsync("vite build", {
 			cwd: ROOT_DIR,
 			env,
 		});
-		
+
 		if (stdout) console.log(stdout);
 		if (stderr) console.error(stderr);
 	} catch (error) {
@@ -102,9 +101,9 @@ async function runViteBuild(version) {
  */
 async function moveToVersionedDir(version) {
 	const versionDir = join(DOCS_DIR, `v${version}`);
-	
+
 	console.log(`Moving build output to ${versionDir}`);
-	
+
 	// Ensure docs directory exists
 	try {
 		await access(DOCS_DIR);
@@ -112,7 +111,7 @@ async function moveToVersionedDir(version) {
 		console.error(`docs/ directory does not exist. Creating it...`);
 		await execAsync(`mkdir -p "${DOCS_DIR}"`);
 	}
-	
+
 	// Move dist to versioned directory
 	await rename(DIST_DIR, versionDir);
 	console.log(`✓ Build output moved to docs/v${version}/`);
@@ -126,15 +125,15 @@ async function moveToVersionedDir(version) {
 async function generateSitemap(version) {
 	const versionDir = join(DOCS_DIR, `v${version}`);
 	const baseUrl = `https://dylarcher.github.io/legacy_concierge/v${version}`;
-	
+
 	console.log(`Generating sitemap for v${version}...`);
-	
+
 	try {
 		const { stdout, stderr } = await execAsync(
 			`node bin/generate-sitemap.js --version=${version} --output-dir="${versionDir}" --base-url="${baseUrl}"`,
-			{ cwd: ROOT_DIR }
+			{ cwd: ROOT_DIR },
 		);
-		
+
 		if (stdout) console.log(stdout);
 		if (stderr) console.error(stderr);
 	} catch (error) {
@@ -148,40 +147,44 @@ async function generateSitemap(version) {
  */
 async function main() {
 	const { force } = parseArgs();
-	
+
 	try {
 		console.log("🚀 Starting GitHub Pages versioned build...\n");
-		
+
 		// Get version from package.json
 		const version = await getPackageVersion();
 		console.log(`📦 Package version: ${version}\n`);
-		
+
 		// Check if version directory already exists
 		const versionDir = join(DOCS_DIR, `v${version}`);
 		const versionExists = await exists(versionDir);
-		
+
 		if (versionExists && !force) {
-			console.error(`❌ Error: Version directory docs/v${version}/ already exists.`);
+			console.error(
+				`❌ Error: Version directory docs/v${version}/ already exists.`,
+			);
 			console.error(`   Use --force flag to overwrite.`);
 			process.exit(1);
 		}
-		
+
 		if (versionExists && force) {
 			console.log(`⚠️  Removing existing docs/v${version}/ directory...`);
 			await rm(versionDir, { recursive: true, force: true });
 		}
-		
+
 		// Run Vite build
 		await runViteBuild(version);
-		
+
 		// Move to versioned directory
 		await moveToVersionedDir(version);
-		
+
 		// Generate sitemap
 		await generateSitemap(version);
-		
+
 		console.log(`\n✅ GitHub Pages build complete: docs/v${version}/`);
-		console.log(`   View at: https://dylarcher.github.io/legacy_concierge/v${version}/`);
+		console.log(
+			`   View at: https://dylarcher.github.io/legacy_concierge/v${version}/`,
+		);
 	} catch (error) {
 		console.error("\n❌ Build failed:", error.message);
 		process.exit(1);
