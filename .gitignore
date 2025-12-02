@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output
+releases/
+output/
+build/
+dist/
+out/
+
+# IDE
+.DS_Store
+*.sw{p,o}
+.vscode/
+
+# Test coverage
+coverage/
+report/
+test/
+
+# Vite
+*.local
+_pkgs/
+.ref/
+
+# Temporary files
+.claude/
+.cache/
+.pkgs/
+.tmp/

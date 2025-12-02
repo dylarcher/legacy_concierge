@@ -1,0 +1,336 @@
+@import "tailwindcss";
+
+/* Playfair Display - Variable font (normal) */
+@font-face {
+	font-family: "Playfair Display";
+	src: url("./assets/fonts/serif/playfair-display-variable.ttf")
+		format("truetype");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Playfair Display - Variable font (italic) */
+@font-face {
+	font-family: "Playfair Display";
+	src: url("./assets/fonts/serif/playfair-display-italic-variable.ttf")
+		format("truetype");
+	font-weight: 100 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* Playfair Display - Static fonts (fallback) */
+@font-face {
+	font-family: "Playfair Display";
+	src:
+		url("./assets/fonts/serif/playfair-display-regular.woff2") format("woff2"),
+		url("./assets/fonts/serif/playfair-display-regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Playfair Display";
+	src:
+		url("./assets/fonts/serif/playfair-display-italic.woff2") format("woff2"),
+		url("./assets/fonts/serif/playfair-display-italic.ttf") format("truetype");
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Playfair Display";
+	src:
+		url("./assets/fonts/serif/playfair-display-bold.woff2") format("woff2"),
+		url("./assets/fonts/serif/playfair-display-bold.ttf") format("truetype");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Playfair Display";
+	src:
+		url("./assets/fonts/serif/playfair-display-bold-italic.woff2")
+		format("woff2"),
+		url("./assets/fonts/serif/playfair-display-bold-italic.ttf")
+		format("truetype");
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* Work Sans - Variable font */
+@font-face {
+	font-family: "Work Sans";
+	src: url("./assets/fonts/sans/work-sans-variable.ttf") format("truetype");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Work Sans - Static fonts (fallback) */
+@font-face {
+	font-family: "Work Sans";
+	src:
+		url("./assets/fonts/sans/work-sans-light.woff2") format("woff2"),
+		url("./assets/fonts/sans/work-sans-light.ttf") format("truetype");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Work Sans";
+	src:
+		url("./assets/fonts/sans/work-sans-regular.woff2") format("woff2"),
+		url("./assets/fonts/sans/work-sans-regular.ttf") format("truetype");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Work Sans";
+	src:
+		url("./assets/fonts/sans/work-sans-semibold.woff2") format("woff2"),
+		url("./assets/fonts/sans/work-sans-semibold.ttf") format("truetype");
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* ============================================
+   Tailwind v4 Theme Configuration
+   ============================================ */
+@theme {
+	/* Font families - overrides Tailwind defaults */
+	--font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+	--font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+	/* Brand colors - generates utilities like bg-primary, text-accent, etc. */
+	--color-primary: color(srgb 0.027 0.157 0.208);
+	--color-secondary: color(srgb 0.502 0.384 0.298);
+	--color-tertiary: color(srgb 0.514 0.49 0.49);
+	--color-accent: color(srgb 0.376 0.667 0.639);
+	--color-muted: color(srgb 0.353 0.51 0.522);
+
+	/* Semantic colors */
+	--color-bg: color(srgb 1 1 1);
+	--color-text: color(srgb 0 0 0);
+	--color-accent-text: color(srgb 1 1 1);
+	--color-muted-text: color(srgb 0.4 0.553 0.557);
+	--color-card-text: color(srgb 1 1 1);
+
+	/* Overlay colors with alpha */
+	--color-overlay: color(srgb 0.314 0.208 0.169 / 15%);
+	--color-overlay-card: color(srgb 0.945 0.945 0.945 / 33%);
+	--color-overlay-muted: color(srgb 0.314 0.208 0.169 / 15%);
+	--color-card: color(srgb 0.196 0.122 0.086 / 28%);
+
+	/* Gradient definitions */
+	--gradient-overlay: linear-gradient(
+		180deg,
+		color(srgb 12 0 0 / 28%) 0%,
+		color(srgb 131 125 125 / 48%) 48%,
+		color(srgb 255 255 255 / 0%) 100%
+	);
+	--gradient-overlay-flip: linear-gradient(
+		180deg,
+		color(srgb 12 0 0 / 100%) 0%,
+		color(srgb 131 125 125 / 48%) 48%,
+		color(srgb 255 255 255 / 0%) 28%
+	);
+	--gradient-overlay-card: linear-gradient(
+		180deg,
+		color(srgb 12 0 0 / 100%) 0%,
+		color(srgb 255 255 255 / 0%) 28%
+	);
+	--gradient-card: linear-gradient(
+		136deg,
+		color(srgb 50 31 22 / 48%) 0%,
+		color(srgb 80 53 43 / 28%) 100%
+	);
+}
+
+@layer base {
+	body {
+		font-family: var(--font-sans);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-serif);
+	}
+
+	h1 {
+		font-size: var(--text-6xl);
+	}
+
+	h2 {
+		font-size: var(--text-4xl);
+	}
+
+	h3 {
+		font-size: var(--text-2xl);
+	}
+
+	h4 {
+		font-size: var(--text-xl);
+	}
+
+	h5 {
+		font-size: var(--text-lg);
+	}
+
+	h6 {
+		font-size: var(--text-md);
+	}
+
+	h1,
+	h2 {
+		font-weight: 300;
+		letter-spacing: 0.02em;
+	}
+
+	h3,
+	h4 {
+		font-weight: 400;
+		letter-spacing: 0.04em;
+	}
+
+	h5,
+	h6 {
+		font-weight: 500;
+		letter-spacing: 0.06em;
+	}
+
+	textarea,
+	button,
+	select,
+	input {
+		color: inherit;
+		font: inherit;
+		line-height: 1;
+	}
+
+	button {
+		letter-spacing: 0.03em;
+		text-transform: uppercase;
+	}
+
+	:any-link,
+	[href] {
+		color: var(--color-primary);
+		text-decoration: underline;
+		text-decoration-color: transparent;
+		text-decoration-thickness: 0.125em;
+		text-underline-offset: 0.15em;
+		transition:
+			color 0.24s,
+			text-decoration 0.24s,
+			0.12s transform 0.12s;
+		will-change: color, text-decoration-color, transform;
+
+		&:hover {
+			color: var(--color-accent);
+			text-decoration-color: var(--color-accent);
+		}
+
+		&:focus-visible {
+			outline: 0.125em solid var(--color-primary);
+			outline-offset: 0.125em;
+		}
+
+		&:active {
+			text-underline-offset: 0.0625em;
+			transform: translateY(0.0625em);
+		}
+	}
+}
+
+@layer components {
+	/* Custom minimal scrollbar - 75% width, centered */
+	.scrollbar-minimal {
+		scrollbar-width: none; /* Firefox - hide native */
+		-ms-overflow-style: none; /* IE/Edge - hide native */
+		&::-webkit-scrollbar {
+			display: none; /* Chrome/Safari - hide native */
+		}
+
+		position: relative;
+	}
+
+	.scrollbar-minimal-track {
+		position: relative;
+		margin-top: 1.5rem;
+		margin-inline: auto;
+		width: 75%;
+		height: 4px;
+		background: rgb(0 0 0 / 10%);
+		border-radius: 2px;
+
+		@media (prefers-color-scheme: dark) {
+			background: rgb(255 255 255 / 15%);
+		}
+	}
+
+	.scrollbar-minimal-thumb {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		min-width: 2rem;
+		background: var(--color-accent);
+		border-radius: 2px;
+		cursor: grab;
+		transition:
+			background 0.2s,
+			transform 0.1s;
+
+		&:hover {
+			background: var(--color-primary);
+		}
+
+		&:active {
+			cursor: grabbing;
+			transform: scaleY(1.5);
+		}
+	}
+
+	.btn-primary {
+		@apply py-4 px-6 bg-cyan-300/32 text-white border-2 border-white/80 font-bold rounded-4xl;
+		@apply hover:bg-cyan-600/48 hover:border-white focus:border-white/12 focus:ring focus:ring-cyan-200/80;
+	}
+
+	.btn-secondary {
+		@apply py-4 px-6 bg-cyan-950 text-white font-bold rounded-4xl;
+		@apply hover:bg-cyan-800 focus:ring focus:ring-cyan-700/80;
+	}
+
+	.btn-tertiary {
+		@apply py-4 px-6 bg-gray-100/32 text-cyan-950/96 font-bold rounded-4xl;
+		@apply hover:bg-gray-200/48 focus:ring focus:ring-cyan-400/24;
+	}
+}
+
+@layer utilities {
+	.bg-gradient-card {
+		background: var(--gradient-card);
+	}
+
+	.bg-gradient-overlay {
+		background: var(--gradient-overlay);
+	}
+
+	.bg-gradient-overlay-flip {
+		background: var(--gradient-overlay-flip);
+	}
+}

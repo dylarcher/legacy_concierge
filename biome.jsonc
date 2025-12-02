@@ -1,0 +1,247 @@
+{
+	// JSON schema for validation and IDE support
+	"$schema": "https://biomejs.dev/schemas/latest/schema.json",
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// ASSIST - Code actions and automatic fixes
+	// ═══════════════════════════════════════════════════════════════════════════
+	"assist": {
+		"actions": {
+			"recommended": true, // Enable recommended assist actions | true, false
+			"source": null // Source-related actions configuration | null or object with organizeImports, useSortedAttributes, useSortedKeys, useSortedProperties
+		},
+		"enabled": true // Enable assist via LSP and CLI | true, false
+	},
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// CSS - Styling language configuration
+	// ═══════════════════════════════════════════════════════════════════════════
+	"css": {
+		"assist": {
+			"enabled": true // Enable CSS assist | true, false
+		},
+		"formatter": {
+			"enabled": true, // Enable CSS formatter | true, false
+			"indentStyle": "tab", // Indentation style | "tab", "space"
+			"indentWidth": 2, // Number of spaces per indentation level | 0-255
+			"lineEnding": "lf", // Line ending style | "lf", "crlf", "cr", "auto"
+			"lineWidth": 80, // Max line width before wrapping | 1-320
+			"quoteStyle": "double" // Quote style for strings | "double", "single"
+		},
+		"globals": [], // List of global CSS variables to recognize
+		"linter": {
+			"enabled": true // Enable CSS linting | true, false
+		},
+		"parser": {
+			"allowWrongLineComments": false, // Allow // comments in CSS | true, false
+			"cssModules": false, // Enable CSS Modules parsing | true, false
+			"tailwindDirectives": true // Enable Tailwind CSS 4.0 directives parsing | true, false, null
+		}
+	},
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// FILES - File handling configuration
+	// ═══════════════════════════════════════════════════════════════════════════
+	"files": {
+		"ignoreUnknown": true, // Don't emit diagnostics for unknown file types | true, false
+		"includes": [
+			// Glob patterns for files Biome should process
+			"**/*.css",
+			"**/*.d.ts",
+			"**/*.graphql",
+			"**/*.grit",
+			"**/*.html",
+			"**/*.js",
+			"**/*.json",
+			"**/*.md"
+		],
+		"maxSize": null // Max file size in bytes (default 1MiB) | null or positive integer
+	},
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// FORMATTER - Global formatting options (applies to all languages)
+	// ═══════════════════════════════════════════════════════════════════════════
+	"formatter": {
+		"attributePosition": "auto", // HTML/JSX attribute positioning | "auto", "multiline"
+		"bracketSameLine": false, // Put > on same line as last attribute | true, false
+		"bracketSpacing": true, // Spaces inside object braces { foo } | true, false
+		"enabled": true, // Enable formatter | true, false
+		"expand": "auto", // Array/object expansion behavior | "auto", "always", "never"
+		"formatWithErrors": false, // Format files with syntax errors | true, false
+		"indentStyle": "tab", // Indentation style | "tab", "space"
+		"indentWidth": 2, // Spaces per indentation level | 0-255
+		"lineEnding": "lf", // Line ending style | "lf", "crlf", "cr", "auto"
+		"lineWidth": 80, // Max line width | 1-320
+		"useEditorconfig": true // Use .editorconfig settings | true, false
+	},
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// GRAPHQL - GraphQL language configuration
+	// ═══════════════════════════════════════════════════════════════════════════
+	"graphql": {
+		"assist": {
+			"enabled": true // Enable GraphQL assist | true, false
+		},
+		"formatter": {
+			"bracketSpacing": true, // Spaces inside object braces | true, false
+			"enabled": true, // Enable GraphQL formatter | true, false
+			"indentStyle": "tab", // Indentation style | "tab", "space"
+			"indentWidth": 2, // Spaces per indentation | 0-255
+			"lineEnding": "lf", // Line ending style | "lf", "crlf", "cr", "auto"
+			"lineWidth": 80, // Max line width | 1-320
+			"quoteStyle": "double" // Quote style | "double", "single"
+		},
+		"linter": {
+			"enabled": true // Enable GraphQL linting | true, false
+		}
+	},
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// GRIT - GritQL pattern language configuration
+	// ═══════════════════════════════════════════════════════════════════════════
+	"grit": {
+		"assist": {
+			"enabled": true // Enable GritQL assist | true, false
+		},
+		"formatter": {
+			"enabled": true, // Enable GritQL formatter | true, false
+			"indentStyle": "tab", // Indentation style | "tab", "space"
+			"indentWidth": 2, // Spaces per indentation | 0-255
+			"lineEnding": "lf", // Line ending style | "lf", "crlf", "cr", "auto"
+			"lineWidth": 80 // Max line width | 1-320
+		},
+		"linter": {
+			"enabled": true // Enable GritQL linting | true, false
+		}
+	},
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// HTML - HTML/templating language configuration (experimental)
+	// ═══════════════════════════════════════════════════════════════════════════
+	"html": {
+		"assist": {
+			"enabled": true // Enable HTML assist | true, false
+		},
+		"experimentalFullSupportEnabled": null, // Enable full HTML/Vue/Svelte/Astro support | true, false, null
+		"formatter": {
+			"attributePosition": "auto", // Attribute positioning | "auto", "multiline"
+			"bracketSameLine": false, // Put > on same line as last attribute | true, false
+			"enabled": true, // Enable HTML formatter | true, false
+			"indentScriptAndStyle": false, // Indent <script> and <style> content | true, false
+			"indentStyle": "tab", // Indentation style | "tab", "space"
+			"indentWidth": 2, // Spaces per indentation | 0-255
+			"lineEnding": "lf", // Line ending style | "lf", "crlf", "cr", "auto"
+			"lineWidth": 80, // Max line width | 1-320
+			"selfCloseVoidElements": "never", // Self-close void elements like <br /> | "never", "always"
+			"whitespaceSensitivity": "css" // Whitespace handling mode | "css", "strict", "ignore"
+		},
+		"linter": {
+			"enabled": true // Enable HTML linting | true, false
+		},
+		"parser": {
+			"interpolation": null // Enable {{ expression }} parsing in HTML | true, false, null
+		}
+	},
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// JAVASCRIPT - JavaScript/TypeScript configuration
+	// ═══════════════════════════════════════════════════════════════════════════
+	"javascript": {
+		"assist": {
+			"enabled": true // Enable JS/TS assist | true, false
+		},
+		"formatter": {
+			"arrowParentheses": "always", // Parens around single arrow fn param | "always", "asNeeded"
+			"attributePosition": "auto", // JSX attribute positioning | "auto", "multiline"
+			"bracketSameLine": false, // Put > on same line as last JSX attribute | true, false
+			"bracketSpacing": true, // Spaces inside object braces { foo } | true, false
+			"enabled": true, // Enable JS/TS formatter | true, false
+			"expand": "auto", // Array/object expansion | "auto", "always", "never"
+			"indentStyle": "tab", // Indentation style | "tab", "space"
+			"indentWidth": 2, // Spaces per indentation | 0-255
+			"jsxQuoteStyle": "double", // Quote style in JSX attributes | "double", "single"
+			"lineEnding": "lf", // Line ending style | "lf", "crlf", "cr", "auto"
+			"lineWidth": 80, // Max line width | 1-320
+			"operatorLinebreak": "after", // Break binary expressions | "after", "before"
+			"quoteProperties": "asNeeded", // Object property quoting | "asNeeded", "preserve"
+			"quoteStyle": "double", // String quote style | "double", "single"
+			"semicolons": "always", // Semicolon usage | "always", "asNeeded"
+			"trailingCommas": "all" // Trailing commas in multi-line | "all", "es5", "none"
+		},
+		"globals": [], // Additional global variables to recognize
+		"jsxRuntime": "transparent", // JSX transform mode | "transparent", "reactClassic"
+		"linter": {
+			"enabled": true // Enable JS/TS linting | true, false
+		},
+		"parser": {
+			"gritMetavariables": false, // Enable Grit metavariables parsing | true, false
+			"jsxEverywhere": true, // Allow JSX in .js/.mjs/.cjs files | true, false
+			"unsafeParameterDecoratorsEnabled": false // Enable experimental parameter decorators | true, false
+		}
+	},
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// JSON - JSON/JSONC configuration
+	// ═══════════════════════════════════════════════════════════════════════════
+	"json": {
+		"assist": {
+			"enabled": true // Enable JSON assist | true, false
+		},
+		"formatter": {
+			"bracketSpacing": true, // Spaces inside object braces | true, false
+			"enabled": true, // Enable JSON formatter | true, false
+			"expand": "auto", // Array/object expansion | "auto", "always", "never"
+			"indentStyle": "tab", // Indentation style | "tab", "space"
+			"indentWidth": 2, // Spaces per indentation | 0-255
+			"lineEnding": "lf", // Line ending style | "lf", "crlf", "cr", "auto"
+			"lineWidth": 80, // Max line width | 1-320
+			"trailingCommas": "none" // Trailing commas | "none", "all"
+		},
+		"linter": {
+			"enabled": true // Enable JSON linting | true, false
+		},
+		"parser": {
+			"allowComments": false, // Allow // and /* */ comments | true, false
+			"allowTrailingCommas": false // Allow trailing commas | true, false
+		}
+	},
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// LINTER - Global linting configuration
+	// ═══════════════════════════════════════════════════════════════════════════
+	"linter": {
+		"domains": null, // Rule domains config | null or object with: react, test, solid, next, qwik, vue, project, tailwind (values: "all", "none", "recommended")
+		"enabled": true, // Enable linter | true, false
+		"rules": {
+			// Rule groups: a11y, complexity, correctness, nursery, performance, security, style, suspicious
+			// Each group can be: "off", "on", "info", "warn", "error" or an object with individual rules
+			"recommended": true // Enable recommended rules | true, false
+		}
+	},
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// OVERRIDES - File-specific configuration overrides
+	// ═══════════════════════════════════════════════════════════════════════════
+	"overrides": [], // Array of { includes: ["glob"], formatter: {...}, linter: {...}, ... }
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// PLUGINS - External plugins
+	// ═══════════════════════════════════════════════════════════════════════════
+	"plugins": [], // Array of plugin paths or package names
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// ROOT - Project root marker
+	// ═══════════════════════════════════════════════════════════════════════════
+	"root": true, // Stop looking for parent biome.json files | true, false
+
+	// ═══════════════════════════════════════════════════════════════════════════
+	// VCS - Version Control System integration
+	// ═══════════════════════════════════════════════════════════════════════════
+	"vcs": {
+		"clientKind": "git", // VCS client type | "git"
+		"defaultBranch": null, // Main branch name | null or string like "main", "master"
+		"enabled": true, // Enable VCS integration | true, false
+		"root": null, // VCS root directory | null or path string
+		"useIgnoreFile": true // Respect .gitignore patterns | true, false
+	}
+}
