@@ -48,6 +48,5 @@ class HeadingDivided extends BaseComponent {
 		);
 	}
 }
-
 export { HeadingDivided };
 defineElement("heading-divided", HeadingDivided);
