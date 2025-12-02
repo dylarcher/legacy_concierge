@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>404 - Page Not Found | Legacy Concierge</title>
-	<meta name="description" content="The page you're looking for doesn't exist. Redirecting to version index...">
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Work+Sans:wght@300;400;600&display=swap');
-		
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>404 - Page Not Found | Legacy Concierge</title>
+		<meta
+			name="description"
+			content="The page you're looking for doesn't exist. Redirecting to version index..."
+		>
+		<style>
+		@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Work+Sans:wght@300;400;600&display=swap");
+
 		* {
 			margin: 0;
 			padding: 0;
 			box-sizing: border-box;
 		}
-		
+
 		:root {
 			--color-bg: #ffffff;
 			--color-text: #18181b;
@@ -23,7 +26,7 @@
 			--color-card-bg: #ffffff;
 			--color-card-ring: rgba(0, 0, 0, 0.05);
 		}
-		
+
 		@media (prefers-color-scheme: dark) {
 			:root {
 				--color-bg: #18181b;
@@ -33,9 +36,9 @@
 				--color-card-ring: rgba(255, 255, 255, 0.1);
 			}
 		}
-		
+
 		body {
-			font-family: 'Work Sans', sans-serif;
+			font-family: "Work Sans", sans-serif;
 			background: var(--color-bg);
 			color: var(--color-text);
 			line-height: 1.6;
@@ -45,24 +48,31 @@
 			justify-content: center;
 			padding: 2rem;
 		}
-		
-		h1, h2, h3, h4, h5, h6 {
-			font-family: 'Playfair Display', serif;
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-family: "Playfair Display", serif;
 		}
-		
+
 		.container {
 			max-width: 42rem;
 			text-align: center;
 		}
-		
+
 		.card {
 			background: var(--color-card-bg);
 			border-radius: 0.75rem;
-			box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+			box-shadow:
+				0 10px 15px -3px rgba(0, 0, 0, 0.1),
+				0 4px 6px -2px rgba(0, 0, 0, 0.05);
 			padding: 3rem 2rem;
 			border: 1px solid var(--color-card-ring);
 		}
-		
+
 		.error-code {
 			font-size: 6rem;
 			font-weight: 700;
@@ -70,20 +80,20 @@
 			margin-bottom: 1rem;
 			line-height: 1;
 		}
-		
+
 		h1 {
 			font-size: 2rem;
 			font-weight: 700;
 			margin-bottom: 1rem;
 			color: var(--color-text);
 		}
-		
+
 		p {
 			font-size: 1.125rem;
 			color: var(--color-text-muted);
 			margin-bottom: 2rem;
 		}
-		
+
 		.countdown {
 			display: inline-flex;
 			align-items: center;
@@ -92,7 +102,7 @@
 			color: var(--color-text-muted);
 			margin-bottom: 2rem;
 		}
-		
+
 		.countdown-number {
 			display: inline-flex;
 			align-items: center;
@@ -105,7 +115,7 @@
 			font-weight: 700;
 			font-size: 1.25rem;
 		}
-		
+
 		.button {
 			display: inline-flex;
 			align-items: center;
@@ -119,23 +129,23 @@
 			transition: background-color 0.2s;
 			font-size: 1rem;
 		}
-		
+
 		.button:hover {
 			background: var(--color-primary-dark);
 		}
-		
+
 		.button-secondary {
 			background: transparent;
 			color: var(--color-primary);
 			border: 2px solid var(--color-primary);
 			margin-left: 1rem;
 		}
-		
+
 		.button-secondary:hover {
 			background: var(--color-primary);
 			color: white;
 		}
-		
+
 		.buttons {
 			display: flex;
 			flex-wrap: wrap;
@@ -143,77 +153,89 @@
 			justify-content: center;
 			margin-top: 2rem;
 		}
-		
+
 		@media (max-width: 640px) {
 			.error-code {
 				font-size: 4rem;
 			}
-			
+
 			h1 {
 				font-size: 1.5rem;
 			}
-			
+
 			.buttons {
 				flex-direction: column;
 			}
-			
+
 			.button-secondary {
 				margin-left: 0;
 			}
 		}
-	</style>
-</head>
-<body>
-	<div class="container">
-		<div class="card">
-			<div class="error-code">404</div>
-			<h1>Page Not Found</h1>
-			<p>The page you're looking for doesn't exist or has been moved.</p>
-			
-			<div class="countdown">
-				<span>Redirecting in</span>
-				<span class="countdown-number" id="countdown">5</span>
-				<span>seconds...</span>
-			</div>
-			
-			<div class="buttons">
-				<a href="/legacy_concierge/index.html" class="button">
-					Go to Version Index
-					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-					</svg>
-				</a>
-				<button onclick="cancelRedirect()" class="button button-secondary">
-					Stay Here
-				</button>
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="card">
+				<div class="error-code">404</div>
+				<h1>Page Not Found</h1>
+				<p>The page you're looking for doesn't exist or has been moved.</p>
+
+				<div class="countdown">
+					<span>Redirecting in</span>
+					<span class="countdown-number" id="countdown">5</span>
+					<span>seconds...</span>
+				</div>
+
+				<div class="buttons">
+					<a href="/legacy_concierge/index.html" class="button">
+						Go to Version Index
+						<svg
+							class="w-4 h-4"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+							width="16"
+							height="16"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M9 5l7 7-7 7"
+							/>
+						</svg>
+					</a>
+					<button onclick="cancelRedirect()" class="button button-secondary">
+						Stay Here
+					</button>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-	<script>
+
+		<script>
 		let countdown = 5;
 		let redirectTimer = null;
 		let countdownInterval = null;
-		
+
 		function startRedirect() {
-			const countdownEl = document.getElementById('countdown');
-			
+			const countdownEl = document.getElementById("countdown");
+
 			// Update countdown every second
 			countdownInterval = setInterval(() => {
 				countdown--;
 				countdownEl.textContent = countdown;
-				
+
 				if (countdown <= 0) {
 					clearInterval(countdownInterval);
 				}
 			}, 1000);
-			
+
 			// Redirect after 5 seconds
 			redirectTimer = setTimeout(() => {
-				window.location.href = '/legacy_concierge/index.html';
+				window.location.href = "/legacy_concierge/index.html";
 			}, 5000);
 		}
-		
+
 		function cancelRedirect() {
 			if (redirectTimer) {
 				clearTimeout(redirectTimer);
@@ -223,13 +245,14 @@
 				clearInterval(countdownInterval);
 				countdownInterval = null;
 			}
-			
-			const countdownEl = document.querySelector('.countdown');
-			countdownEl.innerHTML = '<span style="color: var(--color-primary);">Redirect cancelled</span>';
+
+			const countdownEl = document.querySelector(".countdown");
+			countdownEl.innerHTML =
+				'<span style="color: var(--color-primary);">Redirect cancelled</span>';
 		}
-		
+
 		// Start redirect on page load
 		startRedirect();
-	</script>
-</body>
+		</script>
+	</body>
 </html>
