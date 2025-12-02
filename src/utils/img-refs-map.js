@@ -7,9 +7,13 @@
 // Hero/Banner Images
 import birdsEyeViewCoastalTown from "../assets/media/images/birds-eye-view-of-coastal-town.png";
 import blueGreenWavesBrownBeach from "../assets/media/images/blue-green-waves-brown-beach.png";
+import eliteFemaleNurse from "../assets/media/images/grayscale/elite-female-nurse-stethascope.grayscale.png";
 // Grayscale subdirectory
 import eliteNursesPosing from "../assets/media/images/grayscale/elite-nurses-posing.grayscale.png";
+import lovedOneSupport from "../assets/media/images/grayscale/loved-one-giving-patient-support.grayscale.png";
+import medicalProfessionalCouch from "../assets/media/images/grayscale/medica-professional-couch.grayscale.png";
 import reviewingMedicalDocs from "../assets/media/images/grayscale/reviewing-medical-docs.grayscale.png";
+import reviewingNutrition from "../assets/media/images/grayscale/reviewing-nutrition-diet.grayscale.png";
 // Muted subdirectory
 import antiqueCouchNursePatient from "../assets/media/images/muted/antique-couch-nurse-patient.muted.png";
 import holdingHands from "../assets/media/images/muted/holding-hands.muted.png";
@@ -47,6 +51,14 @@ export const imagePathMap = {
 		eliteNursesPosing,
 	"/assets/media/images/grayscale/reviewing-medical-docs.grayscale.png":
 		reviewingMedicalDocs,
+	"/assets/media/images/grayscale/elite-female-nurse-stethascope.grayscale.png":
+		eliteFemaleNurse,
+	"/assets/media/images/grayscale/loved-one-giving-patient-support.grayscale.png":
+		lovedOneSupport,
+	"/assets/media/images/grayscale/medica-professional-couch.grayscale.png":
+		medicalProfessionalCouch,
+	"/assets/media/images/grayscale/reviewing-nutrition-diet.grayscale.png":
+		reviewingNutrition,
 	"/assets/media/images/muted/antique-couch-nurse-patient.muted.png":
 		antiqueCouchNursePatient,
 	"/assets/media/images/muted/holding-hands.muted.png": holdingHands,

@@ -34,3 +34,10 @@ export * from "./elements/textarea.js";
 export * from "./sections/footer.js";
 export * from "./sections/hero.js";
 export * from "./sections/nav.js";
+
+/**
+ * Initializes all UI components
+ * Components auto-register when imported via defineElement
+ * @returns {void}
+ */
+export function initializeComponents() {}
