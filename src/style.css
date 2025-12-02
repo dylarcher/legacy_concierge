@@ -107,6 +107,21 @@
    Tailwind v4 Theme Configuration
    ============================================ */
 @theme {
+	/* Primary */
+	--color-primary-dark: #0b2736;
+	--color-primary-accent: #668d8e;
+
+	/* Neutral */
+	--color-white: #ffffff;
+	--color-text-primary: #231f20;
+	--color-text-secondary: #403e3b;
+
+	/* Backgrounds */
+	--color-bg-light: #f5f0eb;
+	--color-bg-dark: #0b2736;
+
+	/** CURRENT STYLING VARIABLE **/
+
 	/* Font families - overrides Tailwind defaults */
 	--font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
 	--font-serif: "Playfair Display", ui-serif, Georgia, serif;
@@ -154,6 +169,10 @@
 		color(srgb 50 31 22 / 48%) 0%,
 		color(srgb 80 53 43 / 28%) 100%
 	);
+}
+
+:root {
+	color-scheme: light;
 }
 
 @layer base {
@@ -276,10 +295,6 @@
 		height: 4px;
 		background: rgb(0 0 0 / 10%);
 		border-radius: 2px;
-
-		@media (prefers-color-scheme: dark) {
-			background: rgb(255 255 255 / 15%);
-		}
 	}
 
 	.scrollbar-minimal-thumb {
