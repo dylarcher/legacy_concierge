@@ -86,6 +86,5 @@ class DialogTreatment extends BaseComponent {
 		);
 	}
 }
-
 export { DialogTreatment };
 defineElement("dialog-treatment", DialogTreatment);
