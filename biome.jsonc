@@ -44,8 +44,8 @@
 	// ═══════════════════════════════════════════════════════════════════════════
 	"files": {
 		"ignoreUnknown": true, // Don't emit diagnostics for unknown file types | true, false
+		// Glob patterns for files Biome should process
 		"includes": [
-			// Glob patterns for files Biome should process
 			"**/*.css",
 			"**/*.d.ts",
 			"**/*.graphql",
@@ -53,7 +53,16 @@
 			"**/*.html",
 			"**/*.js",
 			"**/*.json",
-			"**/*.md"
+			"**/*.md",
+			"!dist",
+			"!docs/**/*.css",
+			"!docs/**/*.d.ts",
+			"!docs/**/*.graphql",
+			"!docs/**/*.grit",
+			"!docs/**/*.html",
+			"!docs/**/*.js",
+			"!docs/**/*.json",
+			"!node_modules"
 		],
 		"maxSize": null // Max file size in bytes (default 1MiB) | null or positive integer
 	},
