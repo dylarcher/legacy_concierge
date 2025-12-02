@@ -27,11 +27,7 @@ class HeadingDivided extends BaseComponent {
 		const dividerClasses = this.combineClassNames(
 			"w-full",
 			"h-px",
-<<<<<<< HEAD
 			"bg-linear-to-r",
-=======
-			"bg-gradient-to-r",
->>>>>>> main
 			"from-transparent",
 			"via-[#668D8E]/40",
 			"to-transparent",
@@ -42,23 +38,11 @@ class HeadingDivided extends BaseComponent {
 
 		this.replaceChildren(
 			h("div", { class: containerClasses }, [
-<<<<<<< HEAD
 				h(level, { class: headingClasses }, [h("slot")]),
-=======
-				(() => {
-					const allowedLevels = ["h1", "h2", "h3", "h4", "h5", "h6"];
-					const tag = allowedLevels.includes(level) ? level : "h2";
-					return h(tag, { class: headingClasses }, [h("slot")]);
-				})(),
->>>>>>> main
 				h("div", { class: dividerClasses }),
 			]),
 		);
 	}
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 export { HeadingDivided };
 defineElement("heading-divided", HeadingDivided);
