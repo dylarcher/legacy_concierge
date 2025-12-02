@@ -1,5 +1,5 @@
 // Import media assets so Vite can process them
-import defaultHeroImage from "../../assets/media/images/blue-green-waves-brown-beach.png";
+import defaultHeroImage from "../../assets/media/images/blue-green-waves-brown-beach.webp";
 import videoMp4 from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.mp4?url";
 import videoWebm from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.webm?url";
 import { BaseComponent, defineElement } from "../_base.js";

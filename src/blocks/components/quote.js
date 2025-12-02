@@ -14,7 +14,7 @@ import { BaseComponent, defineElement } from "../_base.js";
  *   quote="Legacy Concierge sets the gold standard for home healthcare."
  *   author="Dr. Sarah Mitchell"
  *   role="Medical Director, Coastal Health Partners"
- *   avatar="/assets/media/images/partner-avatar-1.png">
+ *   avatar="/assets/media/images/partner-avatar-1.webp">
  * </quote-card>
  *
  * @example
