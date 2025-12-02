@@ -1,5 +1,31 @@
 import { BaseComponent, defineElement } from "../_base.js";
 
+/**
+ * @element team-member
+ * @description
+ *   A custom element for displaying a team member section with a customizable background image,
+ *   overlay, and content slot. Useful for highlighting team members or people in a visually appealing way.
+ *
+ * @attribute {string} bg-image
+ *   The URL of the background image to display.
+ * @attribute {string} bg-position
+ *   The CSS background-position value (default: "left center").
+ * @attribute {string} bg-size
+ *   The CSS background-size value (default: "cover").
+ *
+ * @slot
+ *   Default slot for the team member content (e.g., name, role, description).
+ *
+ * @example
+ *   <team-member
+ *     bg-image="https://example.com/photo.jpg"
+ *     bg-position="center center"
+ *     bg-size="cover"
+ *   >
+ *     <h2>Jane Doe</h2>
+ *     <p>Lead Designer</p>
+ *   </team-member>
+ */
 class TeamMember extends BaseComponent {
 	static get observedAttributes() {
 		return ["bg-image", "bg-position", "bg-size"];

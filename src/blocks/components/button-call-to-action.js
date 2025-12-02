@@ -1,7 +1,22 @@
 import { BaseComponent, defineElement } from "../_base.js";
 
+/**
+ * `<button-call-to-action>` is a custom element that renders a stylized call-to-action button.
+ *
+ * @element button-call-to-action
+ *
+ * @slot - Default slot for button content (e.g., text or inline elements).
+ *
+ * @example
+ * <button-call-to-action>
+ *   Click Me
+ * </button-call-to-action>
+ *
+ * @csspart button - The native button element.
+ *
+ * This component does not accept any attributes.
+ */
 class ButtonCallToAction extends BaseComponent {
-	connectedCallback() {
 		this.render();
 	}
 

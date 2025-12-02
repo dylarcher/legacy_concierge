@@ -1,5 +1,24 @@
 import { BaseComponent, defineElement } from "../_base.js";
 
+/**
+ * `<button-service>` is a custom button component for service actions.
+ *
+ * @element button-service
+ *
+ * @slot title - The main title of the button (displayed prominently).
+ * @slot description - A short description or subtitle for the button.
+ *
+ * @csspart button - The native button element.
+ *
+ * @example
+ * <button-service>
+ *   <span slot="title">Book Now</span>
+ *   <span slot="description">Fast and easy booking for your service</span>
+ * </button-service>
+ *
+ * @summary
+ * Renders a stylized button with a title and description, suitable for service actions.
+ */
 class ButtonService extends BaseComponent {
 	connectedCallback() {
 		this.render();

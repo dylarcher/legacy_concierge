@@ -1,5 +1,23 @@
 import { BaseComponent, defineElement } from "../_base.js";
 
+/**
+ * `<button-tel-mail>` is a custom button component for telephone and mail actions.
+ *
+ * @element button-tel-mail
+ *
+ * @slot - Default slot for button content (e.g., label or icon).
+ *
+ * @csspart button - The native button element.
+ *
+ * @example
+ * ```html
+ * <button-tel-mail>
+ *   Call Us
+ * </button-tel-mail>
+ * ```
+ *
+ * This component renders a styled button. You can place any content inside the slot.
+ */
 class ButtonTelMail extends BaseComponent {
 	connectedCallback() {
 		this.render();

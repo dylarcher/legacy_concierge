@@ -1,7 +1,31 @@
 import { BaseComponent, defineElement } from "../_base.js";
 
+/**
+ * `<card-treatment>` is a custom element that displays a treatment card with a background image,
+ * gradient overlay, title, description, and an icon button.
+ *
+ * @element card-treatment
+ *
+ * @attribute {string} bg-image - The URL of the background image.
+ * @attribute {string} bg-position - The CSS background-position value (default: "center").
+ * @attribute {string} bg-size - The CSS background-size value (default: "cover").
+ *
+ * @slot title - Slot for the card's title.
+ * @slot description - Slot for the card's description.
+ * @slot icon - Slot for the icon/button at the bottom of the card.
+ *
+ * @example
+ * <card-treatment
+ *   bg-image="https://example.com/image.jpg"
+ *   bg-position="center"
+ *   bg-size="cover"
+ * >
+ *   <span slot="title">Treatment Title</span>
+ *   <span slot="description">Description of the treatment.</span>
+ *   <span slot="icon">+</span>
+ * </card-treatment>
+ */
 class CardTreatment extends BaseComponent {
-	static get observedAttributes() {
 		return ["bg-image", "bg-position", "bg-size"];
 	}
 
