@@ -89,6 +89,81 @@ legacy_concierge/
 - **Partner Logos** (SVG with dark mode support)
 - **SEO Optimized** with semantic HTML and meta tags
 
+## 📦 Version Management
+
+### Creating a New Version
+
+To create a new versioned deployment for GitHub Pages:
+
+1. **Build the production version:**
+
+   ```sh
+   bun run build
+   ```
+
+2. **Create version folder:**
+
+   ```sh
+   # Create new version directory (e.g., v0.4.0)
+   mkdir -p docs/v0.4.0
+   
+   # Copy build output to version folder
+   cp -r dist/* docs/v0.4.0/
+   ```
+
+3. **Update version index:**
+   Edit `docs/index.html` to add the new version entry at the top of the versions list:
+
+   ```html
+   <div class="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-8 ring-1 ring-zinc-950/5 dark:ring-white/10 transition-shadow hover:shadow-xl">
+     <div class="flex items-start justify-between mb-4">
+       <div>
+         <h2 class="text-3xl font-bold text-zinc-900 dark:text-white mb-2">
+           Version 0.4.0
+         </h2>
+         <p class="text-sm text-zinc-500 dark:text-zinc-400">
+           2024-12-XX
+         </p>
+       </div>
+       <span class="inline-flex items-center rounded-full bg-cyan-500/15 px-4 py-1.5 text-sm font-semibold text-cyan-700 dark:bg-cyan-500/10 dark:text-cyan-400">
+         v0.4.0
+       </span>
+     </div>
+     
+     <p class="text-base text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed">
+       Brief description of changes in this version.
+     </p>
+     
+     <a 
+       href="/legacy_concierge/v0.4.0/"
+       class="inline-flex items-center gap-2 py-3 px-6 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-full transition-colors focus:ring focus:ring-cyan-500/50"
+     >
+       View Site
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+       </svg>
+     </a>
+   </div>
+   ```
+
+4. **Commit and push:**
+
+   ```sh
+   git add docs/
+   git commit -m "chore: release v0.4.0"
+   git push
+   ```
+
+5. **Automated deployment:**
+   GitHub Actions will automatically deploy to `https://dylarcher.github.io/legacy_concierge/v0.4.0/`
+
+### Version History
+
+View all deployed versions at: [https://dylarcher.github.io/legacy_concierge/](https://dylarcher.github.io/legacy_concierge/)
+
+- **v0.3.0** - Navigation restructure with dropdowns and dialog improvements
+- **v0.2.0** - Initial versioned release with automated deployment
+
 ## 🧪 Testing & Validation
 
 ## 🧪 Testing & Validation
