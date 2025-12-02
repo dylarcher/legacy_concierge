@@ -3,6 +3,14 @@
 /**
  * Generate sitemap.xml from HTML pages in the build output.
  * Run this script after building the site to create an up-to-date sitemap.
+ *
+ * Usage:
+ *   node bin/generate-sitemap.js [--version=X.Y.Z] [--output-dir=path] [--base-url=url]
+ *
+ * Options:
+ *   --version      Version string to include in sitemap URLs (e.g., "0.2.0")
+ *   --output-dir   Directory containing HTML files and where sitemap will be written
+ *   --base-url     Base URL for sitemap entries (defaults to production domain)
  */
 
 import { readdir, writeFile } from "node:fs/promises";
@@ -10,8 +18,34 @@ import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
-const SITE_ORIGIN = "https://legacyconcierge.com";
-const DIST_DIR = join(__dirname, "..", "dist");
+
+/**
+ * Parse command line arguments
+ * @returns {{version: string|null, outputDir: string, baseUrl: string}}
+ */
+function parseArgs() {
+	const args = process.argv.slice(2);
+	let version = null;
+	let outputDir = join(__dirname, "..", "dist");
+	let baseUrl = "https://legacyconcierge.com";
+
+	for (const arg of args) {
+		if (arg.startsWith("--version=")) {
+			version = arg.substring("--version=".length);
+		} else if (arg.startsWith("--output-dir=")) {
+			outputDir = arg.substring("--output-dir=".length);
+		} else if (arg.startsWith("--base-url=")) {
+			baseUrl = arg.substring("--base-url=".length);
+		}
+	}
+
+	// Remove trailing slash from base URL if present
+	baseUrl = baseUrl.replace(/\/$/, "");
+
+	return { version, outputDir, baseUrl };
+}
+
+const { version, outputDir: DIST_DIR, baseUrl: SITE_ORIGIN } = parseArgs();
 
 /**
  * Recursively find all HTML files in a directory
