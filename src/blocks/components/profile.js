@@ -18,7 +18,7 @@ import { BaseComponent, defineElement } from "../_base.js";
  * <profile-card
  *   name="Jason Kidushim"
  *   title="Founder &amp; CEO"
- *   image="/assets/media/images/team/jason.png"
+ *   image="/assets/media/images/team/jason.webp"
  *   image-alt="Jason Kidushim headshot"
  *   align="left">
  *   <p>Bio text goes here...</p>
@@ -30,7 +30,7 @@ import { BaseComponent, defineElement } from "../_base.js";
  *   variant="compact"
  *   name="Sarah Martinez"
  *   title="Clinical Director"
- *   image="/assets/media/images/team/sarah.png"
+ *   image="/assets/media/images/team/sarah.webp"
  *   image-alt="Sarah Martinez headshot">
  *   <p>Brief bio...</p>
  * </profile-card>
@@ -59,7 +59,7 @@ export class ProfileCard extends BaseComponent {
 		const title = this.getAttribute("title") || "";
 		const image =
 			this.getAttribute("image") ||
-			"/assets/media/images/placeholder-avatar.png";
+			"/assets/media/images/placeholder-avatar.webp";
 		const imageAlt = this.getAttribute("image-alt") || name;
 
 		// Collect bio content from children
@@ -124,7 +124,7 @@ export class ProfileCard extends BaseComponent {
 		const title = this.getAttribute("title") || "";
 		const image =
 			this.getAttribute("image") ||
-			"/assets/media/images/placeholder-avatar.png";
+			"/assets/media/images/placeholder-avatar.webp";
 		const imageAlt = this.getAttribute("image-alt") || name;
 		const align = this.getAttribute("align") || "left";
 
