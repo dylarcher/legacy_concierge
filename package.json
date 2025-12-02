@@ -46,6 +46,7 @@
 	},
 	"scripts": {
 		"build": "vite build && node bin/generate-sitemap.js",
+		"build:gh-pages": "VITE_BASE_PATH=/legacy_concierge/v1/ vite build",
 		"dev": "vite",
 		"lint": "biome check",
 		"lint:fix": "biome check --write",
