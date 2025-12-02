@@ -2,10 +2,10 @@
 
 /**
  * Generate version index page for GitHub Pages
- * 
+ *
  * Scans docs/ for version directories, parses CHANGELOG.md for version notes,
  * and generates a themed index.html with version cards displayed vertically.
- * 
+ *
  * Usage:
  *   node bin/generate-version-index.js
  */
@@ -27,7 +27,7 @@ const CHANGELOG_PATH = join(ROOT_DIR, "CHANGELOG.md");
 function parseVersion(dirname) {
 	const match = dirname.match(/^v(\d+)\.(\d+)\.(\d+)$/);
 	if (!match) return null;
-	
+
 	return {
 		major: Number.parseInt(match[1], 10),
 		minor: Number.parseInt(match[2], 10),
@@ -55,18 +55,18 @@ function compareVersions(a, b) {
 async function getVersionDirectories() {
 	try {
 		const entries = await readdir(DOCS_DIR, { withFileTypes: true });
-		
+
 		const versions = entries
-			.filter(entry => entry.isDirectory())
-			.map(entry => ({
+			.filter((entry) => entry.isDirectory())
+			.map((entry) => ({
 				dirname: entry.name,
 				version: parseVersion(entry.name),
 			}))
-			.filter(item => item.version !== null);
-		
+			.filter((item) => item.version !== null);
+
 		// Sort by version (newest first)
 		versions.sort((a, b) => -compareVersions(a.version, b.version));
-		
+
 		return versions;
 	} catch (error) {
 		if (error.code === "ENOENT") {
@@ -83,22 +83,24 @@ async function getVersionDirectories() {
  */
 async function parseChangelog() {
 	const changelogData = new Map();
-	
+
 	try {
 		const content = await readFile(CHANGELOG_PATH, "utf-8");
 		const lines = content.split("\n");
-		
+
 		let currentVersion = null;
 		let currentDate = null;
 		let summaryLines = [];
 		let inSummary = false;
-		
+
 		for (let i = 0; i < lines.length; i++) {
 			const line = lines[i];
-			
+
 			// Match version headers: ## [0.2.0] or ## [0.2.0] - 2024-12-02
-			const versionMatch = line.match(/^##\s*\[(\d+\.\d+\.\d+)\](?:\s*-\s*(.+))?/);
-			
+			const versionMatch = line.match(
+				/^##\s*\[(\d+\.\d+\.\d+)\](?:\s*-\s*(.+))?/,
+			);
+
 			if (versionMatch) {
 				// Save previous version data
 				if (currentVersion && summaryLines.length > 0) {
@@ -107,7 +109,7 @@ async function parseChangelog() {
 						summary: summaryLines.join(" ").trim(),
 					});
 				}
-				
+
 				// Start new version
 				currentVersion = versionMatch[1];
 				currentDate = versionMatch[2] || null;
@@ -115,7 +117,7 @@ async function parseChangelog() {
 				inSummary = true;
 				continue;
 			}
-			
+
 			// Collect summary lines until we hit a heading or empty line
 			if (inSummary && currentVersion) {
 				// Skip heading markers (###, ####, etc.)
@@ -123,18 +125,18 @@ async function parseChangelog() {
 					inSummary = false;
 					continue;
 				}
-				
+
 				// Stop at next version or major heading
 				if (line.match(/^##\s/)) {
 					inSummary = false;
 					continue;
 				}
-				
+
 				// Collect non-empty lines
 				const trimmed = line.trim();
 				if (trimmed && !trimmed.startsWith("-") && !trimmed.startsWith("*")) {
 					summaryLines.push(trimmed);
-					
+
 					// Stop after first paragraph (about 2-3 lines)
 					if (summaryLines.length >= 3) {
 						inSummary = false;
@@ -142,7 +144,7 @@ async function parseChangelog() {
 				}
 			}
 		}
-		
+
 		// Save last version
 		if (currentVersion && summaryLines.length > 0) {
 			changelogData.set(currentVersion, {
@@ -150,11 +152,10 @@ async function parseChangelog() {
 				summary: summaryLines.join(" ").trim(),
 			});
 		}
-		
 	} catch (error) {
 		console.warn("⚠️  Could not read CHANGELOG.md:", error.message);
 	}
-	
+
 	return changelogData;
 }
 
@@ -169,7 +170,7 @@ function generateVersionCard(version, changelogInfo) {
 	const versionUrl = `/legacy_concierge/${version.dirname}/`;
 	const date = changelogInfo?.date || "Release date unknown";
 	const summary = changelogInfo?.summary || "No release notes available.";
-	
+
 	return `
 		<div class="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-8 ring-1 ring-zinc-950/5 dark:ring-white/10 transition-shadow hover:shadow-xl">
 			<div class="flex items-start justify-between mb-4">
@@ -210,9 +211,9 @@ function generateVersionCard(version, changelogInfo) {
  */
 function generateHTML(versions, changelogData) {
 	const versionCards = versions
-		.map(v => generateVersionCard(v, changelogData.get(v.version.string)))
+		.map((v) => generateVersionCard(v, changelogData.get(v.version.string)))
 		.join("\n");
-	
+
 	return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -337,34 +338,37 @@ function generateHTML(versions, changelogData) {
 async function main() {
 	try {
 		console.log("🔍 Scanning for versions and parsing changelog...\n");
-		
+
 		// Get versions
 		const versions = await getVersionDirectories();
-		
+
 		if (versions.length === 0) {
-			console.log("⚠️  No version directories found. Skipping index generation.");
+			console.log(
+				"⚠️  No version directories found. Skipping index generation.",
+			);
 			return;
 		}
-		
+
 		console.log(`Found ${versions.length} version(s):`);
 		for (const v of versions) {
 			console.log(`  - ${v.dirname}`);
 		}
-		
+
 		// Parse changelog
 		const changelogData = await parseChangelog();
-		console.log(`\nParsed changelog with ${changelogData.size} version entr${changelogData.size === 1 ? "y" : "ies"}`);
-		
+		console.log(
+			`\nParsed changelog with ${changelogData.size} version entr${changelogData.size === 1 ? "y" : "ies"}`,
+		);
+
 		// Generate HTML
 		const html = generateHTML(versions, changelogData);
-		
+
 		// Write to docs/index.html
 		const indexPath = join(DOCS_DIR, "index.html");
 		await writeFile(indexPath, html, "utf-8");
-		
+
 		console.log(`\n✅ Version index generated: ${indexPath}`);
 		console.log(`   View at: https://dylarcher.github.io/legacy_concierge/`);
-		
 	} catch (error) {
 		console.error("\n❌ Error:", error.message);
 		process.exit(1);
