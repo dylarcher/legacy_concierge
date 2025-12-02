@@ -9,7 +9,7 @@
 
 ```bash
 # Navigate to project
-cd ~/Workspaces/tailwind
+cd legacy_concierge
 
 # Install dependencies
 bun install

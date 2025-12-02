@@ -45,15 +45,13 @@ blocks/
 
 ## Base Component
 
-All components extend `BaseComponent` from `blocks/_base.js`. This provides:
+All components extend `BaseComponent` from `blocks/core/base.js`. This provides:
 
 ### DOM Utilities
 
-- `createElement(tag, attributes, ...children)` - Creates HTML elements with JSX-like syntax
-- `createSVGElement(tag, attributes, ...children)` - Creates SVG elements
-- `createInteractiveElement(href, attributes, ...children)` - Creates button or anchor based on href
-- `combineClassNames(...classes)` - Combines class names, filtering falsy values
-- `renderWithChildren(tag, attributes)` - Renders element preserving original children
+- `h(tag, attributes, ...children)` - Creates HTML elements with JSX-like syntax
+- `svg(tag, attributes, ...children)` - Creates SVG elements with proper namespace
+- `clsx(...classes)` - Combines class names, filtering falsy values
 
 ### State Management
 
@@ -110,20 +108,10 @@ When wrapping existing children in a new element:
 render() {
   const childNodes = Array.from(this.childNodes);
   this.innerHTML = "";
-  const wrapperElement = this.createElement("div", {
-    class: this.combineClassNames("wrapper-class", this.className)
+  const wrapperElement = this.h("div", {
+    class: this.clsx("wrapper-class", this.className)
   }, ...childNodes);
   this.appendChild(wrapperElement);
-}
-```
-
-Or use the helper method:
-
-```javascript
-render() {
-  this.renderWithChildren("div", {
-    class: this.combineClassNames("wrapper-class", this.className)
-  });
 }
 ```
 
@@ -160,7 +148,7 @@ See `docs/NAMING_CONVENTIONS.md` for detailed standards.
 
 ## Color System
 
-Colors are defined in `blocks/elements/colors.js` and shared across components:
+Colors are defined in `blocks/core/colors.js` and shared across components:
 
 - `BUTTON_COLORS` - Button color variants
 - `CHECKBOX_COLORS` - Checkbox color variants
