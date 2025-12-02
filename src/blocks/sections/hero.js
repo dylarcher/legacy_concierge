@@ -1,10 +1,7 @@
 // Import media assets so Vite can process them
 import defaultHeroImage from "../../assets/media/images/blue-green-waves-brown-beach.png";
-import videoMov from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.mov?url";
 import videoMp4 from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.mp4?url";
-import videoOgv from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.ogv?url";
 import videoWebm from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.webm?url";
-import { resolveImagePath } from "../../utils/img-refs-map.js";
 import { BaseComponent, defineElement } from "../_base.js";
 
 /**
@@ -33,8 +30,6 @@ export const BANNER_TEMPLATE = () => `
 				<video autoplay loop muted playsinline class="absolute inset-0 -z-10 size-full object-cover object-right md:object-center" poster="${defaultHeroImage}">
 					<source src="${videoMp4}" type="video/mp4">
 					<source src="${videoWebm}" type="video/webm">
-					<source src="${videoMov}" type="video/mov">
-					<source src="${videoOgv}" type="video/ogv">
 					<img role="presentation" src="${defaultHeroImage}" alt="Scenic beach with blue-green waves and a brown sandy shore" class="size-full object-cover object-right md:object-center" />
 				</video>
 
@@ -51,7 +46,7 @@ export const BANNER_TEMPLATE = () => `
 					<p class="mt-6 text-lg/8 text-pretty text-gray-300">Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.</p>
 
 					<div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-						<a href="#" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white dark:bg-gray-700 dark:text-white dark:shadow-none dark:inset-ring dark:inset-ring-white/5 dark:hover:bg-gray-600 dark:focus-visible:outline-white"> Call for more details&hellip; </a>
+						<a href="#" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 no-underline shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white dark:bg-gray-700 dark:text-white dark:shadow-none dark:inset-ring dark:inset-ring-white/5 dark:hover:bg-gray-600 dark:focus-visible:outline-white"> Call for more details&hellip; </a>
 						<a href="#" class="text-sm/6 font-semibold text-white hover:text-gray-100">
 							Learn more
 							<span aria-hidden="true">→</span>
@@ -220,7 +215,7 @@ export class HeroBanner extends BaseComponent {
 			this.getAttribute("description") ||
 			"Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.";
 		const imagePath = this.getAttribute("image");
-		const image = imagePath ? resolveImagePath(imagePath) : defaultHeroImage;
+		const image = imagePath || defaultHeroImage;
 		const imageAlt = this.getAttribute("image-alt") || "";
 		const primaryCta = this.getAttribute("primary-cta");
 		const primaryHref = this.getAttribute("primary-href") || "#";
@@ -241,7 +236,7 @@ export class HeroBanner extends BaseComponent {
 					{
 						href: primaryHref,
 						class:
-							"bg-cyan-300/28 px-6 py-4 text-lg text-[clamp(1rem,1.5vw,1.25rem)] font-bold text-white text-shadow-lg tracking-wider shadow-xs hover:bg-cyan-500/48 border-1 border-white rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+							"bg-cyan-300/28 px-6 py-4 text-lg text-[clamp(1rem,1.5vw,1.25rem)] font-bold text-white text-shadow-lg tracking-wider shadow-xs hover:bg-cyan-500/48 border-1 border-white rounded-xl no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
 					},
 					primaryCta,
 				),
@@ -255,7 +250,7 @@ export class HeroBanner extends BaseComponent {
 					{
 						href: secondaryHref,
 						class:
-							"text-lg/6 text-[clamp(0.92rem,1.32vw,1.15rem)] font-semibold text-gray-200 text-shadow-lg tracking-wide hover:text-white",
+							"text-lg/6 text-[clamp(0.92rem,1.32vw,1.15rem)] font-semibold text-gray-200 text-shadow-lg tracking-wide hover:text-white no-underline hover:underline",
 					},
 					secondaryCta,
 					this.h("span", { "aria-hidden": "true" }, " →"),
@@ -271,7 +266,7 @@ export class HeroBanner extends BaseComponent {
 					{
 						href: "#",
 						class:
-							"rounded-md bg-cyan-300/28 px-6 py-4 text-md font-semibold text-cyan-950 text-shadow-lg shadow-xs hover:bg-cyan-400/28 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+							"rounded-md bg-cyan-300/28 px-6 py-4 text-md font-semibold text-cyan-950 text-shadow-lg shadow-xs hover:bg-cyan-400/28 no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
 					},
 					"Call for more details…",
 				),
@@ -280,7 +275,7 @@ export class HeroBanner extends BaseComponent {
 					{
 						href: "#",
 						class:
-							"text-sm/6 font-semibold text-white text-shadow-lg hover:text-gray-100",
+							"text-sm/6 font-semibold text-white text-shadow-lg hover:text-gray-100 no-underline hover:underline",
 					},
 					"Learn more",
 					this.h("span", { "aria-hidden": "true" }, " →"),
@@ -305,8 +300,6 @@ export class HeroBanner extends BaseComponent {
 		const defaultVideoSources = [
 			{ src: videoMp4, type: "video/mp4" },
 			{ src: videoWebm, type: "video/webm" },
-			{ src: videoMov, type: "video/quicktime" },
-			{ src: videoOgv, type: "video/ogg" },
 		];
 
 		// Build video sources

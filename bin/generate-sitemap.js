@@ -45,7 +45,11 @@ function parseArgs() {
 	return { version, outputDir, baseUrl };
 }
 
-const { version, outputDir: DIST_DIR, baseUrl: SITE_ORIGIN } = parseArgs();
+const {
+	version: _version,
+	outputDir: DIST_DIR,
+	baseUrl: SITE_ORIGIN,
+} = parseArgs();
 
 /**
  * Recursively find all HTML files in a directory

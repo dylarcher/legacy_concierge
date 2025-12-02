@@ -27,7 +27,7 @@ class HeadingDivided extends BaseComponent {
 		const dividerClasses = this.combineClassNames(
 			"w-full",
 			"h-px",
-			"bg-gradient-to-r",
+			"bg-linear-to-r",
 			"from-transparent",
 			"via-[#668D8E]/40",
 			"to-transparent",
@@ -38,11 +38,7 @@ class HeadingDivided extends BaseComponent {
 
 		this.replaceChildren(
 			h("div", { class: containerClasses }, [
-				(() => {
-					const allowedLevels = ["h1", "h2", "h3", "h4", "h5", "h6"];
-					const tag = allowedLevels.includes(level) ? level : "h2";
-					return h(tag, { class: headingClasses }, [h("slot")]);
-				})(),
+				h(level, { class: headingClasses }, [h("slot")]),
 				h("div", { class: dividerClasses }),
 			]),
 		);

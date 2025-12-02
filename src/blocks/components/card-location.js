@@ -73,8 +73,7 @@ export class CardLocation extends BaseComponent {
 
 		// Dark gradient overlay for text readability
 		const overlayClasses = this.combineClassNames(
-			"absolute inset-0 bg-gradient-to-b",
-			"from-zinc-950/50 via-zinc-950/30 to-zinc-950/60",
+			"absolute inset-0 bg-linear-to-b from-zinc-950/50 via-zinc-950/30 to-zinc-950/60",
 		);
 
 		// Content container

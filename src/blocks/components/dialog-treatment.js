@@ -56,7 +56,7 @@ class DialogTreatment extends BaseComponent {
 		const overlayClasses = this.combineClassNames(
 			"absolute",
 			"inset-0",
-			"bg-gradient-to-b",
+			"bg-linear-to-b",
 			"from-black/40",
 			"via-black/50",
 			"to-black/65",
@@ -77,7 +77,7 @@ class DialogTreatment extends BaseComponent {
 						h("div", { class: overlayClasses }),
 						h("div", { class: contentClasses }, [
 							h("div", { class: "text-white space-y-4 max-w-5xl" }, [
-								document.createElement("slot"),
+								h("slot"),
 							]),
 						]),
 					],
