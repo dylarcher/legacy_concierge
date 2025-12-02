@@ -3,10 +3,10 @@
 /**
  * Generate sitemap.xml from HTML pages in the build output.
  * Run this script after building the site to create an up-to-date sitemap.
- * 
+ *
  * Usage:
  *   node bin/generate-sitemap.js [--version=X.Y.Z] [--output-dir=path] [--base-url=url]
- * 
+ *
  * Options:
  *   --version      Version string to include in sitemap URLs (e.g., "0.2.0")
  *   --output-dir   Directory containing HTML files and where sitemap will be written
@@ -28,7 +28,7 @@ function parseArgs() {
 	let version = null;
 	let outputDir = join(__dirname, "..", "dist");
 	let baseUrl = "https://legacyconcierge.com";
-	
+
 	for (const arg of args) {
 		if (arg.startsWith("--version=")) {
 			version = arg.substring("--version=".length);
@@ -38,10 +38,10 @@ function parseArgs() {
 			baseUrl = arg.substring("--base-url=".length);
 		}
 	}
-	
+
 	// Remove trailing slash from base URL if present
 	baseUrl = baseUrl.replace(/\/$/, "");
-	
+
 	return { version, outputDir, baseUrl };
 }
 
