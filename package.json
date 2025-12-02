@@ -45,7 +45,7 @@
 		"url": "git+ssh://github.com/dylarcher/legacy_concierge.git"
 	},
 	"scripts": {
-		"build": "vite build",
+		"build": "vite build && node bin/generate-sitemap.js",
 		"dev": "vite",
 		"lint": "biome check",
 		"lint:fix": "biome check --write",
