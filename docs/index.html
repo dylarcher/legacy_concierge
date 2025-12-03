@@ -3,233 +3,677 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Legacy Concierge - Version History</title>
-	<meta name="description" content="Browse all versions of Legacy Concierge website deployments.">
-	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Work+Sans:wght@300;400;600&display=swap');
-		
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-		
-		:root {
-			--color-bg: #ffffff;
-			--color-text: #18181b;
-			--color-text-muted: #71717a;
-			--color-primary: #06b6d4;
-			--color-primary-dark: #0891b2;
-			--color-card-bg: #ffffff;
-			--color-card-ring: rgba(0, 0, 0, 0.05);
-		}
-		
-		@media (prefers-color-scheme: dark) {
-			:root {
-				--color-bg: #18181b;
-				--color-text: #ffffff;
-				--color-text-muted: #a1a1aa;
-				--color-card-bg: #27272a;
-				--color-card-ring: rgba(255, 255, 255, 0.1);
+	<title>Legacy Concierge - Documentation</title>
+	<meta name="description" content="Legacy Concierge documentation, version history, and design system styleguide.">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			darkMode: 'media',
+			theme: {
+				extend: {
+					colors: {
+						primary: '#0f2836',
+						secondary: '#a0bdbf',
+						accent: '#82644c',
+						canvas: '#fbf6f3',
+						muted: '#dcdcdc',
+					},
+					fontFamily: {
+						display: ['Playfair Display', 'serif'],
+						sans: ['Work Sans', 'sans-serif'],
+					}
+				}
 			}
 		}
-		
-		body {
-			font-family: 'Work Sans', sans-serif;
-			background: var(--color-bg);
-			color: var(--color-text);
-			line-height: 1.6;
-			min-height: 100vh;
+	</script>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Work+Sans:wght@300;400;600&display=swap');
+		html {
+			scroll-behavior: smooth;
 		}
-		
-		h1, h2, h3, h4, h5, h6 {
-			font-family: 'Playfair Display', serif;
+
+		@media (prefers-reduced-motion: reduce) {
+			html {
+				scroll-behavior: auto;
+			}
 		}
-		
-		.container {
-			max-width: 56rem;
-			margin: 0 auto;
-			padding: 3rem 1.5rem;
+
+		/* Styleguide-specific styles */
+		.styleguide-section { scroll-margin-top: 6rem; }
+		.swatch {
+			width: 100%;
+			aspect-ratio: 1;
+			border-radius: 0.5rem;
+			border: 1px solid rgba(0,0,0,0.1);
 		}
-		
-		.header {
+		.swatch-wide {
+			width: 100%;
+			height: 3rem;
+			border-radius: 0.5rem;
+			border: 1px solid rgba(0,0,0,0.1);
+		}
+		.token-name {
+			font-family: ui-monospace, monospace;
+			font-size: 0.75rem;
+		}
+		.demo-box {
+			padding: 1.5rem;
+			border-radius: 0.75rem;
+			border: 1px solid rgba(0,0,0,0.1);
+		}
+		code {
+			background: #f3f4f6;
+			padding: 0.125rem 0.375rem;
+			border-radius: 0.25rem;
+			font-size: 0.875em;
+		}
+		.dark code {
+			background: #374151;
+		}
+		.grid-demo > div {
+			background: #a0bdbf;
+			color: white;
+			padding: 1rem;
+			border-radius: 0.5rem;
 			text-align: center;
-			margin-bottom: 4rem;
+			font-weight: 600;
 		}
-		
-		.header h1 {
-			font-size: 3rem;
-			font-weight: 700;
-			margin-bottom: 1rem;
-			color: var(--color-text);
-		}
-		
-		.header p {
-			font-size: 1.25rem;
-			color: var(--color-text-muted);
-		}
-		
-		.versions {
-			display: flex;
-			flex-direction: column;
-			gap: 2rem;
-		}
-		
-		.footer {
-			text-align: center;
-			margin-top: 4rem;
-			padding-top: 2rem;
-			border-top: 1px solid var(--color-card-ring);
-			color: var(--color-text-muted);
-			font-size: 0.875rem;
-		}
-		
-		.footer a {
-			color: var(--color-primary);
-			text-decoration: none;
-		}
-		
-		.footer a:hover {
-			text-decoration: underline;
+
+		/* Color tokens for styleguide */
+		:root {
+			--color-navy: #0f2836;
+			--color-steel: #58737a;
+			--color-sage: #a0bdbf;
+			--color-frost: #d4e4e5;
+			--color-sienna: #82644c;
+			--color-taupe: #9c8874;
+			--color-sand: #b7ac9d;
+			--color-ivory: #fbf6f3;
+			--color-coal: #181818;
+			--color-ash: #494949;
+			--color-slate: #7a7a7a;
+			--color-silver: #ababab;
+			--color-pearl: #dcdcdc;
+			--color-snow: #f7f7f7;
+			--color-black: #000000;
+			--color-coral: #e57373;
+			--color-iris: #7986cb;
+			--color-jade: #81c784;
+			--color-amber: #ffb74d;
 		}
 	</style>
 </head>
-<body>
-	<div class="container">
-		<header class="header">
-			<h1>Legacy Concierge</h1>
-			<p>Version History</p>
+<body class="font-sans bg-white text-zinc-900 min-h-screen">
+	<div class="max-w-6xl mx-auto px-6 py-12">
+		<!-- Header -->
+		<header class="text-center mb-8">
+			<h1 class="font-display text-4xl md:text-5xl font-bold mb-2">Legacy Concierge</h1>
+			<p class="text-lg text-zinc-500">Documentation</p>
 		</header>
-		
-		<main class="versions">
-			
-		<div class="rounded-xl shadow-lg p-8 ring-1 transition-shadow hover:shadow-xl">
-			<div class="flex items-start justify-between mb-4">
-				<div>
-					<h2 class="text-3xl font-bold mb-2">
-						Version 0.5.0
-					</h2>
-					<p class="text-sm">
-						Release date unknown
-					</p>
-				</div>
-				<span class="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold">
-					v0.5.0
-				</span>
-			</div>
-			
-			<p class="text-base mb-6 leading-relaxed">
-				No release notes available.
-			</p>
-			
-			<a 
-				href="/legacy_concierge/v0.5.0/"
-				class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full transition-colors focus:ring"
-			>
-				View Site
-				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+
+		<hr /><br />
+
+		<!-- Tab Navigation -->
+		<div class="mb-8">
+			<!-- Mobile Select -->
+			<div class="grid grid-cols-1 sm:hidden">
+				<select
+					id="tab-select"
+					aria-label="Select a tab"
+					class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-2 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-primary/50"
+					onchange="switchTab(this.value)"
+				>
+					<option value="versions" selected>Version History</option>
+					<option value="styleguide">Styleguide</option>
+				</select>
+				<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end fill-gray-500">
+					<path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
 				</svg>
-			</a>
+			</div>
+
+			<!-- Desktop Tabs -->
+			<div class="hidden sm:block">
+				<nav aria-label="Tabs" class="flex space-x-4">
+					<button
+						id="tab-versions"
+						onclick="switchTab('versions')"
+						class="rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary"
+						aria-current="page"
+					>
+						Version History
+					</button>
+					<button
+						id="tab-styleguide"
+						onclick="switchTab('styleguide')"
+						class="rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700"
+					>
+						Styleguide
+					</button>
+				</nav>
+			</div>
 		</div>
 
-		<div class="rounded-xl shadow-lg p-8 ring-1 transition-shadow hover:shadow-xl">
-			<div class="flex items-start justify-between mb-4">
-				<div>
-					<h2 class="text-3xl font-bold mb-2">
-						Version 0.4.0
-					</h2>
-					<p class="text-sm">
-						Release date unknown
-					</p>
+		<!-- Tab Panels -->
+		<!-- Versions Panel -->
+		<main id="panel-versions" class="space-y-6">
+			<div class="rounded-xl shadow-lg p-8 ring-1 ring-black/5 bg-white transition-shadow hover:shadow-xl">
+				<div class="flex items-start justify-between mb-4">
+					<div>
+						<h2 class="text-2xl font-bold mb-2">Version 0.5.0</h2>
+						<p class="text-sm text-zinc-500">Release date unknown</p>
+					</div>
+					<span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+						v0.5.0
+					</span>
 				</div>
-				<span class="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold">
-					v0.4.0
-				</span>
+				<p class="text-base mb-6 leading-relaxed text-zinc-600">
+					No release notes available.
+				</p>
+				<a
+					href="/legacy_concierge/v0.5.0/"
+					class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-colors focus:ring-2 focus:ring-primary/50"
+				>
+					View Site
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+					</svg>
+				</a>
 			</div>
-			
-			<p class="text-base mb-6 leading-relaxed">
-				No release notes available.
-			</p>
-			
-			<a 
-				href="/legacy_concierge/v0.4.0/"
-				class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full transition-colors focus:ring"
-			>
-				View Site
-				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-			</a>
-		</div>
 
-		<div class="rounded-xl shadow-lg p-8 ring-1 transition-shadow hover:shadow-xl">
-			<div class="flex items-start justify-between mb-4">
-				<div>
-					<h2 class="text-3xl font-bold mb-2">
-						Version 0.3.0
-					</h2>
-					<p class="text-sm">
-						2024-12-02
-					</p>
+			<div class="rounded-xl shadow-lg p-8 ring-1 ring-black/5 bg-white transition-shadow hover:shadow-xl">
+				<div class="flex items-start justify-between mb-4">
+					<div>
+						<h2 class="text-2xl font-bold mb-2">Version 0.4.0</h2>
+						<p class="text-sm text-zinc-500">Release date unknown</p>
+					</div>
+					<span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+						v0.4.0
+					</span>
 				</div>
-				<span class="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold">
-					v0.3.0
-				</span>
+				<p class="text-base mb-6 leading-relaxed text-zinc-600">
+					No release notes available.
+				</p>
+				<a
+					href="/legacy_concierge/v0.4.0/"
+					class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-colors focus:ring-2 focus:ring-primary/50"
+				>
+					View Site
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+					</svg>
+				</a>
 			</div>
-			
-			<p class="text-base mb-6 leading-relaxed">
-				Navigation restructure with dropdown menus, click-outside functionality, and dialog components moved outside header for proper viewport coverage.
-			</p>
-			
-			<a 
-				href="/legacy_concierge/v0.3.0/"
-				class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full transition-colors focus:ring"
-			>
-				View Site
-				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-			</a>
-		</div>
 
-		<div class="rounded-xl shadow-lg p-8 ring-1 transition-shadow hover:shadow-xl">
-			<div class="flex items-start justify-between mb-4">
-				<div>
-					<h2 class="text-3xl font-bold mb-2">
-						Version 0.2.0
-					</h2>
-					<p class="text-sm">
-						2024-12-02
-					</p>
+			<div class="rounded-xl shadow-lg p-8 ring-1 ring-black/5 bg-white transition-shadow hover:shadow-xl">
+				<div class="flex items-start justify-between mb-4">
+					<div>
+						<h2 class="text-2xl font-bold mb-2">Version 0.3.0</h2>
+						<p class="text-sm text-zinc-500">2024-12-02</p>
+					</div>
+					<span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+						v0.3.0
+					</span>
 				</div>
-				<span class="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold">
-					v0.2.0
-				</span>
+				<p class="text-base mb-6 leading-relaxed text-zinc-600">
+					Navigation restructure with dropdown menus, click-outside functionality, and dialog components moved outside header for proper viewport coverage.
+				</p>
+				<a
+					href="/legacy_concierge/v0.3.0/"
+					class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-colors focus:ring-2 focus:ring-primary/50"
+				>
+					View Site
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+					</svg>
+				</a>
 			</div>
-			
-			<p class="text-base mb-6 leading-relaxed">
-				Initial versioned release with automated GitHub Pages deployment system. Features comprehensive web component architecture for Legacy Concierge healthcare platform with custom navigation, hero sections, service cards, and responsive layouts.
-			</p>
-			
-			<a 
-				href="/legacy_concierge/v0.2.0/"
-				class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full transition-colors focus:ring"
-			>
-				View Site
-				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-				</svg>
-			</a>
-		</div>
+
+			<div class="rounded-xl shadow-lg p-8 ring-1 ring-black/5 bg-white transition-shadow hover:shadow-xl">
+				<div class="flex items-start justify-between mb-4">
+					<div>
+						<h2 class="text-2xl font-bold mb-2">Version 0.2.0</h2>
+						<p class="text-sm text-zinc-500">2024-12-02</p>
+					</div>
+					<span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+						v0.2.0
+					</span>
+				</div>
+				<p class="text-base mb-6 leading-relaxed text-zinc-600">
+					Initial versioned release with automated GitHub Pages deployment system. Features comprehensive web component architecture for Legacy Concierge healthcare platform with custom navigation, hero sections, service cards, and responsive layouts.
+				</p>
+				<a
+					href="/legacy_concierge/v0.2.0/"
+					class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-colors focus:ring-2 focus:ring-primary/50"
+				>
+					View Site
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+					</svg>
+				</a>
+			</div>
 		</main>
-		
-		<footer class="footer">
-			<p>
-				Legacy Concierge &copy; 2025 &middot; 
-				<a href="https://legacyconcierge.com">Visit Production Site</a>
+
+		<!-- Styleguide Panel -->
+		<main id="panel-styleguide" class="hidden">
+
+			<!-- Styleguide Navigation -->
+			<nav class="bg-slate-100 sticky top-2 -mx-4 py-4 px-8 rounded-md mb-8 flex flex-wrap gap-6 text-sm font-medium" style="box-shadow: 0 4px 8px -4px #0002; opacity: .96">
+				<a href="#colors" class="text-canvastext hover:text-primary">Colors</a>
+				<a href="#typography" class="text-zinc-500 hover:text-primary">Typography</a>
+				<a href="#buttons" class="text-zinc-500 hover:text-primary">Buttons</a>
+				<a href="#forms" class="text-zinc-500 hover:text-primary">Forms</a>
+				<a href="#cards" class="text-zinc-500 hover:text-primary">Cards</a>
+				<a href="#status" class="text-zinc-500 hover:text-primary">Status</a>
+				<a href="#spacing" class="text-zinc-500 hover:text-primary">Spacing</a>
+			</nav>
+
+			<!-- Styleguide Header -->
+			<header class="mb-12">
+				<h2 class="font-display text-3xl font-bold mb-4">Design System</h2>
+				<p class="text-lg text-zinc-500 max-w-2xl">
+					A comprehensive guide to the Legacy Concierge design tokens, components, and utilities. Built with Tailwind CSS v4 and CSS custom properties for seamless theming.
+				</p>
+			</header>
+
+			<!-- Colors Section -->
+			<section id="colors" class="styleguide-section mb-16">
+				<h3 class="text-2xl font-bold mb-2">Color Palette</h3>
+				<p class="text-zinc-500 mb-8">
+					Brand colors with WCAG AA compliant contrast ratios. Uses OKLCH for perceptually uniform gradients.
+				</p>
+
+				<h4 class="text-lg font-semibold mb-4">Blues (Cool Tones)</h4>
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+					<div>
+						<div class="swatch" style="background: var(--color-navy);"></div>
+						<p class="token-name mt-2">navy</p>
+						<p class="text-xs text-zinc-500">#0f2836</p>
+					</div>
+					<div>
+						<div class="swatch" style="background: var(--color-steel);"></div>
+						<p class="token-name mt-2">steel</p>
+						<p class="text-xs text-zinc-500">#58737a</p>
+					</div>
+					<div>
+						<div class="swatch" style="background: var(--color-sage);"></div>
+						<p class="token-name mt-2">sage</p>
+						<p class="text-xs text-zinc-500">#a0bdbf</p>
+					</div>
+					<div>
+						<div class="swatch" style="background: var(--color-frost);"></div>
+						<p class="token-name mt-2">frost</p>
+						<p class="text-xs text-zinc-500">#d4e4e5</p>
+					</div>
+				</div>
+
+				<h4 class="text-lg font-semibold mb-4">Earth Tones (Warm)</h4>
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+					<div>
+						<div class="swatch" style="background: var(--color-sienna);"></div>
+						<p class="token-name mt-2">sienna</p>
+						<p class="text-xs text-zinc-500">#82644c</p>
+					</div>
+					<div>
+						<div class="swatch" style="background: var(--color-taupe);"></div>
+						<p class="token-name mt-2">taupe</p>
+						<p class="text-xs text-zinc-500">#9c8874</p>
+					</div>
+					<div>
+						<div class="swatch" style="background: var(--color-sand);"></div>
+						<p class="token-name mt-2">sand</p>
+						<p class="text-xs text-zinc-500">#b7ac9d</p>
+					</div>
+					<div>
+						<div class="swatch" style="background: var(--color-ivory);"></div>
+						<p class="token-name mt-2">ivory</p>
+						<p class="text-xs text-zinc-500">#fbf6f3</p>
+					</div>
+				</div>
+
+				<h4 class="text-lg font-semibold mb-4">Grayscale</h4>
+				<div class="flex gap-0 mb-8 rounded-lg overflow-hidden">
+					<div class="flex-1 h-16" style="background: var(--color-black);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-coal);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-ash);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-slate);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-silver);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-pearl);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-snow);"></div>
+				</div>
+
+				<h4 class="text-lg font-semibold mb-4">Status Colors</h4>
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+					<div>
+						<div class="swatch" style="background: var(--color-coral);"></div>
+						<p class="token-name mt-2">error</p>
+						<p class="text-xs text-zinc-500">Errors, destructive</p>
+					</div>
+					<div>
+						<div class="swatch" style="background: var(--color-iris);"></div>
+						<p class="token-name mt-2">info</p>
+						<p class="text-xs text-zinc-500">Information</p>
+					</div>
+					<div>
+						<div class="swatch" style="background: var(--color-jade);"></div>
+						<p class="token-name mt-2">success</p>
+						<p class="text-xs text-zinc-500">Positive, confirmed</p>
+					</div>
+					<div>
+						<div class="swatch" style="background: var(--color-amber);"></div>
+						<p class="token-name mt-2">warning</p>
+						<p class="text-xs text-zinc-500">Alerts, caution</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Typography Section -->
+			<section id="typography" class="styleguide-section mb-16">
+				<h3 class="text-2xl font-bold mb-2">Typography</h3>
+				<p class="text-zinc-500 mb-8">
+					Fluid typography with variable fonts for optimal rendering across devices.
+				</p>
+
+				<h4 class="text-lg font-semibold mb-4">Font Families</h4>
+				<div class="space-y-4 mb-8">
+					<div class="demo-box">
+						<p class="text-xs text-zinc-500 mb-1">Display Font <code>font-display</code></p>
+						<p class="font-display text-2xl">Playfair Display - The quick brown fox jumps over the lazy dog.</p>
+					</div>
+					<div class="demo-box">
+						<p class="text-xs text-zinc-500 mb-1">Body Font <code>font-sans</code></p>
+						<p class="font-sans text-2xl">Work Sans - The quick brown fox jumps over the lazy dog.</p>
+					</div>
+				</div>
+
+				<h4 class="text-lg font-semibold mb-4">Heading Hierarchy</h4>
+				<div class="demo-box space-y-4">
+					<h1 class="font-display text-4xl font-bold">Heading 1 - Main Page Title</h1>
+					<h2 class="font-display text-3xl font-bold">Heading 2 - Section Title</h2>
+					<h3 class="font-display text-2xl font-semibold">Heading 3 - Subsection Title</h3>
+					<h4 class="font-display text-xl font-semibold">Heading 4 - Group Title</h4>
+					<h5 class="font-display text-lg font-medium">Heading 5 - Minor Heading</h5>
+					<h6 class="font-display text-base font-medium">Heading 6 - Label Heading</h6>
+				</div>
+			</section>
+
+			<!-- Buttons Section -->
+			<section id="buttons" class="styleguide-section mb-16">
+				<h3 class="text-2xl font-bold mb-2">Buttons</h3>
+				<p class="text-zinc-500 mb-8">
+					Three button variants with consistent interaction states.
+				</p>
+
+				<h4 class="text-lg font-semibold mb-4">Primary Button</h4>
+				<div class="demo-box flex flex-wrap gap-4 items-center mb-8">
+					<button type="button" class="px-6 py-3 rounded-lg font-semibold bg-primary text-white hover:bg-primary/90 transition-colors">
+						Default
+					</button>
+					<button type="button" class="px-6 py-3 rounded-lg font-semibold bg-primary/80 text-white" disabled>
+						Hover
+					</button>
+					<button type="button" class="px-6 py-3 rounded-lg font-semibold bg-primary text-white opacity-50 cursor-not-allowed" disabled>
+						Disabled
+					</button>
+				</div>
+
+				<h4 class="text-lg font-semibold mb-4">Outline Button</h4>
+				<div class="demo-box flex flex-wrap gap-4 items-center mb-8">
+					<button type="button" class="px-6 py-3 rounded-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+						Default
+					</button>
+					<button type="button" class="px-6 py-3 rounded-lg font-semibold border-2 border-primary text-primary opacity-50 cursor-not-allowed" disabled>
+						Disabled
+					</button>
+				</div>
+
+				<h4 class="text-lg font-semibold mb-4">Button Sizes</h4>
+				<div class="demo-box flex flex-wrap gap-4 items-center">
+					<button type="button" class="px-3 py-1.5 rounded text-sm font-semibold bg-primary text-white">
+						Small
+					</button>
+					<button type="button" class="px-5 py-2.5 rounded-lg font-semibold bg-primary text-white">
+						Medium
+					</button>
+					<button type="button" class="px-7 py-3.5 rounded-xl text-lg font-semibold bg-primary text-white">
+						Large
+					</button>
+				</div>
+			</section>
+
+			<!-- Forms Section -->
+			<section id="forms" class="styleguide-section mb-16">
+				<h3 class="text-2xl font-bold mb-2">Form Elements</h3>
+				<p class="text-zinc-500 mb-8">
+					Input fields with consistent styling and validation states.
+				</p>
+
+				<h4 class="text-lg font-semibold mb-4">Text Input</h4>
+				<div class="demo-box space-y-4 mb-8">
+					<div>
+						<label class="block text-sm font-medium mb-1.5">Default Input</label>
+						<input type="text" placeholder="Enter your name..." class="w-full max-w-md px-4 py-3 rounded-lg border border-zinc-300 bg-white placeholder-zinc-400 transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20">
+					</div>
+					<div>
+						<label class="block text-sm font-medium mb-1.5">Disabled</label>
+						<input type="text" value="Cannot edit" disabled class="w-full max-w-md px-4 py-3 rounded-lg border border-zinc-300 bg-zinc-100 opacity-50 cursor-not-allowed">
+					</div>
+				</div>
+
+				<h4 class="text-lg font-semibold mb-4">Validation States</h4>
+				<div class="demo-box grid gap-4 md:grid-cols-3">
+					<div>
+						<label class="block text-sm font-medium mb-1.5">Valid</label>
+						<input type="text" value="valid@email.com" class="w-full px-4 py-3 rounded-lg border-2 border-green-500 bg-white">
+						<p class="text-xs mt-1 text-green-600">Email is valid</p>
+					</div>
+					<div>
+						<label class="block text-sm font-medium mb-1.5">Warning</label>
+						<input type="text" value="weak password" class="w-full px-4 py-3 rounded-lg border-2 border-amber-500 bg-white">
+						<p class="text-xs mt-1 text-amber-600">Password could be stronger</p>
+					</div>
+					<div>
+						<label class="block text-sm font-medium mb-1.5">Invalid</label>
+						<input type="text" value="invalid" class="w-full px-4 py-3 rounded-lg border-2 border-red-500 bg-white">
+						<p class="text-xs mt-1 text-red-600">This field is required</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Cards Section -->
+			<section id="cards" class="styleguide-section mb-16">
+				<h3 class="text-2xl font-bold mb-2">Cards</h3>
+				<p class="text-zinc-500 mb-8">
+					Surface containers for grouping related content.
+				</p>
+
+				<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+					<div class="bg-white rounded-xl p-6 border border-zinc-200 shadow-sm">
+						<h4 class="font-semibold mb-2">Default Card</h4>
+						<p class="text-sm text-zinc-500 mb-4">A standard card with border and subtle shadow.</p>
+						<button class="px-4 py-2 rounded-lg border border-primary text-primary text-sm font-medium hover:bg-primary hover:text-white transition-colors">
+							Learn More
+						</button>
+					</div>
+					<div class="bg-white rounded-xl p-6 border border-zinc-200 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+						<h4 class="font-semibold mb-2">Interactive Card</h4>
+						<p class="text-sm text-zinc-500 mb-4">Cards with hover effects for interactive states.</p>
+						<span class="text-primary text-sm font-medium">Click to interact &rarr;</span>
+					</div>
+					<div class="bg-canvas rounded-xl p-6 shadow-lg border border-zinc-100">
+						<h4 class="font-semibold mb-2 text-zinc-900">Elevated Card</h4>
+						<p class="text-sm text-zinc-500 mb-4">Higher elevation with stronger shadow for emphasis.</p>
+						<span class="text-accent text-sm font-medium">Featured content</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- Status Section -->
+			<section id="status" class="styleguide-section mb-16">
+				<h3 class="text-2xl font-bold mb-2">Status Indicators</h3>
+				<p class="text-zinc-500 mb-8">
+					Semantic status styles for alerts, badges, and feedback.
+				</p>
+
+				<h4 class="text-lg font-semibold mb-4">Status Badges</h4>
+				<div class="demo-box flex flex-wrap gap-3 mb-8">
+					<span class="bg-red-100 border border-red-200 text-red-700 text-sm px-3 py-1 rounded-full font-medium/30">Error</span>
+					<span class="bg-blue-100 border border-blue-200 text-blue-700 text-sm px-3 py-1 rounded-full font-medium/30">Info</span>
+					<span class="bg-green-100 border border-green-200 text-green-700 text-sm px-3 py-1 rounded-full font-medium/30">Success</span>
+					<span class="bg-amber-100 border border-amber-200 text-amber-700 text-sm px-3 py-1 rounded-full font-medium/30">Warning</span>
+				</div>
+
+				<h4 class="text-lg font-semibold mb-4">Alerts</h4>
+				<div class="space-y-4">
+					<div class="bg-blue-50/20 border border-blue-200 rounded-lg p-4 flex gap-3">
+						<svg class="w-5 h-5 shrink-0 mt-0.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<div>
+							<p class="font-medium">Information</p>
+							<p class="text-sm text-zinc-600">This is an informational message to provide helpful context.</p>
+						</div>
+					</div>
+					<div class="bg-green-50/20 border border-green-200 rounded-lg p-4 flex gap-3">
+						<svg class="w-5 h-5 shrink-0 mt-0.5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<div>
+							<p class="font-medium">Success</p>
+							<p class="text-sm text-zinc-600">Your changes have been saved successfully.</p>
+						</div>
+					</div>
+					<div class="bg-amber-50/20 border border-amber-200 rounded-lg p-4 flex gap-3">
+						<svg class="w-5 h-5 shrink-0 mt-0.5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+						</svg>
+						<div>
+							<p class="font-medium">Warning</p>
+							<p class="text-sm text-zinc-600">Please review the form before submitting.</p>
+						</div>
+					</div>
+					<div class="bg-red-50/20 border border-red-200 rounded-lg p-4 flex gap-3">
+						<svg class="w-5 h-5 shrink-0 mt-0.5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<div>
+							<p class="font-medium">Error</p>
+							<p class="text-sm text-zinc-600">There was a problem processing your request.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Spacing Section -->
+			<section id="spacing" class="styleguide-section mb-16">
+				<h3 class="text-2xl font-bold mb-2">Spacing</h3>
+				<p class="text-zinc-500 mb-8">
+					Consistent spacing scale for margins, padding, and gaps.
+				</p>
+
+				<h4 class="text-lg font-semibold mb-4">Spacing Scale</h4>
+				<div class="demo-box space-y-3">
+					<div class="flex items-center gap-4">
+						<code class="w-16 text-xs">0.25rem</code>
+						<div class="h-4 bg-primary rounded" style="width: 0.25rem;"></div>
+						<span class="text-xs text-zinc-500">p-1, m-1, gap-1</span>
+					</div>
+					<div class="flex items-center gap-4">
+						<code class="w-16 text-xs">0.5rem</code>
+						<div class="h-4 bg-primary rounded" style="width: 0.5rem;"></div>
+						<span class="text-xs text-zinc-500">p-2, m-2, gap-2</span>
+					</div>
+					<div class="flex items-center gap-4">
+						<code class="w-16 text-xs">1rem</code>
+						<div class="h-4 bg-primary rounded" style="width: 1rem;"></div>
+						<span class="text-xs text-zinc-500">p-4, m-4, gap-4</span>
+					</div>
+					<div class="flex items-center gap-4">
+						<code class="w-16 text-xs">1.5rem</code>
+						<div class="h-4 bg-primary rounded" style="width: 1.5rem;"></div>
+						<span class="text-xs text-zinc-500">p-6, m-6, gap-6</span>
+					</div>
+					<div class="flex items-center gap-4">
+						<code class="w-16 text-xs">2rem</code>
+						<div class="h-4 bg-primary rounded" style="width: 2rem;"></div>
+						<span class="text-xs text-zinc-500">p-8, m-8, gap-8</span>
+					</div>
+					<div class="flex items-center gap-4">
+						<code class="w-16 text-xs">3rem</code>
+						<div class="h-4 bg-primary rounded" style="width: 3rem;"></div>
+						<span class="text-xs text-zinc-500">p-12, m-12, gap-12</span>
+					</div>
+					<div class="flex items-center gap-4">
+						<code class="w-16 text-xs">4rem</code>
+						<div class="h-4 bg-primary rounded" style="width: 4rem;"></div>
+						<span class="text-xs text-zinc-500">p-16, m-16, gap-16</span>
+					</div>
+				</div>
+
+				<h4 class="mt-8 mb-4 text-lg font-semibold">Grid Layout</h4>
+				<div class="demo-box">
+					<p class="text-sm text-zinc-500 mb-4">Responsive grid with <code>grid-cols-*</code> and <code>gap-*</code></p>
+					<div class="grid grid-cols-2 md:grid-cols-4 gap-4 grid-demo">
+						<div>1</div>
+						<div>2</div>
+						<div>3</div>
+						<div>4</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer class="text-center mt-12 pt-8 border-t border-zinc-200">
+			<p class="text-sm text-zinc-500">
+				Legacy Concierge &copy; 2025 &middot;
+				<a href="https://legacyconcierge.com" class="text-primary hover:underline">Visit Production Site</a>
 			</p>
 		</footer>
 	</div>
+
+	<!-- Tab Switching Script -->
+	<script>
+		function switchTab(tabId) {
+			// Update panels
+			document.getElementById('panel-versions').classList.toggle('hidden', tabId !== 'versions');
+			document.getElementById('panel-styleguide').classList.toggle('hidden', tabId !== 'styleguide');
+
+			// Update desktop tab buttons
+			const versionsTab = document.getElementById('tab-versions');
+			const styleguideTab = document.getElementById('tab-styleguide');
+
+			if (tabId === 'versions') {
+				versionsTab.className = 'rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary';
+				versionsTab.setAttribute('aria-current', 'page');
+				styleguideTab.className = 'rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700';
+				styleguideTab.removeAttribute('aria-current');
+			} else {
+				styleguideTab.className = 'rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary';
+				styleguideTab.setAttribute('aria-current', 'page');
+				versionsTab.className = 'rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700';
+				versionsTab.removeAttribute('aria-current');
+			}
+
+			// Update mobile select
+			document.getElementById('tab-select').value = tabId;
+
+			// Update URL hash without scrolling
+			history.replaceState(null, '', '#' + tabId);
+		}
+
+		// Handle initial load with hash
+		document.addEventListener('DOMContentLoaded', function() {
+			const hash = window.location.hash.replace('#', '');
+			if (hash === 'styleguide' || hash === 'versions') {
+				switchTab(hash);
+			} else if (hash) {
+				// If hash is a section anchor (like #colors), switch to styleguide
+				const styleguideAnchors = ['colors', 'typography', 'buttons', 'forms', 'cards', 'status', 'spacing'];
+				if (styleguideAnchors.includes(hash)) {
+					switchTab('styleguide');
+				}
+			}
+		});
+	</script>
 </body>
 </html>
