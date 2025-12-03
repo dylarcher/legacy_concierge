@@ -45,7 +45,11 @@ export class Fieldset extends BaseComponent {
 		this.innerHTML = "";
 
 		const fieldset = this.h(
-			"fieldset", { class: classes, disabled || undefined,"data-disabled": disabled ? "" : undefined,
+			"fieldset",
+			{
+				class: classes,
+				disabled: disabled || undefined,
+				"data-disabled": disabled ? "" : undefined,
 			},
 			...children,
 		);

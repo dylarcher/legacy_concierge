@@ -253,7 +253,11 @@ export class Switch extends BaseComponent {
 		this.innerHTML = "";
 
 		const inputElement = this.createElement("input", {
-			type: "checkbox", name: fieldName || undefined, checked: isChecked || undefined, isDisabled || undefined, class: "sr-only",
+			type: "checkbox",
+			name: fieldName || undefined,
+			checked: isChecked || undefined,
+			disabled: isDisabled || undefined,
+			class: "sr-only",
 			ref: (element) => {
 				this.#inputElement = element;
 			},

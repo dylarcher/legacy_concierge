@@ -231,11 +231,14 @@ export class Button extends BaseComponent {
 			{
 				class: buttonClasses,
 				href: href || undefined,
-				type: href ? undefined : "button", isDisabled && !href ? true : undefined,"aria-disabled": isDisabled ? "true" : undefined,
+				type: href ? undefined : "button",
+				disabled: isDisabled && !href ? true : undefined,
+				"aria-disabled": isDisabled ? "true" : undefined,
 				"data-disabled": isDisabled ? "" : undefined,
 			},
 			this.createElement("span", {
-				class: "absolute top-1/2 left-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden",
+				class:
+					"absolute top-1/2 left-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden",
 				"aria-hidden": "true",
 			}),
 			this.createElement("slot"),

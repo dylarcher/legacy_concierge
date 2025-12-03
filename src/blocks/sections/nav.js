@@ -445,9 +445,10 @@ class NavBar extends BaseComponent {
 			const currentTransform = menu.style.transform;
 			if (currentTransform) {
 				// Combine with existing transform
-				const existingX = Number.parseFloat(
-					currentTransform.replace(/translateX\((-?\d+\.?\d*)px\)/, "$1"),
-				) || 0;
+				const existingX =
+					Number.parseFloat(
+						currentTransform.replace(/translateX\((-?\d+\.?\d*)px\)/, "$1"),
+					) || 0;
 				menu.style.transform = `translateX(${existingX + leftOverflow}px)`;
 			} else {
 				menu.style.transform = `translateX(${leftOverflow}px)`;
@@ -639,7 +640,8 @@ class NavBar extends BaseComponent {
 					this.h(
 						"div",
 						{
-							class: "dropdown-grid grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2",
+							class:
+								"dropdown-grid grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2",
 							"data-slot": "dropdown-content",
 						},
 						...items.map((item) =>

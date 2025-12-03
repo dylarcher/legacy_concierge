@@ -402,7 +402,10 @@ export class DropdownItem extends BaseComponent {
 			href,
 			{
 				role: "menuitem",
-				tabindex: "-1", class: itemClasses, isDisabled && !href ? true : undefined,"aria-disabled": isDisabled ? "true" : undefined,
+				tabindex: "-1",
+				class: itemClasses,
+				disabled: isDisabled && !href ? true : undefined,
+				"aria-disabled": isDisabled ? "true" : undefined,
 				ref: (element) => {
 					this.#innerElement = element;
 				},
