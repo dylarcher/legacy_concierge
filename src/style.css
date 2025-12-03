@@ -212,7 +212,7 @@
 		-moz-osx-font-smoothing: grayscale;
 		text-rendering: geometricPrecision;
 		font-family: var(--font-body-type);
-		font-size: var(--text-size-md);
+		font-size: var(--text-size-sm);
 		line-height: var(--line-height-md);
 		letter-spacing: var(--letter-spacing-md);
 		color: var(--fg-primary);
@@ -243,6 +243,11 @@
 	h3,
 	h6 {
 		font-family: var(--font-display-type);
+	}
+
+	#featured h3 {
+		font-family: var(--font-title-type);
+		font-weight: 600;
 	}
 
 	h1 {
