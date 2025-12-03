@@ -2,7 +2,7 @@
 
 A modern, high-performance website for Legacy Concierge - a premium in-home healthcare service provider in Southern California. Built with Vite, Tailwind CSS 4, and custom web components.
 
-## 📚 Documentation
+## Documentation
 
 - [Architecture Overview](./docs/ARCHITECTURE_OUTLINE.md) - Project structure and technical decisions
 - [Design & Theme Styles](./docs/DESIGN_THEME_STYLES.md) - Color system, typography, and design tokens
@@ -13,7 +13,7 @@ A modern, high-performance website for Legacy Concierge - a premium in-home heal
 - [UI Review Checklist](./REVIEW_CHECKLIST.md) - QA checklist for all components and pages
 - [Changelog](./CHANGELOG.md) - Version history and release notes
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -44,7 +44,7 @@ bun run build
 bun run preview
 ```
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 legacy_concierge/
@@ -78,7 +78,7 @@ legacy_concierge/
 └── public/                     # Static assets (robots.txt, etc.)
 ```
 
-## 🎨 Features
+## Features
 
 - **Tailwind CSS 4** with custom @theme tokens
 - **Web Components** (nav, footer, cards, profiles)
@@ -88,7 +88,7 @@ legacy_concierge/
 - **Partner Logos** (SVG with dark mode support)
 - **SEO Optimized** with semantic HTML and meta tags
 
-## 📦 Version Management
+## Version Management
 
 ### Creating a New Version
 
@@ -164,9 +164,7 @@ View all deployed versions at: [https://dylarcher.github.io/legacy_concierge/](h
 - **v0.3.0** - Navigation restructure with dropdowns and dialog improvements
 - **v0.2.0** - Initial versioned release with automated deployment
 
-## 🧪 Testing & Validation
-
-## 🧪 Testing & Validation
+## Testing & Validation
 
 ### Available Commands
 
@@ -218,9 +216,7 @@ If validation fails, the commit will be blocked. Fix errors and retry.
 git commit --no-verify
 ```
 
-## 📦 Tech Stack
-
-## 📦 Tech Stack
+## Tech Stack
 
 ### Core
 
@@ -240,7 +236,7 @@ git commit --no-verify
 - **[vite-bundle-analyzer](https://www.npmjs.com/package/vite-bundle-analyzer)** `1.2.3` - Bundle size visualization
 - **[TypeScript](https://www.typescriptlang.org)** `5.9.3` - Type definitions
 
-## 🗂️ Key Files
+## Key Files
 
 ### Configuration
 
@@ -261,7 +257,7 @@ git commit --no-verify
 - `src/assets/media/images/grayscale/` - Black & white treatment images
 - `src/assets/media/images/muted/` - Desaturated images
 
-## 🎯 Pages
+## Pages
 
 - `/` - Homepage with hero banner and service overview
 - `/pages/about.html` - About Legacy Concierge + CEO video
@@ -300,15 +296,15 @@ Custom elements defined in `src/main.js`:
 - `<team-member>` - Team member profiles
 - `<ui-button>` - Styled buttons
 
-## 📄 License
+## License
 
-Proprietary - © Legacy Concierge. All rights reserved.
+© Legacy Concierge
 
-## 👥 Contributors
+## Contributors
 
-- **Dylan Archer** - Lead Developer ([dylarcher@gmail.com](mailto:dylarcher@gmail.com))
+- **Dylan Archer** - Dev ([dylarcher@gmail.com](mailto:dylarcher@gmail.com))
 
-## 🐛 Issues
+## Issues
 
 Report bugs at: [GitHub Issues](https://github.com/dylarcher/legacy_concierge/issues)
 Or email: [dylarcher@zohomail.com](mailto:dylarcher@zohomail.com)
