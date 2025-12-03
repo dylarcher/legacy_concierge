@@ -4,7 +4,7 @@ import { resolveImage } from "../../assets/image-manifest.js";
 import defaultHeroImage from "../../assets/media/images/blue-green-waves-brown-beach.webp";
 import videoMp4 from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.mp4?url";
 import videoWebm from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.webm?url";
-import { BaseComponent, defineElement } from "../_base.js";
+import { BaseComponent, defineElement, resolvePath } from "../_base.js";
 
 /**
  * Enable or disable video background by default.
@@ -220,9 +220,9 @@ export class HeroBanner extends BaseComponent {
 		const image = imagePath ? resolveImage(imagePath) : defaultHeroImage;
 		const imageAlt = this.getAttribute("image-alt") || "";
 		const primaryCta = this.getAttribute("primary-cta");
-		const primaryHref = this.getAttribute("primary-href") || "#";
+		const primaryHref = resolvePath(this.getAttribute("primary-href") || "#");
 		const secondaryCta = this.getAttribute("secondary-cta");
-		const secondaryHref = this.getAttribute("secondary-href") || "#";
+		const secondaryHref = resolvePath(this.getAttribute("secondary-href") || "#");
 		const align = this.getAttribute("align");
 
 		// Check for custom slotted content

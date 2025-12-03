@@ -433,3 +433,56 @@ export class FocusTrap {
 		}
 	}
 }
+
+/**
+ * Base URL for resolving internal paths
+ * Uses Vite's BASE_URL which accounts for versioned deployments
+ * @type {string}
+ */
+const BASE_URL = import.meta.env.BASE_URL || "/";
+
+/**
+ * Resolves an internal path using the application base URL
+ * Handles both absolute paths (starting with /) and relative paths
+ * External URLs (http://, https://, //) are returned unchanged
+ *
+ * @param {string} path - The path to resolve
+ * @returns {string} The resolved path with base URL prefix
+ *
+ * @example
+ * // In development (base = "/")
+ * resolvePath("/pages/about") // Returns "/pages/about"
+ *
+ * @example
+ * // In versioned build (base = "/legacy_concierge/v0.5.0/")
+ * resolvePath("/pages/about") // Returns "/legacy_concierge/v0.5.0/pages/about"
+ */
+export function resolvePath(path) {
+	// Return unchanged if external URL or already has protocol
+	if (!path || path.startsWith("http://") || path.startsWith("https://") || path.startsWith("//")) {
+		return path;
+	}
+
+	// Return unchanged if it's a hash-only link
+	if (path.startsWith("#")) {
+		return path;
+	}
+
+	// Handle paths starting with /
+	if (path.startsWith("/")) {
+		// Remove leading slash since BASE_URL ends with /
+		const cleanPath = path.slice(1);
+		return `${BASE_URL}${cleanPath}`;
+	}
+
+	// For relative paths, just prepend base URL
+	return `${BASE_URL}${path}`;
+}
+
+/**
+ * Gets the current base URL for the application
+ * @returns {string} The base URL
+ */
+export function getBaseUrl() {
+	return BASE_URL;
+}
