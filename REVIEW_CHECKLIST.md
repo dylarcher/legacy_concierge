@@ -23,11 +23,17 @@ Execution: Full-scope systematic checklist review
 - **Updated all HTML pages to support "light dark" color-scheme**
 - Created v0.3.0 documentation and deployment
 - Updated README.md with version management process
+- **Media optimization completed - reduced from 71MB to 37MB (48% reduction)**
+- **Migrated all media references to WebP/WebM formats**
+- **Updated CHANGELOG.md with v0.3.0 and v0.3.1 releases**
+- **Updated all documentation paths to reflect new structure**
+- **Deleted unused img-refs-map.js utility**
+- **Removed legacy video formats (.mov, .ogv)**
+- **Removed PNG brand assets (replaced with SVG)**
 
 ### In Progress 🔄
 
 - Dark mode color refinement and testing
-- Asset optimization (71MB media directory)
 - Component style consolidation
 
 Inventory Summary
@@ -45,23 +51,39 @@ Quick Reference - File Locations
 
 src/
 ├── blocks/
-│   ├── _base.js           # BaseComponent foundation
-│   ├── index.js           # Main exports
-│   ├── components/        # 25 UI components
-│   ├── elements/          # 12 form elements
-│   └── sections/          # nav.js, hero.js, footer.js
-├── pages/                 # 37 HTML pages
+│   ├── core/             # Base utilities & primitives
+│   │   ├── base.js       # BaseComponent class & helpers
+│   │   ├── colors.js     # Shared color definitions
+│   │   ├── icons.js      # Icon sprite system
+│   │   ├── button/       # Button components
+│   │   ├── heading/      # Heading components
+│   │   ├── lists/        # List components
+│   │   └── text/         # Text components
+│   ├── node/             # UI components
+│   │   ├── avatar/       # Avatar display
+│   │   ├── badge/        # Badge labels
+│   │   ├── card/         # Card containers
+│   │   ├── dialog/       # Modal dialogs
+│   │   ├── drawer/       # Slide-out panels
+│   │   ├── dropdown/     # Dropdown menus
+│   │   ├── forms/        # Form elements (input, checkbox, etc.)
+│   │   └── ...           # More UI components
+│   └── view/             # Page-level components
+│       ├── nav.js        # global-nav
+│       ├── hero.js       # hero-banner
+│       └── footer.js     # global-footer
+├── pages/                # 37 HTML pages
 ├── assets/
 │   ├── fonts/            # Playfair Display, Work Sans
 │   ├── icons/            # 116 SVG icons in 16 categories
-│   ├── logos/            # Brand + partner logos
-│   └── media/            # Images (71MB) + videos
+│   ├── logos/            # Brand & partner logos (SVG)
+│   └── media/            # Images (37MB) + videos (WebP/WebM)
 └── style.css             # Global Tailwind config
 
 ---
 Phase 1: Core Foundation Review
 
-1.1 Base Component (src/blocks/_base.js)
+1.1 Base Component (src/blocks/core/base.js)
 
 - Verify h() method creates elements correctly with all
 attribute types
@@ -89,7 +111,7 @@ duplicates
 ---
 Phase 2: Section Components Review
 
-2.1 Navigation (src/blocks/sections/nav.js)
+2.1 Navigation (src/blocks/view/nav.js)
 
 - Desktop navigation renders all links correctly
 - Mobile hamburger menu opens/closes properly
@@ -101,7 +123,7 @@ Phase 2: Section Components Review
 - ARIA attributes are set correctly (expanded, hidden, etc.)
 - Logo link navigates to home page
 
-2.2 Hero Banner (src/blocks/sections/hero.js)
+2.2 Hero Banner (src/blocks/view/hero.js)
 
 - Background image displays correctly
 - Background video plays (when HERO_VIDEO_ENABLED = true)
@@ -119,7 +141,7 @@ Phase 2: Section Components Review
 - Dark mode styling applies
 - Responsive layout adjusts properly (mobile/tablet/desktop)
 
-2.3 Footer (src/blocks/sections/footer.js)
+2.3 Footer (src/blocks/view/footer.js)
 
 - Three column layout renders (Company, Treatments, Services)
 - Newsletter signup form displays
@@ -130,7 +152,7 @@ Phase 2: Section Components Review
 - Responsive collapse works on mobile
 
 ---
-Phase 3: UI Components Review (src/blocks/components/)
+Phase 3: UI Components Review (src/blocks/node/)
 
 3.1 Buttons
 
@@ -283,7 +305,7 @@ Toggle on/off [ ] Disabled state [ ] Accessible labels    |
 - text layout [ ] Responsive behavior               |
 
 ---
-Phase 4: Form Elements Review (src/blocks/elements/)
+Phase 4: Form Elements Review (src/blocks/node/forms/)
 
 4.1 Input Controls
 
@@ -509,7 +531,7 @@ Phase 8: Known Issues to Address
 - [x] nav.js - Click-outside dropdown functionality (FIXED)
 - [x] Dark mode - color-scheme meta updated to "light dark" (FIXED)
 - [x] Dark mode - prefers-color-scheme media query added to style.css (FIXED)
-- [ ] Asset size - 71MB media directory needs optimization
+- [x] Asset size - Media optimized from 71MB to 37MB (48% reduction)
 
 8.2 High Priority
 
@@ -524,8 +546,8 @@ Phase 8: Known Issues to Address
 
 - [ ] Consolidate component styles to main CSS
 - [ ] Standardize dark theme colors (not ad-hoc)
-- [ ] Add WebP as primary format throughout
-- [ ] Update CHANGELOG.md with recent changes
+- [x] Add WebP as primary format throughout (COMPLETED)
+- [x] Update CHANGELOG.md with recent changes (COMPLETED)
 
 8.4 Low Priority
 

@@ -10,7 +10,8 @@ A modern, high-performance website for Legacy Concierge - a premium in-home heal
 - [Installation & Setup](./docs/INSTALLATION_SETUP.md) - Getting started guide
 - [Development & Usage](./docs/IMPLEMENTATION_USAGE.md) - Component patterns and workflows
 - [Naming Conventions](./docs/NAMING_CONVENTIONS.md) - File naming and code standards
-- [Tailwind Tooling Phase 2](./docs/TAILWIND_TOOLING_PHASE_2.md) - Advanced validation setup (pending)
+- [UI Review Checklist](./REVIEW_CHECKLIST.md) - QA checklist for all components and pages
+- [Changelog](./CHANGELOG.md) - Version history and release notes
 
 ## 🚀 Quick Start
 
@@ -72,8 +73,6 @@ legacy_concierge/
 │   │   ├── team.html
 │   │   ├── legal/              # Privacy, terms, HIPAA
 │   │   └── services/           # Specialty pages
-│   └── utils/
-│       └── img-refs-map.js     # Vite asset import mapping
 ├── bin/                        # Build & validation scripts
 ├── docs/                       # Documentation
 └── public/                     # Static assets (robots.txt, etc.)
@@ -161,6 +160,7 @@ To create a new versioned deployment for GitHub Pages:
 
 View all deployed versions at: [https://dylarcher.github.io/legacy_concierge/](https://dylarcher.github.io/legacy_concierge/)
 
+- **v0.3.1** - Media optimization and WebP migration (48% size reduction)
 - **v0.3.0** - Navigation restructure with dropdowns and dialog improvements
 - **v0.2.0** - Initial versioned release with automated deployment
 
@@ -251,7 +251,6 @@ git commit --no-verify
 
 ### Utilities
 
-- `src/utils/img-refs-map.js` - Centralized image imports for Vite bundling
 - `bin/generate-sitemap.js` - XML sitemap generator
 - `bin/validate-tailwind-classes.js` - Custom class validator
 - `bin/find-unused-tailwind.js` - Unused class detection

@@ -36,10 +36,10 @@ blocks/
 
 ## Base Component
 
-All components extend `BaseComponent` from `blocks/_base.js`:
+All components extend `BaseComponent` from `blocks/core/base.js`:
 
 ```js
-import { BaseComponent, defineElement } from "/blocks/_base.js";
+import { BaseComponent, defineElement } from "/blocks/core/base.js";
 
 class MyComponent extends BaseComponent {
     connectedCallback() {
@@ -48,8 +48,8 @@ class MyComponent extends BaseComponent {
     render() {
         const children = Array.from(this.childNodes);
         this.innerHTML = "";
-        const wrapper = this.createElement("div", {
-            class: this.combineClassNames("base-class", this.className)
+        const wrapper = this.h("div", {
+            class: this.clsx("base-class", this.className)
         }, ...children);
         this.appendChild(wrapper);
     }
@@ -62,12 +62,9 @@ defineElement("my-component", MyComponent);
 
 | Method | Description |
 | :----- | :---------- |
-| `createElement(tag, attrs, ...children)` | Create HTML element |
-| `createSVGElement(tag, attrs, ...children)` | Create SVG element |
-| `createInteractiveElement(href, attrs, ...children)` | Create button or anchor |
-| `combineClassNames(...classes)` | Merge class names (filters falsy) |
-| `renderWithChildren(tag, attrs)` | Render preserving child nodes |
-| `initializeHoverStateTracking(element)` | Set up hover/active states |
+| `h(tag, attrs, ...children)` | Create HTML element |
+| `svg(tag, attrs, ...children)` | Create SVG element with namespace |
+| `clsx(...classes)` | Merge class names (filters falsy) |
 | `getAttr(name, default)` | Get attribute with coercion |
 | `setState(name, value)` | Set data-* attribute |
 | `emit(name, detail)` | Dispatch custom event |
@@ -77,7 +74,7 @@ defineElement("my-component", MyComponent);
 ### Utilities
 
 ```js
-import { uniqueId, debounce, FocusTrap } from "/blocks/_base.js";
+import { uniqueId, debounce, FocusTrap } from "/blocks/core/base.js";
 
 uniqueId("prefix");          // "prefix-1", "prefix-2", ...
 debounce(callback, 200);     // Debounced function
@@ -218,10 +215,10 @@ focusTrap.deactivate(); // Restore previous focus
 
 ```js
 (async () => {
-    await import("/blocks/elements/icons.js");
-    await import("/blocks/regions/nav.js");
-    await import("/blocks/regions/hero.js");
-    await import("/blocks/regions/footer.js");
+    await import("/blocks/core/icons.js");
+    await import("/blocks/view/nav.js");
+    await import("/blocks/view/hero.js");
+    await import("/blocks/view/footer.js");
 })();
 ```
 
