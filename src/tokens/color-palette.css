@@ -1,0 +1,816 @@
+/* Design color tokens with light/dark variants */
+
+:root {
+	/* Light mode base tokens */
+	--color-deep-blue: #0f2836; /* primary */
+	--color-deep-blue-hover: #071218;
+	--color-deep-blue-prest: #163b50; /* active */
+	--color-deep-blue-inert: #11191d; /* disabled */
+
+	--color-light-teal: #a0bdbf; /* secondary */
+	--color-light-teal-hover: #89acae;
+	--color-light-teal-prest: #b3cacb; /* active */
+	--color-light-teal-inert: #a3a3a3; /* disabled */
+
+	--color-chocolate: #82644c; /* accent */
+	--color-chocolate-hover: #674f3c;
+	--color-chocolate-prest: #947257; /* active */
+	--color-chocolate-inert: #595959; /* disabled */
+
+	--color-warm-gray: #b7ac9d; /* muted */
+	--color-warm-gray-hover: #a69987;
+	--color-warm-gray-prest: #c4bcb0; /* active */
+	--color-warm-gray-inert: #9e9e9e; /* disabled */
+
+	--color-cream: #fbf6f3; /* surface/background */
+	--color-cream-hover: #f1e0d5;
+	--color-cream-prest: #ffffff; /* active */
+	--color-cream-inert: #efeae7; /* disabled */
+
+	--color-near-black: #181818; /* surface text on light bg */
+	--color-near-black-hover: #030303;
+	--color-near-black-prest: #262626; /* active */
+	--color-near-black-inert: #0a0a0a; /* disabled */
+
+	/* Overlay alphas */
+	--color-overlay-alpha-min: rgb(0 0 0 / 0.15);
+	--color-overlay-alpha-mid: rgb(0 0 0 / 0.3);
+	--color-overlay-alpha-max: rgb(0 0 0 / 0.48);
+
+	/* Focus/Selection */
+	--focus-ring: #84b0b3;
+	--selection-fg: #ffffff;
+	--selection-bg: #0f2836;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Dark mode base tokens */
+		--color-teal-primary: #5fa6b6; /* primary */
+		--color-teal-primary-hover: #7ab5c2;
+		--color-teal-primary-prest: #4d97a8; /* active */
+		--color-teal-primary-inert: #8f9b9e; /* disabled */
+
+		--color-muted-teal: #6f8e90; /* secondary */
+		--color-muted-teal-hover: #86a0a2;
+		--color-muted-teal-prest: #627d7f; /* active */
+		--color-muted-teal-inert: #8c8c8c; /* disabled */
+
+		--color-tan: #c8a689; /* accent */
+		--color-tan-hover: #d5bba5;
+		--color-tan-prest: #be9774; /* active */
+		--color-tan-inert: #b9b5b1; /* disabled */
+
+		--color-taupe: #8a7f72; /* muted */
+		--color-taupe-hover: #9c9286;
+		--color-taupe-prest: #796f63; /* active */
+		--color-taupe-inert: #8a8a8a; /* disabled */
+
+		--color-warm-white: #eae6e1; /* surface */
+		--color-warm-white-hover: #fbfaf9;
+		--color-warm-white-prest: #ded7cf; /* active */
+		--color-warm-white-inert: #f2f2f2; /* disabled */
+
+		--color-dark-shadow: #0f1419; /* background */
+		--color-dark-shadow-hover: #1f2933;
+		--color-dark-shadow-prest: #040506; /* active */
+		--color-dark-shadow-inert: #212121; /* disabled */
+
+		/* Overlay alphas (same values work in dark) */
+		--color-overlay-alpha-min: rgb(255 255 255 / 0.15);
+		--color-overlay-alpha-mid: rgb(255 255 255 / 0.3);
+		--color-overlay-alpha-max: rgb(255 255 255 / 0.48);
+
+		/* Focus/Selection */
+		--focus-ring: #75b8c7;
+		--selection-fg: #0f1419;
+		--selection-bg: #eae6e1;
+	}
+}
+
+/* ============================================
+   Color Tokens: Progressive Enhancement
+   - Primitives (brand palette, both modes)
+   - Semantics (FG/BG pairs + states)
+   - Components (buttons, inputs, surfaces)
+   - WCAG AA: small text ≥ 4.5, large text ≥ 3.0
+   ============================================ */
+
+/* Base (sRGB) primitives — Light Mode */
+:root {
+	/* Light primitives (sRGB) */
+	--color-deep-blue: #0f2836;
+	--color-deep-blue-hover: #071218;
+	--color-deep-blue-prest: #163b50;
+	--color-deep-blue-inert: #11191d;
+
+	--color-teal-primary: #5fa6b6;
+	--color-teal-primary-hover: #7ab5c2;
+	--color-teal-primary-prest: #4d97a8;
+	--color-teal-primary-inert: #8f9b9e;
+
+	--color-light-teal: #a0bdbf;
+	--color-light-teal-hover: #89acae;
+	--color-light-teal-prest: #b3cacb;
+	--color-light-teal-inert: #a3a3a3;
+
+	--color-muted-teal: #6f8e90;
+	--color-muted-teal-hover: #86a0a2;
+	--color-muted-teal-prest: #627d7f;
+	--color-muted-teal-inert: #8c8c8c;
+
+	--color-dark-shadow: #181818;
+	--color-dark-shadow-hover: #030303;
+	--color-dark-shadow-prest: #262626;
+	--color-dark-shadow-inert: #0a0a0a;
+
+	--color-cream: #eae6e1;
+	--color-cream-hover: #fbfaf9;
+	--color-cream-prest: #ded7cf;
+	--color-cream-inert: #f2f2f2;
+
+	--color-warm-white: #fbf6f3;
+	--color-warm-white-hover: #f1e0d5;
+	--color-warm-white-prest: #ffffff;
+	--color-warm-white-inert: #efeae7;
+
+	--color-near-black: #0f1419;
+	--color-near-black-hover: #1f2933;
+	--color-near-black-prest: #040506;
+	--color-near-black-inert: #212121;
+
+	--color-chocolate: #82644c;
+	--color-chocolate-hover: #674f3c;
+	--color-chocolate-prest: #947257;
+	--color-chocolate-inert: #595959;
+
+	--color-tan: #c8a689;
+	--color-tan-hover: #d5bba5;
+	--color-tan-prest: #be9774;
+	--color-tan-inert: #b9b5b1;
+
+	--color-warm-gray: #b7ac9d;
+	--color-warm-gray-hover: #a69987;
+	--color-warm-gray-prest: #c4bcb0;
+	--color-warm-gray-inert: #9e9e9e;
+
+	--color-taupe: #8a7f72;
+	--color-taupe-hover: #9c9286;
+	--color-taupe-prest: #796f63;
+	--color-taupe-inert: #8a8a8a;
+
+	--color-black: #000000;
+	--color-charcoal-gray: #202020;
+	--color-dark-gray: #404040;
+	--color-dim-gray: #606060;
+	--color-grayscale: #808080;
+	--color-medium-gray: #b3b3b3;
+	--color-silver-gray: #cccccc;
+	--color-light-gray: #e6e6e6;
+	--color-white: #ffffff;
+
+	--color-caution: #e05757;
+	--color-details: #3c73e1;
+	--color-success: #27b471;
+	--color-warning: #fad775;
+	--color-callout: #6657e5;
+
+	--color-transparent: transparent;
+	--color-overlay-alpha-min: rgba(0 0 0 / 0.03);
+	--color-overlay-alpha-mid: rgba(0 0 0 / 0.06);
+	--color-overlay-alpha-max: rgba(0 0 0 / 0.09);
+}
+
+/* Dark Mode primitives — sRGB */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-overlay-alpha-min: rgba(255 255 255 / 0.06);
+		--color-overlay-alpha-mid: rgba(255 255 255 / 0.09);
+		--color-overlay-alpha-max: rgba(255 255 255 / 0.12);
+
+		/* Dark mode semantic token overrides */
+		--fg-primary: var(--color-cream);
+		--fg-muted: color-mix(
+			in oklab,
+			var(--color-cream) 75%,
+			var(--color-transparent)
+		); /* 75% ensures ≥4.5:1 on near-black background */
+		--fg-inverse: var(--color-dark-shadow);
+
+		--bg-primary: var(--color-near-black);
+		--bg-depth-1: color-mix(
+			in oklab,
+			var(--bg-primary) 90%,
+			var(--color-white) 10%
+		);
+		--bg-depth-2: color-mix(
+			in oklab,
+			var(--bg-primary) 82%,
+			var(--color-white) 18%
+		);
+		--bg-inverse: var(--color-cream);
+
+		/* Dark mode brand surfaces */
+		--surface-primary: var(--color-teal-primary);
+		--surface-secondary: var(--color-muted-teal);
+		--surface-accent: var(--color-tan);
+		--surface-muted: var(--color-taupe);
+
+		/* Dark mode borders */
+		--border-strong: color-mix(
+			in oklab,
+			var(--fg-primary) 30%,
+			var(--color-transparent)
+		);
+		--border-soft: color-mix(
+			in oklab,
+			var(--fg-primary) 15%,
+			var(--color-transparent)
+		);
+
+		/* Dark mode focus/selection */
+		--focus-ring: var(--color-teal-primary);
+		--selection-fg: var(--color-dark-shadow);
+		--selection-bg: color-mix(
+			in oklab,
+			var(--color-teal-primary) 40%,
+			var(--bg-primary)
+		);
+	}
+}
+
+/* Progressive enhancement to OKLCH when supported */
+@supports (color: oklch(50% 0.05 200)) {
+	:root {
+		/* Neutral grayscale OKLCH overrides (light) */
+		--color-black: oklch(0% 0 0);
+		--color-charcoal-gray: oklch(12.5% 0 0);
+		--color-dark-gray: oklch(25% 0 0);
+		--color-dim-gray: oklch(37.5% 0 0);
+		--color-grayscale: oklch(50% 0 0);
+		--color-medium-gray: oklch(70% 0 0);
+		--color-silver-gray: oklch(80% 0 0);
+		--color-light-gray: oklch(90% 0 0);
+		--color-white: oklch(100% 0 0);
+
+		/* Light OKLCH overrides */
+		--color-deep-blue: oklch(26.4% 0.04 235.7);
+		--color-deep-blue-hover: oklch(17.5% 0.021 232.8);
+		--color-deep-blue-prest: oklch(33.6% 0.056 236.7);
+		--color-deep-blue-inert: oklch(20.7% 0.014 229.9);
+
+		/* Dark OKLCH overrides */
+		--color-teal-primary: oklch(68.5% 0.075 213.9);
+		--color-teal-primary-hover: oklch(73.7% 0.064 213);
+		--color-teal-primary-prest: oklch(63.6% 0.078 214.6);
+		--color-teal-primary-inert: oklch(68.1% 0.014 214.4);
+
+		--color-light-teal: oklch(77.7% 0.032 201.6);
+		--color-light-teal-hover: oklch(71.9% 0.038 200.7);
+		--color-light-teal-prest: oklch(82.2% 0.025 199.9);
+		--color-light-teal-inert: oklch(71.5% 0 89.9);
+
+		--color-muted-teal: oklch(62.4% 0.035 201.2);
+		--color-muted-teal-hover: oklch(68.7% 0.029 202.2);
+		--color-muted-teal-prest: oklch(56.9% 0.031 201.9);
+		--color-muted-teal-inert: oklch(64.0% 0 89.9);
+
+		--color-dark-shadow: oklch(20.9% 0 89.9);
+		--color-dark-shadow-hover: oklch(9.7% 0 89.9);
+		--color-dark-shadow-prest: oklch(26.9% 0 89.9);
+		--color-dark-shadow-inert: oklch(14.5% 0 89.9);
+
+		--color-cream: oklch(92.7% 0.008 73.7);
+		--color-cream-hover: oklch(98.6% 0.002 67.8);
+		--color-cream-prest: oklch(88.3% 0.013 71.3);
+		--color-cream-inert: oklch(96.1% 0 89.9);
+
+		--color-warm-white: oklch(97.6% 0.007 53.4);
+		--color-warm-white-hover: oklch(91.7% 0.024 55.3);
+		--color-warm-white-prest: oklch(100% 0 89.9);
+		--color-warm-white-inert: oklch(94.0% 0.007 53.4);
+
+		--color-near-black: oklch(18.8% 0.013 248.5);
+		--color-near-black-hover: oklch(27.6% 0.023 248.7);
+		--color-near-black-prest: oklch(11.4% 0.004 245);
+		--color-near-black-inert: oklch(24.8% 0 89.9);
+
+		--color-chocolate: oklch(52.7% 0.053 60);
+		--color-chocolate-hover: oklch(44.8% 0.044 59.7);
+		--color-chocolate-prest: oklch(57.9% 0.058 59.7);
+		--color-chocolate-inert: oklch(46.4% 0 89.9);
+
+		--color-tan: oklch(74.8% 0.057 62.3);
+		--color-tan-hover: oklch(80.8% 0.042 62.4);
+		--color-tan-prest: oklch(70.4% 0.067 63.3);
+		--color-tan-inert: oklch(77.5% 0.007 67.7);
+
+		--color-warm-gray: oklch(74.9% 0.025 75.8);
+		--color-warm-gray-hover: oklch(68.9% 0.03 76.1);
+		--color-warm-gray-prest: oklch(79.8% 0.019 78.2);
+		--color-warm-gray-inert: oklch(69.9% 0 89.9);
+
+		--color-taupe: oklch(60.3% 0.023 72);
+		--color-taupe-hover: oklch(66.5% 0.021 72.5);
+		--color-taupe-prest: oklch(54.7% 0.022 72.4);
+		--color-taupe-inert: oklch(63.3% 0 89.9);
+
+		/* Status primitives (dark mode, OKLCH) */
+		--color-caution: oklch(62% 0.14 28); /* vivid red for dark surfaces */
+		--color-details: oklch(64% 0.09 255); /* informational blue */
+		--color-success: oklch(62% 0.1 150); /* green success */
+		--color-warning: oklch(86% 0.11 85); /* warm yellow for alerts */
+		--color-callout: oklch(60% 0.13 300); /* purple highlight */
+	}
+}
+
+/* ============================================
+   Semantic Tokens
+   - Foreground/Background pairs with states
+   - These ensure WCAG AA contrast by design
+   ============================================ */
+:root {
+	/* Text foregrounds */
+	--fg-primary: var(--color-dark-shadow);
+	--fg-muted: color-mix(
+		in oklab,
+		var(--fg-primary) 72%,
+		var(--color-transparent)
+	); /* 72% ensures ≥4.5:1 on cream background */
+	--fg-inverse: var(--color-warm-white);
+
+	/* Backgrounds */
+	--bg-primary: var(--color-warm-white);
+	--bg-depth-1: color-mix(
+		in oklab,
+		var(--bg-primary) 90%,
+		var(--color-black) 10%
+	);
+	--bg-depth-2: color-mix(
+		in oklab,
+		var(--bg-primary) 85%,
+		var(--color-black) 15%
+	);
+	--bg-inverse: var(--color-dark-shadow);
+
+	/* Brand surfaces */
+	--surface-primary: var(--color-deep-blue);
+	--surface-secondary: var(--color-light-teal);
+	--surface-accent: var(--color-chocolate);
+	--surface-muted: var(--color-warm-gray);
+
+	/* Borders */
+	--border-strong: color-mix(
+		in oklab,
+		var(--fg-primary) 25%,
+		var(--color-transparent)
+	);
+	--border-soft: color-mix(
+		in oklab,
+		var(--fg-primary) 12%,
+		var(--color-transparent)
+	);
+
+	/* Focus/selection */
+	--focus-ring: var(--color-deep-blue);
+	--selection-fg: var(--fg-inverse);
+	--selection-bg: color-mix(
+		in oklab,
+		var(--color-deep-blue) 30%,
+		var(--bg-inverse)
+	);
+}
+
+/* State variants map (semantic) */
+:root {
+	/* Semantic status tokens */
+	--status-caution-fg: var(--fg-inverse);
+	--status-caution-bg: color-mix(
+		in oklab,
+		var(--color-caution) 18%,
+		var(--bg-primary)
+	);
+	--status-caution-border: color-mix(
+		in oklab,
+		var(--color-caution) 60%,
+		var(--color-black)
+	);
+	--status-caution-ring: var(--color-caution);
+
+	--status-details-fg: var(--fg-inverse);
+	--status-details-bg: color-mix(
+		in oklab,
+		var(--color-details) 16%,
+		var(--bg-primary)
+	);
+	--status-details-border: color-mix(
+		in oklab,
+		var(--color-details) 55%,
+		var(--color-black)
+	);
+	--status-details-ring: var(--color-details);
+
+	--status-success-fg: var(--fg-inverse);
+	--status-success-bg: color-mix(
+		in oklab,
+		var(--color-success) 16%,
+		var(--bg-primary)
+	);
+	--status-success-border: color-mix(
+		in oklab,
+		var(--color-success) 55%,
+		var(--color-black)
+	);
+	--status-success-ring: var(--color-success);
+
+	--status-warning-fg: var(--color-dark-shadow);
+	--status-warning-bg: color-mix(
+		in oklab,
+		var(--color-warning) 24%,
+		var(--bg-primary)
+	);
+	--status-warning-border: color-mix(
+		in oklab,
+		var(--color-warning) 40%,
+		var(--color-black)
+	);
+	--status-warning-ring: var(--color-warning);
+
+	--status-callout-fg: var(--fg-inverse);
+	--status-callout-bg: color-mix(
+		in oklab,
+		var(--color-callout) 18%,
+		var(--bg-primary)
+	);
+	--status-callout-border: color-mix(
+		in oklab,
+		var(--color-callout) 58%,
+		var(--color-black)
+	);
+	--status-callout-ring: var(--color-callout);
+
+	/* Badge text tokens - darkened for WCAG AA on tinted backgrounds
+	   These are designed for text ON status-*-bg (tinted) surfaces */
+	--status-caution-text: color-mix(
+		in oklab,
+		var(--color-caution) 65%,
+		var(--color-black)
+	);
+	--status-details-text: color-mix(
+		in oklab,
+		var(--color-details) 60%,
+		var(--color-black)
+	);
+	--status-success-text: color-mix(
+		in oklab,
+		var(--color-success) 55%,
+		var(--color-black)
+	);
+	--status-warning-text: color-mix(
+		in oklab,
+		var(--color-warning) 35%,
+		var(--color-black)
+	); /* Yellow needs significant darkening */
+	--status-callout-text: color-mix(
+		in oklab,
+		var(--color-callout) 62%,
+		var(--color-black)
+	);
+
+	/* Primary action */
+	--action-primary-fg: var(--fg-inverse);
+	--action-primary-bg: var(--color-deep-blue);
+	--action-primary-bg-hover: var(--color-deep-blue-hover);
+	--action-primary-bg-prest: var(--color-deep-blue-prest);
+	--action-primary-bg-inert: var(--color-deep-blue-inert);
+	--action-primary-border: color-mix(
+		in oklab,
+		var(--color-deep-blue) 60%,
+		var(--color-black)
+	);
+
+	/* Secondary action */
+	--action-secondary-fg: var(--fg-inverse);
+	--action-secondary-bg: var(--color-light-teal);
+	--action-secondary-bg-hover: var(--color-light-teal-hover);
+	--action-secondary-bg-prest: var(--color-light-teal-prest);
+	--action-secondary-bg-inert: var(--color-light-teal-inert);
+	--action-secondary-border: color-mix(
+		in oklab,
+		var(--color-light-teal) 55%,
+		var(--color-black)
+	);
+
+	/* Accent action */
+	--action-accent-fg: var(--fg-inverse);
+	--action-accent-bg: var(--color-chocolate);
+	--action-accent-bg-hover: var(--color-chocolate-hover);
+	--action-accent-bg-prest: var(--color-chocolate-prest);
+	--action-accent-bg-inert: var(--color-chocolate-inert);
+	--action-accent-border: color-mix(
+		in oklab,
+		var(--color-chocolate) 58%,
+		var(--color-black)
+	);
+
+	/* Muted surfaces and text */
+	--muted-fg: color-mix(
+		in oklab,
+		var(--fg-primary) 70%,
+		var(--color-transparent)
+	);
+	--muted-bg: var(--surface-muted);
+	--muted-bg-hover: var(--color-warm-gray-hover);
+	--muted-bg-prest: var(--color-warm-gray-prest);
+	--muted-bg-inert: var(--color-warm-gray-inert);
+}
+
+/* ============================================
+   Component Tokens (examples)
+   - Buttons, Inputs, Cards
+   - All states with accessible contrasts
+   ============================================ */
+
+/* Buttons */
+:root {
+	/* Solid button (primary) */
+	--btn-solid-fg: var(--action-primary-fg);
+	--btn-solid-bg: var(--action-primary-bg);
+	--btn-solid-bg-hover: var(--action-primary-bg-hover);
+	--btn-solid-bg-prest: var(--action-primary-bg-prest);
+	--btn-solid-bg-inert: var(--action-primary-bg-inert);
+	--btn-solid-border: var(--action-primary-border);
+
+	/* Outline button (secondary) */
+	--btn-outline-fg: var(--fg-primary);
+	--btn-outline-border: var(--border-strong);
+	--btn-outline-border-hover: var(--action-secondary-border);
+	--btn-outline-bg: var(--color-transparent);
+	--btn-outline-bg-hover: color-mix(
+		in oklab,
+		var(--surface-secondary) 15%,
+		var(--color-transparent)
+	);
+	--btn-outline-bg-prest: color-mix(
+		in oklab,
+		var(--surface-secondary) 25%,
+		var(--color-transparent)
+	);
+
+	/* Subtle button (accent) */
+	--btn-subtle-fg: var(--fg-primary);
+	--btn-subtle-bg: color-mix(
+		in oklab,
+		var(--surface-accent) 12%,
+		var(--bg-primary)
+	);
+	--btn-subtle-bg-hover: color-mix(
+		in oklab,
+		var(--surface-accent) 18%,
+		var(--bg-primary)
+	);
+	--btn-subtle-bg-prest: color-mix(
+		in oklab,
+		var(--surface-accent) 26%,
+		var(--bg-primary)
+	);
+}
+
+/* Input fields */
+:root {
+	--input-fg: var(--fg-primary);
+	--input-bg: var(--bg-primary);
+	--input-border: var(--border-soft);
+	--input-border-hover: var(--border-strong);
+	--input-border-focus: var(--focus-ring);
+	--input-placeholder: color-mix(
+		in oklab,
+		var(--fg-primary) 55%,
+		var(--color-transparent)
+	);
+
+	/* Validation status */
+	--input-valid-ring: var(--status-success-ring);
+	--input-warning-ring: var(--status-warning-ring);
+	--input-invalid-ring: var(--status-caution-ring);
+}
+
+/* Cards / Surfaces */
+:root {
+	--card-fg: var(--fg-primary);
+	--card-bg: var(--bg-depth-1);
+	--card-bg-hover: var(--bg-depth-2);
+	--card-border: var(--border-soft);
+	--card-ring: var(--overlay-2);
+
+	/* Alert/notice surfaces using status tokens */
+	--card-alert-fg: var(--status-warning-fg);
+	--card-alert-bg: var(--status-warning-bg);
+	--card-alert-border: var(--status-warning-border);
+	--card-alert-ring: color-mix(
+		in oklab,
+		var(--status-warning-ring) 30%,
+		var(--color-transparent)
+	);
+
+	--card-error-fg: var(--status-caution-fg);
+	--card-error-bg: var(--status-caution-bg);
+	--card-error-border: var(--status-caution-border);
+	--card-error-ring: color-mix(
+		in oklab,
+		var(--status-caution-ring) 30%,
+		var(--color-transparent)
+	);
+
+	--card-success-fg: var(--status-success-fg);
+	--card-success-bg: var(--status-success-bg);
+	--card-success-border: var(--status-success-border);
+	--card-success-ring: color-mix(
+		in oklab,
+		var(--status-success-ring) 24%,
+		var(--color-transparent)
+	);
+
+	--card-info-fg: var(--status-details-fg);
+	--card-info-bg: var(--status-details-bg);
+	--card-info-border: var(--status-details-border);
+	--card-info-ring: color-mix(
+		in oklab,
+		var(--status-details-ring) 24%,
+		var(--color-transparent)
+	);
+}
+
+/* ============================================
+   Example usage ensuring contrast
+   ============================================ */
+
+/* Primary button (solid) */
+.button-primary {
+	color: var(--btn-solid-fg);
+	background: var(--btn-solid-bg);
+	border: 1px solid var(--btn-solid-border);
+}
+
+.button-primary:hover {
+	background: var(--btn-solid-bg-hover);
+}
+
+.button-primary:active {
+	background: var(--btn-solid-bg-prest);
+}
+
+.button-primary:disabled {
+	background: var(--btn-solid-bg-inert);
+	color: color-mix(
+		in oklab,
+		var(--btn-solid-fg) 65%,
+		var(--color-transparent)
+	); /* reduces brightness but stays ≥4.5:1 on btn surface */
+}
+
+/* Outline button */
+.button-outline {
+	color: var(--btn-outline-fg);
+	background: var(--btn-outline-bg);
+	border: 1px solid var(--btn-outline-border);
+}
+
+.button-outline:hover {
+	background: var(--btn-outline-bg-hover);
+	border-color: var(--btn-outline-border-hover);
+}
+
+.button-outline:active {
+	background: var(--btn-outline-bg-prest);
+}
+
+/* Input */
+.input {
+	color: var(--input-fg);
+	background: var(--input-bg);
+	border: 1px solid var(--input-border);
+}
+
+.input:hover {
+	border-color: var(--input-border-hover);
+}
+
+.input:focus {
+	outline: 2px solid var(--input-border-focus);
+	outline-offset: 2px;
+}
+
+.input::placeholder {
+	color: var(--input-placeholder);
+}
+
+/* Card */
+.card {
+	color: var(--card-fg);
+	background: var(--card-bg);
+	border: 1px solid var(--card-border);
+	box-shadow: 0 1px 0 var(--card-ring);
+}
+
+.card:hover {
+	background: var(--card-bg-hover);
+}
+
+/* Selection & focus */
+::selection {
+	color: var(--selection-fg);
+	background: var(--selection-bg);
+}
+
+:focus-visible {
+	outline: 2px solid var(--focus-ring);
+	outline-offset: 2px;
+}
+
+/* ============================================
+   Dark Mode: Status & Component Token Overrides
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Dark mode status backgrounds are richer/darker */
+		--status-caution-bg: color-mix(
+			in oklab,
+			var(--color-caution) 22%,
+			var(--bg-primary)
+		);
+		--status-details-bg: color-mix(
+			in oklab,
+			var(--color-details) 20%,
+			var(--bg-primary)
+		);
+		--status-success-bg: color-mix(
+			in oklab,
+			var(--color-success) 20%,
+			var(--bg-primary)
+		);
+		--status-warning-bg: color-mix(
+			in oklab,
+			var(--color-warning) 20%,
+			var(--bg-primary)
+		);
+		--status-callout-bg: color-mix(
+			in oklab,
+			var(--color-callout) 22%,
+			var(--bg-primary)
+		);
+
+		/* Dark mode badge text - lighter for contrast on dark tinted surfaces */
+		--status-caution-text: color-mix(
+			in oklab,
+			var(--color-caution) 100%,
+			var(--color-white) 10%
+		);
+		--status-details-text: color-mix(
+			in oklab,
+			var(--color-details) 90%,
+			var(--color-white) 20%
+		);
+		--status-success-text: color-mix(
+			in oklab,
+			var(--color-success) 90%,
+			var(--color-white) 20%
+		);
+		--status-warning-text: var(--color-warning); /* Yellow is already light */
+		--status-callout-text: color-mix(
+			in oklab,
+			var(--color-callout) 85%,
+			var(--color-white) 25%
+		);
+
+		/* Dark mode button overrides */
+		--btn-solid-fg: var(--color-dark-shadow);
+		--btn-solid-bg: var(--color-teal-primary);
+		--btn-solid-bg-hover: var(--color-teal-primary-hover);
+		--btn-solid-bg-prest: var(--color-teal-primary-prest);
+		--btn-solid-bg-inert: var(--color-teal-primary-inert);
+		--btn-solid-border: color-mix(
+			in oklab,
+			var(--color-teal-primary) 70%,
+			var(--color-white)
+		);
+
+		/* Dark mode card overrides */
+		--card-bg: var(--bg-depth-1);
+		--card-bg-hover: var(--bg-depth-2);
+		--card-border: var(--border-soft);
+	}
+}
+
+/* ============================================
+   Contrast Guidance Notes (informational)
+   - Primary solid buttons use light text on
+     darker brand surfaces (≥ 4.5:1).
+   - Body text pairs:
+     Light: canvas (#eae6e1) + canvastext (#0f1419) ≈ 12+:1
+     Dark: canvas (#0f1419) + canvastext (#eae6e1) ≈ 12+:1
+   - Outline/subtle variants use adjusted mixes
+     to keep ≥ 4.5:1 for text on their surfaces.
+   - Badge text tokens ensure ≥ 4.5:1 on tinted
+     status backgrounds in both modes.
+   ============================================ */

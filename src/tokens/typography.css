@@ -1,0 +1,249 @@
+/* ============================================
+   @font-face Declarations
+   - Loads custom fonts from /src/assets/fonts/
+   ============================================ */
+
+/* Body: Work Sans (Variable) */
+@font-face {
+	font-family: "Work Sans";
+	src:
+		url("../assets/fonts/work-sans/WorkSans-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/work-sans/WorkSans-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Work Sans";
+	src:
+		url("../assets/fonts/work-sans/WorkSans-Italic-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/work-sans/WorkSans-Italic-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 100 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* Title: Playfair Display (Variable) */
+@font-face {
+	font-family: "Playfair Display";
+	src:
+		url("../assets/fonts/playfair-display/PlayfairDisplay-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/playfair-display/PlayfairDisplay-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 400 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Playfair Display";
+	src:
+		url("../assets/fonts/playfair-display/PlayfairDisplay-Italic-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/playfair-display/PlayfairDisplay-Italic-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 400 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* Accent: Arvo */
+@font-face {
+	font-family: "Arvo";
+	src:
+		url("../assets/fonts/arvo/Arvo-Regular.woff2") format("woff2"),
+		url("../assets/fonts/arvo/Arvo-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Arvo";
+	src:
+		url("../assets/fonts/arvo/Arvo-Italic.woff2") format("woff2"),
+		url("../assets/fonts/arvo/Arvo-Italic.woff") format("woff");
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Arvo";
+	src:
+		url("../assets/fonts/arvo/Arvo-Bold.woff2") format("woff2"),
+		url("../assets/fonts/arvo/Arvo-Bold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Arvo";
+	src:
+		url("../assets/fonts/arvo/Arvo-BoldItalic.woff2") format("woff2"),
+		url("../assets/fonts/arvo/Arvo-BoldItalic.woff") format("woff");
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* Soft: Nunito (Variable) */
+@font-face {
+	font-family: "Nunito";
+	src:
+		url("../assets/fonts/nunito/Nunito-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/nunito/Nunito-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 200 1000;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Nunito";
+	src:
+		url("../assets/fonts/nunito/Nunito-Italic-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/nunito/Nunito-Italic-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 200 1000;
+	font-style: italic;
+	font-display: swap;
+}
+
+/** TODO: get SackersGothicStd-{Light,Medium}.ttf */
+/*! 
+	@font-face {
+		font-family: "Sackers Gothic";
+		src:
+			url("../assets/fonts/sackers-gothic/SackersGothicStd-Light.woff2")
+			format("woff2"),
+			url("../assets/fonts/sackers-gothic/SackersGothicStd-Light.woff")
+			format("woff");
+		font-weight: 300;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "Sackers Gothic";
+		src:
+			url("../assets/fonts/sackers-gothic/SackersGothicStd-Medium.woff2")
+			format("woff2"),
+			url("../assets/fonts/sackers-gothic/SackersGothicStd-Medium.woff")
+			format("woff");
+		font-weight: 500;
+		font-style: normal;
+		font-display: swap;
+	}
+*/
+
+/* Heavy: Sackers Gothic (Static weights) */
+@font-face {
+	font-family: "Sackers Gothic";
+	src:
+		url("../assets/fonts/sackers-gothic/SackersGothicStd-Heavy.woff2")
+		format("woff2"),
+		url("../assets/fonts/sackers-gothic/SackersGothicStd-Heavy.woff")
+		format("woff");
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--font-body-type:
+		"Work Sans", -apple-system, ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+		"Noto Sans", "Liberation Sans", "Nimbus Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+	--font-display-type:
+		"Work Sans", "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial,
+		"Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol";
+
+	--font-title-type:
+		"Playfair Display", Charter, "Bitstream Charter", "Sitka Text", Cambria,
+		"Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, Georgia,
+		"Times New Roman", serif;
+
+	--font-caption-type:
+		"Nimbus Mono PS", "Courier New", "Liberation Mono", "DejaVu Sans Mono",
+		Courier, monospace;
+
+	--font-accent-type:
+		Arvo, "Roboto Slab", Rockwell, "Rockwell Nova", "Zilla Slab", "DejaVu Serif",
+		"Sitka Small", Georgia, serif;
+
+	--font-heavy-type:
+		"Sackers Gothic", Bahnschrift, "DIN Alternate", "Franklin Gothic Medium",
+		"Nimbus Sans Narrow", "Arial Narrow", sans-serif-condensed, sans-serif;
+
+	--font-soft-type:
+		Nunito, "SF Pro Rounded", ui-rounded, "Hiragino Maru Gothic ProN", Manjari,
+		"Arial Rounded MT Bold", "Arial Rounded MT", Nunito, Calibri, sans-serif;
+
+	--font-code-type:
+		Arvo, ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+		"DejaVu Sans Mono", "Liberation Mono", "Courier New", monospace;
+
+	--text-size-xxl: clamp(
+		2.75rem,
+		calc(3.5rem + 1.5vw),
+		3.5rem
+	); /* 48px → 56px → 64px */
+	--text-size-xl: clamp(
+		2rem,
+		calc(2.25rem + 0.75vw),
+		2.5rem
+	); /* 32px → 36px → 40px */
+	--text-size-lg: clamp(
+		1.5rem,
+		calc(1.75rem + 0.5vw),
+		2rem
+	); /* 24px → 28px → 32px */
+	--text-size-md: clamp(
+		1.125rem,
+		calc(1.25rem + 0.25vw),
+		1.375rem
+	); /* 18px → 20px → 22px */
+	--text-size-sm: clamp(
+		0.875rem,
+		calc(1rem + 0.125vw),
+		1.0625rem
+	); /* 14px → 16px → 17px */
+	--text-size-xs: clamp(
+		0.8125rem,
+		calc(0.875rem + 0.0625vw),
+		0.9375rem
+	); /* 13px → 14px → 15px */
+	--text-size-xxs: clamp(
+		0.75rem,
+		calc(0.8125rem + 0.0625vw),
+		0.875rem
+	); /* 12px → 13px → 14px */
+
+	--line-height-xxl: 1.1; /* Tight for large display text */
+	--line-height-xl: 1.2; /* Balanced for headlines */
+	--line-height-lg: 1.3; /* Comfortable for subheadings */
+	--line-height-md: 1.5; /* Optimal for body text readability */
+	--line-height-sm: 1.5; /* Standard body text */
+	--line-height-xs: 1.6; /* Increased for smaller text legibility */
+	--line-height-xxs: 1.6; /* Maximum for tiny text accessibility */
+
+	--letter-spacing-xxl: 0.016em;
+	--letter-spacing-xl: 0.01em;
+	--letter-spacing-lg: 0.004em;
+	--letter-spacing-md: 0em;
+	--letter-spacing-sm: -0.006em;
+	--letter-spacing-xs: -0.009em;
+	--letter-spacing-xxs: -0.012em;
+}
