@@ -293,10 +293,10 @@ export class DropdownMenu extends BaseComponent {
 			"absolute z-50 hidden opacity-0",
 			positionClasses[anchorPosition] || positionClasses.bottom,
 			"isolate w-max min-w-[12rem] rounded-xl p-1",
-			"outline outline-transparent focus:outline-none",
+			"outline outline-transparent",
 			"overflow-y-auto max-h-80",
-			"bg-white/75 backdrop-blur-xl dark:bg-zinc-800/75",
-			"shadow-lg ring-1 ring-zinc-950/10 dark:ring-white/10 dark:ring-inset",
+			"backdrop-blur-xl bg-white/75",
+			"shadow-lg ring-1 ring-zinc-950/10",
 			"transition duration-100 ease-in",
 			this.className,
 		);
@@ -386,14 +386,13 @@ export class DropdownItem extends BaseComponent {
 		const isDisabled = this.hasAttribute("disabled");
 
 		const itemClasses = this.combineClassNames(
-			"group cursor-default rounded-lg px-3.5 py-2.5 focus:outline-none sm:px-3 sm:py-1.5",
-			"text-left text-base/6 text-zinc-950 sm:text-sm/6 dark:text-white",
-			"[&[data-focus]]:bg-blue-500 [&[data-focus]]:text-white",
+			"group cursor-default rounded-lg px-3.5 py-2.5 sm:px-3 sm:py-1.5",
+			"text-left text-base/6 text-canvas sm:text-sm/6",
+			"[&[data-focus]]:[&[data-focus]]:text-white",
 			isDisabled && "opacity-50",
 			"w-full flex items-center gap-2",
 			"[&_[data-slot=icon]]:size-5 sm:[&_[data-slot=icon]]:size-4",
-			"[&_[data-slot=icon]]:text-zinc-500 [&[data-focus]_[data-slot=icon]]:text-white",
-			"dark:[&_[data-slot=icon]]:text-zinc-400",
+			"[&_[data-slot=icon]]:text-muted [&[data-focus]_[data-slot=icon]]:text-white",
 		);
 
 		const childNodes = Array.from(this.childNodes);
@@ -512,7 +511,7 @@ export class DropdownHeading extends BaseComponent {
 	 */
 	render() {
 		const headingClasses = this.combineClassNames(
-			"px-3.5 pt-2 pb-1 text-sm/5 font-medium text-zinc-500 sm:px-3 sm:text-xs/5 dark:text-zinc-400",
+			"px-3.5 pt-2 pb-1 text-sm/5 font-medium text-muted sm:px-3 sm:text-xs/5",
 			this.className,
 		);
 
@@ -548,7 +547,7 @@ export class DropdownDivider extends BaseComponent {
 	 */
 	render() {
 		const dividerClasses = this.combineClassNames(
-			"mx-3.5 my-1 h-px border-0 bg-zinc-950/5 sm:mx-3 dark:bg-white/10",
+			"mx-3.5 my-1 h-px border-0 border-soft sm:mx-3",
 			this.className,
 		);
 
@@ -614,7 +613,7 @@ export class DropdownDescription extends BaseComponent {
 	 */
 	render() {
 		const descriptionClasses = this.combineClassNames(
-			"text-sm/5 text-zinc-500 group-[&[data-focus]]:text-white sm:text-xs/5 dark:text-zinc-400",
+			"text-sm/5 text-muted group-[&[data-focus]]:sm:text-xs/5",
 			this.className,
 		);
 
@@ -630,13 +629,13 @@ export class DropdownDescription extends BaseComponent {
 	}
 }
 
-defineElement("ui-dropdown", UIDropdown);
-defineElement("ui-dropdown-button", UIDropdownButton);
-defineElement("ui-dropdown-menu", UIDropdownMenu);
-defineElement("ui-dropdown-item", UIDropdownItem);
-defineElement("ui-dropdown-header", UIDropdownHeader);
-defineElement("ui-dropdown-section", UIDropdownSection);
-defineElement("ui-dropdown-heading", UIDropdownHeading);
-defineElement("ui-dropdown-divider", UIDropdownDivider);
-defineElement("ui-dropdown-label", UIDropdownLabel);
-defineElement("ui-dropdown-description", UIDropdownDescription);
+defineElement("ui-dropdown", Dropdown);
+defineElement("ui-dropdown-button", DropdownButton);
+defineElement("ui-dropdown-menu", DropdownMenu);
+defineElement("ui-dropdown-item", DropdownItem);
+defineElement("ui-dropdown-header", DropdownHeader);
+defineElement("ui-dropdown-section", DropdownSection);
+defineElement("ui-dropdown-heading", DropdownHeading);
+defineElement("ui-dropdown-divider", DropdownDivider);
+defineElement("ui-dropdown-label", DropdownLabel);
+defineElement("ui-dropdown-description", DropdownDescription);

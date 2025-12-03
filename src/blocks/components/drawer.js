@@ -218,8 +218,8 @@ export class Drawer extends BaseComponent {
 
 		const backdropElement = this.createElement("div", {
 			class: this.combineClassNames(
-				"fixed inset-0 bg-zinc-950/25 transition-opacity duration-300 ease-in-out opacity-0",
-				"dark:bg-zinc-950/50",
+				"fixed inset-0 transition-opacity duration-300 ease-in-out opacity-0",
+				"bg-zinc-950/25",
 			),
 			ref: (element) => {
 				this.#backdropElement = element;
@@ -252,8 +252,7 @@ export class Drawer extends BaseComponent {
 
 		const panelInner = this.createElement("div", {
 			class: this.combineClassNames(
-				"flex h-full flex-col overflow-y-auto bg-white shadow-xl",
-				"dark:bg-zinc-900 dark:ring-1 dark:ring-white/10",
+				"flex h-full flex-col overflow-y-auto bg-canvas shadow-xl",
 			),
 		});
 
@@ -292,7 +291,7 @@ export class DrawerHeader extends BaseComponent {
 	render() {
 		const headerClasses = this.combineClassNames(
 			"flex items-center justify-between px-4 py-6 sm:px-6",
-			"border-b border-zinc-950/5 dark:border-white/10",
+			"border-b border-soft",
 			this.className,
 		);
 
@@ -312,9 +311,8 @@ export class DrawerHeader extends BaseComponent {
 			{
 				type: "button",
 				class: this.combineClassNames(
-					"rounded-md text-zinc-400 hover:text-zinc-500",
-					"focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-					"dark:text-zinc-500 dark:hover:text-zinc-400",
+					"rounded-md text-zinc-400",
+					"hover:text-zinc-500",
 				),
 				onClick: () => {
 					const drawerElement = this.closest("ui-drawer");
@@ -371,7 +369,7 @@ export class DrawerTitle extends BaseComponent {
 	 */
 	render() {
 		const titleClasses = this.combineClassNames(
-			"text-base font-semibold text-zinc-900 dark:text-white",
+			"text-base font-semibold text-canvas",
 			this.className,
 		);
 
@@ -407,7 +405,7 @@ export class DrawerDescription extends BaseComponent {
 	 */
 	render() {
 		const descriptionClasses = this.combineClassNames(
-			"mt-1 text-sm text-zinc-500 dark:text-zinc-400",
+			"mt-1 text-sm text-muted",
 			this.className,
 		);
 
@@ -480,7 +478,7 @@ export class DrawerFooter extends BaseComponent {
 	render() {
 		const footerClasses = this.combineClassNames(
 			"flex shrink-0 justify-end gap-3 px-4 py-4 sm:px-6",
-			"border-t border-zinc-950/5 dark:border-white/10",
+			"border-t border-soft",
 			this.className,
 		);
 
@@ -496,9 +494,9 @@ export class DrawerFooter extends BaseComponent {
 	}
 }
 
-defineElement("ui-drawer", UIDrawer);
-defineElement("ui-drawer-header", UIDrawerHeader);
-defineElement("ui-drawer-title", UIDrawerTitle);
-defineElement("ui-drawer-description", UIDrawerDescription);
-defineElement("ui-drawer-body", UIDrawerBody);
-defineElement("ui-drawer-footer", UIDrawerFooter);
+defineElement("ui-drawer", Drawer);
+defineElement("ui-drawer-header", DrawerHeader);
+defineElement("ui-drawer-title", DrawerTitle);
+defineElement("ui-drawer-description", DrawerDescription);
+defineElement("ui-drawer-body", DrawerBody);
+defineElement("ui-drawer-footer", DrawerFooter);

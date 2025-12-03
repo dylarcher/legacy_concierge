@@ -1,3 +1,4 @@
+import { resolveImage } from "../../assets/image-manifest.js";
 import { BaseComponent, defineElement } from "../_base.js";
 
 /**
@@ -53,7 +54,8 @@ export class CardLocation extends BaseComponent {
 	 * @returns {void}
 	 */
 	render() {
-		const bgImage = this.getAttribute("bg-image") || "";
+		const bgImageAttr = this.getAttribute("bg-image");
+		const bgImage = bgImageAttr ? resolveImage(bgImageAttr) : "";
 		const bgPosition = this.getAttribute("bg-position") || "center";
 		const bgSize = this.getAttribute("bg-size") || "cover";
 
@@ -62,7 +64,6 @@ export class CardLocation extends BaseComponent {
 			"relative overflow-hidden rounded-2xl",
 			"h-full min-h-[443px]",
 			"shadow-xl ring-1 ring-zinc-950/5",
-			"dark:ring-white/10",
 			this.className,
 		);
 

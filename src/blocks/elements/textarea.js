@@ -1,4 +1,4 @@
-import { BaseComponent, defineElement } from "../_base.js";
+import { BaseComponent, defineElement } from "./_base.js";
 
 /**
  * Textarea component
@@ -86,25 +86,20 @@ export class Textarea extends BaseComponent {
 
 		const wrapperClasses = this.combineClassNames(
 			"relative block w-full",
-			"before:absolute before:inset-px before:rounded-[calc(var(--radius-lg,0.5rem)-1px)] before:bg-white before:shadow-sm",
-			"dark:before:hidden",
+			"before:absolute before:inset-px before:rounded-[calc(var(--radius-lg,0.5rem)-1px)] before:before:shadow-sm",
 			"after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset",
-			"sm:focus-within:after:ring-2 sm:focus-within:after:ring-blue-500",
-			isDisabled && "opacity-50 before:bg-zinc-950/5 before:shadow-none",
+			isDisabled && "opacity-50 before:before:shadow-none",
 		);
 
 		const textareaClasses = this.combineClassNames(
 			"relative block h-full w-full appearance-none rounded-lg",
 			"px-[calc(var(--spacing,0.25rem)*3.5-1px)] py-[calc(var(--spacing,0.25rem)*2.5-1px)]",
 			"sm:px-[calc(var(--spacing,0.25rem)*3-1px)] sm:py-[calc(var(--spacing,0.25rem)*1.5-1px)]",
-			"text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 dark:text-white",
-			"border border-zinc-950/10 hover:border-zinc-950/20 dark:border-white/10 dark:hover:border-white/20",
-			"bg-transparent dark:bg-white/5",
-			"focus:outline-none",
-			isInvalid &&
-				"border-red-500 hover:border-red-500 dark:border-red-600 dark:hover:border-red-600",
-			isDisabled &&
-				"border-zinc-950/20 dark:border-white/15 dark:bg-white/[2.5%] dark:hover:border-white/15",
+			"text-base/6 text-canvas placeholder:text-muted sm:text-sm/6",
+			"border border-zinc-950/10 bg-transparent",
+			"focus:outline-none focus:ring-2 focus:ring-blue-500",
+			isInvalid && "border-red-500",
+			isDisabled && "opacity-50 cursor-not-allowed",
 			isResizable ? "resize-y" : "resize-none",
 		);
 
@@ -131,4 +126,4 @@ export class Textarea extends BaseComponent {
 	}
 }
 
-defineElement("ui-textarea", UITextarea);
+defineElement("ui-textarea", Textarea);

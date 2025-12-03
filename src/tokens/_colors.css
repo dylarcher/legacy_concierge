@@ -1,0 +1,104 @@
+:root {
+	/* COOL TONES: blues */
+	--color-navy: #0f2836;
+	--color-steel: #58737a;
+	--color-sage: #a0bdbf;
+	--color-frost: #d4e4e5;
+
+	/* WARM TONES: earth tones */
+	--color-sand: #b7ac9d;
+	--color-taupe: #9c8874;
+	--color-sienna: #82644c;
+	--color-ivory: #fbf6f3;
+
+	/* GRAYSCALE: for shading */
+	--color-coal: #181818;
+	--color-ash: #494949;
+	--color-slate: #7a7a7a;
+	--color-silver: #ababab;
+	--color-pearl: #dcdcdc;
+	--color-snow: #f7f7f7;
+
+	/* ACCENTS: for status/state */
+	--color-coral: #ee6c6e; /* danger/error/destructive */
+	--color-iris: #696bec; /* info/notification/details */
+	--color-jade: #4ba87c; /* success/confirmative/transactional */
+	--color-amber: #fac775; /* warning/cautionary/alert */
+
+	/* sRGB for alpha blending: "a" for alpha */
+	--srgb-navy: rgb(15 40 54 / var(--a-navy, 1));
+	--srgb-steel: rgb(88 115 122 / var(--a-steel, 1));
+	--srgb-sage: rgb(160 189 191 / var(--a-sage, 1));
+	--srgb-frost: rgb(212 228 229 / var(--a-frost, 1));
+
+	--srgb-sand: rgb(183 172 157 / var(--a-sand, 1));
+	--srgb-taupe: rgb(156 136 116 / var(--a-taupe, 1));
+	--srgb-sienna: rgb(130 100 76 / var(--a-sienna, 1));
+	--srgb-ivory: rgb(251 246 243 / var(--a-ivory, 1));
+
+	--srgb-coal: rgb(24 24 24 / var(--a-coal, 1));
+	--srgb-ash: rgb(73 73 73 / var(--a-ash, 1));
+	--srgb-slate: rgb(122 122 122 / var(--a-slate, 1));
+	--srgb-silver: rgb(171 171 171 / var(--a-silver, 1));
+	--srgb-pearl: rgb(220 220 220 / var(--a-pearl, 1));
+	--srgb-snow: rgb(247 247 247 / var(--a-snow, 1));
+
+	--srgb-coral: rgb(238 108 110 / var(--a-coral, 1));
+	--srgb-iris: rgb(105 107 236 / var(--a-iris, 1));
+	--srgb-jade: rgb(75 168 124 / var(--a-jade, 1));
+	--srgb-amber: rgb(250 199 117 / var(--a-amber, 1));
+}
+
+/* OKLCH color space (with fallback support detection) */
+@supports (fill: oklch(0% 0 0 / 1)) {
+	:root {
+		/* BLUES */
+		--oklch-navy: 19.45% 0.0437 24.76;
+		--oklch-steel: 48.47% 0.034 235.87;
+		--oklch-sage: 75.48% 0.0303 227.34;
+		--oklch-frost: 88.72% 0.0192 22.5;
+
+		/* EARTH TONES */
+		--oklch-sand: 71.00% 0.0267 64.8;
+		--oklch-taupe: 58.65% 0.0428 58.76;
+		--oklch-sienna: 46.23% 0.0621 53.78;
+		--oklch-ivory: 97.16% 0.0078 54.81;
+
+		/* NEUTRALS */
+		--oklch-coal: 15.01% 0 0;
+		--oklch-ash: 35.67% 0 0;
+		--oklch-slate: 53.86% 0 0;
+		--oklch-silver: 7.50% 0 0;
+		--oklch-pearl: 87.60% 0 0;
+		--oklch-snow: 97.75% 0 0;
+
+		/* ACCENTS */
+		--oklch-coral: 63.84% 0.1744 17.78;
+		--oklch-iris: 57.52% 0.1818 276.51;
+		--oklch-jade: 63.63% 0.1209 161.32;
+		--oklch-amber: 83.87% 0.1236 8.94;
+
+		/* OKLCH for alpha blending: "o" for opacity */
+		--color-navy: oklch(var(--oklch-navy) / var(--o-navy, 1));
+		--color-steel: oklch(var(--oklch-steel) / var(--o-steel, 1));
+		--color-sage: oklch(var(--oklch-sage) / var(--o-sage, 1));
+		--color-frost: oklch(var(--oklch-frost) / var(--o-frost, 1));
+
+		--color-sand: oklch(var(--oklch-sand) / var(--o-sand, 1));
+		--color-taupe: oklch(var(--oklch-taupe) / var(--o-taupe, 1));
+		--color-sienna: oklch(var(--oklch-sienna) / var(--o-sienna, 1));
+		--color-ivory: oklch(var(--oklch-ivory) / var(--o-ivory, 1));
+
+		--color-coal: oklch(var(--oklch-coal) / var(--o-coal, 1));
+		--color-ash: oklch(var(--oklch-ash) / var(--o-ash, 1));
+		--color-slate: oklch(var(--oklch-slate) / var(--o-slate, 1));
+		--color-silver: oklch(var(--oklch-silver) / var(--o-silver, 1));
+		--color-pearl: oklch(var(--oklch-pearl) / var(--o-pearl, 1));
+		--color-snow: oklch(var(--oklch-snow) / var(--o-snow, 1));
+
+		--color-coral: oklch(var(--oklch-coral) / var(--o-coral, 1));
+		--color-iris: oklch(var(--oklch-iris) / var(--o-iris, 1));
+		--color-jade: oklch(var(--oklch-jade) / var(--o-jade, 1));
+		--color-amber: oklch(var(--oklch-amber) / var(--o-amber, 1));
+	}
+}

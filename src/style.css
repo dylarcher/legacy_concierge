@@ -1,183 +1,227 @@
 @import "tailwindcss";
 
-/* Playfair Display - Variable font (normal) */
-@font-face {
-	font-family: "Playfair Display";
-	src: url("./assets/fonts/serif/playfair-display-variable.ttf")
-		format("truetype");
-	font-weight: 100 900;
-	font-style: normal;
-	font-display: swap;
-}
+/* Import design tokens */
+@import "./tokens/color-palette.css";
+@import "./tokens/typography.css";
 
-/* Playfair Display - Variable font (italic) */
-@font-face {
-	font-family: "Playfair Display";
-	src: url("./assets/fonts/serif/playfair-display-italic-variable.ttf")
-		format("truetype");
-	font-weight: 100 900;
-	font-style: italic;
-	font-display: swap;
-}
+/* Tailwind theme variables sourced from tokens.css
+	 This file maps design tokens to Tailwind color slots so
+	 classes like bg-primary, text-secondary, border-accent, etc. use tokens.
+*/
 
-/* Playfair Display - Static fonts (fallback) */
-@font-face {
-	font-family: "Playfair Display";
-	src:
-		url("./assets/fonts/serif/playfair-display-regular.woff2") format("woff2"),
-		url("./assets/fonts/serif/playfair-display-regular.ttf") format("truetype");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
+@source "../blocks/**/*.{js,css}";
+@source "../pages/**/*.html";
 
-@font-face {
-	font-family: "Playfair Display";
-	src:
-		url("./assets/fonts/serif/playfair-display-italic.woff2") format("woff2"),
-		url("./assets/fonts/serif/playfair-display-italic.ttf") format("truetype");
-	font-weight: 400;
-	font-style: italic;
-	font-display: swap;
-}
+@layer theme {
+	@theme {
+		/* Map Tailwind colors to color-tokens.css primitives without light-dark() */
+		--color-primary: var(--color-navy);
+		--color-primary-hover: var(--action-primary-bg-hover);
+		--color-primary-pressed: var(--action-primary-bg-active);
+		--color-primary-disabled: var(--action-primary-bg-disabled);
 
-@font-face {
-	font-family: "Playfair Display";
-	src:
-		url("./assets/fonts/serif/playfair-display-bold.woff2") format("woff2"),
-		url("./assets/fonts/serif/playfair-display-bold.ttf") format("truetype");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
-}
+		--color-secondary: var(--color-sage);
+		--color-secondary-hover: var(--action-secondary-bg-hover);
+		--color-secondary-pressed: var(--action-secondary-bg-active);
+		--color-secondary-disabled: var(--action-secondary-bg-disabled);
 
-@font-face {
-	font-family: "Playfair Display";
-	src:
-		url("./assets/fonts/serif/playfair-display-bold-italic.woff2")
-		format("woff2"),
-		url("./assets/fonts/serif/playfair-display-bold-italic.ttf")
-		format("truetype");
-	font-weight: 700;
-	font-style: italic;
-	font-display: swap;
-}
+		--color-accent: var(--color-sienna);
+		--color-accent-hover: var(--action-accent-bg-hover);
+		--color-accent-pressed: var(--action-accent-bg-active);
+		--color-accent-disabled: var(--action-accent-bg-disabled);
 
-/* Work Sans - Variable font */
-@font-face {
-	font-family: "Work Sans";
-	src: url("./assets/fonts/sans/work-sans-variable.ttf") format("truetype");
-	font-weight: 100 900;
-	font-style: normal;
-	font-display: swap;
-}
+		--color-muted: var(--color-pearl);
+		--color-muted-hover: var(--action-muted-bg-hover);
+		--color-muted-pressed: var(--action-muted-bg-active);
+		--color-muted-disabled: color-mix(
+			in oklab,
+			var(--color-pearl) 60%,
+			var(--color-coal)
+		);
 
-/* Work Sans - Static fonts (fallback) */
-@font-face {
-	font-family: "Work Sans";
-	src:
-		url("./assets/fonts/sans/work-sans-light.woff2") format("woff2"),
-		url("./assets/fonts/sans/work-sans-light.ttf") format("truetype");
-	font-weight: 300;
-	font-style: normal;
-	font-display: swap;
-}
+		--color-canvas: var(--color-ivory);
+		--color-canvas-hover: color-mix(
+			in oklab,
+			var(--color-ivory) 95%,
+			var(--color-coal)
+		);
+		--color-canvas-pressed: color-mix(
+			in oklab,
+			var(--color-ivory) 90%,
+			var(--color-coal)
+		);
+		--color-canvas-disabled: color-mix(
+			in oklab,
+			var(--color-ivory) 70%,
+			var(--color-coal)
+		);
 
-@font-face {
-	font-family: "Work Sans";
-	src:
-		url("./assets/fonts/sans/work-sans-regular.woff2") format("woff2"),
-		url("./assets/fonts/sans/work-sans-regular.ttf") format("truetype");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
+		--color-canvastext: var(--color-coal);
+		--color-canvastext-hover: var(--color-ash);
+		--color-canvastext-pressed: var(--color-slate);
+		--color-canvastext-disabled: var(--color-silver);
 
-@font-face {
-	font-family: "Work Sans";
-	src:
-		url("./assets/fonts/sans/work-sans-semibold.woff2") format("woff2"),
-		url("./assets/fonts/sans/work-sans-semibold.ttf") format("truetype");
-	font-weight: 600;
-	font-style: normal;
-	font-display: swap;
-}
+		/* Elevation overlays */
+		--overlay-1: var(--color-overlay-alpha-min);
+		--overlay-2: var(--color-overlay-alpha-mid);
+		--overlay-3: var(--color-overlay-alpha-max);
 
-/* ============================================
-   Tailwind v4 Theme Configuration
-   ============================================ */
-@theme {
-	/* Primary */
-	--color-primary-dark: #0b2736;
-	--color-primary-accent: #668d8e;
+		/* Semantic aliases for convenience */
+		--color-fg: var(--fg-primary);
+		--color-fg-muted: var(--fg-muted);
+		--color-fg-inverse: var(--fg-inverse);
 
-	/* Neutral */
-	--color-white: #ffffff;
-	--color-text-primary: #231f20;
-	--color-text-secondary: #403e3b;
+		--color-bg: var(--bg-primary);
+		--color-bg-surface: var(--bg-surface);
+		--color-bg-muted: var(--bg-muted);
+		--color-bg-inverse: var(--bg-inverse);
 
-	/* Backgrounds */
-	--color-bg-light: #f5f0eb;
-	--color-bg-dark: #0b2736;
+		--color-surface-primary: var(--surface-primary);
+		--color-surface-secondary: var(--surface-secondary);
+		--color-surface-accent: var(--surface-accent);
+		--color-surface-muted: var(--surface-muted);
 
-	/** CURRENT STYLING VARIABLE **/
+		--color-border-strong: var(--border-strong);
+		--color-border-medium: var(--border-medium);
+		--color-border-soft: var(--border-soft);
 
-	/* Font families - overrides Tailwind defaults */
-	--font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
-	--font-serif: "Playfair Display", ui-serif, Georgia, serif;
+		--color-focus-ring: var(--focus-ring);
+		--color-selection-fg: var(--selection-fg);
+		--color-selection-bg: var(--selection-bg);
 
-	/* Brand colors - generates utilities like bg-primary, text-accent, etc. */
-	--color-primary: color(srgb 0.027 0.157 0.208);
-	--color-secondary: color(srgb 0.502 0.384 0.298);
-	--color-tertiary: color(srgb 0.514 0.49 0.49);
-	--color-accent: color(srgb 0.376 0.667 0.639);
-	--color-muted: color(srgb 0.353 0.51 0.522);
+		/* Status aliases */
+		--color-status-error: var(--color-coral);
+		--color-status-info: var(--color-iris);
+		--color-status-success: var(--color-jade);
+		--color-status-warning: var(--color-amber);
 
-	/* Semantic colors */
-	--color-bg: color(srgb 1 1 1);
-	--color-text: color(srgb 0 0 0);
-	--color-accent-text: color(srgb 1 1 1);
-	--color-muted-text: color(srgb 0.4 0.553 0.557);
-	--color-card-text: color(srgb 1 1 1);
+		--status-error-fg: var(--status-error-fg);
+		--status-error-bg: var(--status-error-bg);
+		--status-error-border: var(--status-error-border);
+		--status-error-ring: var(--status-error-ring);
+		--status-error-text: var(--status-error-text);
 
-	/* Overlay colors with alpha */
-	--color-overlay: color(srgb 0.314 0.208 0.169 / 15%);
-	--color-overlay-card: color(srgb 0.945 0.945 0.945 / 33%);
-	--color-overlay-muted: color(srgb 0.314 0.208 0.169 / 15%);
-	--color-card: color(srgb 0.196 0.122 0.086 / 28%);
+		--status-info-fg: var(--status-info-fg);
+		--status-info-bg: var(--status-info-bg);
+		--status-info-border: var(--status-info-border);
+		--status-info-ring: var(--status-info-ring);
+		--status-info-text: var(--status-info-text);
 
-	/* Gradient definitions */
-	--gradient-overlay: linear-gradient(
-		180deg,
-		color(srgb 12 0 0 / 28%) 0%,
-		color(srgb 131 125 125 / 48%) 48%,
-		color(srgb 255 255 255 / 0%) 100%
-	);
-	--gradient-overlay-flip: linear-gradient(
-		180deg,
-		color(srgb 12 0 0 / 100%) 0%,
-		color(srgb 131 125 125 / 48%) 48%,
-		color(srgb 255 255 255 / 0%) 28%
-	);
-	--gradient-overlay-card: linear-gradient(
-		180deg,
-		color(srgb 12 0 0 / 100%) 0%,
-		color(srgb 255 255 255 / 0%) 28%
-	);
-	--gradient-card: linear-gradient(
-		136deg,
-		color(srgb 50 31 22 / 48%) 0%,
-		color(srgb 80 53 43 / 28%) 100%
-	);
-}
+		--status-success-fg: var(--status-success-fg);
+		--status-success-bg: var(--status-success-bg);
+		--status-success-border: var(--status-success-border);
+		--status-success-ring: var(--status-success-ring);
+		--status-success-text: var(--status-success-text);
 
-:root {
-	color-scheme: light;
+		--status-warning-fg: var(--status-warning-fg);
+		--status-warning-bg: var(--status-warning-bg);
+		--status-warning-border: var(--status-warning-border);
+		--status-warning-ring: var(--status-warning-ring);
+		--status-warning-text: var(--status-warning-text);
+
+		/* Component-level aliases (buttons/inputs/cards) */
+		--btn-solid-fg: var(--color-muted);
+		--btn-solid-bg: var(--color-primary);
+		--btn-solid-bg-hover: var(--color-primary-hover);
+		--btn-solid-bg-pressed: var(--color-primary-pressed);
+		--btn-solid-bg-disabled: var(--color-primary-disabled);
+		--btn-solid-border: var(--color-primary);
+
+		/* Outline buttons map to primary color and canvas backgrounds */
+		--btn-outline-fg: var(--color-primary);
+		--btn-outline-bg: var(--color-canvas);
+		--btn-outline-bg-hover: var(--color-canvas-hover);
+		--btn-outline-bg-pressed: var(--color-canvas-pressed);
+		--btn-outline-border: var(--color-primary);
+		--btn-outline-border-hover: var(--color-primary-hover);
+
+		/* Subtle buttons use muted palette */
+		--btn-subtle-fg: var(--color-primary);
+		--btn-subtle-bg: var(--color-muted);
+		--btn-subtle-bg-hover: var(--color-muted-hover);
+		--btn-subtle-bg-pressed: var(--color-muted-pressed);
+
+		/* Inputs */
+		--input-fg: var(--color-canvastext);
+		--input-bg: var(--color-canvas);
+		--input-border: var(--color-border-soft);
+		--input-border-hover: var(--color-border-strong);
+		--input-border-focus: var(--color-focus-ring);
+		--input-placeholder: var(--color-fg-muted);
+		--input-valid-ring: var(--status-success-ring);
+		--input-warning-ring: var(--status-warning-ring);
+		--input-error-ring: var(--status-error-ring);
+
+		/* Cards */
+		--card-fg: var(--color-canvastext);
+		--card-bg: var(--bg-surface);
+		--card-bg-hover: var(--bg-muted);
+		--card-border: var(--color-border-soft);
+		--card-shadow: color-mix(
+			in oklab,
+			var(--color-coal) 8%,
+			var(--color-transparent)
+		);
+
+		/* Font families from font-tokens.css */
+		--font-sans: var(--font-body-type);
+		--font-display: var(--font-display-type);
+		--font-serif: var(--font-title-type);
+		--font-mono: var(--font-caption-type);
+		--font-slab: var(--font-accent-type);
+		--font-condensed: var(--font-heavy-type);
+		--font-rounded: var(--font-soft-type);
+		--font-code: var(--font-code-type);
+
+		/* Text sizes from font-tokens.css */
+		--text-xxl: var(--text-size-xxl);
+		--text-xl: var(--text-size-xl);
+		--text-lg: var(--text-size-lg);
+		--text-md: var(--text-size-md);
+		--text-sm: var(--text-size-sm);
+		--text-xs: var(--text-size-xs);
+		--text-xxs: var(--text-size-xxs);
+
+		/* Line heights from font-tokens.css */
+		--leading-xxl: var(--line-height-xxl);
+		--leading-xl: var(--line-height-xl);
+		--leading-lg: var(--line-height-lg);
+		--leading-md: var(--line-height-md);
+		--leading-sm: var(--line-height-sm);
+		--leading-xs: var(--line-height-xs);
+
+		/* Utility aliases to Tailwind classnames for direct usage */
+		--tracking-lg: var(--letter-spacing-lg);
+		--tracking-md: var(--letter-spacing-md);
+		--tracking-sm: var(--letter-spacing-sm);
+		--tracking-xs: var(--letter-spacing-xs);
+		--tracking-xxs: var(--letter-spacing-xxs);
+	}
 }
 
 @layer base {
+	/* Base typography and layout resets */
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	html {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: geometricPrecision;
+		font-family: var(--font-body-type);
+		font-size: var(--text-size-md);
+		line-height: var(--line-height-md);
+		letter-spacing: var(--letter-spacing-md);
+		color: var(--fg-primary);
+		background: var(--bg-primary);
+	}
+
 	body {
-		font-family: var(--font-sans);
+		margin: 0;
+		padding: 0;
 	}
 
 	h1,
@@ -186,92 +230,102 @@
 	h4,
 	h5,
 	h6 {
-		font-family: var(--font-serif);
-	}
-
-	h1 {
-		font-size: var(--text-6xl);
-	}
-
-	h2 {
-		font-size: var(--text-4xl);
-	}
-
-	h3 {
-		font-size: var(--text-2xl);
-	}
-
-	h4 {
-		font-size: var(--text-xl);
-	}
-
-	h5 {
-		font-size: var(--text-lg);
-	}
-
-	h6 {
-		font-size: var(--text-md);
+		font-weight: 600;
+		margin: 0;
 	}
 
 	h1,
-	h2 {
-		font-weight: 300;
-		letter-spacing: 0.02em;
+	h2,
+	h4 {
+		font-family: var(--font-title-type);
 	}
 
 	h3,
-	h4 {
-		font-weight: 400;
-		letter-spacing: 0.04em;
-	}
-
-	h5,
 	h6 {
-		font-weight: 500;
-		letter-spacing: 0.06em;
+		font-family: var(--font-display-type);
 	}
 
-	textarea,
-	button,
-	select,
-	input {
-		color: inherit;
-		font: inherit;
-		line-height: 1;
-	}
-
-	button {
-		letter-spacing: 0.03em;
+	h1 {
+		font-size: var(--text-size-xxl);
+		line-height: var(--line-height-xxl);
+		letter-spacing: var(--letter-spacing-xxs);
 		text-transform: uppercase;
 	}
 
+	h2 {
+		font-size: var(--text-size-xl);
+		line-height: var(--line-height-xl);
+		letter-spacing: var(--letter-spacing-lg);
+	}
+
+	h3 {
+		font-size: var(--text-size-lg);
+		line-height: var(--line-height-lg);
+		letter-spacing: var(--letter-spacing-xxs);
+		font-weight: 500;
+	}
+
+	h4 {
+		font-size: var(--text-size-md);
+		line-height: var(--line-height-md);
+		letter-spacing: var(--letter-spacing-xxl);
+		font-style: italic;
+		font-weight: 700;
+	}
+
+	h5 {
+		font-family: var(--font-condensed);
+		font-size: var(--text-size-xs);
+		line-height: var(--line-height-sm);
+		letter-spacing: var(--letter-spacing-xxl);
+		font-weight: bolder;
+		text-transform: uppercase;
+	}
+
+	h6 {
+		font-family: var(--font-soft-type);
+		font-size: var(--text-size-xs);
+		line-height: var(--line-height-xs);
+		letter-spacing: var(--letter-spacing-md);
+		font-weight: 700;
+	}
+
+	p {
+		margin: 0;
+	}
+
 	:any-link,
-	[href] {
+	a {
 		color: var(--color-primary);
-		text-decoration: underline;
-		text-decoration-color: transparent;
-		text-decoration-thickness: 0.125em;
-		text-underline-offset: 0.15em;
-		transition:
-			color 0.24s,
-			text-decoration 0.24s,
-			0.12s transform 0.12s;
-		will-change: color, text-decoration-color, transform;
+		text-decoration: none;
+	}
 
-		&:hover {
-			color: var(--color-accent);
-			text-decoration-color: var(--color-accent);
-		}
+	a:hover {
+		color: var(--color-primary-hover);
+	}
 
-		&:focus-visible {
-			outline: 0.125em solid var(--color-primary);
-			outline-offset: 0.125em;
-		}
+	caption,
+	label,
+	samp,
+	var {
+		font-family: var(--font-caption-type);
+		font-size: var(--text-size-sm);
+	}
 
-		&:active {
-			text-underline-offset: 0.0625em;
-			transform: translateY(0.0625em);
-		}
+	code,
+	pre {
+		font-family: var(--font-code-type);
+		font-size: var(--text-size-sm);
+	}
+
+	::selection {
+		color: var(--selection-fg);
+		background: var(--selection-bg);
+	}
+
+	*:focus-visible {
+		outline: 1px dashed var(--color-iris);
+		outline-offset: 3px;
 	}
 }
 
@@ -320,32 +374,247 @@
 		}
 	}
 
-	.btn-primary {
-		@apply py-4 px-6 bg-cyan-300/32 text-white border-2 border-white/80 font-bold rounded-4xl;
-		@apply hover:bg-cyan-600/48 hover:border-white focus:border-white/12 focus:ring focus:ring-cyan-200/80;
-	}
-
-	.btn-secondary {
-		@apply py-4 px-6 bg-cyan-950 text-white font-bold rounded-4xl;
-		@apply hover:bg-cyan-800 focus:ring focus:ring-cyan-700/80;
-	}
-
-	.btn-tertiary {
-		@apply py-4 px-6 bg-gray-100/32 text-cyan-950/96 font-bold rounded-4xl;
-		@apply hover:bg-gray-200/48 focus:ring focus:ring-cyan-400/24;
+	global-nav :is(button, a, :any-link) {
+		text-transform: uppercase;
+		letter-spacing: var(--letter-spacing-lg);
+		font-weight: 600;
 	}
 }
 
+/* Utility aliases to Tailwind classnames for direct usage */
 @layer utilities {
-	.bg-gradient-card {
-		background: var(--gradient-card);
+	/* Backgrounds */
+	.bg-primary {
+		background-color: var(--color-primary);
+	}
+	.bg-secondary {
+		background-color: var(--color-secondary);
+	}
+	.bg-accent {
+		background-color: var(--color-accent);
+	}
+	.bg-muted {
+		background-color: var(--color-bg-muted);
+	}
+	.bg-canvas {
+		background-color: var(--color-canvas);
+	}
+	.bg-surface {
+		background-color: var(--color-bg-surface);
+	}
+	.bg-depth-1 {
+		background-color: var(--bg-depth-1);
+	}
+	.bg-depth-2 {
+		background-color: var(--bg-depth-2);
+	}
+	.bg-inverse {
+		background-color: var(--color-bg-inverse);
 	}
 
-	.bg-gradient-overlay {
-		background: var(--gradient-overlay);
+	/* Text */
+	.text-primary {
+		color: var(--color-primary);
+	}
+	.text-secondary {
+		color: var(--color-secondary);
+	}
+	.text-accent {
+		color: var(--color-accent);
+	}
+	.text-muted {
+		color: var(--color-fg-muted);
+	}
+	.text-canvas {
+		color: var(--color-canvastext);
+	}
+	.text-inverse {
+		color: var(--color-fg-inverse);
 	}
 
-	.bg-gradient-overlay-flip {
-		background: var(--gradient-overlay-flip);
+	/* Borders */
+	.border-primary {
+		border-color: var(--color-primary);
+	}
+	.border-secondary {
+		border-color: var(--color-secondary);
+	}
+	.border-accent {
+		border-color: var(--color-accent);
+	}
+	.border-muted {
+		border-color: var(--color-muted);
+	}
+	.border-strong {
+		border-color: var(--color-border-strong);
+	}
+
+	/* Rings / Focus */
+	.ring-primary {
+		--tw-ring-color: var(--color-primary);
+	}
+	.ring-secondary {
+		--tw-ring-color: var(--color-secondary);
+	}
+	.ring-accent {
+		--tw-ring-color: var(--color-accent);
+	}
+
+	/* Status utilities */
+	.bg-status-error {
+		background-color: var(--status-error-bg);
+	}
+	.bg-status-info {
+		background-color: var(--status-info-bg);
+	}
+	.bg-status-success {
+		background-color: var(--status-success-bg);
+	}
+	.bg-status-warning {
+		background-color: var(--status-warning-bg);
+	}
+
+	.text-status-error,
+	.text-badge-error {
+		color: var(--status-error-text);
+	}
+	.text-status-info,
+	.text-badge-info {
+		color: var(--status-info-text);
+	}
+	.text-status-success,
+	.text-badge-success {
+		color: var(--status-success-text);
+	}
+	.text-status-warning,
+	.text-badge-warning {
+		color: var(--status-warning-text);
+	}
+
+	.border-status-error {
+		border-color: var(--status-error-border);
+	}
+	.border-status-info {
+		border-color: var(--status-info-border);
+	}
+	.border-status-success {
+		border-color: var(--status-success-border);
+	}
+	.border-status-warning {
+		border-color: var(--status-warning-border);
+	}
+
+	.ring-status-error {
+		--tw-ring-color: var(--status-error-ring);
+	}
+	.ring-status-info {
+		--tw-ring-color: var(--status-info-ring);
+	}
+	.ring-status-success {
+		--tw-ring-color: var(--status-success-ring);
+	}
+	.ring-status-warning {
+		--tw-ring-color: var(--status-warning-ring);
+	}
+
+	/* Buttons (semantic) */
+	.btn-solid {
+		color: var(--color-canvas);
+		background: var(--color-primary);
+		border-color: var(--color-primary);
+	}
+	.btn-solid:hover {
+		background: var(--color-primary-hover);
+	}
+	.btn-solid:active {
+		background: var(--color-primary-pressed);
+	}
+	.btn-solid:disabled {
+		background: var(--color-primary-disabled);
+	}
+
+	.btn-outline {
+		color: var(--color-primary);
+		background: var(--color-transparent);
+		border-color: var(--color-primary);
+	}
+
+	.btn-outline:hover {
+		border-color: var(--color-primary-hover);
+		background: var(--color-primary-hover);
+		color: var(--color-canvas);
+	}
+
+	.btn-outline:active {
+		border-color: var(--color-primary-pressed);
+		background: var(--color-primary-disabled);
+		color: var(--color-canvas);
+		opacity: 0.64;
+	}
+
+	.btn-outline:disabled {
+		background: var(--color-primary-disabled);
+		color: var(--color-canvas);
+		filter: brightness(0.8) opacity(0.48) grayscale(1);
+		outline: 2px dashed var(--color-slate);
+		outline-offset: 2px;
+	}
+
+	.btn-subtle {
+		color: var(--color-canvastext);
+		background: var(--color-muted);
+	}
+
+	.btn-subtle:hover {
+		background: var(--color-muted-hover);
+	}
+
+	.btn-subtle:active {
+		background: var(--color-muted-pressed);
+	}
+
+	.btn-subtle:disabled {
+		background: var(--color-muted-disabled);
+		color: var(--color-canvastext-disabled);
+		filter: brightness(0.8) opacity(0.48) grayscale(1);
+		outline: 2px dashed var(--color-slate);
+		outline-offset: 2px;
+	}
+
+	/* Inputs */
+	.input-fg {
+		color: var(--color-canvastext);
+	}
+	.input-bg {
+		background: var(--color-canvas);
+	}
+	.input-border {
+		border-color: var(--color-secondary);
+	}
+	.input-border-hover:hover {
+		border-color: var(--color-secondary-hover);
+	}
+	.input-focus:focus {
+		outline-color: var(--color-primary);
+	}
+	.placeholder-muted::placeholder {
+		color: var(--fg-subtle);
+	}
+
+	/* Cards */
+	.card-fg {
+		color: var(--color-canvastext);
+	}
+	.card-bg {
+		background: var(--color-muted);
+	}
+	.card-bg-hover:hover {
+		background: var(--color-muted-hover);
+	}
+	.card-border {
+		border-color: var(--color-border-soft);
+	}
+	.card-shadow {
+		box-shadow: 0 2px 4px var(--card-shadow);
 	}
 }

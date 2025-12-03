@@ -1,3 +1,4 @@
+import { resolveImage } from "../../assets/image-manifest.js";
 import { BaseComponent, defineElement } from "../_base.js";
 
 /**
@@ -36,7 +37,8 @@ class TeamMember extends BaseComponent {
 	}
 
 	render() {
-		const bgImage = this.getAttribute("bg-image") || "";
+		const bgImageAttr = this.getAttribute("bg-image");
+		const bgImage = bgImageAttr ? resolveImage(bgImageAttr) : "";
 		const bgPosition = this.getAttribute("bg-position") || "left center";
 		const bgSize = this.getAttribute("bg-size") || "cover";
 
@@ -56,7 +58,7 @@ class TeamMember extends BaseComponent {
 			[
 				// Semi-transparent overlay for better text readability
 				this.h("div", {
-					class: "absolute inset-0 bg-black/20 pointer-events-none",
+					class: "absolute inset-0 pointer-events-none",
 				}),
 				// Content container
 				this.h(
@@ -68,7 +70,7 @@ class TeamMember extends BaseComponent {
 						this.h(
 							"div",
 							{
-								class: "text-zinc-900 text-base leading-relaxed",
+								class: "text-base leading-relaxed",
 							},
 							[this.h("slot")],
 						),

@@ -1,3 +1,4 @@
+import { resolveImage } from "../../assets/image-manifest.js";
 import { BaseComponent, defineElement } from "../_base.js";
 
 /**
@@ -34,7 +35,8 @@ class CardTreatment extends BaseComponent {
 	}
 
 	render() {
-		const bgImage = this.getAttribute("bg-image") || "";
+		const bgImageAttr = this.getAttribute("bg-image");
+		const bgImage = bgImageAttr ? resolveImage(bgImageAttr) : "";
 		const bgPosition = this.getAttribute("bg-position") || "center";
 		const bgSize = this.getAttribute("bg-size") || "cover";
 
@@ -74,14 +76,14 @@ class CardTreatment extends BaseComponent {
 								this.h(
 									"div",
 									{
-										class: "text-white text-2xl font-bold leading-tight",
+										class: "text-2xl font-bold leading-tight",
 									},
 									[this.h("slot", { name: "title" })],
 								),
 								this.h(
 									"div",
 									{
-										class: "text-white/90 text-sm",
+										class: "text-sm",
 									},
 									[this.h("slot", { name: "description" })],
 								),
@@ -100,10 +102,10 @@ class CardTreatment extends BaseComponent {
 										type: "button",
 										class: this.combineClassNames(
 											"w-16 h-16 rounded-full",
-											"bg-white/10 hover:bg-white/20",
+											"bg-white/10",
 											"border border-white/50",
 											"flex items-center justify-center",
-											"text-white text-3xl font-light",
+											"text-3xl font-light",
 											"transition-colors duration-200",
 											"cursor-pointer",
 										),

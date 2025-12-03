@@ -70,9 +70,9 @@ export class Legend extends BaseComponent {
 
 	render() {
 		const classes = this.clsx(
-			"text-base/6 font-semibold text-zinc-950",
+			"text-base/6 font-semibold text-canvas",
 			"[fieldset[data-disabled]_&]:opacity-50",
-			"sm:text-sm/6 dark:text-white",
+			"sm:text-sm/6",
 			this.className,
 		);
 
@@ -206,9 +206,9 @@ export class Label extends BaseComponent {
 
 	render() {
 		const classes = this.clsx(
-			"text-base/6 text-zinc-950 select-none",
+			"text-base/6 text-canvas select-none",
 			"[*[data-disabled]_&]:opacity-50",
-			"sm:text-sm/6 dark:text-white",
+			"sm:text-sm/6",
 			this.className,
 		);
 
@@ -236,9 +236,9 @@ export class Description extends BaseComponent {
 
 	render() {
 		const classes = this.clsx(
-			"text-base/6 text-zinc-500",
+			"text-base/6 text-muted",
 			"[*[data-disabled]_&]:opacity-50",
-			"sm:text-sm/6 dark:text-zinc-400",
+			"sm:text-sm/6",
 			this.className,
 		);
 
@@ -268,7 +268,7 @@ export class ErrorMessage extends BaseComponent {
 		const classes = this.clsx(
 			"text-base/6 text-red-600",
 			"[*[data-disabled]_&]:opacity-50",
-			"sm:text-sm/6 dark:text-red-500",
+			"sm:text-sm/6",
 			this.className,
 		);
 
@@ -284,10 +284,10 @@ export class ErrorMessage extends BaseComponent {
 	}
 }
 
-defineElement("ui-fieldset", UIFieldset);
-defineElement("ui-legend", UILegend);
-defineElement("ui-field-group", UIFieldGroup);
-defineElement("ui-field", UIField);
-defineElement("ui-label", UILabel);
-defineElement("ui-description", UIDescription);
-defineElement("ui-error-message", UIErrorMessage);
+defineElement("ui-fieldset", Fieldset);
+defineElement("ui-legend", Legend);
+defineElement("ui-field-group", FieldGroup);
+defineElement("ui-field", Field);
+defineElement("ui-label", Label);
+defineElement("ui-description", Description);
+defineElement("ui-error-message", ErrorMessage);

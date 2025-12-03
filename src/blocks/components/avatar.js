@@ -49,7 +49,7 @@ export class Avatar extends BaseComponent {
 		const wrapperClasses = this.combineClassNames(
 			"inline-grid shrink-0 align-middle [--avatar-radius:20%]",
 			"[&>*]:col-start-1 [&>*]:row-start-1",
-			"outline -outline-offset-1 outline-black/10 dark:outline-white/10",
+			"outline -outline-offset-1 outline-black/10",
 			isSquare
 				? "rounded-[var(--avatar-radius)] [&>*]:rounded-[var(--avatar-radius)]"
 				: "rounded-full [&>*]:rounded-full",
@@ -170,7 +170,7 @@ export class AvatarButton extends BaseComponent {
 
 		const buttonClasses = this.combineClassNames(
 			isSquare ? "rounded-[20%]" : "rounded-full",
-			"relative inline-grid focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500",
+			"relative inline-grid",
 		);
 
 		const buttonElement = this.createInteractiveElement(
@@ -196,5 +196,5 @@ export class AvatarButton extends BaseComponent {
 	}
 }
 
-defineElement("ui-avatar", UIAvatar);
-defineElement("ui-avatar-button", UIAvatarButton);
+defineElement("ui-avatar", Avatar);
+defineElement("ui-avatar-button", AvatarButton);

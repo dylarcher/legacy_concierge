@@ -30,9 +30,7 @@ export class Divider extends BaseComponent {
 
 		const classes = this.clsx(
 			"w-full border-t",
-			soft
-				? "border-zinc-950/5 dark:border-white/5"
-				: "border-zinc-950/10 dark:border-white/10",
+			soft ? "border-zinc-950/5" : "border-zinc-950/10",
 			this.className,
 		);
 
@@ -42,4 +40,4 @@ export class Divider extends BaseComponent {
 	}
 }
 
-defineElement("ui-divider", UIDivider);
+defineElement("ui-divider", Divider);

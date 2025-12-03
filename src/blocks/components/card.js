@@ -47,10 +47,9 @@ export class Card extends BaseComponent {
 		const hasHoverEffect = this.hasAttribute("hover");
 
 		const cardClasses = this.combineClassNames(
-			"rounded-xl bg-white p-6 shadow-lg",
-			"ring-1 ring-zinc-950/5",
-			"dark:bg-zinc-900 dark:ring-white/10",
-			hasHoverEffect && "transition-shadow hover:shadow-xl",
+			"rounded-xl card-bg p-6 shadow-lg",
+			"ring-1 card-border",
+			hasHoverEffect && "transition-shadow card-bg-hover",
 			this.className,
 		);
 
@@ -119,7 +118,7 @@ export class CardTitle extends BaseComponent {
 	 */
 	render() {
 		const titleClasses = this.combineClassNames(
-			"text-lg/6 font-semibold text-zinc-950 dark:text-white",
+			"text-lg/6 font-semibold card-fg",
 			this.className,
 		);
 
@@ -155,7 +154,7 @@ export class CardDescription extends BaseComponent {
 	 */
 	render() {
 		const descriptionClasses = this.combineClassNames(
-			"mt-1 text-sm/6 text-zinc-500 dark:text-zinc-400",
+			"mt-1 text-sm/6 text-muted",
 			this.className,
 		);
 
@@ -191,7 +190,7 @@ export class CardBody extends BaseComponent {
 	 */
 	render() {
 		const bodyClasses = this.combineClassNames(
-			"text-base/6 text-zinc-700 dark:text-zinc-300",
+			"text-base/6 text-muted",
 			this.className,
 		);
 
@@ -228,7 +227,7 @@ export class CardFooter extends BaseComponent {
 	render() {
 		const footerClasses = this.combineClassNames(
 			"mt-6 flex items-center justify-end gap-3",
-			"border-t border-zinc-950/5 pt-4 dark:border-white/10",
+			"border-t border-soft pt-4",
 			this.className,
 		);
 

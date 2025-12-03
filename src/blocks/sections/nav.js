@@ -6,18 +6,18 @@ import { BaseComponent, defineElement, FocusTrap } from "../_base.js";
  */
 export const NAVBAR_TEMPLATE = `
     <template id="navbar">
-        <header class="absolute bg-white inset-x-0 top-0 z-50" role="banner">
+        <header class="card-shadow absolute bg-canvas inset-x-0 top-0 z-50" role="banner">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <nav role="navigation" aria-label="Global" class="flex items-center justify-between py-6">
                 <div class="flex">
                     <a href="#" class="-m-1.5 p-1.5">
                         <span class="sr-only">Legacy Concierge</span>
-                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto dark:hidden" />
-                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="" class="h-8 w-auto not-dark:hidden" />
+                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto 
+                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="" class="h-8 w-auto not-
                     </a>
                 </div>
                 <div class="flex lg:hidden">
-                    <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-500 dark:text-gray-400">
+                    <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 
                         <span class="sr-only">Open main menu</span>
                         <svg fill="none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
                             <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -25,14 +25,14 @@ export const NAVBAR_TEMPLATE = `
                     </button>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12">
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Home</a>
-                    <a href="##" class="text-sm/6 font-semibold text-gray-900 dark:text-white">About</a>
-                    <a href="##" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Services</a>
-                    <a href="##" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Team</a>
-                    <a href="##" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Contact</a>
+                    <a href="#" class="text-sm/6 font-semibold 
+                    <a href="##" class="text-sm/6 font-semibold 
+                    <a href="##" class="text-sm/6 font-semibold 
+                    <a href="##" class="text-sm/6 font-semibold 
+                    <a href="##" class="text-sm/6 font-semibold 
                 </div>
                 <div class="hidden lg:flex lg:ml-8">
-                    <button type="button" command="show-modal" commandfor="search-dialog" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                    <button type="button" command="show-modal" commandfor="search-dialog" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 
                         <span class="sr-only">Search</span>
                         <svg fill="currentColor" width="18" height="18" aria-hidden="true" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" name="icon-search">
                             <title>Search</title>
@@ -44,32 +44,32 @@ export const NAVBAR_TEMPLATE = `
                 </nav>
             </div>
         </header>
-		<dialog id="search-dialog" class="backdrop:bg-black/50 bg-transparent p-0 w-full max-w-lg rounded-xl fixed top-[87px] left-auto right-0 ml-6">
-			<div class="bg-white dark:bg-gray-900 rounded-xl shadow-2xl ring-1 ring-gray-900/10 dark:ring-gray-100/10">
+		<dialog id="search-dialog" class="backdrop:p-0 w-full max-w-lg rounded-xl fixed top-[87px] left-auto right-0 ml-6">
+			<div class="bg-canvas rounded-xl shadow-2xl ring-1 border-soft">
 				<form method="dialog" class="relative">
 					<svg fill="currentColor" width="18" height="18" aria-hidden="true" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" name="icon-search" class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
 						<title>Search</title>
 						<desc>Icon</desc>
 						<path d="M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
 					</svg>
-					<input type="search" name="search" placeholder="Search..." autofocus class="w-full rounded-xl border-0 bg-transparent py-4 pl-12 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:text-white sm:text-sm/6" />
-					<button type="button" command="close" commandfor="search-dialog" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+					<input type="search" name="search" placeholder="Search..." autofocus class="w-full rounded-xl border-0 py-4 pl-12 pr-4 placeholder:sm:text-sm/6" />
+					<button type="button" command="close" commandfor="search-dialog" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium 
 						ESC
 					</button>
 				</form>
 			</div>
 		</dialog>
 		<el-dialog>
-			<dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
-				<div tabindex="0" class="fixed inset-0 focus:outline-none">
-					<el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-gray-100/10">
+			<dialog id="mobile-menu" class="backdrop:lg:hidden">
+				<div tabindex="0" class="fixed inset-0">
+					<el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 
 						<div class="flex items-center justify-between">
 							<a href="#" class="-m-1.5 p-1.5">
 								<span class="sr-only">Your Company</span>
-								<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto dark:hidden" />
-								<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="" class="h-8 w-auto not-dark:hidden" />
+								<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto 
+								<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="" class="h-8 w-auto not-
 							</a>
-							<button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-400">
+							<button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 
 								<span class="sr-only">Close menu</span>
 								<svg fill="none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
 								<path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
@@ -77,15 +77,15 @@ export const NAVBAR_TEMPLATE = `
 							</button>
 						</div>
 						<div class="mt-6 flow-root">
-							<div class="-my-6 divide-y divide-gray-500/10 dark:divide-gray-500/25">
+							<div class="-my-6 divide-y divide-gray-500/10 
 								<div class="space-y-2 py-6">
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Product</a>
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Features</a>
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Marketplace</a>
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Company</a>
+									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold 
+									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold 
+									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold 
+									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold 
 								</div>
 								<div class="py-6">
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Log in</a>
+									<a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold 
 								</div>
 							</div>
 						</div>
@@ -150,6 +150,7 @@ class NavBar extends BaseComponent {
 	#focusTrap = null;
 	#boundHandleEscapeKeyPress = null;
 	#boundHandleSearchBackdropClick = null;
+	#boundHandleResize = null;
 
 	connectedCallback() {
 		this.#injectComponentStyles();
@@ -167,6 +168,9 @@ class NavBar extends BaseComponent {
 				"click",
 				this.#boundHandleSearchBackdropClick,
 			);
+		}
+		if (this.#boundHandleResize) {
+			window.removeEventListener("resize", this.#boundHandleResize);
 		}
 	}
 
@@ -344,11 +348,148 @@ class NavBar extends BaseComponent {
 			);
 			if (!dropdownContainer) {
 				this.querySelectorAll(".dropdown-menu").forEach((menu) => {
-					menu.classList.add("hidden", "opacity-0", "translate-y-1");
-					menu.classList.remove("opacity-100", "translate-y-0");
+					this.#resetDropdownStyles(menu);
 				});
 			}
 		});
+
+		// Handle viewport resize for open dropdowns
+		this.#boundHandleResize = () => {
+			this.querySelectorAll(".dropdown-menu:not(.hidden)").forEach((menu) => {
+				this.#positionDropdownInViewport(menu);
+			});
+		};
+		window.addEventListener("resize", this.#boundHandleResize);
+	}
+
+	/**
+	 * Resets all positioning and scroll styles on a dropdown menu
+	 * @param {HTMLElement} menu - The dropdown menu element
+	 * @returns {void}
+	 */
+	#resetDropdownStyles(menu) {
+		menu.classList.add("hidden", "opacity-0", "translate-y-1");
+		menu.classList.remove("opacity-100", "translate-y-0");
+		// Reset positioning
+		menu.style.left = "";
+		menu.style.right = "";
+		menu.style.transform = "";
+		// Reset scroll container styles
+		const scrollContainer = menu.querySelector(":scope > div");
+		if (scrollContainer) {
+			scrollContainer.style.maxHeight = "";
+			scrollContainer.style.overflowY = "";
+			scrollContainer.style.scrollBehavior = "";
+			scrollContainer.style.scrollbarWidth = "";
+		}
+	}
+
+	/**
+	 * Positions a dropdown menu to ensure it stays within the viewport
+	 * and opens toward the center of the page with a 25% offset from trigger
+	 * @param {HTMLElement} menu - The dropdown menu element
+	 * @returns {void}
+	 */
+	#positionDropdownInViewport(menu) {
+		// Reset positioning first
+		menu.style.left = "";
+		menu.style.right = "";
+		menu.style.transform = "";
+
+		const viewportWidth = window.innerWidth;
+		const viewportCenter = viewportWidth / 2;
+		const viewportPadding = 16; // Minimum padding from viewport edge
+
+		// Get the trigger button's position
+		const triggerButton = menu.previousElementSibling;
+		const triggerRect = triggerButton?.getBoundingClientRect();
+		const triggerCenter = triggerRect
+			? triggerRect.left + triggerRect.width / 2
+			: 0;
+
+		// Get menu width for offset calculation
+		const menuWidth = menu.offsetWidth;
+		const offsetPercent = 0.25; // 25% offset from trigger
+		const offset = menuWidth * offsetPercent;
+
+		// Determine if trigger is on left or right side of viewport
+		const isOnRightSide = triggerCenter > viewportCenter;
+
+		// Position dropdown to open toward center with 25% offset
+		if (isOnRightSide) {
+			// Trigger is on right side - align dropdown toward left with 25% overlap
+			// Position so 25% of the dropdown extends past the right edge of trigger
+			menu.style.left = "auto";
+			menu.style.right = `-${offset}px`;
+		} else {
+			// Trigger is on left side - align dropdown toward right with 25% overlap
+			// Position so 25% of the dropdown extends past the left edge of trigger
+			menu.style.left = `-${offset}px`;
+			menu.style.right = "auto";
+		}
+
+		// After initial positioning, check for overflow and adjust
+		const menuRect = menu.getBoundingClientRect();
+
+		// Check if dropdown overflows right edge
+		if (menuRect.right > viewportWidth - viewportPadding) {
+			const overflow = menuRect.right - (viewportWidth - viewportPadding);
+			menu.style.transform = `translateX(-${overflow}px)`;
+		}
+
+		// Check if dropdown overflows left edge
+		const adjustedRect = menu.getBoundingClientRect();
+		if (adjustedRect.left < viewportPadding) {
+			// Shift right to keep within left edge
+			const leftOverflow = viewportPadding - adjustedRect.left;
+			const currentTransform = menu.style.transform;
+			if (currentTransform) {
+				// Combine with existing transform
+				const existingX =
+					Number.parseFloat(
+						currentTransform.replace(/translateX\((-?\d+\.?\d*)px\)/, "$1"),
+					) || 0;
+				menu.style.transform = `translateX(${existingX + leftOverflow}px)`;
+			} else {
+				menu.style.transform = `translateX(${leftOverflow}px)`;
+			}
+		}
+
+		// Check if viewport is too narrow for multi-column layout
+		const gridContent = menu.querySelector(".dropdown-grid");
+		if (gridContent) {
+			// Collapse to single column if viewport width is less than dropdown's natural 2-col width
+			const minTwoColWidth = 640; // ~md breakpoint where 2 cols make sense
+			if (viewportWidth < minTwoColWidth) {
+				gridContent.style.gridTemplateColumns = "1fr";
+			} else {
+				gridContent.style.gridTemplateColumns = "";
+			}
+		}
+
+		// Handle vertical overflow - enable scrolling if dropdown is too tall
+		const viewportHeight = window.innerHeight;
+		const menuTop = menu.getBoundingClientRect().top;
+		const verticalPadding = 32; // Padding from bottom of viewport
+		const maxAvailableHeight = viewportHeight - menuTop - verticalPadding;
+
+		// Get the scrollable content container (the inner div with rounded corners)
+		const scrollContainer = menu.querySelector(":scope > div");
+		if (scrollContainer) {
+			if (scrollContainer.scrollHeight > maxAvailableHeight) {
+				scrollContainer.style.maxHeight = `${maxAvailableHeight}px`;
+				scrollContainer.style.overflowY = "auto";
+				// Add smooth scrolling and hide scrollbar on webkit
+				scrollContainer.style.scrollBehavior = "smooth";
+				scrollContainer.style.scrollbarWidth = "thin";
+			} else {
+				// Reset if there's enough space
+				scrollContainer.style.maxHeight = "";
+				scrollContainer.style.overflowY = "";
+				scrollContainer.style.scrollBehavior = "";
+				scrollContainer.style.scrollbarWidth = "";
+			}
+		}
 	}
 
 	/**
@@ -368,7 +509,7 @@ class NavBar extends BaseComponent {
 				{
 					type: "button",
 					class:
-						"flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5",
+						"flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-canvas",
 					"aria-expanded": "false",
 					onClick: (e) => {
 						const content = e.currentTarget.nextElementSibling;
@@ -410,7 +551,7 @@ class NavBar extends BaseComponent {
 						{
 							href: item.href,
 							class:
-								"block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5",
+								"block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-canvas",
 							onClick: () => this.closeMenu(),
 						},
 						item.text,
@@ -424,10 +565,11 @@ class NavBar extends BaseComponent {
 	 * Creates a dropdown menu with items
 	 * @param {string} label - The dropdown button label
 	 * @param {string} mainHref - The main page URL
-	 * @param {Array} items - Array of {href, text, desc} objects
+	 * @param {Array} items - Array of {href, text, desc, icon} objects
+	 * @param {Object} action - Optional action section {title, badge, description}
 	 * @returns {HTMLElement} The dropdown element
 	 */
-	#createDropdown(label, _mainHref, items) {
+	#createDropdown(label, _mainHref, items, action = null) {
 		const _dropdownId = `dropdown-${label.toLowerCase().replace(/\s+/g, "-")}`;
 
 		return this.h(
@@ -438,28 +580,30 @@ class NavBar extends BaseComponent {
 				{
 					type: "button",
 					class:
-						"inline-flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 dark:text-white",
+						"inline-flex items-center gap-x-1 text-sm/6 font-semibold text-canvas",
 					"aria-expanded": "false",
 					"aria-haspopup": "true",
 					onClick: (e) => {
 						const menu = e.currentTarget.nextElementSibling;
 						const isOpen = menu.classList.contains("opacity-100");
 
-						// Close all other dropdowns
+						// Close all other dropdowns and reset their styles
 						this.querySelectorAll(".dropdown-menu").forEach((m) => {
 							if (m !== menu) {
-								m.classList.add("hidden", "opacity-0", "translate-y-1");
-								m.classList.remove("opacity-100", "translate-y-0");
+								this.#resetDropdownStyles(m);
 							}
 						});
 
 						// Toggle this dropdown
 						if (isOpen) {
-							menu.classList.add("hidden", "opacity-0", "translate-y-1");
-							menu.classList.remove("opacity-100", "translate-y-0");
+							this.#resetDropdownStyles(menu);
 						} else {
 							menu.classList.remove("hidden", "opacity-0", "translate-y-1");
 							menu.classList.add("opacity-100", "translate-y-0");
+							// Position dropdown within viewport after it becomes visible
+							requestAnimationFrame(() => {
+								this.#positionDropdownInViewport(menu);
+							});
 						}
 					},
 				},
@@ -483,44 +627,115 @@ class NavBar extends BaseComponent {
 				"div",
 				{
 					class:
-						"dropdown-menu absolute left-0 z-10 mt-5 hidden w-screen max-w-md rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition duration-200 ease-out opacity-0 translate-y-1 dark:bg-gray-800 dark:ring-white/10",
+						"dropdown-menu absolute left-0 z-10 mt-5 hidden w-screen max-w-max overflow-visible px-4 transition duration-200 ease-out opacity-0 translate-y-1",
+					style: "max-width: min(calc(100vw - 2rem), 48rem);",
 				},
 				this.h(
 					"div",
-					{ class: "p-4" },
-					...items.map((item) =>
-						this.h(
-							"div",
-							{
-								class:
-									"group relative flex gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-50 dark:hover:bg-white/5",
-							},
+					{
+						class:
+							"w-full flex-auto overflow-hidden rounded-3xl bg-canvas text-sm/6 shadow-lg outline-1 border-soft",
+						style: "max-width: min(calc(100vw - 2rem), 48rem);",
+					},
+					this.h(
+						"div",
+						{
+							class:
+								"dropdown-grid grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2",
+							"data-slot": "dropdown-content",
+						},
+						...items.map((item) =>
 							this.h(
 								"div",
-								{},
+								{
+									class: "group relative flex gap-x-6 rounded-lg p-4",
+								},
 								this.h(
-									"a",
+									"div",
 									{
-										href: item.href,
 										class:
-											"font-semibold text-gray-900 dark:text-white no-underline",
+											"mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-depth-1",
 									},
-									item.text,
-									this.h("span", {
-										class: "absolute inset-0",
-										"aria-hidden": "true",
-									}),
+									item.icon || this.#createPlaceholderIcon(),
 								),
 								this.h(
-									"p",
-									{ class: "mt-1 text-gray-600 dark:text-gray-400" },
-									item.desc,
+									"div",
+									{},
+									this.h(
+										"a",
+										{
+											href: item.href,
+											class: "font-semibold text-canvas no-underline",
+										},
+										item.text,
+										this.h("span", {
+											class: "absolute inset-0",
+											"aria-hidden": "true",
+										}),
+									),
+									this.h("p", { class: "mt-1 text-muted" }, item.desc),
 								),
 							),
 						),
 					),
+					action &&
+						this.h(
+							"div",
+							{ class: "bg-depth-1 px-8 py-6" },
+							this.h(
+								"div",
+								{ class: "flex items-center gap-x-3" },
+								this.h(
+									"h3",
+									{ class: "text-sm/6 font-semibold text-canvas" },
+									action.title,
+								),
+								action.badge &&
+									this.h(
+										"p",
+										{
+											class:
+												"rounded-full bg-brand/10 px-2.5 py-1.5 text-xs font-semibold text-brand",
+										},
+										action.badge,
+									),
+							),
+							this.h(
+								"p",
+								{ class: "mt-2 text-sm/6 text-muted" },
+								action.description,
+							),
+						),
 				),
 			),
+		);
+	}
+
+	/**
+	 * Creates a placeholder icon for dropdown items
+	 * @returns {SVGElement} The placeholder icon
+	 */
+	#createPlaceholderIcon() {
+		return this.svg(
+			"svg",
+			{
+				viewBox: "0 0 24 24",
+				fill: "none",
+				stroke: "currentColor",
+				"stroke-width": "1.5",
+				"aria-hidden": "true",
+				class: "size-6 text-muted",
+			},
+			this.svg("path", {
+				d: "M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z",
+				"stroke-linecap": "round",
+				"stroke-linejoin": "round",
+			}),
+			this.svg("path", {
+				d: "M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z",
+				"stroke-linecap": "round",
+				"stroke-linejoin": "round",
+			}),
 		);
 	}
 
@@ -646,7 +861,7 @@ class NavBar extends BaseComponent {
 		const headerClass = this.clsx(
 			isFixed ? "fixed" : "absolute",
 			"inset-x-0 top-0 z-50",
-			!isTransparent && "bg-white/92 dark:bg-gray-900/92 backdrop-blur-sm",
+			!isTransparent && "bg-canvas/92 backdrop-blur-sm",
 		);
 
 		// Build the header
@@ -656,7 +871,7 @@ class NavBar extends BaseComponent {
 			// Container wrapper
 			this.h(
 				"div",
-				{ class: "mx-auto max-w-7xl px-6 lg:px-8" },
+				{ class: "card-shadow mx-auto max-w-7xl px-6 lg:px-8" },
 				// Main nav
 				this.h(
 					"nav",
@@ -673,7 +888,7 @@ class NavBar extends BaseComponent {
 							"a",
 							{
 								href: "#",
-								class: "-m-1.5 p-1.5 text-gray-900 dark:text-white",
+								class: "-m-1.5 p-1.5 text-canvas",
 							},
 							this.h("span", { class: "sr-only" }, brand),
 							this.#createBrandLogoSVG("h-8 w-auto"),
@@ -688,7 +903,7 @@ class NavBar extends BaseComponent {
 							{
 								type: "button",
 								class:
-									"-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-500 dark:text-gray-400",
+									"-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-muted",
 								"aria-label": "Open main menu",
 								onClick: () => this.openMenu(),
 							},
@@ -699,143 +914,172 @@ class NavBar extends BaseComponent {
 					this.h(
 						"div",
 						{ class: "hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12" },
-						this.#createDropdown("Home", "/", [
+						this.#createDropdown(
+							"Home",
+							"/",
+							[
+								{
+									href: "/pages/about",
+									text: "About Legacy",
+									desc: "Learn about our mission and values",
+								},
+								{
+									href: "/pages/team/careers",
+									text: "Careers",
+									desc: "Join our team of healthcare professionals",
+								},
+								{
+									href: "/pages/partners",
+									text: "Partners",
+									desc: "Our healthcare partnerships",
+								},
+								{
+									href: "/pages/locations",
+									text: "Locations",
+									desc: "Find a location near you",
+								},
+							],
 							{
-								href: "/pages/about",
-								text: "About Legacy",
-								desc: "Learn about our mission and values",
+								title: "Company",
+								badge: "We're Hiring",
+								description:
+									"Join our team of dedicated healthcare professionals making a difference.",
 							},
+						),
+						this.#createDropdown(
+							"Treatments",
+							"/pages/treatments",
+							[
+								{
+									href: "/pages/treatments/cardiac",
+									text: "Cardiac Care",
+									desc: "Comprehensive cardiac recovery and monitoring",
+								},
+								{
+									href: "/pages/treatments/eating",
+									text: "Eating Support",
+									desc: "Nutrition and dietary management",
+								},
+								{
+									href: "/pages/treatments/iv",
+									text: "IV Therapy",
+									desc: "Hydration and medication infusions",
+								},
+								{
+									href: "/pages/treatments/neurological",
+									text: "Neurological Care",
+									desc: "Specialized neurological support",
+								},
+								{
+									href: "/pages/treatments/oncology",
+									text: "Oncology Care",
+									desc: "Cancer treatment and recovery support",
+								},
+								{
+									href: "/pages/treatments/pain",
+									text: "Pain Management",
+									desc: "Advanced pain relief strategies",
+								},
+								{
+									href: "/pages/treatments/palliative",
+									text: "Palliative Care",
+									desc: "Comfort-focused end-of-life support",
+								},
+								{
+									href: "/pages/treatments/post-op",
+									text: "Post-Operative Care",
+									desc: "Surgical recovery and wound care",
+								},
+								{
+									href: "/pages/treatments/respiratory",
+									text: "Respiratory Care",
+									desc: "Breathing support and oxygen therapy",
+								},
+								{
+									href: "/pages/treatments/wellness",
+									text: "Wellness Programs",
+									desc: "Preventive care and health optimization",
+								},
+							],
 							{
-								href: "/pages/team/careers",
-								text: "Careers",
-								desc: "Join our team of healthcare professionals",
+								title: "Medical Services",
+								badge: "24/7",
+								description:
+									"Expert care available around the clock for your peace of mind.",
 							},
+						),
+						this.#createDropdown(
+							"Expertise",
+							"/pages/services",
+							[
+								{
+									href: "/pages/services/als",
+									text: "ALS Care",
+									desc: "Compassionate ALS patient support",
+								},
+								{
+									href: "/pages/services/alzheimers",
+									text: "Alzheimer's Care",
+									desc: "Memory care and cognitive support",
+								},
+								{
+									href: "/pages/services/dementia",
+									text: "Dementia Care",
+									desc: "Dementia-specific care strategies",
+								},
+								{
+									href: "/pages/services/diabetes",
+									text: "Diabetes Management",
+									desc: "Blood sugar monitoring and insulin support",
+								},
+								{
+									href: "/pages/services/heart-disease",
+									text: "Heart Disease",
+									desc: "Cardiovascular disease management",
+								},
+								{
+									href: "/pages/services/ms",
+									text: "Multiple Sclerosis",
+									desc: "MS symptom management and support",
+								},
+								{
+									href: "/pages/services/oncology",
+									text: "Oncology Services",
+									desc: "Cancer care coordination",
+								},
+								{
+									href: "/pages/services/ostomy",
+									text: "Ostomy Care",
+									desc: "Ostomy management and education",
+								},
+								{
+									href: "/pages/services/parkinsons",
+									text: "Parkinson's Care",
+									desc: "Parkinson's disease support",
+								},
+								{
+									href: "/pages/services/stroke",
+									text: "Stroke Recovery",
+									desc: "Post-stroke rehabilitation",
+								},
+								{
+									href: "/pages/services/tbi",
+									text: "Traumatic Brain Injury",
+									desc: "TBI recovery and cognitive rehabilitation",
+								},
+							],
 							{
-								href: "/pages/partners",
-								text: "Partners",
-								desc: "Our healthcare partnerships",
+								title: "Specialized Care",
+								badge: "New",
+								description:
+									"Advanced treatments tailored to your unique health needs.",
 							},
-							{
-								href: "/pages/locations",
-								text: "Locations",
-								desc: "Find a location near you",
-							},
-						]),
-						this.#createDropdown("Treatments", "/pages/treatments", [
-							{
-								href: "/pages/treatments/cardiac",
-								text: "Cardiac Care",
-								desc: "Comprehensive cardiac recovery and monitoring",
-							},
-							{
-								href: "/pages/treatments/eating",
-								text: "Eating Support",
-								desc: "Nutrition and dietary management",
-							},
-							{
-								href: "/pages/treatments/iv",
-								text: "IV Therapy",
-								desc: "Hydration and medication infusions",
-							},
-							{
-								href: "/pages/treatments/neurological",
-								text: "Neurological Care",
-								desc: "Specialized neurological support",
-							},
-							{
-								href: "/pages/treatments/oncology",
-								text: "Oncology Care",
-								desc: "Cancer treatment and recovery support",
-							},
-							{
-								href: "/pages/treatments/pain",
-								text: "Pain Management",
-								desc: "Advanced pain relief strategies",
-							},
-							{
-								href: "/pages/treatments/palliative",
-								text: "Palliative Care",
-								desc: "Comfort-focused end-of-life support",
-							},
-							{
-								href: "/pages/treatments/post-op",
-								text: "Post-Operative Care",
-								desc: "Surgical recovery and wound care",
-							},
-							{
-								href: "/pages/treatments/respiratory",
-								text: "Respiratory Care",
-								desc: "Breathing support and oxygen therapy",
-							},
-							{
-								href: "/pages/treatments/wellness",
-								text: "Wellness Programs",
-								desc: "Preventive care and health optimization",
-							},
-						]),
-						this.#createDropdown("Expertise", "/pages/services", [
-							{
-								href: "/pages/services/als",
-								text: "ALS Care",
-								desc: "Compassionate ALS patient support",
-							},
-							{
-								href: "/pages/services/alzheimers",
-								text: "Alzheimer's Care",
-								desc: "Memory care and cognitive support",
-							},
-							{
-								href: "/pages/services/dementia",
-								text: "Dementia Care",
-								desc: "Dementia-specific care strategies",
-							},
-							{
-								href: "/pages/services/diabetes",
-								text: "Diabetes Management",
-								desc: "Blood sugar monitoring and insulin support",
-							},
-							{
-								href: "/pages/services/heart-disease",
-								text: "Heart Disease",
-								desc: "Cardiovascular disease management",
-							},
-							{
-								href: "/pages/services/ms",
-								text: "Multiple Sclerosis",
-								desc: "MS symptom management and support",
-							},
-							{
-								href: "/pages/services/oncology",
-								text: "Oncology Services",
-								desc: "Cancer care coordination",
-							},
-							{
-								href: "/pages/services/ostomy",
-								text: "Ostomy Care",
-								desc: "Ostomy management and education",
-							},
-							{
-								href: "/pages/services/parkinsons",
-								text: "Parkinson's Care",
-								desc: "Parkinson's disease support",
-							},
-							{
-								href: "/pages/services/stroke",
-								text: "Stroke Recovery",
-								desc: "Post-stroke rehabilitation",
-							},
-							{
-								href: "/pages/services/tbi",
-								text: "Traumatic Brain Injury",
-								desc: "TBI recovery and cognitive rehabilitation",
-							},
-						]),
+						),
 						this.h(
 							"a",
 							{
 								href: "/pages/team",
-								class:
-									"text-sm/6 font-semibold text-gray-900 dark:text-white text-uppercase",
+								class: "text-sm/6 font-semibold text-canvas text-uppercase",
 							},
 							"Team",
 						),
@@ -843,8 +1087,7 @@ class NavBar extends BaseComponent {
 							"a",
 							{
 								href: "/pages/contact",
-								class:
-									"text-sm/6 font-semibold text-gray-900 dark:text-white text-uppercase",
+								class: "text-sm/6 font-semibold text-canvas text-uppercase",
 							},
 							"Contact",
 						),
@@ -858,7 +1101,7 @@ class NavBar extends BaseComponent {
 							{
 								type: "button",
 								class:
-									"-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white",
+									"-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-muted",
 								"aria-label": "Search",
 								onClick: () => this.openSearch(),
 							},
@@ -892,7 +1135,7 @@ class NavBar extends BaseComponent {
 			"dialog",
 			{
 				class:
-					"backdrop:bg-black/50 bg-transparent p-0 w-full max-w-lg rounded-xl fixed top-[87px] right-[6px] left-auto m-0 z-50",
+					"backdrop:p-0 w-full max-w-lg rounded-xl fixed top-[87px] right-[6px] left-auto m-0 z-50",
 				ref: (el) => {
 					this.#searchDialog = el;
 				},
@@ -900,8 +1143,7 @@ class NavBar extends BaseComponent {
 			this.h(
 				"div",
 				{
-					class:
-						"bg-white dark:bg-gray-900 rounded-xl shadow-2xl ring-1 ring-gray-900/10 dark:ring-gray-100/10",
+					class: "bg-canvas rounded-xl shadow-2xl ring-1 border-soft",
 				},
 				this.h(
 					"form",
@@ -934,14 +1176,14 @@ class NavBar extends BaseComponent {
 						placeholder: "Search...",
 						autofocus: true,
 						class:
-							"w-full rounded-xl border-0 bg-transparent py-4 pl-12 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:text-white sm:text-sm/6",
+							"w-full rounded-xl border-0 py-4 pl-12 pr-4 input-fg placeholder-muted sm:text-sm/6",
 					}),
 					this.h(
 						"button",
 						{
 							type: "button",
 							class:
-								"absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white",
+								"absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium text-muted",
 							onClick: () => this.closeSearch(),
 						},
 						"ESC",
@@ -952,8 +1194,7 @@ class NavBar extends BaseComponent {
 
 		// Mobile menu backdrop (outside header)
 		const backdrop = this.h("div", {
-			class:
-				"mobile-menu-backdrop fixed inset-0 bg-black/30 lg:hidden hidden z-40",
+			class: "mobile-menu-backdrop fixed inset-0 lg:hidden hidden z-40",
 			onClick: () => this.closeMenu(),
 			ref: (el) => {
 				this.#backdrop = el;
@@ -965,7 +1206,7 @@ class NavBar extends BaseComponent {
 			"div",
 			{
 				class:
-					"mobile-menu-panel fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-gray-100/10 lg:hidden hidden",
+					"mobile-menu-panel fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-canvas p-6 sm:max-w-sm sm:ring-1 border-soft lg:hidden hidden",
 				role: "dialog",
 				"aria-modal": "true",
 				ref: (el) => {
@@ -978,7 +1219,7 @@ class NavBar extends BaseComponent {
 				{ class: "flex items-center justify-between" },
 				this.h(
 					"a",
-					{ href: "#", class: "-m-1.5 p-1.5 text-gray-900 dark:text-white" },
+					{ href: "#", class: "-m-1.5 p-1.5 text-canvas" },
 					this.h("span", { class: "sr-only" }, brand),
 					this.#createBrandLogoSVG("h-8 w-auto"),
 				),
@@ -986,7 +1227,7 @@ class NavBar extends BaseComponent {
 					"button",
 					{
 						type: "button",
-						class: "-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-400",
+						class: "-m-2.5 rounded-md p-2.5 text-muted",
 						"aria-label": "Close menu",
 						onClick: () => this.closeMenu(),
 					},
@@ -1000,7 +1241,7 @@ class NavBar extends BaseComponent {
 				this.h(
 					"div",
 					{
-						class: "-my-6 divide-y divide-gray-500/10 dark:divide-gray-500/25",
+						class: "-my-6 divide-y border-soft",
 					},
 					this.h(
 						"div",
@@ -1068,7 +1309,7 @@ class NavBar extends BaseComponent {
 							{
 								href: "/pages/team",
 								class:
-									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5 text-uppercase",
+									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas text-uppercase",
 								onClick: () => this.closeMenu(),
 							},
 							"TEAM",
@@ -1078,7 +1319,7 @@ class NavBar extends BaseComponent {
 							{
 								href: "/pages/contact",
 								class:
-									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5 text-uppercase",
+									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas text-uppercase",
 								onClick: () => this.closeMenu(),
 							},
 							"CONTACT",
@@ -1092,7 +1333,7 @@ class NavBar extends BaseComponent {
 							{
 								type: "button",
 								class:
-									"-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5",
+									"-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-canvas",
 								onClick: () => {
 									this.closeMenu();
 									this.openSearch();

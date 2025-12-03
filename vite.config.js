@@ -42,6 +42,7 @@ export default defineConfig({
 				treatments: resolve(root, "pages/treatments.html"),
 				blog: resolve(root, "pages/blog.html"),
 				legal: resolve(root, "pages/legal.html"),
+				styleguide: resolve(root, "styleguide.html"),
 			},
 		},
 	},

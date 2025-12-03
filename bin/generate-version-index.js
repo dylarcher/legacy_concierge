@@ -172,28 +172,28 @@ function generateVersionCard(version, changelogInfo) {
 	const summary = changelogInfo?.summary || "No release notes available.";
 
 	return `
-		<div class="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-8 ring-1 ring-zinc-950/5 dark:ring-white/10 transition-shadow hover:shadow-xl">
+		<div class="rounded-xl shadow-lg p-8 ring-1 transition-shadow hover:shadow-xl">
 			<div class="flex items-start justify-between mb-4">
 				<div>
-					<h2 class="text-3xl font-bold text-zinc-900 dark:text-white mb-2">
+					<h2 class="text-3xl font-bold mb-2">
 						Version ${versionString}
 					</h2>
-					<p class="text-sm text-zinc-500 dark:text-zinc-400">
+					<p class="text-sm">
 						${date}
 					</p>
 				</div>
-				<span class="inline-flex items-center rounded-full bg-cyan-500/15 px-4 py-1.5 text-sm font-semibold text-cyan-700 dark:bg-cyan-500/10 dark:text-cyan-400">
+				<span class="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold">
 					v${versionString}
 				</span>
 			</div>
 			
-			<p class="text-base text-zinc-700 dark:text-zinc-300 mb-6 leading-relaxed">
+			<p class="text-base mb-6 leading-relaxed">
 				${summary}
 			</p>
 			
 			<a 
 				href="${versionUrl}"
-				class="inline-flex items-center gap-2 py-3 px-6 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold rounded-full transition-colors focus:ring focus:ring-cyan-500/50"
+				class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full transition-colors focus:ring"
 			>
 				View Site
 				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -23,7 +23,7 @@ export class Text extends BaseComponent {
 	 */
 	render() {
 		const paragraphClasses = this.combineClassNames(
-			"text-base/6 text-zinc-500 sm:text-sm/6 dark:text-zinc-400",
+			"text-base/6 text-muted sm:text-sm/6",
 			this.className,
 		);
 
@@ -95,9 +95,8 @@ export class TextLink extends BaseComponent {
 		const href = this.getAttribute("href") || "#";
 
 		const linkClasses = this.combineClassNames(
-			"text-zinc-950 underline decoration-zinc-950/50",
+			"text-canvas underline decoration-zinc-950/50",
 			"[&[data-hover]]:decoration-zinc-950",
-			"dark:text-white dark:decoration-white/50 dark:[&[data-hover]]:decoration-white",
 			this.className,
 		);
 
@@ -136,7 +135,7 @@ export class Strong extends BaseComponent {
 	 */
 	render() {
 		const strongClasses = this.combineClassNames(
-			"font-medium text-zinc-950 dark:text-white",
+			"font-medium text-canvas",
 			this.className,
 		);
 
@@ -176,9 +175,8 @@ export class Code extends BaseComponent {
 	 */
 	render() {
 		const codeClasses = this.combineClassNames(
-			"rounded-sm border border-zinc-950/10 bg-zinc-950/[2.5%] px-0.5 text-sm font-medium text-zinc-950",
+			"rounded-sm border bg-zinc-950/[2.5%] px-0.5 text-sm font-medium text-canvas",
 			"sm:text-[0.8125rem]",
-			"dark:border-white/20 dark:bg-white/5 dark:text-white",
 			this.className,
 		);
 
@@ -193,7 +191,7 @@ export class Code extends BaseComponent {
 	}
 }
 
-defineElement("ui-text", UIText);
-defineElement("ui-text-link", UITextLink);
-defineElement("ui-strong", UIStrong);
-defineElement("ui-code", UICode);
+defineElement("ui-text", Text);
+defineElement("ui-text-link", TextLink);
+defineElement("ui-strong", Strong);
+defineElement("ui-code", Code);

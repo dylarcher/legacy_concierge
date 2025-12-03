@@ -9,100 +9,95 @@
  */
 export const BUTTON_COLORS = {
 	"dark/zinc": [
-		"text-white [--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
-		"dark:text-white dark:[--btn-bg:theme(colors.zinc.600)] dark:[--btn-hover-overlay:theme(colors.white/5%)]",
-		"[--btn-icon:theme(colors.zinc.400)] [&[data-active]]:[--btn-icon:theme(colors.zinc.300)] [&:hover]:[--btn-icon:theme(colors.zinc.300)]",
+		"[--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
+		"[--btn-icon:theme(colors.zinc.400)]",
 	].join(" "),
 	light: [
-		"text-zinc-950 [--btn-bg:white] [--btn-border:theme(colors.zinc.950/10%)] [--btn-hover-overlay:theme(colors.zinc.950/2.5%)]",
-		"dark:text-white dark:[--btn-hover-overlay:theme(colors.white/5%)] dark:[--btn-bg:theme(colors.zinc.800)]",
-		"[--btn-icon:theme(colors.zinc.500)] [&[data-active]]:[--btn-icon:theme(colors.zinc.700)] [&:hover]:[--btn-icon:theme(colors.zinc.700)]",
+		"[--btn-bg:white] [--btn-border:theme(colors.zinc.950/10%)] [--btn-hover-overlay:theme(colors.zinc.950/2.5%)]",
+		"[--btn-icon:theme(colors.zinc.500)]",
 	].join(" "),
 	"dark/white": [
-		"text-white [--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
-		"dark:text-zinc-950 dark:[--btn-bg:white] dark:[--btn-hover-overlay:theme(colors.zinc.950/5%)]",
+		"[--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
+		"[--btn-icon:theme(colors.zinc.400)]",
 	].join(" "),
 	dark: [
-		"text-white [--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
-		"dark:[--btn-hover-overlay:theme(colors.white/5%)] dark:[--btn-bg:theme(colors.zinc.800)]",
-		"[--btn-icon:theme(colors.zinc.400)] [&[data-active]]:[--btn-icon:theme(colors.zinc.300)] [&:hover]:[--btn-icon:theme(colors.zinc.300)]",
+		"[--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
+		"[--btn-icon:theme(colors.zinc.400)]",
 	].join(" "),
 	white: [
-		"text-zinc-950 [--btn-bg:white] [--btn-border:theme(colors.zinc.950/10%)] [--btn-hover-overlay:theme(colors.zinc.950/2.5%)]",
-		"dark:[--btn-hover-overlay:theme(colors.zinc.950/5%)]",
-		"[--btn-icon:theme(colors.zinc.400)] [&[data-active]]:[--btn-icon:theme(colors.zinc.500)] [&:hover]:[--btn-icon:theme(colors.zinc.500)]",
+		"[--btn-bg:white] [--btn-border:theme(colors.zinc.950/10%)] [--btn-hover-overlay:theme(colors.zinc.950/2.5%)]",
+		"[--btn-icon:theme(colors.zinc.400)]",
 	].join(" "),
 	zinc: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.zinc.600)] [--btn-border:theme(colors.zinc.700/90%)]",
-		"dark:[--btn-hover-overlay:theme(colors.white/5%)]",
-		"[--btn-icon:theme(colors.zinc.400)] [&[data-active]]:[--btn-icon:theme(colors.zinc.300)] [&:hover]:[--btn-icon:theme(colors.zinc.300)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.zinc.600)] [--btn-border:theme(colors.zinc.700/90%)]",
+		"[--btn-icon:theme(colors.zinc.400)]",
 	].join(" "),
 	indigo: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.indigo.500)] [--btn-border:theme(colors.indigo.600/90%)]",
-		"[--btn-icon:theme(colors.indigo.300)] [&[data-active]]:[--btn-icon:theme(colors.indigo.200)] [&:hover]:[--btn-icon:theme(colors.indigo.200)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.indigo.500)] [--btn-border:theme(colors.indigo.600/90%)]",
+		"[--btn-icon:theme(colors.indigo.300)]",
 	].join(" "),
 	cyan: [
-		"text-cyan-950 [--btn-bg:theme(colors.cyan.300)] [--btn-border:theme(colors.cyan.400/80%)] [--btn-hover-overlay:theme(colors.white/25%)]",
+		"[--btn-bg:theme(colors.cyan.300)] [--btn-border:theme(colors.cyan.400/80%)] [--btn-hover-overlay:theme(colors.white/25%)]",
 		"[--btn-icon:theme(colors.cyan.500)]",
 	].join(" "),
 	red: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.red.600)] [--btn-border:theme(colors.red.700/90%)]",
-		"[--btn-icon:theme(colors.red.300)] [&[data-active]]:[--btn-icon:theme(colors.red.200)] [&:hover]:[--btn-icon:theme(colors.red.200)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.red.600)] [--btn-border:theme(colors.red.700/90%)]",
+		"[--btn-icon:theme(colors.red.300)]",
 	].join(" "),
 	orange: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.orange.500)] [--btn-border:theme(colors.orange.600/90%)]",
-		"[--btn-icon:theme(colors.orange.300)] [&[data-active]]:[--btn-icon:theme(colors.orange.200)] [&:hover]:[--btn-icon:theme(colors.orange.200)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.orange.500)] [--btn-border:theme(colors.orange.600/90%)]",
+		"[--btn-icon:theme(colors.orange.300)]",
 	].join(" "),
 	amber: [
-		"text-amber-950 [--btn-hover-overlay:theme(colors.white/25%)] [--btn-bg:theme(colors.amber.400)] [--btn-border:theme(colors.amber.500/80%)]",
+		"[--btn-hover-overlay:theme(colors.white/25%)] [--btn-bg:theme(colors.amber.400)] [--btn-border:theme(colors.amber.500/80%)]",
 		"[--btn-icon:theme(colors.amber.600)]",
 	].join(" "),
 	yellow: [
-		"text-yellow-950 [--btn-hover-overlay:theme(colors.white/25%)] [--btn-bg:theme(colors.yellow.300)] [--btn-border:theme(colors.yellow.400/80%)]",
+		"[--btn-hover-overlay:theme(colors.white/25%)] [--btn-bg:theme(colors.yellow.300)] [--btn-border:theme(colors.yellow.400/80%)]",
 		"[--btn-icon:theme(colors.yellow.600)]",
 	].join(" "),
 	lime: [
-		"text-lime-950 [--btn-hover-overlay:theme(colors.white/25%)] [--btn-bg:theme(colors.lime.300)] [--btn-border:theme(colors.lime.400/80%)]",
+		"[--btn-hover-overlay:theme(colors.white/25%)] [--btn-bg:theme(colors.lime.300)] [--btn-border:theme(colors.lime.400/80%)]",
 		"[--btn-icon:theme(colors.lime.600)]",
 	].join(" "),
 	green: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.green.600)] [--btn-border:theme(colors.green.700/90%)]",
-		"[--btn-icon:theme(colors.white/60%)] [&[data-active]]:[--btn-icon:theme(colors.white/80%)] [&:hover]:[--btn-icon:theme(colors.white/80%)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.green.600)] [--btn-border:theme(colors.green.700/90%)]",
+		"[--btn-icon:theme(colors.white/60%)]",
 	].join(" "),
 	emerald: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.emerald.600)] [--btn-border:theme(colors.emerald.700/90%)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.emerald.600)] [--btn-border:theme(colors.emerald.700/90%)]",
 		"[--btn-icon:theme(colors.white/60%)]",
 	].join(" "),
 	teal: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.teal.600)] [--btn-border:theme(colors.teal.700/90%)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.teal.600)] [--btn-border:theme(colors.teal.700/90%)]",
 		"[--btn-icon:theme(colors.white/60%)]",
 	].join(" "),
 	sky: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.sky.500)] [--btn-border:theme(colors.sky.600/80%)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.sky.500)] [--btn-border:theme(colors.sky.600/80%)]",
 		"[--btn-icon:theme(colors.white/60%)]",
 	].join(" "),
 	blue: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.blue.600)] [--btn-border:theme(colors.blue.700/90%)]",
-		"[--btn-icon:theme(colors.blue.400)] [&[data-active]]:[--btn-icon:theme(colors.blue.300)] [&:hover]:[--btn-icon:theme(colors.blue.300)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.blue.600)] [--btn-border:theme(colors.blue.700/90%)]",
+		"[--btn-icon:theme(colors.blue.400)]",
 	].join(" "),
 	violet: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.violet.500)] [--btn-border:theme(colors.violet.600/90%)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.violet.500)] [--btn-border:theme(colors.violet.600/90%)]",
 		"[--btn-icon:theme(colors.violet.300)]",
 	].join(" "),
 	purple: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.purple.500)] [--btn-border:theme(colors.purple.600/90%)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.purple.500)] [--btn-border:theme(colors.purple.600/90%)]",
 		"[--btn-icon:theme(colors.purple.300)]",
 	].join(" "),
 	fuchsia: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.fuchsia.500)] [--btn-border:theme(colors.fuchsia.600/90%)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.fuchsia.500)] [--btn-border:theme(colors.fuchsia.600/90%)]",
 		"[--btn-icon:theme(colors.fuchsia.300)]",
 	].join(" "),
 	pink: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.pink.500)] [--btn-border:theme(colors.pink.600/90%)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.pink.500)] [--btn-border:theme(colors.pink.600/90%)]",
 		"[--btn-icon:theme(colors.pink.300)]",
 	].join(" "),
 	rose: [
-		"text-white [--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.rose.500)] [--btn-border:theme(colors.rose.600/90%)]",
+		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.rose.500)] [--btn-border:theme(colors.rose.600/90%)]",
 		"[--btn-icon:theme(colors.rose.300)]",
 	].join(" "),
 };
@@ -113,9 +108,9 @@ export const BUTTON_COLORS = {
  */
 export const CHECKBOX_COLORS = {
 	"dark/zinc":
-		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)] dark:[--checkbox-checked-bg:theme(colors.zinc.600)]",
+		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)]",
 	"dark/white":
-		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)] dark:[--checkbox-check:theme(colors.zinc.900)] dark:[--checkbox-checked-bg:white]",
+		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)]",
 	white:
 		"[--checkbox-check:theme(colors.zinc.900)] [--checkbox-checked-bg:white] [--checkbox-checked-border:theme(colors.zinc.950/15%)]",
 	dark: "[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)]",
@@ -154,9 +149,9 @@ export const CHECKBOX_COLORS = {
  */
 export const RADIO_COLORS = {
 	"dark/zinc":
-		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white] dark:[--radio-checked-bg:theme(colors.zinc.600)]",
+		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white]",
 	"dark/white":
-		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white] dark:[--radio-checked-bg:white] dark:[--radio-checked-indicator:theme(colors.zinc.900)]",
+		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white]",
 	white:
 		"[--radio-checked-bg:white] [--radio-checked-border:theme(colors.zinc.950/15%)] [--radio-checked-indicator:theme(colors.zinc.900)]",
 	dark: "[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white]",

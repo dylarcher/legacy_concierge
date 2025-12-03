@@ -46,7 +46,7 @@
 	},
 	"scripts": {
 		"build": "vite build && node bin/generate-sitemap.js",
-		"build:gh-pages": "node bin/manage-versions.js && node bin/build-gh-pages.js && node bin/generate-version-index.js",
+		"build:docs": "node bin/manage-versions.js && node bin/build-gh-pages.js && node bin/generate-version-index.js",
 		"dev": "vite",
 		"lint": "biome check",
 		"lint:fix": "biome check --write",
@@ -65,5 +65,5 @@
 	},
 	"type": "module",
 	"types": "types/global.d.ts",
-	"version": "0.3.0"
+	"version": "0.4.0"
 }

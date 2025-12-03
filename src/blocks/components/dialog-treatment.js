@@ -1,3 +1,4 @@
+import { resolveImage } from "../../assets/image-manifest.js";
 import { BaseComponent, defineElement, h } from "../_base.js";
 
 /**
@@ -13,7 +14,8 @@ class DialogTreatment extends BaseComponent {
 	}
 
 	render() {
-		const bgImage = this.getAttribute("bg-image") || "";
+		const bgImageAttr = this.getAttribute("bg-image");
+		const bgImage = bgImageAttr ? resolveImage(bgImageAttr) : "";
 		const bgPosition = this.getAttribute("bg-position") || "center";
 		const bgSize = this.getAttribute("bg-size") || "cover";
 		const isOpen = this.hasAttribute("open");
@@ -76,9 +78,7 @@ class DialogTreatment extends BaseComponent {
 					[
 						h("div", { class: overlayClasses }),
 						h("div", { class: contentClasses }, [
-							h("div", { class: "text-white space-y-4 max-w-5xl" }, [
-								h("slot"),
-							]),
+							h("div", { class: "space-y-4 max-w-5xl" }, [h("slot")]),
 						]),
 					],
 				),

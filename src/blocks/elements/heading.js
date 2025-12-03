@@ -30,7 +30,7 @@ export class Heading extends BaseComponent {
 		const tag = `h${Math.min(Math.max(level, 1), 6)}`;
 
 		const classes = this.clsx(
-			"text-2xl/8 font-semibold text-zinc-950 sm:text-xl/8 dark:text-white",
+			"text-2xl/8 font-semibold text-canvas sm:text-xl/8",
 			this.className,
 		);
 
@@ -74,7 +74,7 @@ export class Subheading extends BaseComponent {
 		const tag = `h${Math.min(Math.max(level, 1), 6)}`;
 
 		const classes = this.clsx(
-			"text-base/7 font-semibold text-zinc-950 sm:text-sm/6 dark:text-white",
+			"text-base/7 font-semibold text-canvas sm:text-sm/6",
 			this.className,
 		);
 
