@@ -40,9 +40,8 @@ export class LocationCard extends BaseComponent {
 			{
 				class: this.clsx(
 					"rounded-xl shadow-lg p-8",
-					"ring-1 ring-zinc-950/5 dark:ring-white/10",
+					"ring-1 ring-zinc-950/5",
 					"transition-all duration-200",
-					"",
 					"flex flex-col items-center text-center",
 					"h-full",
 				),

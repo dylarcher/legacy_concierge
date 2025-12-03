@@ -206,7 +206,7 @@ export class Dialog extends BaseComponent {
 				"px-2 py-2 transition duration-100 ease-out",
 				"opacity-0",
 				"sm:px-6 sm:py-8 lg:px-8 lg:py-16",
-				"dark:bg-zinc-950/50",
+				"bg-zinc-950/25",
 			),
 			ref: (element) => {
 				this.#backdropElement = element;
@@ -395,8 +395,8 @@ export class DialogActions extends BaseComponent {
 	}
 }
 
-defineElement("ui-dialog", UIDialog);
-defineElement("ui-dialog-title", UIDialogTitle);
-defineElement("ui-dialog-description", UIDialogDescription);
-defineElement("ui-dialog-body", UIDialogBody);
-defineElement("ui-dialog-actions", UIDialogActions);
+defineElement("ui-dialog", Dialog);
+defineElement("ui-dialog-title", DialogTitle);
+defineElement("ui-dialog-description", DialogDescription);
+defineElement("ui-dialog-body", DialogBody);
+defineElement("ui-dialog-actions", DialogActions);

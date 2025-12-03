@@ -268,7 +268,7 @@ export class ErrorMessage extends BaseComponent {
 		const classes = this.clsx(
 			"text-base/6 text-red-600",
 			"[*[data-disabled]_&]:opacity-50",
-			"sm:text-sm/6 dark:text-red-500",
+			"sm:text-sm/6",
 			this.className,
 		);
 
@@ -284,10 +284,10 @@ export class ErrorMessage extends BaseComponent {
 	}
 }
 
-defineElement("ui-fieldset", UIFieldset);
-defineElement("ui-legend", UILegend);
-defineElement("ui-field-group", UIFieldGroup);
-defineElement("ui-field", UIField);
-defineElement("ui-label", UILabel);
-defineElement("ui-description", UIDescription);
-defineElement("ui-error-message", UIErrorMessage);
+defineElement("ui-fieldset", Fieldset);
+defineElement("ui-legend", Legend);
+defineElement("ui-field-group", FieldGroup);
+defineElement("ui-field", Field);
+defineElement("ui-label", Label);
+defineElement("ui-description", Description);
+defineElement("ui-error-message", ErrorMessage);

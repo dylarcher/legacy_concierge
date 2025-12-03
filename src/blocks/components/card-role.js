@@ -40,7 +40,7 @@ export class RoleCard extends BaseComponent {
 			{
 				class: this.clsx(
 					"rounded-lg p-6",
-					"ring-1 ring-zinc-950/5 dark:ring-white/10",
+					"ring-1 ring-zinc-950/5",
 					"text-center",
 					"transition-all duration-200",
 					"",

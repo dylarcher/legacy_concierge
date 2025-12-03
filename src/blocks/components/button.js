@@ -13,15 +13,10 @@ const BUTTON_STYLES = {
 	].join(" "),
 	solid: [
 		"bg-[var(--btn-border)]",
-		"dark:bg-[var(--btn-bg)]",
 		"before:absolute before:inset-0 before:-z-10 before:rounded-[calc(var(--radius-lg,0.5rem)-1px)] before:bg-[var(--btn-bg)]",
 		"before:shadow-sm",
-		"dark:before:hidden",
-		"dark:border-white/5",
 		"after:absolute after:inset-0 after:-z-10 after:rounded-[calc(var(--radius-lg,0.5rem)-1px)]",
 		"after:shadow-[inset_0_1px_theme(colors.white/15%)]",
-		"",
-		"dark:after:-inset-px dark:after:rounded-lg",
 		"[&[data-disabled]]:before:shadow-none [&[data-disabled]]:after:shadow-none",
 	].join(" "),
 	outline: [
@@ -35,31 +30,25 @@ const BUTTON_STYLES = {
 	colors: {
 		"dark/zinc": [
 			"[--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
-			"dark:[--btn-bg:theme(colors.zinc.600)] dark:[--btn-hover-overlay:theme(colors.white/5%)]",
 			"[--btn-icon:theme(colors.zinc.400)]",
 		].join(" "),
 		light: [
 			"[--btn-bg:white] [--btn-border:theme(colors.zinc.950/10%)] [--btn-hover-overlay:theme(colors.zinc.950/2.5%)]",
-			"dark:[--btn-hover-overlay:theme(colors.white/5%)] dark:[--btn-bg:theme(colors.zinc.800)]",
 			"[--btn-icon:theme(colors.zinc.500)]",
 		].join(" "),
 		"dark/white": [
 			"[--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
-			"dark:[--btn-bg:white] dark:[--btn-hover-overlay:theme(colors.zinc.950/5%)]",
 		].join(" "),
 		dark: [
 			"[--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
-			"dark:[--btn-hover-overlay:theme(colors.white/5%)] dark:[--btn-bg:theme(colors.zinc.800)]",
 			"[--btn-icon:theme(colors.zinc.400)]",
 		].join(" "),
 		white: [
 			"[--btn-bg:white] [--btn-border:theme(colors.zinc.950/10%)] [--btn-hover-overlay:theme(colors.zinc.950/2.5%)]",
-			"dark:[--btn-hover-overlay:theme(colors.zinc.950/5%)]",
 			"[--btn-icon:theme(colors.zinc.400)]",
 		].join(" "),
 		zinc: [
 			"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.zinc.600)] [--btn-border:theme(colors.zinc.700/90%)]",
-			"dark:[--btn-hover-overlay:theme(colors.white/5%)]",
 			"[--btn-icon:theme(colors.zinc.400)]",
 		].join(" "),
 		indigo: [

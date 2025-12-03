@@ -64,7 +64,7 @@ export class NavbarDivider extends BaseComponent {
 	 */
 	render() {
 		const dividerClasses = this.combineClassNames(
-			"h-6 w-px dark:bg-white/10",
+			"h-6 w-px bg-zinc-950/10",
 			this.className,
 		);
 
@@ -199,9 +199,7 @@ export class NavbarItem extends BaseComponent {
 			"[&_[data-slot=avatar]]:-m-0.5 [&_[data-slot=avatar]]:size-7 sm:[&_[data-slot=avatar]]:size-6",
 			"[&[data-hover]]:[&[data-hover]_[data-slot=icon]]:fill-zinc-950",
 			"[&[data-active]_[data-slot=icon]]:fill-zinc-950",
-			"dark:[&_[data-slot=icon]]:fill-zinc-400",
-			"dark:[&[data-hover]]:dark:[&[data-hover]_[data-slot=icon]]:fill-white",
-			"dark:[&[data-active]]:dark:[&[data-active]_[data-slot=icon]]:fill-white",
+			"text-zinc-950",
 			!href && "cursor-default",
 		);
 
@@ -214,8 +212,7 @@ export class NavbarItem extends BaseComponent {
 
 		if (isCurrent) {
 			const indicatorElement = this.createElement("span", {
-				class:
-					"absolute inset-x-2 -bottom-2.5 h-0.5 rounded-full dark:bg-white",
+				class: "absolute inset-x-2 -bottom-2.5 h-0.5 rounded-full bg-zinc-950",
 			});
 			wrapperElement.appendChild(indicatorElement);
 		}
@@ -275,9 +272,9 @@ export class NavbarLabel extends BaseComponent {
 	}
 }
 
-defineElement("ui-navbar", UINavbar);
-defineElement("ui-navbar-divider", UINavbarDivider);
-defineElement("ui-navbar-section", UINavbarSection);
-defineElement("ui-navbar-spacer", UINavbarSpacer);
-defineElement("ui-navbar-item", UINavbarItem);
-defineElement("ui-navbar-label", UINavbarLabel);
+defineElement("ui-navbar", Navbar);
+defineElement("ui-navbar-divider", NavbarDivider);
+defineElement("ui-navbar-section", NavbarSection);
+defineElement("ui-navbar-spacer", NavbarSpacer);
+defineElement("ui-navbar-item", NavbarItem);
+defineElement("ui-navbar-label", NavbarLabel);

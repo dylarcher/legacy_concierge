@@ -136,7 +136,7 @@ export class SidebarLayout extends BaseComponent {
 		// Main container
 		const container = this.h("div", {
 			class:
-				"relative isolate flex min-h-svh w-full max-lg:flex-col lg:dark:lg:bg-zinc-950",
+				"relative isolate flex min-h-svh w-full max-lg:flex-col lg:bg-zinc-100",
 		});
 
 		// Desktop sidebar (fixed)
@@ -182,7 +182,7 @@ export class SidebarLayout extends BaseComponent {
 
 		const panelInner = this.h("div", {
 			class:
-				"flex h-full flex-col rounded-lg shadow-sm ring-1 ring-zinc-950/5 dark:ring-white/10",
+				"flex h-full flex-col rounded-lg shadow-sm ring-1 ring-zinc-950/5 bg-white",
 		});
 
 		// Close button area
@@ -234,7 +234,7 @@ export class SidebarLayout extends BaseComponent {
 
 		const contentWrapper = this.h("div", {
 			class:
-				"grow p-6 lg:rounded-lg lg:lg:p-10 lg:shadow-sm lg:ring-1 lg:ring-zinc-950/5 dark:lg:dark:lg:ring-white/10",
+				"grow p-6 lg:rounded-lg lg:p-10 lg:shadow-sm lg:ring-1 lg:ring-zinc-950/5 lg:bg-white",
 		});
 
 		const contentInner = this.h("div", { class: "mx-auto max-w-6xl" });
@@ -249,4 +249,4 @@ export class SidebarLayout extends BaseComponent {
 	}
 }
 
-defineElement("ui-sidebar-layout", UISidebarLayout);
+defineElement("ui-sidebar-layout", SidebarLayout);

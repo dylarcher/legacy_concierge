@@ -287,7 +287,7 @@ export class PaginationPage extends BaseComponent {
 		}
 		buttonElement.className = this.combineClassNames(
 			"min-w-9 before:absolute before:-inset-px before:rounded-lg",
-			isCurrent && "before:dark:before:bg-white/10",
+			isCurrent && "before:bg-zinc-950/5",
 		);
 
 		const pageNumberElement = this.createElement(
@@ -320,7 +320,7 @@ export class PaginationGap extends BaseComponent {
 	 */
 	render() {
 		const gapClasses = this.combineClassNames(
-			"w-9 text-center text-sm/6 font-semibold select-none dark:text-white",
+			"w-9 text-center text-sm/6 font-semibold select-none text-zinc-950",
 			this.className,
 		);
 
@@ -335,9 +335,9 @@ export class PaginationGap extends BaseComponent {
 	}
 }
 
-defineElement("ui-pagination", UIPagination);
-defineElement("ui-pagination-previous", UIPaginationPrevious);
-defineElement("ui-pagination-next", UIPaginationNext);
-defineElement("ui-pagination-list", UIPaginationList);
-defineElement("ui-pagination-page", UIPaginationPage);
-defineElement("ui-pagination-gap", UIPaginationGap);
+defineElement("ui-pagination", Pagination);
+defineElement("ui-pagination-previous", PaginationPrevious);
+defineElement("ui-pagination-next", PaginationNext);
+defineElement("ui-pagination-list", PaginationList);
+defineElement("ui-pagination-page", PaginationPage);
+defineElement("ui-pagination-gap", PaginationGap);

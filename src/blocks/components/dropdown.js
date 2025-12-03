@@ -295,8 +295,8 @@ export class DropdownMenu extends BaseComponent {
 			"isolate w-max min-w-[12rem] rounded-xl p-1",
 			"outline outline-transparent",
 			"overflow-y-auto max-h-80",
-			"backdrop-blur-xl dark:bg-zinc-800/75",
-			"shadow-lg ring-1 border-soft dark:ring-inset",
+			"backdrop-blur-xl bg-white/75",
+			"shadow-lg ring-1 ring-zinc-950/10",
 			"transition duration-100 ease-in",
 			this.className,
 		);
@@ -629,13 +629,13 @@ export class DropdownDescription extends BaseComponent {
 	}
 }
 
-defineElement("ui-dropdown", UIDropdown);
-defineElement("ui-dropdown-button", UIDropdownButton);
-defineElement("ui-dropdown-menu", UIDropdownMenu);
-defineElement("ui-dropdown-item", UIDropdownItem);
-defineElement("ui-dropdown-header", UIDropdownHeader);
-defineElement("ui-dropdown-section", UIDropdownSection);
-defineElement("ui-dropdown-heading", UIDropdownHeading);
-defineElement("ui-dropdown-divider", UIDropdownDivider);
-defineElement("ui-dropdown-label", UIDropdownLabel);
-defineElement("ui-dropdown-description", UIDropdownDescription);
+defineElement("ui-dropdown", Dropdown);
+defineElement("ui-dropdown-button", DropdownButton);
+defineElement("ui-dropdown-menu", DropdownMenu);
+defineElement("ui-dropdown-item", DropdownItem);
+defineElement("ui-dropdown-header", DropdownHeader);
+defineElement("ui-dropdown-section", DropdownSection);
+defineElement("ui-dropdown-heading", DropdownHeading);
+defineElement("ui-dropdown-divider", DropdownDivider);
+defineElement("ui-dropdown-label", DropdownLabel);
+defineElement("ui-dropdown-description", DropdownDescription);

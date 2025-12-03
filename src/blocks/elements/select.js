@@ -88,7 +88,6 @@ export class Select extends BaseComponent {
 		const wrapperClasses = this.combineClassNames(
 			"group relative block w-full",
 			"before:absolute before:inset-px before:rounded-[calc(var(--radius-lg,0.5rem)-1px)] before:before:shadow-sm",
-			"dark:before:hidden",
 			"after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset",
 			isDisabled && "opacity-50 before:before:shadow-none",
 		);
@@ -100,12 +99,11 @@ export class Select extends BaseComponent {
 				? "px-[calc(var(--spacing,0.25rem)*3.5-1px)] sm:px-[calc(var(--spacing,0.25rem)*3-1px)]"
 				: "pr-[calc(var(--spacing,0.25rem)*10-1px)] pl-[calc(var(--spacing,0.25rem)*3.5-1px)] sm:pr-[calc(var(--spacing,0.25rem)*9-1px)] sm:pl-[calc(var(--spacing,0.25rem)*3-1px)]",
 			"[&_optgroup]:font-semibold",
-			"text-base/6 text-canvas placeholder:text-muted sm:text-sm/6 dark:[&>*]:text-white",
-			"border dark:border-white/10",
-			"dark:[&>*]:bg-zinc-800",
-			"",
-			isInvalid && "dark:border-red-600",
-			isDisabled && "opacity-100 dark:bg-white/[2.5%]",
+			"text-base/6 text-canvas placeholder:text-muted sm:text-sm/6",
+			"border border-zinc-950/10 bg-transparent",
+			"focus:outline-none focus:ring-2 focus:ring-blue-500",
+			isInvalid && "border-red-500",
+			isDisabled && "opacity-100 cursor-not-allowed",
 		);
 
 		this.innerHTML = "";
@@ -182,4 +180,4 @@ export class Select extends BaseComponent {
 	}
 }
 
-defineElement("ui-select", UISelect);
+defineElement("ui-select", Select);

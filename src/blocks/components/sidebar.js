@@ -343,10 +343,6 @@ export class SidebarItem extends BaseComponent {
 			"[&[data-hover]]:bg-depth-1 [&[data-hover]_[data-slot=icon]]:fill-zinc-950",
 			"[&[data-active]_[data-slot=icon]]:fill-zinc-950",
 			"[&[data-current]_[data-slot=icon]]:fill-zinc-950",
-			"dark:[&_[data-slot=icon]]:fill-zinc-400",
-			"dark:[&[data-hover]]:dark:[&[data-hover]_[data-slot=icon]]:fill-white",
-			"dark:[&[data-active]]:dark:[&[data-active]_[data-slot=icon]]:fill-white",
-			"dark:[&[data-current]_[data-slot=icon]]:fill-white",
 			!href && "cursor-default",
 		);
 
@@ -359,7 +355,7 @@ export class SidebarItem extends BaseComponent {
 
 		if (isCurrent) {
 			const indicatorElement = this.createElement("span", {
-				class: "absolute inset-y-2 -left-4 w-0.5 rounded-full dark:bg-white",
+				class: "absolute inset-y-2 -left-4 w-0.5 rounded-full bg-zinc-950",
 			});
 			wrapperElement.appendChild(indicatorElement);
 		}
@@ -419,13 +415,13 @@ export class SidebarLabel extends BaseComponent {
 	}
 }
 
-defineElement("ui-sidebar", UISidebar);
-defineElement("ui-sidebar-header", UISidebarHeader);
-defineElement("ui-sidebar-body", UISidebarBody);
-defineElement("ui-sidebar-footer", UISidebarFooter);
-defineElement("ui-sidebar-section", UISidebarSection);
-defineElement("ui-sidebar-divider", UISidebarDivider);
-defineElement("ui-sidebar-spacer", UISidebarSpacer);
-defineElement("ui-sidebar-heading", UISidebarHeading);
-defineElement("ui-sidebar-item", UISidebarItem);
-defineElement("ui-sidebar-label", UISidebarLabel);
+defineElement("ui-sidebar", Sidebar);
+defineElement("ui-sidebar-header", SidebarHeader);
+defineElement("ui-sidebar-body", SidebarBody);
+defineElement("ui-sidebar-footer", SidebarFooter);
+defineElement("ui-sidebar-section", SidebarSection);
+defineElement("ui-sidebar-divider", SidebarDivider);
+defineElement("ui-sidebar-spacer", SidebarSpacer);
+defineElement("ui-sidebar-heading", SidebarHeading);
+defineElement("ui-sidebar-item", SidebarItem);
+defineElement("ui-sidebar-label", SidebarLabel);

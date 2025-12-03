@@ -45,8 +45,7 @@ export class DescriptionTerm extends BaseComponent {
 		const classes = this.clsx(
 			"col-start-1 border-t pt-3 text-zinc-500",
 			"first:border-none",
-			"sm:border-t sm:sm:py-3",
-			"sm:dark:border-white/5",
+			"sm:border-t sm:py-3",
 			this.className,
 		);
 
@@ -71,8 +70,7 @@ export class DescriptionDetails extends BaseComponent {
 	render() {
 		const classes = this.clsx(
 			"pt-1 pb-3 text-zinc-950",
-			"sm:border-t sm:sm:py-3 sm:[&:nth-child(2)]:border-none",
-			"dark:sm:border-white/5",
+			"sm:border-t sm:py-3 sm:[&:nth-child(2)]:border-none",
 			this.className,
 		);
 
@@ -84,6 +82,6 @@ export class DescriptionDetails extends BaseComponent {
 	}
 }
 
-defineElement("ui-description-list", UIDescriptionList);
-defineElement("ui-description-term", UIDescriptionTerm);
-defineElement("ui-description-details", UIDescriptionDetails);
+defineElement("ui-description-list", DescriptionList);
+defineElement("ui-description-term", DescriptionTerm);
+defineElement("ui-description-details", DescriptionDetails);

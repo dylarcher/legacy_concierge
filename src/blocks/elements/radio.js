@@ -2,26 +2,22 @@ import { BaseComponent, defineElement } from "./_base.js";
 
 const RADIO_BASE_STYLES = [
 	"relative isolate flex size-[1.1875rem] shrink-0 rounded-full sm:size-[1.0625rem]",
-	"before:absolute before:inset-0 before:-z-10 before:rounded-full before:before:shadow-sm",
+	"before:absolute before:inset-0 before:-z-10 before:rounded-full before:shadow-sm before:bg-white",
 	"[.group[data-checked]_&]:before:bg-[var(--radio-checked-bg)]",
-	"dark:before:hidden",
-	"dark:[.group[data-checked]_&]:bg-[var(--radio-checked-bg)]",
-	"border [.group[data-checked]_&]:border-transparent",
+	"border border-zinc-950/15 [.group[data-checked]_&]:border-transparent",
 	"after:absolute after:inset-0 after:rounded-full after:shadow-[inset_0_1px_theme(colors.white/15%)]",
-	"dark:after:-inset-px dark:after:hidden dark:after:rounded-full dark:[.group[data-checked]_&]:after:block",
 	"[--radio-indicator:transparent] [.group[data-checked]_&]:[--radio-indicator:var(--radio-checked-indicator)]",
 	"[.group[data-disabled]_&]:opacity-50",
-	"[.group[data-disabled]_&]:[.group[data-disabled]_&]:bg-zinc-950/5",
+	"[.group[data-disabled]_&]:bg-zinc-950/5",
 ].join(" ");
 
 const RADIO_COLORS = {
 	"dark/zinc":
-		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white] dark:[--radio-checked-bg:theme(colors.zinc.600)]",
+		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white]",
 	"dark/white":
-		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white] dark:[--radio-checked-bg:white] dark:[--radio-checked-indicator:theme(colors.zinc.900)]",
+		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white]",
 	white:
 		"[--radio-checked-bg:white] [--radio-checked-border:theme(colors.zinc.950/15%)] [--radio-checked-indicator:theme(colors.zinc.900)]",
-	dark: "[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white]",
 	zinc: "[--radio-checked-indicator:white] [--radio-checked-bg:theme(colors.zinc.600)] [--radio-checked-border:theme(colors.zinc.700/90%)]",
 	red: "[--radio-checked-indicator:white] [--radio-checked-bg:theme(colors.red.600)] [--radio-checked-border:theme(colors.red.700/90%)]",
 	orange:
@@ -383,6 +379,6 @@ export class Radio extends BaseComponent {
 	}
 }
 
-defineElement("ui-radio-group", UIRadioGroup);
-defineElement("ui-radio-field", UIRadioField);
-defineElement("ui-radio", UIRadio);
+defineElement("ui-radio-group", RadioGroup);
+defineElement("ui-radio-field", RadioField);
+defineElement("ui-radio", Radio);

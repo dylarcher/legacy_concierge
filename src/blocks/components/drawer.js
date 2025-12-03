@@ -219,7 +219,7 @@ export class Drawer extends BaseComponent {
 		const backdropElement = this.createElement("div", {
 			class: this.combineClassNames(
 				"fixed inset-0 transition-opacity duration-300 ease-in-out opacity-0",
-				"dark:bg-zinc-950/50",
+				"bg-zinc-950/25",
 			),
 			ref: (element) => {
 				this.#backdropElement = element;
@@ -253,7 +253,6 @@ export class Drawer extends BaseComponent {
 		const panelInner = this.createElement("div", {
 			class: this.combineClassNames(
 				"flex h-full flex-col overflow-y-auto bg-canvas shadow-xl",
-				"dark:ring-1 dark:ring-white/10",
 			),
 		});
 
@@ -313,8 +312,7 @@ export class DrawerHeader extends BaseComponent {
 				type: "button",
 				class: this.combineClassNames(
 					"rounded-md text-zinc-400",
-					"",
-					"dark:text-zinc-500",
+					"hover:text-zinc-500",
 				),
 				onClick: () => {
 					const drawerElement = this.closest("ui-drawer");
@@ -496,9 +494,9 @@ export class DrawerFooter extends BaseComponent {
 	}
 }
 
-defineElement("ui-drawer", UIDrawer);
-defineElement("ui-drawer-header", UIDrawerHeader);
-defineElement("ui-drawer-title", UIDrawerTitle);
-defineElement("ui-drawer-description", UIDrawerDescription);
-defineElement("ui-drawer-body", UIDrawerBody);
-defineElement("ui-drawer-footer", UIDrawerFooter);
+defineElement("ui-drawer", Drawer);
+defineElement("ui-drawer-header", DrawerHeader);
+defineElement("ui-drawer-title", DrawerTitle);
+defineElement("ui-drawer-description", DrawerDescription);
+defineElement("ui-drawer-body", DrawerBody);
+defineElement("ui-drawer-footer", DrawerFooter);

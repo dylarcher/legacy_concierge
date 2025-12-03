@@ -10,31 +10,26 @@
 export const BUTTON_COLORS = {
 	"dark/zinc": [
 		"[--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
-		"dark:[--btn-bg:theme(colors.zinc.600)] dark:[--btn-hover-overlay:theme(colors.white/5%)]",
 		"[--btn-icon:theme(colors.zinc.400)]",
 	].join(" "),
 	light: [
 		"[--btn-bg:white] [--btn-border:theme(colors.zinc.950/10%)] [--btn-hover-overlay:theme(colors.zinc.950/2.5%)]",
-		"dark:[--btn-hover-overlay:theme(colors.white/5%)] dark:[--btn-bg:theme(colors.zinc.800)]",
 		"[--btn-icon:theme(colors.zinc.500)]",
 	].join(" "),
 	"dark/white": [
 		"[--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
-		"dark:[--btn-bg:white] dark:[--btn-hover-overlay:theme(colors.zinc.950/5%)]",
+		"[--btn-icon:theme(colors.zinc.400)]",
 	].join(" "),
 	dark: [
 		"[--btn-bg:theme(colors.zinc.900)] [--btn-border:theme(colors.zinc.950/90%)] [--btn-hover-overlay:theme(colors.white/10%)]",
-		"dark:[--btn-hover-overlay:theme(colors.white/5%)] dark:[--btn-bg:theme(colors.zinc.800)]",
 		"[--btn-icon:theme(colors.zinc.400)]",
 	].join(" "),
 	white: [
 		"[--btn-bg:white] [--btn-border:theme(colors.zinc.950/10%)] [--btn-hover-overlay:theme(colors.zinc.950/2.5%)]",
-		"dark:[--btn-hover-overlay:theme(colors.zinc.950/5%)]",
 		"[--btn-icon:theme(colors.zinc.400)]",
 	].join(" "),
 	zinc: [
 		"[--btn-hover-overlay:theme(colors.white/10%)] [--btn-bg:theme(colors.zinc.600)] [--btn-border:theme(colors.zinc.700/90%)]",
-		"dark:[--btn-hover-overlay:theme(colors.white/5%)]",
 		"[--btn-icon:theme(colors.zinc.400)]",
 	].join(" "),
 	indigo: [
@@ -113,9 +108,9 @@ export const BUTTON_COLORS = {
  */
 export const CHECKBOX_COLORS = {
 	"dark/zinc":
-		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)] dark:[--checkbox-checked-bg:theme(colors.zinc.600)]",
+		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)]",
 	"dark/white":
-		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)] dark:[--checkbox-check:theme(colors.zinc.900)] dark:[--checkbox-checked-bg:white]",
+		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)]",
 	white:
 		"[--checkbox-check:theme(colors.zinc.900)] [--checkbox-checked-bg:white] [--checkbox-checked-border:theme(colors.zinc.950/15%)]",
 	dark: "[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)]",
@@ -154,9 +149,9 @@ export const CHECKBOX_COLORS = {
  */
 export const RADIO_COLORS = {
 	"dark/zinc":
-		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white] dark:[--radio-checked-bg:theme(colors.zinc.600)]",
+		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white]",
 	"dark/white":
-		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white] dark:[--radio-checked-bg:white] dark:[--radio-checked-indicator:theme(colors.zinc.900)]",
+		"[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white]",
 	white:
 		"[--radio-checked-bg:white] [--radio-checked-border:theme(colors.zinc.950/15%)] [--radio-checked-indicator:theme(colors.zinc.900)]",
 	dark: "[--radio-checked-bg:theme(colors.zinc.900)] [--radio-checked-border:theme(colors.zinc.950/90%)] [--radio-checked-indicator:white]",

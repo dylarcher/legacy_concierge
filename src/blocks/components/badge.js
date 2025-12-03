@@ -4,24 +4,24 @@ import { BaseComponent, defineElement } from "../_base.js";
  * Badge color variants using Tailwind CSS classes
  */
 const BADGE_COLORS = {
-	red: "dark:text-red-400",
-	orange: "dark:text-orange-400",
-	amber: "dark:text-amber-400",
-	yellow: "dark:text-yellow-300",
-	lime: "dark:text-lime-300",
-	green: "dark:text-green-400",
-	emerald: "dark:text-emerald-400",
-	teal: "dark:text-teal-300",
-	cyan: "dark:text-cyan-300",
-	sky: "dark:text-sky-300",
-	blue: "dark:text-blue-400",
-	indigo: "dark:text-indigo-400",
-	violet: "dark:text-violet-400",
-	purple: "dark:text-purple-400",
-	fuchsia: "dark:text-fuchsia-400",
-	pink: "dark:text-pink-400",
-	rose: "dark:text-rose-400",
-	zinc: "dark:text-zinc-400",
+	red: "bg-red-500/15 text-red-700",
+	orange: "bg-orange-500/15 text-orange-700",
+	amber: "bg-amber-500/15 text-amber-700",
+	yellow: "bg-yellow-500/15 text-yellow-700",
+	lime: "bg-lime-500/15 text-lime-700",
+	green: "bg-green-500/15 text-green-700",
+	emerald: "bg-emerald-500/15 text-emerald-700",
+	teal: "bg-teal-500/15 text-teal-700",
+	cyan: "bg-cyan-500/15 text-cyan-700",
+	sky: "bg-sky-500/15 text-sky-700",
+	blue: "bg-blue-500/15 text-blue-700",
+	indigo: "bg-indigo-500/15 text-indigo-700",
+	violet: "bg-violet-500/15 text-violet-700",
+	purple: "bg-purple-500/15 text-purple-700",
+	fuchsia: "bg-fuchsia-500/15 text-fuchsia-700",
+	pink: "bg-pink-500/15 text-pink-700",
+	rose: "bg-rose-500/15 text-rose-700",
+	zinc: "bg-zinc-500/15 text-zinc-700",
 };
 
 /**
@@ -166,5 +166,5 @@ export class BadgeButton extends BaseComponent {
 	}
 }
 
-defineElement("ui-badge", UIBadge);
-defineElement("ui-badge-button", UIBadgeButton);
+defineElement("ui-badge", Badge);
+defineElement("ui-badge-button", BadgeButton);

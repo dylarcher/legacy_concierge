@@ -70,7 +70,7 @@ export class QuoteCard extends BaseComponent {
 			{
 				class: this.clsx(
 					"rounded-xl shadow-lg p-8",
-					"ring-1 ring-zinc-950/5 dark:ring-white/10",
+					"ring-1 ring-zinc-950/5",
 					"transition-shadow",
 					"h-full flex flex-col",
 				),
@@ -111,7 +111,7 @@ export class QuoteCard extends BaseComponent {
 							this.h(
 								"p",
 								{
-									class: "font-semibold dark:text-white",
+									class: "font-semibold",
 								},
 								author,
 							),
@@ -119,7 +119,7 @@ export class QuoteCard extends BaseComponent {
 							this.h(
 								"p",
 								{
-									class: "text-sm dark:text-zinc-400",
+									class: "text-sm",
 								},
 								role,
 							),

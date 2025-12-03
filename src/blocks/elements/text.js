@@ -97,7 +97,6 @@ export class TextLink extends BaseComponent {
 		const linkClasses = this.combineClassNames(
 			"text-canvas underline decoration-zinc-950/50",
 			"[&[data-hover]]:decoration-zinc-950",
-			"dark:decoration-white/50 dark:[&[data-hover]]:decoration-white",
 			this.className,
 		);
 
@@ -178,7 +177,6 @@ export class Code extends BaseComponent {
 		const codeClasses = this.combineClassNames(
 			"rounded-sm border bg-zinc-950/[2.5%] px-0.5 text-sm font-medium text-canvas",
 			"sm:text-[0.8125rem]",
-			"dark:bg-white/5",
 			this.className,
 		);
 
@@ -193,7 +191,7 @@ export class Code extends BaseComponent {
 	}
 }
 
-defineElement("ui-text", UIText);
-defineElement("ui-text-link", UITextLink);
-defineElement("ui-strong", UIStrong);
-defineElement("ui-code", UICode);
+defineElement("ui-text", Text);
+defineElement("ui-text-link", TextLink);
+defineElement("ui-strong", Strong);
+defineElement("ui-code", Code);

@@ -4,13 +4,9 @@ const CHECKBOX_BASE_STYLES = [
 	"relative isolate flex size-[1.125rem] items-center justify-center rounded-[0.3125rem] sm:size-4",
 	"before:absolute before:inset-0 before:-z-10 before:rounded-[calc(0.3125rem-1px)] before:bg-white before:shadow-sm",
 	"[.group[data-checked]_&]:before:bg-[var(--checkbox-checked-bg)]",
-	"dark:before:hidden",
-	"dark:bg-white/5 dark:[.group[data-checked]_&]:bg-[var(--checkbox-checked-bg)]",
 	"border border-zinc-950/15 [.group[data-checked]_&]:border-transparent",
 	"[.group[data-checked]_&]:bg-[var(--checkbox-checked-border)]",
-	"dark:border-white/15 dark:[.group[data-checked]_&]:border-white/5",
 	"after:absolute after:inset-0 after:rounded-[calc(0.3125rem-1px)] after:shadow-[inset_0_1px_theme(colors.white/15%)]",
-	"dark:after:-inset-px dark:after:hidden dark:after:rounded-[0.3125rem] dark:[.group[data-checked]_&]:after:block",
 	"[.group[data-disabled]_&]:opacity-50",
 	"[.group[data-disabled]_&]:border-zinc-950/25 [.group[data-disabled]_&]:bg-zinc-950/5",
 	"[.group[data-disabled]_&]:[--checkbox-check:theme(colors.zinc.950/50%)] [.group[data-disabled]_&]:before:bg-transparent",
@@ -18,12 +14,11 @@ const CHECKBOX_BASE_STYLES = [
 
 const CHECKBOX_COLORS = {
 	"dark/zinc":
-		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)] dark:[--checkbox-checked-bg:theme(colors.zinc.600)]",
+		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)]",
 	"dark/white":
-		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)] dark:[--checkbox-check:theme(colors.zinc.900)] dark:[--checkbox-checked-bg:white]",
+		"[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)]",
 	white:
 		"[--checkbox-check:theme(colors.zinc.900)] [--checkbox-checked-bg:white] [--checkbox-checked-border:theme(colors.zinc.950/15%)]",
-	dark: "[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.900)] [--checkbox-checked-border:theme(colors.zinc.950/90%)]",
 	zinc: "[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.zinc.600)] [--checkbox-checked-border:theme(colors.zinc.700/90%)]",
 	red: "[--checkbox-check:theme(colors.white)] [--checkbox-checked-bg:theme(colors.red.600)] [--checkbox-checked-border:theme(colors.red.700/90%)]",
 	orange:

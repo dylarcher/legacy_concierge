@@ -11,7 +11,7 @@ export const FOOTER_TEMPLATE = `
                 <div class="flex flex-wrap w-full justify-center gap-8 pb-12">
                     <div class="flex flex-wrap w-full md:w-2/3 justify-between gap-x-4 gap-y-4">
                         <div class="w-max md:w-1/5">
-                            <h3 class="dark:text-white">COMPANY</h3>
+                            <h3 class="text-sm font-semibold text-white">Company</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
                                     <a href="#" class="text-sm/6 text-gray-200">Careers</a>
@@ -34,7 +34,7 @@ export const FOOTER_TEMPLATE = `
                             </ul>
                         </div>
                         <div class="w-max md:w-1/3">
-                            <h3 class="dark:text-white">TREATMENTS</h3>
+                            <h3 class="text-sm font-semibold text-white">Services</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
                                     <a href="#" class="text-sm/6 text-gray-200">Pulmonary Oversight</a>
@@ -60,7 +60,7 @@ export const FOOTER_TEMPLATE = `
                             </ul>
                         </div>
                         <div class="w-max md:w-1/3">
-                            <h3 class="dark:text-white">SERVICES</h3>
+                            <h3 class="text-sm font-semibold text-white">Conditions</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
                                     <a href="#" class="text-sm/6 text-gray-200">Amyotrophic Lateral Sclerosis</a>
@@ -99,7 +99,7 @@ export const FOOTER_TEMPLATE = `
                         </div>
                     </div>
                     <div class="w-max md:w-1/4 ms-8">
-                        <h3 class="" aria-describedby="newsletter-description">NEWSLETTER</h3>
+                        <h3 class="" aria-describedby="newsletter-description">Newsletter</h3>
                         <p id="newsletter-description" class="sr-only">Subscribe to our newsletter for the latest news, articles, and resources, sent to your inbox weekly.</p>
                         <form class="flex max-w-md">
                             <label for="email-address" class="sr-only">Enter your email address</label>
@@ -132,7 +132,7 @@ export const FOOTER_TEMPLATE = `
 						</svg>
 					</div>
 					<div class="border-t pt-4 md:flex md:items-center md:justify-between">
-						<p class="mt-8 mr-auto text-sm/6 md:mt-0 dark:text-gray-200">&copy; Legacy Concierge, Inc.</p>
+						<p class="mt-8 mr-auto text-sm/6 md:mt-0 text-gray-300" data-copyright></p>
 						<nav class="flex gap-6" aria-label="Legal links">
 							<a href="#" class="text-sm/6 text-gray-300">Privacy Policy</a>
 							<a href="#" class="text-sm/6 text-gray-300">Terms of Service</a>
@@ -274,7 +274,6 @@ export class GlobalFooter extends BaseComponent {
 							"md:items-center",
 							"md:justify-between",
 							"lg:mt-24",
-							"dark:border-white/10",
 						].join(" "),
 					},
 					this.h(

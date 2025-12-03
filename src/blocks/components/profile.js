@@ -1,4 +1,8 @@
+import { resolveImage } from "../../assets/image-manifest.js";
 import { BaseComponent, defineElement } from "../_base.js";
+
+// Default fallback avatar path (will be resolved through manifest when image exists)
+const DEFAULT_AVATAR_PATH = "/assets/media/images/placeholder-avatar.webp";
 
 /**
  * Profile card component for displaying person information with photo and bio
@@ -57,9 +61,8 @@ export class ProfileCard extends BaseComponent {
 	#renderCompactVariant() {
 		const name = this.getAttribute("name") || "Name";
 		const title = this.getAttribute("title") || "";
-		const image =
-			this.getAttribute("image") ||
-			"/assets/media/images/placeholder-avatar.webp";
+		const imageAttr = this.getAttribute("image");
+		const image = resolveImage(imageAttr || DEFAULT_AVATAR_PATH);
 		const imageAlt = this.getAttribute("image-alt") || name;
 
 		// Collect bio content from children
@@ -70,20 +73,14 @@ export class ProfileCard extends BaseComponent {
 			{
 				class: this.clsx(
 					"flex flex-col items-center text-center",
-					"dark:bg-zinc-900",
-					"rounded-xl p-6",
-					"ring-1 ring-zinc-950/5 dark:ring-white/10",
-					"transition-shadow",
+					"rounded-xl p-6 ring-1 transition-shadow",
 				),
 			},
 			// Avatar
 			this.h("img", {
 				src: image,
 				alt: imageAlt,
-				class: this.clsx(
-					"w-32 h-32 rounded-full object-cover mb-4",
-					"ring-4 ring-cyan-500/20 dark:ring-cyan-400/20",
-				),
+				class: this.clsx("w-32 h-32 rounded-full object-cover mb-4", "ring-4"),
 			}),
 			// Name
 			this.h(
@@ -121,9 +118,8 @@ export class ProfileCard extends BaseComponent {
 	#renderDefaultVariant() {
 		const name = this.getAttribute("name") || "Name";
 		const title = this.getAttribute("title") || "";
-		const image =
-			this.getAttribute("image") ||
-			"/assets/media/images/placeholder-avatar.webp";
+		const imageAttr = this.getAttribute("image");
+		const image = resolveImage(imageAttr || DEFAULT_AVATAR_PATH);
 		const imageAlt = this.getAttribute("image-alt") || name;
 		const align = this.getAttribute("align") || "left";
 
@@ -189,11 +185,7 @@ export class ProfileCard extends BaseComponent {
 					this.h(
 						"div",
 						{
-							class: this.clsx(
-								"prose prose-zinc dark:prose-invert max-w-none",
-								"prose-p:dark:prose-p:text-zinc-300",
-								"prose-headings:dark:prose-headings:text-white",
-							),
+							class: this.clsx("prose prose-zinc", "prose-headings"),
 						},
 						...bioContent,
 					),

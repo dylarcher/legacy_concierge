@@ -1,3 +1,4 @@
+import { resolveImage } from "../../assets/image-manifest.js";
 import { BaseComponent, defineElement } from "../_base.js";
 
 /**
@@ -34,7 +35,8 @@ class CardTreatment extends BaseComponent {
 	}
 
 	render() {
-		const bgImage = this.getAttribute("bg-image") || "";
+		const bgImageAttr = this.getAttribute("bg-image");
+		const bgImage = bgImageAttr ? resolveImage(bgImageAttr) : "";
 		const bgPosition = this.getAttribute("bg-position") || "center";
 		const bgSize = this.getAttribute("bg-size") || "cover";
 

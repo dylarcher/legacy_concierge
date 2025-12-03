@@ -1,4 +1,6 @@
 // Import media assets so Vite can process them
+
+import { resolveImage } from "../../assets/image-manifest.js";
 import defaultHeroImage from "../../assets/media/images/blue-green-waves-brown-beach.webp";
 import videoMp4 from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.mp4?url";
 import videoWebm from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.webm?url";
@@ -43,10 +45,10 @@ export const BANNER_TEMPLATE = () => `
 
 				<div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
 					<h1 class="tracking-tight sm:text-4xl">Your health, Our Purpose.</h1>
-					<p class="mt-6 text-lg/8 text-pretty text-gray-300">Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.</p>
+					<p class="mt-6 text-lg/8 text-pretty text-white">Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.</p>
 
-					<div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-						<a href="#" class="rounded-md px-3.5 py-2.5 text-sm font-semibold no-underline shadow-xs dark:shadow-none dark:inset-ring dark:inset-ring-white/5"> Call for more details&hellip; </a>
+					<div class="text-canvas mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+						<a href="#" class="rounded-md px-3.5 py-2.5 text-sm font-semibold no-underline shadow-xs"> Call for more details&hellip; </a>
 						<a href="#" class="text-sm/6 font-semibold text-white">
 							Learn more
 							<span aria-hidden="true">→</span>
@@ -215,7 +217,7 @@ export class HeroBanner extends BaseComponent {
 			this.getAttribute("description") ||
 			"Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.";
 		const imagePath = this.getAttribute("image");
-		const image = imagePath || defaultHeroImage;
+		const image = imagePath ? resolveImage(imagePath) : defaultHeroImage;
 		const imageAlt = this.getAttribute("image-alt") || "";
 		const primaryCta = this.getAttribute("primary-cta");
 		const primaryHref = this.getAttribute("primary-href") || "#";
@@ -236,7 +238,7 @@ export class HeroBanner extends BaseComponent {
 					{
 						href: primaryHref,
 						class:
-							"px-6 py-4 text-lg text-[clamp(1rem,1.5vw,1.25rem)] font-bold text-shadow-lg tracking-wider shadow-xs border-1 rounded-xl no-underline",
+							"text-white bg-secondary/32 px-6 py-4 text-lg text-[clamp(1rem,1.5vw,1.25rem)] font-bold text-shadow-lg tracking-wider shadow-xs border-1 rounded-xl no-underline",
 					},
 					primaryCta,
 				),
@@ -250,7 +252,7 @@ export class HeroBanner extends BaseComponent {
 					{
 						href: secondaryHref,
 						class:
-							"text-lg/6 text-[clamp(0.92rem,1.32vw,1.15rem)] font-semibold text-shadow-lg tracking-wide no-underline",
+							"text-white text-lg/6 text-[clamp(0.92rem,1.32vw,1.15rem)] font-semibold text-shadow-lg tracking-wide no-underline",
 					},
 					secondaryCta,
 					this.h("span", { "aria-hidden": "true" }, " →"),
@@ -316,7 +318,7 @@ export class HeroBanner extends BaseComponent {
 		const header = this.h(
 			"header",
 			{
-				class: "relative isolate overflow-hidden min-h-dvh",
+				class: "text-white relative isolate overflow-hidden min-h-dvh",
 			},
 			// Background video with image fallback (video is default unless no-video attribute is set)
 			hasVideoDisabled
