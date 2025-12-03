@@ -99,21 +99,25 @@
 		--status-error-bg: var(--status-error-bg);
 		--status-error-border: var(--status-error-border);
 		--status-error-ring: var(--status-error-ring);
+		--status-error-text: var(--status-error-text);
 
 		--status-info-fg: var(--status-info-fg);
 		--status-info-bg: var(--status-info-bg);
 		--status-info-border: var(--status-info-border);
 		--status-info-ring: var(--status-info-ring);
+		--status-info-text: var(--status-info-text);
 
 		--status-success-fg: var(--status-success-fg);
 		--status-success-bg: var(--status-success-bg);
 		--status-success-border: var(--status-success-border);
 		--status-success-ring: var(--status-success-ring);
+		--status-success-text: var(--status-success-text);
 
 		--status-warning-fg: var(--status-warning-fg);
 		--status-warning-bg: var(--status-warning-bg);
 		--status-warning-border: var(--status-warning-border);
 		--status-warning-ring: var(--status-warning-ring);
+		--status-warning-text: var(--status-warning-text);
 
 		/* Component-level aliases (buttons/inputs/cards) */
 		--btn-solid-fg: var(--color-muted);
@@ -390,7 +394,7 @@
 		background-color: var(--color-accent);
 	}
 	.bg-muted {
-		background-color: var(--color-muted);
+		background-color: var(--color-bg-muted);
 	}
 	.bg-canvas {
 		background-color: var(--color-canvas);
@@ -398,8 +402,11 @@
 	.bg-surface {
 		background-color: var(--color-bg-surface);
 	}
-	.bg-muted {
-		background-color: var(--color-bg-muted);
+	.bg-depth-1 {
+		background-color: var(--bg-depth-1);
+	}
+	.bg-depth-2 {
+		background-color: var(--bg-depth-2);
 	}
 	.bg-inverse {
 		background-color: var(--color-bg-inverse);
@@ -469,19 +476,19 @@
 
 	.text-status-error,
 	.text-badge-error {
-		color: var(--color-coral);
+		color: var(--status-error-text);
 	}
 	.text-status-info,
 	.text-badge-info {
-		color: var(--color-iris);
+		color: var(--status-info-text);
 	}
 	.text-status-success,
 	.text-badge-success {
-		color: var(--color-jade);
+		color: var(--status-success-text);
 	}
 	.text-status-warning,
 	.text-badge-warning {
-		color: var(--color-amber);
+		color: var(--status-warning-text);
 	}
 
 	.border-status-error {

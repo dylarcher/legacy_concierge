@@ -50,10 +50,10 @@
 		</style>
 	</head>
 
-	<body class="bg-canvas">
+	<body class="bg-white">
 		<!-- Navigation -->
 		<nav
-			class="fixed top-0 inset-x-0 z-50 bg-canvas/95 backdrop-blur-sm border-b border-soft"
+			class="fixed top-0 inset-x-0 z-50 bg-white/92 backdrop-blur-sm card-shadow"
 		>
 			<div class="mx-auto max-w-7xl px-6 lg:px-8">
 				<div class="flex h-16 items-center justify-between">
@@ -279,12 +279,12 @@
 					<div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-8">
 						<div>
 							<div class="swatch" style="background: var(--color-coral);"></div>
-							<p class="token-name mt-2 text-canvas">caution</p>
+							<p class="token-name mt-2 text-canvas">error</p>
 							<p class="text-xs text-muted">Errors, destructive</p>
 						</div>
 						<div>
 							<div class="swatch" style="background: var(--color-iris);"></div>
-							<p class="token-name mt-2 text-canvas">details</p>
+							<p class="token-name mt-2 text-canvas">info</p>
 							<p class="text-xs text-muted">Information</p>
 						</div>
 						<div>
@@ -648,7 +648,7 @@
 								class="w-full px-4 py-3 rounded-lg border-2 input-bg input-fg"
 								style="border-color: var(--input-error-ring);"
 							>
-							<p class="text-xs mt-1 text-badge-caution">
+							<p class="text-xs mt-1 text-badge-error">
 								This field is required
 							</p>
 						</div>
@@ -795,12 +795,12 @@
 					</p>
 					<div class="demo-box flex flex-wrap gap-3 mb-8">
 						<span
-							class="bg-status-caution border border-status-caution text-badge-caution text-sm px-3 py-1 rounded-full font-medium"
-							>Caution</span
+							class="bg-status-error border border-status-error text-badge-error text-sm px-3 py-1 rounded-full font-medium"
+							>Error</span
 						>
 						<span
-							class="bg-status-details border border-status-details text-badge-details text-sm px-3 py-1 rounded-full font-medium"
-							>Details</span
+							class="bg-status-info border border-status-info text-badge-info text-sm px-3 py-1 rounded-full font-medium"
+							>Info</span
 						>
 						<span
 							class="bg-status-success border border-status-success text-badge-success text-sm px-3 py-1 rounded-full font-medium"
@@ -810,20 +810,16 @@
 							class="bg-status-warning border border-status-warning text-badge-warning text-sm px-3 py-1 rounded-full font-medium"
 							>Warning</span
 						>
-						<span
-							class="bg-status-callout border border-status-callout text-badge-callout text-sm px-3 py-1 rounded-full font-medium"
-							>Callout</span
-						>
 					</div>
 
 					<!-- Alert Examples -->
 					<h3 class="mb-4">Alerts</h3>
 					<div class="space-y-4">
 						<div
-							class="bg-status-details border border-status-details rounded-lg p-4 flex gap-3"
+							class="bg-status-info border border-status-info rounded-lg p-4 flex gap-3"
 						>
 							<svg
-								class="w-5 h-5 shrink-0 mt-0.5 text-badge-details"
+								class="w-5 h-5 shrink-0 mt-0.5 text-badge-info"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke="currentColor"
@@ -889,10 +885,10 @@
 							</div>
 						</div>
 						<div
-							class="bg-status-caution border border-status-caution rounded-lg p-4 flex gap-3"
+							class="bg-status-error border border-status-error rounded-lg p-4 flex gap-3"
 						>
 							<svg
-								class="w-5 h-5 shrink-0 mt-0.5 text-badge-caution"
+								class="w-5 h-5 shrink-0 mt-0.5 text-badge-error"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke="currentColor"
@@ -1022,14 +1018,14 @@
 									<td class="py-2 px-4">
 										<code>.bg-depth-1</code>
 									</td>
-									<td class="py-2 px-4 text-muted">--bg-depth-1</td>
+									<td class="py-2 px-4 text-muted">--bg-depth-1 (pearl)</td>
 									<td class="py-2 px-4 text-muted">Elevated surface</td>
 								</tr>
 								<tr>
 									<td class="py-2 px-4">
 										<code>.bg-depth-2</code>
 									</td>
-									<td class="py-2 px-4 text-muted">--bg-depth-2</td>
+									<td class="py-2 px-4 text-muted">--bg-depth-2 (silver)</td>
 									<td class="py-2 px-4 text-muted">Higher elevation</td>
 								</tr>
 								<tr>

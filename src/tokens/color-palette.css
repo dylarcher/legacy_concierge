@@ -129,6 +129,10 @@
 	--bg-muted: var(--color-pearl);
 	--bg-inverse: var(--color-coal);
 
+	/* Depth/Elevation surfaces (for layered UIs) */
+	--bg-depth-1: var(--color-pearl);
+	--bg-depth-2: var(--color-silver);
+
 	/* Brand surfaces */
 	--surface-primary: var(--color-navy);
 	--surface-secondary: var(--color-sage);
