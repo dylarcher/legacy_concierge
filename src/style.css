@@ -15,35 +15,51 @@
 @layer theme {
 	@theme {
 		/* Map Tailwind colors to color-tokens.css primitives without light-dark() */
-		--color-primary: var(--color-deep-blue);
-		--color-primary-hover: var(--color-deep-blue-hover);
-		--color-primary-pressed: var(--color-deep-blue-prest);
-		--color-primary-disabled: var(--color-deep-blue-inert);
+		--color-primary: var(--color-navy);
+		--color-primary-hover: var(--action-primary-bg-hover);
+		--color-primary-pressed: var(--action-primary-bg-active);
+		--color-primary-disabled: var(--action-primary-bg-disabled);
 
-		--color-secondary: var(--color-light-teal);
-		--color-secondary-hover: var(--color-light-teal-hover);
-		--color-secondary-pressed: var(--color-light-teal-prest);
-		--color-secondary-disabled: var(--color-light-teal-inert);
+		--color-secondary: var(--color-sage);
+		--color-secondary-hover: var(--action-secondary-bg-hover);
+		--color-secondary-pressed: var(--action-secondary-bg-active);
+		--color-secondary-disabled: var(--action-secondary-bg-disabled);
 
-		--color-accent: var(--color-chocolate);
-		--color-accent-hover: var(--color-chocolate-hover);
-		--color-accent-pressed: var(--color-chocolate-prest);
-		--color-accent-disabled: var(--color-chocolate-inert);
+		--color-accent: var(--color-sienna);
+		--color-accent-hover: var(--action-accent-bg-hover);
+		--color-accent-pressed: var(--action-accent-bg-active);
+		--color-accent-disabled: var(--action-accent-bg-disabled);
 
-		--color-muted: var(--color-warm-gray);
-		--color-muted-hover: var(--color-warm-gray-hover);
-		--color-muted-pressed: var(--color-warm-gray-prest);
-		--color-muted-disabled: var(--color-warm-gray-inert);
+		--color-muted: var(--color-pearl);
+		--color-muted-hover: var(--action-muted-bg-hover);
+		--color-muted-pressed: var(--action-muted-bg-active);
+		--color-muted-disabled: color-mix(
+			in oklab,
+			var(--color-pearl) 60%,
+			var(--color-coal)
+		);
 
-		--color-canvas: var(--color-cream);
-		--color-canvas-hover: var(--color-cream-hover);
-		--color-canvas-pressed: var(--color-cream-prest);
-		--color-canvas-disabled: var(--color-cream-inert);
+		--color-canvas: var(--color-ivory);
+		--color-canvas-hover: color-mix(
+			in oklab,
+			var(--color-ivory) 95%,
+			var(--color-coal)
+		);
+		--color-canvas-pressed: color-mix(
+			in oklab,
+			var(--color-ivory) 90%,
+			var(--color-coal)
+		);
+		--color-canvas-disabled: color-mix(
+			in oklab,
+			var(--color-ivory) 70%,
+			var(--color-coal)
+		);
 
-		--color-canvastext: var(--color-near-black);
-		--color-canvastext-hover: var(--color-near-black-hover);
-		--color-canvastext-pressed: var(--color-near-black-prest);
-		--color-canvastext-disabled: var(--color-near-black-inert);
+		--color-canvastext: var(--color-coal);
+		--color-canvastext-hover: var(--color-ash);
+		--color-canvastext-pressed: var(--color-slate);
+		--color-canvastext-disabled: var(--color-silver);
 
 		/* Elevation overlays */
 		--overlay-1: var(--color-overlay-alpha-min);
@@ -56,8 +72,8 @@
 		--color-fg-inverse: var(--fg-inverse);
 
 		--color-bg: var(--bg-primary);
-		--color-bg-elev-1: var(--bg-elev-1);
-		--color-bg-elev-2: var(--bg-elev-2);
+		--color-bg-surface: var(--bg-surface);
+		--color-bg-muted: var(--bg-muted);
 		--color-bg-inverse: var(--bg-inverse);
 
 		--color-surface-primary: var(--surface-primary);
@@ -66,6 +82,7 @@
 		--color-surface-muted: var(--surface-muted);
 
 		--color-border-strong: var(--border-strong);
+		--color-border-medium: var(--border-medium);
 		--color-border-soft: var(--border-soft);
 
 		--color-focus-ring: var(--focus-ring);
@@ -73,21 +90,20 @@
 		--color-selection-bg: var(--selection-bg);
 
 		/* Status aliases */
-		--color-status-caution: var(--color-caution);
-		--color-status-details: var(--color-details);
-		--color-status-success: var(--color-success);
-		--color-status-warning: var(--color-warning);
-		--color-status-callout: var(--color-callout);
+		--color-status-error: var(--color-coral);
+		--color-status-info: var(--color-iris);
+		--color-status-success: var(--color-jade);
+		--color-status-warning: var(--color-amber);
 
-		--status-caution-fg: var(--status-caution-fg);
-		--status-caution-bg: var(--status-caution-bg);
-		--status-caution-border: var(--status-caution-border);
-		--status-caution-ring: var(--status-caution-ring);
+		--status-error-fg: var(--status-error-fg);
+		--status-error-bg: var(--status-error-bg);
+		--status-error-border: var(--status-error-border);
+		--status-error-ring: var(--status-error-ring);
 
-		--status-details-fg: var(--status-details-fg);
-		--status-details-bg: var(--status-details-bg);
-		--status-details-border: var(--status-details-border);
-		--status-details-ring: var(--status-details-ring);
+		--status-info-fg: var(--status-info-fg);
+		--status-info-bg: var(--status-info-bg);
+		--status-info-border: var(--status-info-border);
+		--status-info-ring: var(--status-info-ring);
 
 		--status-success-fg: var(--status-success-fg);
 		--status-success-bg: var(--status-success-bg);
@@ -98,11 +114,6 @@
 		--status-warning-bg: var(--status-warning-bg);
 		--status-warning-border: var(--status-warning-border);
 		--status-warning-ring: var(--status-warning-ring);
-
-		--status-callout-fg: var(--status-callout-fg);
-		--status-callout-bg: var(--status-callout-bg);
-		--status-callout-border: var(--status-callout-border);
-		--status-callout-ring: var(--status-callout-ring);
 
 		/* Component-level aliases (buttons/inputs/cards) */
 		--btn-solid-fg: var(--color-muted);
@@ -135,14 +146,18 @@
 		--input-placeholder: var(--color-fg-muted);
 		--input-valid-ring: var(--status-success-ring);
 		--input-warning-ring: var(--status-warning-ring);
-		--input-invalid-ring: var(--status-caution-ring);
+		--input-error-ring: var(--status-error-ring);
 
 		/* Cards */
 		--card-fg: var(--color-canvastext);
-		--card-bg: var(--color-surface-primary);
-		--card-bg-hover: var(--color-surface-secondary);
+		--card-bg: var(--bg-surface);
+		--card-bg-hover: var(--bg-muted);
 		--card-border: var(--color-border-soft);
-		--card-ring: var(--overlay-1);
+		--card-shadow: color-mix(
+			in oklab,
+			var(--color-coal) 8%,
+			var(--color-transparent)
+		);
 
 		/* Font families from font-tokens.css */
 		--font-sans: var(--font-body-type);
@@ -177,41 +192,6 @@
 		--tracking-sm: var(--letter-spacing-sm);
 		--tracking-xs: var(--letter-spacing-xs);
 		--tracking-xxs: var(--letter-spacing-xxs);
-	}
-}
-
-/* Dark mode overrides for semantic tokens */
-@media (prefers-color-scheme: dark) {
-	:root {
-		--color-primary: var(--color-teal-primary);
-		--color-primary-hover: var(--color-teal-primary-hover);
-		--color-primary-pressed: var(--color-teal-primary-prest);
-		--color-primary-disabled: var(--color-teal-primary-inert);
-
-		--color-secondary: var(--color-muted-teal);
-		--color-secondary-hover: var(--color-muted-teal-hover);
-		--color-secondary-pressed: var(--color-muted-teal-prest);
-		--color-secondary-disabled: var(--color-muted-teal-inert);
-
-		--color-accent: var(--color-tan);
-		--color-accent-hover: var(--color-tan-hover);
-		--color-accent-pressed: var(--color-tan-prest);
-		--color-accent-disabled: var(--color-tan-inert);
-
-		--color-muted: var(--color-taupe);
-		--color-muted-hover: var(--color-taupe-hover);
-		--color-muted-pressed: var(--color-taupe-prest);
-		--color-muted-disabled: var(--color-taupe-inert);
-
-		--color-canvas: var(--color-dark-shadow);
-		--color-canvas-hover: var(--color-dark-shadow-hover);
-		--color-canvas-pressed: var(--color-dark-shadow-prest);
-		--color-canvas-disabled: var(--color-dark-shadow-inert);
-
-		--color-canvastext: var(--color-warm-white);
-		--color-canvastext-hover: var(--color-warm-white-hover);
-		--color-canvastext-pressed: var(--color-warm-white-prest);
-		--color-canvastext-disabled: var(--color-warm-white-inert);
 	}
 }
 
@@ -340,7 +320,7 @@
 	}
 
 	*:focus-visible {
-		outline: 1px dashed var(--color-details);
+		outline: 1px dashed var(--color-iris);
 		outline-offset: 3px;
 	}
 }
@@ -415,11 +395,14 @@
 	.bg-canvas {
 		background-color: var(--color-canvas);
 	}
-	.bg-elev-1 {
-		background-color: var(--color-bg-elev-1);
+	.bg-surface {
+		background-color: var(--color-bg-surface);
 	}
-	.bg-elev-2 {
-		background-color: var(--color-bg-elev-2);
+	.bg-muted {
+		background-color: var(--color-bg-muted);
+	}
+	.bg-inverse {
+		background-color: var(--color-bg-inverse);
 	}
 
 	/* Text */
@@ -456,7 +439,7 @@
 		border-color: var(--color-muted);
 	}
 	.border-strong {
-		border-color: var(--color-callout);
+		border-color: var(--color-border-strong);
 	}
 
 	/* Rings / Focus */
@@ -471,11 +454,11 @@
 	}
 
 	/* Status utilities */
-	.bg-status-caution {
-		background-color: var(--status-caution-bg);
+	.bg-status-error {
+		background-color: var(--status-error-bg);
 	}
-	.bg-status-details {
-		background-color: var(--status-details-bg);
+	.bg-status-info {
+		background-color: var(--status-info-bg);
 	}
 	.bg-status-success {
 		background-color: var(--status-success-bg);
@@ -483,36 +466,29 @@
 	.bg-status-warning {
 		background-color: var(--status-warning-bg);
 	}
-	.bg-status-callout {
-		background-color: var(--status-callout-bg);
-	}
 
-	.text-status-caution,
-	.text-badge-caution {
-		color: var(--color-caution);
+	.text-status-error,
+	.text-badge-error {
+		color: var(--color-coral);
 	}
-	.text-status-details,
-	.text-badge-details {
-		color: var(--color-details);
+	.text-status-info,
+	.text-badge-info {
+		color: var(--color-iris);
 	}
 	.text-status-success,
 	.text-badge-success {
-		color: var(--color-success);
+		color: var(--color-jade);
 	}
 	.text-status-warning,
 	.text-badge-warning {
-		color: var(--color-warning);
-	}
-	.text-status-callout,
-	.text-badge-callout {
-		color: var(--color-callout);
+		color: var(--color-amber);
 	}
 
-	.border-status-caution {
-		border-color: var(--status-caution-border);
+	.border-status-error {
+		border-color: var(--status-error-border);
 	}
-	.border-status-details {
-		border-color: var(--status-details-border);
+	.border-status-info {
+		border-color: var(--status-info-border);
 	}
 	.border-status-success {
 		border-color: var(--status-success-border);
@@ -520,24 +496,18 @@
 	.border-status-warning {
 		border-color: var(--status-warning-border);
 	}
-	.border-status-callout {
-		border-color: var(--status-callout-border);
-	}
 
-	.ring-status-caution {
-		--tw-ring-color: var(--status-caution-ring);
+	.ring-status-error {
+		--tw-ring-color: var(--status-error-ring);
 	}
-	.ring-status-details {
-		--tw-ring-color: var(--status-details-ring);
+	.ring-status-info {
+		--tw-ring-color: var(--status-info-ring);
 	}
 	.ring-status-success {
 		--tw-ring-color: var(--status-success-ring);
 	}
 	.ring-status-warning {
 		--tw-ring-color: var(--status-warning-ring);
-	}
-	.ring-status-callout {
-		--tw-ring-color: var(--status-callout-ring);
 	}
 
 	/* Buttons (semantic) */
@@ -579,7 +549,7 @@
 		background: var(--color-primary-disabled);
 		color: var(--color-canvas);
 		filter: brightness(0.8) opacity(0.48) grayscale(1);
-		outline: 2px dashed var(--color-grayscale);
+		outline: 2px dashed var(--color-slate);
 		outline-offset: 2px;
 	}
 
@@ -600,7 +570,7 @@
 		background: var(--color-muted-disabled);
 		color: var(--color-canvastext-disabled);
 		filter: brightness(0.8) opacity(0.48) grayscale(1);
-		outline: 2px dashed var(--color-grayscale);
+		outline: 2px dashed var(--color-slate);
 		outline-offset: 2px;
 	}
 
@@ -621,7 +591,7 @@
 		outline-color: var(--color-primary);
 	}
 	.placeholder-muted::placeholder {
-		color: var(--color-details);
+		color: var(--fg-subtle);
 	}
 
 	/* Cards */
@@ -635,9 +605,9 @@
 		background: var(--color-muted-hover);
 	}
 	.card-border {
-		border-color: var(--color-muted-pressed);
+		border-color: var(--color-border-soft);
 	}
-	.card-ring {
-		box-shadow: 0 1px 0 var(--color-accent);
+	.card-shadow {
+		box-shadow: 0 2px 4px var(--card-shadow);
 	}
 }
