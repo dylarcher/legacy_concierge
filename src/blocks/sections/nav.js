@@ -150,6 +150,7 @@ class NavBar extends BaseComponent {
 	#focusTrap = null;
 	#boundHandleEscapeKeyPress = null;
 	#boundHandleSearchBackdropClick = null;
+	#boundHandleResize = null;
 
 	connectedCallback() {
 		this.#injectComponentStyles();
@@ -167,6 +168,9 @@ class NavBar extends BaseComponent {
 				"click",
 				this.#boundHandleSearchBackdropClick,
 			);
+		}
+		if (this.#boundHandleResize) {
+			window.removeEventListener("resize", this.#boundHandleResize);
 		}
 	}
 
@@ -344,11 +348,147 @@ class NavBar extends BaseComponent {
 			);
 			if (!dropdownContainer) {
 				this.querySelectorAll(".dropdown-menu").forEach((menu) => {
-					menu.classList.add("hidden", "opacity-0", "translate-y-1");
-					menu.classList.remove("opacity-100", "translate-y-0");
+					this.#resetDropdownStyles(menu);
 				});
 			}
 		});
+
+		// Handle viewport resize for open dropdowns
+		this.#boundHandleResize = () => {
+			this.querySelectorAll(".dropdown-menu:not(.hidden)").forEach((menu) => {
+				this.#positionDropdownInViewport(menu);
+			});
+		};
+		window.addEventListener("resize", this.#boundHandleResize);
+	}
+
+	/**
+	 * Resets all positioning and scroll styles on a dropdown menu
+	 * @param {HTMLElement} menu - The dropdown menu element
+	 * @returns {void}
+	 */
+	#resetDropdownStyles(menu) {
+		menu.classList.add("hidden", "opacity-0", "translate-y-1");
+		menu.classList.remove("opacity-100", "translate-y-0");
+		// Reset positioning
+		menu.style.left = "";
+		menu.style.right = "";
+		menu.style.transform = "";
+		// Reset scroll container styles
+		const scrollContainer = menu.querySelector(":scope > div");
+		if (scrollContainer) {
+			scrollContainer.style.maxHeight = "";
+			scrollContainer.style.overflowY = "";
+			scrollContainer.style.scrollBehavior = "";
+			scrollContainer.style.scrollbarWidth = "";
+		}
+	}
+
+	/**
+	 * Positions a dropdown menu to ensure it stays within the viewport
+	 * and opens toward the center of the page with a 25% offset from trigger
+	 * @param {HTMLElement} menu - The dropdown menu element
+	 * @returns {void}
+	 */
+	#positionDropdownInViewport(menu) {
+		// Reset positioning first
+		menu.style.left = "";
+		menu.style.right = "";
+		menu.style.transform = "";
+
+		const viewportWidth = window.innerWidth;
+		const viewportCenter = viewportWidth / 2;
+		const viewportPadding = 16; // Minimum padding from viewport edge
+
+		// Get the trigger button's position
+		const triggerButton = menu.previousElementSibling;
+		const triggerRect = triggerButton?.getBoundingClientRect();
+		const triggerCenter = triggerRect
+			? triggerRect.left + triggerRect.width / 2
+			: 0;
+
+		// Get menu width for offset calculation
+		const menuWidth = menu.offsetWidth;
+		const offsetPercent = 0.25; // 25% offset from trigger
+		const offset = menuWidth * offsetPercent;
+
+		// Determine if trigger is on left or right side of viewport
+		const isOnRightSide = triggerCenter > viewportCenter;
+
+		// Position dropdown to open toward center with 25% offset
+		if (isOnRightSide) {
+			// Trigger is on right side - align dropdown toward left with 25% overlap
+			// Position so 25% of the dropdown extends past the right edge of trigger
+			menu.style.left = "auto";
+			menu.style.right = `-${offset}px`;
+		} else {
+			// Trigger is on left side - align dropdown toward right with 25% overlap
+			// Position so 25% of the dropdown extends past the left edge of trigger
+			menu.style.left = `-${offset}px`;
+			menu.style.right = "auto";
+		}
+
+		// After initial positioning, check for overflow and adjust
+		const menuRect = menu.getBoundingClientRect();
+
+		// Check if dropdown overflows right edge
+		if (menuRect.right > viewportWidth - viewportPadding) {
+			const overflow = menuRect.right - (viewportWidth - viewportPadding);
+			menu.style.transform = `translateX(-${overflow}px)`;
+		}
+
+		// Check if dropdown overflows left edge
+		const adjustedRect = menu.getBoundingClientRect();
+		if (adjustedRect.left < viewportPadding) {
+			// Shift right to keep within left edge
+			const leftOverflow = viewportPadding - adjustedRect.left;
+			const currentTransform = menu.style.transform;
+			if (currentTransform) {
+				// Combine with existing transform
+				const existingX = Number.parseFloat(
+					currentTransform.replace(/translateX\((-?\d+\.?\d*)px\)/, "$1"),
+				) || 0;
+				menu.style.transform = `translateX(${existingX + leftOverflow}px)`;
+			} else {
+				menu.style.transform = `translateX(${leftOverflow}px)`;
+			}
+		}
+
+		// Check if viewport is too narrow for multi-column layout
+		const gridContent = menu.querySelector(".dropdown-grid");
+		if (gridContent) {
+			// Collapse to single column if viewport width is less than dropdown's natural 2-col width
+			const minTwoColWidth = 640; // ~md breakpoint where 2 cols make sense
+			if (viewportWidth < minTwoColWidth) {
+				gridContent.style.gridTemplateColumns = "1fr";
+			} else {
+				gridContent.style.gridTemplateColumns = "";
+			}
+		}
+
+		// Handle vertical overflow - enable scrolling if dropdown is too tall
+		const viewportHeight = window.innerHeight;
+		const menuTop = menu.getBoundingClientRect().top;
+		const verticalPadding = 32; // Padding from bottom of viewport
+		const maxAvailableHeight = viewportHeight - menuTop - verticalPadding;
+
+		// Get the scrollable content container (the inner div with rounded corners)
+		const scrollContainer = menu.querySelector(":scope > div");
+		if (scrollContainer) {
+			if (scrollContainer.scrollHeight > maxAvailableHeight) {
+				scrollContainer.style.maxHeight = `${maxAvailableHeight}px`;
+				scrollContainer.style.overflowY = "auto";
+				// Add smooth scrolling and hide scrollbar on webkit
+				scrollContainer.style.scrollBehavior = "smooth";
+				scrollContainer.style.scrollbarWidth = "thin";
+			} else {
+				// Reset if there's enough space
+				scrollContainer.style.maxHeight = "";
+				scrollContainer.style.overflowY = "";
+				scrollContainer.style.scrollBehavior = "";
+				scrollContainer.style.scrollbarWidth = "";
+			}
+		}
 	}
 
 	/**
@@ -446,21 +586,23 @@ class NavBar extends BaseComponent {
 						const menu = e.currentTarget.nextElementSibling;
 						const isOpen = menu.classList.contains("opacity-100");
 
-						// Close all other dropdowns
+						// Close all other dropdowns and reset their styles
 						this.querySelectorAll(".dropdown-menu").forEach((m) => {
 							if (m !== menu) {
-								m.classList.add("hidden", "opacity-0", "translate-y-1");
-								m.classList.remove("opacity-100", "translate-y-0");
+								this.#resetDropdownStyles(m);
 							}
 						});
 
 						// Toggle this dropdown
 						if (isOpen) {
-							menu.classList.add("hidden", "opacity-0", "translate-y-1");
-							menu.classList.remove("opacity-100", "translate-y-0");
+							this.#resetDropdownStyles(menu);
 						} else {
 							menu.classList.remove("hidden", "opacity-0", "translate-y-1");
 							menu.classList.add("opacity-100", "translate-y-0");
+							// Position dropdown within viewport after it becomes visible
+							requestAnimationFrame(() => {
+								this.#positionDropdownInViewport(menu);
+							});
 						}
 					},
 				},
@@ -485,16 +627,21 @@ class NavBar extends BaseComponent {
 				{
 					class:
 						"dropdown-menu absolute left-0 z-10 mt-5 hidden w-screen max-w-max overflow-visible px-4 transition duration-200 ease-out opacity-0 translate-y-1",
+					style: "max-width: min(calc(100vw - 2rem), 48rem);",
 				},
 				this.h(
 					"div",
 					{
 						class:
-							"w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-canvas text-sm/6 shadow-lg outline-1 border-soft lg:max-w-3xl",
+							"w-full flex-auto overflow-hidden rounded-3xl bg-canvas text-sm/6 shadow-lg outline-1 border-soft",
+						style: "max-width: min(calc(100vw - 2rem), 48rem);",
 					},
 					this.h(
 						"div",
-						{ class: "grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2" },
+						{
+							class: "dropdown-grid grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2",
+							"data-slot": "dropdown-content",
+						},
 						...items.map((item) =>
 							this.h(
 								"div",
