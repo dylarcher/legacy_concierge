@@ -24,7 +24,7 @@ const i="/legacy_concierge/v0.3.0/assets/blue-green-waves-brown-beach-BJ6rfE5N.p
 					<p class="mt-6 text-lg/8 text-pretty text-gray-300">Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.</p>
 
 					<div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-						<a href="#" class="rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white dark:shadow-none dark:inset-ring dark:inset-ring-white/5 dark:focus-visible:outline-white"> Call for more details&hellip; </a>
+						<a href="#" class="rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"> Call for more details&hellip; </a>
 						<a href="#" class="text-sm/6 font-semibold hover:text-gray-100">
 							Learn more
 							<span aria-hidden="true">→</span>

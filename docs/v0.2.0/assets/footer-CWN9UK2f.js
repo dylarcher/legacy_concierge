@@ -6,7 +6,7 @@ const d=`
                 <div class="flex flex-wrap w-full justify-center gap-8 pb-12">
                     <div class="flex flex-wrap w-full md:w-2/3 justify-between gap-x-4 gap-y-4">
                         <div class="w-max md:w-1/5">
-                            <h3 class="text-sm/6 font-semibold dark:text-white">COMPANY</h3>
+                            <h3 class="text-sm/6 font-semibold">COMPANY</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
                                     <a href="#" class="text-sm/6 hover:text-gray-900">Careers</a>
@@ -29,7 +29,7 @@ const d=`
                             </ul>
                         </div>
                         <div class="w-max md:w-1/3">
-                            <h3 class="text-sm/6 font-semibold dark:text-white">TREATMENTS</h3>
+                            <h3 class="text-sm/6 font-semibold">TREATMENTS</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
                                     <a href="#" class="text-sm/6 hover:text-gray-900">Pulmonary Oversight</a>
@@ -55,7 +55,7 @@ const d=`
                             </ul>
                         </div>
                         <div class="w-max md:w-1/3">
-                            <h3 class="text-sm/6 font-semibold dark:text-white">SERVICES</h3>
+                            <h3 class="text-sm/6 font-semibold">SERVICES</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
                                     <a href="#" class="text-sm/6 hover:text-gray-900">Amyotrophic Lateral Sclerosis</a>
@@ -128,7 +128,7 @@ const d=`
 						</svg>
 					</div>
 					<div class="border-t pt-4 md:flex md:items-center md:justify-between">
-						<p class="mt-8 mr-auto text-sm/6 md:mt-0 dark:text-gray-200">&copy; Legacy Concierge, Inc.</p>
+						<p class="mt-8 mr-auto text-sm/6 md:mt-0">&copy; Legacy Concierge, Inc.</p>
 						<nav class="flex gap-6" aria-label="Legal links">
 							<a href="#" class="text-sm/6 hover:text-white">Privacy Policy</a>
 							<a href="#" class="text-sm/6 hover:text-white">Terms of Service</a>
