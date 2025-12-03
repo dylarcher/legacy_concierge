@@ -1,0 +1,2 @@
+const s="/legacy_concierge/v0.5.0/assets/birds-eye-view-of-coastal-town-BA6Jsh8a.webp",a="/legacy_concierge/v0.5.0/assets/blue-green-waves-brown-beach-wDimDbFs.webp",o="/legacy_concierge/v0.5.0/assets/top-down-view-of-rocky-beach-By-L-Cfe.webp",c={"/assets/media/images/blue-green-waves-brown-beach.webp":a,"/assets/media/images/top-down-view-of-rocky-beach.webp":o,"/assets/media/images/birds-eye-view-of-coastal-town.webp":s};function w(e){return c[e]||e}export{a as d,w as r};
+//# sourceMappingURL=image-manifest-BCoBbZbv.js.map
