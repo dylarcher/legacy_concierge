@@ -339,30 +339,9 @@
 		background: var(--selection-bg);
 	}
 
-	:focus-visible {
-		outline: 4px solid var(--focus-ring);
-		outline-offset: 2px;
-	}
-
-	.border-status-caution:focus-visible,
-	:invalid:focus-visible {
-		outline-color: var(--status-caution-border);
-	}
-
-	.border-status-details:focus-visible {
-		outline-color: var(--status-details-border);
-	}
-
-	.border-status-success:focus-visible {
-		outline-color: var(--status-success-border);
-	}
-
-	.border-status-warning:focus-visible {
-		outline-color: var(--status-warning-border);
-	}
-
-	.border-status-callout:focus-visible {
-		outline-color: var(--status-callout-border);
+	*:focus-visible {
+		outline: 1px dashed var(--color-details);
+		outline-offset: 3px;
 	}
 }
 
@@ -474,15 +453,15 @@
 		border-color: var(--color-accent);
 	}
 	.border-muted {
-		border-color: var(--color-border-soft);
+		border-color: var(--color-muted);
 	}
 	.border-strong {
-		border-color: var(--color-border-strong);
+		border-color: var(--color-callout);
 	}
 
 	/* Rings / Focus */
 	.ring-primary {
-		--tw-ring-color: var(--color-focus-ring);
+		--tw-ring-color: var(--color-primary);
 	}
 	.ring-secondary {
 		--tw-ring-color: var(--color-secondary);
@@ -508,20 +487,25 @@
 		background-color: var(--status-callout-bg);
 	}
 
-	.text-status-caution {
-		color: var(--status-caution-fg);
+	.text-status-caution,
+	.text-badge-caution {
+		color: var(--color-caution);
 	}
-	.text-status-details {
-		color: var(--status-details-fg);
+	.text-status-details,
+	.text-badge-details {
+		color: var(--color-details);
 	}
-	.text-status-success {
-		color: var(--status-success-fg);
+	.text-status-success,
+	.text-badge-success {
+		color: var(--color-success);
 	}
-	.text-status-warning {
-		color: var(--status-warning-fg);
+	.text-status-warning,
+	.text-badge-warning {
+		color: var(--color-warning);
 	}
-	.text-status-callout {
-		color: var(--status-callout-fg);
+	.text-status-callout,
+	.text-badge-callout {
+		color: var(--color-callout);
 	}
 
 	.border-status-caution {
@@ -556,97 +540,104 @@
 		--tw-ring-color: var(--status-callout-ring);
 	}
 
-	/* Badge text utilities - WCAG AA compliant on tinted backgrounds */
-	.text-badge-caution {
-		color: var(--status-caution-text);
-	}
-	.text-badge-details {
-		color: var(--status-details-text);
-	}
-	.text-badge-success {
-		color: var(--status-success-text);
-	}
-	.text-badge-warning {
-		color: var(--status-warning-text);
-	}
-	.text-badge-callout {
-		color: var(--status-callout-text);
-	}
-
 	/* Buttons (semantic) */
 	.btn-solid {
-		color: var(--btn-solid-fg);
-		background: var(--btn-solid-bg);
-		border-color: var(--btn-solid-border);
+		color: var(--color-canvas);
+		background: var(--color-primary);
+		border-color: var(--color-primary);
 	}
 	.btn-solid:hover {
-		background: var(--btn-solid-bg-hover);
+		background: var(--color-primary-hover);
 	}
 	.btn-solid:active {
-		background: var(--btn-solid-bg-pressed);
+		background: var(--color-primary-pressed);
 	}
 	.btn-solid:disabled {
-		background: var(--btn-solid-bg-disabled);
+		background: var(--color-primary-disabled);
 	}
 
 	.btn-outline {
-		color: var(--btn-outline-fg);
-		background: var(--btn-outline-bg);
-		border-color: var(--btn-outline-border);
+		color: var(--color-primary);
+		background: var(--color-transparent);
+		border-color: var(--color-primary);
 	}
+
 	.btn-outline:hover {
-		background: var(--btn-outline-bg-hover);
-		border-color: var(--btn-outline-border-hover);
+		border-color: var(--color-primary-hover);
+		background: var(--color-primary-hover);
+		color: var(--color-canvas);
 	}
+
 	.btn-outline:active {
-		background: var(--btn-outline-bg-pressed);
+		border-color: var(--color-primary-pressed);
+		background: var(--color-primary-disabled);
+		color: var(--color-canvas);
+		opacity: 0.64;
+	}
+
+	.btn-outline:disabled {
+		background: var(--color-primary-disabled);
+		color: var(--color-canvas);
+		filter: brightness(0.8) opacity(0.48) grayscale(1);
+		outline: 2px dashed var(--color-grayscale);
+		outline-offset: 2px;
 	}
 
 	.btn-subtle {
-		color: var(--btn-subtle-fg);
-		background: var(--btn-subtle-bg);
+		color: var(--color-canvastext);
+		background: var(--color-muted);
 	}
+
 	.btn-subtle:hover {
-		background: var(--btn-subtle-bg-hover);
+		background: var(--color-muted-hover);
 	}
+
 	.btn-subtle:active {
-		background: var(--btn-subtle-bg-pressed);
+		background: var(--color-muted-pressed);
+	}
+
+	.btn-subtle:disabled {
+		background: var(--color-muted-disabled);
+		color: var(--color-canvastext-disabled);
+		filter: brightness(0.8) opacity(0.48) grayscale(1);
+		outline: 2px dashed var(--color-grayscale);
+		outline-offset: 2px;
 	}
 
 	/* Inputs */
 	.input-fg {
-		color: var(--input-fg);
+		color: var(--color-canvastext);
 	}
 	.input-bg {
-		background: var(--input-bg);
+		background: var(--color-canvas);
 	}
 	.input-border {
-		border-color: var(--input-border);
+		border-color: var(--color-secondary);
 	}
 	.input-border-hover:hover {
-		border-color: var(--input-border-hover);
+		border-color: var(--color-secondary-hover);
 	}
 	.input-focus:focus {
-		outline-color: var(--input-border-focus);
+		outline-color: var(--color-primary);
 	}
 	.placeholder-muted::placeholder {
-		color: var(--input-placeholder);
+		color: var(--color-details);
 	}
 
 	/* Cards */
 	.card-fg {
-		color: var(--card-fg);
+		color: var(--color-canvastext);
 	}
 	.card-bg {
-		background: var(--card-bg);
+		background: var(--color-muted);
 	}
 	.card-bg-hover:hover {
-		background: var(--card-bg-hover);
+		background: var(--color-muted-hover);
 	}
 	.card-border {
-		border-color: var(--card-border);
+		border-color: var(--color-muted-pressed);
 	}
 	.card-ring {
-		box-shadow: 0 1px 0 var(--card-ring);
+		box-shadow: 0 1px 0 var(--color-accent);
 	}
 }

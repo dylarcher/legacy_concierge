@@ -64,7 +64,7 @@ export class NavbarDivider extends BaseComponent {
 	 */
 	render() {
 		const dividerClasses = this.combineClassNames(
-			"h-6 w-px bg-zinc-950/10 dark:bg-white/10",
+			"h-6 w-px dark:bg-white/10",
 			this.className,
 		);
 
@@ -193,15 +193,15 @@ export class NavbarItem extends BaseComponent {
 		const wrapperClasses = this.combineClassNames("relative", this.className);
 
 		const itemClasses = this.combineClassNames(
-			"relative flex min-w-0 items-center gap-3 rounded-lg p-2 text-left text-base/6 font-medium text-zinc-950 sm:text-sm/5",
+			"relative flex min-w-0 items-center gap-3 rounded-lg p-2 text-left text-base/6 font-medium sm:text-sm/5",
 			"[&_[data-slot=icon]]:size-6 [&_[data-slot=icon]]:shrink-0 [&_[data-slot=icon]]:fill-zinc-500 sm:[&_[data-slot=icon]]:size-5",
 			"[&:not(:nth-child(2)):last-child_[data-slot=icon]]:ml-auto [&:not(:nth-child(2)):last-child_[data-slot=icon]]:size-5 sm:[&:not(:nth-child(2)):last-child_[data-slot=icon]]:size-4",
 			"[&_[data-slot=avatar]]:-m-0.5 [&_[data-slot=avatar]]:size-7 sm:[&_[data-slot=avatar]]:size-6",
-			"[&[data-hover]]:bg-zinc-950/5 [&[data-hover]_[data-slot=icon]]:fill-zinc-950",
-			"[&[data-active]]:bg-zinc-950/5 [&[data-active]_[data-slot=icon]]:fill-zinc-950",
-			"dark:text-white dark:[&_[data-slot=icon]]:fill-zinc-400",
-			"dark:[&[data-hover]]:bg-white/5 dark:[&[data-hover]_[data-slot=icon]]:fill-white",
-			"dark:[&[data-active]]:bg-white/5 dark:[&[data-active]_[data-slot=icon]]:fill-white",
+			"[&[data-hover]]:[&[data-hover]_[data-slot=icon]]:fill-zinc-950",
+			"[&[data-active]_[data-slot=icon]]:fill-zinc-950",
+			"dark:[&_[data-slot=icon]]:fill-zinc-400",
+			"dark:[&[data-hover]]:dark:[&[data-hover]_[data-slot=icon]]:fill-white",
+			"dark:[&[data-active]]:dark:[&[data-active]_[data-slot=icon]]:fill-white",
 			!href && "cursor-default",
 		);
 
@@ -215,7 +215,7 @@ export class NavbarItem extends BaseComponent {
 		if (isCurrent) {
 			const indicatorElement = this.createElement("span", {
 				class:
-					"absolute inset-x-2 -bottom-2.5 h-0.5 rounded-full bg-zinc-950 dark:bg-white",
+					"absolute inset-x-2 -bottom-2.5 h-0.5 rounded-full dark:bg-white",
 			});
 			wrapperElement.appendChild(indicatorElement);
 		}

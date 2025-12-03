@@ -76,9 +76,7 @@ class DialogTreatment extends BaseComponent {
 					[
 						h("div", { class: overlayClasses }),
 						h("div", { class: contentClasses }, [
-							h("div", { class: "text-white space-y-4 max-w-5xl" }, [
-								h("slot"),
-							]),
+							h("div", { class: "space-y-4 max-w-5xl" }, [h("slot")]),
 						]),
 					],
 				),

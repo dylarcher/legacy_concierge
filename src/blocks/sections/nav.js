@@ -17,7 +17,7 @@ export const NAVBAR_TEMPLATE = `
                     </a>
                 </div>
                 <div class="flex lg:hidden">
-                    <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-500 dark:text-gray-400">
+                    <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 dark:text-gray-400">
                         <span class="sr-only">Open main menu</span>
                         <svg fill="none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
                             <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -25,14 +25,14 @@ export const NAVBAR_TEMPLATE = `
                     </button>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12">
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Home</a>
-                    <a href="##" class="text-sm/6 font-semibold text-gray-900 dark:text-white">About</a>
-                    <a href="##" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Services</a>
-                    <a href="##" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Team</a>
-                    <a href="##" class="text-sm/6 font-semibold text-gray-900 dark:text-white">Contact</a>
+                    <a href="#" class="text-sm/6 font-semibold dark:text-white">Home</a>
+                    <a href="##" class="text-sm/6 font-semibold dark:text-white">About</a>
+                    <a href="##" class="text-sm/6 font-semibold dark:text-white">Services</a>
+                    <a href="##" class="text-sm/6 font-semibold dark:text-white">Team</a>
+                    <a href="##" class="text-sm/6 font-semibold dark:text-white">Contact</a>
                 </div>
                 <div class="hidden lg:flex lg:ml-8">
-                    <button type="button" command="show-modal" commandfor="search-dialog" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+                    <button type="button" command="show-modal" commandfor="search-dialog" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 dark:text-gray-400">
                         <span class="sr-only">Search</span>
                         <svg fill="currentColor" width="18" height="18" aria-hidden="true" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" name="icon-search">
                             <title>Search</title>
@@ -44,7 +44,7 @@ export const NAVBAR_TEMPLATE = `
                 </nav>
             </div>
         </header>
-		<dialog id="search-dialog" class="backdrop:bg-black/50 bg-transparent p-0 w-full max-w-lg rounded-xl fixed top-[87px] left-auto right-0 ml-6">
+		<dialog id="search-dialog" class="backdrop:p-0 w-full max-w-lg rounded-xl fixed top-[87px] left-auto right-0 ml-6">
 			<div class="bg-canvas rounded-xl shadow-2xl ring-1 border-soft">
 				<form method="dialog" class="relative">
 					<svg fill="currentColor" width="18" height="18" aria-hidden="true" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" name="icon-search" class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
@@ -52,24 +52,24 @@ export const NAVBAR_TEMPLATE = `
 						<desc>Icon</desc>
 						<path d="M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
 					</svg>
-					<input type="search" name="search" placeholder="Search..." autofocus class="w-full rounded-xl border-0 bg-transparent py-4 pl-12 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:text-white sm:text-sm/6" />
-					<button type="button" command="close" commandfor="search-dialog" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+					<input type="search" name="search" placeholder="Search..." autofocus class="w-full rounded-xl border-0 py-4 pl-12 pr-4 placeholder:sm:text-sm/6" />
+					<button type="button" command="close" commandfor="search-dialog" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium dark:text-gray-400">
 						ESC
 					</button>
 				</form>
 			</div>
 		</dialog>
 		<el-dialog>
-			<dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
-				<div tabindex="0" class="fixed inset-0 focus:outline-none">
-					<el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-gray-100/10">
+			<dialog id="mobile-menu" class="backdrop:lg:hidden">
+				<div tabindex="0" class="fixed inset-0">
+					<el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:sm:ring-gray-100/10">
 						<div class="flex items-center justify-between">
 							<a href="#" class="-m-1.5 p-1.5">
 								<span class="sr-only">Your Company</span>
 								<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto dark:hidden" />
 								<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="" class="h-8 w-auto not-dark:hidden" />
 							</a>
-							<button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-400">
+							<button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 dark:text-gray-400">
 								<span class="sr-only">Close menu</span>
 								<svg fill="none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
 								<path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
@@ -79,13 +79,13 @@ export const NAVBAR_TEMPLATE = `
 						<div class="mt-6 flow-root">
 							<div class="-my-6 divide-y divide-gray-500/10 dark:divide-gray-500/25">
 								<div class="space-y-2 py-6">
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Product</a>
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Features</a>
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Marketplace</a>
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Company</a>
+									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold dark:text-white">Product</a>
+									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold dark:text-white">Features</a>
+									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold dark:text-white">Marketplace</a>
+									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold dark:text-white">Company</a>
 								</div>
 								<div class="py-6">
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5">Log in</a>
+									<a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold dark:text-white">Log in</a>
 								</div>
 							</div>
 						</div>
@@ -368,7 +368,7 @@ class NavBar extends BaseComponent {
 				{
 					type: "button",
 					class:
-						"flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-canvas hover:bg-depth-1",
+						"flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-canvas",
 					"aria-expanded": "false",
 					onClick: (e) => {
 						const content = e.currentTarget.nextElementSibling;
@@ -410,7 +410,7 @@ class NavBar extends BaseComponent {
 						{
 							href: item.href,
 							class:
-								"block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-canvas hover:bg-depth-1",
+								"block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-canvas",
 							onClick: () => this.closeMenu(),
 						},
 						item.text,
@@ -484,7 +484,7 @@ class NavBar extends BaseComponent {
 				"div",
 				{
 					class:
-						"dropdown-menu absolute left-0 z-10 mt-5 hidden w-screen max-w-max overflow-visible bg-transparent px-4 transition duration-200 ease-out opacity-0 translate-y-1",
+						"dropdown-menu absolute left-0 z-10 mt-5 hidden w-screen max-w-max overflow-visible px-4 transition duration-200 ease-out opacity-0 translate-y-1",
 				},
 				this.h(
 					"div",
@@ -499,14 +499,13 @@ class NavBar extends BaseComponent {
 							this.h(
 								"div",
 								{
-									class:
-										"group relative flex gap-x-6 rounded-lg p-4 hover:bg-depth-1",
+									class: "group relative flex gap-x-6 rounded-lg p-4",
 								},
 								this.h(
 									"div",
 									{
 										class:
-											"mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-depth-1 group-hover:bg-depth-2",
+											"mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-depth-1",
 									},
 									item.icon || this.#createPlaceholderIcon(),
 								),
@@ -576,7 +575,7 @@ class NavBar extends BaseComponent {
 				stroke: "currentColor",
 				"stroke-width": "1.5",
 				"aria-hidden": "true",
-				class: "size-6 text-muted group-hover:text-canvas",
+				class: "size-6 text-muted",
 			},
 			this.svg("path", {
 				d: "M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z",
@@ -953,7 +952,7 @@ class NavBar extends BaseComponent {
 							{
 								type: "button",
 								class:
-									"-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-muted hover:text-canvas",
+									"-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-muted",
 								"aria-label": "Search",
 								onClick: () => this.openSearch(),
 							},
@@ -987,7 +986,7 @@ class NavBar extends BaseComponent {
 			"dialog",
 			{
 				class:
-					"backdrop:bg-black/50 bg-transparent p-0 w-full max-w-lg rounded-xl fixed top-[87px] right-[6px] left-auto m-0 z-50",
+					"backdrop:p-0 w-full max-w-lg rounded-xl fixed top-[87px] right-[6px] left-auto m-0 z-50",
 				ref: (el) => {
 					this.#searchDialog = el;
 				},
@@ -1028,14 +1027,14 @@ class NavBar extends BaseComponent {
 						placeholder: "Search...",
 						autofocus: true,
 						class:
-							"w-full rounded-xl border-0 bg-transparent py-4 pl-12 pr-4 input-fg placeholder-muted focus:ring-0 sm:text-sm/6",
+							"w-full rounded-xl border-0 py-4 pl-12 pr-4 input-fg placeholder-muted sm:text-sm/6",
 					}),
 					this.h(
 						"button",
 						{
 							type: "button",
 							class:
-								"absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium text-muted hover:text-canvas",
+								"absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium text-muted",
 							onClick: () => this.closeSearch(),
 						},
 						"ESC",
@@ -1046,8 +1045,7 @@ class NavBar extends BaseComponent {
 
 		// Mobile menu backdrop (outside header)
 		const backdrop = this.h("div", {
-			class:
-				"mobile-menu-backdrop fixed inset-0 bg-black/30 lg:hidden hidden z-40",
+			class: "mobile-menu-backdrop fixed inset-0 lg:hidden hidden z-40",
 			onClick: () => this.closeMenu(),
 			ref: (el) => {
 				this.#backdrop = el;
@@ -1162,7 +1160,7 @@ class NavBar extends BaseComponent {
 							{
 								href: "/pages/team",
 								class:
-									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas hover:bg-depth-1 text-uppercase",
+									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas text-uppercase",
 								onClick: () => this.closeMenu(),
 							},
 							"TEAM",
@@ -1172,7 +1170,7 @@ class NavBar extends BaseComponent {
 							{
 								href: "/pages/contact",
 								class:
-									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas hover:bg-depth-1 text-uppercase",
+									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas text-uppercase",
 								onClick: () => this.closeMenu(),
 							},
 							"CONTACT",
@@ -1186,7 +1184,7 @@ class NavBar extends BaseComponent {
 							{
 								type: "button",
 								class:
-									"-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-canvas hover:bg-depth-1",
+									"-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-canvas",
 								onClick: () => {
 									this.closeMenu();
 									this.openSearch();

@@ -25,7 +25,7 @@ export const HERO_VIDEO_DISABLED = !HERO_VIDEO_ENABLED;
  */
 export const BANNER_TEMPLATE = () => `
     <template id="banner">
-        <header class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+        <header class="relative isolate overflow-hidden py-24 sm:py-32">
 			<div class="mx-auto max-w-7xl px-6 pt-20 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
 				<video autoplay loop muted playsinline class="absolute inset-0 -z-10 size-full object-cover object-right md:object-center" poster="${defaultHeroImage}">
 					<source src="${videoMp4}" type="video/mp4">
@@ -46,8 +46,8 @@ export const BANNER_TEMPLATE = () => `
 					<p class="mt-6 text-lg/8 text-pretty text-gray-300">Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.</p>
 
 					<div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-						<a href="#" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 no-underline shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white dark:bg-gray-700 dark:text-white dark:shadow-none dark:inset-ring dark:inset-ring-white/5 dark:hover:bg-gray-600 dark:focus-visible:outline-white"> Call for more details&hellip; </a>
-						<a href="#" class="text-sm/6 font-semibold text-white hover:text-gray-100">
+						<a href="#" class="rounded-md px-3.5 py-2.5 text-sm font-semibold no-underline shadow-xs dark:shadow-none dark:inset-ring dark:inset-ring-white/5"> Call for more details&hellip; </a>
+						<a href="#" class="text-sm/6 font-semibold text-white">
 							Learn more
 							<span aria-hidden="true">→</span>
 						</a>
@@ -236,7 +236,7 @@ export class HeroBanner extends BaseComponent {
 					{
 						href: primaryHref,
 						class:
-							"bg-cyan-300/28 px-6 py-4 text-lg text-[clamp(1rem,1.5vw,1.25rem)] font-bold text-white text-shadow-lg tracking-wider shadow-xs hover:bg-cyan-500/48 border-1 border-white rounded-xl no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+							"px-6 py-4 text-lg text-[clamp(1rem,1.5vw,1.25rem)] font-bold text-shadow-lg tracking-wider shadow-xs border-1 rounded-xl no-underline",
 					},
 					primaryCta,
 				),
@@ -250,7 +250,7 @@ export class HeroBanner extends BaseComponent {
 					{
 						href: secondaryHref,
 						class:
-							"text-lg/6 text-[clamp(0.92rem,1.32vw,1.15rem)] font-semibold text-gray-200 text-shadow-lg tracking-wide hover:text-white no-underline hover:underline",
+							"text-lg/6 text-[clamp(0.92rem,1.32vw,1.15rem)] font-semibold text-shadow-lg tracking-wide no-underline",
 					},
 					secondaryCta,
 					this.h("span", { "aria-hidden": "true" }, " →"),
@@ -266,7 +266,7 @@ export class HeroBanner extends BaseComponent {
 					{
 						href: "#",
 						class:
-							"rounded-md bg-cyan-300/28 px-6 py-4 text-md font-semibold text-cyan-950 text-shadow-lg shadow-xs hover:bg-cyan-400/28 no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
+							"rounded-md px-6 py-4 text-md font-semibold text-shadow-lg shadow-xs no-underline",
 					},
 					"Call for more details…",
 				),
@@ -274,8 +274,7 @@ export class HeroBanner extends BaseComponent {
 					"a",
 					{
 						href: "#",
-						class:
-							"text-sm/6 font-semibold text-white text-shadow-lg hover:text-gray-100 no-underline hover:underline",
+						class: "text-sm/6 font-semibold text-shadow-lg no-underline",
 					},
 					"Learn more",
 					this.h("span", { "aria-hidden": "true" }, " →"),
@@ -317,7 +316,7 @@ export class HeroBanner extends BaseComponent {
 		const header = this.h(
 			"header",
 			{
-				class: "relative isolate overflow-hidden bg-gray-900 min-h-dvh",
+				class: "relative isolate overflow-hidden min-h-dvh",
 			},
 			// Background video with image fallback (video is default unless no-video attribute is set)
 			hasVideoDisabled
@@ -380,7 +379,7 @@ export class HeroBanner extends BaseComponent {
 						"p",
 						{
 							class:
-								"mt-6 text-[clamp(1.125rem,3vw,1.75rem)] text-pretty font-medium text-gray-300 text-shadow-lg leading-relaxed w-4/5 lg:w-2/3",
+								"mt-6 text-[clamp(1.125rem,3vw,1.75rem)] text-pretty font-medium text-shadow-lg leading-relaxed w-4/5 lg:w-2/3",
 						},
 						description,
 					),
@@ -401,7 +400,7 @@ export class HeroBanner extends BaseComponent {
 			{
 				type: "button",
 				class:
-					"absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator bg-gray-100/20 rounded-full p-4 cursor-pointer hover:bg-gray-100/30 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50",
+					"absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator rounded-full p-4 cursor-pointer transition-colors",
 				"aria-label": "Scroll to content",
 				onclick: () => {
 					const headerElement = this.querySelector("header");
@@ -450,7 +449,7 @@ export class HeroBanner extends BaseComponent {
 				{
 					type: "button",
 					class:
-						"absolute bottom-8 right-8 bg-gray-100/20 rounded-full p-3 cursor-pointer hover:bg-gray-100/30 transition-colors focus:outline-none focus:ring-2 focus:ring-white/50",
+						"absolute bottom-8 right-8 rounded-full p-3 cursor-pointer transition-colors",
 					"aria-label": "Unmute audio",
 					"data-muted": "true",
 					onclick: (event) => {
@@ -495,7 +494,7 @@ export class HeroBanner extends BaseComponent {
 				this.svg(
 					"svg",
 					{
-						class: "size-6 text-white/70 hidden",
+						class: "size-6 hidden",
 						fill: "currentColor",
 						viewBox: "0 0 24 24",
 						"data-icon-unmuted": "",

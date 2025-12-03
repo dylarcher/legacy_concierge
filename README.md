@@ -311,8 +311,8 @@ Each color has hover, focus, active, and disabled variants. Example:
 
 ```css
 .btn-primary {
-  @apply py-4 px-6 bg-cyan-300/32 text-white border-2 border-white/80 
-         font-bold rounded-4xl hover:bg-cyan-600/48 hover:border-white;
+  @apply py-4 px-6 border-2 
+         font-bold rounded-4xl hover:border-white;
 }
 ```
 
@@ -320,8 +320,8 @@ Each color has hover, focus, active, and disabled variants. Example:
 
 ```css
 .btn-secondary {
-  @apply py-4 px-6 bg-cyan-950 text-white font-bold rounded-4xl
-         hover:bg-cyan-800 focus:ring focus:ring-cyan-700/80;
+  @apply py-4 px-6 font-bold rounded-4xl
+         focus:ring focus:ring-cyan-700/80;
 }
 ```
 
@@ -329,8 +329,8 @@ Each color has hover, focus, active, and disabled variants. Example:
 
 ```css
 .btn-tertiary {
-  @apply py-4 px-6 bg-gray-100/32 text-cyan-950/96 font-bold rounded-4xl
-         hover:bg-gray-200/48 focus:ring focus:ring-cyan-400/24;
+  @apply py-4 px-6 font-bold rounded-4xl
+         focus:ring focus:ring-cyan-400/24;
 }
 ```
 
@@ -540,13 +540,13 @@ Deploy versioned builds to GitHub Pages:
    Edit `docs/index.html` and add new version entry:
 
    ```html
-   <div class="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-8">
+   <div class="rounded-xl shadow-lg p-8">
      <div class="flex items-start justify-between mb-4">
        <div>
          <h2 class="text-3xl font-bold mb-2">Version 0.4.0</h2>
          <p class="text-sm text-zinc-500">2024-12-XX</p>
        </div>
-       <span class="rounded-full bg-cyan-500/15 px-4 py-1.5 text-sm font-semibold">
+       <span class="rounded-full px-4 py-1.5 text-sm font-semibold">
          v0.4.0
        </span>
      </div>

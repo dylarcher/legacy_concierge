@@ -39,11 +39,11 @@ export class RoleCard extends BaseComponent {
 			"div",
 			{
 				class: this.clsx(
-					"bg-white dark:bg-zinc-900 rounded-lg p-6",
+					"rounded-lg p-6",
 					"ring-1 ring-zinc-950/5 dark:ring-white/10",
 					"text-center",
 					"transition-all duration-200",
-					"hover:shadow-lg hover:scale-105",
+					"",
 					"h-full flex flex-col",
 				),
 			},
@@ -61,7 +61,7 @@ export class RoleCard extends BaseComponent {
 			this.h(
 				"h3",
 				{
-					class: "text-lg font-bold text-zinc-900 dark:text-white mb-2",
+					class: "text-lg font-bold mb-2",
 				},
 				role,
 			),
@@ -70,7 +70,7 @@ export class RoleCard extends BaseComponent {
 				this.h(
 					"p",
 					{
-						class: "text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed",
+						class: "text-sm leading-relaxed",
 					},
 					description,
 				),

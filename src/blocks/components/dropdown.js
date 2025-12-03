@@ -293,9 +293,9 @@ export class DropdownMenu extends BaseComponent {
 			"absolute z-50 hidden opacity-0",
 			positionClasses[anchorPosition] || positionClasses.bottom,
 			"isolate w-max min-w-[12rem] rounded-xl p-1",
-			"outline outline-transparent focus:outline-none",
+			"outline outline-transparent",
 			"overflow-y-auto max-h-80",
-			"bg-white/75 backdrop-blur-xl dark:bg-zinc-800/75",
+			"backdrop-blur-xl dark:bg-zinc-800/75",
 			"shadow-lg ring-1 border-soft dark:ring-inset",
 			"transition duration-100 ease-in",
 			this.className,
@@ -386,9 +386,9 @@ export class DropdownItem extends BaseComponent {
 		const isDisabled = this.hasAttribute("disabled");
 
 		const itemClasses = this.combineClassNames(
-			"group cursor-default rounded-lg px-3.5 py-2.5 focus:outline-none sm:px-3 sm:py-1.5",
+			"group cursor-default rounded-lg px-3.5 py-2.5 sm:px-3 sm:py-1.5",
 			"text-left text-base/6 text-canvas sm:text-sm/6",
-			"[&[data-focus]]:bg-blue-500 [&[data-focus]]:text-white",
+			"[&[data-focus]]:[&[data-focus]]:text-white",
 			isDisabled && "opacity-50",
 			"w-full flex items-center gap-2",
 			"[&_[data-slot=icon]]:size-5 sm:[&_[data-slot=icon]]:size-4",
@@ -402,10 +402,7 @@ export class DropdownItem extends BaseComponent {
 			href,
 			{
 				role: "menuitem",
-				tabindex: "-1",
-				class: itemClasses,
-				disabled: isDisabled && !href ? true : undefined,
-				"aria-disabled": isDisabled ? "true" : undefined,
+				tabindex: "-1", class: itemClasses, isDisabled && !href ? true : undefined,"aria-disabled": isDisabled ? "true" : undefined,
 				ref: (element) => {
 					this.#innerElement = element;
 				},
@@ -613,7 +610,7 @@ export class DropdownDescription extends BaseComponent {
 	 */
 	render() {
 		const descriptionClasses = this.combineClassNames(
-			"text-sm/5 text-muted group-[&[data-focus]]:text-white sm:text-xs/5",
+			"text-sm/5 text-muted group-[&[data-focus]]:sm:text-xs/5",
 			this.className,
 		);
 

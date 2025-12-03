@@ -70,10 +70,10 @@ export class ProfileCard extends BaseComponent {
 			{
 				class: this.clsx(
 					"flex flex-col items-center text-center",
-					"bg-white dark:bg-zinc-900",
+					"dark:bg-zinc-900",
 					"rounded-xl p-6",
 					"ring-1 ring-zinc-950/5 dark:ring-white/10",
-					"transition-shadow hover:shadow-lg",
+					"transition-shadow",
 				),
 			},
 			// Avatar
@@ -89,7 +89,7 @@ export class ProfileCard extends BaseComponent {
 			this.h(
 				"h3",
 				{
-					class: "text-lg font-bold text-zinc-900 dark:text-white mb-1",
+					class: "text-lg font-bold mb-1",
 				},
 				name,
 			),
@@ -98,8 +98,7 @@ export class ProfileCard extends BaseComponent {
 				this.h(
 					"p",
 					{
-						class:
-							"text-sm font-semibold text-cyan-600 dark:text-cyan-400 mb-4",
+						class: "text-sm font-semibold mb-4",
 					},
 					title,
 				),
@@ -108,7 +107,7 @@ export class ProfileCard extends BaseComponent {
 				this.h(
 					"div",
 					{
-						class: "text-sm text-zinc-600 dark:text-zinc-400 text-left w-full",
+						class: "text-sm text-left w-full",
 					},
 					...bioContent,
 				),
@@ -172,7 +171,7 @@ export class ProfileCard extends BaseComponent {
 				this.h(
 					"h3",
 					{
-						class: "text-3xl font-bold text-zinc-900 dark:text-white mb-3",
+						class: "text-3xl font-bold mb-3",
 					},
 					name,
 				),
@@ -181,8 +180,7 @@ export class ProfileCard extends BaseComponent {
 					this.h(
 						"p",
 						{
-							class:
-								"text-xl font-semibold text-cyan-600 dark:text-cyan-400 mb-6",
+							class: "text-xl font-semibold mb-6",
 						},
 						title,
 					),
@@ -193,8 +191,8 @@ export class ProfileCard extends BaseComponent {
 						{
 							class: this.clsx(
 								"prose prose-zinc dark:prose-invert max-w-none",
-								"prose-p:text-zinc-700 dark:prose-p:text-zinc-300",
-								"prose-headings:text-zinc-900 dark:prose-headings:text-white",
+								"prose-p:dark:prose-p:text-zinc-300",
+								"prose-headings:dark:prose-headings:text-white",
 							),
 						},
 						...bioContent,

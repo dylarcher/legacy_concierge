@@ -2,22 +2,16 @@ import { BaseComponent, defineElement } from "./_base.js";
 
 const RADIO_BASE_STYLES = [
 	"relative isolate flex size-[1.1875rem] shrink-0 rounded-full sm:size-[1.0625rem]",
-	"before:absolute before:inset-0 before:-z-10 before:rounded-full before:bg-white before:shadow-sm",
+	"before:absolute before:inset-0 before:-z-10 before:rounded-full before:before:shadow-sm",
 	"[.group[data-checked]_&]:before:bg-[var(--radio-checked-bg)]",
 	"dark:before:hidden",
-	"dark:bg-white/5 dark:[.group[data-checked]_&]:bg-[var(--radio-checked-bg)]",
-	"border border-zinc-950/15 [.group[data-checked]_&]:border-transparent",
-	"[.group:hover_&]:border-zinc-950/30 [.group[data-checked]_&]:bg-[var(--radio-checked-border)]",
-	"dark:border-white/15 dark:[.group[data-checked]_&]:border-white/5 dark:[.group:hover_&]:border-white/30",
+	"dark:[.group[data-checked]_&]:bg-[var(--radio-checked-bg)]",
+	"border [.group[data-checked]_&]:border-transparent",
 	"after:absolute after:inset-0 after:rounded-full after:shadow-[inset_0_1px_theme(colors.white/15%)]",
 	"dark:after:-inset-px dark:after:hidden dark:after:rounded-full dark:[.group[data-checked]_&]:after:block",
 	"[--radio-indicator:transparent] [.group[data-checked]_&]:[--radio-indicator:var(--radio-checked-indicator)]",
-	"[.group:hover_&]:[--radio-indicator:theme(colors.zinc.900/10%)]",
-	"[.group:hover[data-checked]_&]:[--radio-indicator:var(--radio-checked-indicator)]",
-	"dark:[.group:hover_&]:[--radio-indicator:theme(colors.zinc.700)]",
-	"[.group:focus-visible_&]:outline [.group:focus-visible_&]:outline-2 [.group:focus-visible_&]:outline-offset-2 [.group:focus-visible_&]:outline-blue-500",
 	"[.group[data-disabled]_&]:opacity-50",
-	"[.group[data-disabled]_&]:border-zinc-950/25 [.group[data-disabled]_&]:bg-zinc-950/5",
+	"[.group[data-disabled]_&]:[.group[data-disabled]_&]:bg-zinc-950/5",
 ].join(" ");
 
 const RADIO_COLORS = {
@@ -324,7 +318,7 @@ export class Radio extends BaseComponent {
 		const isDisabled = this.hasAttribute("disabled");
 
 		const wrapperClasses = this.combineClassNames(
-			"group inline-flex focus:outline-none cursor-pointer",
+			"group inline-flex cursor-pointer",
 			isDisabled && "cursor-not-allowed",
 		);
 
@@ -362,7 +356,7 @@ export class Radio extends BaseComponent {
 			{ class: radioClasses },
 			this.createElement("span", {
 				class:
-					"size-full rounded-full border-[4.5px] border-transparent bg-[var(--radio-indicator)] bg-clip-padding",
+					"size-full rounded-full border-[4.5px] bg-[var(--radio-indicator)] bg-clip-padding",
 			}),
 		);
 

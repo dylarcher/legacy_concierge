@@ -48,8 +48,7 @@ export class Table extends BaseComponent {
 			"inline-block min-w-full align-middle",
 			!bleed && "sm:px-[var(--gutter,1.5rem)]",
 		);
-		const tableClasses =
-			"min-w-full text-left text-sm/6 text-zinc-950 dark:text-white";
+		const tableClasses = "min-w-full text-left text-sm/6 dark:text-white";
 
 		// Get existing children (ui-table-head, ui-table-body)
 		const children = Array.from(this.childNodes);
@@ -97,7 +96,7 @@ export class TableHead extends BaseComponent {
 	}
 
 	render() {
-		const classes = "text-zinc-500 dark:text-zinc-400";
+		const classes = "dark:text-zinc-400";
 		const children = Array.from(this.childNodes);
 		this.innerHTML = "";
 
@@ -163,11 +162,11 @@ export class TableRow extends BaseComponent {
 		const classes = this.clsx(
 			href && [
 				"has-[[data-row-link]:focus-visible]:outline-2 has-[[data-row-link]:focus-visible]:-outline-offset-2 has-[[data-row-link]:focus-visible]:outline-blue-500",
-				"dark:focus-within:bg-white/[2.5%]",
+				"",
 			],
 			striped && "even:bg-zinc-950/[2.5%] dark:even:bg-white/[2.5%]",
-			href && striped && "hover:bg-zinc-950/5 dark:hover:bg-white/5",
-			href && !striped && "hover:bg-zinc-950/[2.5%] dark:hover:bg-white/[2.5%]",
+			href && striped && "",
+			href && !striped && "",
 		);
 
 		const children = Array.from(this.childNodes);
@@ -258,7 +257,7 @@ export class TableCell extends BaseComponent {
 
 		const classes = this.clsx(
 			"relative px-4 first:pl-[var(--gutter,0.5rem)] last:pr-[var(--gutter,0.5rem)]",
-			!striped && "border-b border-zinc-950/5 dark:border-white/5",
+			!striped && "border-b dark:border-white/5",
 			grid &&
 				"border-l border-l-zinc-950/5 first:border-l-0 dark:border-l-white/5",
 			dense ? "py-2.5" : "py-4",
@@ -281,7 +280,7 @@ export class TableCell extends BaseComponent {
 				target: target || undefined,
 				"aria-label": title || undefined,
 				tabindex: isFirst ? "0" : "-1",
-				class: "absolute inset-0 focus:outline-none",
+				class: "absolute inset-0",
 			});
 			td.appendChild(link);
 		}

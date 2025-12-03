@@ -48,7 +48,7 @@ export class QuoteCard extends BaseComponent {
 		return this.svg(
 			"svg",
 			{
-				class: "w-12 h-12 text-cyan-500 dark:text-cyan-400 mb-4",
+				class: "w-12 h-12 mb-4",
 				fill: "currentColor",
 				viewBox: "0 0 24 24",
 				"aria-hidden": "true",
@@ -69,9 +69,9 @@ export class QuoteCard extends BaseComponent {
 			"div",
 			{
 				class: this.clsx(
-					"bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-8",
+					"rounded-xl shadow-lg p-8",
 					"ring-1 ring-zinc-950/5 dark:ring-white/10",
-					"transition-shadow hover:shadow-xl",
+					"transition-shadow",
 					"h-full flex flex-col",
 				),
 			},
@@ -83,8 +83,7 @@ export class QuoteCard extends BaseComponent {
 				this.h(
 					"blockquote",
 					{
-						class:
-							"text-lg text-zinc-700 dark:text-zinc-300 mb-6 italic flex-grow",
+						class: "text-lg mb-6 italic flex-grow",
 					},
 					`"${quote}"`,
 				),
@@ -112,7 +111,7 @@ export class QuoteCard extends BaseComponent {
 							this.h(
 								"p",
 								{
-									class: "font-semibold text-zinc-900 dark:text-white",
+									class: "font-semibold dark:text-white",
 								},
 								author,
 							),
@@ -120,7 +119,7 @@ export class QuoteCard extends BaseComponent {
 							this.h(
 								"p",
 								{
-									class: "text-sm text-zinc-600 dark:text-zinc-400",
+									class: "text-sm dark:text-zinc-400",
 								},
 								role,
 							),

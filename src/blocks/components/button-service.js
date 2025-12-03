@@ -31,7 +31,7 @@ class ButtonService extends BaseComponent {
 				type: "button",
 				class: this.combineClassNames(
 					"rounded-xl px-8 py-5 w-full",
-					"bg-[#072835] hover:bg-[#0a3442]",
+					"bg-[#072835]",
 					"text-left",
 					"transition-colors duration-200",
 					"cursor-pointer",
@@ -47,14 +47,14 @@ class ButtonService extends BaseComponent {
 						this.h(
 							"div",
 							{
-								class: "text-white font-semibold text-lg",
+								class: "font-semibold text-lg",
 							},
 							[this.h("slot", { name: "title" })],
 						),
 						this.h(
 							"div",
 							{
-								class: "text-white/80 text-sm",
+								class: "text-sm",
 							},
 							[this.h("slot", { name: "description" })],
 						),

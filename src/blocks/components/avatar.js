@@ -64,8 +64,7 @@ export class Avatar extends BaseComponent {
 			const svgElement = this.createSVGElement(
 				"svg",
 				{
-					class:
-						"size-full fill-current p-[5%] text-[48px] font-medium uppercase select-none",
+					class: "size-full fill-current p-[5%] text-[48px] font-medium uppercase select-none",
 					viewBox: "0 0 100 100",
 					"aria-hidden": altText ? undefined : "true",
 				},
@@ -170,15 +169,14 @@ export class AvatarButton extends BaseComponent {
 
 		const buttonClasses = this.combineClassNames(
 			isSquare ? "rounded-[20%]" : "rounded-full",
-			"relative inline-grid focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500",
+			"relative inline-grid",
 		);
 
 		const buttonElement = this.createInteractiveElement(
 			href,
 			{ class: buttonClasses },
 			this.createElement("span", {
-				class:
-					"absolute top-1/2 left-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden",
+				class: "absolute top-1/2 left-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden",
 				"aria-hidden": "true",
 			}),
 		);

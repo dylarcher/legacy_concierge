@@ -287,7 +287,7 @@ export class PaginationPage extends BaseComponent {
 		}
 		buttonElement.className = this.combineClassNames(
 			"min-w-9 before:absolute before:-inset-px before:rounded-lg",
-			isCurrent && "before:bg-zinc-950/5 dark:before:bg-white/10",
+			isCurrent && "before:dark:before:bg-white/10",
 		);
 
 		const pageNumberElement = this.createElement(
@@ -320,7 +320,7 @@ export class PaginationGap extends BaseComponent {
 	 */
 	render() {
 		const gapClasses = this.combineClassNames(
-			"w-9 text-center text-sm/6 font-semibold text-zinc-950 select-none dark:text-white",
+			"w-9 text-center text-sm/6 font-semibold select-none dark:text-white",
 			this.className,
 		);
 

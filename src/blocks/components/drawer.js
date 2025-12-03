@@ -218,7 +218,7 @@ export class Drawer extends BaseComponent {
 
 		const backdropElement = this.createElement("div", {
 			class: this.combineClassNames(
-				"fixed inset-0 bg-zinc-950/25 transition-opacity duration-300 ease-in-out opacity-0",
+				"fixed inset-0 transition-opacity duration-300 ease-in-out opacity-0",
 				"dark:bg-zinc-950/50",
 			),
 			ref: (element) => {
@@ -312,9 +312,9 @@ export class DrawerHeader extends BaseComponent {
 			{
 				type: "button",
 				class: this.combineClassNames(
-					"rounded-md text-zinc-400 hover:text-zinc-500",
-					"focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2",
-					"dark:text-zinc-500 dark:hover:text-zinc-400",
+					"rounded-md text-zinc-400",
+					"",
+					"dark:text-zinc-500",
 				),
 				onClick: () => {
 					const drawerElement = this.closest("ui-drawer");

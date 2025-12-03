@@ -176,9 +176,9 @@ export class Code extends BaseComponent {
 	 */
 	render() {
 		const codeClasses = this.combineClassNames(
-			"rounded-sm border border-zinc-950/10 bg-zinc-950/[2.5%] px-0.5 text-sm font-medium text-canvas",
+			"rounded-sm border bg-zinc-950/[2.5%] px-0.5 text-sm font-medium text-canvas",
 			"sm:text-[0.8125rem]",
-			"dark:border-white/20 dark:bg-white/5",
+			"dark:bg-white/5",
 			this.className,
 		);
 

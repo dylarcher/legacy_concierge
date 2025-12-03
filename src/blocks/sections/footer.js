@@ -14,22 +14,22 @@ export const FOOTER_TEMPLATE = `
                             <h3 class="dark:text-white">COMPANY</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Careers</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Careers</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Blog</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">About</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">About</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Team</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Team</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Partners</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Partners</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Contact</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -37,25 +37,25 @@ export const FOOTER_TEMPLATE = `
                             <h3 class="dark:text-white">TREATMENTS</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Pulmonary Oversight</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Pulmonary Oversight</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Eating Disorder Monitoring</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Eating Disorder Monitoring</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">IV Infusion Therapy</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">IV Infusion Therapy</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Mental Health Services</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Mental Health Services</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Pain Management</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Pain Management</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Post-operation Recovery</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Post-operation Recovery</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Addiction Rehabilitation</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Addiction Rehabilitation</a>
                                 </li>
                             </ul>
                         </div>
@@ -63,37 +63,37 @@ export const FOOTER_TEMPLATE = `
                             <h3 class="dark:text-white">SERVICES</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Amyotrophic Lateral Sclerosis</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Amyotrophic Lateral Sclerosis</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Alzheimer's</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Alzheimer's</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Dementia</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Dementia</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Diabetes</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Diabetes</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Heart Disease</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Heart Disease</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Multiple Sclerosis</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Multiple Sclerosis</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Oncology</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Oncology</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Ostomy</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Ostomy</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Parkinson's</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Parkinson's</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Stroke Recovery</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Stroke Recovery</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Traumatic Brain Injury</a>
+                                    <a href="#" class="text-sm/6 text-gray-200">Traumatic Brain Injury</a>
                                 </li>
                             </ul>
                         </div>
@@ -103,10 +103,9 @@ export const FOOTER_TEMPLATE = `
                         <p id="newsletter-description" class="sr-only">Subscribe to our newsletter for the latest news, articles, and resources, sent to your inbox weekly.</p>
                         <form class="flex max-w-md">
                             <label for="email-address" class="sr-only">Enter your email address</label>
-                            <input id="email-address" type="email" name="email-address" required placeholder="e.g. email@address.com" autocomplete="email" class="w-full min-w-max rounded-none px-2 pt-4 leading-none border-0 border-b-2 border-gray-400 text-sm text-white placeholder:text-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-none focus:border-white" />
+                            <input id="email-address" type="email" name="email-address" required placeholder="e.g. email@address.com" autocomplete="email" class="w-full min-w-max rounded-none px-2 pt-4 leading-none border-0 border-b-2 text-sm placeholder:text-gray-300" />
                             <div class="mt-2 ml-0">
-                                <button type="submit" class="flex w-full items-center justify-center px-3 py-3 text-sm font-semibold text-white border-0 border-b-2 border-gray-400 shadow-xs focus-visible:outline-2
-								focus-visible:bg-white/10 focus-visible:outline-none">
+                                <button type="submit" class="flex w-full items-center justify-center px-3 py-3 text-sm font-semibold border-0 border-b-2 shadow-xs">
                                 Subscribe</button>
                             </div>
                         </form>
@@ -132,12 +131,12 @@ export const FOOTER_TEMPLATE = `
 							<path filter="url(#smooth)" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M141.07 124.63q.26-.04.44.16.14.21.1.44-.01.23-.15.48c-1.66 3.2-2.4 4.4-4.4 6.6-12.49 13.75-28.3 17.3-45.1 15.45a1.6 1.6 0 0 1-1.4-1.34l-.74-4.85a1.76 1.76 0 0 1 2-2c14.68 2.25 28.24 2.55 41.08-7.64 2.3-1.84 3.85-3.64 6.37-6.05l.02-.01c.18-.17.77-.66 1.31-1.04q.24-.17.47-.2ZM41.63.25h.15a1.54 1.54 0 0 1 .02 3.08c-1.24.16-2.62.38-3.74.7q-.84.24-1.38.55t-.6.62v.1l-.03.32-.03 1.13a2642 2642 0 0 0-.15 18.17c-.05 11.58-.1 26.9-.12 42.17L35.7 109v19q.01.27.1.4.06.08.16.12l.08.02h.02l.05.02.2.04.75.16 2.83.61 9.63 2.08 25.16 5.45c.77.17 1.33.82 1.39 1.6q.18 2.4.54 4.98c.07.53-.1 1-.43 1.29-.34.3-.82.38-1.33.23-5.77-1.73-25.34-7.5-43.15-10.72-11.5-2.08-21.96.31-28.03 2.93h-.01l-1.3.5c-.83.3-1.58.03-1.92-.52q-.27-.42-.15-.94t.66-.91c5.9-4.2 12.9-5.8 20.4-6.59.4-.04 1.5-.17 2.5-.35.5-.1.97-.2 1.32-.31q.26-.09.38-.16l.04-.03V5.12q-.05-.42-.63-.76-.62-.35-1.58-.56a28 28 0 0 0-3.99-.51 1.5 1.5 0 0 1-1.4-1.5c0-.85.7-1.54 1.54-1.54zm45.7 139.51v.1l.04.26.12.84.36 2.43.36 2.37.12.77.03.22v.06h.01l.29 1.42c3.09 14.3 10.32 26.85 21.44 33.33l.55.32a50.2 50.2 0 0 0 38.9 5.66c4.03-1.01 8.54-3.48 13.24-6.72s9.59-7.22 14.36-11.27c4.78-4.05 9.45-8.16 13.71-11.6 4.26-3.45 8.14-6.25 11.34-7.7a29.6 29.6 0 0 1 12.9-2.68c6.4.18 10.44 2.2 12.11 3.32l.03.01c.84.57 1.93 1.78 2.8 2.82a48 48 0 0 1 1.43 1.8l.09.11.02.04a.25.25 0 0 1-.38.32l-.02-.02-.4-.4q-.43-.42-1.23-1.08c-1-.82-2.42-1.83-4.15-2.67l-.34-.17c-2.6-1.2-6.14-1.76-9-1.85-2.14-.07-4.61.48-6.95 1.28s-4.53 1.83-6.1 2.7c-2.12 1.15-5.6 3.86-9.88 7.34-4.27 3.47-9.32 7.71-14.54 11.9a230 230 0 0 1-15.61 11.69c-4.98 3.32-9.56 5.83-13.15 6.7-7.85 2.87-18.47 3.4-27.71 2.1-24.58-3.45-38.74-23.43-42.83-46.34-4.1-22.9 1.84-48.81 17.52-64.22 14.63-14.38 37.34-14.73 53.54-3.82a44 44 0 0 1 2.42 1.98c.4-.03.8-.32 1.15-1.02q.56-1.1.87-3.4a1.36 1.36 0 0 1 2.71.21c-.2 4.6-.3 14.24-.31 23.41a1.28 1.28 0 0 1-1.45 1.27 1.1 1.1 0 0 1-1.08-1l-.02-.14-.18-2.09c-.18-1.71-.38-3.3-.7-4.7l-.08-.4c-2.27-9.36-9.52-14.34-17.83-16.08s-17.64-.22-23.98 3.38c-18.9 10.75-26.84 35.99-24.55 59.15z" shape-rendering="geometricPrecision" style="transform: scale(0.96)" tansform-origin="center" />
 						</svg>
 					</div>
-					<div class="text-gray-200 border-t border-white/20 pt-4 md:flex md:items-center md:justify-between">
-						<p class="mt-8 mr-auto text-sm/6 text-gray-300 md:mt-0 dark:text-gray-200">&copy; Legacy Concierge, Inc.</p>
+					<div class="border-t pt-4 md:flex md:items-center md:justify-between">
+						<p class="mt-8 mr-auto text-sm/6 md:mt-0 dark:text-gray-200">&copy; Legacy Concierge, Inc.</p>
 						<nav class="flex gap-6" aria-label="Legal links">
-							<a href="#" class="text-sm/6 text-gray-300 hover:text-white">Privacy Policy</a>
-							<a href="#" class="text-sm/6 text-gray-300 hover:text-white">Terms of Service</a>
-							<a href="#" class="text-sm/6 text-gray-300 hover:text-white"><abbr title="Health Insurance Portability and Accountability Act (1996)">HIPAA</abbr></a>
+							<a href="#" class="text-sm/6 text-gray-300">Privacy Policy</a>
+							<a href="#" class="text-sm/6 text-gray-300">Terms of Service</a>
+							<a href="#" class="text-sm/6 text-gray-300"><abbr title="Health Insurance Portability and Accountability Act (1996)">HIPAA</abbr></a>
 						</nav>
 					</div>
 				</div>
@@ -380,12 +379,7 @@ export class ContentInfo extends BaseComponent {
 				...links.map((link) => {
 					const li = this.h("li", {});
 					const clonedLink = link.cloneNode(true);
-					clonedLink.className = [
-						"text-sm/6",
-						"text-muted",
-						"hover:text-gray-900",
-						"",
-					].join(" ");
+					clonedLink.className = ["text-sm/6", "text-muted", "", ""].join(" ");
 					li.appendChild(clonedLink);
 					return li;
 				}),

@@ -56,7 +56,7 @@ class TeamMember extends BaseComponent {
 			[
 				// Semi-transparent overlay for better text readability
 				this.h("div", {
-					class: "absolute inset-0 bg-black/20 pointer-events-none",
+					class: "absolute inset-0 pointer-events-none",
 				}),
 				// Content container
 				this.h(
@@ -68,7 +68,7 @@ class TeamMember extends BaseComponent {
 						this.h(
 							"div",
 							{
-								class: "text-zinc-900 text-base leading-relaxed",
+								class: "text-base leading-relaxed",
 							},
 							[this.h("slot")],
 						),

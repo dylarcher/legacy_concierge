@@ -39,10 +39,10 @@ export class LocationCard extends BaseComponent {
 			"div",
 			{
 				class: this.clsx(
-					"bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-8",
+					"rounded-xl shadow-lg p-8",
 					"ring-1 ring-zinc-950/5 dark:ring-white/10",
-					"hover:shadow-xl transition-all duration-200",
-					"hover:scale-105",
+					"transition-all duration-200",
+					"",
 					"flex flex-col items-center text-center",
 					"h-full",
 				),
@@ -61,7 +61,7 @@ export class LocationCard extends BaseComponent {
 			this.h(
 				"h3",
 				{
-					class: "text-xl font-bold text-zinc-900 dark:text-white mb-3",
+					class: "text-xl font-bold mb-3",
 				},
 				region,
 			),
@@ -70,7 +70,7 @@ export class LocationCard extends BaseComponent {
 				this.h(
 					"p",
 					{
-						class: "text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed",
+						class: "text-sm leading-relaxed",
 					},
 					coverage,
 				),

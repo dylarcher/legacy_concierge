@@ -49,7 +49,7 @@ export class Card extends BaseComponent {
 		const cardClasses = this.combineClassNames(
 			"rounded-xl card-bg p-6 shadow-lg",
 			"ring-1 card-border",
-			hasHoverEffect && "transition-shadow card-bg-hover hover:shadow-xl",
+			hasHoverEffect && "transition-shadow card-bg-hover",
 			this.className,
 		);
 

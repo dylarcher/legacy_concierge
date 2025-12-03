@@ -136,7 +136,7 @@ export class SidebarLayout extends BaseComponent {
 		// Main container
 		const container = this.h("div", {
 			class:
-				"relative isolate flex min-h-svh w-full bg-white max-lg:flex-col lg:bg-zinc-100 dark:bg-zinc-900 dark:lg:bg-zinc-950",
+				"relative isolate flex min-h-svh w-full max-lg:flex-col lg:dark:lg:bg-zinc-950",
 		});
 
 		// Desktop sidebar (fixed)
@@ -163,8 +163,7 @@ export class SidebarLayout extends BaseComponent {
 
 		// Backdrop
 		const backdrop = this.h("div", {
-			class:
-				"fixed inset-0 bg-black/30 transition-opacity duration-300 ease-out opacity-0",
+			class: "fixed inset-0 transition-opacity duration-300 ease-out opacity-0",
 			ref: (el) => {
 				this._backdrop = el;
 			},
@@ -183,7 +182,7 @@ export class SidebarLayout extends BaseComponent {
 
 		const panelInner = this.h("div", {
 			class:
-				"flex h-full flex-col rounded-lg bg-white shadow-sm ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10",
+				"flex h-full flex-col rounded-lg shadow-sm ring-1 ring-zinc-950/5 dark:ring-white/10",
 		});
 
 		// Close button area
@@ -235,7 +234,7 @@ export class SidebarLayout extends BaseComponent {
 
 		const contentWrapper = this.h("div", {
 			class:
-				"grow p-6 lg:rounded-lg lg:bg-white lg:p-10 lg:shadow-sm lg:ring-1 lg:ring-zinc-950/5 dark:lg:bg-zinc-900 dark:lg:ring-white/10",
+				"grow p-6 lg:rounded-lg lg:lg:p-10 lg:shadow-sm lg:ring-1 lg:ring-zinc-950/5 dark:lg:dark:lg:ring-white/10",
 		});
 
 		const contentInner = this.h("div", { class: "mx-auto max-w-6xl" });

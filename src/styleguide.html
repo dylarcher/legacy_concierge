@@ -65,18 +65,14 @@
 						>
 					</a>
 					<div class="hidden md:flex gap-6 text-sm font-medium">
-						<a href="#colors" class="text-muted hover:text-primary">Colors</a>
-						<a href="#typography" class="text-muted hover:text-primary"
-							>Typography</a
-						>
-						<a href="#buttons" class="text-muted hover:text-primary">Buttons</a>
-						<a href="#forms" class="text-muted hover:text-primary">Forms</a>
-						<a href="#cards" class="text-muted hover:text-primary">Cards</a>
-						<a href="#status" class="text-muted hover:text-primary">Status</a>
-						<a href="#spacing" class="text-muted hover:text-primary">Spacing</a>
-						<a href="#utilities" class="text-muted hover:text-primary"
-							>Utilities</a
-						>
+						<a href="#colors" class="text-muted">Colors</a>
+						<a href="#typography" class="text-muted">Typography</a>
+						<a href="#buttons" class="text-muted">Buttons</a>
+						<a href="#forms" class="text-muted">Forms</a>
+						<a href="#cards" class="text-muted">Cards</a>
+						<a href="#status" class="text-muted">Status</a>
+						<a href="#spacing" class="text-muted">Spacing</a>
+						<a href="#utilities" class="text-muted">Utilities</a>
 					</div>
 				</div>
 			</div>
@@ -486,7 +482,7 @@
 						</button>
 						<button
 							type="button"
-							class="btn-solid px-6 py-3 rounded-lg border font-semibold transition-colors hover:bg-[var(--btn-solid-bg-hover)]"
+							class="btn-solid px-6 py-3 rounded-lg border font-semibold transition-colors"
 							style="background: var(--btn-solid-bg-hover);"
 						>
 							Hover
@@ -522,14 +518,16 @@
 						<button
 							type="button"
 							class="btn-outline px-6 py-3 rounded-lg border font-semibold transition-colors"
-							style="background: var(--btn-outline-bg-hover); border-color: var(--btn-outline-border-hover);"
+							style="background: var(--btn-solid-bg-hover); color: var(--btn-solid-fg);"
+							inert
 						>
 							Hover
 						</button>
 						<button
 							type="button"
 							class="btn-outline px-6 py-3 rounded-lg border font-semibold transition-colors"
-							style="background: var(--btn-outline-bg-pressed);"
+							style="background: var(--btn-solid-bg-hover); color: var(--btn-solid-fg);opacity:.64;"
+							inert
 						>
 							Pressed
 						</button>
@@ -558,6 +556,7 @@
 							type="button"
 							class="btn-subtle px-6 py-3 rounded-lg font-semibold transition-colors"
 							style="background: var(--btn-subtle-bg-hover);"
+							inert
 						>
 							Hover
 						</button>
@@ -565,6 +564,7 @@
 							type="button"
 							class="btn-subtle px-6 py-3 rounded-lg font-semibold transition-colors"
 							style="background: var(--btn-subtle-bg-pressed);"
+							inert
 						>
 							Pressed
 						</button>
@@ -618,7 +618,7 @@
 							<input
 								type="text"
 								placeholder="Enter your name..."
-								class="w-full max-w-md px-4 py-3 rounded-lg border input-border input-bg input-fg placeholder-muted focus:outline-2 focus:outline-[var(--input-border-focus)] focus:outline-offset-2 transition-colors"
+								class="w-full max-w-md px-4 py-3 rounded-lg border input-border input-bg input-fg placeholder-muted transition-colors"
 							>
 						</div>
 						<div>
@@ -628,7 +628,7 @@
 							<input
 								type="text"
 								value="John Doe"
-								class="w-full max-w-md px-4 py-3 rounded-lg border input-border input-bg input-fg placeholder-muted focus:outline-2 focus:outline-[var(--input-border-focus)] focus:outline-offset-2 transition-colors"
+								class="w-full max-w-md px-4 py-3 rounded-lg border input-border input-bg input-fg placeholder-muted transition-colors"
 							>
 						</div>
 						<div>
@@ -698,7 +698,7 @@
 						<textarea
 							rows="4"
 							placeholder="Write your message..."
-							class="w-full max-w-lg px-4 py-3 rounded-lg border input-border input-bg input-fg placeholder-muted focus:outline-2 focus:outline-[var(--input-border-focus)] focus:outline-offset-2 transition-colors resize-y"
+							class="w-full max-w-lg px-4 py-3 rounded-lg border input-border input-bg input-fg placeholder-muted transition-colors resize-y"
 						></textarea>
 					</div>
 
@@ -709,7 +709,7 @@
 							Choose an option
 						</label>
 						<select
-							class="w-full max-w-md px-4 py-3 rounded-lg border input-border input-bg input-fg focus:outline-2 focus:outline-[var(--input-border-focus)] focus:outline-offset-2 transition-colors"
+							class="w-full max-w-md px-4 py-3 rounded-lg border input-border input-bg input-fg transition-colors"
 						>
 							<option value="">Select...</option>
 							<option value="1">Option One</option>
@@ -1244,9 +1244,7 @@
 				<p class="text-sm text-muted">
 					Legacy Concierge Design System &middot; Built with Tailwind CSS v4
 					&middot;
-					<a
-						href="https://legacyconcierge.com"
-						class="text-primary hover:underline"
+					<a href="https://legacyconcierge.com" class="text-primary"
 						>legacyconcierge.com</a
 					>
 				</p>

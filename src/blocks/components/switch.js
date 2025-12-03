@@ -227,15 +227,15 @@ export class Switch extends BaseComponent {
 		const wrapperClasses = this.combineClassNames(
 			"group relative isolate inline-flex h-6 w-10 cursor-pointer rounded-full p-[3px] sm:h-5 sm:w-8",
 			"transition duration-0 ease-in-out",
-			"bg-zinc-200 ring-1 ring-black/5 ring-inset dark:bg-white/5 dark:ring-white/15",
+			"ring-1 ring-black/5 ring-inset dark:ring-white/15",
 			"[&[data-checked]]:bg-[var(--switch-bg)] [&[data-checked]]:ring-[var(--switch-bg-ring)]",
 			"dark:[&[data-checked]]:bg-[var(--switch-bg)] dark:[&[data-checked]]:ring-[var(--switch-bg-ring)]",
-			"focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500",
-			"hover:ring-black/15 [&[data-checked]:hover]:ring-[var(--switch-bg-ring)]",
-			"dark:hover:ring-white/25",
+			"",
+			"",
+			"",
 			isDisabled &&
-				"opacity-50 cursor-not-allowed bg-zinc-200 [&[data-checked]]:bg-zinc-200 [&[data-checked]]:ring-black/5",
-			isDisabled && "dark:bg-white/15 dark:[&[data-checked]]:bg-white/15",
+				"opacity-50 cursor-not-allowed [&[data-checked]]:[&[data-checked]]:ring-black/5",
+			isDisabled && "dark:[&[data-checked]]:bg-white/15",
 			SWITCH_COLORS[colorVariant] || SWITCH_COLORS["dark/zinc"],
 		);
 
@@ -243,21 +243,17 @@ export class Switch extends BaseComponent {
 			"pointer-events-none relative inline-block size-[1.125rem] rounded-full sm:size-3.5",
 			"translate-x-0 transition duration-200 ease-in-out",
 			"border border-transparent",
-			"bg-white shadow-sm ring-1 ring-black/5",
+			"shadow-sm ring-1 ring-black/5",
 			"[.group[data-checked]_&]:bg-[var(--switch)] [.group[data-checked]_&]:shadow-[var(--switch-shadow)] [.group[data-checked]_&]:ring-[var(--switch-ring)]",
 			"[.group[data-checked]_&]:translate-x-4 sm:[.group[data-checked]_&]:translate-x-3",
 			isDisabled &&
-				"[.group[data-checked]_&]:bg-white [.group[data-checked]_&]:shadow-sm [.group[data-checked]_&]:ring-black/5",
+				"[.group[data-checked]_&]:[.group[data-checked]_&]:shadow-sm [.group[data-checked]_&]:ring-black/5",
 		);
 
 		this.innerHTML = "";
 
 		const inputElement = this.createElement("input", {
-			type: "checkbox",
-			name: fieldName || undefined,
-			checked: isChecked || undefined,
-			disabled: isDisabled || undefined,
-			class: "sr-only",
+			type: "checkbox", name: fieldName || undefined, checked: isChecked || undefined, isDisabled || undefined, class: "sr-only",
 			ref: (element) => {
 				this.#inputElement = element;
 			},
