@@ -11,6 +11,82 @@ const CUSTOM_FONTS = ["sans", "serif"];
 const VALID_PREFIXES = ["bg", "text", "border", "ring", "from", "to", "via"];
 const EXCLUDED_DIRS = ["node_modules", "dist", ".vscode", ".git", "scripts"];
 
+// Semantic utility classes from design tokens (style.css @layer utilities)
+const SEMANTIC_UTILITIES = new Set([
+	// Background utilities
+	"bg-canvas",
+	"bg-depth-1",
+	"bg-depth-2",
+	"bg-inverse",
+	// Text utilities
+	"text-canvas",
+	"text-muted",
+	"text-inverse",
+	// Border utilities
+	"border-soft",
+	"border-strong",
+	// Card utilities
+	"card-fg",
+	"card-bg",
+	"card-bg-hover",
+	"card-border",
+	"card-ring",
+	// Input utilities
+	"input-fg",
+	"input-bg",
+	"input-border",
+	"input-border-hover",
+	"input-focus",
+	"placeholder-muted",
+	// Button utilities
+	"btn-solid",
+	"btn-outline",
+	"btn-subtle",
+	// Ring utilities
+	"ring-primary",
+	"ring-secondary",
+	"ring-accent",
+	// Status utilities
+	"bg-status-caution",
+	"bg-status-details",
+	"bg-status-success",
+	"bg-status-warning",
+	"bg-status-callout",
+	"text-status-caution",
+	"text-status-details",
+	"text-status-success",
+	"text-status-warning",
+	"text-status-callout",
+	"border-status-caution",
+	"border-status-details",
+	"border-status-success",
+	"border-status-warning",
+	"border-status-callout",
+	"ring-status-caution",
+	"ring-status-details",
+	"ring-status-success",
+	"ring-status-warning",
+	"ring-status-callout",
+	// Stroke utilities (for SVG icons)
+	"stroke-muted",
+	// Badge text utilities - WCAG AA compliant on tinted backgrounds
+	"text-badge-caution",
+	"text-badge-details",
+	"text-badge-success",
+	"text-badge-warning",
+	"text-badge-callout",
+	// Font family utilities (from @theme)
+	"font-display",
+	"font-slab",
+	"font-rounded",
+	"font-condensed",
+	"font-code",
+	// Text size utilities (from @theme)
+	"text-xxl",
+	"text-md",
+	"text-xxs",
+]);
+
 // Known modifiers to skip validation
 const MODIFIERS = [
 	"dark",
@@ -166,6 +242,14 @@ async function validateClasses(dir = ".") {
 				// Skip if still empty after modifier removal
 				if (!cls) continue;
 
+				// Strip opacity modifier (e.g., bg-canvas/92 -> bg-canvas)
+				const baseClass = cls.replace(/\/\d+$/, "");
+
+				// Check semantic utilities first (exact match or with opacity)
+				if (SEMANTIC_UTILITIES.has(baseClass) || SEMANTIC_UTILITIES.has(cls)) {
+					continue;
+				}
+
 				const isValid = Object.values(patterns).some((pattern) =>
 					pattern.test(cls),
 				);
@@ -173,7 +257,7 @@ async function validateClasses(dir = ".") {
 				// Only report as invalid if it looks like a Tailwind utility
 				if (
 					!isValid &&
-					/^(?:bg|text|border|ring|from|to|via|font|p|m|gap|w|h|flex|grid|rounded|shadow|opacity|z|overflow|position|display|whitespace|cursor|select|pointer|transition|duration|ease|transform|scale|rotate|translate|skew|object)-/.test(
+					/^(?:bg|text|border|ring|from|to|via|font|p|m|gap|w|h|flex|grid|rounded|shadow|opacity|z|overflow|position|display|whitespace|cursor|select|pointer|transition|duration|ease|transform|scale|rotate|translate|skew|object|card|input|btn|stroke|placeholder)-/.test(
 						cls,
 					)
 				) {

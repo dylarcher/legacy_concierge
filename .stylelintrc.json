@@ -4,9 +4,12 @@
 		"at-rule-no-unknown": [
 			true,
 			{
-				"ignoreAtRules": ["tailwind", "theme", "layer", "import"]
+				"ignoreAtRules": ["tailwind", "theme", "layer", "import", "source"]
 			}
 		],
+		"declaration-block-no-duplicate-custom-properties": null,
+		"custom-property-empty-line-before": null,
+		"rule-empty-line-before": null,
 		"custom-property-pattern": null,
 		"function-no-unknown": [
 			true,
