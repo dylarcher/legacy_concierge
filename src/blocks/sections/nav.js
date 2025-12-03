@@ -1,4 +1,4 @@
-import { BaseComponent, defineElement, FocusTrap } from "../_base.js";
+import { BaseComponent, defineElement, FocusTrap, resolvePath } from "../_base.js";
 
 /**
  * Navigation bar template with responsive mobile menu.
@@ -916,25 +916,25 @@ class NavBar extends BaseComponent {
 						{ class: "hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12" },
 						this.#createDropdown(
 							"Home",
-							"/",
+							resolvePath("/"),
 							[
 								{
-									href: "/pages/about",
+									href: resolvePath("/pages/about"),
 									text: "About Legacy",
 									desc: "Learn about our mission and values",
 								},
 								{
-									href: "/pages/team/careers",
+									href: resolvePath("/pages/team/careers"),
 									text: "Careers",
 									desc: "Join our team of healthcare professionals",
 								},
 								{
-									href: "/pages/partners",
+									href: resolvePath("/pages/partners"),
 									text: "Partners",
 									desc: "Our healthcare partnerships",
 								},
 								{
-									href: "/pages/locations",
+									href: resolvePath("/pages/locations"),
 									text: "Locations",
 									desc: "Find a location near you",
 								},
@@ -948,55 +948,55 @@ class NavBar extends BaseComponent {
 						),
 						this.#createDropdown(
 							"Treatments",
-							"/pages/treatments",
+							resolvePath("/pages/treatments"),
 							[
 								{
-									href: "/pages/treatments/cardiac",
+									href: resolvePath("/pages/treatments/cardiac"),
 									text: "Cardiac Care",
 									desc: "Comprehensive cardiac recovery and monitoring",
 								},
 								{
-									href: "/pages/treatments/eating",
+									href: resolvePath("/pages/treatments/eating"),
 									text: "Eating Support",
 									desc: "Nutrition and dietary management",
 								},
 								{
-									href: "/pages/treatments/iv",
+									href: resolvePath("/pages/treatments/iv"),
 									text: "IV Therapy",
 									desc: "Hydration and medication infusions",
 								},
 								{
-									href: "/pages/treatments/neurological",
+									href: resolvePath("/pages/treatments/neurological"),
 									text: "Neurological Care",
 									desc: "Specialized neurological support",
 								},
 								{
-									href: "/pages/treatments/oncology",
+									href: resolvePath("/pages/treatments/oncology"),
 									text: "Oncology Care",
 									desc: "Cancer treatment and recovery support",
 								},
 								{
-									href: "/pages/treatments/pain",
+									href: resolvePath("/pages/treatments/pain"),
 									text: "Pain Management",
 									desc: "Advanced pain relief strategies",
 								},
 								{
-									href: "/pages/treatments/palliative",
+									href: resolvePath("/pages/treatments/palliative"),
 									text: "Palliative Care",
 									desc: "Comfort-focused end-of-life support",
 								},
 								{
-									href: "/pages/treatments/post-op",
+									href: resolvePath("/pages/treatments/post-op"),
 									text: "Post-Operative Care",
 									desc: "Surgical recovery and wound care",
 								},
 								{
-									href: "/pages/treatments/respiratory",
+									href: resolvePath("/pages/treatments/respiratory"),
 									text: "Respiratory Care",
 									desc: "Breathing support and oxygen therapy",
 								},
 								{
-									href: "/pages/treatments/wellness",
+									href: resolvePath("/pages/treatments/wellness"),
 									text: "Wellness Programs",
 									desc: "Preventive care and health optimization",
 								},
@@ -1010,60 +1010,60 @@ class NavBar extends BaseComponent {
 						),
 						this.#createDropdown(
 							"Expertise",
-							"/pages/services",
+							resolvePath("/pages/services"),
 							[
 								{
-									href: "/pages/services/als",
+									href: resolvePath("/pages/services/als"),
 									text: "ALS Care",
 									desc: "Compassionate ALS patient support",
 								},
 								{
-									href: "/pages/services/alzheimers",
+									href: resolvePath("/pages/services/alzheimers"),
 									text: "Alzheimer's Care",
 									desc: "Memory care and cognitive support",
 								},
 								{
-									href: "/pages/services/dementia",
+									href: resolvePath("/pages/services/dementia"),
 									text: "Dementia Care",
 									desc: "Dementia-specific care strategies",
 								},
 								{
-									href: "/pages/services/diabetes",
+									href: resolvePath("/pages/services/diabetes"),
 									text: "Diabetes Management",
 									desc: "Blood sugar monitoring and insulin support",
 								},
 								{
-									href: "/pages/services/heart-disease",
+									href: resolvePath("/pages/services/heart-disease"),
 									text: "Heart Disease",
 									desc: "Cardiovascular disease management",
 								},
 								{
-									href: "/pages/services/ms",
+									href: resolvePath("/pages/services/ms"),
 									text: "Multiple Sclerosis",
 									desc: "MS symptom management and support",
 								},
 								{
-									href: "/pages/services/oncology",
+									href: resolvePath("/pages/services/oncology"),
 									text: "Oncology Services",
 									desc: "Cancer care coordination",
 								},
 								{
-									href: "/pages/services/ostomy",
+									href: resolvePath("/pages/services/ostomy"),
 									text: "Ostomy Care",
 									desc: "Ostomy management and education",
 								},
 								{
-									href: "/pages/services/parkinsons",
+									href: resolvePath("/pages/services/parkinsons"),
 									text: "Parkinson's Care",
 									desc: "Parkinson's disease support",
 								},
 								{
-									href: "/pages/services/stroke",
+									href: resolvePath("/pages/services/stroke"),
 									text: "Stroke Recovery",
 									desc: "Post-stroke rehabilitation",
 								},
 								{
-									href: "/pages/services/tbi",
+									href: resolvePath("/pages/services/tbi"),
 									text: "Traumatic Brain Injury",
 									desc: "TBI recovery and cognitive rehabilitation",
 								},
@@ -1078,7 +1078,7 @@ class NavBar extends BaseComponent {
 						this.h(
 							"a",
 							{
-								href: "/pages/team",
+								href: resolvePath("/pages/team"),
 								class: "text-sm/6 font-semibold text-canvas text-uppercase",
 							},
 							"Team",
@@ -1086,7 +1086,7 @@ class NavBar extends BaseComponent {
 						this.h(
 							"a",
 							{
-								href: "/pages/contact",
+								href: resolvePath("/pages/contact"),
 								class: "text-sm/6 font-semibold text-canvas text-uppercase",
 							},
 							"Contact",
@@ -1247,67 +1247,67 @@ class NavBar extends BaseComponent {
 						"div",
 						{ class: "space-y-2 py-6" },
 						this.#createMobileDropdown("Home", [
-							{ href: "/pages/about", text: "About Legacy" },
-							{ href: "/pages/team/careers", text: "Careers" },
-							{ href: "/pages/partners", text: "Partners" },
-							{ href: "/pages/locations", text: "Locations" },
+							{ href: resolvePath("/pages/about"), text: "About Legacy" },
+							{ href: resolvePath("/pages/team/careers"), text: "Careers" },
+							{ href: resolvePath("/pages/partners"), text: "Partners" },
+							{ href: resolvePath("/pages/locations"), text: "Locations" },
 						]),
 						this.#createMobileDropdown("Treatments", [
-							{ href: "/pages/treatments/cardiac", text: "Cardiac Care" },
-							{ href: "/pages/treatments/eating", text: "Eating Support" },
-							{ href: "/pages/treatments/iv", text: "IV Therapy" },
+							{ href: resolvePath("/pages/treatments/cardiac"), text: "Cardiac Care" },
+							{ href: resolvePath("/pages/treatments/eating"), text: "Eating Support" },
+							{ href: resolvePath("/pages/treatments/iv"), text: "IV Therapy" },
 							{
-								href: "/pages/treatments/neurological",
+								href: resolvePath("/pages/treatments/neurological"),
 								text: "Neurological Care",
 							},
-							{ href: "/pages/treatments/oncology", text: "Oncology Care" },
-							{ href: "/pages/treatments/pain", text: "Pain Management" },
+							{ href: resolvePath("/pages/treatments/oncology"), text: "Oncology Care" },
+							{ href: resolvePath("/pages/treatments/pain"), text: "Pain Management" },
 							{
-								href: "/pages/treatments/palliative",
+								href: resolvePath("/pages/treatments/palliative"),
 								text: "Palliative Care",
 							},
 							{
-								href: "/pages/treatments/post-op",
+								href: resolvePath("/pages/treatments/post-op"),
 								text: "Post-Operative Care",
 							},
 							{
-								href: "/pages/treatments/respiratory",
+								href: resolvePath("/pages/treatments/respiratory"),
 								text: "Respiratory Care",
 							},
 							{
-								href: "/pages/treatments/wellness",
+								href: resolvePath("/pages/treatments/wellness"),
 								text: "Wellness Programs",
 							},
 						]),
 						this.#createMobileDropdown("Expertise", [
-							{ href: "/pages/services/als", text: "ALS Care" },
+							{ href: resolvePath("/pages/services/als"), text: "ALS Care" },
 							{
-								href: "/pages/services/alzheimers",
+								href: resolvePath("/pages/services/alzheimers"),
 								text: "Alzheimer's Care",
 							},
-							{ href: "/pages/services/dementia", text: "Dementia Care" },
+							{ href: resolvePath("/pages/services/dementia"), text: "Dementia Care" },
 							{
-								href: "/pages/services/diabetes",
+								href: resolvePath("/pages/services/diabetes"),
 								text: "Diabetes Management",
 							},
 							{
-								href: "/pages/services/heart-disease",
+								href: resolvePath("/pages/services/heart-disease"),
 								text: "Heart Disease",
 							},
-							{ href: "/pages/services/ms", text: "Multiple Sclerosis" },
-							{ href: "/pages/services/oncology", text: "Oncology Services" },
-							{ href: "/pages/services/ostomy", text: "Ostomy Care" },
+							{ href: resolvePath("/pages/services/ms"), text: "Multiple Sclerosis" },
+							{ href: resolvePath("/pages/services/oncology"), text: "Oncology Services" },
+							{ href: resolvePath("/pages/services/ostomy"), text: "Ostomy Care" },
 							{
-								href: "/pages/services/parkinsons",
+								href: resolvePath("/pages/services/parkinsons"),
 								text: "Parkinson's Care",
 							},
-							{ href: "/pages/services/stroke", text: "Stroke Recovery" },
-							{ href: "/pages/services/tbi", text: "Traumatic Brain Injury" },
+							{ href: resolvePath("/pages/services/stroke"), text: "Stroke Recovery" },
+							{ href: resolvePath("/pages/services/tbi"), text: "Traumatic Brain Injury" },
 						]),
 						this.h(
 							"a",
 							{
-								href: "/pages/team",
+								href: resolvePath("/pages/team"),
 								class:
 									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas text-uppercase",
 								onClick: () => this.closeMenu(),
@@ -1317,7 +1317,7 @@ class NavBar extends BaseComponent {
 						this.h(
 							"a",
 							{
-								href: "/pages/contact",
+								href: resolvePath("/pages/contact"),
 								class:
 									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas text-uppercase",
 								onClick: () => this.closeMenu(),
