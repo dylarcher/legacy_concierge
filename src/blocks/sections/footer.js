@@ -6,12 +6,12 @@ import { BaseComponent, defineElement } from "../_base.js";
  */
 export const FOOTER_TEMPLATE = `
     <template id="footer">
-        <footer class="bg-muted" role="contentinfo">
+        <footer class="bg-secondary" role="contentinfo">
             <div class="mx-auto max-w-7xl px-6 pt-20 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
                 <div class="flex flex-wrap w-full justify-center gap-8 pb-12">
                     <div class="flex flex-wrap w-full md:w-2/3 justify-between gap-x-4 gap-y-4">
                         <div class="w-max md:w-1/5">
-                            <h3 class="text-sm/6 font-semibold text-gray-200 dark:text-white">COMPANY</h3>
+                            <h3 class="dark:text-white">COMPANY</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
                                     <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Careers</a>
@@ -34,7 +34,7 @@ export const FOOTER_TEMPLATE = `
                             </ul>
                         </div>
                         <div class="w-max md:w-1/3">
-                            <h3 class="text-sm/6 font-semibold text-gray-200 dark:text-white">TREATMENTS</h3>
+                            <h3 class="dark:text-white">TREATMENTS</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
                                     <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Pulmonary Oversight</a>
@@ -60,7 +60,7 @@ export const FOOTER_TEMPLATE = `
                             </ul>
                         </div>
                         <div class="w-max md:w-1/3">
-                            <h3 class="text-sm/6 font-semibold text-gray-200 dark:text-white">SERVICES</h3>
+                            <h3 class="dark:text-white">SERVICES</h3>
                             <ul role="list" class="mt-6 space-y-4">
                                 <li>
                                     <a href="#" class="text-sm/6 text-gray-200 hover:text-gray-900">Amyotrophic Lateral Sclerosis</a>
@@ -99,7 +99,7 @@ export const FOOTER_TEMPLATE = `
                         </div>
                     </div>
                     <div class="w-max md:w-1/4 ms-8">
-                        <h3 class="text-sm/6 font-semibold text-white" aria-describedby="newsletter-description">NEWSLETTER</h3>
+                        <h3 class="" aria-describedby="newsletter-description">NEWSLETTER</h3>
                         <p id="newsletter-description" class="sr-only">Subscribe to our newsletter for the latest news, articles, and resources, sent to your inbox weekly.</p>
                         <form class="flex max-w-md">
                             <label for="email-address" class="sr-only">Enter your email address</label>
@@ -239,7 +239,7 @@ export class GlobalFooter extends BaseComponent {
 		const footer = this.h(
 			"footer",
 			{
-				class: "bg-white dark:bg-gray-900",
+				class: "bg-secondary",
 				role: "contentinfo",
 			},
 			this.h(
@@ -289,10 +289,9 @@ export class GlobalFooter extends BaseComponent {
 							class: [
 								"mt-8",
 								"text-sm/6",
-								"text-gray-600",
+								"text-muted",
 								"md:order-1",
 								"md:mt-0",
-								"dark:text-gray-400",
 							].join(" "),
 							"data-copyright": "",
 						},
@@ -371,12 +370,7 @@ export class ContentInfo extends BaseComponent {
 			this.h(
 				"h3",
 				{
-					class: [
-						"text-sm/6",
-						"font-semibold",
-						"text-gray-900",
-						"dark:text-white",
-					].join(" "),
+					class: [""].join(" "),
 				},
 				heading,
 			),
@@ -388,9 +382,8 @@ export class ContentInfo extends BaseComponent {
 					const clonedLink = link.cloneNode(true);
 					clonedLink.className = [
 						"text-sm/6",
-						"text-gray-600",
+						"text-muted",
 						"hover:text-gray-900",
-						"dark:text-gray-400",
 						"",
 					].join(" ");
 					li.appendChild(clonedLink);

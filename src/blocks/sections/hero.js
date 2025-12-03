@@ -42,7 +42,7 @@ export const BANNER_TEMPLATE = () => `
 				</div>
 
 				<div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
-					<h1 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">Your health, Our Purpose.</h1>
+					<h1 class="tracking-tight sm:text-4xl">Your health, Our Purpose.</h1>
 					<p class="mt-6 text-lg/8 text-pretty text-gray-300">Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.</p>
 
 					<div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
@@ -372,8 +372,7 @@ export class HeroBanner extends BaseComponent {
 					this.h(
 						"h1",
 						{
-							class:
-								"text-[clamp(2rem,8vw,5rem)] font-medium tracking-wide text-balance text-white text-shadow-lg leading-tight",
+							class: "tracking-wide leading-tight",
 						},
 						heading,
 					),

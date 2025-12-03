@@ -230,9 +230,8 @@ export class Dialog extends BaseComponent {
 		const panelElement = this.createElement("div", {
 			class: this.combineClassNames(
 				DIALOG_SIZES[sizeVariant] || DIALOG_SIZES.lg,
-				"row-start-2 w-full min-w-0 rounded-t-3xl bg-white p-8 shadow-lg",
-				"ring-1 ring-zinc-950/10 sm:mb-auto sm:rounded-2xl",
-				"dark:bg-zinc-900 dark:ring-white/10",
+				"row-start-2 w-full min-w-0 rounded-t-3xl bg-canvas p-8 shadow-lg",
+				"ring-1 border-soft sm:mb-auto sm:rounded-2xl",
 				"transition duration-100 will-change-transform translate-y-12 opacity-0",
 				"sm:translate-y-0 sm:scale-95",
 			),
@@ -274,7 +273,7 @@ export class DialogTitle extends BaseComponent {
 	 */
 	render() {
 		const titleClasses = this.combineClassNames(
-			"text-lg/6 font-semibold text-balance text-zinc-950 sm:text-base/6 dark:text-white",
+			"text-lg/6 font-semibold text-balance text-canvas sm:text-base/6",
 			this.className,
 		);
 
@@ -310,7 +309,7 @@ export class DialogDescription extends BaseComponent {
 	 */
 	render() {
 		const descriptionClasses = this.combineClassNames(
-			"mt-2 text-pretty text-base/6 text-zinc-500 sm:text-sm/6 dark:text-zinc-400",
+			"mt-2 text-pretty text-base/6 text-muted sm:text-sm/6",
 			this.className,
 		);
 

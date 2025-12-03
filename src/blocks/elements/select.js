@@ -101,7 +101,7 @@ export class Select extends BaseComponent {
 				? "px-[calc(var(--spacing,0.25rem)*3.5-1px)] sm:px-[calc(var(--spacing,0.25rem)*3-1px)]"
 				: "pr-[calc(var(--spacing,0.25rem)*10-1px)] pl-[calc(var(--spacing,0.25rem)*3.5-1px)] sm:pr-[calc(var(--spacing,0.25rem)*9-1px)] sm:pl-[calc(var(--spacing,0.25rem)*3-1px)]",
 			"[&_optgroup]:font-semibold",
-			"text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 dark:text-white dark:[&>*]:text-white",
+			"text-base/6 text-canvas placeholder:text-muted sm:text-sm/6 dark:[&>*]:text-white",
 			"border border-zinc-950/10 hover:border-zinc-950/20 dark:border-white/10 dark:hover:border-white/20",
 			"bg-transparent dark:bg-white/5 dark:[&>*]:bg-zinc-800",
 			"focus:outline-none",
@@ -159,7 +159,7 @@ export class Select extends BaseComponent {
 				"svg",
 				{
 					class:
-						"size-5 stroke-zinc-500 group-has-[:disabled]:stroke-zinc-600 sm:size-4 dark:stroke-zinc-400",
+						"size-5 stroke-muted group-has-[:disabled]:stroke-zinc-600 sm:size-4",
 					viewBox: "0 0 16 16",
 					"aria-hidden": "true",
 					fill: "none",

@@ -6,7 +6,7 @@ import { BaseComponent, defineElement, FocusTrap } from "../_base.js";
  */
 export const NAVBAR_TEMPLATE = `
     <template id="navbar">
-        <header class="absolute bg-white inset-x-0 top-0 z-50" role="banner">
+        <header class="absolute bg-canvas inset-x-0 top-0 z-50" role="banner">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <nav role="navigation" aria-label="Global" class="flex items-center justify-between py-6">
                 <div class="flex">
@@ -45,7 +45,7 @@ export const NAVBAR_TEMPLATE = `
             </div>
         </header>
 		<dialog id="search-dialog" class="backdrop:bg-black/50 bg-transparent p-0 w-full max-w-lg rounded-xl fixed top-[87px] left-auto right-0 ml-6">
-			<div class="bg-white dark:bg-gray-900 rounded-xl shadow-2xl ring-1 ring-gray-900/10 dark:ring-gray-100/10">
+			<div class="bg-canvas rounded-xl shadow-2xl ring-1 border-soft">
 				<form method="dialog" class="relative">
 					<svg fill="currentColor" width="18" height="18" aria-hidden="true" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" name="icon-search" class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
 						<title>Search</title>
@@ -368,7 +368,7 @@ class NavBar extends BaseComponent {
 				{
 					type: "button",
 					class:
-						"flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5",
+						"flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-canvas hover:bg-depth-1",
 					"aria-expanded": "false",
 					onClick: (e) => {
 						const content = e.currentTarget.nextElementSibling;
@@ -410,7 +410,7 @@ class NavBar extends BaseComponent {
 						{
 							href: item.href,
 							class:
-								"block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5",
+								"block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-canvas hover:bg-depth-1",
 							onClick: () => this.closeMenu(),
 						},
 						item.text,
@@ -424,10 +424,11 @@ class NavBar extends BaseComponent {
 	 * Creates a dropdown menu with items
 	 * @param {string} label - The dropdown button label
 	 * @param {string} mainHref - The main page URL
-	 * @param {Array} items - Array of {href, text, desc} objects
+	 * @param {Array} items - Array of {href, text, desc, icon} objects
+	 * @param {Object} action - Optional action section {title, badge, description}
 	 * @returns {HTMLElement} The dropdown element
 	 */
-	#createDropdown(label, _mainHref, items) {
+	#createDropdown(label, _mainHref, items, action = null) {
 		const _dropdownId = `dropdown-${label.toLowerCase().replace(/\s+/g, "-")}`;
 
 		return this.h(
@@ -438,7 +439,7 @@ class NavBar extends BaseComponent {
 				{
 					type: "button",
 					class:
-						"inline-flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900 dark:text-white",
+						"inline-flex items-center gap-x-1 text-sm/6 font-semibold text-canvas",
 					"aria-expanded": "false",
 					"aria-haspopup": "true",
 					onClick: (e) => {
@@ -483,44 +484,110 @@ class NavBar extends BaseComponent {
 				"div",
 				{
 					class:
-						"dropdown-menu absolute left-0 z-10 mt-5 hidden w-screen max-w-md rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5 transition duration-200 ease-out opacity-0 translate-y-1 dark:bg-gray-800 dark:ring-white/10",
+						"dropdown-menu absolute left-0 z-10 mt-5 hidden w-screen max-w-max overflow-visible bg-transparent px-4 transition duration-200 ease-out opacity-0 translate-y-1",
 				},
 				this.h(
 					"div",
-					{ class: "p-4" },
-					...items.map((item) =>
-						this.h(
-							"div",
-							{
-								class:
-									"group relative flex gap-x-6 rounded-lg p-4 text-sm/6 hover:bg-gray-50 dark:hover:bg-white/5",
-							},
+					{
+						class:
+							"w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-canvas text-sm/6 shadow-lg outline-1 border-soft lg:max-w-3xl",
+					},
+					this.h(
+						"div",
+						{ class: "grid grid-cols-1 gap-x-6 gap-y-1 p-4 lg:grid-cols-2" },
+						...items.map((item) =>
 							this.h(
 								"div",
-								{},
+								{
+									class:
+										"group relative flex gap-x-6 rounded-lg p-4 hover:bg-depth-1",
+								},
 								this.h(
-									"a",
+									"div",
 									{
-										href: item.href,
 										class:
-											"font-semibold text-gray-900 dark:text-white no-underline",
+											"mt-1 flex size-11 flex-none items-center justify-center rounded-lg bg-depth-1 group-hover:bg-depth-2",
 									},
-									item.text,
-									this.h("span", {
-										class: "absolute inset-0",
-										"aria-hidden": "true",
-									}),
+									item.icon || this.#createPlaceholderIcon(),
 								),
 								this.h(
-									"p",
-									{ class: "mt-1 text-gray-600 dark:text-gray-400" },
-									item.desc,
+									"div",
+									{},
+									this.h(
+										"a",
+										{
+											href: item.href,
+											class: "font-semibold text-canvas no-underline",
+										},
+										item.text,
+										this.h("span", {
+											class: "absolute inset-0",
+											"aria-hidden": "true",
+										}),
+									),
+									this.h("p", { class: "mt-1 text-muted" }, item.desc),
 								),
 							),
 						),
 					),
+					action &&
+						this.h(
+							"div",
+							{ class: "bg-depth-1 px-8 py-6" },
+							this.h(
+								"div",
+								{ class: "flex items-center gap-x-3" },
+								this.h(
+									"h3",
+									{ class: "text-sm/6 font-semibold text-canvas" },
+									action.title,
+								),
+								action.badge &&
+									this.h(
+										"p",
+										{
+											class:
+												"rounded-full bg-brand/10 px-2.5 py-1.5 text-xs font-semibold text-brand",
+										},
+										action.badge,
+									),
+							),
+							this.h(
+								"p",
+								{ class: "mt-2 text-sm/6 text-muted" },
+								action.description,
+							),
+						),
 				),
 			),
+		);
+	}
+
+	/**
+	 * Creates a placeholder icon for dropdown items
+	 * @returns {SVGElement} The placeholder icon
+	 */
+	#createPlaceholderIcon() {
+		return this.svg(
+			"svg",
+			{
+				viewBox: "0 0 24 24",
+				fill: "none",
+				stroke: "currentColor",
+				"stroke-width": "1.5",
+				"aria-hidden": "true",
+				class: "size-6 text-muted group-hover:text-canvas",
+			},
+			this.svg("path", {
+				d: "M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z",
+				"stroke-linecap": "round",
+				"stroke-linejoin": "round",
+			}),
+			this.svg("path", {
+				d: "M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z",
+				"stroke-linecap": "round",
+				"stroke-linejoin": "round",
+			}),
 		);
 	}
 
@@ -646,7 +713,7 @@ class NavBar extends BaseComponent {
 		const headerClass = this.clsx(
 			isFixed ? "fixed" : "absolute",
 			"inset-x-0 top-0 z-50",
-			!isTransparent && "bg-white/92 dark:bg-gray-900/92 backdrop-blur-sm",
+			!isTransparent && "bg-canvas/92 backdrop-blur-sm",
 		);
 
 		// Build the header
@@ -673,7 +740,7 @@ class NavBar extends BaseComponent {
 							"a",
 							{
 								href: "#",
-								class: "-m-1.5 p-1.5 text-gray-900 dark:text-white",
+								class: "-m-1.5 p-1.5 text-canvas",
 							},
 							this.h("span", { class: "sr-only" }, brand),
 							this.#createBrandLogoSVG("h-8 w-auto"),
@@ -688,7 +755,7 @@ class NavBar extends BaseComponent {
 							{
 								type: "button",
 								class:
-									"-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-500 dark:text-gray-400",
+									"-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-muted",
 								"aria-label": "Open main menu",
 								onClick: () => this.openMenu(),
 							},
@@ -699,143 +766,172 @@ class NavBar extends BaseComponent {
 					this.h(
 						"div",
 						{ class: "hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12" },
-						this.#createDropdown("Home", "/", [
+						this.#createDropdown(
+							"Home",
+							"/",
+							[
+								{
+									href: "/pages/about",
+									text: "About Legacy",
+									desc: "Learn about our mission and values",
+								},
+								{
+									href: "/pages/team/careers",
+									text: "Careers",
+									desc: "Join our team of healthcare professionals",
+								},
+								{
+									href: "/pages/partners",
+									text: "Partners",
+									desc: "Our healthcare partnerships",
+								},
+								{
+									href: "/pages/locations",
+									text: "Locations",
+									desc: "Find a location near you",
+								},
+							],
 							{
-								href: "/pages/about",
-								text: "About Legacy",
-								desc: "Learn about our mission and values",
+								title: "Company",
+								badge: "We're Hiring",
+								description:
+									"Join our team of dedicated healthcare professionals making a difference.",
 							},
+						),
+						this.#createDropdown(
+							"Treatments",
+							"/pages/treatments",
+							[
+								{
+									href: "/pages/treatments/cardiac",
+									text: "Cardiac Care",
+									desc: "Comprehensive cardiac recovery and monitoring",
+								},
+								{
+									href: "/pages/treatments/eating",
+									text: "Eating Support",
+									desc: "Nutrition and dietary management",
+								},
+								{
+									href: "/pages/treatments/iv",
+									text: "IV Therapy",
+									desc: "Hydration and medication infusions",
+								},
+								{
+									href: "/pages/treatments/neurological",
+									text: "Neurological Care",
+									desc: "Specialized neurological support",
+								},
+								{
+									href: "/pages/treatments/oncology",
+									text: "Oncology Care",
+									desc: "Cancer treatment and recovery support",
+								},
+								{
+									href: "/pages/treatments/pain",
+									text: "Pain Management",
+									desc: "Advanced pain relief strategies",
+								},
+								{
+									href: "/pages/treatments/palliative",
+									text: "Palliative Care",
+									desc: "Comfort-focused end-of-life support",
+								},
+								{
+									href: "/pages/treatments/post-op",
+									text: "Post-Operative Care",
+									desc: "Surgical recovery and wound care",
+								},
+								{
+									href: "/pages/treatments/respiratory",
+									text: "Respiratory Care",
+									desc: "Breathing support and oxygen therapy",
+								},
+								{
+									href: "/pages/treatments/wellness",
+									text: "Wellness Programs",
+									desc: "Preventive care and health optimization",
+								},
+							],
 							{
-								href: "/pages/team/careers",
-								text: "Careers",
-								desc: "Join our team of healthcare professionals",
+								title: "Medical Services",
+								badge: "24/7",
+								description:
+									"Expert care available around the clock for your peace of mind.",
 							},
+						),
+						this.#createDropdown(
+							"Expertise",
+							"/pages/services",
+							[
+								{
+									href: "/pages/services/als",
+									text: "ALS Care",
+									desc: "Compassionate ALS patient support",
+								},
+								{
+									href: "/pages/services/alzheimers",
+									text: "Alzheimer's Care",
+									desc: "Memory care and cognitive support",
+								},
+								{
+									href: "/pages/services/dementia",
+									text: "Dementia Care",
+									desc: "Dementia-specific care strategies",
+								},
+								{
+									href: "/pages/services/diabetes",
+									text: "Diabetes Management",
+									desc: "Blood sugar monitoring and insulin support",
+								},
+								{
+									href: "/pages/services/heart-disease",
+									text: "Heart Disease",
+									desc: "Cardiovascular disease management",
+								},
+								{
+									href: "/pages/services/ms",
+									text: "Multiple Sclerosis",
+									desc: "MS symptom management and support",
+								},
+								{
+									href: "/pages/services/oncology",
+									text: "Oncology Services",
+									desc: "Cancer care coordination",
+								},
+								{
+									href: "/pages/services/ostomy",
+									text: "Ostomy Care",
+									desc: "Ostomy management and education",
+								},
+								{
+									href: "/pages/services/parkinsons",
+									text: "Parkinson's Care",
+									desc: "Parkinson's disease support",
+								},
+								{
+									href: "/pages/services/stroke",
+									text: "Stroke Recovery",
+									desc: "Post-stroke rehabilitation",
+								},
+								{
+									href: "/pages/services/tbi",
+									text: "Traumatic Brain Injury",
+									desc: "TBI recovery and cognitive rehabilitation",
+								},
+							],
 							{
-								href: "/pages/partners",
-								text: "Partners",
-								desc: "Our healthcare partnerships",
+								title: "Specialized Care",
+								badge: "New",
+								description:
+									"Advanced treatments tailored to your unique health needs.",
 							},
-							{
-								href: "/pages/locations",
-								text: "Locations",
-								desc: "Find a location near you",
-							},
-						]),
-						this.#createDropdown("Treatments", "/pages/treatments", [
-							{
-								href: "/pages/treatments/cardiac",
-								text: "Cardiac Care",
-								desc: "Comprehensive cardiac recovery and monitoring",
-							},
-							{
-								href: "/pages/treatments/eating",
-								text: "Eating Support",
-								desc: "Nutrition and dietary management",
-							},
-							{
-								href: "/pages/treatments/iv",
-								text: "IV Therapy",
-								desc: "Hydration and medication infusions",
-							},
-							{
-								href: "/pages/treatments/neurological",
-								text: "Neurological Care",
-								desc: "Specialized neurological support",
-							},
-							{
-								href: "/pages/treatments/oncology",
-								text: "Oncology Care",
-								desc: "Cancer treatment and recovery support",
-							},
-							{
-								href: "/pages/treatments/pain",
-								text: "Pain Management",
-								desc: "Advanced pain relief strategies",
-							},
-							{
-								href: "/pages/treatments/palliative",
-								text: "Palliative Care",
-								desc: "Comfort-focused end-of-life support",
-							},
-							{
-								href: "/pages/treatments/post-op",
-								text: "Post-Operative Care",
-								desc: "Surgical recovery and wound care",
-							},
-							{
-								href: "/pages/treatments/respiratory",
-								text: "Respiratory Care",
-								desc: "Breathing support and oxygen therapy",
-							},
-							{
-								href: "/pages/treatments/wellness",
-								text: "Wellness Programs",
-								desc: "Preventive care and health optimization",
-							},
-						]),
-						this.#createDropdown("Expertise", "/pages/services", [
-							{
-								href: "/pages/services/als",
-								text: "ALS Care",
-								desc: "Compassionate ALS patient support",
-							},
-							{
-								href: "/pages/services/alzheimers",
-								text: "Alzheimer's Care",
-								desc: "Memory care and cognitive support",
-							},
-							{
-								href: "/pages/services/dementia",
-								text: "Dementia Care",
-								desc: "Dementia-specific care strategies",
-							},
-							{
-								href: "/pages/services/diabetes",
-								text: "Diabetes Management",
-								desc: "Blood sugar monitoring and insulin support",
-							},
-							{
-								href: "/pages/services/heart-disease",
-								text: "Heart Disease",
-								desc: "Cardiovascular disease management",
-							},
-							{
-								href: "/pages/services/ms",
-								text: "Multiple Sclerosis",
-								desc: "MS symptom management and support",
-							},
-							{
-								href: "/pages/services/oncology",
-								text: "Oncology Services",
-								desc: "Cancer care coordination",
-							},
-							{
-								href: "/pages/services/ostomy",
-								text: "Ostomy Care",
-								desc: "Ostomy management and education",
-							},
-							{
-								href: "/pages/services/parkinsons",
-								text: "Parkinson's Care",
-								desc: "Parkinson's disease support",
-							},
-							{
-								href: "/pages/services/stroke",
-								text: "Stroke Recovery",
-								desc: "Post-stroke rehabilitation",
-							},
-							{
-								href: "/pages/services/tbi",
-								text: "Traumatic Brain Injury",
-								desc: "TBI recovery and cognitive rehabilitation",
-							},
-						]),
+						),
 						this.h(
 							"a",
 							{
 								href: "/pages/team",
-								class:
-									"text-sm/6 font-semibold text-gray-900 dark:text-white text-uppercase",
+								class: "text-sm/6 font-semibold text-canvas text-uppercase",
 							},
 							"Team",
 						),
@@ -843,8 +939,7 @@ class NavBar extends BaseComponent {
 							"a",
 							{
 								href: "/pages/contact",
-								class:
-									"text-sm/6 font-semibold text-gray-900 dark:text-white text-uppercase",
+								class: "text-sm/6 font-semibold text-canvas text-uppercase",
 							},
 							"Contact",
 						),
@@ -858,7 +953,7 @@ class NavBar extends BaseComponent {
 							{
 								type: "button",
 								class:
-									"-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white",
+									"-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-muted hover:text-canvas",
 								"aria-label": "Search",
 								onClick: () => this.openSearch(),
 							},
@@ -900,8 +995,7 @@ class NavBar extends BaseComponent {
 			this.h(
 				"div",
 				{
-					class:
-						"bg-white dark:bg-gray-900 rounded-xl shadow-2xl ring-1 ring-gray-900/10 dark:ring-gray-100/10",
+					class: "bg-canvas rounded-xl shadow-2xl ring-1 border-soft",
 				},
 				this.h(
 					"form",
@@ -934,14 +1028,14 @@ class NavBar extends BaseComponent {
 						placeholder: "Search...",
 						autofocus: true,
 						class:
-							"w-full rounded-xl border-0 bg-transparent py-4 pl-12 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:text-white sm:text-sm/6",
+							"w-full rounded-xl border-0 bg-transparent py-4 pl-12 pr-4 input-fg placeholder-muted focus:ring-0 sm:text-sm/6",
 					}),
 					this.h(
 						"button",
 						{
 							type: "button",
 							class:
-								"absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white",
+								"absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium text-muted hover:text-canvas",
 							onClick: () => this.closeSearch(),
 						},
 						"ESC",
@@ -965,7 +1059,7 @@ class NavBar extends BaseComponent {
 			"div",
 			{
 				class:
-					"mobile-menu-panel fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 dark:bg-gray-900 dark:sm:ring-gray-100/10 lg:hidden hidden",
+					"mobile-menu-panel fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-canvas p-6 sm:max-w-sm sm:ring-1 border-soft lg:hidden hidden",
 				role: "dialog",
 				"aria-modal": "true",
 				ref: (el) => {
@@ -978,7 +1072,7 @@ class NavBar extends BaseComponent {
 				{ class: "flex items-center justify-between" },
 				this.h(
 					"a",
-					{ href: "#", class: "-m-1.5 p-1.5 text-gray-900 dark:text-white" },
+					{ href: "#", class: "-m-1.5 p-1.5 text-canvas" },
 					this.h("span", { class: "sr-only" }, brand),
 					this.#createBrandLogoSVG("h-8 w-auto"),
 				),
@@ -986,7 +1080,7 @@ class NavBar extends BaseComponent {
 					"button",
 					{
 						type: "button",
-						class: "-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-400",
+						class: "-m-2.5 rounded-md p-2.5 text-muted",
 						"aria-label": "Close menu",
 						onClick: () => this.closeMenu(),
 					},
@@ -1000,7 +1094,7 @@ class NavBar extends BaseComponent {
 				this.h(
 					"div",
 					{
-						class: "-my-6 divide-y divide-gray-500/10 dark:divide-gray-500/25",
+						class: "-my-6 divide-y border-soft",
 					},
 					this.h(
 						"div",
@@ -1068,7 +1162,7 @@ class NavBar extends BaseComponent {
 							{
 								href: "/pages/team",
 								class:
-									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5 text-uppercase",
+									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas hover:bg-depth-1 text-uppercase",
 								onClick: () => this.closeMenu(),
 							},
 							"TEAM",
@@ -1078,7 +1172,7 @@ class NavBar extends BaseComponent {
 							{
 								href: "/pages/contact",
 								class:
-									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5 text-uppercase",
+									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas hover:bg-depth-1 text-uppercase",
 								onClick: () => this.closeMenu(),
 							},
 							"CONTACT",
@@ -1092,7 +1186,7 @@ class NavBar extends BaseComponent {
 							{
 								type: "button",
 								class:
-									"-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-white/5",
+									"-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-canvas hover:bg-depth-1",
 								onClick: () => {
 									this.closeMenu();
 									this.openSearch();

@@ -7,7 +7,7 @@ const BUTTON_STYLES = {
 	base: [
 		"relative isolate inline-flex items-baseline justify-center gap-x-2 rounded-lg border text-base/6 font-semibold",
 		"px-[calc(var(--spacing)*3.5-1px)] py-[calc(var(--spacing)*2.5-1px)] sm:px-[calc(var(--spacing)*3-1px)] sm:py-[calc(var(--spacing)*1.5-1px)] sm:text-sm/6",
-		"focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500",
+		"focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 ring-primary",
 		"[&[data-disabled]]:opacity-50",
 		"[&_[data-slot=icon]]:-mx-0.5 [&_[data-slot=icon]]:my-0.5 [&_[data-slot=icon]]:size-5 [&_[data-slot=icon]]:shrink-0 [&_[data-slot=icon]]:self-center sm:[&_[data-slot=icon]]:my-1 sm:[&_[data-slot=icon]]:size-4",
 	].join(" "),
@@ -25,14 +25,12 @@ const BUTTON_STYLES = {
 		"[&[data-disabled]]:before:shadow-none [&[data-disabled]]:after:shadow-none",
 	].join(" "),
 	outline: [
-		"border-zinc-950/10 text-zinc-950 [&[data-active]]:bg-zinc-950/[2.5%] [&:hover]:bg-zinc-950/[2.5%]",
-		"dark:border-white/15 dark:text-white dark:[--btn-bg:transparent] dark:[&[data-active]]:bg-white/5 dark:[&:hover]:bg-white/5",
-		"[--btn-icon:theme(colors.zinc.500)] [&[data-active]]:[--btn-icon:theme(colors.zinc.700)] [&:hover]:[--btn-icon:theme(colors.zinc.700)]",
+		"btn-outline border-strong [&[data-active]]:bg-canvas-hover [&:hover]:bg-canvas-hover",
+		"[--btn-icon:var(--color-muted)] [&[data-active]]:[--btn-icon:var(--color-primary)] [&:hover]:[--btn-icon:var(--color-primary)]",
 	].join(" "),
 	plain: [
-		"border-transparent text-zinc-950 [&[data-active]]:bg-zinc-950/5 [&:hover]:bg-zinc-950/5",
-		"dark:text-white dark:[&[data-active]]:bg-white/10 dark:[&:hover]:bg-white/10",
-		"[--btn-icon:theme(colors.zinc.500)] [&[data-active]]:[--btn-icon:theme(colors.zinc.700)] [&:hover]:[--btn-icon:theme(colors.zinc.700)]",
+		"btn-subtle border-transparent [&[data-active]]:bg-canvas-hover [&:hover]:bg-canvas-hover",
+		"[--btn-icon:var(--color-muted)] [&[data-active]]:[--btn-icon:var(--color-primary)] [&:hover]:[--btn-icon:var(--color-primary)]",
 	].join(" "),
 	colors: {
 		"dark/zinc": [

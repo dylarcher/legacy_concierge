@@ -70,9 +70,9 @@ export class Legend extends BaseComponent {
 
 	render() {
 		const classes = this.clsx(
-			"text-base/6 font-semibold text-zinc-950",
+			"text-base/6 font-semibold text-canvas",
 			"[fieldset[data-disabled]_&]:opacity-50",
-			"sm:text-sm/6 dark:text-white",
+			"sm:text-sm/6",
 			this.className,
 		);
 
@@ -206,9 +206,9 @@ export class Label extends BaseComponent {
 
 	render() {
 		const classes = this.clsx(
-			"text-base/6 text-zinc-950 select-none",
+			"text-base/6 text-canvas select-none",
 			"[*[data-disabled]_&]:opacity-50",
-			"sm:text-sm/6 dark:text-white",
+			"sm:text-sm/6",
 			this.className,
 		);
 
@@ -236,9 +236,9 @@ export class Description extends BaseComponent {
 
 	render() {
 		const classes = this.clsx(
-			"text-base/6 text-zinc-500",
+			"text-base/6 text-muted",
 			"[*[data-disabled]_&]:opacity-50",
-			"sm:text-sm/6 dark:text-zinc-400",
+			"sm:text-sm/6",
 			this.className,
 		);
 
