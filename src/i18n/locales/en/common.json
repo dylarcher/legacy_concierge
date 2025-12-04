@@ -1,0 +1,57 @@
+{
+	"nav": {
+		"home": "Home",
+		"services": "Services",
+		"about": "About",
+		"team": "Team",
+		"contact": "Contact",
+		"treatments": "Treatments",
+		"locations": "Locations",
+		"partners": "Partners",
+		"blog": "Blog",
+		"legal": "Legal",
+		"careers": "Careers",
+		"openMenu": "Open main menu",
+		"closeMenu": "Close menu",
+		"search": "Search"
+	},
+	"buttons": {
+		"learnMore": "Learn More",
+		"callForInfo": "CALL FOR MORE INFO",
+		"getStarted": "Get Started",
+		"submit": "Submit",
+		"cancel": "Cancel",
+		"close": "Close",
+		"viewLocations": "View Locations",
+		"readMore": "Read More",
+		"contactUs": "Contact Us"
+	},
+	"footer": {
+		"copyright": "2024 Legacy Concierge. All rights reserved.",
+		"privacyPolicy": "Privacy Policy",
+		"termsOfService": "Terms of Service",
+		"hipaaNotice": "HIPAA Notice",
+		"newsletter": {
+			"title": "Subscribe to our newsletter",
+			"description": "Get the latest updates and health tips delivered to your inbox.",
+			"placeholder": "Enter your email",
+			"submit": "Subscribe"
+		}
+	},
+	"accessibility": {
+		"skipToContent": "Skip to main content",
+		"scrollToContent": "Scroll to content"
+	},
+	"errors": {
+		"generic": "Something went wrong. Please try again.",
+		"networkError": "Unable to connect. Please check your connection.",
+		"notFound": "Page not found."
+	},
+	"comparison": {
+		"legacyConcierge": "Legacy Concierge",
+		"skilledNursingFacility": "Skilled Nursing Facility",
+		"homeHealthAgency": "Home Health Agency",
+		"assistedLivingFacility": "Assisted Living Facility",
+		"hospital": "Hospital"
+	}
+}

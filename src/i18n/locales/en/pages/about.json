@@ -1,0 +1,28 @@
+{
+	"meta": {
+		"title": "Our Story · About Legacy Concierge",
+		"description": "Experience personalized concierge nursing care tailored to your needs. Premium healthcare services in the comfort of your home."
+	},
+	"hero": {
+		"title": "OUR STORY",
+		"subtitle": "A Mission Rooted in Family—",
+		"intro": {
+			"paragraph1": "The name Legacy Concierge carries a promise — to honor your family's story with the same devotion we bring to our own.",
+			"paragraph2": "Founded in 2022, Legacy was born from lived experience — from witnessing too many families navigate pain, uncertainty, and inadequate care when their loved ones needed compassion most.",
+			"paragraph3": "We've felt that heartbreak. We've seen where the system falls short. And we built Legacy Concierge to be the answer. Our mission is simple yet sacred: to deliver elite, compassionate care that upholds dignity, trust, and humanity at every step. Every plan we design, every nurse we select, every partnership we form — all exist to ensure your loved one's journey is met with the reverence it deserves."
+		},
+		"quote": "Because your family's legacy is more than a story — it's something worth protecting.",
+		"imageAlt": "Legacy Concierge branded stethoscope representing our commitment to personalized care"
+	},
+	"founder": {
+		"title": "MEET JASON",
+		"subtitle": "Founder & CEO — Trust Through Origin",
+		"bio": {
+			"paragraph1": "Jason Kidushim, Founder and CEO of Legacy Concierge, created this company with one mission: to redefine what care feels like.",
+			"paragraph2": "His inspiration began with his grandfather — a decorated war hero whose battle with Alzheimer's revealed the deep flaws in our healthcare system. Witnessing that loss of dignity became the catalyst for Jason's life's work: to build a service where no family would ever have to endure that kind of neglect again.",
+			"paragraph3": "After returning to California, Jason united his decades of leadership in healthcare operations, patient advocacy, and service design to establish Legacy Concierge — a model that blends clinical precision with human connection.",
+			"paragraph4": "Under his guidance, Legacy has become more than a care provider — it's a movement dedicated to preserving dignity, honoring family, and setting a new standard for home healthcare."
+		},
+		"videoAriaLabel": "Play video introduction"
+	}
+}
