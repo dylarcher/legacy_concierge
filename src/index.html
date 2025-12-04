@@ -34,15 +34,16 @@
 				<a href="/pages/about">About</a>
 				<a href="/pages/team">Team</a>
 				<a href="/pages/contact">Contact</a>
+				<ui-language-switcher variant="links"></ui-language-switcher>
 			</global-nav>
 			<main role="main">
 				<!-- Hero Section -->
 				<hero-banner
-					heading="YOUR HEALTH, OUR PURPOSE."
-					description="Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home."
-					primary-cta="CALL FOR MORE INFO"
+					heading="${pages.home.hero.heading}"
+					description="${pages.home.hero.description}"
+					primary-cta="${pages.home.hero.primaryCta}"
 					primary-href="/pages/contact"
-					secondary-cta="Learn More"
+					secondary-cta="${pages.home.hero.secondaryCta}"
 					secondary-href="/pages/about"
 					align="left"
 					image="/assets/media/images/blue-green-waves-brown-beach.webp"
