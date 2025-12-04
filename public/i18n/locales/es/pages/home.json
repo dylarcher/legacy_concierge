@@ -1,0 +1,116 @@
+{
+	"hero": {
+		"heading": "TU SALUD, NUESTRO PROPÓSITO.",
+		"description": "Refinando la Enfermería Privada con Experiencia, Discreción y Cuidado Personalizado Inigualable en el Hogar.",
+		"primaryCta": "LLAME PARA MÁS INFORMACIÓN",
+		"secondaryCta": "Más Información"
+	},
+	"intro": {
+		"tagline": "Tu Longevidad es parte de nuestro",
+		"brandHighlight": "Legado",
+		"description": "Legacy Concierge brinda el cuidado de enfermería premier de California directamente a la comodidad de su hogar. Nuestro equipo seleccionado de los mejores enfermeros de la nación elabora planes de cuidado personalizados, adaptados con precisión a sus necesidades únicas, respaldados por nuestra red inigualable de los mejores socios médicos en todo el país. Su bienestar es nuestra única prioridad, confiado solo a los mejores con su cuidado."
+	},
+	"comparison": {
+		"heading": "Estándares Inigualables.",
+		"headingLine2": "Confianza Inigualable.",
+		"tagline": "Cuidado 1:1. Supervisión 24/7. Dedicación Infinita.",
+		"description": "Donde el cuidado tradicional termina, Legacy comienza. Mientras hospitales e instalaciones dividen la atención entre docenas de pacientes, nosotros dedicamos una enfermera a un cliente — asegurando coordinación las 24 horas, supervisión clínica en tiempo real, y comunicación fluida con su equipo médico.",
+		"ratios": {
+			"assistedLiving": "70 - 100 pacientes : 1 RN",
+			"skilledNursing": "30 pacientes : 1 RN",
+			"hospital": "5 pacientes : 1 RN",
+			"legacy": "1 paciente : 1 RN"
+		}
+	},
+	"legacyDifference": {
+		"heading": "La Diferencia Legacy",
+		"description": "Nuestro modelo de cuidado 1:1 asegura que su ser querido reciba atención indivisa, servicio compasivo y excelencia clínica que las instalaciones tradicionales simplemente no pueden igualar.",
+		"features": {
+			"dedicatedNursing": {
+				"title": "Enfermería Dedicada 1:1",
+				"description": "Una enfermera registrada enfocada completamente en un paciente"
+			},
+			"availability": {
+				"title": "Disponibilidad 24/7",
+				"description": "Acceso las 24 horas a su equipo de cuidado"
+			},
+			"personalizedCare": {
+				"title": "Planes de Cuidado Personalizados",
+				"description": "Estrategias personalizadas adaptadas a su viaje de salud único"
+			},
+			"physicianCoordination": {
+				"title": "Coordinación con Médicos",
+				"description": "Integración fluida con su equipo médico existente"
+			},
+			"homeComfort": {
+				"title": "Comodidad del Hogar",
+				"description": "Cuidado premium en la familiaridad de su propio hogar"
+			}
+		}
+	},
+	"services": {
+		"heading": "Servicios de Cuidado Integral",
+		"description": "Desde recuperación post-quirúrgica hasta manejo de enfermedades crónicas, nuestro equipo de enfermería de élite brinda cuidado excepcional en cada especialidad.",
+		"items": {
+			"cardiac": {
+				"title": "Cuidado Cardíaco",
+				"description": "Monitoreo experto y manejo de condiciones cardíacas, recuperación post-cirugía cardíaca y optimización de medicamentos."
+			},
+			"geriatric": {
+				"title": "Cuidado Geriátrico",
+				"description": "Apoyo especializado para pacientes mayores, incluyendo Alzheimer, demencia y desafíos de salud relacionados con la edad."
+			},
+			"postSurgical": {
+				"title": "Recuperación Post-Quirúrgica",
+				"description": "Cuidado post-operatorio integral, manejo de heridas y apoyo de rehabilitación para una curación óptima."
+			},
+			"palliative": {
+				"title": "Cuidado Paliativo y Hospicio",
+				"description": "Cuidado compasivo al final de la vida enfocado en comodidad, dignidad y calidad de vida para pacientes y familias."
+			},
+			"chronicDisease": {
+				"title": "Manejo de Enfermedades Crónicas",
+				"description": "Apoyo continuo para diabetes, EPOC, enfermedad renal y otras condiciones crónicas que requieren monitoreo constante."
+			},
+			"ivTherapy": {
+				"title": "Terapia IV e Infusiones",
+				"description": "Servicios avanzados de infusión, terapia de hidratación y administración de medicamentos en su hogar."
+			}
+		}
+	},
+	"whyChoose": {
+		"heading": "¿Por Qué Elegir Legacy Concierge?",
+		"description": "Vea cómo nuestro enfoque personalizado se compara con los entornos de cuidado tradicionales.",
+		"tagline": "Ambos se entregan con la misma promesa: cuidado, confianza y respeto a nivel Legacy.",
+		"table": {
+			"feature": "Característica",
+			"nurseRatio": "Proporción Enfermera-Paciente",
+			"availability": "Disponibilidad 24/7",
+			"personalizedPlans": "Planes de Cuidado Personalizados",
+			"physicianCoordination": "Coordinación con Médicos",
+			"homeEnvironment": "Entorno del Hogar",
+			"familyInvolvement": "Participación Familiar",
+			"values": {
+				"oneToOne": "1:1",
+				"multiplePatients": "Múltiples Pacientes",
+				"standardized": "Estandarizado",
+				"limited": "Limitado",
+				"minimal": "Mínimo",
+				"encouraged": "Fomentado",
+				"restrictedHours": "Horarios Restringidos",
+				"variable": "Variable"
+			}
+		}
+	},
+	"locations": {
+		"heading": "Nuestras Ubicaciones",
+		"subheading": "Sirviendo Todo el Sur de California",
+		"viewLocations": "Ver Ubicaciones",
+		"counties": {
+			"losAngeles": "Condado de Los Ángeles",
+			"orange": "Condado de Orange",
+			"sanDiego": "Condado de San Diego",
+			"ventura": "Condado de Ventura"
+		}
+	}
+}

@@ -1,0 +1,15 @@
+{
+	"meta": {
+		"title": "Legal · Legacy Concierge",
+		"description": "Privacy policy, terms of service, and HIPAA compliance"
+	},
+	"hero": {
+		"heading": "Legal Information",
+		"description": "Privacy, terms, and compliance"
+	},
+	"sections": {
+		"privacy": "Privacy Policy",
+		"terms": "Terms of Service",
+		"hipaa": "HIPAA Notice"
+	}
+}

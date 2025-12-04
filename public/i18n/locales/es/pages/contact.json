@@ -1,0 +1,31 @@
+{
+	"meta": {
+		"title": "Contáctenos · Contacto Legacy Concierge",
+		"description": "Experimente el cuidado de enfermería concierge personalizado adaptado a sus necesidades. Servicios de salud premium en la comodidad de su hogar."
+	},
+	"hero": {
+		"heading": "Nos encantaría saber de usted.",
+		"description": {
+			"line1": "Nuestro equipo está disponible 24/7.",
+			"line2": "Contáctenos para obtener más información sobre cómo",
+			"line3": "podemos ayudarle a usted y a su familia."
+		},
+		"callButton": "LLÁMENOS",
+		"emailButton": "ENVÍENOS UN CORREO",
+		"backgroundImageAlt": "Costa rocosa con olas del océano"
+	},
+	"form": {
+		"title": "Envíenos un mensaje",
+		"nameLabel": "Nombre Completo",
+		"namePlaceholder": "Juan Pérez",
+		"emailLabel": "Correo Electrónico",
+		"emailPlaceholder": "juan@ejemplo.com",
+		"phoneLabel": "Número de Teléfono",
+		"phonePlaceholder": "(555) 123-4567",
+		"messageLabel": "Mensaje",
+		"messagePlaceholder": "Cuéntenos sobre sus necesidades...",
+		"submitButton": "Enviar Mensaje",
+		"successMessage": "¡Gracias! Nos pondremos en contacto pronto.",
+		"errorMessage": "Lo sentimos, hubo un error. Por favor intente de nuevo."
+	}
+}

@@ -1,0 +1,116 @@
+{
+	"hero": {
+		"heading": "YOUR HEALTH, OUR PURPOSE.",
+		"description": "Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.",
+		"primaryCta": "CALL FOR MORE INFO",
+		"secondaryCta": "Learn More"
+	},
+	"intro": {
+		"tagline": "Your Longevity is part of our",
+		"brandHighlight": "Legacy",
+		"description": "Legacy Concierge delivers California's premier nursing care directly to the comfort of your home. Our handpicked team of the nation's finest nurses crafts personalized care plans, tailored with precision to your unique needs supported by our unrivaled network of top medical partners across the country. Your well-being is our sole priority, entrusted only to the best with your care."
+	},
+	"comparison": {
+		"heading": "Unmatched Standards.",
+		"headingLine2": "Unrivaled Trust.",
+		"tagline": "1:1 Care. 24/7 Oversight. Infinite Dedication.",
+		"description": "Where traditional care ends, Legacy begins. While hospitals and facilities divide attention among dozens of patients, we dedicate one nurse to one client — ensuring round-the-clock coordination, real-time clinical oversight, and seamless communication with your medical team.",
+		"ratios": {
+			"assistedLiving": "70 - 100 patients : 1 RN",
+			"skilledNursing": "30 patients : 1 RN",
+			"hospital": "5 patients : 1 RN",
+			"legacy": "1 patient : 1 RN"
+		}
+	},
+	"legacyDifference": {
+		"heading": "The Legacy Difference",
+		"description": "Our 1:1 care model ensures your loved one receives undivided attention, compassionate service, and clinical excellence that traditional facilities simply cannot match.",
+		"features": {
+			"dedicatedNursing": {
+				"title": "Dedicated 1:1 Nursing",
+				"description": "One registered nurse focused entirely on one patient"
+			},
+			"availability": {
+				"title": "24/7 Availability",
+				"description": "Round-the-clock access to your care team"
+			},
+			"personalizedCare": {
+				"title": "Personalized Care Plans",
+				"description": "Custom strategies tailored to your unique health journey"
+			},
+			"physicianCoordination": {
+				"title": "Physician Coordination",
+				"description": "Seamless integration with your existing medical team"
+			},
+			"homeComfort": {
+				"title": "Home Comfort",
+				"description": "Premium care in the familiarity of your own home"
+			}
+		}
+	},
+	"services": {
+		"heading": "Comprehensive Care Services",
+		"description": "From post-surgical recovery to chronic disease management, our elite nursing team delivers exceptional care across every specialty.",
+		"items": {
+			"cardiac": {
+				"title": "Cardiac Care",
+				"description": "Expert monitoring and management of heart conditions, post-cardiac surgery recovery, and medication optimization."
+			},
+			"geriatric": {
+				"title": "Geriatric Care",
+				"description": "Specialized support for aging patients, including Alzheimer's, dementia, and age-related health challenges."
+			},
+			"postSurgical": {
+				"title": "Post-Surgical Recovery",
+				"description": "Comprehensive post-operative care, wound management, and rehabilitation support for optimal healing."
+			},
+			"palliative": {
+				"title": "Palliative & Hospice",
+				"description": "Compassionate end-of-life care focused on comfort, dignity, and quality of life for patients and families."
+			},
+			"chronicDisease": {
+				"title": "Chronic Disease Management",
+				"description": "Ongoing support for diabetes, COPD, kidney disease, and other chronic conditions requiring consistent monitoring."
+			},
+			"ivTherapy": {
+				"title": "IV Therapy & Infusions",
+				"description": "Advanced infusion services, hydration therapy, and medication administration in your home."
+			}
+		}
+	},
+	"whyChoose": {
+		"heading": "Why Choose Legacy Concierge?",
+		"description": "See how our personalized approach compares to traditional care settings.",
+		"tagline": "Both are delivered with the same promise: Legacy-level care, trust, and respect.",
+		"table": {
+			"feature": "Feature",
+			"nurseRatio": "Nurse-to-Patient Ratio",
+			"availability": "24/7 Availability",
+			"personalizedPlans": "Personalized Care Plans",
+			"physicianCoordination": "Physician Coordination",
+			"homeEnvironment": "Home Environment",
+			"familyInvolvement": "Family Involvement",
+			"values": {
+				"oneToOne": "1:1",
+				"multiplePatients": "Multiple Patients",
+				"standardized": "Standardized",
+				"limited": "Limited",
+				"minimal": "Minimal",
+				"encouraged": "Encouraged",
+				"restrictedHours": "Restricted Hours",
+				"variable": "Variable"
+			}
+		}
+	},
+	"locations": {
+		"heading": "Our Locations",
+		"subheading": "Serving All of Southern California",
+		"viewLocations": "View Locations",
+		"counties": {
+			"losAngeles": "Los Angeles County",
+			"orange": "Orange County",
+			"sanDiego": "San Diego County",
+			"ventura": "Ventura County"
+		}
+	}
+}

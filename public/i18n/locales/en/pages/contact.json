@@ -1,0 +1,31 @@
+{
+	"meta": {
+		"title": "Get in Touch · Contact Legacy Concierge",
+		"description": "Experience personalized concierge nursing care tailored to your needs. Premium healthcare services in the comfort of your home."
+	},
+	"hero": {
+		"heading": "We would love to hear from you.",
+		"description": {
+			"line1": "Our team is available 24/7.",
+			"line2": "Contact us to learn more about how",
+			"line3": "we can help you and your family."
+		},
+		"callButton": "CALL US",
+		"emailButton": "EMAIL US",
+		"backgroundImageAlt": "Rocky shoreline with ocean waves"
+	},
+	"form": {
+		"title": "Send us a message",
+		"nameLabel": "Full Name",
+		"namePlaceholder": "John Doe",
+		"emailLabel": "Email",
+		"emailPlaceholder": "john@example.com",
+		"phoneLabel": "Phone Number",
+		"phonePlaceholder": "(555) 123-4567",
+		"messageLabel": "Message",
+		"messagePlaceholder": "Tell us about your needs...",
+		"submitButton": "Send Message",
+		"successMessage": "Thank you! We'll be in touch soon.",
+		"errorMessage": "Sorry, there was an error. Please try again."
+	}
+}
