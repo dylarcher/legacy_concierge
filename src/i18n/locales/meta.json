@@ -1,0 +1,15 @@
+{
+	"locales": {
+		"en": {
+			"name": "English",
+			"nativeName": "English",
+			"direction": "ltr"
+		},
+		"es": {
+			"name": "Spanish",
+			"nativeName": "Español",
+			"direction": "ltr"
+		}
+	},
+	"defaultLocale": "en"
+}

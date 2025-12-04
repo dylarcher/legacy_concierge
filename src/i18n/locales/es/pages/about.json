@@ -1,0 +1,28 @@
+{
+	"meta": {
+		"title": "Nuestra Historia · Acerca de Legacy Concierge",
+		"description": "Experimente el cuidado de enfermería concierge personalizado adaptado a sus necesidades. Servicios de salud premium en la comodidad de su hogar."
+	},
+	"hero": {
+		"title": "NUESTRA HISTORIA",
+		"subtitle": "Una Misión Arraigada en la Familia—",
+		"intro": {
+			"paragraph1": "El nombre Legacy Concierge lleva una promesa — honrar la historia de su familia con la misma devoción que traemos a la nuestra.",
+			"paragraph2": "Fundado en 2022, Legacy nació de la experiencia vivida — de presenciar demasiadas familias navegar el dolor, la incertidumbre y el cuidado inadecuado cuando sus seres queridos necesitaban compasión más que nunca.",
+			"paragraph3": "Hemos sentido ese dolor. Hemos visto donde el sistema falla. Y construimos Legacy Concierge para ser la respuesta. Nuestra misión es simple pero sagrada: entregar cuidado de élite y compasivo que defiende la dignidad, confianza y humanidad en cada paso. Cada plan que diseñamos, cada enfermera que seleccionamos, cada asociación que formamos — todos existen para asegurar que el viaje de su ser querido sea recibido con la reverencia que merece."
+		},
+		"quote": "Porque el legado de su familia es más que una historia — es algo que vale la pena proteger.",
+		"imageAlt": "Estetoscopio de marca Legacy Concierge representando nuestro compromiso con el cuidado personalizado"
+	},
+	"founder": {
+		"title": "CONOZCA A JASON",
+		"subtitle": "Fundador y CEO — Confianza a Través del Origen",
+		"bio": {
+			"paragraph1": "Jason Kidushim, Fundador y CEO de Legacy Concierge, creó esta compañía con una misión: redefinir cómo se siente el cuidado.",
+			"paragraph2": "Su inspiración comenzó con su abuelo — un héroe de guerra condecorado cuya batalla con el Alzheimer reveló las profundas fallas en nuestro sistema de salud. Presenciar esa pérdida de dignidad se convirtió en el catalizador para el trabajo de vida de Jason: construir un servicio donde ninguna familia tendría que soportar ese tipo de negligencia de nuevo.",
+			"paragraph3": "Después de regresar a California, Jason unió sus décadas de liderazgo en operaciones de atención médica, defensa del paciente y diseño de servicios para establecer Legacy Concierge — un modelo que combina precisión clínica con conexión humana.",
+			"paragraph4": "Bajo su guía, Legacy se ha convertido en más que un proveedor de cuidado — es un movimiento dedicado a preservar la dignidad, honrar a la familia y establecer un nuevo estándar para la atención médica en el hogar."
+		},
+		"videoAriaLabel": "Reproducir video de introducción"
+	}
+}

@@ -1,0 +1,57 @@
+{
+	"nav": {
+		"home": "Inicio",
+		"services": "Servicios",
+		"about": "Nosotros",
+		"team": "Equipo",
+		"contact": "Contacto",
+		"treatments": "Tratamientos",
+		"locations": "Ubicaciones",
+		"partners": "Socios",
+		"blog": "Blog",
+		"legal": "Legal",
+		"careers": "Carreras",
+		"openMenu": "Abrir menú principal",
+		"closeMenu": "Cerrar menú",
+		"search": "Buscar"
+	},
+	"buttons": {
+		"learnMore": "Más Información",
+		"callForInfo": "LLAME PARA MÁS INFORMACIÓN",
+		"getStarted": "Comenzar",
+		"submit": "Enviar",
+		"cancel": "Cancelar",
+		"close": "Cerrar",
+		"viewLocations": "Ver Ubicaciones",
+		"readMore": "Leer Más",
+		"contactUs": "Contáctenos"
+	},
+	"footer": {
+		"copyright": "2024 Legacy Concierge. Todos los derechos reservados.",
+		"privacyPolicy": "Política de Privacidad",
+		"termsOfService": "Términos de Servicio",
+		"hipaaNotice": "Aviso HIPAA",
+		"newsletter": {
+			"title": "Suscríbase a nuestro boletín",
+			"description": "Reciba las últimas actualizaciones y consejos de salud en su correo.",
+			"placeholder": "Ingrese su correo electrónico",
+			"submit": "Suscribirse"
+		}
+	},
+	"accessibility": {
+		"skipToContent": "Saltar al contenido principal",
+		"scrollToContent": "Desplazarse al contenido"
+	},
+	"errors": {
+		"generic": "Algo salió mal. Por favor intente de nuevo.",
+		"networkError": "No se puede conectar. Por favor verifique su conexión.",
+		"notFound": "Página no encontrada."
+	},
+	"comparison": {
+		"legacyConcierge": "Legacy Concierge",
+		"skilledNursingFacility": "Centro de Enfermería Especializada",
+		"homeHealthAgency": "Agencia de Salud en el Hogar",
+		"assistedLivingFacility": "Centro de Vida Asistida",
+		"hospital": "Hospital"
+	}
+}
