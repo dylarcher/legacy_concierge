@@ -1,3 +1,5 @@
+import { i18n } from "../i18n/index.js";
+
 /**
  * Base Web Component class providing common utilities for all components.
  * Extends HTMLElement with helper methods for DOM manipulation and styling.
@@ -241,14 +243,34 @@ export class BaseComponent extends HTMLElement {
 	}
 
 	/**
-	 * Gets observed attribute value with type coercion
+	 * Gets observed attribute value with type coercion and i18n resolution
+	 * Detects ${key.path} syntax and resolves translations automatically
 	 * @param {string} name - Attribute name
 	 * @param {*} defaultValue - Default value if attribute not set
+	 * @param {Object} [i18nParams={}] - Interpolation parameters for i18n
 	 * @returns {*} Coerced attribute value or default
+	 *
+	 * @example
+	 * // HTML: <my-component heading="${pages.home.hero.heading}">
+	 * this.getAttr("heading") // Returns translated string
+	 *
+	 * @example
+	 * // HTML: <my-component greeting="${common.greeting}">
+	 * this.getAttr("greeting", "", { name: "John" }) // "Hello, John!"
 	 */
-	getAttr(name, defaultValue = null) {
+	getAttr(name, defaultValue = null, i18nParams = {}) {
 		const value = this.getAttribute(name);
 		if (value === null) return defaultValue;
+
+		// Detect i18n template syntax: ${key.path}
+		if (value.startsWith("${") && value.endsWith("}")) {
+			const key = value.slice(2, -1);
+			const translated = i18n.t(key, i18nParams);
+			// If translation returns the key (not found), use defaultValue
+			return translated !== key ? translated : (defaultValue ?? key);
+		}
+
+		// Existing type coercion logic
 		if (defaultValue === true || defaultValue === false) {
 			return value !== "false" && value !== "0";
 		}
@@ -459,7 +481,12 @@ const BASE_URL = import.meta.env.BASE_URL || "/";
  */
 export function resolvePath(path) {
 	// Return unchanged if external URL or already has protocol
-	if (!path || path.startsWith("http://") || path.startsWith("https://") || path.startsWith("//")) {
+	if (
+		!path ||
+		path.startsWith("http://") ||
+		path.startsWith("https://") ||
+		path.startsWith("//")
+	) {
 		return path;
 	}
 

@@ -1,4 +1,10 @@
 (async () => {
+	// Initialize i18n before loading components
+	// This ensures translations are ready when components mount
+	const { i18n } = await import("./i18n/index.js");
+	await i18n.initialize();
+
+	// Load components after i18n is ready
 	await import("./blocks/sections/nav.js");
 	await import("./blocks/sections/hero.js");
 	await import("./blocks/sections/footer.js");
@@ -6,6 +12,7 @@
 	await import("./blocks/components/location.js");
 	await import("./blocks/components/quote.js");
 	await import("./blocks/components/card-role.js");
+	await import("./blocks/components/language-switcher.js");
 
 	// Custom scrollbar for #featured
 	const initCustomScrollbar = () => {

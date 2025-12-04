@@ -212,16 +212,18 @@ export class HeroBanner extends BaseComponent {
 	}
 
 	render() {
-		const heading = this.getAttribute("heading") || "Your health, Our Purpose.";
-		const description =
-			this.getAttribute("description") ||
-			"Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.";
+		// Use getAttr() for i18n template syntax support (${key.path})
+		const heading = this.getAttr("heading", "Your health, Our Purpose.");
+		const description = this.getAttr(
+			"description",
+			"Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home."
+		);
 		const imagePath = this.getAttribute("image");
 		const image = imagePath ? resolveImage(imagePath) : defaultHeroImage;
 		const imageAlt = this.getAttribute("image-alt") || "";
-		const primaryCta = this.getAttribute("primary-cta");
+		const primaryCta = this.getAttr("primary-cta", null);
 		const primaryHref = resolvePath(this.getAttribute("primary-href") || "#");
-		const secondaryCta = this.getAttribute("secondary-cta");
+		const secondaryCta = this.getAttr("secondary-cta", null);
 		const secondaryHref = resolvePath(this.getAttribute("secondary-href") || "#");
 		const align = this.getAttribute("align");
 
