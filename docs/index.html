@@ -12,29 +12,22 @@
 			theme: {
 				extend: {
 					colors: {
-						primary: 'rgb(9 44 76)', // --args-cool-midnight
-						secondary: 'rgb(96 170 163)', // --args-cool-subtle-teal
-						accent: 'rgb(183 170 157)', // --args-warm-sunstruck-sand
-						canvas: 'rgb(255 255 255)', // --args-canvas-baseline
-						muted: 'rgb(241 241 241)', // --args-neutral-off-white
+						primary: '#0f2836',
+						secondary: '#a0bdbf',
+						accent: '#82644c',
+						canvas: '#fbf6f3',
+						muted: '#dcdcdc',
 					},
 					fontFamily: {
-						display: ['Work Sans', 'sans-serif'],
+						display: ['Playfair Display', 'serif'],
 						sans: ['Work Sans', 'sans-serif'],
-						serif: ['Playfair Display', 'serif'],
-						slab: ['Arvo', 'serif'],
-						rounded: ['Nunito', 'sans-serif'],
-						condensed: ['Sackers Gothic', 'sans-serif'],
-						code: ['Arvo', 'monospace'],
 					}
 				}
 			}
 		}
 	</script>
 	<style>
-		@import './res/tokens.css';
-		@import './res/style.css';
-
+		@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Work+Sans:wght@300;400;600&display=swap');
 		html {
 			scroll-behavior: smooth;
 		}
@@ -85,9 +78,30 @@
 			text-align: center;
 			font-weight: 600;
 		}
+
+		/* Color tokens for styleguide */
+		:root {
+			--color-navy: #0f2836;
+			--color-steel: #58737a;
+			--color-sage: #a0bdbf;
+			--color-frost: #d4e4e5;
+			--color-sienna: #82644c;
+			--color-taupe: #9c8874;
+			--color-sand: #b7ac9d;
+			--color-ivory: #fbf6f3;
+			--color-coal: #181818;
+			--color-ash: #494949;
+			--color-slate: #7a7a7a;
+			--color-silver: #ababab;
+			--color-pearl: #dcdcdc;
+			--color-snow: #f7f7f7;
+			--color-black: #000000;
+			--color-coral: #e57373;
+			--color-iris: #7986cb;
+			--color-jade: #81c784;
+			--color-amber: #ffb74d;
+		}
 	</style>
-	<!-- Load component library for live demos -->
-	<script type="module" src="./res/components.js"></script>
 </head>
 <body class="font-sans bg-white text-zinc-900 min-h-screen">
 	<div class="max-w-6xl mx-auto px-6 py-12">
@@ -111,7 +125,6 @@
 				>
 					<option value="versions" selected>Version History</option>
 					<option value="styleguide">Styleguide</option>
-					<option value="palette">Color Palette</option>
 				</select>
 				<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end fill-gray-500">
 					<path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
@@ -136,13 +149,6 @@
 					>
 						Styleguide
 					</button>
-					<button
-						id="tab-palette"
-						onclick="switchTab('palette')"
-						class="rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700"
-					>
-						Color Palette
-					</button>
 				</nav>
 			</div>
 		</div>
@@ -150,6 +156,30 @@
 		<!-- Tab Panels -->
 		<!-- Versions Panel -->
 		<main id="panel-versions" class="space-y-6">
+			<div class="rounded-xl shadow-lg p-8 ring-1 ring-black/5 bg-white transition-shadow hover:shadow-xl">
+				<div class="flex items-start justify-between mb-4">
+					<div>
+						<h2 class="text-2xl font-bold mb-2">Version 0.9.0</h2>
+						<p class="text-sm text-zinc-500">Release date unknown</p>
+					</div>
+					<span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+						v0.9.0
+					</span>
+				</div>
+				<p class="text-base mb-6 leading-relaxed text-zinc-600">
+					No release notes available.
+				</p>
+				<a
+					href="/legacy_concierge/v0.9.0/"
+					class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-colors focus:ring-2 focus:ring-primary/50"
+				>
+					View Site
+					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+					</svg>
+				</a>
+			</div>
+
 			<div class="rounded-xl shadow-lg p-8 ring-1 ring-black/5 bg-white transition-shadow hover:shadow-xl">
 				<div class="flex items-start justify-between mb-4">
 					<div>
@@ -165,30 +195,6 @@
 				</p>
 				<a
 					href="/legacy_concierge/v0.8.2/"
-					class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-colors focus:ring-2 focus:ring-primary/50"
-				>
-					View Site
-					<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-					</svg>
-				</a>
-			</div>
-
-			<div class="rounded-xl shadow-lg p-8 ring-1 ring-black/5 bg-white transition-shadow hover:shadow-xl">
-				<div class="flex items-start justify-between mb-4">
-					<div>
-						<h2 class="text-2xl font-bold mb-2">Version 0.8.1</h2>
-						<p class="text-sm text-zinc-500">Release date unknown</p>
-					</div>
-					<span class="inline-flex items-center rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
-						v0.8.1
-					</span>
-				</div>
-				<p class="text-base mb-6 leading-relaxed text-zinc-600">
-					No release notes available.
-				</p>
-				<a
-					href="/legacy_concierge/v0.8.1/"
 					class="inline-flex items-center gap-2 py-3 px-6 font-semibold rounded-full bg-primary text-white hover:bg-primary/90 transition-colors focus:ring-2 focus:ring-primary/50"
 				>
 					View Site
@@ -348,16 +354,12 @@
 
 			<!-- Styleguide Navigation -->
 			<nav class="bg-slate-100 sticky top-2 -mx-4 py-4 px-8 rounded-md mb-8 flex flex-wrap gap-6 text-sm font-medium" style="box-shadow: 0 4px 8px -4px #0002; opacity: .96">
-				<a href="#colors" class="text-zinc-900 hover:text-primary">Colors</a>
+				<a href="#colors" class="text-canvastext hover:text-primary">Colors</a>
 				<a href="#typography" class="text-zinc-500 hover:text-primary">Typography</a>
 				<a href="#buttons" class="text-zinc-500 hover:text-primary">Buttons</a>
 				<a href="#forms" class="text-zinc-500 hover:text-primary">Forms</a>
 				<a href="#cards" class="text-zinc-500 hover:text-primary">Cards</a>
-				<a href="#badges" class="text-zinc-500 hover:text-primary">Badges</a>
-				<a href="#avatars" class="text-zinc-500 hover:text-primary">Avatars</a>
-				<a href="#tables" class="text-zinc-500 hover:text-primary">Tables</a>
-				<a href="#dialogs" class="text-zinc-500 hover:text-primary">Dialogs</a>
-				<a href="#dropdowns" class="text-zinc-500 hover:text-primary">Dropdowns</a>
+				<a href="#status" class="text-zinc-500 hover:text-primary">Status</a>
 				<a href="#spacing" class="text-zinc-500 hover:text-primary">Spacing</a>
 			</nav>
 
@@ -376,206 +378,85 @@
 					Brand colors with WCAG AA compliant contrast ratios. Uses OKLCH for perceptually uniform gradients.
 				</p>
 
-				<h4 class="text-lg font-semibold mb-4">Cool Tones (Blues &amp; Teals)</h4>
-				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+				<h4 class="text-lg font-semibold mb-4">Blues (Cool Tones)</h4>
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
 					<div>
-						<div class="swatch" style="background: rgb(var(--args-cool-midnight));"></div>
-						<p class="token-name mt-2">--args-cool-midnight</p>
-						<p class="text-xs text-zinc-500">rgb(9 44 76)</p>
+						<div class="swatch" style="background: var(--color-navy);"></div>
+						<p class="token-name mt-2">navy</p>
+						<p class="text-xs text-zinc-500">#0f2836</p>
 					</div>
 					<div>
-						<div class="swatch" style="background: rgb(var(--args-cool-deep-navy));"></div>
-						<p class="token-name mt-2">--args-cool-deep-navy</p>
-						<p class="text-xs text-zinc-500">rgb(7 40 53)</p>
+						<div class="swatch" style="background: var(--color-steel);"></div>
+						<p class="token-name mt-2">steel</p>
+						<p class="text-xs text-zinc-500">#58737a</p>
 					</div>
 					<div>
-						<div class="swatch" style="background: rgb(var(--args-cool-dark-navy));"></div>
-						<p class="token-name mt-2">--args-cool-dark-navy</p>
-						<p class="text-xs text-zinc-500">rgb(11 39 54)</p>
+						<div class="swatch" style="background: var(--color-sage);"></div>
+						<p class="token-name mt-2">sage</p>
+						<p class="text-xs text-zinc-500">#a0bdbf</p>
 					</div>
 					<div>
-						<div class="swatch" style="background: rgb(var(--args-cool-greyish-teal));"></div>
-						<p class="token-name mt-2">--args-cool-greyish-teal</p>
-						<p class="text-xs text-zinc-500">rgb(90 130 133)</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: rgb(var(--args-cool-subtle-teal));"></div>
-						<p class="token-name mt-2">--args-cool-subtle-teal</p>
-						<p class="text-xs text-zinc-500">rgb(96 170 163)</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: rgb(var(--args-cool-smooth-teal));"></div>
-						<p class="token-name mt-2">--args-cool-smooth-teal</p>
-						<p class="text-xs text-zinc-500">rgb(102 141 142)</p>
+						<div class="swatch" style="background: var(--color-frost);"></div>
+						<p class="token-name mt-2">frost</p>
+						<p class="text-xs text-zinc-500">#d4e4e5</p>
 					</div>
 				</div>
 
-				<h4 class="text-lg font-semibold mb-4">Warm Tones (Browns &amp; Tans)</h4>
-				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+				<h4 class="text-lg font-semibold mb-4">Earth Tones (Warm)</h4>
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
 					<div>
-						<div class="swatch" style="background: rgb(var(--args-warm-sunstruck-sand));"></div>
-						<p class="token-name mt-2">--args-warm-sunstruck-sand</p>
-						<p class="text-xs text-zinc-500">rgb(183 170 157)</p>
+						<div class="swatch" style="background: var(--color-sienna);"></div>
+						<p class="token-name mt-2">sienna</p>
+						<p class="text-xs text-zinc-500">#82644c</p>
 					</div>
 					<div>
-						<div class="swatch" style="background: rgb(var(--args-warm-greyish-taupe));"></div>
-						<p class="token-name mt-2">--args-warm-greyish-taupe</p>
-						<p class="text-xs text-zinc-500">rgb(183 172 157)</p>
+						<div class="swatch" style="background: var(--color-taupe);"></div>
+						<p class="token-name mt-2">taupe</p>
+						<p class="text-xs text-zinc-500">#9c8874</p>
 					</div>
 					<div>
-						<div class="swatch" style="background: rgb(var(--args-warm-redish-brown));"></div>
-						<p class="token-name mt-2">--args-warm-redish-brown</p>
-						<p class="text-xs text-zinc-500">rgb(128 98 76)</p>
+						<div class="swatch" style="background: var(--color-sand);"></div>
+						<p class="token-name mt-2">sand</p>
+						<p class="text-xs text-zinc-500">#b7ac9d</p>
 					</div>
 					<div>
-						<div class="swatch" style="background: rgb(var(--args-warm-dim-taupe));"></div>
-						<p class="token-name mt-2">--args-warm-dim-taupe</p>
-						<p class="text-xs text-zinc-500">rgb(80 53 43)</p>
-					</div>
-					<div>
-						<div class="swatch border border-zinc-300" style="background: rgb(var(--args-canvas-baseline));"></div>
-						<p class="token-name mt-2">--args-canvas-baseline</p>
-						<p class="text-xs text-zinc-500">rgb(255 255 255)</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: rgb(var(--args-canvas-inverted));"></div>
-						<p class="token-name mt-2">--args-canvas-inverted</p>
-						<p class="text-xs text-zinc-500">rgb(0 0 0)</p>
+						<div class="swatch" style="background: var(--color-ivory);"></div>
+						<p class="token-name mt-2">ivory</p>
+						<p class="text-xs text-zinc-500">#fbf6f3</p>
 					</div>
 				</div>
 
-				<h4 class="text-lg font-semibold mb-4">Semantic Brand Colors</h4>
-				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
-					<div>
-						<div class="swatch" style="background: var(--brand-primary);"></div>
-						<p class="token-name mt-2">--brand-primary</p>
-						<p class="text-xs text-zinc-500">cool-midnight</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: var(--brand-primary-muted);"></div>
-						<p class="token-name mt-2">--brand-primary-muted</p>
-						<p class="text-xs text-zinc-500">cool-deep-navy</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: var(--brand-secondary);"></div>
-						<p class="token-name mt-2">--brand-secondary</p>
-						<p class="text-xs text-zinc-500">cool-subtle-teal</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: var(--brand-secondary-muted);"></div>
-						<p class="token-name mt-2">--brand-secondary-muted</p>
-						<p class="text-xs text-zinc-500">cool-smooth-teal</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: var(--brand-tertiary);"></div>
-						<p class="token-name mt-2">--brand-tertiary</p>
-						<p class="text-xs text-zinc-500">warm-sunstruck-sand</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: var(--brand-tertiary-muted);"></div>
-						<p class="token-name mt-2">--brand-tertiary-muted</p>
-						<p class="text-xs text-zinc-500">warm-greyish-taupe</p>
-					</div>
-				</div>
-
-				<h4 class="text-lg font-semibold mb-4">Surface &amp; Canvas Colors</h4>
-				<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
-					<div>
-						<div class="swatch border border-zinc-300" style="background: var(--color-canvas);"></div>
-						<p class="token-name mt-2">--color-canvas</p>
-						<p class="text-xs text-zinc-500">canvas-baseline</p>
-					</div>
-					<div>
-						<div class="swatch border border-zinc-300" style="background: var(--color-canvas-muted);"></div>
-						<p class="token-name mt-2">--color-canvas-muted</p>
-						<p class="text-xs text-zinc-500">neutral-off-white</p>
-					</div>
-					<div>
-						<div class="swatch border border-zinc-300" style="background: var(--color-surface);"></div>
-						<p class="token-name mt-2">--color-surface</p>
-						<p class="text-xs text-zinc-500">canvas-baseline</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: var(--color-surface-muted);"></div>
-						<p class="token-name mt-2">--color-surface-muted</p>
-						<p class="text-xs text-zinc-500">neutral-off-white</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: var(--color-surface-soft);"></div>
-						<p class="token-name mt-2">--color-surface-soft</p>
-						<p class="text-xs text-zinc-500">neutral-light-gray</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: var(--color-text);"></div>
-						<p class="token-name mt-2">--color-text</p>
-						<p class="text-xs text-zinc-500">neutral-dark-charcoal</p>
-					</div>
-				</div>
-
-				<h4 class="text-lg font-semibold mb-4">Neutral &amp; Grayscale</h4>
-				<div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 mb-8">
-					<div>
-						<div class="swatch" style="background: rgb(var(--args-neutral-dark-charcoal));"></div>
-						<p class="token-name mt-2">--args-neutral-dark-charcoal</p>
-						<p class="text-xs text-zinc-500">rgb(24 24 24)</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: rgb(var(--args-neutral-dark-onyx));"></div>
-						<p class="token-name mt-2">--args-neutral-dark-onyx</p>
-						<p class="text-xs text-zinc-500">rgb(29 29 29)</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: rgb(var(--args-neutral-dark-shadowy));"></div>
-						<p class="token-name mt-2">--args-neutral-dark-shadowy</p>
-						<p class="text-xs text-zinc-500">rgb(35 31 32)</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: rgb(var(--args-neutral-greyscale));"></div>
-						<p class="token-name mt-2">--args-neutral-greyscale</p>
-						<p class="text-xs text-zinc-500">rgb(79 79 79)</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: rgb(var(--args-neutral-medium-grey));"></div>
-						<p class="token-name mt-2">--args-neutral-medium-grey</p>
-						<p class="text-xs text-zinc-500">rgb(137 121 125)</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: rgb(var(--args-neutral-light-gray));"></div>
-						<p class="token-name mt-2">--args-neutral-light-gray</p>
-						<p class="text-xs text-zinc-500">rgb(220 224 223)</p>
-					</div>
-					<div>
-						<div class="swatch border border-zinc-300" style="background: rgb(var(--args-neutral-off-white));"></div>
-						<p class="token-name mt-2">--args-neutral-off-white</p>
-						<p class="text-xs text-zinc-500">rgb(241 241 241)</p>
-					</div>
-					<div>
-						<div class="swatch" style="background: rgb(var(--args-neutral-dark-gray));"></div>
-						<p class="token-name mt-2">--args-neutral-dark-gray</p>
-						<p class="text-xs text-zinc-500">rgb(79 79 79)</p>
-					</div>
+				<h4 class="text-lg font-semibold mb-4">Grayscale</h4>
+				<div class="flex gap-0 mb-8 rounded-lg overflow-hidden">
+					<div class="flex-1 h-16" style="background: var(--color-black);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-coal);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-ash);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-slate);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-silver);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-pearl);"></div>
+					<div class="flex-1 h-16" style="background: var(--color-snow);"></div>
 				</div>
 
 				<h4 class="text-lg font-semibold mb-4">Status Colors</h4>
-				<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
 					<div>
-						<div class="swatch" style="background: var(--status-error-fg);"></div>
-						<p class="token-name mt-2">--status-error-fg</p>
+						<div class="swatch" style="background: var(--color-coral);"></div>
+						<p class="token-name mt-2">error</p>
 						<p class="text-xs text-zinc-500">Errors, destructive</p>
 					</div>
 					<div>
-						<div class="swatch" style="background: var(--status-info-fg);"></div>
-						<p class="token-name mt-2">--status-info-fg</p>
+						<div class="swatch" style="background: var(--color-iris);"></div>
+						<p class="token-name mt-2">info</p>
 						<p class="text-xs text-zinc-500">Information</p>
 					</div>
 					<div>
-						<div class="swatch" style="background: var(--status-success-fg);"></div>
-						<p class="token-name mt-2">--status-success-fg</p>
+						<div class="swatch" style="background: var(--color-jade);"></div>
+						<p class="token-name mt-2">success</p>
 						<p class="text-xs text-zinc-500">Positive, confirmed</p>
 					</div>
 					<div>
-						<div class="swatch" style="background: var(--status-warning-fg);"></div>
-						<p class="token-name mt-2">--status-warning-fg</p>
+						<div class="swatch" style="background: var(--color-amber);"></div>
+						<p class="token-name mt-2">warning</p>
 						<p class="text-xs text-zinc-500">Alerts, caution</p>
 					</div>
 				</div>
@@ -591,43 +472,23 @@
 				<h4 class="text-lg font-semibold mb-4">Font Families</h4>
 				<div class="space-y-4 mb-8">
 					<div class="demo-box">
-						<p class="text-xs text-zinc-500 mb-1">--text-body <code>.font-sans</code></p>
-						<p class="font-sans text-2xl">Work Sans — The quick brown fox jumps over the lazy dog.</p>
+						<p class="text-xs text-zinc-500 mb-1">Display Font <code>font-display</code></p>
+						<p class="font-display text-2xl">Playfair Display - The quick brown fox jumps over the lazy dog.</p>
 					</div>
 					<div class="demo-box">
-						<p class="text-xs text-zinc-500 mb-1">--text-display <code>.font-display</code></p>
-						<p class="font-display text-2xl">Work Sans Display — The quick brown fox jumps over the lazy dog.</p>
-					</div>
-					<div class="demo-box">
-						<p class="text-xs text-zinc-500 mb-1">--text-title <code>.font-serif</code></p>
-						<p class="font-serif text-2xl">Playfair Display — The quick brown fox jumps over the lazy dog.</p>
-					</div>
-					<div class="demo-box">
-						<p class="text-xs text-zinc-500 mb-1">--text-accent <code>.font-slab</code></p>
-						<p style="font-family: var(--text-accent);" class="text-2xl">Arvo — The quick brown fox jumps over the lazy dog.</p>
-					</div>
-					<div class="demo-box">
-						<p class="text-xs text-zinc-500 mb-1">--text-soft <code>.font-rounded</code></p>
-						<p style="font-family: var(--text-soft);" class="text-2xl">Nunito — The quick brown fox jumps over the lazy dog.</p>
-					</div>
-					<div class="demo-box">
-						<p class="text-xs text-zinc-500 mb-1">--text-heavy <code>.font-condensed</code></p>
-						<p style="font-family: var(--text-heavy);" class="text-2xl uppercase">Sackers Gothic — The quick brown fox jumps over the lazy dog.</p>
-					</div>
-					<div class="demo-box">
-						<p class="text-xs text-zinc-500 mb-1">--text-code <code>.font-code</code></p>
-						<p style="font-family: var(--text-code);" class="text-xl">const greeting = "Hello, World!";</p>
+						<p class="text-xs text-zinc-500 mb-1">Body Font <code>font-sans</code></p>
+						<p class="font-sans text-2xl">Work Sans - The quick brown fox jumps over the lazy dog.</p>
 					</div>
 				</div>
 
 				<h4 class="text-lg font-semibold mb-4">Heading Hierarchy</h4>
 				<div class="demo-box space-y-4">
-					<h1 class="font-serif text-4xl font-bold">Heading 1 - Main Page Title</h1>
-					<h2 class="font-serif text-3xl font-bold">Heading 2 - Section Title</h2>
-					<h3 class="font-display text-2xl font-medium">Heading 3 - Subsection Title</h3>
+					<h1 class="font-display text-4xl font-bold">Heading 1 - Main Page Title</h1>
+					<h2 class="font-display text-3xl font-bold">Heading 2 - Section Title</h2>
+					<h3 class="font-display text-2xl font-semibold">Heading 3 - Subsection Title</h3>
 					<h4 class="font-display text-xl font-semibold">Heading 4 - Group Title</h4>
-					<h5 class="font-sans text-lg font-bold">Heading 5 - Minor Heading</h5>
-					<h6 class="font-sans text-base font-bold">Heading 6 - Label Heading</h6>
+					<h5 class="font-display text-lg font-medium">Heading 5 - Minor Heading</h5>
+					<h6 class="font-display text-base font-medium">Heading 6 - Label Heading</h6>
 				</div>
 			</section>
 
@@ -635,60 +496,43 @@
 			<section id="buttons" class="styleguide-section mb-16">
 				<h3 class="text-2xl font-bold mb-2">Buttons</h3>
 				<p class="text-zinc-500 mb-8">
-					Live <code>&lt;ui-button&gt;</code> components with interactive states.
+					Three button variants with consistent interaction states.
 				</p>
 
-				<h4 class="text-lg font-semibold mb-4">Solid Buttons (Default)</h4>
-				<p class="text-sm text-zinc-500 mb-4">Primary actions. Use <code>color</code> attribute for variants.</p>
-				<div class="demo-box flex flex-wrap gap-4 items-center mb-4">
-					<ui-button color="dark">Dark</ui-button>
-					<ui-button color="light">Light</ui-button>
-					<ui-button color="blue">Blue</ui-button>
-					<ui-button color="indigo">Indigo</ui-button>
-					<ui-button color="cyan">Cyan</ui-button>
-					<ui-button color="teal">Teal</ui-button>
-					<ui-button color="green">Green</ui-button>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-button color="dark"&gt;Dark&lt;/ui-button&gt;
-&lt;ui-button color="blue"&gt;Blue&lt;/ui-button&gt;</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Outline Buttons</h4>
-				<p class="text-sm text-zinc-500 mb-4">Secondary actions. Add <code>outline</code> attribute.</p>
-				<div class="demo-box flex flex-wrap gap-4 items-center mb-4">
-					<ui-button outline>Default Outline</ui-button>
-					<ui-button outline disabled>Disabled</ui-button>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-button outline&gt;Default Outline&lt;/ui-button&gt;
-&lt;ui-button outline disabled&gt;Disabled&lt;/ui-button&gt;</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Plain Buttons</h4>
-				<p class="text-sm text-zinc-500 mb-4">Tertiary/ghost actions. Add <code>plain</code> attribute.</p>
-				<div class="demo-box flex flex-wrap gap-4 items-center mb-4">
-					<ui-button plain>Plain Button</ui-button>
-					<ui-button plain disabled>Disabled</ui-button>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-button plain&gt;Plain Button&lt;/ui-button&gt;</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Button Colors</h4>
-				<div class="demo-box flex flex-wrap gap-4 items-center mb-4">
-					<ui-button color="red">Red</ui-button>
-					<ui-button color="orange">Orange</ui-button>
-					<ui-button color="amber">Amber</ui-button>
-					<ui-button color="yellow">Yellow</ui-button>
-					<ui-button color="lime">Lime</ui-button>
-					<ui-button color="emerald">Emerald</ui-button>
-					<ui-button color="sky">Sky</ui-button>
-					<ui-button color="violet">Violet</ui-button>
-					<ui-button color="fuchsia">Fuchsia</ui-button>
-					<ui-button color="pink">Pink</ui-button>
-					<ui-button color="rose">Rose</ui-button>
+				<h4 class="text-lg font-semibold mb-4">Primary Button</h4>
+				<div class="demo-box flex flex-wrap gap-4 items-center mb-8">
+					<button type="button" class="px-6 py-3 rounded-lg font-semibold bg-primary text-white hover:bg-primary/90 transition-colors">
+						Default
+					</button>
+					<button type="button" class="px-6 py-3 rounded-lg font-semibold bg-primary/80 text-white" disabled>
+						Hover
+					</button>
+					<button type="button" class="px-6 py-3 rounded-lg font-semibold bg-primary text-white opacity-50 cursor-not-allowed" disabled>
+						Disabled
+					</button>
 				</div>
 
-				<h4 class="text-lg font-semibold mb-4">Link Buttons</h4>
-				<p class="text-sm text-zinc-500 mb-4">Add <code>href</code> to render as anchor element.</p>
+				<h4 class="text-lg font-semibold mb-4">Outline Button</h4>
+				<div class="demo-box flex flex-wrap gap-4 items-center mb-8">
+					<button type="button" class="px-6 py-3 rounded-lg font-semibold border-2 border-primary text-primary hover:bg-primary hover:text-white transition-colors">
+						Default
+					</button>
+					<button type="button" class="px-6 py-3 rounded-lg font-semibold border-2 border-primary text-primary opacity-50 cursor-not-allowed" disabled>
+						Disabled
+					</button>
+				</div>
+
+				<h4 class="text-lg font-semibold mb-4">Button Sizes</h4>
 				<div class="demo-box flex flex-wrap gap-4 items-center">
-					<ui-button href="#buttons" color="blue">Link Button</ui-button>
-					<ui-button href="#buttons" outline>Outline Link</ui-button>
+					<button type="button" class="px-3 py-1.5 rounded text-sm font-semibold bg-primary text-white">
+						Small
+					</button>
+					<button type="button" class="px-5 py-2.5 rounded-lg font-semibold bg-primary text-white">
+						Medium
+					</button>
+					<button type="button" class="px-7 py-3.5 rounded-xl text-lg font-semibold bg-primary text-white">
+						Large
+					</button>
 				</div>
 			</section>
 
@@ -696,513 +540,122 @@
 			<section id="forms" class="styleguide-section mb-16">
 				<h3 class="text-2xl font-bold mb-2">Form Elements</h3>
 				<p class="text-zinc-500 mb-8">
-					Live form components: <code>&lt;ui-input&gt;</code>, <code>&lt;ui-checkbox&gt;</code>, <code>&lt;ui-radio&gt;</code>, <code>&lt;ui-select&gt;</code>, <code>&lt;ui-textarea&gt;</code>, <code>&lt;ui-switch&gt;</code>
+					Input fields with consistent styling and validation states.
 				</p>
 
 				<h4 class="text-lg font-semibold mb-4">Text Input</h4>
-				<div class="demo-box space-y-4 mb-4">
-					<ui-fieldset>
-						<ui-field>
-							<ui-label>Full Name</ui-label>
-							<ui-input placeholder="Enter your name..."></ui-input>
-						</ui-field>
-						<ui-field>
-							<ui-label>Email Address</ui-label>
-							<ui-input type="email" placeholder="you@example.com"></ui-input>
-						</ui-field>
-						<ui-field>
-							<ui-label>Disabled Input</ui-label>
-							<ui-input value="Cannot edit" disabled></ui-input>
-						</ui-field>
-					</ui-fieldset>
+				<div class="demo-box space-y-4 mb-8">
+					<div>
+						<label class="block text-sm font-medium mb-1.5">Default Input</label>
+						<input type="text" placeholder="Enter your name..." class="w-full max-w-md px-4 py-3 rounded-lg border border-zinc-300 bg-white placeholder-zinc-400 transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20">
+					</div>
+					<div>
+						<label class="block text-sm font-medium mb-1.5">Disabled</label>
+						<input type="text" value="Cannot edit" disabled class="w-full max-w-md px-4 py-3 rounded-lg border border-zinc-300 bg-zinc-100 opacity-50 cursor-not-allowed">
+					</div>
 				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-field&gt;
-  &lt;ui-label&gt;Full Name&lt;/ui-label&gt;
-  &lt;ui-input placeholder="Enter your name..."&gt;&lt;/ui-input&gt;
-&lt;/ui-field&gt;</code></pre>
 
-				<h4 class="text-lg font-semibold mb-4">Checkbox</h4>
-				<div class="demo-box mb-4">
-					<ui-checkbox-group>
-						<ui-checkbox-field>
-							<ui-checkbox name="terms" checked></ui-checkbox>
-							<ui-label>I agree to the terms</ui-label>
-						</ui-checkbox-field>
-						<ui-checkbox-field>
-							<ui-checkbox name="newsletter"></ui-checkbox>
-							<ui-label>Subscribe to newsletter</ui-label>
-						</ui-checkbox-field>
-						<ui-checkbox-field>
-							<ui-checkbox name="disabled" disabled></ui-checkbox>
-							<ui-label>Disabled option</ui-label>
-						</ui-checkbox-field>
-					</ui-checkbox-group>
+				<h4 class="text-lg font-semibold mb-4">Validation States</h4>
+				<div class="demo-box grid gap-4 md:grid-cols-3">
+					<div>
+						<label class="block text-sm font-medium mb-1.5">Valid</label>
+						<input type="text" value="valid@email.com" class="w-full px-4 py-3 rounded-lg border-2 border-green-500 bg-white">
+						<p class="text-xs mt-1 text-green-600">Email is valid</p>
+					</div>
+					<div>
+						<label class="block text-sm font-medium mb-1.5">Warning</label>
+						<input type="text" value="weak password" class="w-full px-4 py-3 rounded-lg border-2 border-amber-500 bg-white">
+						<p class="text-xs mt-1 text-amber-600">Password could be stronger</p>
+					</div>
+					<div>
+						<label class="block text-sm font-medium mb-1.5">Invalid</label>
+						<input type="text" value="invalid" class="w-full px-4 py-3 rounded-lg border-2 border-red-500 bg-white">
+						<p class="text-xs mt-1 text-red-600">This field is required</p>
+					</div>
 				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-checkbox-field&gt;
-  &lt;ui-checkbox name="terms" checked&gt;&lt;/ui-checkbox&gt;
-  &lt;ui-label&gt;I agree to the terms&lt;/ui-label&gt;
-&lt;/ui-checkbox-field&gt;</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Radio Buttons</h4>
-				<div class="demo-box mb-4">
-					<ui-radio-group>
-						<ui-radio-field>
-							<ui-radio name="plan" value="free" checked></ui-radio>
-							<ui-label>Free Plan</ui-label>
-						</ui-radio-field>
-						<ui-radio-field>
-							<ui-radio name="plan" value="pro"></ui-radio>
-							<ui-label>Pro Plan</ui-label>
-						</ui-radio-field>
-						<ui-radio-field>
-							<ui-radio name="plan" value="enterprise"></ui-radio>
-							<ui-label>Enterprise Plan</ui-label>
-						</ui-radio-field>
-					</ui-radio-group>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-radio-group&gt;
-  &lt;ui-radio-field&gt;
-    &lt;ui-radio name="plan" value="free" checked&gt;&lt;/ui-radio&gt;
-    &lt;ui-label&gt;Free Plan&lt;/ui-label&gt;
-  &lt;/ui-radio-field&gt;
-&lt;/ui-radio-group&gt;</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Select Dropdown</h4>
-				<div class="demo-box mb-4">
-					<ui-fieldset>
-						<ui-field>
-							<ui-label>Country</ui-label>
-							<ui-select>
-								<option value="">Select a country...</option>
-								<option value="us">United States</option>
-								<option value="uk">United Kingdom</option>
-								<option value="ca">Canada</option>
-								<option value="au">Australia</option>
-							</ui-select>
-						</ui-field>
-					</ui-fieldset>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-select&gt;
-  &lt;option value=""&gt;Select...&lt;/option&gt;
-  &lt;option value="us"&gt;United States&lt;/option&gt;
-&lt;/ui-select&gt;</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Textarea</h4>
-				<div class="demo-box mb-4">
-					<ui-fieldset>
-						<ui-field>
-							<ui-label>Message</ui-label>
-							<ui-textarea placeholder="Type your message..." rows="3"></ui-textarea>
-						</ui-field>
-					</ui-fieldset>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-textarea placeholder="Type your message..." rows="3"&gt;&lt;/ui-textarea&gt;</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Switch Toggle</h4>
-				<div class="demo-box mb-4">
-					<ui-switch-group>
-						<ui-switch-field>
-							<ui-switch name="notifications" checked></ui-switch>
-							<ui-label>Enable notifications</ui-label>
-						</ui-switch-field>
-						<ui-switch-field>
-							<ui-switch name="darkmode"></ui-switch>
-							<ui-label>Dark mode</ui-label>
-						</ui-switch-field>
-					</ui-switch-group>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm overflow-x-auto"><code>&lt;ui-switch-field&gt;
-  &lt;ui-switch name="notifications" checked&gt;&lt;/ui-switch&gt;
-  &lt;ui-label&gt;Enable notifications&lt;/ui-label&gt;
-&lt;/ui-switch-field&gt;</code></pre>
 			</section>
 
 			<!-- Cards Section -->
 			<section id="cards" class="styleguide-section mb-16">
 				<h3 class="text-2xl font-bold mb-2">Cards</h3>
 				<p class="text-zinc-500 mb-8">
-					Live <code>&lt;ui-card&gt;</code> components with semantic structure.
+					Surface containers for grouping related content.
 				</p>
 
-				<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-4">
-					<ui-card>
-						<ui-card-header>
-							<ui-card-title>Default Card</ui-card-title>
-							<ui-card-description>A basic card with header and body.</ui-card-description>
-						</ui-card-header>
-						<ui-card-body>
-							Card content goes here. This is the main body area.
-						</ui-card-body>
-						<ui-card-footer>
-							<ui-button outline>Learn More</ui-button>
-						</ui-card-footer>
-					</ui-card>
-
-					<ui-card hover>
-						<ui-card-header>
-							<ui-card-title>Interactive Card</ui-card-title>
-							<ui-card-description>With hover attribute for interactive state.</ui-card-description>
-						</ui-card-header>
-						<ui-card-body>
-							Hover over this card to see the interaction effect.
-						</ui-card-body>
-					</ui-card>
-
-					<ui-card>
-						<ui-card-header>
-							<ui-card-title>Card with Actions</ui-card-title>
-						</ui-card-header>
-						<ui-card-body>
-							Multiple actions in the footer section.
-						</ui-card-body>
-						<ui-card-footer>
-							<ui-button plain>Cancel</ui-button>
-							<ui-button color="blue">Save</ui-button>
-						</ui-card-footer>
-					</ui-card>
+				<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+					<div class="bg-white rounded-xl p-6 border border-zinc-200 shadow-sm">
+						<h4 class="font-semibold mb-2">Default Card</h4>
+						<p class="text-sm text-zinc-500 mb-4">A standard card with border and subtle shadow.</p>
+						<button class="px-4 py-2 rounded-lg border border-primary text-primary text-sm font-medium hover:bg-primary hover:text-white transition-colors">
+							Learn More
+						</button>
+					</div>
+					<div class="bg-white rounded-xl p-6 border border-zinc-200 shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
+						<h4 class="font-semibold mb-2">Interactive Card</h4>
+						<p class="text-sm text-zinc-500 mb-4">Cards with hover effects for interactive states.</p>
+						<span class="text-primary text-sm font-medium">Click to interact &rarr;</span>
+					</div>
+					<div class="bg-canvas rounded-xl p-6 shadow-lg border border-zinc-100">
+						<h4 class="font-semibold mb-2 text-zinc-900">Elevated Card</h4>
+						<p class="text-sm text-zinc-500 mb-4">Higher elevation with stronger shadow for emphasis.</p>
+						<span class="text-accent text-sm font-medium">Featured content</span>
+					</div>
 				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm overflow-x-auto"><code>&lt;ui-card hover&gt;
-  &lt;ui-card-header&gt;
-    &lt;ui-card-title&gt;Card Title&lt;/ui-card-title&gt;
-    &lt;ui-card-description&gt;Description text&lt;/ui-card-description&gt;
-  &lt;/ui-card-header&gt;
-  &lt;ui-card-body&gt;Content here&lt;/ui-card-body&gt;
-  &lt;ui-card-footer&gt;Footer actions&lt;/ui-card-footer&gt;
-&lt;/ui-card&gt;</code></pre>
 			</section>
 
-			<!-- Badges Section -->
-			<section id="badges" class="styleguide-section mb-16">
-				<h3 class="text-2xl font-bold mb-2">Badges</h3>
+			<!-- Status Section -->
+			<section id="status" class="styleguide-section mb-16">
+				<h3 class="text-2xl font-bold mb-2">Status Indicators</h3>
 				<p class="text-zinc-500 mb-8">
-					Live <code>&lt;ui-badge&gt;</code> components for status indicators and labels.
+					Semantic status styles for alerts, badges, and feedback.
 				</p>
-
-				<h4 class="text-lg font-semibold mb-4">Color Variants</h4>
-				<div class="demo-box flex flex-wrap gap-3 mb-4">
-					<ui-badge color="zinc">Default</ui-badge>
-					<ui-badge color="red">Red</ui-badge>
-					<ui-badge color="orange">Orange</ui-badge>
-					<ui-badge color="amber">Amber</ui-badge>
-					<ui-badge color="yellow">Yellow</ui-badge>
-					<ui-badge color="lime">Lime</ui-badge>
-					<ui-badge color="green">Green</ui-badge>
-					<ui-badge color="emerald">Emerald</ui-badge>
-					<ui-badge color="teal">Teal</ui-badge>
-					<ui-badge color="cyan">Cyan</ui-badge>
-					<ui-badge color="sky">Sky</ui-badge>
-					<ui-badge color="blue">Blue</ui-badge>
-					<ui-badge color="indigo">Indigo</ui-badge>
-					<ui-badge color="violet">Violet</ui-badge>
-					<ui-badge color="purple">Purple</ui-badge>
-					<ui-badge color="fuchsia">Fuchsia</ui-badge>
-					<ui-badge color="pink">Pink</ui-badge>
-					<ui-badge color="rose">Rose</ui-badge>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-badge color="green"&gt;Active&lt;/ui-badge&gt;
-&lt;ui-badge color="red"&gt;Error&lt;/ui-badge&gt;</code></pre>
 
 				<h4 class="text-lg font-semibold mb-4">Status Badges</h4>
-				<p class="text-sm text-zinc-500 mb-4">Common usage patterns for status indicators.</p>
-				<div class="demo-box flex flex-wrap gap-3 mb-4">
-					<ui-badge color="green">Active</ui-badge>
-					<ui-badge color="yellow">Pending</ui-badge>
-					<ui-badge color="red">Error</ui-badge>
-					<ui-badge color="blue">Info</ui-badge>
-					<ui-badge color="zinc">Draft</ui-badge>
+				<div class="demo-box flex flex-wrap gap-3 mb-8">
+					<span class="bg-red-100 border border-red-200 text-red-700 text-sm px-3 py-1 rounded-full font-medium/30">Error</span>
+					<span class="bg-blue-100 border border-blue-200 text-blue-700 text-sm px-3 py-1 rounded-full font-medium/30">Info</span>
+					<span class="bg-green-100 border border-green-200 text-green-700 text-sm px-3 py-1 rounded-full font-medium/30">Success</span>
+					<span class="bg-amber-100 border border-amber-200 text-amber-700 text-sm px-3 py-1 rounded-full font-medium/30">Warning</span>
 				</div>
 
-				<h4 class="text-lg font-semibold mb-4">Badge Buttons</h4>
-				<p class="text-sm text-zinc-500 mb-4">Clickable badges with <code>&lt;ui-badge-button&gt;</code>.</p>
-				<div class="demo-box flex flex-wrap gap-3">
-					<ui-badge-button color="blue" href="#badges">View Details</ui-badge-button>
-					<ui-badge-button color="green" href="#badges">Approve</ui-badge-button>
-					<ui-badge-button color="red" href="#badges">Reject</ui-badge-button>
-				</div>
-			</section>
-
-			<!-- Avatars Section -->
-			<section id="avatars" class="styleguide-section mb-16">
-				<h3 class="text-2xl font-bold mb-2">Avatars</h3>
-				<p class="text-zinc-500 mb-8">
-					Live <code>&lt;ui-avatar&gt;</code> components for user profile images.
-				</p>
-
-				<h4 class="text-lg font-semibold mb-4">With Initials</h4>
-				<p class="text-sm text-zinc-500 mb-4">Use <code>initials</code> attribute when no image is available.</p>
-				<div class="demo-box flex flex-wrap items-center gap-4 mb-4">
-					<ui-avatar initials="JD" class="size-8 bg-zinc-300"></ui-avatar>
-					<ui-avatar initials="AB" class="size-10 bg-blue-300"></ui-avatar>
-					<ui-avatar initials="CD" class="size-12 bg-green-300"></ui-avatar>
-					<ui-avatar initials="EF" class="size-14 bg-purple-300"></ui-avatar>
-					<ui-avatar initials="GH" class="size-16 bg-amber-300"></ui-avatar>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-avatar initials="JD" class="size-10 bg-zinc-300"&gt;&lt;/ui-avatar&gt;</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Square Variant</h4>
-				<p class="text-sm text-zinc-500 mb-4">Add <code>square</code> attribute for rounded square shape.</p>
-				<div class="demo-box flex flex-wrap items-center gap-4 mb-4">
-					<ui-avatar initials="SQ" square class="size-10 bg-teal-300"></ui-avatar>
-					<ui-avatar initials="AB" square class="size-12 bg-rose-300"></ui-avatar>
-					<ui-avatar initials="XY" square class="size-14 bg-cyan-300"></ui-avatar>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-avatar initials="SQ" square class="size-10 bg-teal-300"&gt;&lt;/ui-avatar&gt;</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Avatar Buttons</h4>
-				<p class="text-sm text-zinc-500 mb-4">Clickable avatars with <code>&lt;ui-avatar-button&gt;</code>.</p>
-				<div class="demo-box flex flex-wrap items-center gap-4">
-					<ui-avatar-button initials="CL" href="#avatars" class="size-10 bg-indigo-300"></ui-avatar-button>
-					<ui-avatar-button initials="LK" href="#avatars" square class="size-10 bg-emerald-300"></ui-avatar-button>
-				</div>
-			</section>
-
-			<!-- Tables Section -->
-			<section id="tables" class="styleguide-section mb-16">
-				<h3 class="text-2xl font-bold mb-2">Tables</h3>
-				<p class="text-zinc-500 mb-8">
-					Live <code>&lt;ui-table&gt;</code> components with configurable styles.
-				</p>
-
-				<h4 class="text-lg font-semibold mb-4">Basic Table</h4>
-				<div class="demo-box mb-4">
-					<ui-table>
-						<ui-table-head>
-							<ui-table-row>
-								<ui-table-header>Name</ui-table-header>
-								<ui-table-header>Email</ui-table-header>
-								<ui-table-header>Role</ui-table-header>
-							</ui-table-row>
-						</ui-table-head>
-						<ui-table-body>
-							<ui-table-row>
-								<ui-table-cell>John Doe</ui-table-cell>
-								<ui-table-cell>john@example.com</ui-table-cell>
-								<ui-table-cell>Admin</ui-table-cell>
-							</ui-table-row>
-							<ui-table-row>
-								<ui-table-cell>Jane Smith</ui-table-cell>
-								<ui-table-cell>jane@example.com</ui-table-cell>
-								<ui-table-cell>Editor</ui-table-cell>
-							</ui-table-row>
-							<ui-table-row>
-								<ui-table-cell>Bob Wilson</ui-table-cell>
-								<ui-table-cell>bob@example.com</ui-table-cell>
-								<ui-table-cell>Viewer</ui-table-cell>
-							</ui-table-row>
-						</ui-table-body>
-					</ui-table>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-table&gt;
-  &lt;ui-table-head&gt;
-    &lt;ui-table-row&gt;
-      &lt;ui-table-header&gt;Name&lt;/ui-table-header&gt;
-    &lt;/ui-table-row&gt;
-  &lt;/ui-table-head&gt;
-  &lt;ui-table-body&gt;
-    &lt;ui-table-row&gt;
-      &lt;ui-table-cell&gt;John Doe&lt;/ui-table-cell&gt;
-    &lt;/ui-table-row&gt;
-  &lt;/ui-table-body&gt;
-&lt;/ui-table&gt;</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Striped Table</h4>
-				<p class="text-sm text-zinc-500 mb-4">Add <code>striped</code> attribute for alternating row colors.</p>
-				<div class="demo-box mb-4">
-					<ui-table striped>
-						<ui-table-head>
-							<ui-table-row>
-								<ui-table-header>Product</ui-table-header>
-								<ui-table-header>Price</ui-table-header>
-								<ui-table-header>Stock</ui-table-header>
-							</ui-table-row>
-						</ui-table-head>
-						<ui-table-body>
-							<ui-table-row>
-								<ui-table-cell>Widget A</ui-table-cell>
-								<ui-table-cell>$19.99</ui-table-cell>
-								<ui-table-cell>150</ui-table-cell>
-							</ui-table-row>
-							<ui-table-row>
-								<ui-table-cell>Widget B</ui-table-cell>
-								<ui-table-cell>$29.99</ui-table-cell>
-								<ui-table-cell>75</ui-table-cell>
-							</ui-table-row>
-							<ui-table-row>
-								<ui-table-cell>Widget C</ui-table-cell>
-								<ui-table-cell>$39.99</ui-table-cell>
-								<ui-table-cell>200</ui-table-cell>
-							</ui-table-row>
-							<ui-table-row>
-								<ui-table-cell>Widget D</ui-table-cell>
-								<ui-table-cell>$49.99</ui-table-cell>
-								<ui-table-cell>50</ui-table-cell>
-							</ui-table-row>
-						</ui-table-body>
-					</ui-table>
-				</div>
-
-				<h4 class="text-lg font-semibold mb-4">Table Attributes</h4>
-				<div class="bg-zinc-100 p-4 rounded-lg text-sm">
-					<table class="w-full text-left">
-						<tr class="border-b border-zinc-300"><th class="pb-2">Attribute</th><th class="pb-2">Description</th></tr>
-						<tr><td class="py-1"><code>striped</code></td><td>Alternating row background colors</td></tr>
-						<tr><td class="py-1"><code>dense</code></td><td>Compact row spacing</td></tr>
-						<tr><td class="py-1"><code>grid</code></td><td>Show grid lines between cells</td></tr>
-						<tr><td class="py-1"><code>bleed</code></td><td>Allow content to bleed to edges</td></tr>
-					</table>
-				</div>
-			</section>
-
-			<!-- Dialogs Section -->
-			<section id="dialogs" class="styleguide-section mb-16">
-				<h3 class="text-2xl font-bold mb-2">Dialogs</h3>
-				<p class="text-zinc-500 mb-8">
-					Live <code>&lt;ui-dialog&gt;</code> components for modal interactions.
-				</p>
-
-				<h4 class="text-lg font-semibold mb-4">Basic Dialog</h4>
-				<p class="text-sm text-zinc-500 mb-4">Click the button to open a dialog. Press Escape or click outside to close.</p>
-				<div class="demo-box mb-4">
-					<ui-button color="blue" onclick="document.getElementById('demo-dialog-1').open()">Open Dialog</ui-button>
-
-					<ui-dialog id="demo-dialog-1" size="md">
-						<ui-dialog-title>Confirm Action</ui-dialog-title>
-						<ui-dialog-description>Are you sure you want to proceed with this action? This cannot be undone.</ui-dialog-description>
-						<ui-dialog-actions>
-							<ui-button plain onclick="this.closest('ui-dialog').close()">Cancel</ui-button>
-							<ui-button color="blue" onclick="this.closest('ui-dialog').close()">Confirm</ui-button>
-						</ui-dialog-actions>
-					</ui-dialog>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-dialog id="my-dialog" size="md"&gt;
-  &lt;ui-dialog-title&gt;Dialog Title&lt;/ui-dialog-title&gt;
-  &lt;ui-dialog-description&gt;Description text&lt;/ui-dialog-description&gt;
-  &lt;ui-dialog-actions&gt;
-    &lt;ui-button plain onclick="this.closest('ui-dialog').close()"&gt;Cancel&lt;/ui-button&gt;
-    &lt;ui-button color="blue"&gt;Confirm&lt;/ui-button&gt;
-  &lt;/ui-dialog-actions&gt;
-&lt;/ui-dialog&gt;
-
-&lt;!-- Open with JavaScript --&gt;
-document.getElementById('my-dialog').open();</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Dialog with Body Content</h4>
-				<div class="demo-box mb-4">
-					<ui-button color="teal" onclick="document.getElementById('demo-dialog-2').open()">Open Form Dialog</ui-button>
-
-					<ui-dialog id="demo-dialog-2" size="lg">
-						<ui-dialog-title>Edit Profile</ui-dialog-title>
-						<ui-dialog-description>Update your profile information below.</ui-dialog-description>
-						<ui-dialog-body>
-							<ui-fieldset>
-								<ui-field>
-									<ui-label>Display Name</ui-label>
-									<ui-input placeholder="Enter your name..."></ui-input>
-								</ui-field>
-								<ui-field>
-									<ui-label>Bio</ui-label>
-									<ui-textarea placeholder="Tell us about yourself..." rows="3"></ui-textarea>
-								</ui-field>
-							</ui-fieldset>
-						</ui-dialog-body>
-						<ui-dialog-actions>
-							<ui-button plain onclick="this.closest('ui-dialog').close()">Cancel</ui-button>
-							<ui-button color="teal" onclick="this.closest('ui-dialog').close()">Save Changes</ui-button>
-						</ui-dialog-actions>
-					</ui-dialog>
-				</div>
-
-				<h4 class="text-lg font-semibold mb-4">Size Variants</h4>
-				<p class="text-sm text-zinc-500 mb-4">Available sizes: <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>2xl</code>, <code>3xl</code>, <code>4xl</code>, <code>5xl</code></p>
-				<div class="demo-box flex flex-wrap gap-3">
-					<ui-button outline onclick="document.getElementById('demo-dialog-xs').open()">XS Dialog</ui-button>
-					<ui-button outline onclick="document.getElementById('demo-dialog-xl').open()">XL Dialog</ui-button>
-
-					<ui-dialog id="demo-dialog-xs" size="xs">
-						<ui-dialog-title>Extra Small</ui-dialog-title>
-						<ui-dialog-description>This is an extra small dialog.</ui-dialog-description>
-						<ui-dialog-actions>
-							<ui-button color="blue" onclick="this.closest('ui-dialog').close()">OK</ui-button>
-						</ui-dialog-actions>
-					</ui-dialog>
-
-					<ui-dialog id="demo-dialog-xl" size="xl">
-						<ui-dialog-title>Extra Large Dialog</ui-dialog-title>
-						<ui-dialog-description>This dialog uses the XL size variant for wider content.</ui-dialog-description>
-						<ui-dialog-actions>
-							<ui-button plain onclick="this.closest('ui-dialog').close()">Close</ui-button>
-							<ui-button color="blue" onclick="this.closest('ui-dialog').close()">Continue</ui-button>
-						</ui-dialog-actions>
-					</ui-dialog>
-				</div>
-			</section>
-
-			<!-- Dropdowns Section -->
-			<section id="dropdowns" class="styleguide-section mb-16">
-				<h3 class="text-2xl font-bold mb-2">Dropdowns</h3>
-				<p class="text-zinc-500 mb-8">
-					Live <code>&lt;ui-dropdown&gt;</code> components for contextual menus.
-				</p>
-
-				<h4 class="text-lg font-semibold mb-4">Basic Dropdown</h4>
-				<div class="demo-box mb-4">
-					<ui-dropdown>
-						<ui-button slot="trigger" outline>
-							Options
-							<svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-							</svg>
-						</ui-button>
-						<ui-menu slot="menu">
-							<ui-menu-item>View Profile</ui-menu-item>
-							<ui-menu-item>Settings</ui-menu-item>
-							<ui-menu-separator></ui-menu-separator>
-							<ui-menu-item>Sign Out</ui-menu-item>
-						</ui-menu>
-					</ui-dropdown>
-				</div>
-				<pre class="bg-zinc-100 p-3 rounded-lg text-sm mb-8 overflow-x-auto"><code>&lt;ui-dropdown&gt;
-  &lt;ui-button slot="trigger" outline&gt;Options&lt;/ui-button&gt;
-  &lt;ui-menu slot="menu"&gt;
-    &lt;ui-menu-item&gt;View Profile&lt;/ui-menu-item&gt;
-    &lt;ui-menu-item&gt;Settings&lt;/ui-menu-item&gt;
-    &lt;ui-menu-separator&gt;&lt;/ui-menu-separator&gt;
-    &lt;ui-menu-item&gt;Sign Out&lt;/ui-menu-item&gt;
-  &lt;/ui-menu&gt;
-&lt;/ui-dropdown&gt;</code></pre>
-
-				<h4 class="text-lg font-semibold mb-4">Menu Items with Icons</h4>
-				<div class="demo-box">
-					<ui-dropdown>
-						<ui-button slot="trigger" color="indigo">
-							Account Menu
-							<svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-							</svg>
-						</ui-button>
-						<ui-menu slot="menu">
-							<ui-menu-item href="#dropdowns">
-								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-								</svg>
-								Profile
-							</ui-menu-item>
-							<ui-menu-item href="#dropdowns">
-								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-								</svg>
-								Settings
-							</ui-menu-item>
-							<ui-menu-separator></ui-menu-separator>
-							<ui-menu-item href="#dropdowns">
-								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-								</svg>
-								Sign Out
-							</ui-menu-item>
-						</ui-menu>
-					</ui-dropdown>
+				<h4 class="text-lg font-semibold mb-4">Alerts</h4>
+				<div class="space-y-4">
+					<div class="bg-blue-50/20 border border-blue-200 rounded-lg p-4 flex gap-3">
+						<svg class="w-5 h-5 shrink-0 mt-0.5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<div>
+							<p class="font-medium">Information</p>
+							<p class="text-sm text-zinc-600">This is an informational message to provide helpful context.</p>
+						</div>
+					</div>
+					<div class="bg-green-50/20 border border-green-200 rounded-lg p-4 flex gap-3">
+						<svg class="w-5 h-5 shrink-0 mt-0.5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<div>
+							<p class="font-medium">Success</p>
+							<p class="text-sm text-zinc-600">Your changes have been saved successfully.</p>
+						</div>
+					</div>
+					<div class="bg-amber-50/20 border border-amber-200 rounded-lg p-4 flex gap-3">
+						<svg class="w-5 h-5 shrink-0 mt-0.5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+						</svg>
+						<div>
+							<p class="font-medium">Warning</p>
+							<p class="text-sm text-zinc-600">Please review the form before submitting.</p>
+						</div>
+					</div>
+					<div class="bg-red-50/20 border border-red-200 rounded-lg p-4 flex gap-3">
+						<svg class="w-5 h-5 shrink-0 mt-0.5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<div>
+							<p class="font-medium">Error</p>
+							<p class="text-sm text-zinc-600">There was a problem processing your request.</p>
+						</div>
+					</div>
 				</div>
 			</section>
 
@@ -1265,416 +718,6 @@ document.getElementById('my-dialog').open();</code></pre>
 			</section>
 		</main>
 
-		<!-- Palette Panel -->
-		<main id="panel-palette" class="hidden">
-			<!-- Palette Header -->
-			<header class="mb-12">
-				<h2 class="font-display text-3xl font-bold mb-4">Semantic Color Palette</h2>
-				<p class="text-lg text-zinc-500 max-w-2xl">
-					Complete semantic color tokens from the design system. These variables map to primitive palette values and provide consistent theming across the application.
-				</p>
-			</header>
-
-			<!-- Brand Colors -->
-			<section class="mb-12">
-				<h3 class="text-2xl font-bold mb-2">Brand Colors</h3>
-				<p class="text-zinc-500 mb-6">Primary, secondary, and tertiary brand identity colors.</p>
-
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-					<!-- Primary -->
-					<div>
-						<h4 class="text-lg font-semibold mb-4">Primary</h4>
-						<div class="space-y-3">
-							<div>
-								<div class="swatch-wide" style="background: var(--brand-primary);"></div>
-								<p class="token-name mt-2">--brand-primary</p>
-								<p class="text-xs text-zinc-500">cool-midnight</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--brand-primary-muted);"></div>
-								<p class="token-name mt-2">--brand-primary-muted</p>
-								<p class="text-xs text-zinc-500">cool-deep-navy</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--brand-primary-soft);"></div>
-								<p class="token-name mt-2">--brand-primary-soft</p>
-								<p class="text-xs text-zinc-500">cool-dark-navy @ 80%</p>
-							</div>
-						</div>
-					</div>
-
-					<!-- Secondary -->
-					<div>
-						<h4 class="text-lg font-semibold mb-4">Secondary</h4>
-						<div class="space-y-3">
-							<div>
-								<div class="swatch-wide" style="background: var(--brand-secondary);"></div>
-								<p class="token-name mt-2">--brand-secondary</p>
-								<p class="text-xs text-zinc-500">cool-subtle-teal</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--brand-secondary-muted);"></div>
-								<p class="token-name mt-2">--brand-secondary-muted</p>
-								<p class="text-xs text-zinc-500">cool-smooth-teal</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--brand-secondary-soft);"></div>
-								<p class="token-name mt-2">--brand-secondary-soft</p>
-								<p class="text-xs text-zinc-500">cool-greyish-teal @ 80%</p>
-							</div>
-						</div>
-					</div>
-
-					<!-- Tertiary -->
-					<div>
-						<h4 class="text-lg font-semibold mb-4">Tertiary</h4>
-						<div class="space-y-3">
-							<div>
-								<div class="swatch-wide" style="background: var(--brand-tertiary);"></div>
-								<p class="token-name mt-2">--brand-tertiary</p>
-								<p class="text-xs text-zinc-500">warm-sunstruck-sand</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--brand-tertiary-muted);"></div>
-								<p class="token-name mt-2">--brand-tertiary-muted</p>
-								<p class="text-xs text-zinc-500">warm-greyish-taupe</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--brand-tertiary-soft);"></div>
-								<p class="token-name mt-2">--brand-tertiary-soft</p>
-								<p class="text-xs text-zinc-500">warm-redish-brown @ 80%</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Surface Colors -->
-			<section class="mb-12">
-				<h3 class="text-2xl font-bold mb-2">Surface Colors</h3>
-				<p class="text-zinc-500 mb-6">Background and foreground colors for UI layers.</p>
-
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-					<!-- Canvas -->
-					<div>
-						<h4 class="text-lg font-semibold mb-4">Canvas</h4>
-						<p class="text-xs text-zinc-500 mb-3">Pages, sections, regions</p>
-						<div class="space-y-3">
-							<div>
-								<div class="swatch-wide border border-zinc-200" style="background: var(--color-canvas);"></div>
-								<p class="token-name mt-2">--color-canvas</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-canvas-muted);"></div>
-								<p class="token-name mt-2">--color-canvas-muted</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-canvas-soft);"></div>
-								<p class="token-name mt-2">--color-canvas-soft</p>
-							</div>
-						</div>
-					</div>
-
-					<!-- Surface -->
-					<div>
-						<h4 class="text-lg font-semibold mb-4">Surface</h4>
-						<p class="text-xs text-zinc-500 mb-3">Cards, panels, modals</p>
-						<div class="space-y-3">
-							<div>
-								<div class="swatch-wide border border-zinc-200" style="background: var(--color-surface);"></div>
-								<p class="token-name mt-2">--color-surface</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-surface-muted);"></div>
-								<p class="token-name mt-2">--color-surface-muted</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-surface-soft);"></div>
-								<p class="token-name mt-2">--color-surface-soft</p>
-							</div>
-						</div>
-					</div>
-
-					<!-- Text -->
-					<div>
-						<h4 class="text-lg font-semibold mb-4">Text</h4>
-						<p class="text-xs text-zinc-500 mb-3">Text, icons, graphics</p>
-						<div class="space-y-3">
-							<div>
-								<div class="swatch-wide" style="background: var(--color-text);"></div>
-								<p class="token-name mt-2">--color-text</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-text-muted);"></div>
-								<p class="token-name mt-2">--color-text-muted</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-text-soft);"></div>
-								<p class="token-name mt-2">--color-text-soft</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Border & Outline Colors -->
-			<section class="mb-12">
-				<h3 class="text-2xl font-bold mb-2">Border & Outline Colors</h3>
-				<p class="text-zinc-500 mb-6">Dividers, separators, focus rings, and selection indicators.</p>
-
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-					<!-- Border -->
-					<div>
-						<h4 class="text-lg font-semibold mb-4">Border</h4>
-						<p class="text-xs text-zinc-500 mb-3">Inner outline ring</p>
-						<div class="space-y-3">
-							<div>
-								<div class="swatch-wide" style="background: var(--color-border);"></div>
-								<p class="token-name mt-2">--color-border</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-border-muted);"></div>
-								<p class="token-name mt-2">--color-border-muted</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-border-soft);"></div>
-								<p class="token-name mt-2">--color-border-soft</p>
-							</div>
-						</div>
-					</div>
-
-					<!-- Outline -->
-					<div>
-						<h4 class="text-lg font-semibold mb-4">Outline</h4>
-						<p class="text-xs text-zinc-500 mb-3">Outer outline ring</p>
-						<div class="space-y-3">
-							<div>
-								<div class="swatch-wide" style="background: var(--color-outline);"></div>
-								<p class="token-name mt-2">--color-outline</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-outline-muted);"></div>
-								<p class="token-name mt-2">--color-outline-muted</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-outline-soft);"></div>
-								<p class="token-name mt-2">--color-outline-soft</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Depth Colors -->
-			<section class="mb-12">
-				<h3 class="text-2xl font-bold mb-2">Depth Colors</h3>
-				<p class="text-zinc-500 mb-6">Backdrop, overlay, and shadow colors for elevation and layering.</p>
-
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-					<!-- Backdrop -->
-					<div>
-						<h4 class="text-lg font-semibold mb-4">Backdrop</h4>
-						<p class="text-xs text-zinc-500 mb-3">::after pseudo-elements</p>
-						<div class="space-y-3">
-							<div>
-								<div class="swatch-wide" style="background: var(--color-backdrop);"></div>
-								<p class="token-name mt-2">--color-backdrop</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-backdrop-muted);"></div>
-								<p class="token-name mt-2">--color-backdrop-muted</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-backdrop-soft);"></div>
-								<p class="token-name mt-2">--color-backdrop-soft</p>
-							</div>
-						</div>
-					</div>
-
-					<!-- Overlay -->
-					<div>
-						<h4 class="text-lg font-semibold mb-4">Overlay</h4>
-						<p class="text-xs text-zinc-500 mb-3">::before pseudo-elements</p>
-						<div class="space-y-3">
-							<div>
-								<div class="swatch-wide" style="background: var(--color-overlay);"></div>
-								<p class="token-name mt-2">--color-overlay</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-overlay-muted);"></div>
-								<p class="token-name mt-2">--color-overlay-muted</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-overlay-soft);"></div>
-								<p class="token-name mt-2">--color-overlay-soft</p>
-							</div>
-						</div>
-					</div>
-
-					<!-- Shadow -->
-					<div>
-						<h4 class="text-lg font-semibold mb-4">Shadow</h4>
-						<p class="text-xs text-zinc-500 mb-3">Elevation & depth</p>
-						<div class="space-y-3">
-							<div>
-								<div class="swatch-wide" style="background: var(--color-shadow);"></div>
-								<p class="token-name mt-2">--color-shadow</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-shadow-muted);"></div>
-								<p class="token-name mt-2">--color-shadow-muted</p>
-							</div>
-							<div>
-								<div class="swatch-wide" style="background: var(--color-shadow-soft);"></div>
-								<p class="token-name mt-2">--color-shadow-soft</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Component Alpha Tokens -->
-			<section class="mb-12">
-				<h3 class="text-2xl font-bold mb-2">Component Alpha Tokens</h3>
-				<p class="text-zinc-500 mb-6">Translucent colors for blending and OKLCH-compatible effects.</p>
-
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-					<div>
-						<h4 class="text-sm font-semibold mb-3">Depth</h4>
-						<div class="space-y-2">
-							<div>
-								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--depth-dark-charcoal));"></div>
-								<p class="token-name mt-1">--depth-dark-charcoal</p>
-							</div>
-							<div>
-								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--depth-soft-charcoal));"></div>
-								<p class="token-name mt-1">--depth-soft-charcoal</p>
-							</div>
-							<div>
-								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--depth-light-black));"></div>
-								<p class="token-name mt-1">--depth-light-black</p>
-							</div>
-						</div>
-					</div>
-
-					<div>
-						<h4 class="text-sm font-semibold mb-3">Cover</h4>
-						<div class="space-y-2">
-							<div>
-								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--cover-dark-barely-crimson));"></div>
-								<p class="token-name mt-1">--cover-dark-barely-crimson</p>
-							</div>
-							<div>
-								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--cover-shadowy));"></div>
-								<p class="token-name mt-1">--cover-shadowy</p>
-							</div>
-							<div>
-								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--cover-soft-black));"></div>
-								<p class="token-name mt-1">--cover-soft-black</p>
-							</div>
-						</div>
-					</div>
-
-					<div>
-						<h4 class="text-sm font-semibold mb-3">Ring (Light)</h4>
-						<div class="space-y-2">
-							<div>
-								<div class="h-8 rounded bg-zinc-800" style="box-shadow: inset 0 0 0 2px rgb(var(--ring-translucent-white));"></div>
-								<p class="token-name mt-1">--ring-translucent-white</p>
-							</div>
-							<div>
-								<div class="h-8 rounded bg-zinc-800" style="box-shadow: inset 0 0 0 2px rgb(var(--ring-subtle-white));"></div>
-								<p class="token-name mt-1">--ring-subtle-white</p>
-							</div>
-							<div>
-								<div class="h-8 rounded bg-zinc-800" style="box-shadow: inset 0 0 0 2px rgb(var(--ring-faint-white));"></div>
-								<p class="token-name mt-1">--ring-faint-white</p>
-							</div>
-						</div>
-					</div>
-
-					<div>
-						<h4 class="text-sm font-semibold mb-3">Ring (Dark)</h4>
-						<div class="space-y-2">
-							<div>
-								<div class="h-8 rounded bg-zinc-100" style="box-shadow: inset 0 0 0 2px rgb(var(--ring-subtle-black));"></div>
-								<p class="token-name mt-1">--ring-subtle-black</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Gradient Tokens -->
-			<section class="mb-12">
-				<h3 class="text-2xl font-bold mb-2">Gradient Tokens</h3>
-				<p class="text-zinc-500 mb-6">Pre-defined gradients for cards, overlays, and UI treatments.</p>
-
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-					<div>
-						<div class="h-24 rounded-lg" style="background: var(--linear-card-overlay);"></div>
-						<p class="token-name mt-2">--linear-card-overlay</p>
-						<p class="text-xs text-zinc-500">Card overlay gradient (light)</p>
-					</div>
-					<div>
-						<div class="h-24 rounded-lg" style="background: var(--linear-card-overlay-dark);"></div>
-						<p class="token-name mt-2">--linear-card-overlay-dark</p>
-						<p class="text-xs text-zinc-500">Card overlay gradient (dark)</p>
-					</div>
-					<div>
-						<div class="h-24 rounded-lg" style="background: var(--linear-treatment-card);"></div>
-						<p class="token-name mt-2">--linear-treatment-card</p>
-						<p class="text-xs text-zinc-500">Treatment card gradient</p>
-					</div>
-					<div>
-						<div class="h-24 rounded-lg" style="background: var(--linear-treatment-dialog);"></div>
-						<p class="token-name mt-2">--linear-treatment-dialog</p>
-						<p class="text-xs text-zinc-500">Dialog treatment gradient</p>
-					</div>
-					<div>
-						<div class="h-24 rounded-lg" style="background: var(--linear-feature-overlay);"></div>
-						<p class="token-name mt-2">--linear-feature-overlay</p>
-						<p class="text-xs text-zinc-500">Feature section overlay</p>
-					</div>
-					<div>
-						<div class="h-24 rounded-lg" style="background: var(--linear-button-teal);"></div>
-						<p class="token-name mt-2">--linear-button-teal</p>
-						<p class="text-xs text-zinc-500">Teal button gradient</p>
-					</div>
-				</div>
-			</section>
-
-			<!-- Usage Examples -->
-			<section class="mb-12">
-				<h3 class="text-2xl font-bold mb-2">Usage Examples</h3>
-				<p class="text-zinc-500 mb-6">How to use semantic tokens in CSS.</p>
-
-				<div class="demo-box">
-					<pre class="bg-zinc-100 p-4 rounded-lg text-sm overflow-x-auto"><code>/* Brand colors */
-.button-primary {
-  background: var(--brand-primary);
-  color: var(--color-canvas);
-}
-
-/* Surface layering */
-.card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-}
-
-/* Text hierarchy */
-.heading { color: var(--color-text); }
-.subtext { color: var(--color-text-muted); }
-.caption { color: var(--color-text-soft); }
-
-/* Overlay with gradient */
-.hero::before {
-  background: var(--linear-feature-overlay);
-}</code></pre>
-				</div>
-			</section>
-		</main>
-
 		<!-- Footer -->
 		<footer class="text-center mt-12 pt-8 border-t border-zinc-200">
 			<p class="text-sm text-zinc-500">
@@ -1687,26 +730,25 @@ document.getElementById('my-dialog').open();</code></pre>
 	<!-- Tab Switching Script -->
 	<script>
 		function switchTab(tabId) {
-			const activeClass = 'rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary';
-			const inactiveClass = 'rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700';
-
 			// Update panels
 			document.getElementById('panel-versions').classList.toggle('hidden', tabId !== 'versions');
 			document.getElementById('panel-styleguide').classList.toggle('hidden', tabId !== 'styleguide');
-			document.getElementById('panel-palette').classList.toggle('hidden', tabId !== 'palette');
 
 			// Update desktop tab buttons
-			const tabs = ['versions', 'styleguide', 'palette'];
-			tabs.forEach(tab => {
-				const tabElement = document.getElementById('tab-' + tab);
-				if (tab === tabId) {
-					tabElement.className = activeClass;
-					tabElement.setAttribute('aria-current', 'page');
-				} else {
-					tabElement.className = inactiveClass;
-					tabElement.removeAttribute('aria-current');
-				}
-			});
+			const versionsTab = document.getElementById('tab-versions');
+			const styleguideTab = document.getElementById('tab-styleguide');
+
+			if (tabId === 'versions') {
+				versionsTab.className = 'rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary';
+				versionsTab.setAttribute('aria-current', 'page');
+				styleguideTab.className = 'rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700';
+				styleguideTab.removeAttribute('aria-current');
+			} else {
+				styleguideTab.className = 'rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary';
+				styleguideTab.setAttribute('aria-current', 'page');
+				versionsTab.className = 'rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700';
+				versionsTab.removeAttribute('aria-current');
+			}
 
 			// Update mobile select
 			document.getElementById('tab-select').value = tabId;
@@ -1718,11 +760,11 @@ document.getElementById('my-dialog').open();</code></pre>
 		// Handle initial load with hash
 		document.addEventListener('DOMContentLoaded', function() {
 			const hash = window.location.hash.replace('#', '');
-			if (hash === 'styleguide' || hash === 'versions' || hash === 'palette') {
+			if (hash === 'styleguide' || hash === 'versions') {
 				switchTab(hash);
 			} else if (hash) {
 				// If hash is a section anchor (like #colors), switch to styleguide
-				const styleguideAnchors = ['colors', 'typography', 'buttons', 'forms', 'cards', 'badges', 'avatars', 'tables', 'dialogs', 'dropdowns', 'spacing'];
+				const styleguideAnchors = ['colors', 'typography', 'buttons', 'forms', 'cards', 'status', 'spacing'];
 				if (styleguideAnchors.includes(hash)) {
 					switchTab('styleguide');
 				}
