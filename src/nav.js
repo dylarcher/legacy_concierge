@@ -864,7 +864,7 @@ class NavBar extends BaseComponent {
 		const headerClass = this.clsx(
 			isFixed ? "fixed" : "absolute",
 			"inset-x-0 top-0 z-50",
-			!isTransparent && "bg-canvas/92 backdrop-blur-sm",
+			!isTransparent && "--hues- backdrop-blur-sm",
 		);
 
 		// Build the header

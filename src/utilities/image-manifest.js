@@ -14,10 +14,11 @@
  * const resolvedPath = resolveImage(imagePath);
  */
 
-import birdsEyeViewOfCoastalTown from "./media/images/birds-eye-view-of-coastal-town.webp";
+import birdsEyeViewOfCoastalTown from "../assets/media/images/blue-green-waves-brown-beach.webp";
 // Hero banner images
-import blueGreenWavesBrownBeach from "./media/images/blue-green-waves-brown-beach.webp";
-import topDownViewOfRockyBeach from "./media/images/top-down-view-of-rocky-beach.webp";
+import blueGreenWavesBrownBeach from "../assets/media/images/blue-green-waves-brown-beach.webp";
+import palmFrawnsShilouette from "../assets/media/images/palm-frawns-silhouette.jpg";
+import topDownViewOfRockyBeach from "../assets/media/images/top-down-view-of-rocky-beach.webp";
 
 // Profile/avatar images
 // TODO: Add these imports once the placeholder images are created:
@@ -38,6 +39,7 @@ export const imageMap = {
 		topDownViewOfRockyBeach,
 	"/assets/media/images/birds-eye-view-of-coastal-town.webp":
 		birdsEyeViewOfCoastalTown,
+	"/assets/media/images/palm-frawns-silhouette.jpg.jpg": palmFrawnsShilouette,
 
 	// TODO: Uncomment once placeholder images are created:
 	// "/assets/media/images/placeholder-jason.webp": placeholderJason,

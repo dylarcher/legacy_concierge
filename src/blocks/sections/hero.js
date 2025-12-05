@@ -1,9 +1,9 @@
 // Import media assets so Vite can process them
 
-import { resolveImage } from "../../assets/image-manifest.js";
 import defaultHeroImage from "../../assets/media/images/blue-green-waves-brown-beach.webp";
 import videoMp4 from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.mp4?url";
 import videoWebm from "../../assets/media/videos/bg-crashing-waves-fullscreen-video.webm?url";
+import { resolveImage } from "../../utilities/image-manifest.js";
 import { BaseComponent, defineElement, resolvePath } from "../_base.js";
 
 /**
@@ -347,8 +347,7 @@ export class HeroBanner extends BaseComponent {
 			this.h(
 				"div",
 				{
-					class:
-						"mx-auto w-[80dvw] max-w-[120rem] px-6 pt-0 min-h-dvh flex items-center -mt-24",
+					class: "section-wrapper",
 				},
 				// Gradient blurs
 				...this._createGradientBlurs(),
