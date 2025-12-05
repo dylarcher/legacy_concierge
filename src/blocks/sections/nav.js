@@ -874,7 +874,7 @@ class NavBar extends BaseComponent {
 			// Container wrapper
 			this.h(
 				"div",
-				{ class: "card-shadow mx-auto max-w-7xl px-6 lg:px-8" },
+				{ class: "card-shadow mx-auto w-[80dvw] max-w-[120rem] px-6 lg:px-8" },
 				// Main nav
 				this.h(
 					"nav",

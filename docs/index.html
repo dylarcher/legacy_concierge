@@ -111,6 +111,7 @@
 				>
 					<option value="versions" selected>Version History</option>
 					<option value="styleguide">Styleguide</option>
+					<option value="palette">Color Palette</option>
 				</select>
 				<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end fill-gray-500">
 					<path d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" fill-rule="evenodd" />
@@ -134,6 +135,13 @@
 						class="rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700"
 					>
 						Styleguide
+					</button>
+					<button
+						id="tab-palette"
+						onclick="switchTab('palette')"
+						class="rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700"
+					>
+						Color Palette
 					</button>
 				</nav>
 			</div>
@@ -1257,6 +1265,416 @@ document.getElementById('my-dialog').open();</code></pre>
 			</section>
 		</main>
 
+		<!-- Palette Panel -->
+		<main id="panel-palette" class="hidden">
+			<!-- Palette Header -->
+			<header class="mb-12">
+				<h2 class="font-display text-3xl font-bold mb-4">Semantic Color Palette</h2>
+				<p class="text-lg text-zinc-500 max-w-2xl">
+					Complete semantic color tokens from the design system. These variables map to primitive palette values and provide consistent theming across the application.
+				</p>
+			</header>
+
+			<!-- Brand Colors -->
+			<section class="mb-12">
+				<h3 class="text-2xl font-bold mb-2">Brand Colors</h3>
+				<p class="text-zinc-500 mb-6">Primary, secondary, and tertiary brand identity colors.</p>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<!-- Primary -->
+					<div>
+						<h4 class="text-lg font-semibold mb-4">Primary</h4>
+						<div class="space-y-3">
+							<div>
+								<div class="swatch-wide" style="background: var(--brand-primary);"></div>
+								<p class="token-name mt-2">--brand-primary</p>
+								<p class="text-xs text-zinc-500">cool-midnight</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--brand-primary-muted);"></div>
+								<p class="token-name mt-2">--brand-primary-muted</p>
+								<p class="text-xs text-zinc-500">cool-deep-navy</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--brand-primary-soft);"></div>
+								<p class="token-name mt-2">--brand-primary-soft</p>
+								<p class="text-xs text-zinc-500">cool-dark-navy @ 80%</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Secondary -->
+					<div>
+						<h4 class="text-lg font-semibold mb-4">Secondary</h4>
+						<div class="space-y-3">
+							<div>
+								<div class="swatch-wide" style="background: var(--brand-secondary);"></div>
+								<p class="token-name mt-2">--brand-secondary</p>
+								<p class="text-xs text-zinc-500">cool-subtle-teal</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--brand-secondary-muted);"></div>
+								<p class="token-name mt-2">--brand-secondary-muted</p>
+								<p class="text-xs text-zinc-500">cool-smooth-teal</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--brand-secondary-soft);"></div>
+								<p class="token-name mt-2">--brand-secondary-soft</p>
+								<p class="text-xs text-zinc-500">cool-greyish-teal @ 80%</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Tertiary -->
+					<div>
+						<h4 class="text-lg font-semibold mb-4">Tertiary</h4>
+						<div class="space-y-3">
+							<div>
+								<div class="swatch-wide" style="background: var(--brand-tertiary);"></div>
+								<p class="token-name mt-2">--brand-tertiary</p>
+								<p class="text-xs text-zinc-500">warm-sunstruck-sand</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--brand-tertiary-muted);"></div>
+								<p class="token-name mt-2">--brand-tertiary-muted</p>
+								<p class="text-xs text-zinc-500">warm-greyish-taupe</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--brand-tertiary-soft);"></div>
+								<p class="token-name mt-2">--brand-tertiary-soft</p>
+								<p class="text-xs text-zinc-500">warm-redish-brown @ 80%</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Surface Colors -->
+			<section class="mb-12">
+				<h3 class="text-2xl font-bold mb-2">Surface Colors</h3>
+				<p class="text-zinc-500 mb-6">Background and foreground colors for UI layers.</p>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<!-- Canvas -->
+					<div>
+						<h4 class="text-lg font-semibold mb-4">Canvas</h4>
+						<p class="text-xs text-zinc-500 mb-3">Pages, sections, regions</p>
+						<div class="space-y-3">
+							<div>
+								<div class="swatch-wide border border-zinc-200" style="background: var(--color-canvas);"></div>
+								<p class="token-name mt-2">--color-canvas</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-canvas-muted);"></div>
+								<p class="token-name mt-2">--color-canvas-muted</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-canvas-soft);"></div>
+								<p class="token-name mt-2">--color-canvas-soft</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Surface -->
+					<div>
+						<h4 class="text-lg font-semibold mb-4">Surface</h4>
+						<p class="text-xs text-zinc-500 mb-3">Cards, panels, modals</p>
+						<div class="space-y-3">
+							<div>
+								<div class="swatch-wide border border-zinc-200" style="background: var(--color-surface);"></div>
+								<p class="token-name mt-2">--color-surface</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-surface-muted);"></div>
+								<p class="token-name mt-2">--color-surface-muted</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-surface-soft);"></div>
+								<p class="token-name mt-2">--color-surface-soft</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Text -->
+					<div>
+						<h4 class="text-lg font-semibold mb-4">Text</h4>
+						<p class="text-xs text-zinc-500 mb-3">Text, icons, graphics</p>
+						<div class="space-y-3">
+							<div>
+								<div class="swatch-wide" style="background: var(--color-text);"></div>
+								<p class="token-name mt-2">--color-text</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-text-muted);"></div>
+								<p class="token-name mt-2">--color-text-muted</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-text-soft);"></div>
+								<p class="token-name mt-2">--color-text-soft</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Border & Outline Colors -->
+			<section class="mb-12">
+				<h3 class="text-2xl font-bold mb-2">Border & Outline Colors</h3>
+				<p class="text-zinc-500 mb-6">Dividers, separators, focus rings, and selection indicators.</p>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<!-- Border -->
+					<div>
+						<h4 class="text-lg font-semibold mb-4">Border</h4>
+						<p class="text-xs text-zinc-500 mb-3">Inner outline ring</p>
+						<div class="space-y-3">
+							<div>
+								<div class="swatch-wide" style="background: var(--color-border);"></div>
+								<p class="token-name mt-2">--color-border</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-border-muted);"></div>
+								<p class="token-name mt-2">--color-border-muted</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-border-soft);"></div>
+								<p class="token-name mt-2">--color-border-soft</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Outline -->
+					<div>
+						<h4 class="text-lg font-semibold mb-4">Outline</h4>
+						<p class="text-xs text-zinc-500 mb-3">Outer outline ring</p>
+						<div class="space-y-3">
+							<div>
+								<div class="swatch-wide" style="background: var(--color-outline);"></div>
+								<p class="token-name mt-2">--color-outline</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-outline-muted);"></div>
+								<p class="token-name mt-2">--color-outline-muted</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-outline-soft);"></div>
+								<p class="token-name mt-2">--color-outline-soft</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Depth Colors -->
+			<section class="mb-12">
+				<h3 class="text-2xl font-bold mb-2">Depth Colors</h3>
+				<p class="text-zinc-500 mb-6">Backdrop, overlay, and shadow colors for elevation and layering.</p>
+
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<!-- Backdrop -->
+					<div>
+						<h4 class="text-lg font-semibold mb-4">Backdrop</h4>
+						<p class="text-xs text-zinc-500 mb-3">::after pseudo-elements</p>
+						<div class="space-y-3">
+							<div>
+								<div class="swatch-wide" style="background: var(--color-backdrop);"></div>
+								<p class="token-name mt-2">--color-backdrop</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-backdrop-muted);"></div>
+								<p class="token-name mt-2">--color-backdrop-muted</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-backdrop-soft);"></div>
+								<p class="token-name mt-2">--color-backdrop-soft</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Overlay -->
+					<div>
+						<h4 class="text-lg font-semibold mb-4">Overlay</h4>
+						<p class="text-xs text-zinc-500 mb-3">::before pseudo-elements</p>
+						<div class="space-y-3">
+							<div>
+								<div class="swatch-wide" style="background: var(--color-overlay);"></div>
+								<p class="token-name mt-2">--color-overlay</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-overlay-muted);"></div>
+								<p class="token-name mt-2">--color-overlay-muted</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-overlay-soft);"></div>
+								<p class="token-name mt-2">--color-overlay-soft</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- Shadow -->
+					<div>
+						<h4 class="text-lg font-semibold mb-4">Shadow</h4>
+						<p class="text-xs text-zinc-500 mb-3">Elevation & depth</p>
+						<div class="space-y-3">
+							<div>
+								<div class="swatch-wide" style="background: var(--color-shadow);"></div>
+								<p class="token-name mt-2">--color-shadow</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-shadow-muted);"></div>
+								<p class="token-name mt-2">--color-shadow-muted</p>
+							</div>
+							<div>
+								<div class="swatch-wide" style="background: var(--color-shadow-soft);"></div>
+								<p class="token-name mt-2">--color-shadow-soft</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Component Alpha Tokens -->
+			<section class="mb-12">
+				<h3 class="text-2xl font-bold mb-2">Component Alpha Tokens</h3>
+				<p class="text-zinc-500 mb-6">Translucent colors for blending and OKLCH-compatible effects.</p>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+					<div>
+						<h4 class="text-sm font-semibold mb-3">Depth</h4>
+						<div class="space-y-2">
+							<div>
+								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--depth-dark-charcoal));"></div>
+								<p class="token-name mt-1">--depth-dark-charcoal</p>
+							</div>
+							<div>
+								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--depth-soft-charcoal));"></div>
+								<p class="token-name mt-1">--depth-soft-charcoal</p>
+							</div>
+							<div>
+								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--depth-light-black));"></div>
+								<p class="token-name mt-1">--depth-light-black</p>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<h4 class="text-sm font-semibold mb-3">Cover</h4>
+						<div class="space-y-2">
+							<div>
+								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--cover-dark-barely-crimson));"></div>
+								<p class="token-name mt-1">--cover-dark-barely-crimson</p>
+							</div>
+							<div>
+								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--cover-shadowy));"></div>
+								<p class="token-name mt-1">--cover-shadowy</p>
+							</div>
+							<div>
+								<div class="h-8 rounded border border-zinc-200" style="background: rgb(var(--cover-soft-black));"></div>
+								<p class="token-name mt-1">--cover-soft-black</p>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<h4 class="text-sm font-semibold mb-3">Ring (Light)</h4>
+						<div class="space-y-2">
+							<div>
+								<div class="h-8 rounded bg-zinc-800" style="box-shadow: inset 0 0 0 2px rgb(var(--ring-translucent-white));"></div>
+								<p class="token-name mt-1">--ring-translucent-white</p>
+							</div>
+							<div>
+								<div class="h-8 rounded bg-zinc-800" style="box-shadow: inset 0 0 0 2px rgb(var(--ring-subtle-white));"></div>
+								<p class="token-name mt-1">--ring-subtle-white</p>
+							</div>
+							<div>
+								<div class="h-8 rounded bg-zinc-800" style="box-shadow: inset 0 0 0 2px rgb(var(--ring-faint-white));"></div>
+								<p class="token-name mt-1">--ring-faint-white</p>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<h4 class="text-sm font-semibold mb-3">Ring (Dark)</h4>
+						<div class="space-y-2">
+							<div>
+								<div class="h-8 rounded bg-zinc-100" style="box-shadow: inset 0 0 0 2px rgb(var(--ring-subtle-black));"></div>
+								<p class="token-name mt-1">--ring-subtle-black</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Gradient Tokens -->
+			<section class="mb-12">
+				<h3 class="text-2xl font-bold mb-2">Gradient Tokens</h3>
+				<p class="text-zinc-500 mb-6">Pre-defined gradients for cards, overlays, and UI treatments.</p>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+					<div>
+						<div class="h-24 rounded-lg" style="background: var(--linear-card-overlay);"></div>
+						<p class="token-name mt-2">--linear-card-overlay</p>
+						<p class="text-xs text-zinc-500">Card overlay gradient (light)</p>
+					</div>
+					<div>
+						<div class="h-24 rounded-lg" style="background: var(--linear-card-overlay-dark);"></div>
+						<p class="token-name mt-2">--linear-card-overlay-dark</p>
+						<p class="text-xs text-zinc-500">Card overlay gradient (dark)</p>
+					</div>
+					<div>
+						<div class="h-24 rounded-lg" style="background: var(--linear-treatment-card);"></div>
+						<p class="token-name mt-2">--linear-treatment-card</p>
+						<p class="text-xs text-zinc-500">Treatment card gradient</p>
+					</div>
+					<div>
+						<div class="h-24 rounded-lg" style="background: var(--linear-treatment-dialog);"></div>
+						<p class="token-name mt-2">--linear-treatment-dialog</p>
+						<p class="text-xs text-zinc-500">Dialog treatment gradient</p>
+					</div>
+					<div>
+						<div class="h-24 rounded-lg" style="background: var(--linear-feature-overlay);"></div>
+						<p class="token-name mt-2">--linear-feature-overlay</p>
+						<p class="text-xs text-zinc-500">Feature section overlay</p>
+					</div>
+					<div>
+						<div class="h-24 rounded-lg" style="background: var(--linear-button-teal);"></div>
+						<p class="token-name mt-2">--linear-button-teal</p>
+						<p class="text-xs text-zinc-500">Teal button gradient</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Usage Examples -->
+			<section class="mb-12">
+				<h3 class="text-2xl font-bold mb-2">Usage Examples</h3>
+				<p class="text-zinc-500 mb-6">How to use semantic tokens in CSS.</p>
+
+				<div class="demo-box">
+					<pre class="bg-zinc-100 p-4 rounded-lg text-sm overflow-x-auto"><code>/* Brand colors */
+.button-primary {
+  background: var(--brand-primary);
+  color: var(--color-canvas);
+}
+
+/* Surface layering */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+/* Text hierarchy */
+.heading { color: var(--color-text); }
+.subtext { color: var(--color-text-muted); }
+.caption { color: var(--color-text-soft); }
+
+/* Overlay with gradient */
+.hero::before {
+  background: var(--linear-feature-overlay);
+}</code></pre>
+				</div>
+			</section>
+		</main>
+
 		<!-- Footer -->
 		<footer class="text-center mt-12 pt-8 border-t border-zinc-200">
 			<p class="text-sm text-zinc-500">
@@ -1269,25 +1687,26 @@ document.getElementById('my-dialog').open();</code></pre>
 	<!-- Tab Switching Script -->
 	<script>
 		function switchTab(tabId) {
+			const activeClass = 'rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary';
+			const inactiveClass = 'rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700';
+
 			// Update panels
 			document.getElementById('panel-versions').classList.toggle('hidden', tabId !== 'versions');
 			document.getElementById('panel-styleguide').classList.toggle('hidden', tabId !== 'styleguide');
+			document.getElementById('panel-palette').classList.toggle('hidden', tabId !== 'palette');
 
 			// Update desktop tab buttons
-			const versionsTab = document.getElementById('tab-versions');
-			const styleguideTab = document.getElementById('tab-styleguide');
-
-			if (tabId === 'versions') {
-				versionsTab.className = 'rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary';
-				versionsTab.setAttribute('aria-current', 'page');
-				styleguideTab.className = 'rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700';
-				styleguideTab.removeAttribute('aria-current');
-			} else {
-				styleguideTab.className = 'rounded-md bg-primary/10 px-4 py-2 text-sm font-medium text-primary';
-				styleguideTab.setAttribute('aria-current', 'page');
-				versionsTab.className = 'rounded-md px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700';
-				versionsTab.removeAttribute('aria-current');
-			}
+			const tabs = ['versions', 'styleguide', 'palette'];
+			tabs.forEach(tab => {
+				const tabElement = document.getElementById('tab-' + tab);
+				if (tab === tabId) {
+					tabElement.className = activeClass;
+					tabElement.setAttribute('aria-current', 'page');
+				} else {
+					tabElement.className = inactiveClass;
+					tabElement.removeAttribute('aria-current');
+				}
+			});
 
 			// Update mobile select
 			document.getElementById('tab-select').value = tabId;
@@ -1299,7 +1718,7 @@ document.getElementById('my-dialog').open();</code></pre>
 		// Handle initial load with hash
 		document.addEventListener('DOMContentLoaded', function() {
 			const hash = window.location.hash.replace('#', '');
-			if (hash === 'styleguide' || hash === 'versions') {
+			if (hash === 'styleguide' || hash === 'versions' || hash === 'palette') {
 				switchTab(hash);
 			} else if (hash) {
 				// If hash is a section anchor (like #colors), switch to styleguide

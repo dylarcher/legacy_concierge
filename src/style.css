@@ -31,10 +31,6 @@
 		--color-fg-muted: var(--color-text-muted);
 		--color-fg-soft: var(--color-text-soft);
 		--color-fg-inverse: var(--color-canvas);
-		--color-canvastext: var(--color-text);
-		--color-canvastext-hover: var(--color-text-muted);
-		--color-canvastext-pressed: var(--color-text-soft);
-		--color-canvastext-disabled: var(--color-border-muted);
 
 		/** BACKGROUND ROLES */
 		--color-bg: var(--color-canvas);
@@ -221,7 +217,8 @@
 		filter: grayscale(0.36) opacity(0.12);
 	}
 	[role="banner" i] {
-		background-color: var(--color-canvas);
+		background-color: var(--color-canvas-muted);
+		box-shadow: 0 2px 6px -4px var(--brand-primary-muted);
 	}
 }
 
@@ -249,7 +246,7 @@
 		left: 0;
 		block-size: 100%;
 		min-inline-size: 2rem;
-		background: var(--brand-tertiary);
+		background: var(--brand-secondary-muted);
 		border-radius: 2px;
 		cursor: grab;
 		transition:
@@ -257,7 +254,7 @@
 			transform 0.12s;
 
 		&:hover {
-			background: var(--brand-primary);
+			background: var(--brand-secondary);
 		}
 
 		&:active {
