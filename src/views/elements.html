@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="color-scheme" content="light dark">
+	<title>Element Templates - Tailwind CSS Plus</title>
+	<link href="../style.css" rel="stylesheet">
+	<style>
+		/* Anchor offset for sticky nav */
+		:target {
+			scroll-margin-top: 5rem;
+		}
+
+		/* Demo container */
+		.demo-box {
+			background: var(--color-surface);
+			border: 1px solid var(--color-border);
+			border-radius: 0.75rem;
+			padding: 1.5rem;
+		}
+
+		/* Code blocks */
+		pre.code {
+			background: var(--color-text);
+			color: var(--color-canvas);
+			border-radius: 0.5rem;
+			padding: 1rem;
+			overflow-x: auto;
+			font-family: var(--font-code, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+			font-size: 0.8125rem;
+			line-height: 1.6;
+			margin: 0;
+		}
+
+		/* Property tables */
+		.props-table {
+			width: 100%;
+			font-size: 0.875rem;
+			border-collapse: collapse;
+		}
+
+		.props-table th,
+		.props-table td {
+			text-align: left;
+			padding: 0.5rem 0.75rem;
+			border-bottom: 1px solid var(--color-border);
+		}
+
+		.props-table th {
+			font-weight: 600;
+			color: var(--color-text-muted);
+			font-size: 0.75rem;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+
+		.props-table code {
+			font-size: 0.8125rem;
+			color: var(--brand-secondary);
+		}
+	</style>
+</head>
+
+<body class="bg-depth-1 text-canvas antialiased">
+	<!-- Navigation -->
+	<nav class="fixed top-0 inset-x-0 z-50 bg-canvas border-b border-muted">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="flex items-center h-14 gap-6 overflow-x-auto">
+				<span class="font-semibold text-sm whitespace-nowrap">Elements</span>
+				<div class="flex items-center gap-1 text-sm">
+					<a href="#buttons" class="px-2 py-1 text-muted hover:text-canvas rounded">Buttons</a>
+					<a href="#inputs" class="px-2 py-1 text-muted hover:text-canvas rounded">Inputs</a>
+					<a href="#selects" class="px-2 py-1 text-muted hover:text-canvas rounded">Select</a>
+					<a href="#textareas" class="px-2 py-1 text-muted hover:text-canvas rounded">Textarea</a>
+					<a href="#checkboxes" class="px-2 py-1 text-muted hover:text-canvas rounded">Checkbox</a>
+					<a href="#radios" class="px-2 py-1 text-muted hover:text-canvas rounded">Radio</a>
+					<a href="#switches" class="px-2 py-1 text-muted hover:text-canvas rounded">Switch</a>
+					<a href="#badges" class="px-2 py-1 text-muted hover:text-canvas rounded">Badge</a>
+					<a href="#avatars" class="px-2 py-1 text-muted hover:text-canvas rounded">Avatar</a>
+					<a href="#fieldsets" class="px-2 py-1 text-muted hover:text-canvas rounded">Fieldset</a>
+					<a href="#headings" class="px-2 py-1 text-muted hover:text-canvas rounded">Heading</a>
+					<a href="#text" class="px-2 py-1 text-muted hover:text-canvas rounded">Text</a>
+					<a href="#dividers" class="px-2 py-1 text-muted hover:text-canvas rounded">Divider</a>
+					<a href="#tables" class="px-2 py-1 text-muted hover:text-canvas rounded">Table</a>
+					<a href="#description-lists" class="px-2 py-1 text-muted hover:text-canvas rounded">DL</a>
+					<a href="#dialogs" class="px-2 py-1 text-muted hover:text-canvas rounded">Dialog</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Content -->
+	<main class="pt-20 pb-16">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<!-- Header -->
+			<header class="mb-12">
+				<h1 class="text-2xl font-bold text-canvas mb-2">Tailwind CSS Plus Element Templates</h1>
+				<p class="text-muted max-w-2xl">
+					Factory functions for creating styled HTML elements. These are NOT Web Components &mdash;
+					they create standard elements with Tailwind CSS styling.
+				</p>
+			</header>
+
+			<!-- BUTTONS -->
+			<section id="buttons" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Buttons</h2>
+
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Solid Variants</p>
+					<div class="flex flex-wrap gap-2" id="button-solid-demo"></div>
+				</div>
+
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Outline &amp; Plain</p>
+					<div class="flex flex-wrap gap-2" id="button-outline-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createButton } from "../blocks/elements/actions/button.js";
+
+					const solidDemo = document.getElementById("button-solid-demo");
+					["dark/zinc", "blue", "indigo", "red", "green", "amber"].forEach(color => {
+						const btn = createButton({ color });
+						btn.textContent = color;
+						solidDemo.appendChild(btn);
+					});
+
+					const outlineDemo = document.getElementById("button-outline-demo");
+					const outline = createButton({ outline: true });
+					outline.textContent = "Outline";
+					outlineDemo.appendChild(outline);
+
+					const plain = createButton({ plain: true });
+					plain.textContent = "Plain";
+					outlineDemo.appendChild(plain);
+
+					const disabled = createButton({ disabled: true });
+					disabled.textContent = "Disabled";
+					outlineDemo.appendChild(disabled);
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>color</code></td><td>string</td><td>"dark/zinc"</td></tr>
+								<tr><td><code>outline</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>plain</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>href</code></td><td>string</td><td>null</td></tr>
+								<tr><td><code>disabled</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createButton } from "../blocks/elements/actions/button.js";
+
+const btn = createButton({ color: "blue" });
+btn.textContent = "Click me";
+
+// Outline button
+const outline = createButton({ outline: true });
+
+// Link styled as button
+const link = createButton({ href: "/page" });</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- INPUTS -->
+			<section id="inputs" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Inputs</h2>
+
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Input Types</p>
+					<div class="grid sm:grid-cols-3 gap-3" id="input-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createInput } from "../blocks/elements/forms/input.js";
+
+					const demoInput = document.getElementById("input-demo");
+					[
+						{ type: "text", placeholder: "Text input" },
+						{ type: "email", placeholder: "you@example.com" },
+						{ type: "password", placeholder: "Password" },
+						{ type: "number", placeholder: "123" },
+						{ type: "date" },
+						{ placeholder: "Disabled", disabled: true }
+					].forEach(opts => demoInput.appendChild(createInput(opts)));
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>type</code></td><td>string</td><td>"text"</td></tr>
+								<tr><td><code>placeholder</code></td><td>string</td><td>undefined</td></tr>
+								<tr><td><code>disabled</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>invalid</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createInput } from "../blocks/elements/forms/input.js";
+
+const input = createInput({
+  type: "email",
+  placeholder: "you@example.com"
+});
+
+// Invalid state
+const invalid = createInput({ invalid: true });</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- SELECTS -->
+			<section id="selects" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Select</h2>
+
+				<div class="demo-box mb-4">
+					<div class="grid sm:grid-cols-3 gap-3" id="select-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createSelect } from "../blocks/elements/forms/select.js";
+
+					const demoSelect = document.getElementById("select-demo");
+
+					demoSelect.appendChild(createSelect({
+						options: [
+							{ value: "", label: "Select option..." },
+							{ value: "1", label: "Option 1" },
+							{ value: "2", label: "Option 2" },
+							{ value: "3", label: "Option 3" }
+						]
+					}));
+
+					demoSelect.appendChild(createSelect({
+						disabled: true,
+						options: [{ value: "", label: "Disabled" }]
+					}));
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>options</code></td><td>Array</td><td>[]</td></tr>
+								<tr><td><code>multiple</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>disabled</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createSelect } from "../blocks/elements/forms/select.js";
+
+const select = createSelect({
+  options: [
+    { value: "us", label: "United States" },
+    { value: "ca", label: "Canada" }
+  ]
+});</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- TEXTAREAS -->
+			<section id="textareas" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Textarea</h2>
+
+				<div class="demo-box mb-4">
+					<div class="grid sm:grid-cols-2 gap-3" id="textarea-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createTextarea } from "../blocks/elements/forms/textarea.js";
+
+					const demoTextarea = document.getElementById("textarea-demo");
+					demoTextarea.appendChild(createTextarea({ placeholder: "Write your message...", rows: 3 }));
+					demoTextarea.appendChild(createTextarea({ placeholder: "Non-resizable", rows: 3, resizable: false }));
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>rows</code></td><td>number</td><td>3</td></tr>
+								<tr><td><code>resizable</code></td><td>boolean</td><td>true</td></tr>
+								<tr><td><code>placeholder</code></td><td>string</td><td>undefined</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createTextarea } from "../blocks/elements/forms/textarea.js";
+
+const textarea = createTextarea({
+  placeholder: "Enter description...",
+  rows: 4,
+  resizable: false
+});</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- CHECKBOXES -->
+			<section id="checkboxes" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Checkbox</h2>
+
+				<div class="demo-box mb-4">
+					<div class="flex flex-wrap gap-4" id="checkbox-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createCheckbox, createCheckboxField } from "../blocks/elements/forms/checkbox.js";
+
+					const demoCheckbox = document.getElementById("checkbox-demo");
+					["dark/zinc", "blue", "indigo", "red", "green"].forEach(color => {
+						demoCheckbox.appendChild(createCheckbox({ color, checked: color === "blue" }));
+					});
+				</script>
+
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">With Label</p>
+					<div id="checkbox-field-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createCheckboxField } from "../blocks/elements/forms/checkbox.js";
+
+					const demoCheckboxField = document.getElementById("checkbox-field-demo");
+					demoCheckboxField.appendChild(createCheckboxField({
+						checkboxOptions: { color: "blue" },
+						label: "Accept terms and conditions",
+						description: "You agree to our Terms of Service and Privacy Policy."
+					}));
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>color</code></td><td>string</td><td>"dark/zinc"</td></tr>
+								<tr><td><code>checked</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>disabled</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createCheckbox, createCheckboxField } from "../blocks/elements/forms/checkbox.js";
+
+const checkbox = createCheckbox({ color: "blue" });
+
+const field = createCheckboxField({
+  label: "Subscribe to newsletter",
+  description: "Get weekly updates"
+});</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- RADIOS -->
+			<section id="radios" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Radio</h2>
+
+				<div class="demo-box mb-4">
+					<div class="flex flex-wrap gap-4" id="radio-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createRadio } from "../blocks/elements/forms/radio.js";
+
+					const demoRadio = document.getElementById("radio-demo");
+					["dark/zinc", "blue", "indigo", "red", "green"].forEach((color, i) => {
+						demoRadio.appendChild(createRadio({ color, name: "color-demo", checked: i === 1 }));
+					});
+				</script>
+
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Radio Group</p>
+					<div id="radio-group-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createRadioGroup } from "../blocks/elements/forms/radio.js";
+
+					const demoRadioGroup = document.getElementById("radio-group-demo");
+					demoRadioGroup.appendChild(createRadioGroup({
+						name: "plan",
+						color: "blue",
+						options: [
+							{ value: "free", label: "Free", description: "Basic features" },
+							{ value: "pro", label: "Pro", description: "All features", checked: true },
+							{ value: "enterprise", label: "Enterprise", description: "Custom solutions" }
+						]
+					}));
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>color</code></td><td>string</td><td>"dark/zinc"</td></tr>
+								<tr><td><code>name</code></td><td>string</td><td>required</td></tr>
+								<tr><td><code>checked</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createRadio, createRadioGroup } from "../blocks/elements/forms/radio.js";
+
+const group = createRadioGroup({
+  name: "plan",
+  options: [
+    { value: "free", label: "Free" },
+    { value: "pro", label: "Pro", checked: true }
+  ]
+});</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- SWITCHES -->
+			<section id="switches" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Switch</h2>
+
+				<div class="demo-box mb-4">
+					<div class="flex flex-wrap gap-4" id="switch-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createSwitch } from "../blocks/elements/actions/switch.js";
+
+					const demoSwitch = document.getElementById("switch-demo");
+					["dark/zinc", "blue", "indigo", "red", "green"].forEach((color, i) => {
+						demoSwitch.appendChild(createSwitch({ color, checked: i === 1 || i === 2 }));
+					});
+				</script>
+
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">With Label</p>
+					<div id="switch-field-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createSwitchField } from "../blocks/elements/actions/switch.js";
+
+					const demoSwitchField = document.getElementById("switch-field-demo");
+					demoSwitchField.appendChild(createSwitchField({
+						switchOptions: { color: "blue", checked: true },
+						label: "Enable notifications",
+						description: "Receive email alerts for important updates."
+					}));
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>color</code></td><td>string</td><td>"dark/zinc"</td></tr>
+								<tr><td><code>checked</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>disabled</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createSwitch, createSwitchField } from "../blocks/elements/actions/switch.js";
+
+const toggle = createSwitch({ color: "blue" });
+
+const field = createSwitchField({
+  label: "Dark mode",
+  switchOptions: { checked: true }
+});</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- BADGES -->
+			<section id="badges" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Badge</h2>
+
+				<div class="demo-box mb-4">
+					<div class="flex flex-wrap gap-2" id="badge-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createBadge } from "../blocks/elements/badge.js";
+
+					const demoBadge = document.getElementById("badge-demo");
+					["zinc", "blue", "indigo", "red", "green", "amber", "purple", "pink"].forEach(color => {
+						const badge = createBadge({ color });
+						badge.textContent = color;
+						demoBadge.appendChild(badge);
+					});
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>color</code></td><td>string</td><td>"zinc"</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createBadge } from "../blocks/elements/badge.js";
+
+const badge = createBadge({ color: "green" });
+badge.textContent = "Active";
+
+const warning = createBadge({ color: "amber" });
+warning.textContent = "Pending";</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- AVATARS -->
+			<section id="avatars" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Avatar</h2>
+
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Sizes</p>
+					<div class="flex items-end gap-3" id="avatar-size-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createAvatar } from "../blocks/elements/avatar.js";
+
+					const demoAvatarSize = document.getElementById("avatar-size-demo");
+					["xs", "sm", "md", "lg", "xl"].forEach(size => {
+						demoAvatarSize.appendChild(createAvatar({ initials: size.toUpperCase(), size }));
+					});
+				</script>
+
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">With Image &amp; Square</p>
+					<div class="flex items-center gap-3" id="avatar-variants-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createAvatar } from "../blocks/elements/avatar.js";
+
+					const demoAvatarVariants = document.getElementById("avatar-variants-demo");
+					demoAvatarVariants.appendChild(createAvatar({
+						src: "https://i.pravatar.cc/150?img=1",
+						size: "lg"
+					}));
+					demoAvatarVariants.appendChild(createAvatar({
+						src: "https://i.pravatar.cc/150?img=2",
+						size: "lg",
+						square: true
+					}));
+					demoAvatarVariants.appendChild(createAvatar({ initials: "JD", size: "lg" }));
+					demoAvatarVariants.appendChild(createAvatar({ initials: "AB", size: "lg", square: true }));
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>src</code></td><td>string</td><td>undefined</td></tr>
+								<tr><td><code>initials</code></td><td>string</td><td>undefined</td></tr>
+								<tr><td><code>size</code></td><td>string</td><td>"md"</td></tr>
+								<tr><td><code>square</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createAvatar } from "../blocks/elements/avatar.js";
+
+// With image
+const avatar = createAvatar({
+  src: "/path/to/image.jpg",
+  size: "lg"
+});
+
+// With initials
+const initials = createAvatar({
+  initials: "JD",
+  square: true
+});</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- FIELDSETS -->
+			<section id="fieldsets" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Fieldset</h2>
+
+				<div class="demo-box mb-4" id="fieldset-demo"></div>
+
+				<script type="module">
+					import { createDescription, createErrorMessage, createField, createFieldset, createLabel, createLegend } from "../blocks/elements/forms/fieldset.js";
+					import { createInput } from "../blocks/elements/forms/input.js";
+
+					const demoFieldset = document.getElementById("fieldset-demo");
+
+					const fieldset = createFieldset();
+					fieldset.appendChild(createLegend({ text: "Account Details" }));
+
+					const emailField = createField();
+					emailField.appendChild(createLabel({ text: "Email" }));
+					emailField.appendChild(createInput({ type: "email", placeholder: "you@example.com" }));
+					emailField.appendChild(createDescription({ text: "We'll never share your email." }));
+					fieldset.appendChild(emailField);
+
+					const passwordField = createField();
+					passwordField.appendChild(createLabel({ text: "Password" }));
+					passwordField.appendChild(createInput({ type: "password", invalid: true }));
+					passwordField.appendChild(createErrorMessage({ text: "Password must be at least 8 characters." }));
+					fieldset.appendChild(passwordField);
+
+					demoFieldset.appendChild(fieldset);
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Functions</p>
+						<table class="props-table">
+							<tbody>
+								<tr><td><code>createFieldset()</code></td><td>Container</td></tr>
+								<tr><td><code>createLegend()</code></td><td>Fieldset title</td></tr>
+								<tr><td><code>createField()</code></td><td>Field wrapper</td></tr>
+								<tr><td><code>createLabel()</code></td><td>Input label</td></tr>
+								<tr><td><code>createDescription()</code></td><td>Help text</td></tr>
+								<tr><td><code>createErrorMessage()</code></td><td>Error text</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createFieldset, createField, createLabel } from "../blocks/elements/forms/fieldset.js";
+
+const fieldset = createFieldset();
+const field = createField();
+field.appendChild(createLabel({ text: "Name" }));
+field.appendChild(createInput());
+fieldset.appendChild(field);</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- HEADINGS -->
+			<section id="headings" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Heading</h2>
+
+				<div class="demo-box mb-4" id="heading-demo"></div>
+
+				<script type="module">
+					import { createHeading, createSubheading } from "../blocks/elements/heading.js";
+
+					const demoHeading = document.getElementById("heading-demo");
+
+					const h1 = createHeading({ level: 1 });
+					h1.textContent = "Heading Level 1";
+					demoHeading.appendChild(h1);
+
+					const h2 = createHeading({ level: 2 });
+					h2.textContent = "Heading Level 2";
+					demoHeading.appendChild(h2);
+
+					const h3 = createHeading({ level: 3 });
+					h3.textContent = "Heading Level 3";
+					demoHeading.appendChild(h3);
+
+					const sub = createSubheading();
+					sub.textContent = "This is a subheading with muted styling";
+					demoHeading.appendChild(sub);
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>level</code></td><td>number (1-6)</td><td>1</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createHeading, createSubheading } from "../blocks/elements/heading.js";
+
+const h1 = createHeading({ level: 1 });
+h1.textContent = "Page Title";
+
+const sub = createSubheading();
+sub.textContent = "Supporting text";</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- TEXT -->
+			<section id="text" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Text</h2>
+
+				<div class="demo-box mb-4" id="text-demo"></div>
+
+				<script type="module">
+					import { createCode, createStrong, createText, createTextLink } from "../blocks/elements/text.js";
+
+					const demoText = document.getElementById("text-demo");
+
+					const p = createText();
+					p.textContent = "This is a paragraph of text with proper styling for readability.";
+					demoText.appendChild(p);
+
+					const p2 = createText();
+					p2.appendChild(document.createTextNode("Text can include "));
+					p2.appendChild(createStrong("strong emphasis"));
+					p2.appendChild(document.createTextNode(" and "));
+					const code = createCode();
+					code.textContent = "inline code";
+					p2.appendChild(code);
+					p2.appendChild(document.createTextNode(" as well as "));
+					const link = createTextLink({ href: "#" });
+					link.textContent = "links";
+					p2.appendChild(link);
+					p2.appendChild(document.createTextNode("."));
+					demoText.appendChild(p2);
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Functions</p>
+						<table class="props-table">
+							<tbody>
+								<tr><td><code>createText()</code></td><td>Paragraph</td></tr>
+								<tr><td><code>createStrong()</code></td><td>Bold text</td></tr>
+								<tr><td><code>createCode()</code></td><td>Inline code</td></tr>
+								<tr><td><code>createTextLink()</code></td><td>Text link</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createText, createStrong, createCode } from "../blocks/elements/text.js";
+
+const p = createText();
+p.textContent = "Regular paragraph text.";
+
+const strong = createStrong("Bold text");
+const code = createCode();
+code.textContent = "console.log()";</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- DIVIDERS -->
+			<section id="dividers" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Divider</h2>
+
+				<div class="demo-box mb-4">
+					<p class="text-sm text-muted mb-4">Content above divider</p>
+					<div id="divider-demo"></div>
+					<p class="text-sm text-muted mt-4">Content below divider</p>
+				</div>
+
+				<script type="module">
+					import { createDivider } from "../blocks/elements/divider.js";
+
+					document.getElementById("divider-demo").appendChild(createDivider());
+				</script>
+
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Soft Variant</p>
+					<p class="text-sm text-muted mb-4">Content above</p>
+					<div id="divider-soft-demo"></div>
+					<p class="text-sm text-muted mt-4">Content below</p>
+				</div>
+
+				<script type="module">
+					import { createDivider } from "../blocks/elements/divider.js";
+
+					document.getElementById("divider-soft-demo").appendChild(createDivider({ soft: true }));
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>soft</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createDivider } from "../blocks/elements/divider.js";
+
+const divider = createDivider();
+const soft = createDivider({ soft: true });</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- TABLES -->
+			<section id="tables" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Table</h2>
+
+				<div class="demo-box mb-4" id="table-demo"></div>
+
+				<script type="module">
+					import { createTable, createTableBody, createTableCell, createTableHead, createTableHeader, createTableRow } from "../blocks/elements/layouts/table.js";
+
+					const demoTable = document.getElementById("table-demo");
+
+					const tableWrapper = createTable({ striped: true });
+					const table = tableWrapper._table;
+
+					const thead = createTableHead();
+					const headerRow = createTableRow();
+					["Name", "Email", "Role"].forEach(text => {
+						const th = createTableHeader();
+						th.textContent = text;
+						headerRow.appendChild(th);
+					});
+					thead.appendChild(headerRow);
+					table.appendChild(thead);
+
+					const tbody = createTableBody();
+					const data = [
+						["Alice Smith", "alice@example.com", "Admin"],
+						["Bob Johnson", "bob@example.com", "Editor"],
+						["Carol White", "carol@example.com", "Viewer"]
+					];
+					data.forEach(row => {
+						const tr = createTableRow({ striped: true });
+						row.forEach(text => {
+							const td = createTableCell({ striped: true });
+							td.textContent = text;
+							tr.appendChild(td);
+						});
+						tbody.appendChild(tr);
+					});
+					table.appendChild(tbody);
+
+					demoTable.appendChild(tableWrapper);
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>striped</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>dense</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>grid</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>bleed</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createTable, createTableHead, createTableBody,
+  createTableRow, createTableHeader, createTableCell } from "../blocks/elements/layouts/table.js";
+
+const wrapper = createTable({ striped: true });
+const table = wrapper._table;
+// Build table structure...</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- DESCRIPTION LISTS -->
+			<section id="description-lists" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Description List</h2>
+
+				<div class="demo-box mb-4" id="dl-demo"></div>
+
+				<script type="module">
+					import { createCompleteDescriptionList } from "../blocks/elements/layouts/description-list.js";
+
+					const demoDescriptionList = document.getElementById("dl-demo");
+					demoDescriptionList.appendChild(createCompleteDescriptionList({
+						items: [
+							{ term: "Full name", details: "Jane Cooper" },
+							{ term: "Email address", details: "jane@example.com" },
+							{ term: "Role", details: "Administrator" },
+							{ term: "Status", details: "Active" }
+						]
+					}));
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Functions</p>
+						<table class="props-table">
+							<tbody>
+								<tr><td><code>createDescriptionList()</code></td><td>Container</td></tr>
+								<tr><td><code>createDescriptionTerm()</code></td><td>dt element</td></tr>
+								<tr><td><code>createDescriptionDetails()</code></td><td>dd element</td></tr>
+								<tr><td><code>createCompleteDescriptionList()</code></td><td>From array</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createCompleteDescriptionList } from "../blocks/elements/layouts/description-list.js";
+
+const dl = createCompleteDescriptionList({
+  items: [
+    { term: "Name", details: "John Doe" },
+    { term: "Email", details: "john@example.com" }
+  ]
+});</pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- DIALOGS -->
+			<section id="dialogs" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Dialog</h2>
+
+				<div class="demo-box mb-4">
+					<div class="flex gap-3">
+						<button type="button" id="open-basic-dialog" class="btn-base btn-solid">
+							Open Basic Dialog
+						</button>
+						<button type="button" id="open-confirm-dialog" class="btn-base bg-status-error text-inverse hover:opacity-90">
+							Open Confirm Dialog
+						</button>
+					</div>
+				</div>
+
+				<div id="dialog-container"></div>
+
+				<script type="module">
+					import { createButton } from "../blocks/elements/actions/button.js";
+					import { createDialog, createDialogActions, createDialogBody } from "../blocks/elements/actions/dialog.js";
+
+					const container = document.getElementById("dialog-container");
+
+					// Basic dialog
+					const basicDialog = createDialog({
+						size: "md",
+						title: "Dialog Title",
+						description: "This is a basic dialog with a title and description."
+					});
+
+					const basicBody = createDialogBody();
+					basicBody.innerHTML = "<p class='text-sm text-muted'>Dialog content goes here. You can add any HTML content.</p>";
+					basicDialog._panel.appendChild(basicBody);
+
+					const basicActions = createDialogActions();
+					const closeBtn = createButton({ plain: true });
+					closeBtn.textContent = "Close";
+					closeBtn.addEventListener("click", () => basicDialog.close());
+					basicActions.appendChild(closeBtn);
+
+					const saveBtn = createButton({ color: "blue" });
+					saveBtn.textContent = "Save";
+					saveBtn.addEventListener("click", () => basicDialog.close());
+					basicActions.appendChild(saveBtn);
+					basicDialog._panel.appendChild(basicActions);
+
+					container.appendChild(basicDialog);
+
+					document.getElementById("open-basic-dialog").addEventListener("click", () => {
+						basicDialog.showModal();
+					});
+
+					// Confirm dialog
+					const confirmDialog = createDialog({
+						size: "sm",
+						title: "Delete Item?",
+						description: "This action cannot be undone. Are you sure you want to delete this item?"
+					});
+
+					const confirmActions = createDialogActions();
+					const cancelBtn = createButton({ plain: true });
+					cancelBtn.textContent = "Cancel";
+					cancelBtn.addEventListener("click", () => confirmDialog.close());
+					confirmActions.appendChild(cancelBtn);
+
+					const deleteBtn = createButton({ color: "red" });
+					deleteBtn.textContent = "Delete";
+					deleteBtn.addEventListener("click", () => confirmDialog.close());
+					confirmActions.appendChild(deleteBtn);
+					confirmDialog._panel.appendChild(confirmActions);
+
+					container.appendChild(confirmDialog);
+
+					document.getElementById("open-confirm-dialog").addEventListener("click", () => {
+						confirmDialog.showModal();
+					});
+				</script>
+
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Properties</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Prop</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>size</code></td><td>string</td><td>"lg"</td></tr>
+								<tr><td><code>title</code></td><td>string</td><td>undefined</td></tr>
+								<tr><td><code>description</code></td><td>string</td><td>undefined</td></tr>
+								<tr><td><code>open</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div>
+<pre class="code">import { createDialog, createDialogActions } from "../blocks/elements/actions/dialog.js";
+
+const dialog = createDialog({
+  size: "md",
+  title: "Confirm Action",
+  description: "Are you sure?"
+});
+
+dialog.showModal(); // Open
+dialog.close();     // Close</pre>
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="border-t border-muted py-8">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-sm text-muted">
+			Tailwind CSS Plus Element Templates
+		</div>
+	</footer>
+</body>
+
+</html>

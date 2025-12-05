@@ -1,294 +1,328 @@
-import { BaseComponent, defineElement } from "../_base.js";
+/**
+ * Table Element Templates
+ * Tailwind CSS Plus / Catalyst-style table templates
+ *
+ * @module elements/table
+ */
+
+import { clsx, createElement } from "../../utilities/dom.js";
 
 /**
- * Table component with configurable styles
- *
- * @element ui-table
- * @attr {boolean} bleed - Allow content to bleed to edges
- * @attr {boolean} dense - Use compact row spacing
- * @attr {boolean} grid - Show grid lines between cells
- * @attr {boolean} striped - Show alternating row colors
- *
- * @example
- * <ui-table striped>
- *   <ui-table-head>...</ui-table-head>
- *   <ui-table-body>...</ui-table-body>
- * </ui-table>
+ * Table wrapper styles
+ * @type {string}
  */
-export class Table extends BaseComponent {
-	static get observedAttributes() {
-		return ["bleed", "dense", "grid", "striped"];
-	}
+export const TABLE_WRAPPER = "flow-root";
 
-	connectedCallback() {
-		this.render();
-	}
+/**
+ * Table outer container styles (scrollable)
+ * @type {string}
+ */
+export const TABLE_OUTER = "-mx-[--gutter] overflow-x-auto whitespace-nowrap";
 
-	attributeChangedCallback() {
-		if (this.isConnected) {
-			this.render();
-		}
-	}
+/**
+ * Table inner container styles
+ * @type {string}
+ */
+export const TABLE_INNER =
+	"inline-block min-w-full align-middle sm:px-[--gutter]";
 
-	get tableOptions() {
-		return {
-			bleed: this.hasAttribute("bleed"),
-			dense: this.hasAttribute("dense"),
-			grid: this.hasAttribute("grid"),
-			striped: this.hasAttribute("striped"),
-		};
-	}
+/**
+ * Table inner container styles (no bleed)
+ * @type {string}
+ */
+export const TABLE_INNER_NO_BLEED =
+	"inline-block min-w-full align-middle sm:px-[--gutter]";
 
-	render() {
-		const { bleed } = this.tableOptions;
+/**
+ * Base table styles
+ * @type {string}
+ */
+export const TABLE_BASE = "min-w-full text-left text-sm/6 text-canvas";
 
-		const outerClasses =
-			"-mx-[var(--gutter,1.5rem)] overflow-x-auto whitespace-nowrap";
-		const innerClasses = this.clsx(
-			"inline-block min-w-full align-middle",
-			!bleed && "sm:px-[var(--gutter,1.5rem)]",
-		);
-		const tableClasses = "min-w-full text-left text-sm/6 text-zinc-950";
+/**
+ * Table head styles
+ * @type {string}
+ */
+export const TABLE_HEAD = "text-muted";
 
-		// Get existing children (ui-table-head, ui-table-body)
-		const children = Array.from(this.childNodes);
-		this.innerHTML = "";
+/**
+ * Table header cell styles
+ * @type {string}
+ */
+export const TABLE_HEADER = [
+	"border-b border-b-zinc-950/10 px-4 py-2 font-medium",
+	"first:pl-[--gutter] last:pr-[--gutter]",
+	"dark:border-b-white/10",
+].join(" ");
 
-		const wrapper = this.h(
-			"div",
-			{ class: "flow-root" },
-			this.h(
-				"div",
-				{ class: outerClasses },
-				this.h(
-					"div",
-					{ class: innerClasses },
-					this.h("table", { class: tableClasses }, ...children),
-				),
-			),
-		);
+/**
+ * Table header cell styles (no bleed)
+ * @type {string}
+ */
+export const TABLE_HEADER_NO_BLEED = "sm:first:pl-2 sm:last:pr-2";
 
-		this.appendChild(wrapper);
+/**
+ * Table header cell styles (grid mode)
+ * @type {string}
+ */
+export const TABLE_HEADER_GRID =
+	"border-l border-l-zinc-950/5 first:border-l-0 dark:border-l-white/5";
 
-		// Propagate options to child elements
-		this._propagateOptions();
-	}
+/**
+ * Table row styles
+ * @type {string}
+ */
+export const TABLE_ROW = "";
 
-	_propagateOptions() {
-		const options = this.tableOptions;
-		this.querySelectorAll(
-			"ui-table-head, ui-table-body, ui-table-row, ui-table-header, ui-table-cell",
-		).forEach((el) => {
-			el._tableOptions = options;
-			if (el.updateFromTable) el.updateFromTable();
-		});
-	}
+/**
+ * Table row styles (striped)
+ * @type {string}
+ */
+export const TABLE_ROW_STRIPED =
+	"even:bg-zinc-950/[2.5%] dark:even:bg-white/[2.5%]";
+
+/**
+ * Table row styles (clickable)
+ * @type {string}
+ */
+export const TABLE_ROW_CLICKABLE = [
+	"has-[[data-row-link]:focus-visible]:outline-2 has-[[data-row-link]:focus-visible]:-outline-offset-2 has-[[data-row-link]:focus-visible]:outline-blue-500",
+].join(" ");
+
+/**
+ * Table cell styles
+ * @type {string}
+ */
+export const TABLE_CELL = [
+	"relative px-4 first:pl-[--gutter] last:pr-[--gutter]",
+	"border-b border-zinc-950/5",
+	"dark:border-white/5",
+].join(" ");
+
+/**
+ * Table cell styles (no bleed)
+ * @type {string}
+ */
+export const TABLE_CELL_NO_BLEED = "sm:first:pl-2 sm:last:pr-2";
+
+/**
+ * Table cell styles (grid mode)
+ * @type {string}
+ */
+export const TABLE_CELL_GRID =
+	"border-l border-l-zinc-950/5 first:border-l-0 dark:border-l-white/5";
+
+/**
+ * Table cell styles (dense mode)
+ * @type {string}
+ */
+export const TABLE_CELL_DENSE = "py-2.5";
+
+/**
+ * Table cell styles (normal mode)
+ * @type {string}
+ */
+export const TABLE_CELL_NORMAL = "py-4";
+
+/**
+ * Table cell styles (striped, no bottom border)
+ * @type {string}
+ */
+export const TABLE_CELL_STRIPED = "border-b-0";
+
+/**
+ * Creates a table container with Tailwind CSS Plus styling
+ *
+ * @param {Object} options - Table configuration
+ * @param {boolean} [options.bleed=false] - Allow content to bleed to edges
+ * @param {boolean} [options.dense=false] - Use compact row spacing
+ * @param {boolean} [options.grid=false] - Show grid lines between cells
+ * @param {boolean} [options.striped=false] - Show alternating row colors
+ * @param {string} [options.className] - Additional classes
+ * @param {Object} [options.attributes] - Additional HTML attributes
+ * @returns {HTMLDivElement} Table wrapper containing table structure
+ */
+export function createTable(options = {}) {
+	const { bleed = false, className = "", attributes = {} } = options;
+
+	// Store options for child elements to access
+	const tableOptions = { ...options };
+
+	const tableElement = createElement("table", {
+		class: clsx(TABLE_BASE, className),
+		...attributes,
+	});
+
+	// Store options on table for reference by child creation functions
+	tableElement._tableOptions = tableOptions;
+
+	const innerContainer = createElement(
+		"div",
+		{
+			class: clsx(TABLE_INNER, !bleed && "sm:px-[--gutter]"),
+		},
+		tableElement,
+	);
+
+	const outerContainer = createElement(
+		"div",
+		{
+			class: TABLE_OUTER,
+		},
+		innerContainer,
+	);
+
+	const wrapper = createElement(
+		"div",
+		{
+			class: TABLE_WRAPPER,
+			style: "--gutter: 1.5rem",
+		},
+		outerContainer,
+	);
+
+	// Expose table element for adding rows
+	wrapper._table = tableElement;
+	wrapper._tableOptions = tableOptions;
+
+	return wrapper;
 }
 
 /**
- * Table head container
+ * Creates a table head element
  *
- * @element ui-table-head
+ * @param {Object} options - Table head configuration
+ * @param {string} [options.className] - Additional classes
+ * @returns {HTMLTableSectionElement} Table head element
  */
-export class TableHead extends BaseComponent {
-	connectedCallback() {
-		this.render();
-	}
+export function createTableHead(options = {}) {
+	const { className = "" } = options;
 
-	render() {
-		const classes = "text-zinc-500";
-		const children = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const thead = this.h("thead", { class: classes }, ...children);
-		this.appendChild(thead);
-	}
+	return createElement("thead", {
+		class: clsx(TABLE_HEAD, className),
+	});
 }
 
 /**
- * Table body container
+ * Creates a table body element
  *
- * @element ui-table-body
+ * @param {Object} options - Table body configuration
+ * @param {string} [options.className] - Additional classes
+ * @returns {HTMLTableSectionElement} Table body element
  */
-export class TableBody extends BaseComponent {
-	connectedCallback() {
-		this.render();
-	}
+export function createTableBody(options = {}) {
+	const { className = "" } = options;
 
-	render() {
-		const children = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const tbody = this.h("tbody", {}, ...children);
-		this.appendChild(tbody);
-	}
+	return createElement("tbody", {
+		class: className,
+	});
 }
 
 /**
- * Table row component
+ * Creates a table row element
  *
- * @element ui-table-row
- * @attr {string} href - Link URL for clickable row
- * @attr {string} target - Link target
- * @attr {string} title - Accessible title for row link
+ * @param {Object} options - Table row configuration
+ * @param {string} [options.href] - Link URL for clickable row
+ * @param {boolean} [options.striped=false] - Apply striped styling
+ * @param {string} [options.className] - Additional classes
+ * @returns {HTMLTableRowElement} Table row element
  */
-export class TableRow extends BaseComponent {
-	static get observedAttributes() {
-		return ["href", "target", "title"];
-	}
+export function createTableRow(options = {}) {
+	const { href, striped = false, className = "" } = options;
 
-	_tableOptions = { bleed: false, dense: false, grid: false, striped: false };
-
-	connectedCallback() {
-		this.render();
-	}
-
-	attributeChangedCallback() {
-		if (this.isConnected) {
-			this.render();
-		}
-	}
-
-	updateFromTable() {
-		if (this.isConnected) {
-			this.render();
-		}
-	}
-
-	render() {
-		const href = this.getAttribute("href");
-		const { striped } = this._tableOptions;
-
-		const classes = this.clsx(
-			href && [
-				"has-[[data-row-link]:focus-visible]:outline-2 has-[[data-row-link]:focus-visible]:-outline-offset-2 has-[[data-row-link]:focus-visible]:outline-blue-500",
-			],
-			striped && "even:bg-zinc-950/[2.5%]",
-		);
-
-		const children = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const tr = this.h("tr", { class: classes }, ...children);
-		this.appendChild(tr);
-
-		// Pass row context to cells
-		this.querySelectorAll("ui-table-cell").forEach((cell) => {
-			cell._rowOptions = {
-				href: this.getAttribute("href"),
-				target: this.getAttribute("target"),
-				title: this.getAttribute("title"),
-			};
-			if (cell.updateFromRow) cell.updateFromRow();
-		});
-	}
+	return createElement("tr", {
+		class: clsx(
+			TABLE_ROW,
+			striped && TABLE_ROW_STRIPED,
+			href && TABLE_ROW_CLICKABLE,
+			className,
+		),
+	});
 }
 
 /**
- * Table header cell
+ * Creates a table header cell element
  *
- * @element ui-table-header
+ * @param {Object} options - Table header cell configuration
+ * @param {boolean} [options.bleed=false] - Allow content to bleed
+ * @param {boolean} [options.grid=false] - Show grid lines
+ * @param {string} [options.className] - Additional classes
+ * @returns {HTMLTableCellElement} Table header cell element
  */
-export class TableHeader extends BaseComponent {
-	_tableOptions = { bleed: false, dense: false, grid: false, striped: false };
+export function createTableHeader(options = {}) {
+	const { bleed = false, grid = false, className = "" } = options;
 
-	connectedCallback() {
-		this.render();
-	}
-
-	updateFromTable() {
-		if (this.isConnected) {
-			this.render();
-		}
-	}
-
-	render() {
-		const { bleed, grid } = this._tableOptions;
-
-		const classes = this.clsx(
-			"border-b border-b-zinc-950/10 px-4 py-2 font-medium",
-			"first:pl-[var(--gutter,0.5rem)] last:pr-[var(--gutter,0.5rem)]",
-			grid && "border-l border-l-zinc-950/5 first:border-l-0",
-			!bleed && "sm:first:pl-1 sm:last:pr-1",
-			this.className,
-		);
-
-		const children = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const th = this.h("th", { class: classes }, ...children);
-		this.appendChild(th);
-	}
+	return createElement("th", {
+		class: clsx(
+			TABLE_HEADER,
+			!bleed && TABLE_HEADER_NO_BLEED,
+			grid && TABLE_HEADER_GRID,
+			className,
+		),
+	});
 }
 
 /**
- * Table data cell
+ * Creates a table data cell element
  *
- * @element ui-table-cell
+ * @param {Object} options - Table cell configuration
+ * @param {boolean} [options.bleed=false] - Allow content to bleed
+ * @param {boolean} [options.dense=false] - Use compact spacing
+ * @param {boolean} [options.grid=false] - Show grid lines
+ * @param {boolean} [options.striped=false] - Remove bottom border for striped tables
+ * @param {string} [options.className] - Additional classes
+ * @returns {HTMLTableCellElement} Table data cell element
  */
-export class TableCell extends BaseComponent {
-	_tableOptions = { bleed: false, dense: false, grid: false, striped: false };
-	_rowOptions = { href: null, target: null, title: null };
+export function createTableCell(options = {}) {
+	const {
+		bleed = false,
+		dense = false,
+		grid = false,
+		striped = false,
+		className = "",
+	} = options;
 
-	connectedCallback() {
-		this.render();
-	}
-
-	updateFromTable() {
-		if (this.isConnected) {
-			this.render();
-		}
-	}
-
-	updateFromRow() {
-		if (this.isConnected) {
-			this.render();
-		}
-	}
-
-	render() {
-		const { bleed, dense, grid, striped } = this._tableOptions;
-		const { href, target, title } = this._rowOptions;
-
-		const classes = this.clsx(
-			"relative px-4 first:pl-[var(--gutter,0.5rem)] last:pr-[var(--gutter,0.5rem)]",
-			!striped && "border-b border-zinc-950/5",
-			grid && "border-l border-l-zinc-950/5 first:border-l-0",
-			dense ? "py-2.5" : "py-4",
-			!bleed && "sm:first:pl-1 sm:last:pr-1",
-			this.className,
-		);
-
-		const children = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const td = this.h("td", { class: classes });
-
-		// Add row link if href is set
-		if (href) {
-			const isFirst =
-				this.parentElement?.querySelector("ui-table-cell") === this;
-			const link = this.h("a", {
-				"data-row-link": "",
-				href,
-				target: target || undefined,
-				"aria-label": title || undefined,
-				tabindex: isFirst ? "0" : "-1",
-				class: "absolute inset-0",
-			});
-			td.appendChild(link);
-		}
-
-		for (const child of children) {
-			td.appendChild(child);
-		}
-		this.appendChild(td);
-	}
+	return createElement("td", {
+		class: clsx(
+			TABLE_CELL,
+			!bleed && TABLE_CELL_NO_BLEED,
+			dense ? TABLE_CELL_DENSE : TABLE_CELL_NORMAL,
+			grid && TABLE_CELL_GRID,
+			striped && TABLE_CELL_STRIPED,
+			className,
+		),
+	});
 }
 
-defineElement("ui-table", Table);
-defineElement("ui-table-head", TableHead);
-defineElement("ui-table-body", TableBody);
-defineElement("ui-table-row", TableRow);
-defineElement("ui-table-header", TableHeader);
-defineElement("ui-table-cell", TableCell);
+/**
+ * Creates a table template element
+ *
+ * @param {Object} options - Table configuration
+ * @returns {HTMLTemplateElement} Template containing table markup
+ */
+export function createTableTemplate(options = {}) {
+	const template = document.createElement("template");
+	const table = createTable(options);
+	template.content.appendChild(table);
+	return template;
+}
+
+/**
+ * Pre-defined table templates for common use cases
+ */
+export const tableTemplates = {
+	/** Basic table */
+	basic: () => createTable(),
+
+	/** Striped table */
+	striped: () => createTable({ striped: true }),
+
+	/** Dense/compact table */
+	dense: () => createTable({ dense: true }),
+
+	/** Grid table */
+	grid: () => createTable({ grid: true }),
+
+	/** Full-width table (bleed) */
+	bleed: () => createTable({ bleed: true }),
+};

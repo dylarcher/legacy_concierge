@@ -9,7 +9,14 @@ import { join } from "node:path";
 const CUSTOM_COLORS = ["primary", "secondary", "tertiary", "accent", "muted"];
 const CUSTOM_FONTS = ["sans", "serif"];
 const VALID_PREFIXES = ["bg", "text", "border", "ring", "from", "to", "via"];
-const EXCLUDED_DIRS = ["node_modules", "dist", ".vscode", ".git", "scripts"];
+const EXCLUDED_DIRS = [
+	"node_modules",
+	"dist",
+	".vscode",
+	".git",
+	"scripts",
+	"docs",
+];
 
 // Semantic utility classes from design tokens (style.css @layer utilities)
 const SEMANTIC_UTILITIES = new Set([

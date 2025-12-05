@@ -7,20 +7,40 @@
 	<meta name="color-scheme" content="light">
 	<meta name="description"
 		content="Legacy Concierge provides premium concierge nursing services with personalized 1:1 care. Experience exceptional healthcare in the comfort of your home.">
+	<!-- Open Graph -->
 	<meta property="og:type" content="website">
 	<meta property="og:title" content="Legacy Concierge - Premium Concierge Nursing Services">
 	<meta property="og:description"
 		content="Experience personalized concierge nursing care tailored to your needs. Premium healthcare services in the comfort of your home.">
 	<meta property="og:url" content="https://legacyconcierge.com">
+	<meta property="og:image" content="https://legacyconcierge.com/assets/media/images/og-image.jpg">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Legacy Concierge - Premium Concierge Nursing Services">
+	<meta name="twitter:description"
+		content="Experience personalized concierge nursing care tailored to your needs. Premium healthcare services in the comfort of your home.">
+	<meta name="twitter:image" content="https://legacyconcierge.com/assets/media/images/og-image.jpg">
 	<title>Legacy Concierge &middot; premium concierge nursing services</title>
 	<link rel="canonical" href="https://legacyconcierge.com">
 	<link rel="icon" href="/favicon.svg">
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 	<link rel="mask-icon" href="/mask-icon.svg" color="#60aaa3">
+	<!-- Resource hints for performance -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+	<!-- Preload hero image for LCP -->
+	<link rel="preload" as="image" href="/assets/media/images/blue-green-waves-brown-beach.webp" type="image/webp">
 	<link href="style.css" rel="stylesheet">
 </head>
 
-<body role="document" class="bg-gray-100">
+<body role="document" class="bg-depth-1">
+	<!-- Skip link for accessibility - keyboard users can bypass navigation -->
+	<a href="#main"
+		class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-primary focus:px-4 focus:py-2 focus:rounded-md focus:shadow-lg focus:font-semibold">
+		Skip to main content
+	</a>
 	<div role="application" class="text-cyan-950">
 		<header class="card-shadow absolute bg-canvas inset-x-0 top-0 w-full z-50" role="banner">
 			<global-nav>
@@ -31,15 +51,45 @@
 				<a href="/pages/contact">Contact</a>
 			</global-nav>
 		</header>
-		<main role="main">
-			<!-- Hero Section -->
-			<hero-banner heading="YOUR HEALTH, OUR PURPOSE."
-				description="Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home."
-				primary-cta="CALL FOR MORE INFO" primary-href="/pages/contact" 
-				image="/assets/media/images/blue-green-waves-brown-beach.webp"></hero-banner>
+		<main id="main" role="main">
+						
+			<header class="hero-section">
+				<img role="presentation"
+					src="/assets/media/images/blue-green-waves-brown-beach.webp" alt
+					class="hero-bg-image mt-[5rem] opacity-72"
+				>
+
+				<div class="hero-content -mt-24">
+					<div class="items-center mr-auto w-full py-0 lg:w-2/3 text-left lg:text-left lg:mx-0 lg:flex-auto -mt-8 md:-mt-16">
+						<h1
+							class="text-white font-semibold font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-normal leading-tight text-balance">
+							<span>YOUR HEALTH,</span>
+							<span class="italic"> OUR PURPOSE.</span>
+						</h1>
+						<p
+							class="text-white mt-6 text-[clamp(1.125rem,3vw,1.75rem)] text-pretty font-medium text-shadow-lg leading-relaxed w-4/5 lg:w-2/3 max-w-4xl">
+							Refining Private Nursing with Expertise, Discretion, and Unparalleled Personalized Care at Home.</p>
+						<div class="mt-10 flex items-center pt-0 -mt-12 justify-start lg:justify-start gap-x-6">
+							<a
+								href="/pages/contact"
+								class="text-white bg-secondary/48 backdrop-blur-[2px] text-shadow-lg px-6 py-4 text-lg text-[clamp(1rem,1.5vw,1.25rem)] font-bold text-shadow-lg tracking-wider shadow-xs border-2 border-white/64 shadow-b-4xl rounded-full no-underline hover:bg-secondary/72 hover:backdrop-blur-[0px] transition-colors mt-12">
+								CALL FOR DETAILS
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<button type="button"
+					class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator rounded-full p-4 cursor-pointer transition-colors"
+					aria-label="Scroll to content"><svg class="size-8 text-white/70" fill="none" viewBox="0 0 24 24"
+						stroke-width="2" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+					</svg>
+				</button>
+			</header>
 
 			<section id="featured" class="py-24 overflow-x-hidden">
-				<header class="mx-auto max-w-7xl px-6 lg:px-8">
+				<header class="section-container">
 					<!-- Section Header -->
 					<div class="flex flex-wrap items-center justify-start gap-4 lg:justify-center md:gap-6 mb-8">
 						<h2
@@ -81,84 +131,73 @@
 						</p>
 					</div>
 				</header>
-				<div id="featured-cards"
-					class="scrollbar-minimal mt-11 flex items-stretch gap-6 sm:mt-16 px-4 sm:px-6 lg:px-8 overflow-x-auto 3xl:overflow-x-visible 2xl:justify-center pb-8 mb-8">
-					<div class="flex flex-col-reverse shrink-0 w-72 sm:w-80 2xl:w-[calc(20%-1.2rem)] 2xl:min-w-64">
-						<div class="relative flex-1 bg-accent p-6 rounded-b-lg">
-							<h3 class="font-serif italic text-[#231f20] text-2xl mb-3">
-								Loyalty
-							</h3>
-						<p class="text-primary text-sm lg:text-md">
+				<div id="featured-cards" class="cards-scroll-container">
+					<div class="feature-card">
+						<div class="feature-card-body">
+							<h3 class="feature-card-title">Loyalty</h3>
+							<p class="text-primary text-sm lg:text-md">
 								98% Retention Rate of Employees - Driven by our culture of
 								kindness and growth.
 							</p>
 						</div>
-						<div class="overflow-hidden rounded-t-lg">
+						<div class="feature-card-image-wrap">
 							<img src="/assets/media/images/muted/holding-hands.muted.webp"
-								alt="Green cardstock box containing white, beige, and brown cards."
-								class="aspect-square w-full object-cover object-bottom -my-8">
+								alt="Nurse holding patient's hands showing compassionate care" loading="lazy"
+								class="feature-card-image">
 						</div>
 					</div>
-					<div class="flex flex-col-reverse shrink-0 w-72 sm:w-80 2xl:w-[calc(20%-1.2rem)] 2xl:min-w-64">
-						<div class="relative flex-1 bg-accent p-6 rounded-b-lg">
-							<h3 class="font-serif italic text-[#231f20] text-2xl mb-3">
-								Personalized Care
-							</h3>
-						<p class="text-primary text-sm lg:text-md">
+					<div class="feature-card">
+						<div class="feature-card-body">
+							<h3 class="feature-card-title">Personalized Care</h3>
+							<p class="text-primary text-sm lg:text-md">
 								Custom plans designed for your specific health needs.
 							</p>
 						</div>
-						<div class="overflow-hidden rounded-t-lg">
+						<div class="feature-card-image-wrap">
 							<img src="/assets/media/images/grayscale/reviewing-medical-docs.grayscale.webp"
-								alt="Green cardstock box open with 50 cards inside."
-								class="aspect-square w-full object-cover object-bottom -my-8">
+								alt="Healthcare professional reviewing medical documents with patient" loading="lazy"
+								class="feature-card-image">
 						</div>
 					</div>
-					<div class="flex flex-col-reverse shrink-0 w-72 sm:w-80 2xl:w-[calc(20%-1.2rem)] 2xl:min-w-64">
-						<div class="relative flex-1 bg-accent p-6 rounded-b-lg">
-							<h3 class="font-serif italic text-[#231f20] text-2xl mb-3">
-								Elite Nurses
-							</h3>
-						<p class="text-primary text-sm lg:text-md">
+					<div class="feature-card">
+						<div class="feature-card-body">
+							<h3 class="feature-card-title">Elite Nurses</h3>
+							<p class="text-primary text-sm lg:text-md">
 								Only the top 3% of expertly vetted highly trained nurses.
 							</p>
 						</div>
-						<div class="overflow-hidden rounded-t-lg">
+						<div class="feature-card-image-wrap">
 							<img src="/assets/media/images/grayscale/elite-nurses-posing.grayscale.webp"
-								alt="Detail of white today card, beige next card, and brown someday card with dot grid."
-								class="aspect-square w-full object-cover object-bottom -my-8">
+								alt="Elite nursing team posing together in professional attire" loading="lazy"
+								class="feature-card-image">
 						</div>
 					</div>
-					<div class="flex flex-col-reverse shrink-0 w-72 sm:w-80 2xl:w-[calc(20%-1.2rem)] 2xl:min-w-64">
-						<div class="relative flex-1 bg-accent p-6 rounded-b-lg">
-							<h3 class="font-serif italic text-[#231f20] text-2xl mb-3">
-								Trusted Network
-							</h3>
-						<p class="text-primary text-sm lg:text-md">
+					<div class="feature-card">
+						<div class="feature-card-body">
+							<h3 class="feature-card-title">Trusted Network</h3>
+							<p class="text-primary text-sm lg:text-md">
 								Unmatched access to top medical partners across the United
 								States.
 							</p>
 						</div>
-						<div class="overflow-hidden rounded-t-lg">
+						<div class="feature-card-image-wrap">
 							<img src="/assets/media/images/muted/antique-couch-nurse-patient.muted.webp"
-								alt="Stack of three green cardstock boxes with 3 hole cutouts showing cards inside."
-								class="aspect-square w-full object-cover object-bottom -my-8">
+								alt="Nurse providing attentive care to patient in comfortable home setting"
+								loading="lazy" class="feature-card-image">
 						</div>
 					</div>
-					<div class="flex flex-col-reverse shrink-0 w-72 sm:w-80 2xl:w-[calc(20%-1.2rem)] 2xl:min-w-64">
-						<div class="relative flex-1 bg-accent p-6 rounded-b-lg">
-							<h3 class="font-serif italic text-[#231f20] text-2xl mb-3">
-								24/7 Care
-							</h3>
-						<p class="text-primary text-sm lg:text-md">
+					<div class="feature-card">
+						<div class="feature-card-body">
+							<h3 class="feature-card-title">24/7 Care</h3>
+							<p class="text-primary text-sm lg:text-md">
 								We manage all medical needs, freeing you to focus on yourself
 								and your family.
 							</p>
 						</div>
-						<div class="overflow-hidden rounded-t-lg">
+						<div class="feature-card-image-wrap">
 							<img src="/assets/media/images/muted/twenty-four-hour-care-tall.muted.webp"
-								alt="Stack of three green cardstock boxes with 3 hole cutouts showing cards inside."
-								class="aspect-square w-full object-cover object-bottom -my-8">
+								alt="Round-the-clock nursing care available 24 hours a day" loading="lazy"
+								class="feature-card-image">
 						</div>
 					</div>
 				</div>
@@ -170,7 +209,7 @@
 			<section id="compared" class="text-white relative isolate px-12 py-8">
 				<img class="absolute inset-0 -z-10 size-full object-cover object-right md:object-center"
 					src="/assets/media/images/nurse-adjusting-iv-medication.webp"
-					alt="Nurse adjusting IV medication for a patient.">
+					alt="Nurse adjusting IV medication for a patient" loading="lazy">
 				<div class="mx-auto my-8 max-w-7xl sm:px-6 lg:px-8">
 					<div
 						class="relative isolate overflow-hidden px-6 py-20 sm:rounded-3xl sm:px-10 sm:py-24 lg:py-24 xl:px-24">
@@ -188,7 +227,7 @@
 									<span>24/7 Oversight.</span>
 									<span>Infinite Dedication.</span>
 								</p>
-								<p class="text-md mt-6 text-gray-300">
+								<p class="text-md mt-6 text-soft">
 									Where traditional care ends, Legacy begins. While hospitals
 									and facilities divide attention among dozens of patients, we
 									dedicate one nurse to one client — ensuring round-the-clock
@@ -244,9 +283,9 @@
 			</section>
 
 			<section id="services" class="pt-24 pb-12">
-				<div class="mx-auto max-w-7xl px-6 lg:px-8">
-					<div class="text-center mb-12">
-						<h2 class="font-serif text-secondary text-3xl md:text-4xl lg:text-5xl mb-4 font-uppercase">
+				<div class="section-container">
+					<div class="section-header">
+						<h2 class="heading-section text-secondary mb-4 uppercase">
 							COMPREHENSIVE CARE SERVICES
 						</h2>
 						<p class="text-sm lg:text-md max-w-3xl mx-auto">
@@ -256,30 +295,12 @@
 						</p>
 					</div>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-						<button
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 transition-shadow text-center text-md font-bold">
-							Cardiac Care
-						</button>
-						<button
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 transition-shadow text-center text-md font-bold">
-							Geriatric Care
-						</button>
-						<button
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 transition-shadow text-center text-md font-bold">
-							Post-Surgical Recovery
-						</button>
-						<button
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 transition-shadow text-center text-md font-bold">
-							Palliative & Hospice
-						</button>
-						<button
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 transition-shadow text-center text-md font-bold">
-							Chronic Disease Management
-						</button>
-						<button
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 transition-shadow text-center text-md font-bold">
-							IV Therapy & Infusions
-						</button>
+						<button class="btn-service">Cardiac Care</button>
+						<button class="btn-service">Geriatric Care</button>
+						<button class="btn-service">Post-Surgical Recovery</button>
+						<button class="btn-service">Palliative &amp; Hospice</button>
+						<button class="btn-service">Chronic Disease Management</button>
+						<button class="btn-service">IV Therapy &amp; Infusions</button>
 					</div>
 				</div>
 			</section>
@@ -287,10 +308,11 @@
 			<section id="us-verse" class="pt-24 pb-12">
 				<div class="bg-accent/15 rounded-lg pt-4 mx-auto max-w-7xl px-6 lg:px-8">
 					<div class="px-6 mt-8 mb-12">
-						<h2 class="font-serif text-secondary text-xl sm:text-3xl md:text-4xl lg:text-5xl text-balance text-bold md:text-semibold mb-6">
-							<span class="text-bold">CONCIERGE NURSING</span> VS. HOME CARE
+						<h2
+							class="font-serif text-secondary text-xl sm:text-3xl md:text-4xl lg:text-5xl text-balance font-bold md:font-semibold mb-6">
+							<span class="font-bold">CONCIERGE NURSING</span> VS. HOME CARE
 						</h2>
-						<p class="text-sm lg:text-md text-zinc-600 max-w-3xl">
+						<p class="text-sm lg:text-md text-muted max-w-3xl">
 							Both services embody Legacy's commitment to compassion, dignity,
 							and excellence - but each is designed for a distinct level of
 							need.
@@ -300,64 +322,62 @@
 						<table class="w-full border-collapse">
 							<thead>
 								<tr class="bg-transparent">
-									<th class="px-6 py-4 text-left text-sm font-semibold border-b-2 border-primary/32 w-xs">
+									<th class="table-header-cell border-b-2 border-primary/32 w-32">
 										Service Type
 									</th>
-									<th
-										class="px-6 py-4 text-center text-sm font-semibold border-b-2 border-primary/36 bg-accent/24 rounded-tl-md rounded-tr-md w-sm">
+									<th class="table-header-cell text-center border-b-2 border-primary/36 bg-accent/24 rounded-tl-md rounded-tr-md w-48">
 										Concierge Nursing
 									</th>
-									<th
-										class="px-6 py-4 text-center text-sm font-semibold border-b-2 border-primary/32 w-sm">
+									<th class="table-header-cell text-center border-b-2 border-primary/32 w-48">
 										Home Care
 									</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr class="border-b border-primary/24">
-									<td class="px-6 py-4 text-sm font-semibold text-zinc-900">
+									<td class="table-body-cell text-canvas">
 										Who Provides Care
 									</td>
-									<td class="px-6 py-4 text-center text-sm bg-accent/24">
+									<td class="table-body-cell-center bg-accent/24">
 										Licensed Registered Nurses (RNs)
 									</td>
-									<td class="px-6 py-4 text-center text-sm text-zinc-600">
+									<td class="table-body-cell-center text-muted">
 										Certified Home Health Aides (HHAs)
 									</td>
 								</tr>
 								<tr class="border-b border-primary/24">
-									<td class="px-6 py-4 text-sm font-semibold text-zinc-900">
+									<td class="table-body-cell text-canvas">
 										Scope of Care
 									</td>
-									<td class="px-6 py-4 text-center text-sm bg-accent/24">
+									<td class="table-body-cell-center bg-accent/24">
 										Medical: clinical assessments, wound care, IV therapy,
 										medication management, symptom monitoring
 									</td>
-									<td class="px-6 py-4 text-center text-sm text-zinc-600">
+									<td class="table-body-cell-center text-muted">
 										Non-medical: companionship, mobility support, daily
 										activities, meal prep
 									</td>
 								</tr>
 								<tr class="border-b border-primary/24">
-									<td class="px-6 py-4 text-sm font-semibold text-zinc-900">
+									<td class="table-body-cell text-canvas">
 										Care Plan
 									</td>
-									<td class="px-6 py-4 text-center text-sm bg-accent/24">
+									<td class="table-body-cell-center bg-accent/24">
 										Customized medical oversight with physician coordination
 									</td>
-									<td class="px-6 py-4 text-center text-sm text-zinc-600">
+									<td class="table-body-cell-center text-muted">
 										Personalized lifestyle support plan
 									</td>
 								</tr>
 								<tr>
-									<td class="px-6 py-4 text-sm font-semibold text-zinc-900">
+									<td class="table-body-cell text-canvas">
 										When It's Best Used
 									</td>
-									<td class="px-6 py-4 text-center text-sm bg-accent/24 rounded-bl-md rounded-br-md">
+									<td class="table-body-cell-center bg-accent/24 rounded-bl-md rounded-br-md">
 										Post-surgery recovery, chronic illness, complex health
 										management
 									</td>
-									<td class="px-6 py-4 text-center text-sm text-zinc-600">
+									<td class="table-body-cell-center text-muted">
 										Daily assistance, independent living support, elder
 										companionship
 									</td>
@@ -399,28 +419,25 @@
 						</p>
 					</div>
 				</header>
-				<div id="treatment-cards"
-					class="scrollbar-minimal mt-11 flex items-stretch gap-6 sm:mt-16 px-4 sm:px-6 lg:px-8 overflow-x-auto 3xl:overflow-x-visible 2xl:justify-center pb-8 mb-8">
+				<div id="treatment-cards" class="cards-scroll-container">
 					<!-- Treatment Card A: Comprehensive Medical & Environmental Assessment -->
-					<div
-						class="relative shrink-0 w-80 sm:w-96 2xl:w-[calc(25%-1.5rem)] 2xl:min-w-80 rounded-2xl overflow-hidden group">
-						<div class="aspect-[7/8] overflow-hidden">
+					<div class="treatment-card group">
+						<div class="treatment-card-image-wrap">
 							<img src="/assets/media/images/grayscale/medica-professional-couch.grayscale.webp"
-								alt="Healthcare professional reviewing documents in a modern living room"
-								class="w-full h-full object-cover transition-transform duration-300">
+								alt="Healthcare professional reviewing documents in a modern living room" loading="lazy"
+								class="treatment-card-image">
 						</div>
-						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
-						</div>
-						<button type="button"
-							class="bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-colors outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100"
-							aria-label="Expand card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+						<div class="treatment-card-overlay"></div>
+						<button type="button" class="treatment-card-btn"
+							aria-label="Learn more about comprehensive medical and environmental assessment"
+							aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 								fill="currentColor" class="w-full bg-primary rounded-full">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 								<path
 									d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
 							</svg>
 						</button>
-						<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+						<div class="treatment-card-content">
 							<h3 class="font-semibold text-lg leading-tight">
 								Comprehensive Medical &amp;<br />Environmental Assessment
 							</h3>
@@ -428,25 +445,23 @@
 					</div>
 
 					<!-- Treatment Card B: Build Your Personalized Care Team -->
-					<div
-						class="relative shrink-0 w-80 sm:w-96 2xl:w-[calc(25%-1.5rem)] 2xl:min-w-80 rounded-2xl overflow-hidden group">
-						<div class="aspect-[7/8] overflow-hidden">
+					<div class="treatment-card group">
+						<div class="treatment-card-image-wrap">
 							<img src="/assets/media/images/grayscale/elite-nurses-posing.grayscale.webp"
-								alt="Healthcare team members posing together"
-								class="w-full h-full object-cover transition-transform duration-300">
+								alt="Healthcare team members posing together" loading="lazy"
+								class="treatment-card-image">
 						</div>
-						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
-						</div>
-						<button type="button"
-							class="bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-colors outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100"
-							aria-label="Expand card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+						<div class="treatment-card-overlay"></div>
+						<button type="button" class="treatment-card-btn"
+							aria-label="Learn more about building your personalized care team"
+							aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 								fill="currentColor" class="w-full bg-primary rounded-full">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 								<path
 									d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
 							</svg>
 						</button>
-						<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+						<div class="treatment-card-content">
 							<h3 class="font-semibold text-lg leading-tight">
 								Build Your<br />Personalized Care Team
 							</h3>
@@ -454,25 +469,23 @@
 					</div>
 
 					<!-- Treatment Card C: Develop & Approve Your Personalized Care Plan -->
-					<div
-						class="relative shrink-0 w-80 sm:w-96 2xl:w-[calc(25%-1.5rem)] 2xl:min-w-80 rounded-2xl overflow-hidden group">
-						<div class="aspect-[7/8] overflow-hidden">
+					<div class="treatment-card group">
+						<div class="treatment-card-image-wrap">
 							<img src="/assets/media/images/grayscale/reviewing-nutrition-diet.grayscale.webp"
 								alt="Healthcare professional reviewing nutrition and diet plan with patient"
-								class="w-full h-full object-cover transition-transform duration-300">
+								loading="lazy" class="treatment-card-image">
 						</div>
-						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
-						</div>
-						<button type="button"
-							class="bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-colors outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100"
-							aria-label="Expand card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+						<div class="treatment-card-overlay"></div>
+						<button type="button" class="treatment-card-btn"
+							aria-label="Learn more about developing and approving your personalized care plan"
+							aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 								fill="currentColor" class="w-full bg-primary rounded-full">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 								<path
 									d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
 							</svg>
 						</button>
-						<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+						<div class="treatment-card-content">
 							<h3 class="font-semibold text-lg leading-tight">
 								Develop &amp; Approve<br />Your Personalized Care Plan
 							</h3>
@@ -480,25 +493,23 @@
 					</div>
 
 					<!-- Treatment Card D: Begin Ongoing Clinical Oversight & Adaptive Care -->
-					<div
-						class="relative shrink-0 w-80 sm:w-96 2xl:w-[calc(25%-1.5rem)] 2xl:min-w-80 rounded-2xl overflow-hidden group">
-						<div class="aspect-[7/8] overflow-hidden">
+					<div class="treatment-card group">
+						<div class="treatment-card-image-wrap">
 							<img src="/assets/media/images/grayscale/loved-one-giving-patient-support.grayscale.webp"
-								alt="Loved one providing support to patient"
-								class="w-full h-full object-cover transition-transform duration-300">
+								alt="Loved one providing support to patient" loading="lazy"
+								class="treatment-card-image">
 						</div>
-						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
-						</div>
-						<button type="button"
-							class="bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-colors outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100"
-							aria-label="Expand card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+						<div class="treatment-card-overlay"></div>
+						<button type="button" class="treatment-card-btn"
+							aria-label="Learn more about ongoing clinical oversight and adaptive care"
+							aria-expanded="false"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 								fill="currentColor" class="w-full bg-primary rounded-full">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 								<path
 									d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
 							</svg>
 						</button>
-						<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+						<div class="treatment-card-content">
 							<h3 class="font-semibold text-lg leading-tight">
 								Begin Ongoing Clinical<br />Oversight &amp; Adaptive Care
 							</h3>
@@ -525,12 +536,12 @@
 			</section>
 
 			<section id="location" class="pt-18 pb-36">
-				<div class="mx-auto max-w-7xl px-6 lg:px-8">
-					<div class="text-center mb-12">
-						<h2 class="font-serif text-secondary text-3xl md:text-4xl lg:text-5xl mb-4 uppercase tracking-wide">
+				<div class="section-container">
+					<div class="section-header">
+						<h2 class="section-title">
 							Our Locations
 						</h2>
-						<p class="text-primary text-md tracking-sm">
+						<p class="section-subtitle">
 							Serving All of
 							<span class="font-serif italic font-medium">Southern California</span>
 						</p>
@@ -538,87 +549,72 @@
 
 					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 						<!-- Los Angeles County -->
-						<div class="relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-zinc-950/5 group">
-							<div class="text-white aspect-square overflow-hidden">
+						<div class="location-card">
+							<div class="location-card-image-wrap">
 								<img src="/assets/media/images/partial-palm-tree-frawns-at-dusk.webp"
-									alt="Los Angeles County"
-									class="w-full h-full object-cover transition-transform duration-300">
+									alt="Palm trees at dusk representing Los Angeles County" loading="lazy"
+									class="location-card-image">
 							</div>
-							<div
-								class="absolute inset-0 bg-linear-to-t from-zinc-900/90 via-zinc-900/50 to-transparent">
-							</div>
-							<div
-								class="text-white absolute bottom-0 left-0 right-0 h-full p-6 flex flex-col justify-between">
-								<h3 class="text-2xl font-serif font-bold italic mb-2">
+							<div class="location-card-overlay"></div>
+							<div class="location-card-content">
+								<h3 class="location-card-title">
 									Los Angeles County
 								</h3>
-								<a href="/pages/locations"
-									class="bg-white/80 text-primary inline-flex items-center gap-2 text-sm w-max font-semibold transition-colors px-6 py-2 rounded-full">
+								<a href="/pages/locations" class="location-card-link">
 									View Locations →
 								</a>
 							</div>
 						</div>
 
 						<!-- Orange County -->
-						<div
-							class="text-white relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-zinc-950/5 group">
-							<div class="aspect-square overflow-hidden">
+						<div class="location-card">
+							<div class="location-card-image-wrap">
 								<img src="/assets/media/images/birds-eye-view-of-coastal-town.webp"
-									alt="Orange County"
-									class="w-full h-full object-cover transition-transform duration-300">
+									alt="Aerial view of Orange County coastal town" loading="lazy"
+									class="location-card-image">
 							</div>
-							<div
-								class="absolute inset-0 bg-linear-to-t from-zinc-900/90 via-zinc-900/50 to-transparent">
-							</div>
-							<div class="absolute bottom-0 left-0 right-0 h-full p-6 flex flex-col justify-between">
-								<h3 class="text-white text-2xl font-serif font-bold italic mb-2">
+							<div class="location-card-overlay"></div>
+							<div class="location-card-content">
+								<h3 class="location-card-title">
 									Orange County
 								</h3>
-								<a href="/pages/locations"
-									class="bg-white/80 text-primary inline-flex items-center gap-2 text-sm w-max font-semibold transition-colors px-6 py-2 rounded-full">
+								<a href="/pages/locations" class="location-card-link">
 									View Locations →
 								</a>
 							</div>
 						</div>
 
 						<!-- San Diego County -->
-						<div
-							class="text-white relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-zinc-950/5 group">
-							<div class="aspect-square overflow-hidden">
-								<img src="/assets/media/images/scenic-beach-calm-waves-cove-cliffs.webp" alt="San Diego County"
-									class="w-full h-full object-cover transition-transform duration-300">
+						<div class="location-card">
+							<div class="location-card-image-wrap">
+								<img src="/assets/media/images/scenic-beach-calm-waves-cove-cliffs.webp"
+									alt="Scenic San Diego beach with calm waves and coastal cliffs" loading="lazy"
+									class="location-card-image">
 							</div>
-							<div
-								class="absolute inset-0 bg-linear-to-t from-zinc-900/90 via-zinc-900/50 to-transparent">
-							</div>
-							<div class="absolute bottom-0 left-0 right-0 h-full p-6 flex flex-col justify-between">
-								<h3 class="text-2xl font-serif font-bold italic mb-2">
+							<div class="location-card-overlay"></div>
+							<div class="location-card-content">
+								<h3 class="location-card-title">
 									San Diego County
 								</h3>
-								<a href="/pages/locations"
-									class="bg-white/80 text-primary inline-flex items-center gap-2 text-sm w-max font-semibold transition-colors px-6 py-2 rounded-full">
+								<a href="/pages/locations" class="location-card-link">
 									View Locations →
 								</a>
 							</div>
 						</div>
 
 						<!-- Ventura County -->
-						<div
-							class="text-white relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-zinc-950/5 group">
-							<div class="aspect-square overflow-hidden">
+						<div class="location-card">
+							<div class="location-card-image-wrap">
 								<img src="assets/media/images/rocky-shoreline-waves.webp"
-									alt="Ventura County"
-									class="w-full h-full object-cover transition-transform duration-300">
+									alt="Ventura County rocky shoreline with ocean waves" loading="lazy"
+									class="location-card-image">
 							</div>
-							<div
-								class="absolute inset-0 bg-linear-to-t from-zinc-900/90 via-zinc-900/50 to-transparent">
-							</div>
-							<div class="absolute bottom-0 left-0 right-0 h-full p-6 flex flex-col justify-between">
-								<h3 class="text-2xl font-serif font-bold italic mb-2">
+							<div class="location-card-overlay"></div>
+							<div class="location-card-content">
+								<h3 class="location-card-title">
 									Ventura County
 								</h3>
-								<a href="/pages/locations"
-									class="bg-white/80 text-primary w-max inline-flex items-center gap-2 text-sm font-semibold transition-colors px-6 py-2 rounded-full">
+								<a href="/pages/locations" class="location-card-link">
 									View Locations →
 								</a>
 							</div>
@@ -627,8 +623,8 @@
 				</div>
 			</section>
 		</main>
-		
-        <footer class="bg-secondary" role="contentinfo">
+
+		<footer class="bg-secondary" role="contentinfo">
 			<global-footer></global-footer>
 		</footer>
 	</div>

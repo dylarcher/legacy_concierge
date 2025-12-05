@@ -1,197 +1,149 @@
-import { BaseComponent, defineElement } from "../_base.js";
+/**
+ * Text Element Templates
+ * Tailwind CSS Plus / Catalyst-style text/typography templates
+ *
+ * @module elements/text
+ */
+
+import { clsx, createElement } from "../../utilities/dom.js";
 
 /**
- * Text paragraph component
+ * Base text styles
+ * @type {string}
+ */
+export const TEXT_BASE = "text-base/6 text-muted sm:text-sm/6";
+
+/**
+ * Strong/bold text styles
+ * @type {string}
+ */
+export const TEXT_STRONG = "font-medium text-canvas";
+
+/**
+ * Code/monospace text styles
+ * @type {string}
+ */
+export const TEXT_CODE = [
+	"rounded border border-zinc-950/10 bg-zinc-950/[2.5%] px-0.5 text-sm font-medium text-canvas sm:text-[0.8125rem]",
+	"dark:border-white/20 dark:bg-white/5",
+].join(" ");
+
+/**
+ * Link text styles
+ * @type {string}
+ */
+export const TEXT_LINK = [
+	"text-canvas underline decoration-zinc-950/50 hover:decoration-zinc-950",
+	"dark:decoration-white/50 dark:hover:decoration-white",
+].join(" ");
+
+/**
+ * Creates a text element with Tailwind CSS Plus styling
  *
- * @element ui-text
+ * @param {Object} options - Text configuration
+ * @param {string} [options.className] - Additional classes
+ * @param {Object} [options.attributes] - Additional HTML attributes
+ * @returns {HTMLParagraphElement} Text element
  *
  * @example
- * <ui-text>This is a paragraph of text.</ui-text>
+ * const text = createText();
+ * text.textContent = "This is some body text.";
  */
-export class Text extends BaseComponent {
-	/**
-	 * Called when element is connected to the DOM
-	 * @returns {void}
-	 */
-	connectedCallback() {
-		this.render();
-	}
+export function createText(options = {}) {
+	const { className = "", attributes = {} } = options;
 
-	/**
-	 * Renders the text paragraph element
-	 * @returns {void}
-	 */
-	render() {
-		const paragraphClasses = this.combineClassNames(
-			"text-base/6 text-muted sm:text-sm/6",
-			this.className,
-		);
-
-		const childNodes = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const paragraphElement = this.createElement("p", {
-			"data-slot": "text",
-			class: paragraphClasses,
-		});
-		for (const childNode of childNodes) {
-			paragraphElement.appendChild(childNode);
-		}
-		this.appendChild(paragraphElement);
-	}
+	return createElement("p", {
+		"data-slot": "text",
+		class: clsx(TEXT_BASE, className),
+		...attributes,
+	});
 }
 
 /**
- * Text link component
+ * Creates a strong/bold text element
  *
- * @element ui-text-link
- * @attr {string} href - Link URL
- *
- * @example
- * <ui-text-link href="/page">Click here</ui-text-link>
+ * @param {Object} options - Strong text configuration
+ * @param {string} [options.className] - Additional classes
+ * @param {Object} [options.attributes] - Additional HTML attributes
+ * @returns {HTMLElement} Strong element
  */
-export class TextLink extends BaseComponent {
-	static get observedAttributes() {
-		return ["href"];
-	}
+export function createStrong(options = {}) {
+	const { className = "", attributes = {} } = options;
 
-	/**
-	 * Called when element is connected to the DOM
-	 * @returns {void}
-	 */
-	connectedCallback() {
-		this.render();
-		this.#initializeEventListeners();
-	}
-
-	/**
-	 * Called when observed attributes change
-	 * @returns {void}
-	 */
-	attributeChangedCallback() {
-		if (this.isConnected) {
-			this.render();
-		}
-	}
-
-	/**
-	 * Sets up hover state event listeners
-	 * @returns {void}
-	 */
-	#initializeEventListeners() {
-		this.addEventListener("mouseenter", () => {
-			this.innerElement?.setAttribute("data-hover", "");
-		});
-		this.addEventListener("mouseleave", () => {
-			this.innerElement?.removeAttribute("data-hover");
-		});
-	}
-
-	/**
-	 * Renders the link element
-	 * @returns {void}
-	 */
-	render() {
-		const href = this.getAttribute("href") || "#";
-
-		const linkClasses = this.combineClassNames(
-			"text-canvas underline decoration-zinc-950/50",
-			"[&[data-hover]]:decoration-zinc-950",
-			this.className,
-		);
-
-		const childNodes = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const linkElement = this.createElement("a", { href, class: linkClasses });
-		for (const childNode of childNodes) {
-			linkElement.appendChild(childNode);
-		}
-		this.appendChild(linkElement);
-		this.innerElement = linkElement;
-	}
+	return createElement("strong", {
+		class: clsx(TEXT_STRONG, className),
+		...attributes,
+	});
 }
 
 /**
- * Strong/bold text component
+ * Creates a code/monospace text element
  *
- * @element ui-strong
- *
- * @example
- * <ui-text>This is <ui-strong>important</ui-strong> text.</ui-text>
+ * @param {Object} options - Code text configuration
+ * @param {string} [options.className] - Additional classes
+ * @param {Object} [options.attributes] - Additional HTML attributes
+ * @returns {HTMLElement} Code element
  */
-export class Strong extends BaseComponent {
-	/**
-	 * Called when element is connected to the DOM
-	 * @returns {void}
-	 */
-	connectedCallback() {
-		this.render();
-	}
+export function createCode(options = {}) {
+	const { className = "", attributes = {} } = options;
 
-	/**
-	 * Renders the strong element
-	 * @returns {void}
-	 */
-	render() {
-		const strongClasses = this.combineClassNames(
-			"font-medium text-canvas",
-			this.className,
-		);
-
-		const childNodes = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const strongElement = this.createElement("strong", {
-			class: strongClasses,
-		});
-		for (const childNode of childNodes) {
-			strongElement.appendChild(childNode);
-		}
-		this.appendChild(strongElement);
-	}
+	return createElement("code", {
+		class: clsx(TEXT_CODE, className),
+		...attributes,
+	});
 }
 
 /**
- * Inline code component
+ * Creates a text link element
  *
- * @element ui-code
- *
- * @example
- * <ui-text>Run <ui-code>npm install</ui-code> to install.</ui-text>
+ * @param {Object} options - Link configuration
+ * @param {string} [options.href] - Link URL
+ * @param {string} [options.className] - Additional classes
+ * @param {Object} [options.attributes] - Additional HTML attributes
+ * @returns {HTMLAnchorElement} Link element
  */
-export class Code extends BaseComponent {
-	/**
-	 * Called when element is connected to the DOM
-	 * @returns {void}
-	 */
-	connectedCallback() {
-		this.render();
-	}
+export function createTextLink(options = {}) {
+	const { href, className = "", attributes = {} } = options;
 
-	/**
-	 * Renders the code element
-	 * @returns {void}
-	 */
-	render() {
-		const codeClasses = this.combineClassNames(
-			"rounded-sm border bg-zinc-950/[2.5%] px-0.5 text-sm font-medium text-canvas",
-			"sm:text-[0.8125rem]",
-			this.className,
-		);
-
-		const childNodes = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const codeElement = this.createElement("code", { class: codeClasses });
-		for (const childNode of childNodes) {
-			codeElement.appendChild(childNode);
-		}
-		this.appendChild(codeElement);
-	}
+	return createElement("a", {
+		href: href || undefined,
+		class: clsx(TEXT_LINK, className),
+		...attributes,
+	});
 }
 
-defineElement("ui-text", Text);
-defineElement("ui-text-link", TextLink);
-defineElement("ui-strong", Strong);
-defineElement("ui-code", Code);
+/**
+ * Creates a text template element
+ *
+ * @param {Object} options - Text configuration
+ * @returns {HTMLTemplateElement} Template containing text markup
+ */
+export function createTextTemplate(options = {}) {
+	const template = document.createElement("template");
+	const text = createText(options);
+	template.content.appendChild(text);
+	return template;
+}
+
+/**
+ * Pre-defined text templates for common use cases
+ */
+export const textTemplates = {
+	/** Standard paragraph text */
+	paragraph: () => createText(),
+
+	/** Strong/bold text */
+	strong: () => createStrong(),
+
+	/** Code/monospace text */
+	code: () => createCode(),
+
+	/** Text with link */
+	link: (href) => createTextLink({ href }),
+
+	/** Muted/secondary text */
+	muted: () => createText({ className: "text-muted" }),
+
+	/** Small text */
+	small: () => createText({ className: "text-xs/5" }),
+};

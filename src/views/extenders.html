@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="color-scheme" content="light dark">
+	<title>Extender Components - Tailwind CSS Plus</title>
+	<link href="../style.css" rel="stylesheet">
+	<style>
+		/* Anchor offset for sticky nav */
+		:target {
+			scroll-margin-top: 5rem;
+		}
+
+		/* Demo container */
+		.demo-box {
+			background: var(--color-surface);
+			border: 1px solid var(--color-border);
+			border-radius: 0.75rem;
+			padding: 1.5rem;
+		}
+
+		/* Code blocks */
+		pre.code {
+			background: var(--color-text);
+			color: var(--color-canvas);
+			border-radius: 0.5rem;
+			padding: 1rem;
+			overflow-x: auto;
+			font-family: var(--font-code, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+			font-size: 0.8125rem;
+			line-height: 1.6;
+			margin: 0;
+		}
+
+		/* Property tables */
+		.props-table {
+			width: 100%;
+			font-size: 0.875rem;
+			border-collapse: collapse;
+		}
+
+		.props-table th,
+		.props-table td {
+			text-align: left;
+			padding: 0.5rem 0.75rem;
+			border-bottom: 1px solid var(--color-border);
+		}
+
+		.props-table th {
+			font-weight: 600;
+			color: var(--color-text-muted);
+			font-size: 0.75rem;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+
+		.props-table code {
+			font-size: 0.8125rem;
+			color: var(--brand-secondary);
+		}
+
+		/* Event log styling */
+		.event-log {
+			max-height: 120px;
+			overflow-y: auto;
+			font-family: var(--font-code, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+			font-size: 0.75rem;
+			background: var(--color-text);
+			color: var(--color-canvas);
+			border-radius: 0.375rem;
+			padding: 0.5rem;
+		}
+
+		.event-log:empty::before {
+			content: "Events will appear here...";
+			opacity: 0.5;
+		}
+	</style>
+</head>
+
+<body class="bg-depth-1 text-canvas antialiased">
+	<!-- Navigation -->
+	<nav class="fixed top-0 inset-x-0 z-50 bg-canvas border-b border-muted">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="flex items-center h-14 gap-6 overflow-x-auto">
+				<span class="font-semibold text-sm whitespace-nowrap">Extenders</span>
+				<div class="flex items-center gap-1 text-sm">
+					<a href="#accordion" class="px-2 py-1 text-muted hover:text-canvas rounded">Accordion</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Content -->
+	<main class="pt-20 pb-16">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<!-- Header -->
+			<header class="mb-12">
+				<h1 class="text-2xl font-bold text-canvas mb-2">Tailwind CSS Plus Extender Components</h1>
+				<p class="text-muted max-w-2xl">
+					Web Components that extend native HTML behavior with enhanced interactivity.
+					These ARE Web Components &mdash; custom elements that extend BaseComponent.
+				</p>
+			</header>
+
+			<!-- ACCORDION -->
+			<section id="accordion" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Accordion</h2>
+				<p class="text-sm text-muted mb-6">
+					A collapsible content component with animated expand/collapse transitions.
+					Supports independent panels (multiple open) or exclusive mode (one at a time).
+				</p>
+
+				<!-- Basic Demo -->
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Basic Accordion</p>
+					<ui-accordion>
+						<ui-accordion-panel open>
+							<ui-accordion-header>What is Tailwind CSS Plus?</ui-accordion-header>
+							<ui-accordion-content>
+								<p>Tailwind CSS Plus is a collection of professionally designed UI components built with Tailwind CSS. It provides ready-to-use components that follow modern design patterns and accessibility best practices.</p>
+							</ui-accordion-content>
+						</ui-accordion-panel>
+						<ui-accordion-panel>
+							<ui-accordion-header>How do I get started?</ui-accordion-header>
+							<ui-accordion-content>
+								<p>Simply import the components you need and use them in your HTML. Each component is self-contained and styled with Tailwind CSS classes.</p>
+							</ui-accordion-content>
+						</ui-accordion-panel>
+						<ui-accordion-panel>
+							<ui-accordion-header>Is it accessible?</ui-accordion-header>
+							<ui-accordion-content>
+								<p>Yes! All components are built with accessibility in mind, including proper ARIA attributes, keyboard navigation, and focus management.</p>
+							</ui-accordion-content>
+						</ui-accordion-panel>
+					</ui-accordion>
+				</div>
+
+				<!-- Exclusive Mode Demo -->
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Exclusive Mode (only one open at a time)</p>
+					<ui-accordion exclusive>
+						<ui-accordion-panel>
+							<ui-accordion-header>Panel One</ui-accordion-header>
+							<ui-accordion-content>
+								<p>When one panel opens, the others automatically close. This is useful for FAQ sections where you want to focus attention on a single answer at a time.</p>
+							</ui-accordion-content>
+						</ui-accordion-panel>
+						<ui-accordion-panel open>
+							<ui-accordion-header>Panel Two</ui-accordion-header>
+							<ui-accordion-content>
+								<p>Try clicking on Panel One or Panel Three &mdash; this panel will close automatically since only one panel can be open at a time in exclusive mode.</p>
+							</ui-accordion-content>
+						</ui-accordion-panel>
+						<ui-accordion-panel>
+							<ui-accordion-header>Panel Three</ui-accordion-header>
+							<ui-accordion-content>
+								<p>The exclusive behavior is enabled by adding the <code class="text-xs bg-canvas px-1 py-0.5 rounded">exclusive</code> attribute to the <code class="text-xs bg-canvas px-1 py-0.5 rounded">&lt;ui-accordion&gt;</code> element.</p>
+							</ui-accordion-content>
+						</ui-accordion-panel>
+					</ui-accordion>
+				</div>
+
+				<!-- Disabled Panel Demo -->
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Disabled Panel</p>
+					<ui-accordion>
+						<ui-accordion-panel>
+							<ui-accordion-header>Active Panel</ui-accordion-header>
+							<ui-accordion-content>
+								<p>This panel can be toggled normally.</p>
+							</ui-accordion-content>
+						</ui-accordion-panel>
+						<ui-accordion-panel disabled>
+							<ui-accordion-header>Disabled Panel</ui-accordion-header>
+							<ui-accordion-content>
+								<p>This content cannot be accessed because the panel is disabled.</p>
+							</ui-accordion-content>
+						</ui-accordion-panel>
+					</ui-accordion>
+				</div>
+
+				<!-- Event Demo -->
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Event Handling</p>
+					<div class="grid md:grid-cols-2 gap-4">
+						<div>
+							<ui-accordion id="event-accordion">
+								<ui-accordion-panel>
+									<ui-accordion-header>First Section</ui-accordion-header>
+									<ui-accordion-content>
+										<p>Open and close panels to see events logged.</p>
+									</ui-accordion-content>
+								</ui-accordion-panel>
+								<ui-accordion-panel>
+									<ui-accordion-header>Second Section</ui-accordion-header>
+									<ui-accordion-content>
+										<p>The accordion emits events you can listen to.</p>
+									</ui-accordion-content>
+								</ui-accordion-panel>
+							</ui-accordion>
+						</div>
+						<div>
+							<p class="text-xs font-medium text-muted uppercase tracking-wider mb-2">Event Log</p>
+							<div class="event-log" id="event-log"></div>
+						</div>
+					</div>
+				</div>
+
+				<script type="module">
+					import "../blocks/modules/accordion.js";
+
+					// Event logging demo
+					const accordion = document.getElementById("event-accordion");
+					const log = document.getElementById("event-log");
+
+					function logEvent(name, detail) {
+						const time = new Date().toLocaleTimeString();
+						const entry = document.createElement("div");
+						entry.textContent = `[${time}] ${name}: panel ${detail.open !== undefined ? (detail.open ? "opened" : "closed") : "changed"}`;
+						log.insertBefore(entry, log.firstChild);
+					}
+
+					accordion.addEventListener("accordion-expand", (e) => logEvent("expand", e.detail));
+					accordion.addEventListener("accordion-collapse", (e) => logEvent("collapse", e.detail));
+				</script>
+
+				<!-- Programmatic Control Demo -->
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Programmatic Control</p>
+					<div class="flex gap-2 mb-4">
+						<button type="button" id="expand-all-btn" class="btn-base btn-solid text-sm">Expand All</button>
+						<button type="button" id="collapse-all-btn" class="btn-base btn-outline text-sm">Collapse All</button>
+					</div>
+					<ui-accordion id="controlled-accordion">
+						<ui-accordion-panel>
+							<ui-accordion-header>Section A</ui-accordion-header>
+							<ui-accordion-content>
+								<p>Content for section A. Use the buttons above to control all panels at once.</p>
+							</ui-accordion-content>
+						</ui-accordion-panel>
+						<ui-accordion-panel>
+							<ui-accordion-header>Section B</ui-accordion-header>
+							<ui-accordion-content>
+								<p>Content for section B. The <code class="text-xs bg-canvas px-1 py-0.5 rounded">expandAll()</code> and <code class="text-xs bg-canvas px-1 py-0.5 rounded">collapseAll()</code> methods provide programmatic control.</p>
+							</ui-accordion-content>
+						</ui-accordion-panel>
+						<ui-accordion-panel>
+							<ui-accordion-header>Section C</ui-accordion-header>
+							<ui-accordion-content>
+								<p>Content for section C. Note that <code class="text-xs bg-canvas px-1 py-0.5 rounded">expandAll()</code> only works when NOT in exclusive mode.</p>
+							</ui-accordion-content>
+						</ui-accordion-panel>
+					</ui-accordion>
+				</div>
+
+				<script type="module">
+					const controlled = document.getElementById("controlled-accordion");
+					document.getElementById("expand-all-btn").addEventListener("click", () => controlled.expandAll());
+					document.getElementById("collapse-all-btn").addEventListener("click", () => controlled.collapseAll());
+				</script>
+
+				<!-- Usage Code -->
+				<div class="mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Usage</p>
+<pre class="code">&lt;!-- Import the accordion component --&gt;
+&lt;script type="module"&gt;
+  import "../blocks/modules/accordion.js";
+&lt;/script&gt;
+
+&lt;!-- Basic accordion (multiple panels can be open) --&gt;
+&lt;ui-accordion&gt;
+  &lt;ui-accordion-panel open&gt;
+    &lt;ui-accordion-header&gt;Section Title&lt;/ui-accordion-header&gt;
+    &lt;ui-accordion-content&gt;
+      &lt;p&gt;Panel content goes here...&lt;/p&gt;
+    &lt;/ui-accordion-content&gt;
+  &lt;/ui-accordion-panel&gt;
+  &lt;ui-accordion-panel&gt;
+    &lt;ui-accordion-header&gt;Another Section&lt;/ui-accordion-header&gt;
+    &lt;ui-accordion-content&gt;
+      &lt;p&gt;More content...&lt;/p&gt;
+    &lt;/ui-accordion-content&gt;
+  &lt;/ui-accordion-panel&gt;
+&lt;/ui-accordion&gt;
+
+&lt;!-- Exclusive mode (only one panel open at a time) --&gt;
+&lt;ui-accordion exclusive&gt;
+  ...
+&lt;/ui-accordion&gt;</pre>
+				</div>
+
+				<!-- Properties Grid -->
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<!-- ui-accordion props -->
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">&lt;ui-accordion&gt; Attributes</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Attribute</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>exclusive</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>duration</code></td><td>number</td><td>200</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- ui-accordion-panel props -->
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">&lt;ui-accordion-panel&gt; Attributes</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Attribute</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>open</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>disabled</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Methods -->
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">&lt;ui-accordion&gt; Methods</p>
+						<table class="props-table">
+							<tbody>
+								<tr><td><code>expandAll()</code></td><td>Opens all panels (non-exclusive only)</td></tr>
+								<tr><td><code>collapseAll()</code></td><td>Closes all panels</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">&lt;ui-accordion-panel&gt; Methods</p>
+						<table class="props-table">
+							<tbody>
+								<tr><td><code>open()</code></td><td>Opens the panel</td></tr>
+								<tr><td><code>close()</code></td><td>Closes the panel</td></tr>
+								<tr><td><code>toggle()</code></td><td>Toggles open/closed state</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Events -->
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Events</p>
+					<table class="props-table">
+						<thead>
+							<tr><th>Event</th><th>Detail</th><th>Description</th></tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><code>accordion-change</code></td>
+								<td><code>{ panel, open }</code></td>
+								<td>Fired when any panel state changes</td>
+							</tr>
+							<tr>
+								<td><code>accordion-expand</code></td>
+								<td><code>{ panel }</code></td>
+								<td>Fired when a panel expands</td>
+							</tr>
+							<tr>
+								<td><code>accordion-collapse</code></td>
+								<td><code>{ panel }</code></td>
+								<td>Fired when a panel collapses</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<!-- JavaScript API -->
+				<div>
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">JavaScript API</p>
+<pre class="code">// Get accordion element
+const accordion = document.querySelector("ui-accordion");
+
+// Listen for events
+accordion.addEventListener("accordion-change", (event) => {
+  console.log("Panel changed:", event.detail.panel);
+  console.log("Is open:", event.detail.open);
+});
+
+// Programmatic control
+accordion.expandAll();   // Open all panels (non-exclusive mode)
+accordion.collapseAll(); // Close all panels
+
+// Control individual panels
+const panel = accordion.querySelector("ui-accordion-panel");
+panel.open();   // Open this panel
+panel.close();  // Close this panel
+panel.toggle(); // Toggle state
+
+// Check panel state
+console.log(panel.isOpen);     // boolean
+console.log(panel.isDisabled); // boolean</pre>
+				</div>
+
+				<!-- Accessibility -->
+				<div class="demo-box mt-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Accessibility Features</p>
+					<ul class="text-sm text-muted space-y-1 list-disc list-inside">
+						<li>Proper <code class="text-xs">aria-expanded</code> and <code class="text-xs">aria-controls</code> attributes</li>
+						<li>Keyboard navigation with Arrow Up/Down, Home, End keys</li>
+						<li>Focus management between accordion headers</li>
+						<li>Respects <code class="text-xs">prefers-reduced-motion</code> setting</li>
+						<li>Semantic heading structure with <code class="text-xs">&lt;h3&gt;</code> wrapping buttons</li>
+					</ul>
+				</div>
+			</section>
+
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="border-t border-muted py-8">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-sm text-muted">
+			Tailwind CSS Plus Extender Components
+		</div>
+	</footer>
+</body>
+
+</html>

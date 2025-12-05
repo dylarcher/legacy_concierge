@@ -376,7 +376,7 @@ ${versionCards}
 
 			<!-- Styleguide Navigation -->
 			<nav class="bg-slate-100 sticky top-2 -mx-4 py-4 px-8 rounded-md mb-8 flex flex-wrap gap-6 text-sm font-medium" style="box-shadow: 0 4px 8px -4px #0002; opacity: .96">
-				<a href="#colors" class="text-canvastext hover:text-primary">Colors</a>
+				<a href="#colors" class="text-zinc-700 hover:text-primary">Colors</a>
 				<a href="#typography" class="text-zinc-500 hover:text-primary">Typography</a>
 				<a href="#buttons" class="text-zinc-500 hover:text-primary">Buttons</a>
 				<a href="#forms" class="text-zinc-500 hover:text-primary">Forms</a>
@@ -569,7 +569,7 @@ ${versionCards}
 				<div class="demo-box space-y-4 mb-8">
 					<div>
 						<label class="block text-sm font-medium mb-1.5">Default Input</label>
-						<input type="text" placeholder="Enter your name..." class="w-full max-w-md px-4 py-3 rounded-lg border border-zinc-300 bg-white placeholder-zinc-400 transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20">
+						<input type="text" placeholder="Enter your name..." class="w-full max-w-md px-4 py-3 rounded-lg border border-zinc-300 bg-white placeholder:text-zinc-400 transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20">
 					</div>
 					<div>
 						<label class="block text-sm font-medium mb-1.5">Disabled</label>
@@ -634,10 +634,10 @@ ${versionCards}
 
 				<h4 class="text-lg font-semibold mb-4">Status Badges</h4>
 				<div class="demo-box flex flex-wrap gap-3 mb-8">
-					<span class="bg-red-100 border border-red-200 text-red-700 text-sm px-3 py-1 rounded-full font-medium/30">Error</span>
-					<span class="bg-blue-100 border border-blue-200 text-blue-700 text-sm px-3 py-1 rounded-full font-medium/30">Info</span>
-					<span class="bg-green-100 border border-green-200 text-green-700 text-sm px-3 py-1 rounded-full font-medium/30">Success</span>
-					<span class="bg-amber-100 border border-amber-200 text-amber-700 text-sm px-3 py-1 rounded-full font-medium/30">Warning</span>
+					<span class="bg-red-100 border border-red-200 text-red-700 text-sm px-3 py-1 rounded-full font-medium">Error</span>
+					<span class="bg-blue-100 border border-blue-200 text-blue-700 text-sm px-3 py-1 rounded-full font-medium">Info</span>
+					<span class="bg-green-100 border border-green-200 text-green-700 text-sm px-3 py-1 rounded-full font-medium">Success</span>
+					<span class="bg-amber-100 border border-amber-200 text-amber-700 text-sm px-3 py-1 rounded-full font-medium">Warning</span>
 				</div>
 
 				<h4 class="text-lg font-semibold mb-4">Alerts</h4>

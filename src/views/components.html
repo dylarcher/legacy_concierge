@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="color-scheme" content="light dark">
+	<title>Components - Tailwind CSS Plus</title>
+	<link href="../style.css" rel="stylesheet">
+	<style>
+		/* Anchor offset for sticky nav */
+		:target {
+			scroll-margin-top: 5rem;
+		}
+
+		/* Demo container */
+		.demo-box {
+			background: var(--color-surface);
+			border: 1px solid var(--color-border);
+			border-radius: 0.75rem;
+			padding: 1.5rem;
+		}
+
+		/* Code blocks */
+		pre.code {
+			background: var(--color-text);
+			color: var(--color-canvas);
+			border-radius: 0.5rem;
+			padding: 1rem;
+			overflow-x: auto;
+			font-family: var(--font-code, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+			font-size: 0.8125rem;
+			line-height: 1.6;
+			margin: 0;
+		}
+
+		/* Property tables */
+		.props-table {
+			width: 100%;
+			font-size: 0.875rem;
+			border-collapse: collapse;
+		}
+
+		.props-table th,
+		.props-table td {
+			text-align: left;
+			padding: 0.5rem 0.75rem;
+			border-bottom: 1px solid var(--color-border);
+		}
+
+		.props-table th {
+			font-weight: 600;
+			color: var(--color-text-muted);
+			font-size: 0.75rem;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+		}
+
+		.props-table code {
+			font-size: 0.8125rem;
+			color: var(--brand-secondary);
+		}
+
+		/* Event log styling */
+		.event-log {
+			max-height: 120px;
+			overflow-y: auto;
+			font-family: var(--font-code, ui-monospace, SFMono-Regular, Menlo, Consolas, monospace);
+			font-size: 0.75rem;
+			background: var(--color-text);
+			color: var(--color-canvas);
+			border-radius: 0.375rem;
+			padding: 0.5rem;
+		}
+
+		.event-log:empty::before {
+			content: "Events will appear here...";
+			opacity: 0.5;
+		}
+
+		/* Preview frame */
+		.preview-frame {
+			border: 1px solid var(--color-border);
+			border-radius: 0.5rem;
+			overflow: hidden;
+			background: var(--color-depth-1);
+		}
+
+		.preview-frame iframe {
+			width: 100%;
+			height: 400px;
+			border: none;
+		}
+
+		/* Inline demo container for smaller components */
+		.inline-demo {
+			min-height: 200px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		/* Card grid for extender cards */
+		.card-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 325px));
+			gap: 1.5rem;
+			justify-content: center;
+		}
+	</style>
+</head>
+
+<body class="bg-depth-1 text-canvas antialiased">
+	<!-- Navigation -->
+	<nav class="fixed top-0 inset-x-0 z-50 bg-canvas border-b border-muted">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="flex items-center h-14 gap-6 overflow-x-auto">
+				<span class="font-semibold text-sm whitespace-nowrap">Components</span>
+				<div class="flex items-center gap-1 text-sm">
+					<a href="#scroll-to-top" class="px-2 py-1 text-muted hover:text-canvas rounded">ScrollToTop</a>
+					<a href="#extender-card" class="px-2 py-1 text-muted hover:text-canvas rounded">ExtenderCard</a>
+					<a href="#global-footer" class="px-2 py-1 text-muted hover:text-canvas rounded">Footer</a>
+					<a href="#global-nav" class="px-2 py-1 text-muted hover:text-canvas rounded">Navbar</a>
+					<a href="#hero-banner" class="px-2 py-1 text-muted hover:text-canvas rounded">Hero</a>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Main Content -->
+	<main class="pt-20 pb-16">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<!-- Header -->
+			<header class="mb-12">
+				<h1 class="text-2xl font-bold text-canvas mb-2">Tailwind CSS Plus Components</h1>
+				<p class="text-muted max-w-2xl">
+					Page-level Web Components and factory functions for building complete layouts.
+					These include navigation, heroes, footers, and interactive cards.
+				</p>
+			</header>
+
+			<!-- SCROLL TO TOP -->
+			<section id="scroll-to-top" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Scroll To Top Button</h2>
+				<p class="text-sm text-muted mb-6">
+					A floating button that appears when the user scrolls up past a threshold.
+					Clicking it smoothly scrolls the page back to the top.
+				</p>
+
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Live Demo</p>
+					<p class="text-sm text-muted mb-4">
+						Scroll down this page, then scroll back up to see the button appear in the bottom-right corner.
+						The button is already active on this page.
+					</p>
+					<div class="flex gap-2">
+						<button type="button" id="scroll-down-btn" class="btn-base btn-solid text-sm">
+							Scroll Down 500px
+						</button>
+						<button type="button" id="scroll-top-btn" class="btn-base btn-outline text-sm">
+							Scroll to Top
+						</button>
+					</div>
+				</div>
+
+				<!-- The actual scroll-to-top component -->
+				<ui-scroll-to-top threshold="200" position="bottom-right"></ui-scroll-to-top>
+
+				<script type="module">
+					import "../blocks/components/buttons/button-return.js";
+
+					document.getElementById("scroll-down-btn").addEventListener("click", () => {
+						window.scrollBy({ top: 500, behavior: "smooth" });
+					});
+
+					document.getElementById("scroll-top-btn").addEventListener("click", () => {
+						window.scrollTo({ top: 0, behavior: "smooth" });
+					});
+				</script>
+
+				<!-- Usage Code -->
+				<div class="mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Usage</p>
+<pre class="code">&lt;!-- Import the component --&gt;
+&lt;script type="module"&gt;
+  import "../blocks/components/buttons/button-return.js";
+&lt;/script&gt;
+
+&lt;!-- Basic usage (appears bottom-right after scrolling 300px) --&gt;
+&lt;ui-scroll-to-top&gt;&lt;/ui-scroll-to-top&gt;
+
+&lt;!-- Custom threshold and position --&gt;
+&lt;ui-scroll-to-top
+  threshold="500"
+  position="bottom-left"
+  label="Back to top"&gt;
+&lt;/ui-scroll-to-top&gt;</pre>
+				</div>
+
+				<!-- Properties -->
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Attributes</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Attribute</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>threshold</code></td><td>number</td><td>300</td></tr>
+								<tr><td><code>position</code></td><td>"bottom-right" | "bottom-left"</td><td>"bottom-right"</td></tr>
+								<tr><td><code>label</code></td><td>string</td><td>"Scroll to top"</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Events</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Event</th><th>Description</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>scroll-to-top</code></td><td>Fired when button is clicked</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Behavior Notes -->
+				<div class="demo-box">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Behavior</p>
+					<ul class="text-sm text-muted space-y-1 list-disc list-inside">
+						<li>Button only appears when scrolling <strong>up</strong> and past the threshold</li>
+						<li>Automatically hides when scrolling down or near the top</li>
+						<li>Uses smooth scroll animation with CSS transitions</li>
+						<li>Fixed positioning with z-index 50 for overlay</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- EXTENDER CARD -->
+			<section id="extender-card" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Extender Card</h2>
+				<p class="text-sm text-muted mb-6">
+					Factory function that creates expandable cards using the native <code class="text-xs bg-canvas px-1 py-0.5 rounded">&lt;details&gt;</code> element.
+					Supports toggle mode (expand/collapse) or link mode (static card with CTA link).
+				</p>
+
+				<!-- Toggle Mode Demo -->
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Toggle Mode (click to expand)</p>
+					<div class="card-grid" id="toggle-cards-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createExtenderCard, createExtenderCardList, createExtenderCardText } from "../blocks/components/cards/card-details.js";
+
+					const toggleDemo = document.getElementById("toggle-cards-demo");
+
+					// Card with list content
+					const card1 = createExtenderCard({
+						title: "Locations",
+						buttonText: "View Locations",
+						image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=600&fit=crop",
+						mode: "toggle",
+						body: createExtenderCardList([
+							"Los Angeles, CA",
+							"San Diego, CA",
+							"Santa Barbara, CA",
+							"Ventura, CA"
+						])
+					});
+					toggleDemo.appendChild(card1);
+
+					// Card with text content
+					const card2 = createExtenderCard({
+						title: "Services",
+						buttonText: "Learn More",
+						image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=600&fit=crop",
+						mode: "toggle",
+						body: createExtenderCardText("We provide comprehensive care services including nursing, therapy, and wellness programs tailored to your individual needs.")
+					});
+					toggleDemo.appendChild(card2);
+
+					// Card starting open
+					const card3 = createExtenderCard({
+						title: "About Us",
+						buttonText: "Read More",
+						image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=600&fit=crop",
+						mode: "toggle",
+						open: true,
+						body: createExtenderCardText("Our team of dedicated healthcare professionals is committed to providing exceptional care with compassion and expertise.")
+					});
+					toggleDemo.appendChild(card3);
+				</script>
+
+				<!-- Link Mode Demo -->
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Link Mode (static card with CTA)</p>
+					<div class="card-grid" id="link-cards-demo"></div>
+				</div>
+
+				<script type="module">
+					import { createExtenderCard } from "../blocks/components/cards/card-details.js";
+
+					const linkDemo = document.getElementById("link-cards-demo");
+
+					const linkCard = createExtenderCard({
+						title: "Contact Us",
+						buttonText: "Get in Touch",
+						image: "https://images.unsplash.com/photo-1516841273335-e39b37888115?w=400&h=600&fit=crop",
+						mode: "link",
+						href: "#contact"
+					});
+					linkDemo.appendChild(linkCard);
+				</script>
+
+				<!-- Usage Code -->
+				<div class="mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Usage</p>
+<pre class="code">import { createExtenderCard, createExtenderCardList, createExtenderCardText }
+  from "../blocks/components/card-details.js";
+
+// Toggle mode with list content
+const card = createExtenderCard({
+  title: "Locations",
+  buttonText: "View Locations",
+  image: "/images/beach.jpg",
+  mode: "toggle",
+  body: createExtenderCardList([
+    "Los Angeles",
+    "San Diego",
+    "Ventura"
+  ])
+});
+
+// Toggle mode with text content
+const textCard = createExtenderCard({
+  title: "About",
+  buttonText: "Read More",
+  image: "/images/about.jpg",
+  mode: "toggle",
+  body: createExtenderCardText("Description text here...")
+});
+
+// Link mode (no expand, just a link)
+const linkCard = createExtenderCard({
+  title: "Services",
+  buttonText: "Learn More",
+  image: "/images/services.jpg",
+  mode: "link",
+  href: "/services"
+});
+
+document.body.appendChild(card);</pre>
+				</div>
+
+				<!-- Properties -->
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">createExtenderCard() Options</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Option</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>title</code></td><td>string</td><td>"Card Title"</td></tr>
+								<tr><td><code>buttonText</code></td><td>string</td><td>"View Location"</td></tr>
+								<tr><td><code>image</code></td><td>string</td><td>""</td></tr>
+								<tr><td><code>imageAlt</code></td><td>string</td><td>"Card background"</td></tr>
+								<tr><td><code>body</code></td><td>string | HTMLElement | HTMLElement[]</td><td>null</td></tr>
+								<tr><td><code>mode</code></td><td>"toggle" | "link"</td><td>"toggle"</td></tr>
+								<tr><td><code>href</code></td><td>string</td><td>"#"</td></tr>
+								<tr><td><code>open</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Helper Functions</p>
+						<table class="props-table">
+							<tbody>
+								<tr><td><code>createExtenderCardList(items)</code></td><td>Creates a styled bullet list</td></tr>
+								<tr><td><code>createExtenderCardText(text)</code></td><td>Creates a styled paragraph</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Style Constants -->
+				<div class="demo-box">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Exported Style Constants</p>
+					<p class="text-sm text-muted mb-2">These can be imported for custom styling:</p>
+					<ul class="text-sm text-muted space-y-1 list-disc list-inside">
+						<li><code class="text-xs">EXTENDER_CARD_BASE</code> - Base container styles</li>
+						<li><code class="text-xs">EXTENDER_CARD_COLLAPSED</code> / <code class="text-xs">EXTENDER_CARD_EXPANDED</code> - Height states</li>
+						<li><code class="text-xs">EXTENDER_CARD_TITLE</code> / <code class="text-xs">EXTENDER_CARD_BODY</code> - Typography</li>
+						<li><code class="text-xs">EXTENDER_CARD_BUTTON</code> / <code class="text-xs">EXTENDER_CARD_CLOSE_BUTTON</code> - Button styles</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- GLOBAL FOOTER -->
+			<section id="global-footer" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Global Footer</h2>
+				<p class="text-sm text-muted mb-6">
+					A full-featured footer Web Component with link columns, newsletter signup form,
+					social links, and legal/copyright section. Supports slots for customization.
+				</p>
+
+				<!-- Preview in iframe to avoid style conflicts -->
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Live Preview</p>
+					<div class="preview-frame">
+						<iframe srcdoc="
+<!DOCTYPE html>
+<html>
+<head>
+	<link href='../style.css' rel='stylesheet'>
+	<style>
+		body { margin: 0; background: #0a1f2d; }
+		global-footer { display: block; }
+	</style>
+</head>
+<body>
+	<global-footer company='Demo Company'></global-footer>
+	<script type='module'>
+		import '../blocks/components/regions/global-footer.js';
+	</script>
+</body>
+</html>
+						" title="Footer Preview"></iframe>
+					</div>
+					<p class="text-xs text-muted mt-2">Note: Preview shows the default template with placeholder links.</p>
+				</div>
+
+				<!-- Usage Code -->
+				<div class="mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Usage</p>
+<pre class="code">&lt;!-- Import the component --&gt;
+&lt;script type="module"&gt;
+  import "../blocks/components/global-footer.js";
+&lt;/script&gt;
+
+&lt;!-- Basic usage with default template --&gt;
+&lt;global-footer company="My Company"&gt;&lt;/global-footer&gt;
+
+&lt;!-- Custom copyright year --&gt;
+&lt;global-footer
+  company="Acme Inc"
+  copyright="2024"&gt;
+&lt;/global-footer&gt;
+
+&lt;!-- With custom sections using slots --&gt;
+&lt;global-footer company="Acme Inc"&gt;
+  &lt;content-info slot="links" heading="Products"&gt;
+    &lt;a href="/product-a"&gt;Product A&lt;/a&gt;
+    &lt;a href="/product-b"&gt;Product B&lt;/a&gt;
+  &lt;/content-info&gt;
+  &lt;content-info slot="links" heading="Resources"&gt;
+    &lt;a href="/docs"&gt;Documentation&lt;/a&gt;
+    &lt;a href="/support"&gt;Support&lt;/a&gt;
+  &lt;/content-info&gt;
+&lt;/global-footer&gt;</pre>
+				</div>
+
+				<!-- Properties -->
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">&lt;global-footer&gt; Attributes</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Attribute</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>company</code></td><td>string</td><td>"Legacy Concierge"</td></tr>
+								<tr><td><code>copyright</code></td><td>string</td><td>Current year</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">&lt;content-info&gt; Attributes</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Attribute</th><th>Type</th><th>Description</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>heading</code></td><td>string</td><td>Section heading text</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Slots and Events -->
+				<div class="grid md:grid-cols-2 gap-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Slots</p>
+						<table class="props-table">
+							<tbody>
+								<tr><td><code>links</code></td><td>Footer link sections (use content-info)</td></tr>
+								<tr><td><code>newsletter</code></td><td>Newsletter signup section</td></tr>
+								<tr><td><code>social</code></td><td>Social media links</td></tr>
+								<tr><td><code>legal</code></td><td>Legal/copyright section</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Events</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Event</th><th>Detail</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>newsletter-submit</code></td><td><code>{ email }</code></td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+
+			<!-- GLOBAL NAV -->
+			<section id="global-nav" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Global Navbar</h2>
+				<p class="text-sm text-muted mb-6">
+					A responsive navigation bar Web Component with dropdown menus, mobile drawer,
+					search dialog, and full keyboard navigation support.
+				</p>
+
+				<!-- Preview -->
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Live Preview</p>
+					<div class="preview-frame">
+						<iframe srcdoc="
+<!DOCTYPE html>
+<html>
+<head>
+	<link href='../style.css' rel='stylesheet'>
+	<style>
+		body { margin: 0; min-height: 300px; background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%); }
+		global-nav { display: block; }
+	</style>
+</head>
+<body>
+	<global-nav brand='Demo Brand'>
+		<a href='#'>Home</a>
+		<a href='#'>About</a>
+		<a href='#'>Services</a>
+		<a href='#'>Contact</a>
+	</global-nav>
+	<script type='module'>
+		import '../blocks/components/regions/global-navbar.js';
+	</script>
+</body>
+</html>
+						" title="Navbar Preview"></iframe>
+					</div>
+					<p class="text-xs text-muted mt-2">Try resizing the iframe or opening in a new tab to see mobile menu behavior.</p>
+				</div>
+
+				<!-- Usage Code -->
+				<div class="mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Usage</p>
+<pre class="code">&lt;!-- Import the component --&gt;
+&lt;script type="module"&gt;
+  import "../blocks/components/global-navbar.js";
+&lt;/script&gt;
+
+&lt;!-- Basic usage with nav links as children --&gt;
+&lt;global-nav brand="My Company"&gt;
+  &lt;a href="/"&gt;Home&lt;/a&gt;
+  &lt;a href="/about"&gt;About&lt;/a&gt;
+  &lt;a href="/services"&gt;Services&lt;/a&gt;
+  &lt;a href="/contact"&gt;Contact&lt;/a&gt;
+&lt;/global-nav&gt;
+
+&lt;!-- With custom logo --&gt;
+&lt;global-nav
+  logo="/logo.svg"
+  logo-dark="/logo-dark.svg"
+  logo-alt="Company Logo"
+  brand="Acme"&gt;
+  ...
+&lt;/global-nav&gt;
+
+&lt;!-- With CTA button --&gt;
+&lt;global-nav
+  brand="Acme"
+  cta-text="Sign Up"
+  cta-href="/signup"&gt;
+  ...
+&lt;/global-nav&gt;
+
+&lt;!-- Fixed positioning (default) vs transparent --&gt;
+&lt;global-nav fixed transparent brand="Acme"&gt;
+  ...
+&lt;/global-nav&gt;</pre>
+				</div>
+
+				<!-- Properties -->
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Attributes</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Attribute</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>brand</code></td><td>string</td><td>"Legacy Concierge"</td></tr>
+								<tr><td><code>logo</code></td><td>string</td><td>Built-in SVG</td></tr>
+								<tr><td><code>logo-dark</code></td><td>string</td><td>Same as logo</td></tr>
+								<tr><td><code>logo-alt</code></td><td>string</td><td>Brand name</td></tr>
+								<tr><td><code>cta-text</code></td><td>string</td><td>undefined</td></tr>
+								<tr><td><code>cta-href</code></td><td>string</td><td>undefined</td></tr>
+								<tr><td><code>fixed</code></td><td>boolean</td><td>true</td></tr>
+								<tr><td><code>transparent</code></td><td>boolean</td><td>false</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Events</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Event</th><th>Description</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>menu-open</code></td><td>Mobile menu opened</td></tr>
+								<tr><td><code>menu-close</code></td><td>Mobile menu closed</td></tr>
+								<tr><td><code>search-open</code></td><td>Search dialog opened</td></tr>
+								<tr><td><code>search-close</code></td><td>Search dialog closed</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Methods and Slots -->
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Methods</p>
+						<table class="props-table">
+							<tbody>
+								<tr><td><code>openMenu()</code></td><td>Opens mobile menu</td></tr>
+								<tr><td><code>closeMenu()</code></td><td>Closes mobile menu</td></tr>
+								<tr><td><code>toggleMenu()</code></td><td>Toggles mobile menu</td></tr>
+								<tr><td><code>openSearch()</code></td><td>Opens search dialog</td></tr>
+								<tr><td><code>closeSearch()</code></td><td>Closes search dialog</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Slots</p>
+						<table class="props-table">
+							<tbody>
+								<tr><td><code>default</code></td><td>Nav links (anchor elements)</td></tr>
+								<tr><td><code>logo</code></td><td>Custom logo content</td></tr>
+								<tr><td><code>cta</code></td><td>Custom CTA content</td></tr>
+								<tr><td><code>mobile</code></td><td>Custom mobile menu content</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Features -->
+				<div class="demo-box">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Features</p>
+					<ul class="text-sm text-muted space-y-1 list-disc list-inside">
+						<li>Responsive dropdown menus with viewport-aware positioning</li>
+						<li>Mobile drawer menu with focus trap and backdrop</li>
+						<li>Search dialog modal with keyboard shortcuts</li>
+						<li>Escape key closes menus and dialogs</li>
+						<li>ARIA attributes for accessibility</li>
+						<li>Automatic resize handling for open dropdowns</li>
+					</ul>
+				</div>
+			</section>
+
+			<!-- HERO BANNER -->
+			<section id="hero-banner" class="mb-16">
+				<h2 class="text-lg font-semibold text-canvas mb-4 pb-2 border-b border-muted">Hero Banner</h2>
+				<p class="text-sm text-muted mb-6">
+					A full-height hero Web Component with video or image background, heading,
+					description, CTA buttons, scroll indicator, and optional audio controls.
+				</p>
+
+				<!-- Preview -->
+				<div class="demo-box mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Live Preview (with image background)</p>
+					<div class="preview-frame" style="height: 500px;">
+						<iframe style="height: 100%;" srcdoc="
+<!DOCTYPE html>
+<html>
+<head>
+	<link href='../style.css' rel='stylesheet'>
+	<style>
+		body { margin: 0; }
+		hero-banner { display: block; }
+	</style>
+</head>
+<body>
+	<hero-banner
+		no-video
+		heading='Welcome to Our Site'
+		description='We provide exceptional services with care and dedication.'
+		primary-cta='Get Started'
+		primary-href='#'
+		image='https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&h=1080&fit=crop'>
+	</hero-banner>
+	<script type='module'>
+		import '../blocks/components/regions/region-hero.js';
+	</script>
+</body>
+</html>
+						" title="Hero Banner Preview"></iframe>
+					</div>
+				</div>
+
+				<!-- Usage Code -->
+				<div class="mb-4">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Usage</p>
+<pre class="code">&lt;!-- Import the component --&gt;
+&lt;script type="module"&gt;
+  import "../blocks/components/region-hero.js";
+&lt;/script&gt;
+
+&lt;!-- Basic usage with image background --&gt;
+&lt;hero-banner
+  no-video
+  heading="Your health, Our Purpose."
+  description="Exceptional care with compassion."
+  primary-cta="Get Started"
+  primary-href="/signup"
+  image="/images/hero.jpg"
+  image-alt="Hero background"&gt;
+&lt;/hero-banner&gt;
+
+&lt;!-- With video background --&gt;
+&lt;hero-banner
+  heading="Welcome"
+  video="/videos/hero.mp4"
+  video-type="video/mp4"
+  image="/images/poster.jpg"&gt;
+&lt;/hero-banner&gt;
+
+&lt;!-- Text alignment --&gt;
+&lt;hero-banner
+  align="center"
+  heading="Centered Hero"
+  description="Content is centered on all screen sizes."&gt;
+&lt;/hero-banner&gt;</pre>
+				</div>
+
+				<!-- Properties -->
+				<div class="grid md:grid-cols-2 gap-4 mb-4">
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Attributes</p>
+						<table class="props-table">
+							<thead>
+								<tr><th>Attribute</th><th>Type</th><th>Default</th></tr>
+							</thead>
+							<tbody>
+								<tr><td><code>heading</code></td><td>string</td><td>"Your health, Our Purpose."</td></tr>
+								<tr><td><code>description</code></td><td>string</td><td>Default description</td></tr>
+								<tr><td><code>image</code></td><td>string</td><td>Default beach image</td></tr>
+								<tr><td><code>image-alt</code></td><td>string</td><td>""</td></tr>
+								<tr><td><code>video</code></td><td>string</td><td>Default video</td></tr>
+								<tr><td><code>video-type</code></td><td>string</td><td>"video/mp4"</td></tr>
+								<tr><td><code>no-video</code></td><td>boolean</td><td>false</td></tr>
+								<tr><td><code>primary-cta</code></td><td>string</td><td>undefined</td></tr>
+								<tr><td><code>primary-href</code></td><td>string</td><td>"#"</td></tr>
+								<tr><td><code>secondary-cta</code></td><td>string</td><td>undefined</td></tr>
+								<tr><td><code>secondary-href</code></td><td>string</td><td>"#"</td></tr>
+								<tr><td><code>align</code></td><td>"left" | "center"</td><td>"left" on desktop</td></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="demo-box">
+						<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Constants</p>
+						<table class="props-table">
+							<tbody>
+								<tr><td><code>HERO_VIDEO_ENABLED</code></td><td>Default video state (currently false)</td></tr>
+								<tr><td><code>HERO_VIDEO_DISABLED</code></td><td>Inverse for convenience</td></tr>
+								<tr><td><code>BANNER_TEMPLATE()</code></td><td>Returns HTML template string</td></tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!-- Features -->
+				<div class="demo-box">
+					<p class="text-xs font-medium text-muted uppercase tracking-wider mb-3">Features</p>
+					<ul class="text-sm text-muted space-y-1 list-disc list-inside">
+						<li>Full viewport height (<code class="text-xs">min-h-dvh</code>)</li>
+						<li>Video background with autoplay, loop, and muted by default</li>
+						<li>Image fallback for video poster and non-video mode</li>
+						<li>Animated scroll indicator button (bouncing chevron)</li>
+						<li>Audio mute/unmute toggle for video (bottom-right corner)</li>
+						<li>Special heading formatting: comma-separated text gets italic styling</li>
+						<li>Responsive text sizing with <code class="text-xs">clamp()</code></li>
+					</ul>
+				</div>
+			</section>
+
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="border-t border-muted py-8">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 text-center text-sm text-muted">
+			Tailwind CSS Plus Components
+		</div>
+	</footer>
+</body>
+
+</html>

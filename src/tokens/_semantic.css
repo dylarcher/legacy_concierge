@@ -82,4 +82,87 @@
 	--color-shadow: rgb(var(--args-cool-midnight));
 	--color-shadow-muted: rgb(var(--args-cool-deep-navy));
 	--color-shadow-soft: rgb(var(--args-cool-dark-navy) / 0.8);
+
+	/** =========================================================================
+	 *  SPACING SCALE
+	 *  Consistent spacing tokens based on 4px (0.25rem) base unit
+	 *  ========================================================================= */
+	--space-0: 0;
+	--space-px: 1px;
+	--space-0-5: 0.125rem;  /* 2px */
+	--space-1: 0.25rem;     /* 4px */
+	--space-1-5: 0.375rem;  /* 6px */
+	--space-2: 0.5rem;      /* 8px */
+	--space-2-5: 0.625rem;  /* 10px */
+	--space-3: 0.75rem;     /* 12px */
+	--space-3-5: 0.875rem;  /* 14px */
+	--space-4: 1rem;        /* 16px */
+	--space-5: 1.25rem;     /* 20px */
+	--space-6: 1.5rem;      /* 24px */
+	--space-7: 1.75rem;     /* 28px */
+	--space-8: 2rem;        /* 32px */
+	--space-9: 2.25rem;     /* 36px */
+	--space-10: 2.5rem;     /* 40px */
+	--space-11: 2.75rem;    /* 44px */
+	--space-12: 3rem;       /* 48px */
+	--space-14: 3.5rem;     /* 56px */
+	--space-16: 4rem;       /* 64px */
+	--space-20: 5rem;       /* 80px */
+	--space-24: 6rem;       /* 96px */
+	--space-28: 7rem;       /* 112px */
+	--space-32: 8rem;       /* 128px */
+	--space-36: 9rem;       /* 144px */
+	--space-40: 10rem;      /* 160px */
+	--space-44: 11rem;      /* 176px */
+	--space-48: 12rem;      /* 192px */
+	--space-52: 13rem;      /* 208px */
+	--space-56: 14rem;      /* 224px */
+	--space-60: 15rem;      /* 240px */
+	--space-64: 16rem;      /* 256px */
+
+	/** =========================================================================
+	 *  SEMANTIC SPACING TOKENS
+	 *  Named tokens for consistent layout patterns
+	 *  ========================================================================= */
+
+	/* Section vertical padding */
+	--space-section-y: var(--space-24);      /* 96px - Default section padding */
+	--space-section-y-sm: var(--space-16);   /* 64px - Compact section padding */
+	--space-section-y-lg: var(--space-32);   /* 128px - Large section padding */
+
+	/* Container horizontal padding */
+	--space-container-x: var(--space-6);     /* 24px - Default container gutter */
+	--space-container-x-sm: var(--space-4);  /* 16px - Compact gutter */
+	--space-container-x-lg: var(--space-8);  /* 32px - Wide gutter */
+
+	/* Card internal padding */
+	--space-card: var(--space-6);            /* 24px - Card padding */
+	--space-card-sm: var(--space-4);         /* 16px - Compact card */
+	--space-card-lg: var(--space-8);         /* 32px - Large card */
+
+	/* Vertical stack gaps */
+	--space-stack: var(--space-4);           /* 16px - Default stack gap */
+	--space-stack-sm: var(--space-2);        /* 8px - Tight stack */
+	--space-stack-lg: var(--space-6);        /* 24px - Loose stack */
+
+	/* Grid gaps */
+	--space-grid: var(--space-6);            /* 24px - Default grid gap */
+	--space-grid-sm: var(--space-4);         /* 16px - Tight grid */
+	--space-grid-lg: var(--space-8);         /* 32px - Loose grid */
+
+	/* Inline element gaps */
+	--space-inline: var(--space-2);          /* 8px - Inline elements */
+	--space-inline-sm: var(--space-1);       /* 4px - Tight inline */
+	--space-inline-lg: var(--space-3);       /* 12px - Loose inline */
+
+	/* Form element spacing */
+	--space-form-gap: var(--space-4);        /* 16px - Between form fields */
+	--space-form-label: var(--space-1-5);    /* 6px - Label to input */
+
+	/* Navigation/header spacing */
+	--space-nav: var(--space-6);             /* 24px - Nav item padding */
+	--space-header: var(--space-6);          /* 24px - Header padding */
+
+	/* Footer spacing */
+	--space-footer: var(--space-12);         /* 48px - Footer padding */
 }

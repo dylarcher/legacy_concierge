@@ -20,6 +20,7 @@
 		"vite-bundle-analyzer": "^1.2.3",
 		"vitest": "4.0.15"
 	},
+	"customElements": "custom-elements.json",
 	"displayName": "Legacy Concierge",
 	"exports": {
 		".": {
@@ -45,7 +46,8 @@
 		"url": "git+ssh://github.com/dylarcher/legacy_concierge.git"
 	},
 	"scripts": {
-		"build": "vite build && node bin/generate-sitemap.js",
+		"build": "vite build && node bin/generate-sitemap.js && node bin/generate-manifest.js",
+		"build:manifest": "node bin/generate-manifest.js",
 		"build:docs": "node bin/manage-versions.js && node bin/build-gh-pages.js && node bin/generate-version-index.js",
 		"build:styleguide": "node bin/build-styleguide-components.js",
 		"dev": "vite",
@@ -58,6 +60,8 @@
 		"test:ui": "vitest --ui",
 		"analyze:unused": "bun run bin/find-unused-tailwind.js",
 		"analyze:bundle": "bun run build && open .tmp/bundle-report.html",
+		"analyze:colors": "node bin/audit-colors.js",
+		"analyze:colors:fix": "node bin/audit-colors.js --fix",
 		"validate:tailwind": "bun run bin/validate-tailwind-classes.js",
 		"validate:all": "bun run lint && bun run lint:css && bun run validate:tailwind",
 		"version:build": "node bin/build-gh-pages.js",
