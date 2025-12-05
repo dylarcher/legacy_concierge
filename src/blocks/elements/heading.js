@@ -1,4 +1,4 @@
-import { BaseComponent, defineElement } from "./_base.js";
+import { BaseComponent, defineElement } from "../_base.js";
 
 /**
  * Heading component for page titles

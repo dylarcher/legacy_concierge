@@ -2,6 +2,25 @@
  * Base Web Component class providing common utilities for all components.
  * Extends HTMLElement with helper methods for DOM manipulation and styling.
  */
+
+// Import utilities for use in BaseComponent and re-export for backward compatibility
+import {
+	clsx,
+	createElement as createElementFn,
+	createInteractiveElement as createInteractiveElementFn,
+	createSVGElement as createSVGElementFn,
+	renderWithChildren as renderWithChildrenFn,
+	uniqueId,
+} from "../utilities/dom.js";
+import { initializeHoverStateTracking as initHoverTracking } from "../utilities/events.js";
+import { FocusTrap, KEYS } from "../utilities/keyboard.js";
+
+// Re-export utilities for backward compatibility
+export { FocusTrap, KEYS, uniqueId };
+
+/**
+ * Base component class for all web components
+ */
 export class BaseComponent extends HTMLElement {
 	#innerElement = null;
 
@@ -32,7 +51,7 @@ export class BaseComponent extends HTMLElement {
 	 * @returns {string} Combined class string
 	 */
 	static combineClassNames(...classes) {
-		return classes.flat(Infinity).filter(Boolean).join(" ");
+		return clsx(...classes);
 	}
 
 	/**
@@ -41,7 +60,7 @@ export class BaseComponent extends HTMLElement {
 	 * @returns {string} Combined class string
 	 */
 	combineClassNames(...classes) {
-		return BaseComponent.combineClassNames(...classes);
+		return clsx(...classes);
 	}
 
 	/**
@@ -50,7 +69,7 @@ export class BaseComponent extends HTMLElement {
 	 * @returns {string} Combined class string
 	 */
 	clsx(...classes) {
-		return BaseComponent.combineClassNames(...classes);
+		return clsx(...classes);
 	}
 
 	/**
@@ -61,41 +80,7 @@ export class BaseComponent extends HTMLElement {
 	 * @returns {HTMLElement} Created element
 	 */
 	static createElement(tagName, attributes = {}, ...children) {
-		const element = document.createElement(tagName);
-
-		for (const [key, value] of Object.entries(attributes)) {
-			if (value == null || value === false) continue;
-
-			if (key === "className" || key === "class") {
-				element.className = Array.isArray(value)
-					? BaseComponent.combineClassNames(...value)
-					: value;
-			} else if (key === "style" && typeof value === "object") {
-				Object.assign(element.style, value);
-			} else if (key === "dataset") {
-				Object.assign(element.dataset, value);
-			} else if (key.startsWith("on") && typeof value === "function") {
-				const eventName = key.slice(2).toLowerCase();
-				element.addEventListener(eventName, value);
-			} else if (key === "ref" && typeof value === "function") {
-				value(element);
-			} else if (value === true) {
-				element.setAttribute(key, "");
-			} else {
-				element.setAttribute(key, String(value));
-			}
-		}
-
-		for (const child of children.flat(Infinity)) {
-			if (child == null || child === false) continue;
-			if (child instanceof Node) {
-				element.appendChild(child);
-			} else {
-				element.appendChild(document.createTextNode(String(child)));
-			}
-		}
-
-		return element;
+		return createElementFn(tagName, attributes, ...children);
 	}
 
 	/**
@@ -128,37 +113,7 @@ export class BaseComponent extends HTMLElement {
 	 * @returns {SVGElement} Created SVG element
 	 */
 	static createSVGElement(tagName, attributes = {}, ...children) {
-		const element = document.createElementNS(
-			"http://www.w3.org/2000/svg",
-			tagName,
-		);
-
-		for (const [key, value] of Object.entries(attributes)) {
-			if (value == null || value === false) continue;
-			if (key === "className" || key === "class") {
-				element.setAttribute(
-					"class",
-					Array.isArray(value)
-						? BaseComponent.combineClassNames(...value)
-						: value,
-				);
-			} else if (value === true) {
-				element.setAttribute(key, "");
-			} else {
-				element.setAttribute(key, String(value));
-			}
-		}
-
-		for (const child of children.flat(Infinity)) {
-			if (child == null || child === false) continue;
-			if (child instanceof Node) {
-				element.appendChild(child);
-			} else {
-				element.appendChild(document.createTextNode(String(child)));
-			}
-		}
-
-		return element;
+		return createSVGElementFn(tagName, attributes, ...children);
 	}
 
 	/**
@@ -191,16 +146,7 @@ export class BaseComponent extends HTMLElement {
 	 * @returns {HTMLElement} Button or anchor element
 	 */
 	createInteractiveElement(href, attributes, ...children) {
-		const tagName = href ? "a" : "button";
-		return this.createElement(
-			tagName,
-			{
-				...attributes,
-				href: href || undefined,
-				type: href ? undefined : "button",
-			},
-			...children,
-		);
+		return createInteractiveElementFn(href, attributes, ...children);
 	}
 
 	/**
@@ -210,34 +156,18 @@ export class BaseComponent extends HTMLElement {
 	 * @returns {HTMLElement} Created element with preserved children
 	 */
 	renderWithChildren(tagName, attributes) {
-		const children = Array.from(this.childNodes);
-		this.innerHTML = "";
-		const element = this.createElement(tagName, attributes, ...children);
-		this.appendChild(element);
-		return element;
+		return renderWithChildrenFn(this, tagName, attributes);
 	}
 
 	/**
 	 * Sets up hover and active state tracking via data attributes
 	 * @param {HTMLElement} [targetElement] - Element to apply states to (defaults to innerElement)
-	 * @returns {void}
+	 * @returns {Function} Cleanup function to remove listeners
 	 */
 	initializeHoverStateTracking(targetElement = null) {
 		const target = targetElement || this.#innerElement;
-		if (!target) return;
-
-		this.addEventListener("mouseenter", () => {
-			target.setAttribute("data-hover", "");
-		});
-		this.addEventListener("mouseleave", () => {
-			target.removeAttribute("data-hover");
-		});
-		this.addEventListener("mousedown", () => {
-			target.setAttribute("data-active", "");
-		});
-		this.addEventListener("mouseup", () => {
-			target.removeAttribute("data-active");
-		});
+		if (!target) return () => {};
+		return initHoverTracking(this, target);
 	}
 
 	/**
@@ -330,110 +260,6 @@ export function defineElement(name, elementClass) {
 	}
 }
 
-let idCounter = 0;
-/**
- * Generates a unique ID with optional prefix
- * @param {string} prefix - ID prefix
- * @returns {string} Unique identifier
- */
-export function uniqueId(prefix = "ui") {
-	return `${prefix}-${++idCounter}`;
-}
-
-/**
- * Creates a debounced version of a function
- * @param {Function} callback - Function to debounce
- * @param {number} delay - Delay in milliseconds
- * @returns {Function} Debounced function
- */
-export function debounce(callback, delay) {
-	let timeoutId;
-	return function (...args) {
-		clearTimeout(timeoutId);
-		timeoutId = setTimeout(() => callback.apply(this, args), delay);
-	};
-}
-
-/**
- * Manages focus trapping within a container element for accessibility
- */
-export class FocusTrap {
-	#container = null;
-	#previouslyFocusedElement = null;
-	#boundHandleTabKeyNavigation = null;
-
-	/**
-	 * Creates a new FocusTrap instance
-	 * @param {HTMLElement} container - Element to trap focus within
-	 */
-	constructor(container) {
-		this.#container = container;
-		this.#previouslyFocusedElement = null;
-		this.#boundHandleTabKeyNavigation = this.#handleTabKeyNavigation.bind(this);
-	}
-
-	/**
-	 * Activates focus trapping and focuses the first focusable element
-	 * @returns {void}
-	 */
-	activate() {
-		this.#previouslyFocusedElement = document.activeElement;
-		document.addEventListener("keydown", this.#boundHandleTabKeyNavigation);
-		this.#focusFirstElement();
-	}
-
-	/**
-	 * Deactivates focus trapping and restores previous focus
-	 * @returns {void}
-	 */
-	deactivate() {
-		document.removeEventListener("keydown", this.#boundHandleTabKeyNavigation);
-		this.#previouslyFocusedElement?.focus?.();
-	}
-
-	/**
-	 * Returns all focusable elements within the container
-	 * @returns {NodeList} Collection of focusable elements
-	 */
-	#getTrappableFocusableElements() {
-		return this.#container.querySelectorAll(
-			'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
-		);
-	}
-
-	/**
-	 * Focuses the first focusable element in the container
-	 * @returns {void}
-	 */
-	#focusFirstElement() {
-		const focusableElements = this.#getTrappableFocusableElements();
-		focusableElements[0]?.focus();
-	}
-
-	/**
-	 * Handles Tab key navigation to keep focus within container
-	 * @param {KeyboardEvent} event - Keyboard event
-	 * @returns {void}
-	 */
-	#handleTabKeyNavigation(event) {
-		if (event.key !== "Tab") return;
-
-		const focusableElements = Array.from(this.#getTrappableFocusableElements());
-		if (focusableElements.length === 0) return;
-
-		const firstElement = focusableElements[0];
-		const lastElement = focusableElements[focusableElements.length - 1];
-
-		if (event.shiftKey && document.activeElement === firstElement) {
-			event.preventDefault();
-			lastElement.focus();
-		} else if (!event.shiftKey && document.activeElement === lastElement) {
-			event.preventDefault();
-			firstElement.focus();
-		}
-	}
-}
-
 /**
  * Base URL for resolving internal paths
  * Uses Vite's BASE_URL which accounts for versioned deployments
@@ -459,7 +285,12 @@ const BASE_URL = import.meta.env.BASE_URL || "/";
  */
 export function resolvePath(path) {
 	// Return unchanged if external URL or already has protocol
-	if (!path || path.startsWith("http://") || path.startsWith("https://") || path.startsWith("//")) {
+	if (
+		!path ||
+		path.startsWith("http://") ||
+		path.startsWith("https://") ||
+		path.startsWith("//")
+	) {
 		return path;
 	}
 

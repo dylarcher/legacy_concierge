@@ -1,4 +1,4 @@
-import { BaseComponent, defineElement } from "./_base.js";
+import { BaseComponent, defineElement } from "../_base.js";
 
 const DATE_INPUT_TYPES = ["date", "datetime-local", "month", "time", "week"];
 

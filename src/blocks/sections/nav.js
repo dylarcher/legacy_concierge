@@ -1,4 +1,9 @@
-import { BaseComponent, defineElement, FocusTrap, resolvePath } from "../_base.js";
+import {
+	BaseComponent,
+	defineElement,
+	FocusTrap,
+	resolvePath,
+} from "../_base.js";
 
 /**
  * Navigation bar template with responsive mobile menu.
@@ -6,44 +11,42 @@ import { BaseComponent, defineElement, FocusTrap, resolvePath } from "../_base.j
  */
 export const NAVBAR_TEMPLATE = `
     <template id="navbar">
-        <header class="card-shadow absolute bg-canvas inset-x-0 top-0 z-50" role="banner">
-            <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <nav role="navigation" aria-label="Global" class="flex items-center justify-between py-6">
-                <div class="flex">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <span class="sr-only">Legacy Concierge</span>
-                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto 
-                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="" class="h-8 w-auto not-
-                    </a>
-                </div>
-                <div class="flex lg:hidden">
-                    <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 
-                        <span class="sr-only">Open main menu</span>
-                        <svg fill="none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-                            <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12">
-                    <a href="#" class="text-sm/6 font-semibold 
-                    <a href="##" class="text-sm/6 font-semibold 
-                    <a href="##" class="text-sm/6 font-semibold 
-                    <a href="##" class="text-sm/6 font-semibold 
-                    <a href="##" class="text-sm/6 font-semibold 
-                </div>
-                <div class="hidden lg:flex lg:ml-8">
-                    <button type="button" command="show-modal" commandfor="search-dialog" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 
-                        <span class="sr-only">Search</span>
-                        <svg fill="currentColor" width="18" height="18" aria-hidden="true" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" name="icon-search">
-                            <title>Search</title>
-                            <desc>Icon</desc>
-                            <path d="M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
-                        </svg>
-                    </button>
-                </div>
-                </nav>
-            </div>
-        </header>
+		<div class="mx-auto max-w-9xl px-6 lg:px-8">
+			<nav role="navigation" aria-label="Global" class="flex items-center justify-between py-6">
+			<div class="flex">
+				<a href="#" class="-m-1.5 p-1.5">
+					<span class="sr-only">Legacy Concierge</span>
+					<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto 
+					<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="" class="h-8 w-auto not-
+				</a>
+			</div>
+			<div class="flex lg:hidden">
+				<button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 
+					<span class="sr-only">Open main menu</span>
+					<svg fill="none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
+						<path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+				</button>
+			</div>
+			<div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12">
+				<a href="#" class="text-sm/6 font-semibold 
+				<a href="##" class="text-sm/6 font-semibold 
+				<a href="##" class="text-sm/6 font-semibold 
+				<a href="##" class="text-sm/6 font-semibold 
+				<a href="##" class="text-sm/6 font-semibold 
+			</div>
+			<div class="hidden lg:flex lg:ml-8">
+				<button type="button" command="show-modal" commandfor="search-dialog" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 
+					<span class="sr-only">Search</span>
+					<svg fill="currentColor" width="18" height="18" aria-hidden="true" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" name="icon-search">
+						<title>Search</title>
+						<desc>Icon</desc>
+						<path d="M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
+					</svg>
+				</button>
+			</div>
+			</nav>
+		</div>
 		<dialog id="search-dialog" class="backdrop:p-0 w-full max-w-lg rounded-xl fixed top-[87px] left-auto right-0 ml-6">
 			<div class="bg-canvas rounded-xl shadow-2xl ring-1 border-soft">
 				<form method="dialog" class="relative">
@@ -887,7 +890,7 @@ class NavBar extends BaseComponent {
 						this.h(
 							"a",
 							{
-								href: "#",
+								href: "/",
 								class: "-m-1.5 p-1.5 text-canvas",
 							},
 							this.h("span", { class: "sr-only" }, brand),
@@ -1219,7 +1222,7 @@ class NavBar extends BaseComponent {
 				{ class: "flex items-center justify-between" },
 				this.h(
 					"a",
-					{ href: "#", class: "-m-1.5 p-1.5 text-canvas" },
+					{ href: "/", class: "-m-1.5 p-1.5 text-canvas" },
 					this.h("span", { class: "sr-only" }, brand),
 					this.#createBrandLogoSVG("h-8 w-auto"),
 				),
@@ -1253,15 +1256,27 @@ class NavBar extends BaseComponent {
 							{ href: resolvePath("/pages/locations"), text: "Locations" },
 						]),
 						this.#createMobileDropdown("Treatments", [
-							{ href: resolvePath("/pages/treatments/cardiac"), text: "Cardiac Care" },
-							{ href: resolvePath("/pages/treatments/eating"), text: "Eating Support" },
+							{
+								href: resolvePath("/pages/treatments/cardiac"),
+								text: "Cardiac Care",
+							},
+							{
+								href: resolvePath("/pages/treatments/eating"),
+								text: "Eating Support",
+							},
 							{ href: resolvePath("/pages/treatments/iv"), text: "IV Therapy" },
 							{
 								href: resolvePath("/pages/treatments/neurological"),
 								text: "Neurological Care",
 							},
-							{ href: resolvePath("/pages/treatments/oncology"), text: "Oncology Care" },
-							{ href: resolvePath("/pages/treatments/pain"), text: "Pain Management" },
+							{
+								href: resolvePath("/pages/treatments/oncology"),
+								text: "Oncology Care",
+							},
+							{
+								href: resolvePath("/pages/treatments/pain"),
+								text: "Pain Management",
+							},
 							{
 								href: resolvePath("/pages/treatments/palliative"),
 								text: "Palliative Care",
@@ -1285,7 +1300,10 @@ class NavBar extends BaseComponent {
 								href: resolvePath("/pages/services/alzheimers"),
 								text: "Alzheimer's Care",
 							},
-							{ href: resolvePath("/pages/services/dementia"), text: "Dementia Care" },
+							{
+								href: resolvePath("/pages/services/dementia"),
+								text: "Dementia Care",
+							},
 							{
 								href: resolvePath("/pages/services/diabetes"),
 								text: "Diabetes Management",
@@ -1294,15 +1312,30 @@ class NavBar extends BaseComponent {
 								href: resolvePath("/pages/services/heart-disease"),
 								text: "Heart Disease",
 							},
-							{ href: resolvePath("/pages/services/ms"), text: "Multiple Sclerosis" },
-							{ href: resolvePath("/pages/services/oncology"), text: "Oncology Services" },
-							{ href: resolvePath("/pages/services/ostomy"), text: "Ostomy Care" },
+							{
+								href: resolvePath("/pages/services/ms"),
+								text: "Multiple Sclerosis",
+							},
+							{
+								href: resolvePath("/pages/services/oncology"),
+								text: "Oncology Services",
+							},
+							{
+								href: resolvePath("/pages/services/ostomy"),
+								text: "Ostomy Care",
+							},
 							{
 								href: resolvePath("/pages/services/parkinsons"),
 								text: "Parkinson's Care",
 							},
-							{ href: resolvePath("/pages/services/stroke"), text: "Stroke Recovery" },
-							{ href: resolvePath("/pages/services/tbi"), text: "Traumatic Brain Injury" },
+							{
+								href: resolvePath("/pages/services/stroke"),
+								text: "Stroke Recovery",
+							},
+							{
+								href: resolvePath("/pages/services/tbi"),
+								text: "Traumatic Brain Injury",
+							},
 						]),
 						this.h(
 							"a",

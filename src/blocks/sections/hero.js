@@ -175,6 +175,25 @@ export class HeroBanner extends BaseComponent {
 	}
 
 	/**
+	 * Formats the heading to make "Our Purpose" italic when it appears after a comma.
+	 * Handles the default heading "Your health, Our Purpose." specially.
+	 * @param {string} heading - The heading text
+	 * @returns {Array} Array of text nodes and elements for the h() helper
+	 */
+	_formatHeading(heading) {
+		// Check if heading contains a comma (indicating two parts)
+		const commaIndex = heading.indexOf(",");
+		if (commaIndex === -1) {
+			return [heading];
+		}
+
+		const firstPart = heading.slice(0, commaIndex + 1); // "Your health,"
+		const secondPart = heading.slice(commaIndex + 1); // " Our Purpose."
+
+		return [firstPart, this.h("span", { class: "italic" }, secondPart)];
+	}
+
+	/**
 	 * Creates the gradient blur decorative elements
 	 */
 	_createGradientBlurs() {
@@ -222,7 +241,9 @@ export class HeroBanner extends BaseComponent {
 		const primaryCta = this.getAttribute("primary-cta");
 		const primaryHref = resolvePath(this.getAttribute("primary-href") || "#");
 		const secondaryCta = this.getAttribute("secondary-cta");
-		const secondaryHref = resolvePath(this.getAttribute("secondary-href") || "#");
+		const secondaryHref = resolvePath(
+			this.getAttribute("secondary-href") || "#",
+		);
 		const align = this.getAttribute("align");
 
 		// Check for custom slotted content
@@ -373,9 +394,10 @@ export class HeroBanner extends BaseComponent {
 					this.h(
 						"h1",
 						{
-							class: "tracking-wide leading-tight",
+							class:
+								"text-[#fff] font-serif text-6xl md:text-7xl tracking-normal leading-tight",
 						},
-						heading,
+						...this._formatHeading(heading),
 					),
 					this.h(
 						"p",
