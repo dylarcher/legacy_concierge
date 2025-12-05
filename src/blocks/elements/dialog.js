@@ -1,6 +1,17 @@
-import { BaseComponent, defineElement, FocusTrap } from "../_base.js";
+/**
+ * Dialog Element Templates
+ * Tailwind CSS Plus / Catalyst-style dialog/modal templates
+ *
+ * @module elements/dialog
+ */
 
-const DIALOG_SIZES = {
+import { clsx, createElement } from "../../utilities/dom.js";
+
+/**
+ * Dialog size variants
+ * @type {Object<string, string>}
+ */
+export const DIALOG_SIZES = {
 	xs: "sm:max-w-xs",
 	sm: "sm:max-w-sm",
 	md: "sm:max-w-md",
@@ -13,390 +24,275 @@ const DIALOG_SIZES = {
 };
 
 /**
- * Modal dialog component
+ * Dialog backdrop styles
+ * @type {string}
+ */
+export const DIALOG_BACKDROP = [
+	"fixed inset-0 flex w-screen justify-center overflow-y-auto bg-zinc-950/25",
+	"px-2 py-2 focus:outline-none",
+	"sm:px-6 sm:py-8 lg:px-8 lg:py-16",
+	"dark:bg-zinc-950/50",
+].join(" ");
+
+/**
+ * Dialog panel styles
+ * @type {string}
+ */
+export const DIALOG_PANEL = [
+	"row-start-2 w-full min-w-0 rounded-t-3xl bg-white p-8 shadow-lg",
+	"ring-1 ring-zinc-950/10 sm:mb-auto sm:rounded-2xl",
+	"dark:bg-zinc-900 dark:ring-white/10",
+].join(" ");
+
+/**
+ * Dialog title styles
+ * @type {string}
+ */
+export const DIALOG_TITLE = [
+	"text-balance text-lg/6 font-semibold text-canvas sm:text-base/6",
+].join(" ");
+
+/**
+ * Dialog description styles
+ * @type {string}
+ */
+export const DIALOG_DESCRIPTION = [
+	"mt-2 text-pretty text-base/6 text-muted sm:text-sm/6",
+].join(" ");
+
+/**
+ * Dialog body styles
+ * @type {string}
+ */
+export const DIALOG_BODY = "mt-6";
+
+/**
+ * Dialog actions container styles
+ * @type {string}
+ */
+export const DIALOG_ACTIONS = [
+	"mt-8 flex flex-col-reverse items-center justify-end gap-3",
+	"*:w-full sm:flex-row sm:*:w-auto",
+].join(" ");
+
+/**
+ * Creates a dialog backdrop element
  *
- * @element ui-dialog
- * @attr {string} size - Dialog width (xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl)
- * @attr {boolean} open - Whether dialog is open
+ * @param {Object} options - Backdrop configuration
+ * @param {string} [options.className] - Additional classes
+ * @returns {HTMLDivElement} Backdrop element
+ */
+export function createDialogBackdrop(options = {}) {
+	const { className = "" } = options;
+
+	return createElement("div", {
+		class: clsx(DIALOG_BACKDROP, className),
+	});
+}
+
+/**
+ * Creates a dialog panel element
  *
- * @fires dialog-open - When dialog opens
- * @fires dialog-close - When dialog closes
+ * @param {Object} options - Panel configuration
+ * @param {string} [options.size="lg"] - Size variant
+ * @param {string} [options.className] - Additional classes
+ * @returns {HTMLDivElement} Panel element
+ */
+export function createDialogPanel(options = {}) {
+	const { size = "lg", className = "" } = options;
+
+	return createElement("div", {
+		class: clsx(
+			DIALOG_PANEL,
+			DIALOG_SIZES[size] || DIALOG_SIZES.lg,
+			className,
+		),
+	});
+}
+
+/**
+ * Creates a dialog title element
+ *
+ * @param {Object} options - Title configuration
+ * @param {string} [options.text] - Title text
+ * @param {string} [options.className] - Additional classes
+ * @returns {HTMLHeadingElement} Title element
+ */
+export function createDialogTitle(options = {}) {
+	const { text = "", className = "" } = options;
+
+	return createElement("h2", {
+		class: clsx(DIALOG_TITLE, className),
+	}, text);
+}
+
+/**
+ * Creates a dialog description element
+ *
+ * @param {Object} options - Description configuration
+ * @param {string} [options.text] - Description text
+ * @param {string} [options.className] - Additional classes
+ * @returns {HTMLParagraphElement} Description element
+ */
+export function createDialogDescription(options = {}) {
+	const { text = "", className = "" } = options;
+
+	return createElement("p", {
+		class: clsx(DIALOG_DESCRIPTION, className),
+	}, text);
+}
+
+/**
+ * Creates a dialog body element
+ *
+ * @param {Object} options - Body configuration
+ * @param {string} [options.className] - Additional classes
+ * @returns {HTMLDivElement} Body element
+ */
+export function createDialogBody(options = {}) {
+	const { className = "" } = options;
+
+	return createElement("div", {
+		class: clsx(DIALOG_BODY, className),
+	});
+}
+
+/**
+ * Creates a dialog actions container
+ *
+ * @param {Object} options - Actions configuration
+ * @param {string} [options.className] - Additional classes
+ * @returns {HTMLDivElement} Actions container element
+ */
+export function createDialogActions(options = {}) {
+	const { className = "" } = options;
+
+	return createElement("div", {
+		class: clsx(DIALOG_ACTIONS, className),
+	});
+}
+
+/**
+ * Creates a complete dialog structure
+ *
+ * @param {Object} options - Dialog configuration
+ * @param {string} [options.size="lg"] - Size variant
+ * @param {string} [options.title] - Dialog title
+ * @param {string} [options.description] - Dialog description
+ * @param {boolean} [options.open=false] - Initial open state
+ * @param {string} [options.className] - Additional classes for panel
+ * @returns {HTMLDialogElement} Native dialog element with content structure
  *
  * @example
- * <ui-dialog size="md">
- *   <ui-dialog-title>Confirm Action</ui-dialog-title>
- *   <ui-dialog-description>Are you sure?</ui-dialog-description>
- *   <ui-dialog-actions>
- *     <ui-button onclick="this.closest('ui-dialog').close()">Cancel</ui-button>
- *     <ui-button color="red">Confirm</ui-button>
- *   </ui-dialog-actions>
- * </ui-dialog>
+ * const dialog = createDialog({
+ *   size: "md",
+ *   title: "Confirm Action",
+ *   description: "Are you sure you want to proceed?"
+ * });
+ * document.body.appendChild(dialog);
+ * dialog.showModal();
  */
-export class Dialog extends BaseComponent {
-	#isDialogOpen = false;
-	#focusTrapInstance = null;
-	#wrapperElement = null;
-	#backdropElement = null;
-	#panelElement = null;
-	#boundHandleEscapeKey = null;
+export function createDialog(options = {}) {
+	const {
+		size = "lg",
+		title,
+		description,
+		open = false,
+		className = "",
+	} = options;
 
-	static get observedAttributes() {
-		return ["size", "open"];
+	// Use native dialog element for accessibility
+	const dialog = createElement("dialog", {
+		class: [
+			"fixed inset-0 z-50 m-0 h-full max-h-full w-full max-w-full overflow-y-auto bg-transparent p-0",
+			"backdrop:bg-zinc-950/25 dark:backdrop:bg-zinc-950/50",
+		].join(" "),
+		open: open || undefined,
+	});
+
+	const scrollContainer = createElement("div", {
+		class: "fixed inset-0 w-screen overflow-y-auto pt-6 sm:pt-0",
+	});
+
+	const gridContainer = createElement("div", {
+		class: "grid min-h-full grid-rows-[1fr_auto] justify-items-center sm:grid-rows-[1fr_auto_3fr] sm:p-4",
+	});
+
+	const panel = createDialogPanel({ size, className });
+
+	if (title) {
+		panel.appendChild(createDialogTitle({ text: title }));
 	}
 
-	/**
-	 * Creates a new UIDialog instance
-	 */
-	constructor() {
-		super();
-		this.#boundHandleEscapeKey = this.#handleEscapeKeyPress.bind(this);
+	if (description) {
+		panel.appendChild(createDialogDescription({ text: description }));
 	}
 
-	/**
-	 * Called when element is connected to the DOM
-	 * @returns {void}
-	 */
-	connectedCallback() {
-		this.render();
-		this.#initializeKeyboardCloseHandler();
+	// Add slots for body and actions
+	panel._body = null;
+	panel._actions = null;
 
-		if (this.hasAttribute("open")) {
-			this.open();
+	gridContainer.appendChild(panel);
+	scrollContainer.appendChild(gridContainer);
+	dialog.appendChild(scrollContainer);
+
+	// Expose panel for adding content
+	dialog._panel = panel;
+
+	// Close on backdrop click
+	dialog.addEventListener("click", (event) => {
+		if (event.target === dialog) {
+			dialog.close();
 		}
-	}
+	});
 
-	/**
-	 * Called when element is disconnected from the DOM
-	 * @returns {void}
-	 */
-	disconnectedCallback() {
-		this.#focusTrapInstance?.deactivate();
-		document.removeEventListener("keydown", this.#boundHandleEscapeKey);
-	}
-
-	/**
-	 * Called when observed attributes change
-	 * @param {string} name - Attribute name
-	 * @param {string} oldValue - Previous value
-	 * @param {string} newValue - New value
-	 * @returns {void}
-	 */
-	attributeChangedCallback(name, _oldValue, newValue) {
-		if (name === "open") {
-			if (newValue !== null) {
-				this.open();
-			} else {
-				this.close();
-			}
-		} else if (this.isConnected) {
-			this.render();
+	// Close on Escape (native behavior, but ensure it works)
+	dialog.addEventListener("keydown", (event) => {
+		if (event.key === "Escape") {
+			dialog.close();
 		}
-	}
+	});
 
-	/**
-	 * Sets up keyboard listener for Escape key to close dialog
-	 * @returns {void}
-	 */
-	#initializeKeyboardCloseHandler() {
-		document.addEventListener("keydown", this.#boundHandleEscapeKey);
-	}
-
-	/**
-	 * Handles Escape key press to close dialog
-	 * @param {KeyboardEvent} event - Keyboard event
-	 * @returns {void}
-	 */
-	#handleEscapeKeyPress(event) {
-		if (event.key === "Escape" && this.#isDialogOpen) {
-			this.close();
-		}
-	}
-
-	/**
-	 * Opens the dialog
-	 * @returns {void}
-	 */
-	open() {
-		if (this.#isDialogOpen) return;
-		this.#isDialogOpen = true;
-		this.#updateDialogVisibility();
-		this.emit("dialog-open");
-	}
-
-	/**
-	 * Closes the dialog
-	 * @returns {void}
-	 */
-	close() {
-		if (!this.#isDialogOpen) return;
-		this.#isDialogOpen = false;
-		this.#updateDialogVisibility();
-		this.emit("dialog-close");
-	}
-
-	/**
-	 * Updates the visual state of the dialog based on open/closed status
-	 * @returns {void}
-	 */
-	#updateDialogVisibility() {
-		const wrapperElement = this.#wrapperElement;
-		const backdropElement = this.#backdropElement;
-		const panelElement = this.#panelElement;
-
-		if (!wrapperElement || !backdropElement || !panelElement) return;
-
-		if (this.#isDialogOpen) {
-			wrapperElement.classList.remove("hidden");
-			wrapperElement.setAttribute("aria-hidden", "false");
-
-			requestAnimationFrame(() => {
-				backdropElement.classList.remove("opacity-0");
-				panelElement.classList.remove(
-					"translate-y-12",
-					"opacity-0",
-					"scale-95",
-				);
-			});
-
-			this.#focusTrapInstance = new FocusTrap(panelElement);
-			this.#focusTrapInstance.activate();
-
-			document.body.style.overflow = "hidden";
-		} else {
-			backdropElement.classList.add("opacity-0");
-			panelElement.classList.add("translate-y-12", "opacity-0");
-
-			setTimeout(() => {
-				wrapperElement.classList.add("hidden");
-				wrapperElement.setAttribute("aria-hidden", "true");
-			}, 100);
-
-			this.#focusTrapInstance?.deactivate();
-			this.#focusTrapInstance = null;
-
-			document.body.style.overflow = "";
-
-			this.removeAttribute("open");
-		}
-	}
-
-	/**
-	 * Renders the dialog element
-	 * @returns {void}
-	 */
-	render() {
-		const sizeVariant = this.getAttribute("size") || "lg";
-		const childNodes = Array.from(this.childNodes);
-
-		this.innerHTML = "";
-
-		const wrapperElement = this.createElement("div", {
-			class: "hidden",
-			role: "dialog",
-			"aria-modal": "true",
-			"aria-hidden": "true",
-			ref: (element) => {
-				this.#wrapperElement = element;
-			},
-		});
-
-		const backdropElement = this.createElement("div", {
-			class: this.combineClassNames(
-				"fixed inset-0 flex w-screen justify-center overflow-y-auto",
-				"px-2 py-2 transition duration-100 ease-out",
-				"opacity-0",
-				"sm:px-6 sm:py-8 lg:px-8 lg:py-16",
-				"bg-zinc-950/25",
-			),
-			ref: (element) => {
-				this.#backdropElement = element;
-			},
-			onClick: (event) => {
-				if (event.target === event.currentTarget) {
-					this.close();
-				}
-			},
-		});
-
-		const scrollContainer = this.createElement("div", {
-			class: "fixed inset-0 w-screen overflow-y-auto pt-6 sm:pt-0",
-		});
-
-		const gridContainer = this.createElement("div", {
-			class:
-				"grid min-h-full grid-rows-[1fr_auto] justify-items-center sm:grid-rows-[1fr_auto_3fr] sm:p-4",
-		});
-
-		const panelElement = this.createElement("div", {
-			class: this.combineClassNames(
-				DIALOG_SIZES[sizeVariant] || DIALOG_SIZES.lg,
-				"row-start-2 w-full min-w-0 rounded-t-3xl bg-canvas p-8 shadow-lg",
-				"ring-1 border-soft sm:mb-auto sm:rounded-2xl",
-				"transition duration-100 will-change-transform translate-y-12 opacity-0",
-				"sm:translate-y-0 sm:scale-95",
-			),
-			ref: (element) => {
-				this.#panelElement = element;
-			},
-		});
-
-		for (const childNode of childNodes) {
-			panelElement.appendChild(childNode);
-		}
-
-		gridContainer.appendChild(panelElement);
-		scrollContainer.appendChild(gridContainer);
-		wrapperElement.appendChild(backdropElement);
-		wrapperElement.appendChild(scrollContainer);
-
-		this.appendChild(wrapperElement);
-	}
+	return dialog;
 }
 
 /**
- * Dialog title
+ * Creates a dialog template element
  *
- * @element ui-dialog-title
+ * @param {Object} options - Dialog configuration
+ * @returns {HTMLTemplateElement} Template containing dialog markup
  */
-export class DialogTitle extends BaseComponent {
-	/**
-	 * Called when element is connected to the DOM
-	 * @returns {void}
-	 */
-	connectedCallback() {
-		this.render();
-	}
-
-	/**
-	 * Renders the dialog title element
-	 * @returns {void}
-	 */
-	render() {
-		const titleClasses = this.combineClassNames(
-			"text-lg/6 font-semibold text-balance text-canvas sm:text-base/6",
-			this.className,
-		);
-
-		const childNodes = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const headingElement = this.createElement(
-			"h2",
-			{ class: titleClasses },
-			...childNodes,
-		);
-		this.appendChild(headingElement);
-	}
+export function createDialogTemplate(options = {}) {
+	const template = document.createElement("template");
+	const dialog = createDialog(options);
+	template.content.appendChild(dialog);
+	return template;
 }
 
 /**
- * Dialog description
- *
- * @element ui-dialog-description
+ * Pre-defined dialog templates for common use cases
  */
-export class DialogDescription extends BaseComponent {
-	/**
-	 * Called when element is connected to the DOM
-	 * @returns {void}
-	 */
-	connectedCallback() {
-		this.render();
-	}
+export const dialogTemplates = {
+	/** Basic dialog */
+	basic: () => createDialog({ size: "md" }),
 
-	/**
-	 * Renders the dialog description element
-	 * @returns {void}
-	 */
-	render() {
-		const descriptionClasses = this.combineClassNames(
-			"mt-2 text-pretty text-base/6 text-muted sm:text-sm/6",
-			this.className,
-		);
+	/** Small dialog */
+	small: () => createDialog({ size: "sm" }),
 
-		const childNodes = Array.from(this.childNodes);
-		this.innerHTML = "";
+	/** Large dialog */
+	large: () => createDialog({ size: "lg" }),
 
-		const paragraphElement = this.createElement(
-			"p",
-			{ class: descriptionClasses },
-			...childNodes,
-		);
-		this.appendChild(paragraphElement);
-	}
-}
+	/** Confirmation dialog */
+	confirm: (title, description) => createDialog({
+		size: "sm",
+		title: title || "Confirm",
+		description: description || "Are you sure you want to proceed?",
+	}),
 
-/**
- * Dialog body for main content
- *
- * @element ui-dialog-body
- */
-export class DialogBody extends BaseComponent {
-	/**
-	 * Called when element is connected to the DOM
-	 * @returns {void}
-	 */
-	connectedCallback() {
-		this.render();
-	}
-
-	/**
-	 * Renders the dialog body element
-	 * @returns {void}
-	 */
-	render() {
-		const bodyClasses = this.combineClassNames("mt-6", this.className);
-
-		const childNodes = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const containerElement = this.createElement(
-			"div",
-			{ class: bodyClasses },
-			...childNodes,
-		);
-		this.appendChild(containerElement);
-	}
-}
-
-/**
- * Dialog actions container for buttons
- *
- * @element ui-dialog-actions
- */
-export class DialogActions extends BaseComponent {
-	/**
-	 * Called when element is connected to the DOM
-	 * @returns {void}
-	 */
-	connectedCallback() {
-		this.render();
-	}
-
-	/**
-	 * Renders the dialog actions element
-	 * @returns {void}
-	 */
-	render() {
-		const actionsClasses = this.combineClassNames(
-			"mt-8 flex flex-col-reverse items-center justify-end gap-3",
-			"[&>*]:w-full sm:flex-row sm:[&>*]:w-auto",
-			this.className,
-		);
-
-		const childNodes = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const containerElement = this.createElement(
-			"div",
-			{ class: actionsClasses },
-			...childNodes,
-		);
-		this.appendChild(containerElement);
-	}
-}
-
-defineElement("ui-dialog", Dialog);
-defineElement("ui-dialog-title", DialogTitle);
-defineElement("ui-dialog-description", DialogDescription);
-defineElement("ui-dialog-body", DialogBody);
-defineElement("ui-dialog-actions", DialogActions);
+	/** Alert dialog */
+	alert: (title, description) => createDialog({
+		size: "sm",
+		title: title || "Alert",
+		description,
+	}),
+};

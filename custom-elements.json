@@ -1,0 +1,308 @@
+{
+	"modules": [
+		{
+			"declarations": [
+				{
+					"attributes": [
+						{
+							"description": "Copyright text (default: current year)",
+							"name": "copyright",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Company name for copyright",
+							"name": "company",
+							"type": {
+								"text": "string"
+							}
+						}
+					],
+					"demos": [
+						{
+							"description": "Usage example",
+							"source": "<!-- Basic usage with default template -->\n<global-footer company=\"My Company\"></global-footer>",
+							"url": ""
+						},
+						{
+							"description": "Usage example",
+							"source": "<!-- Custom sections -->\n<global-footer company=\"Acme Inc\">\n  <content-info slot=\"links\" heading=\"Products\">\n    <a href=\"/src/pages/product-a\">Product A</a>\n    <a href=\"/src/pages/product-b\">Product B</a>\n  </content-info>\n</global-footer>",
+							"url": ""
+						}
+					],
+					"description": "Footer web component with configurable link sections, newsletter form, and social links.",
+					"events": [
+						{
+							"description": "When newsletter form is submitted (detail: { email })",
+							"name": "newsletter-submit"
+						}
+					],
+					"kind": "class",
+					"members": [],
+					"name": "GlobalFooter",
+					"slots": [
+						{
+							"description": "Footer link sections (use ui-footer-section elements)",
+							"name": "links"
+						},
+						{
+							"description": "Newsletter signup section",
+							"name": "newsletter"
+						},
+						{
+							"description": "Social media links",
+							"name": "social"
+						},
+						{
+							"description": "Legal/copyright section",
+							"name": "legal"
+						}
+					],
+					"tagName": "global-footer"
+				},
+				{
+					"attributes": [
+						{
+							"description": "Section heading text",
+							"name": "heading",
+							"type": {
+								"text": "string"
+							}
+						}
+					],
+					"demos": [
+						{
+							"description": "Usage example",
+							"source": "<ui-footer-section heading=\"Company\">\n  <a href=\"/about\">About</a>\n  <a href=\"/careers\">Careers</a>\n</ui-footer-section>",
+							"url": ""
+						}
+					],
+					"description": "Footer section with heading and links",
+					"kind": "class",
+					"members": [],
+					"name": "ContentInfo",
+					"tagName": "content-info"
+				}
+			],
+			"exports": [
+				{
+					"declaration": {
+						"module": "src/blocks/components/global-footer.js",
+						"name": "GlobalFooter"
+					},
+					"kind": "custom-element-definition",
+					"name": "global-footer"
+				},
+				{
+					"declaration": {
+						"module": "src/blocks/components/global-footer.js",
+						"name": "ContentInfo"
+					},
+					"kind": "custom-element-definition",
+					"name": "content-info"
+				}
+			],
+			"kind": "javascript-module",
+			"path": "src/blocks/components/global-footer.js"
+		},
+		{
+			"declarations": [
+				{
+					"attributes": [
+						{
+							"description": "Main heading text",
+							"name": "heading",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Subheading/description text",
+							"name": "description",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Background image URL (also used as video poster/fallback)",
+							"name": "image",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Background image alt text (for accessibility)",
+							"name": "image-alt",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Background video URL (autoplays, loops infinitely, muted)",
+							"name": "video",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Video MIME type (default: \"video/mp4\")",
+							"name": "video-type",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Primary CTA button text",
+							"name": "primary-cta",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Primary CTA button URL",
+							"name": "primary-href",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Secondary CTA link text",
+							"name": "secondary-cta",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Secondary CTA link URL",
+							"name": "secondary-href",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Text alignment: \"left\", \"center\" (default: \"center\" on mobile, \"left\" on desktop)",
+							"name": "align",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "",
+							"name": "no-video",
+							"type": {
+								"text": "string"
+							}
+						}
+					],
+					"demos": [
+						{
+							"description": "Usage example",
+							"source": "<!-- Basic usage -->\n<hero-banner\n  heading=\"Welcome to Our Site\"\n  description=\"We provide amazing services.\"\n  primary-cta=\"Get Started\"\n  primary-href=\"/signup\">\n</hero-banner>",
+							"url": ""
+						},
+						{
+							"description": "Usage example",
+							"source": "<!-- With custom background -->\n<hero-banner\n  heading=\"Custom Hero\"\n  image=\"/images/hero.jpg\"\n  image-alt=\"Hero background\">\n</hero-banner>",
+							"url": ""
+						},
+						{
+							"description": "Usage example",
+							"source": "<!-- With background video -->\n<hero-banner\n  heading=\"Video Hero\"\n  video=\"/videos/hero.mp4\"\n  video-type=\"video/mp4\"\n  image=\"/images/hero-poster.jpg\"\n  image-alt=\"Hero video poster\">\n</hero-banner>",
+							"url": ""
+						}
+					],
+					"description": "Hero banner web component with background image, heading, description, and CTAs.",
+					"kind": "class",
+					"members": [],
+					"name": "HeroBanner",
+					"slots": [
+						{
+							"description": "Custom CTA buttons/links",
+							"name": "cta"
+						}
+					],
+					"tagName": "hero-banner"
+				}
+			],
+			"exports": [
+				{
+					"declaration": {
+						"module": "src/blocks/components/hero-banner.js",
+						"name": "HeroBanner"
+					},
+					"kind": "custom-element-definition",
+					"name": "hero-banner"
+				}
+			],
+			"kind": "javascript-module",
+			"path": "src/blocks/components/hero-banner.js"
+		},
+		{
+			"declarations": [
+				{
+					"attributes": [
+						{
+							"description": "Scroll distance before showing (default: 300)",
+							"name": "threshold",
+							"type": {
+								"text": "number"
+							}
+						},
+						{
+							"description": "Corner position: \"bottom-right\", \"bottom-left\" (default: \"bottom-right\")",
+							"name": "position",
+							"type": {
+								"text": "string"
+							}
+						},
+						{
+							"description": "Accessible label for the button (default: \"Scroll to top\")",
+							"name": "label",
+							"type": {
+								"text": "string"
+							}
+						}
+					],
+					"demos": [
+						{
+							"description": "Usage example",
+							"source": "<!-- Basic usage -->\n<ui-scroll-to-top></ui-scroll-to-top>",
+							"url": ""
+						},
+						{
+							"description": "Usage example",
+							"source": "<!-- Custom threshold and position -->\n<ui-scroll-to-top threshold=\"500\" position=\"bottom-left\"></ui-scroll-to-top>",
+							"url": ""
+						}
+					],
+					"description": "Scroll-to-top button that appears when user scrolls up",
+					"events": [
+						{
+							"description": "When the button is clicked and scroll begins",
+							"name": "scroll-to-top"
+						}
+					],
+					"kind": "class",
+					"members": [],
+					"name": "ScrollToTop",
+					"tagName": "ui-scroll-to-top"
+				}
+			],
+			"exports": [
+				{
+					"declaration": {
+						"module": "src/blocks/components/scroll-to-top.js",
+						"name": "ScrollToTop"
+					},
+					"kind": "custom-element-definition",
+					"name": "ui-scroll-to-top"
+				}
+			],
+			"kind": "javascript-module",
+			"path": "src/blocks/components/scroll-to-top.js"
+		}
+	],
+	"readme": "README.md",
+	"schemaVersion": "2.1.0"
+}

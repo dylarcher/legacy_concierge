@@ -2,9 +2,7 @@
 	// JSON schema for validation and IDE support
 	"$schema": "https://biomejs.dev/schemas/latest/schema.json",
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// ASSIST - Code actions and automatic fixes
-	// ═══════════════════════════════════════════════════════════════════════════
 	"assist": {
 		"actions": {
 			"recommended": true, // Enable recommended assist actions | true, false
@@ -13,9 +11,7 @@
 		"enabled": true // Enable assist via LSP and CLI | true, false
 	},
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// CSS - Styling language configuration
-	// ═══════════════════════════════════════════════════════════════════════════
 	"css": {
 		"assist": {
 			"enabled": true // Enable CSS assist | true, false
@@ -39,9 +35,7 @@
 		}
 	},
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// FILES - File handling configuration
-	// ═══════════════════════════════════════════════════════════════════════════
 	"files": {
 		"ignoreUnknown": true, // Don't emit diagnostics for unknown file types | true, false
 		// Glob patterns for files Biome should process
@@ -67,9 +61,7 @@
 		"maxSize": null // Max file size in bytes (default 1MiB) | null or positive integer
 	},
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// FORMATTER - Global formatting options (applies to all languages)
-	// ═══════════════════════════════════════════════════════════════════════════
 	"formatter": {
 		"attributePosition": "auto", // HTML/JSX attribute positioning | "auto", "multiline"
 		"bracketSameLine": false, // Put > on same line as last attribute | true, false
@@ -84,9 +76,7 @@
 		"useEditorconfig": true // Use .editorconfig settings | true, false
 	},
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// GRAPHQL - GraphQL language configuration
-	// ═══════════════════════════════════════════════════════════════════════════
 	"graphql": {
 		"assist": {
 			"enabled": true // Enable GraphQL assist | true, false
@@ -105,9 +95,7 @@
 		}
 	},
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// GRIT - GritQL pattern language configuration
-	// ═══════════════════════════════════════════════════════════════════════════
 	"grit": {
 		"assist": {
 			"enabled": true // Enable GritQL assist | true, false
@@ -135,7 +123,7 @@
 		"formatter": {
 			"attributePosition": "auto", // Attribute positioning | "auto", "multiline"
 			"bracketSameLine": false, // Put > on same line as last attribute | true, false
-			"enabled": true, // Enable HTML formatter | true, false
+			"enabled": false, // Enable HTML formatter | true, false (disabled due to Biome internal bug)
 			"indentScriptAndStyle": false, // Indent <script> and <style> content | true, false
 			"indentStyle": "tab", // Indentation style | "tab", "space"
 			"indentWidth": 2, // Spaces per indentation | 0-255
@@ -152,9 +140,7 @@
 		}
 	},
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// JAVASCRIPT - JavaScript/TypeScript configuration
-	// ═══════════════════════════════════════════════════════════════════════════
 	"javascript": {
 		"assist": {
 			"enabled": true // Enable JS/TS assist | true, false
@@ -189,9 +175,7 @@
 		}
 	},
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// JSON - JSON/JSONC configuration
-	// ═══════════════════════════════════════════════════════════════════════════
 	"json": {
 		"assist": {
 			"enabled": true // Enable JSON assist | true, false
@@ -215,9 +199,7 @@
 		}
 	},
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// LINTER - Global linting configuration
-	// ═══════════════════════════════════════════════════════════════════════════
 	"linter": {
 		"domains": null, // Rule domains config | null or object with: react, test, solid, next, qwik, vue, project, tailwind (values: "all", "none", "recommended")
 		"enabled": true, // Enable linter | true, false
@@ -228,24 +210,16 @@
 		}
 	},
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// OVERRIDES - File-specific configuration overrides
-	// ═══════════════════════════════════════════════════════════════════════════
 	"overrides": [], // Array of { includes: ["glob"], formatter: {...}, linter: {...}, ... }
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// PLUGINS - External plugins
-	// ═══════════════════════════════════════════════════════════════════════════
 	"plugins": [], // Array of plugin paths or package names
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// ROOT - Project root marker
-	// ═══════════════════════════════════════════════════════════════════════════
 	"root": true, // Stop looking for parent biome.json files | true, false
 
-	// ═══════════════════════════════════════════════════════════════════════════
 	// VCS - Version Control System integration
-	// ═══════════════════════════════════════════════════════════════════════════
 	"vcs": {
 		"clientKind": "git", // VCS client type | "git"
 		"defaultBranch": null, // Main branch name | null or string like "main", "master"

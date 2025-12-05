@@ -14,7 +14,7 @@ import { clsx } from "./dom.js";
  * @example
  * const getButtonColor = createVariantResolver({
  *   primary: 'bg-blue-500 text-white',
- *   secondary: 'bg-gray-200 text-gray-800',
+ *   secondary: 'bg-depth-1 text-canvas',
  *   danger: 'bg-red-500 text-white',
  * }, 'primary');
  *
@@ -65,7 +65,7 @@ export function createSizeResolver(sizes, defaultSize = "md") {
  *   variants: {
  *     intent: {
  *       primary: 'bg-blue-500',
- *       secondary: 'bg-gray-200',
+ *       secondary: 'bg-depth-1',
  *     },
  *     size: {
  *       sm: 'px-2 py-1 text-sm',
@@ -240,7 +240,7 @@ export function mergeStyles(...styles) {
  * @returns {Object|string|null} Applied styles or null
  *
  * @example
- * conditionalStyles(isActive, 'bg-blue-500', 'bg-gray-200')
+ * conditionalStyles(isActive, 'bg-blue-500', 'bg-depth-1')
  */
 export function conditionalStyles(condition, trueStyles, falseStyles = null) {
 	return condition ? trueStyles : falseStyles;

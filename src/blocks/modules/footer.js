@@ -13,22 +13,22 @@ export const FOOTER_TEMPLATE = `
 						<h3 class="text-sm font-bold text-white">Company</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Careers</a>
+								<a href="#" class="text-sm/6 text-white underline">Careers</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Blog</a>
+								<a href="#" class="text-sm/6 text-white underline">Blog</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">About</a>
+								<a href="#" class="text-sm/6 text-white underline">About</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Team</a>
+								<a href="#" class="text-sm/6 text-white underline">Team</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Partners</a>
+								<a href="#" class="text-sm/6 text-white underline">Partners</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Contact</a>
+								<a href="#" class="text-sm/6 text-white underline">Contact</a>
 							</li>
 						</ul>
 					</div>
@@ -36,25 +36,25 @@ export const FOOTER_TEMPLATE = `
 						<h3 class="text-sm font-bold text-white">Services</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Pulmonary Oversight</a>
+								<a href="#" class="text-sm/6 text-white underline">Pulmonary Oversight</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Eating Disorder Monitoring</a>
+								<a href="#" class="text-sm/6 text-white underline">Eating Disorder Monitoring</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">IV Infusion Therapy</a>
+								<a href="#" class="text-sm/6 text-white underline">IV Infusion Therapy</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Mental Health Services</a>
+								<a href="#" class="text-sm/6 text-white underline">Mental Health Services</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Pain Management</a>
+								<a href="#" class="text-sm/6 text-white underline">Pain Management</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Post-operation Recovery</a>
+								<a href="#" class="text-sm/6 text-white underline">Post-operation Recovery</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Addiction Rehabilitation</a>
+								<a href="#" class="text-sm/6 text-white underline">Addiction Rehabilitation</a>
 							</li>
 						</ul>
 					</div>
@@ -62,37 +62,37 @@ export const FOOTER_TEMPLATE = `
 						<h3 class="text-sm font-bold text-white">Conditions</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Amyotrophic Lateral Sclerosis</a>
+								<a href="#" class="text-sm/6 text-white underline">Amyotrophic Lateral Sclerosis</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Alzheimer's</a>
+								<a href="#" class="text-sm/6 text-white underline">Alzheimer's</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Dementia</a>
+								<a href="#" class="text-sm/6 text-white underline">Dementia</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Diabetes</a>
+								<a href="#" class="text-sm/6 text-white underline">Diabetes</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Heart Disease</a>
+								<a href="#" class="text-sm/6 text-white underline">Heart Disease</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Multiple Sclerosis</a>
+								<a href="#" class="text-sm/6 text-white underline">Multiple Sclerosis</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Oncology</a>
+								<a href="#" class="text-sm/6 text-white underline">Oncology</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Ostomy</a>
+								<a href="#" class="text-sm/6 text-white underline">Ostomy</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Parkinson's</a>
+								<a href="#" class="text-sm/6 text-white underline">Parkinson's</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Stroke Recovery</a>
+								<a href="#" class="text-sm/6 text-white underline">Stroke Recovery</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Traumatic Brain Injury</a>
+								<a href="#" class="text-sm/6 text-white underline">Traumatic Brain Injury</a>
 							</li>
 						</ul>
 					</div>
@@ -102,7 +102,7 @@ export const FOOTER_TEMPLATE = `
 					<p id="newsletter-description" class="sr-only">Subscribe to our newsletter for the latest news, articles, and resources, sent to your inbox weekly.</p>
 					<form class="flex max-w-md justify-center items-end">
 						<label for="email-address" class="sr-only">Enter your email address</label>
-						<input id="email-address" type="email" name="email-address" required placeholder="e.g. email@address.com" autocomplete="email" class="w-full min-w-max rounded-none px-2 py-3.5 leading-none border-0 border-b-2 border-white text-sm placeholder:text-gray-200" />
+						<input id="email-address" type="email" name="email-address" required placeholder="e.g. email@address.com" autocomplete="email" class="w-full min-w-max rounded-none px-2 py-3.5 leading-none border-0 border-b-2 border-white text-sm placeholder:text-soft" />
 						<div class="shrink mt-2 ml-0">
 							<button type="submit" class="flex w-full items-center justify-center px-2 py-3 text-sm font-semibold border-0 border-b-2 border-white text-white">
 							Subscribe</button>

@@ -50,7 +50,7 @@ export const NAVBAR_TEMPLATE = `
 		<dialog id="search-dialog" class="backdrop:p-0 w-full max-w-lg rounded-xl fixed top-[87px] left-auto right-0 ml-6">
 			<div class="bg-canvas rounded-xl shadow-2xl ring-1 border-soft">
 				<form method="dialog" class="relative">
-					<svg fill="currentColor" width="18" height="18" aria-hidden="true" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" name="icon-search" class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+					<svg fill="currentColor" width="18" height="18" aria-hidden="true" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" name="icon-search" class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted">
 						<title>Search</title>
 						<desc>Icon</desc>
 						<path d="M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
@@ -65,7 +65,7 @@ export const NAVBAR_TEMPLATE = `
 		<el-dialog>
 			<dialog id="mobile-menu" class="backdrop:lg:hidden">
 				<div tabindex="0" class="fixed inset-0">
-					<el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 
+					<el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto p-6 sm:max-w-sm sm:ring-1 sm:ring-primary/10 
 						<div class="flex items-center justify-between">
 							<a href="#" class="-m-1.5 p-1.5">
 								<span class="sr-only">Your Company</span>
@@ -80,7 +80,7 @@ export const NAVBAR_TEMPLATE = `
 							</button>
 						</div>
 						<div class="mt-6 flow-root">
-							<div class="-my-6 divide-y divide-gray-500/10 
+							<div class="-my-6 divide-y divide-muted/10 
 								<div class="space-y-2 py-6">
 									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold 
 									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold 
@@ -874,7 +874,9 @@ class NavBar extends BaseComponent {
 			// Container wrapper
 			this.h(
 				"div",
-				{ class: "card-shadow mx-auto w-[80dvw] max-w-[120rem] px-6 lg:px-8" },
+				{
+					class: "card-shadow mx-auto lg:w-[80dvw] max-w-[120rem] px-6 lg:px-8",
+				},
 				// Main nav
 				this.h(
 					"nav",
@@ -1164,7 +1166,7 @@ class NavBar extends BaseComponent {
 							viewBox: "0 0 24 24",
 							name: "icon-search",
 							class:
-								"pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400",
+								"pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted",
 						},
 						this.svg("title", {}, "Search"),
 						this.svg("desc", {}, "Icon"),
@@ -1173,11 +1175,21 @@ class NavBar extends BaseComponent {
 							d: "M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z",
 						}),
 					),
+					this.h(
+						"label",
+						{
+							for: "search-input",
+							class: "sr-only",
+						},
+						"Search site",
+					),
 					this.h("input", {
 						type: "search",
+						id: "search-input",
 						name: "search",
 						placeholder: "Search...",
 						autofocus: true,
+						"aria-label": "Search site",
 						class:
 							"w-full rounded-xl border-0 py-4 pl-12 pr-4 input-fg placeholder-muted sm:text-sm/6",
 					}),
@@ -1212,6 +1224,7 @@ class NavBar extends BaseComponent {
 					"mobile-menu-panel fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-canvas p-6 sm:max-w-sm sm:ring-1 border-soft lg:hidden hidden",
 				role: "dialog",
 				"aria-modal": "true",
+				"aria-label": "Mobile navigation menu",
 				ref: (el) => {
 					this.#panel = el;
 				},

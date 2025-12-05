@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./tokens/_variables.css";
+
 @source "../blocks/**/*.{js,css}";
 @source "../pages/**/*.html";
 
@@ -24,7 +25,7 @@
 		--color-muted: var(--color-surface-muted);
 		--color-muted-hover: var(--color-surface-soft);
 		--color-muted-pressed: var(--color-surface);
-		--color-muted-disabled: var(--color-border-soft);
+		--color-muted-disabled: var(--color-border-muted);
 
 		/** FOREGROUND ROLES */
 		--color-fg: var(--color-text);
@@ -34,7 +35,7 @@
 
 		/** BACKGROUND ROLES */
 		--color-bg: var(--color-canvas);
-		--color-bg-surface: var(--color-surface);
+		--color-bg-white: var(--color-surface);
 		--color-bg-muted: var(--color-surface-muted);
 		--color-bg-inverse: var(--brand-primary);
 		--bg-depth-1: var(--color-surface-muted);
@@ -48,12 +49,12 @@
 		/** BORDER ROLES */
 		--color-border-strong: var(--color-border-muted);
 		--color-border-medium: var(--color-border);
-		--color-border-soft: var(--color-border-soft);
+		--color-border-muted: var(--color-border-muted);
 
 		/** OVERLAY ROLES */
-		--overlay-1: rgb(var(--args-canvas-inverted) / 0.12);
-		--overlay-2: rgb(var(--args-canvas-inverted) / 0.48);
-		--overlay-3: rgb(var(--args-canvas-inverted) / 0.8);
+		--overlay-1: rgb(var(--args-canvas-inverted) / 12%);
+		--overlay-2: rgb(var(--args-canvas-inverted) / 48%);
+		--overlay-3: rgb(var(--args-canvas-inverted) / 80%);
 
 		/** SELECTION & FOCUS */
 		--selection-fg: var(--color-canvas);
@@ -67,28 +68,28 @@
 		--status-error-fg: rgb(180 60 60);
 		--status-error-bg: rgb(254 242 242);
 		--status-error-border: rgb(252 165 165);
-		--status-error-ring: rgb(239 68 68 / 0.4);
+		--status-error-ring: rgb(239 68 68 / 40%);
 		--status-error-text: rgb(153 27 27);
 
 		/** STATUS TOKENS - Success */
 		--status-success-fg: rgb(34 197 94);
 		--status-success-bg: rgb(240 253 244);
 		--status-success-border: rgb(134 239 172);
-		--status-success-ring: rgb(34 197 94 / 0.4);
+		--status-success-ring: rgb(34 197 94 / 40%);
 		--status-success-text: rgb(21 128 61);
 
 		/** STATUS TOKENS - Warning */
 		--status-warning-fg: rgb(234 179 8);
 		--status-warning-bg: rgb(254 252 232);
 		--status-warning-border: rgb(253 224 71);
-		--status-warning-ring: rgb(234 179 8 / 0.4);
+		--status-warning-ring: rgb(234 179 8 / 40%);
 		--status-warning-text: rgb(161 98 7);
 
 		/** STATUS TOKENS - Info */
 		--status-info-fg: rgb(59 130 246);
 		--status-info-bg: rgb(239 246 255);
 		--status-info-border: rgb(147 197 253);
-		--status-info-ring: rgb(59 130 246 / 0.4);
+		--status-info-ring: rgb(59 130 246 / 40%);
 		--status-info-text: rgb(30 64 175);
 
 		/** BUTTON TOKENS - Solid */
@@ -145,13 +146,13 @@
 		--font-code: var(--text-code);
 
 		/** TYPOGRAPHY SCALE */
-		--text-xxl: var(--text-size-xxl);
-		--text-xl: var(--text-size-xl);
-		--text-lg: var(--text-size-lg);
-		--text-md: var(--text-size-md);
-		--text-sm: var(--text-size-sm);
-		--text-xs: var(--text-size-xs);
-		--text-xxs: var(--text-size-xxs);
+		--text-xxl: var(--text-xxl);
+		--text-xl: var(--text-xl);
+		--text-lg: var(--text-lg);
+		--text-md: var(--text-md);
+		--text-sm: var(--text-sm);
+		--text-xs: var(--text-xs);
+		--text-xxs: var(--text-xxs);
 
 		/** LINE HEIGHT MAPPINGS */
 		--leading-xxl: var(--line-height-xxl);
@@ -182,7 +183,7 @@
 		-moz-osx-font-smoothing: grayscale;
 		text-rendering: geometricPrecision;
 		font-family: var(--text-body);
-		font-size: var(--text-size-sm);
+		font-size: var(--text-sm);
 		line-height: var(--line-height-md);
 		letter-spacing: var(--letter-spacing-md);
 		color: var(--color-text);
@@ -223,49 +224,404 @@
 }
 
 @layer components {
+	/** =========================================================================
+	 *  SCROLLBAR UTILITIES
+	 *  Custom minimal scrollbar styling for scroll containers
+	 *  ========================================================================= */
 	.scrollbar-minimal {
-		scrollbar-width: none; /*? FF */
-		-ms-overflow-style: none; /*? IE */
-		position: relative;
+		@apply relative scroll-auto;
+		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none; /* IE/Edge */
 	}
+
 	.scrollbar-minimal::-webkit-scrollbar {
-		display: none; /*? Webkit */
+		@apply hidden;
 	}
+
 	.scrollbar-minimal-track {
-		position: relative;
-		margin-top: 1.5rem;
-		margin-inline: auto;
-		inline-size: 72%;
-		block-size: 0.25rem;
-		background: rgb(0 0 0 / 10%);
-		border-radius: 2px;
+		@apply relative w-[72%] h-[0.25rem] mt-6 mx-auto;
+		@apply bg-black/10 rounded-sm;
 	}
+
 	.scrollbar-minimal-thumb {
-		position: absolute;
-		top: 0;
-		left: 0;
-		block-size: 100%;
-		min-inline-size: 2rem;
-		background: var(--brand-secondary-muted);
-		border-radius: 2px;
-		cursor: grab;
-		transition:
-			background 0.24s,
-			transform 0.12s;
-
-		&:hover {
-			background: var(--brand-secondary);
-		}
-
-		&:active {
-			cursor: grabbing;
-			transform: scaleY(1.5);
-		}
+		@apply absolute top-0 left-0 w-full min-w-[2rem];
+		@apply transition duration-240 bg-blue-500 transform ease-in-out;
+		@apply hover:duration-120 hover:bg-indigo-500 hover:scale-110;
+		@apply active:cursor-grabbing active:scale-y-150;
+		@apply bg-muted rounded-sm cursor-grab;
 	}
+
+	/** =========================================================================
+	 *  NAVIGATION STYLING
+	 *  Global navigation link and button styling
+	 *  ========================================================================= */
 	global-nav :is(button, a, :any-link) {
-		text-transform: uppercase;
-		letter-spacing: var(--letter-spacing-lg);
-		font-weight: 600;
+		@apply font-semibold tracking-lg uppercase;
+	}
+
+	/** =========================================================================
+	 *  FLEXBOX LAYOUT UTILITIES
+	 *  Common flex patterns for centering and alignment
+	 *  ========================================================================= */
+	.flex-center {
+		@apply flex items-center justify-center;
+	}
+	.flex-between {
+		@apply flex items-center justify-between;
+	}
+	.flex-start {
+		@apply flex items-center justify-start;
+	}
+	.flex-end {
+		@apply flex items-center justify-end;
+	}
+	.flex-col-stretch {
+		@apply flex flex-col h-full;
+	}
+	.flex-col-center {
+		@apply flex flex-col items-center;
+	}
+	.inline-flex-center {
+		@apply inline-flex items-center justify-center;
+	}
+
+	/** =========================================================================
+	 *  CARD PATTERN UTILITIES
+	 *  Reusable card surface styles with elevation
+	 *  ========================================================================= */
+	.card-base {
+		@apply bg-white border border-muted rounded-xl p-6 shadow-sm;
+	}
+	.card-elevated {
+		@apply bg-white border border-muted rounded-xl p-6 shadow-lg;
+	}
+	.card-interactive {
+		@apply bg-white border border-muted rounded-xl p-6 shadow-sm;
+		@apply transition-all duration-200;
+		@apply hover:shadow-lg hover:-translate-y-0.5;
+	}
+	.card-inset {
+		@apply bg-muted rounded-lg p-4;
+	}
+
+	/** =========================================================================
+	 *  BUTTON BASE UTILITIES
+	 *  Core button patterns without color variants
+	 *  ========================================================================= */
+	.btn-base {
+		@apply relative isolate inline-flex items-center justify-center;
+		@apply gap-2 rounded-lg border border-transparent;
+		@apply text-base leading-normal font-semibold;
+		@apply cursor-pointer transition-colors duration-150;
+		@apply py-[0.5625rem] px-[1.1875rem];
+		@apply disabled:cursor-not-allowed disabled:opacity-50;
+	}
+
+	.btn-sm {
+		@apply text-sm leading-normal;
+		@apply p-[0.3125rem] px-[0.6875rem];
+	}
+	.btn-lg {
+		@apply text-lg leading-relaxed;
+		@apply p-[0.6875rem] px-[1rem];
+	}
+	.btn-icon {
+		@apply p-2 aspect-square;
+	}
+	.btn-full {
+		@apply w-full;
+	}
+
+	/** =========================================================================
+	 *  INPUT BASE UTILITIES
+	 *  Core input field patterns
+	 *  ========================================================================= */
+	/* .input-base {
+		@apply w-full rounded-lg px-3 py-2;
+		@apply text-sm leading-normal focus:ring-3;
+		@apply transition-all duration-150;
+		@apply text-fg bg-white border border-muted;
+		@apply placeholder:text-fg-soft focus:ring-secondary-pressed;
+		@apply focus:outline-none focus:border-secondary;
+		@apply disabled:cursor-not-allowed disabled:bg-muted;
+	}
+	.input-error {
+		@apply border-status-error;
+		@apply focus:border-status-error focus:ring-3 focus:ring-status-error;
+	} */
+
+	/** =========================================================================
+	 *  TYPOGRAPHY UTILITIES
+	 *  Semantic heading and text patterns
+	 *  ========================================================================= */
+	.heading-display {
+		@apply font-serif font-semibold;
+		@apply text-4xl md:text-5xl lg:text-7xl;
+	}
+
+	.heading-section {
+		@apply font-serif font-medium;
+		@apply text-2xl md:text-3xl lg:text-4xl;
+	}
+
+	.heading-column {
+		@apply font-serif font-normal;
+		@apply text-xl md:text-2xl lg:text-3xl;
+	}
+
+	.heading-card {
+		@apply font-serif font-normal;
+		@apply text-xl md:text-2xl lg:text-3xl;
+	}
+
+	.heading-context {
+		@apply font-sans font-normal;
+		@apply text-sm md:text-md lg:text-lg;
+	}
+
+	.text-body {
+		@apply font-sans text-sm leading-md tracking-md text-fg;
+	}
+	.text-body-lg {
+		@apply font-sans text-md leading-lg tracking-md text-fg;
+	}
+	.text-caption {
+		@apply font-mono text-xs leading-sm tracking-sm text-fg-muted;
+	}
+	.text-label {
+		@apply font-sans text-sm font-medium leading-sm text-fg;
+	}
+
+	/** =========================================================================
+	 *  PANEL/CONTAINER UTILITIES
+	 *  Surface containers for sections and groups
+	 *  ========================================================================= */
+	.panel-elevated {
+		@apply shadow-lg rounded-xl bg-white border border-muted;
+	}
+	.panel-inset {
+		@apply rounded-lg p-4 bg-muted;
+	}
+	.panel-bordered {
+		@apply rounded-lg p-4 border border-muted;
+	}
+	.panel-navbar {
+		@apply bg-white border-b border-muted;
+		@apply z-50;
+	}
+
+	/** =========================================================================
+	 *  HERO SECTION UTILITIES
+	 *  Full-screen hero patterns with background images
+	 *  ========================================================================= */
+	.hero-section {
+		@apply bg-primary relative isolate overflow-hidden min-h-dvh;
+	}
+	.hero-bg-image {
+		@apply absolute inset-0 -z-10 size-full object-cover object-right md:object-center;
+	}
+	.hero-content {
+		@apply mx-auto md:w-[80dvw] max-w-[120rem] px-6 sm:px-8 md:px-12 py-0 min-h-dvh flex items-center;
+	}
+
+	/** =========================================================================
+	 *  SECTION CONTAINER UTILITIES
+	 *  Consistent section layouts and containers
+	 *  ========================================================================= */
+	.section-container {
+		@apply mx-auto max-w-7xl px-6 lg:px-8;
+	}
+	.section-header {
+		@apply text-center mb-12;
+	}
+
+	/** =========================================================================
+	 *  BUTTON VARIANT UTILITIES
+	 *  Specific button styles for common use cases
+	 *  ========================================================================= */
+	.btn-service {
+		@apply bg-primary text-white rounded-xl p-6 shadow-lg;
+		@apply ring-1 ring-primary/5 transition-shadow;
+		@apply text-center text-md font-bold;
+	}
+
+	/** =========================================================================
+	 *  CARD SCROLLING CONTAINER
+	 *  Horizontal scrolling card containers
+	 *  ========================================================================= */
+	.cards-scroll-container {
+		@apply mt-11 flex items-stretch gap-6;
+		@apply sm:mt-16 px-4 sm:px-6 lg:px-8;
+		@apply overflow-x-auto xl:overflow-x-visible 2xl:justify-center;
+		@apply pb-8 mb-8;
+	}
+
+	/** =========================================================================
+	 *  FEATURE CARD UTILITIES
+	 *  Cards with image top and content bottom
+	 *  ========================================================================= */
+	.feature-card {
+		@apply flex flex-col-reverse shrink-0;
+		@apply w-72 sm:w-80 2xl:w-[calc(20%-1.2rem)] 2xl:min-w-64;
+	}
+	.feature-card-body {
+		@apply relative flex-1 bg-accent p-6 rounded-b-lg;
+	}
+	.feature-card-title {
+		@apply font-serif italic text-[#231f20] text-2xl mb-3;
+	}
+	.feature-card-image-wrap {
+		@apply overflow-hidden rounded-t-lg;
+	}
+	.feature-card-image {
+		@apply aspect-square w-full object-cover object-bottom -my-8;
+	}
+
+	/** =========================================================================
+	 *  TREATMENT/PROCESS CARD UTILITIES
+	 *  Cards with overlay content on image
+	 *  ========================================================================= */
+	.treatment-card {
+		@apply relative shrink-0 rounded-2xl overflow-hidden;
+		@apply w-80 sm:w-96 2xl:w-[calc(25%-1.5rem)] 2xl:min-w-80;
+	}
+	.treatment-card-image-wrap {
+		@apply aspect-[7/8] overflow-hidden;
+	}
+	.treatment-card-image {
+		@apply w-full h-full object-cover transition-transform duration-300;
+	}
+	.treatment-card-overlay {
+		@apply absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent;
+	}
+	.treatment-card-content {
+		@apply absolute bottom-0 left-0 right-0 p-6 text-white;
+	}
+	.treatment-card-btn {
+		@apply bg-transparent absolute top-4 right-4 size-10 rounded-full;
+		@apply justify-center text-white transition-colors;
+		@apply outline-4 -outline-offset-4 p-0;
+		@apply transform scale-100 hover:scale-120 opacity-80 hover:opacity-100;
+	}
+
+	/** =========================================================================
+	 *  COMPARISON LIST ITEM
+	 *  Styled list items for comparison sections
+	 *  ========================================================================= */
+	.compare-item {
+		@apply py-4 px-6 justify-between font-medium tracking-normal mb-4 rounded-3xl;
+	}
+
+	/** =========================================================================
+	 *  INTERACTIVE STATE UTILITIES
+	 *  Hover and focus state patterns
+	 *  ========================================================================= */
+	.interactive-surface {
+		@apply transition-colors duration-200;
+		@apply hover:bg-muted active:bg-muted-hover;
+	}
+	.interactive-underline {
+		@apply no-underline bg-no-repeat transition-[background-size] duration-300 ease-out;
+		@apply bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-[position:0_100%];
+		@apply hover:bg-[length:100%_1px];
+	}
+
+	/** =========================================================================
+	 *  ACCESSIBILITY UTILITIES
+	 *  Screen reader and focus-visible patterns
+	 *  ========================================================================= */
+	.sr-only-focusable {
+		@apply sr-only focus:box-decoration-slice;
+		@apply focus:static focus:w-auto focus:h-auto;
+		@apply focus:px-4 focus:py-2 focus:m-0;
+		@apply focus:overflow-visible focus:whitespace-normal;
+	}
+	.focus-ring {
+		@apply outline-none;
+		@apply focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring;
+	}
+
+	/** =========================================================================
+	 *  SECTION SPACING UTILITIES
+	 *  Consistent vertical rhythm for page sections
+	 *  ========================================================================= */
+	.section-spacing {
+		@apply py-[var(--space-section-y)];
+	}
+	.section-spacing-sm {
+		@apply py-[var(--space-section-y-sm)];
+	}
+	.section-spacing-lg {
+		@apply py-[var(--space-section-y-lg)];
+	}
+	.container-spacing {
+		@apply px-[var(--space-container-x)];
+	}
+	.stack-spacing {
+		@apply flex flex-col gap-[var(--space-stack)];
+	}
+	.stack-spacing-sm {
+		@apply flex flex-col gap-[var(--space-stack-sm)];
+	}
+	.stack-spacing-lg {
+		@apply flex flex-col gap-[var(--space-stack-lg)];
+	}
+	.grid-spacing {
+		@apply gap-[var(--space-grid)];
+	}
+
+	/** =========================================================================
+	 *  LOCATION CARD UTILITIES
+	 *  Cards with image background and overlay for location displays
+	 *  ========================================================================= */
+	.location-card {
+		@apply text-white relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-primary/5;
+	}
+	.location-card-image-wrap {
+		@apply aspect-square overflow-hidden;
+	}
+	.location-card-image {
+		@apply w-full h-full object-cover transition-transform duration-300;
+	}
+	.location-card-overlay {
+		@apply absolute inset-0 bg-linear-to-t from-primary/90 via-primary/50 to-transparent;
+	}
+	.location-card-content {
+		@apply absolute bottom-0 left-0 right-0 h-full p-6 flex flex-col justify-between;
+	}
+	.location-card-title {
+		@apply text-2xl font-serif font-bold italic mb-2;
+	}
+	.location-card-link {
+		@apply bg-white/80 text-primary inline-flex items-center gap-2;
+		@apply text-sm w-max font-semibold transition-colors;
+		@apply px-6 py-2 rounded-full;
+	}
+
+	/** =========================================================================
+	 *  SECTION TITLE UTILITIES
+	 *  Consistent section heading styles
+	 *  ========================================================================= */
+	.section-title {
+		@apply font-serif text-secondary uppercase tracking-wide mb-4;
+		@apply text-3xl md:text-4xl lg:text-5xl;
+	}
+	.section-subtitle {
+		@apply text-primary text-md tracking-sm;
+	}
+
+	/** =========================================================================
+	 *  TABLE CELL UTILITIES
+	 *  Consistent table cell styling for comparison tables
+	 *  ========================================================================= */
+	.table-header-cell {
+		@apply px-6 py-4 text-left text-sm font-semibold uppercase tracking-wider;
+	}
+	.table-body-cell {
+		@apply px-6 py-4 text-sm font-semibold;
+	}
+	.table-body-cell-center {
+		@apply px-6 py-4 text-center text-sm;
 	}
 }
 
@@ -285,7 +641,7 @@
 	.bg-canvas {
 		background-color: var(--color-canvas);
 	}
-	.bg-surface {
+	.bg-white {
 		background-color: var(--color-surface);
 	}
 	.bg-depth-1 {
@@ -439,7 +795,7 @@
 		background: var(--color-surface);
 	}
 	.btn-subtle:disabled {
-		background: var(--color-border-soft);
+		background: var(--color-border-muted);
 		color: var(--color-text-muted);
 		filter: brightness(0.8) opacity(0.48) grayscale(1);
 		outline: 2px dashed var(--color-border-muted);
@@ -473,7 +829,7 @@
 		background: var(--color-surface-soft);
 	}
 	.card-border {
-		border-color: var(--color-border-soft);
+		border-color: var(--color-border-muted);
 	}
 	.card-shadow {
 		box-shadow: 0 2px 4px var(--card-shadow);
