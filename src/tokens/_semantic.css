@@ -9,77 +9,77 @@
 	/** PRIMARY - Principle colors
 	 *  Dark midnight blue cool tones
 	 */
-	--brand-primary: rgb(var(--args-cool-midnight));
-	--brand-primary-muted: rgb(var(--args-cool-deep-navy));
-	--brand-primary-soft: rgb(var(--args-cool-dark-navy) / 0.8);
+	--color-primary: rgb(var(--hues-cool-midnight));
+	--color-primary-muted: rgb(var(--hues-cool-deep-navy));
+	--color-primary-soft: rgb(var(--hues-cool-dark-navy) / 0.8);
 
 	/** SECONDARY - Accent colors
 	 *  Teal, cyan & turquoise cool tones
 	 */
-	--brand-secondary: rgb(var(--args-cool-subtle-teal));
-	--brand-secondary-muted: rgb(var(--args-cool-smooth-teal));
-	--brand-secondary-soft: rgb(var(--args-cool-greyish-teal) / 0.8);
+	--color-secondary: rgb(var(--hues-cool-subtle-teal));
+	--color-secondary-muted: rgb(var(--hues-cool-smooth-teal));
+	--color-secondary-soft: rgb(var(--hues-cool-greyish-teal) / 0.8);
 
 	/** TERTIARY - Supportive colors
 	 *  Brownish & tan warm tones
 	 */
-	--brand-tertiary: rgb(var(--args-warm-sunstruck-sand));
-	--brand-tertiary-muted: rgb(var(--args-warm-greyish-taupe));
-	--brand-tertiary-soft: rgb(var(--args-warm-redish-brown) / 0.8);
+	--color-tertiary: rgb(var(--hues-warm-sunstruck-sand));
+	--color-tertiary-muted: rgb(var(--hues-warm-greyish-taupe));
+	--color-tertiary-soft: rgb(var(--hues-warm-redish-brown) / 0.8);
 
 	/** CANVAS - Background colors
 	 *  Pages, Sections, Regions, etc.
 	 */
-	--color-canvas: rgb(var(--args-canvas-baseline));
-	--color-canvas-muted: rgb(var(--args-neutral-off-white));
-	--color-canvas-soft: rgb(var(--args-neutral-light-gray) / 0.8);
+	--color-canvas: rgb(var(--hues-canvas-baseline));
+	--color-canvas-muted: rgb(var(--hues-neutral-off-white));
+	--color-canvas-soft: rgb(var(--hues-neutral-light-gray) / 0.8);
 
 	/** SURFACE - Midground colors
 	 *  Cards, Panels, Modals, etc.
 	 */
-	--color-surface: rgb(var(--args-canvas-baseline));
-	--color-surface-muted: rgb(var(--args-neutral-off-white));
-	--color-surface-soft: rgb(var(--args-neutral-light-gray) / 0.8);
+	--color-surface: rgb(var(--hues-canvas-baseline));
+	--color-surface-muted: rgb(var(--hues-neutral-off-white));
+	--color-surface-soft: rgb(var(--hues-neutral-light-gray) / 0.64);
 
 	/** TEXT - Foreground colors
 	 *  Text, Icons, Graphics, etc.
 	 */
-	--color-text: rgb(var(--args-neutral-dark-charcoal));
-	--color-text-muted: rgb(var(--args-neutral-dark-gray));
-	--color-text-soft: rgb(var(--args-neutral-medium-grey) / 0.8);
+	--color-text: rgb(var(--hues-neutral-dark-charcoal));
+	--color-text-muted: rgb(var(--hues-neutral-dark-gray));
+	--color-text-soft: rgb(var(--hues-neutral-medium-grey) / 0.8);
 
 	/** BORDER - Inner outline ring
 	 *  Dividers, separators, boundaries
 	 */
-	--color-border: rgb(var(--args-neutral-light-gray));
-	--color-border-muted: rgb(var(--args-neutral-medium-grey));
-	--color-border-soft: rgb(var(--args-neutral-greyscale) / 0.8);
+	--color-border: rgb(var(--hues-neutral-light-gray));
+	--color-border-muted: rgb(var(--hues-neutral-medium-grey));
+	--color-border-soft: rgb(var(--hues-neutral-greyscale) / 0.8);
 
 	/** OUTLINE - Outer outline ring
 	 *  Focus rings, selection indicators
 	 */
-	--color-outline: rgb(var(--args-neutral-light-gray));
-	--color-outline-muted: rgb(var(--args-neutral-medium-grey));
-	--color-outline-soft: rgb(var(--args-neutral-greyscale) / 0.8);
+	--color-outline: rgb(var(--hues-neutral-light-gray));
+	--color-outline-muted: rgb(var(--hues-neutral-medium-grey));
+	--color-outline-soft: rgb(var(--hues-neutral-greyscale) / 0.8);
 
 	/** BACKDROP - Sublevel elements
 	 *  ::after pseudo-elements, backgrounds
 	 */
-	--color-backdrop: rgb(var(--args-cool-midnight));
-	--color-backdrop-muted: rgb(var(--args-cool-deep-navy));
-	--color-backdrop-soft: rgb(var(--args-cool-dark-navy) / 0.8);
+	--color-backdrop: rgb(var(--hues-cool-midnight));
+	--color-backdrop-muted: rgb(var(--hues-cool-deep-navy));
+	--color-backdrop-soft: rgb(var(--hues-cool-dark-navy) / 0.8);
 
 	/** OVERLAY - Toplevel elements
 	 *  ::before pseudo-elements, covers
 	 */
-	--color-overlay: rgb(var(--args-cool-midnight));
-	--color-overlay-muted: rgb(var(--args-cool-deep-navy));
-	--color-overlay-soft: rgb(var(--args-cool-dark-navy) / 0.8);
+	--color-overlay: rgb(var(--hues-cool-midnight));
+	--color-overlay-muted: rgb(var(--hues-cool-deep-navy));
+	--color-overlay-soft: rgb(var(--hues-cool-dark-navy) / 0.8);
 
 	/** SHADOW - Elevation & depth
 	 *  Text shadows, box shadows, drop shadows
 	 */
-	--color-shadow: rgb(var(--args-cool-midnight));
-	--color-shadow-muted: rgb(var(--args-cool-deep-navy));
-	--color-shadow-soft: rgb(var(--args-cool-dark-navy) / 0.8);
+	--color-shadow: rgb(var(--hues-cool-midnight));
+	--color-shadow-muted: rgb(var(--hues-cool-deep-navy));
+	--color-shadow-soft: rgb(var(--hues-cool-dark-navy) / 0.8);
 }

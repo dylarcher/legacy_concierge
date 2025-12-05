@@ -9,17 +9,17 @@
 		 *  Map semantic tokens to Tailwind UI roles
 		 */
 		--color-transparent: transparent;
-		--color-primary: var(--brand-primary);
-		--color-primary-hover: var(--brand-primary-muted);
-		--color-primary-pressed: var(--brand-primary-soft);
+		--color-primary: var(--color-primary);
+		--color-primary-hover: var(--color-primary-muted);
+		--color-primary-pressed: var(--color-primary-soft);
 		--color-primary-disabled: var(--color-border-muted);
-		--color-secondary: var(--brand-secondary);
-		--color-secondary-hover: var(--brand-secondary-muted);
-		--color-secondary-pressed: var(--brand-secondary-soft);
+		--color-secondary: var(--color-secondary);
+		--color-secondary-hover: var(--color-secondary-muted);
+		--color-secondary-pressed: var(--color-secondary-soft);
 		--color-secondary-disabled: var(--color-border-muted);
-		--color-accent: var(--brand-tertiary);
-		--color-accent-hover: var(--brand-tertiary-muted);
-		--color-accent-pressed: var(--brand-tertiary-soft);
+		--color-accent: var(--color-tertiary);
+		--color-accent-hover: var(--color-tertiary-muted);
+		--color-accent-pressed: var(--color-tertiary-soft);
 		--color-accent-disabled: var(--color-border-muted);
 		--color-muted: var(--color-surface-muted);
 		--color-muted-hover: var(--color-surface-soft);
@@ -36,14 +36,14 @@
 		--color-bg: var(--color-canvas);
 		--color-bg-surface: var(--color-surface);
 		--color-bg-muted: var(--color-surface-muted);
-		--color-bg-inverse: var(--brand-primary);
+		--color-bg-inverse: var(--color-primary);
 		--bg-depth-1: var(--color-surface-muted);
 		--bg-depth-2: var(--color-surface-soft);
 
 		/** SURFACE ROLES */
-		--color-surface-primary: var(--brand-primary);
-		--color-surface-secondary: var(--brand-secondary);
-		--color-surface-accent: var(--brand-tertiary);
+		--color-surface-primary: var(--color-primary);
+		--color-surface-secondary: var(--color-secondary);
+		--color-surface-accent: var(--color-tertiary);
 
 		/** BORDER ROLES */
 		--color-border-strong: var(--color-border-muted);
@@ -51,17 +51,17 @@
 		--color-border-soft: var(--color-border-soft);
 
 		/** OVERLAY ROLES */
-		--overlay-1: rgb(var(--args-canvas-inverted) / 0.12);
-		--overlay-2: rgb(var(--args-canvas-inverted) / 0.48);
-		--overlay-3: rgb(var(--args-canvas-inverted) / 0.8);
+		--overlay-1: rgb(var(--hues-canvas-inverted) / 0.12);
+		--overlay-2: rgb(var(--hues-canvas-inverted) / 0.48);
+		--overlay-3: rgb(var(--hues-canvas-inverted) / 0.8);
 
 		/** SELECTION & FOCUS */
 		--selection-fg: var(--color-canvas);
-		--selection-bg: var(--brand-secondary);
-		--focus-ring: var(--brand-secondary);
-		--color-focus-ring: var(--brand-secondary);
+		--selection-bg: var(--color-secondary);
+		--focus-ring: var(--color-secondary);
+		--color-focus-ring: var(--color-secondary);
 		--color-selection-fg: var(--color-canvas);
-		--color-selection-bg: var(--brand-secondary);
+		--color-selection-bg: var(--color-secondary);
 
 		/** STATUS TOKENS - Error */
 		--status-error-fg: rgb(180 60 60);
@@ -93,24 +93,24 @@
 
 		/** BUTTON TOKENS - Solid */
 		--btn-solid-fg: var(--color-canvas);
-		--btn-solid-bg: var(--brand-primary);
-		--btn-solid-bg-hover: var(--brand-primary-muted);
-		--btn-solid-bg-active: var(--brand-primary-soft);
-		--btn-solid-bg-pressed: var(--brand-primary-soft);
+		--btn-solid-bg: var(--color-primary);
+		--btn-solid-bg-hover: var(--color-primary-muted);
+		--btn-solid-bg-active: var(--color-primary-soft);
+		--btn-solid-bg-pressed: var(--color-primary-soft);
 		--btn-solid-bg-disabled: var(--color-border-muted);
-		--btn-solid-border: var(--brand-primary);
+		--btn-solid-border: var(--color-primary);
 
 		/** BUTTON TOKENS - Outline */
-		--btn-outline-fg: var(--brand-primary);
+		--btn-outline-fg: var(--color-primary);
 		--btn-outline-bg: transparent;
-		--btn-outline-bg-hover: var(--brand-primary-soft);
-		--btn-outline-bg-pressed: var(--brand-primary-muted);
-		--btn-outline-bg-active: var(--brand-primary-muted);
-		--btn-outline-border: var(--brand-primary);
-		--btn-outline-border-hover: var(--brand-primary-muted);
+		--btn-outline-bg-hover: var(--color-primary-soft);
+		--btn-outline-bg-pressed: var(--color-primary-muted);
+		--btn-outline-bg-active: var(--color-primary-muted);
+		--btn-outline-border: var(--color-primary);
+		--btn-outline-border-hover: var(--color-primary-muted);
 
 		/** BUTTON TOKENS - Subtle */
-		--btn-subtle-fg: var(--brand-primary);
+		--btn-subtle-fg: var(--color-primary);
 		--btn-subtle-bg: var(--color-surface-muted);
 		--btn-subtle-bg-hover: var(--color-surface-soft);
 		--btn-subtle-bg-pressed: var(--color-surface);
@@ -120,8 +120,8 @@
 		--input-bg: var(--color-surface);
 		--input-border: var(--color-border);
 		--input-border-hover: var(--color-border-muted);
-		--input-border-focus: var(--brand-secondary);
-		--input-border-invalid: rgb(var(--args-warm-redish-brown));
+		--input-border-focus: var(--color-secondary);
+		--input-border-invalid: rgb(var(--hues-warm-redish-brown));
 		--input-placeholder: var(--color-text-soft);
 		--input-valid-ring: var(--status-success-ring);
 		--input-warning-ring: var(--status-warning-ring);
@@ -218,66 +218,524 @@
 	}
 	[role="banner" i] {
 		background-color: var(--color-canvas-muted);
-		box-shadow: 0 2px 6px -4px var(--brand-primary-muted);
+		box-shadow: 0 2px 6px -4px var(--color-primary-muted);
 	}
 }
 
 @layer components {
+	/* ============================================
+	 * SCROLLBAR UTILITIES
+	 * ============================================ */
 	.scrollbar-minimal {
-		scrollbar-width: none; /*? FF */
-		-ms-overflow-style: none; /*? IE */
-		position: relative;
+		@apply relative;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
 	}
 	.scrollbar-minimal::-webkit-scrollbar {
-		display: none; /*? Webkit */
+		@apply hidden;
 	}
 	.scrollbar-minimal-track {
-		position: relative;
-		margin-top: 1.5rem;
-		margin-inline: auto;
-		inline-size: 72%;
-		block-size: 0.25rem;
-		background: rgb(0 0 0 / 10%);
-		border-radius: 2px;
+		@apply w-[72%] h-1;
+		@apply bg-black/10 relative mt-6 mx-auto rounded-sm;
 	}
 	.scrollbar-minimal-thumb {
-		position: absolute;
-		top: 0;
-		left: 0;
-		block-size: 100%;
-		min-inline-size: 2rem;
-		background: var(--brand-secondary-muted);
-		border-radius: 2px;
-		cursor: grab;
-		transition:
-			background 0.24s,
-			transform 0.12s;
-
-		&:hover {
-			background: var(--brand-secondary);
-		}
-
-		&:active {
-			cursor: grabbing;
-			transform: scaleY(1.5);
-		}
+		@apply bg-[var(--color-secondary-muted)] h-full min-w-[2rem];
+		@apply absolute cursor-grab transition-[background] duration-[0.24s,transform] delay-[0.12s] rounded-sm left-0 top-0;
+		@apply hover:bg-[var(--color-secondary)];
+		@apply active:cursor-grabbing active:scale-y-150;
 	}
+	.scroll-indicator {
+		@apply animate-[bounce-scroll_2s_ease-in-out_infinite];
+	}
+
+	/* ============================================
+	 * NAVIGATION UTILITIES
+	 * ============================================ */
 	global-nav :is(button, a, :any-link) {
-		text-transform: uppercase;
-		letter-spacing: var(--letter-spacing-lg);
-		font-weight: 600;
+		@apply uppercase tracking-[var(--letter-spacing-lg)] font-semibold;
+	}
+
+	/* ============================================
+	 * CALL-TO-ACTION BUTTON
+	 * ============================================ */
+	.button-cta {
+		@apply text-lg text-shadow-lg text-[clamp(1rem,1.5vw,1.25rem)];
+		@apply bg-secondary/48 backdrop-blur-[2px] transition-colors;
+		@apply text-white text-shadow-lg tracking-wider font-bold;
+		@apply shadow-xs border-2 border-white/64;
+		@apply hover:bg-secondary/72 hover:backdrop-blur-[0px];
+		@apply rounded-full no-underline px-6 py-4 mt-12;
+	}
+
+	/* ============================================
+	 * SECTION & LAYOUT WRAPPERS
+	 * ============================================ */
+	.section-wrapper {
+		@apply mx-auto xl:w-[80dvw] max-w-[120rem] px-6 xl:px-8;
+	}
+
+	/* ============================================
+	 * FLEXBOX LAYOUT PATTERNS
+	 * Common flex arrangements used across components
+	 * ============================================ */
+
+	/** Center items both horizontally and vertically */
+	.flex-center {
+		@apply flex items-center justify-center;
+	}
+
+	/** Space items to opposite ends with vertical centering */
+	.flex-between {
+		@apply flex items-center justify-between;
+	}
+
+	/** Align items to the end (right) with vertical centering */
+	.flex-end {
+		@apply flex items-center justify-end;
+	}
+
+	/** Inline flex with centered items - for buttons, badges */
+	.inline-flex-center {
+		@apply inline-flex items-center justify-center;
+	}
+
+	/** Full-height column layout - for panels, drawers */
+	.flex-col-stretch {
+		@apply flex h-full flex-col;
+	}
+
+	/** Row with gap - common for icon + text patterns */
+	.flex-row-gap-2 {
+		@apply flex items-center gap-2;
+	}
+
+	/** Row with larger gap - for card footers, action bars */
+	.flex-row-gap-3 {
+		@apply flex items-center gap-3;
+	}
+
+	/* ============================================
+	 * TYPOGRAPHY PATTERNS
+	 * Semantic text styles for consistent hierarchy
+	 * ============================================ */
+
+	/** Large title - cards, dialogs, drawer headers */
+	.text-title {
+		@apply text-lg/6 font-semibold;
+	}
+
+	/** Standard title - smaller contexts */
+	.text-title-sm {
+		@apply text-base font-semibold;
+	}
+
+	/** Body text with responsive sizing */
+	.text-body {
+		@apply text-base/6 sm:text-sm/6;
+	}
+
+	/** Body text in primary color */
+	.text-body-canvas {
+		@apply text-base/6 sm:text-sm/6;
+		color: var(--color-text);
+	}
+
+	/** Body text in muted color - descriptions, secondary content */
+	.text-body-muted {
+		@apply text-base/6;
+		color: var(--color-text-muted);
+	}
+
+	/** Small description text with top margin */
+	.text-description {
+		@apply mt-1 text-sm/6;
+		color: var(--color-text-muted);
+	}
+
+	/** Smaller description - dropdowns, compact UI */
+	.text-description-sm {
+		@apply text-sm/5;
+		color: var(--color-text-muted);
+	}
+
+	/** Section/group heading - dropdowns, menus */
+	.text-heading-sm {
+		@apply text-sm/5 font-medium;
+		color: var(--color-text-muted);
+	}
+
+	/** Balanced text for dialogs - prevents orphans */
+	.text-balance {
+		@apply text-balance text-pretty;
+	}
+
+	/* ============================================
+	 * CARD & PANEL PATTERNS
+	 * Container styles for elevated surfaces
+	 * ============================================ */
+
+	/** Standard card container */
+	.card-base {
+		@apply rounded-xl p-6 shadow-lg ring-1;
+		background: var(--color-surface-muted);
+		border-color: var(--color-border-soft);
+	}
+
+	/** Card with hover interaction */
+	.card-interactive {
+		@apply rounded-xl p-6 shadow-lg ring-1 transition-shadow;
+		@apply hover:shadow-xl;
+		background: var(--color-surface-muted);
+		border-color: var(--color-border-soft);
+	}
+
+	/** Elevated panel - drawers, modals */
+	.panel-elevated {
+		@apply shadow-xl rounded-xl;
+		background-color: var(--color-canvas);
+	}
+
+	.panel-drawer {
+		@apply fixed inset-x-0 top-0 z-50;
+		@apply color-canvas/92 backdrop-blur-sm;
+	}
+
+	/** Dialog panel with specific styling */
+	.panel-dialog {
+		@apply rounded-t-3xl p-8 shadow-lg ring-1;
+		@apply sm:rounded-2xl;
+		background-color: var(--color-canvas);
+		border-color: var(--color-border-soft);
+	}
+
+	/** Inset panel - nested content areas */
+	.panel-inset {
+		@apply rounded-lg p-4;
+		background-color: var(--color-surface-muted);
+	}
+
+	.region-contain {
+		@apply mx-auto w-full max-w-7xl px-6 lg:px-8 xl:px-12;
+		@apply card-shadow;
+	}
+
+	.navbar-contain {
+		@apply mx-auto xl:w-[80dvw] max-w-[120rem] px-6 lg:px-8 xl:px-12;
+	}
+
+	/* ============================================
+	 * BUTTON PATTERNS
+	 * Base button structure and icon handling
+	 * ============================================ */
+
+	/** Core button structure - layout and typography */
+	.btn-base {
+		@apply relative isolate inline-flex items-baseline justify-center;
+		@apply gap-x-2 rounded-full border;
+		@apply text-base/6 font-semibold;
+		--tw-ring-color: var(--color-primary);
+	}
+
+	/** Standard button padding with responsive adjustment */
+	.btn-padding {
+		@apply px-[calc(var(--spacing)*3.5-1px)] py-[calc(var(--spacing)*2.5-1px)];
+		@apply sm:px-[calc(var(--spacing)*3-1px)] sm:py-[calc(var(--spacing)*1.5-1px)];
+		@apply sm:text-sm/6;
+	}
+
+	/** Icon slot styling within buttons */
+	.btn-icon-slots {
+		@apply [&_[data-slot=icon]]:-mx-0.5 [&_[data-slot=icon]]:my-0.5;
+		@apply [&_[data-slot=icon]]:size-5 [&_[data-slot=icon]]:shrink-0;
+		@apply [&_[data-slot=icon]]:self-center;
+		@apply sm:[&_[data-slot=icon]]:my-1 sm:[&_[data-slot=icon]]:size-4;
+	}
+
+	/* ============================================
+	 * INPUT/FORM PATTERNS
+	 * Form field base styles
+	 * ============================================ */
+
+	/** Core input structure */
+	.input-base {
+		@apply relative block w-full appearance-none rounded-lg;
+		@apply border border-zinc-950/10 bg-transparent;
+	}
+
+	/** Standard input padding with responsive adjustment */
+	.input-padding {
+		@apply px-[calc(var(--spacing,0.25rem)*3.5-1px)] py-[calc(var(--spacing,0.25rem)*2.5-1px)];
+		@apply sm:px-[calc(var(--spacing,0.25rem)*3-1px)] sm:py-[calc(var(--spacing,0.25rem)*1.5-1px)];
+	}
+
+	/** Input text styling */
+	.input-text {
+		@apply text-base/6 sm:text-sm/6;
+		color: var(--color-text);
+	}
+	.input-text::placeholder {
+		color: var(--color-text-muted);
+	}
+
+	/** Input focus state */
+	.input-focus-ring {
+		@apply focus:outline-none focus:ring-2 focus:ring-blue-500;
+	}
+
+	/** Complete input field - combines all input patterns */
+	.input-field {
+		@apply relative block w-full appearance-none rounded-lg;
+		@apply border border-zinc-950/10 bg-transparent;
+		@apply px-[calc(var(--spacing,0.25rem)*3.5-1px)] py-[calc(var(--spacing,0.25rem)*2.5-1px)];
+		@apply sm:px-[calc(var(--spacing,0.25rem)*3-1px)] sm:py-[calc(var(--spacing,0.25rem)*1.5-1px)];
+		@apply text-base/6 sm:text-sm/6;
+		@apply focus:outline-none focus:ring-2 focus:ring-blue-500;
+		color: var(--color-text);
+	}
+	.input-field::placeholder {
+		color: var(--color-text-muted);
+	}
+
+	/** Input wrapper with pseudo-element styling */
+	.input-wrapper {
+		@apply relative block w-full;
+		@apply before:absolute before:inset-px;
+		@apply before:rounded-[calc(var(--radius-lg,0.5rem)-1px)] before:shadow-sm;
+	}
+
+	/* ============================================
+	 * BADGE PATTERNS
+	 * Status indicators and labels
+	 * ============================================ */
+
+	/** Standard badge styling */
+	.badge-base {
+		@apply inline-flex items-center gap-x-1.5;
+		@apply rounded-md px-1.5 py-0.5;
+		@apply text-sm/5 font-medium;
+		@apply sm:text-xs/5;
+		@apply forced-colors:outline;
+	}
+
+	/* ============================================
+	 * DROPDOWN/MENU PATTERNS
+	 * Floating menu components
+	 * ============================================ */
+
+	/** Dropdown menu container */
+	.dropdown-menu {
+		@apply absolute z-50 hidden opacity-0;
+		@apply isolate w-max min-w-[12rem] rounded-xl p-1;
+		@apply outline outline-transparent;
+		@apply overflow-y-auto max-h-80;
+		@apply backdrop-blur-xl bg-white/75;
+		@apply shadow-lg ring-1 ring-zinc-950/10;
+		@apply transition duration-100 ease-in;
+	}
+
+	/** Dropdown menu item */
+	.dropdown-item {
+		@apply cursor-default rounded-lg;
+		@apply px-3.5 py-2.5 sm:px-3 sm:py-1.5;
+		@apply text-left text-base/6 sm:text-sm/6;
+		@apply w-full flex items-center gap-2;
+		color: var(--color-text);
+	}
+
+	/** Dropdown header section */
+	.dropdown-header {
+		@apply px-3.5 pt-2.5 pb-1 sm:px-3;
+	}
+
+	/** Dropdown divider line */
+	.dropdown-divider {
+		@apply mx-3.5 my-1 h-px border-0 sm:mx-3;
+		border-color: var(--color-border-soft);
+	}
+
+	/* ============================================
+	 * OVERLAY/BACKDROP PATTERNS
+	 * Modal and drawer backgrounds
+	 * ============================================ */
+
+	/** Semi-transparent backdrop */
+	.overlay-backdrop {
+		@apply fixed inset-0 bg-zinc-950/25;
+		@apply transition-opacity duration-300 ease-in-out;
+		@apply opacity-0;
+	}
+
+	/** Fixed overlay container */
+	.overlay-container {
+		@apply fixed inset-0 z-50 overflow-hidden;
+	}
+
+	/** Overlay visible state */
+	.overlay-visible {
+		@apply opacity-100;
+	}
+
+	/* ============================================
+	 * TOUCH TARGET PATTERN
+	 * Accessibility: expanded hit areas for touch
+	 * ============================================ */
+
+	/** Invisible expanded touch area */
+	.touch-target {
+		@apply absolute top-1/2 left-1/2;
+		@apply size-[max(100%,2.75rem)];
+		@apply -translate-x-1/2 -translate-y-1/2;
+		@apply [@media(pointer:fine)]:hidden;
+	}
+
+	/* ============================================
+	 * SECTION SPACING PATTERNS
+	 * Consistent padding and dividers
+	 * ============================================ */
+
+	/** Standard section padding - drawers, panels */
+	.section-padding {
+		@apply px-4 py-6 sm:px-6;
+	}
+
+	/** Compact section padding */
+	.section-padding-sm {
+		@apply px-4 py-4 sm:px-6;
+	}
+
+	/** Top border divider */
+	.divider-top {
+		@apply border-t;
+		border-color: var(--color-border-soft);
+	}
+
+	/** Bottom border divider */
+	.divider-bottom {
+		@apply border-b;
+		border-color: var(--color-border-soft);
+	}
+
+	/** Actions container - footer buttons */
+	.actions-row {
+		@apply flex shrink-0 justify-end gap-3;
+	}
+
+	/** Dialog actions with mobile stacking */
+	.actions-dialog {
+		@apply mt-8 flex flex-col-reverse items-center justify-end gap-3;
+		@apply [&>*]:w-full sm:flex-row sm:[&>*]:w-auto;
+	}
+
+	/* ============================================
+	 * TRANSITION PATTERNS
+	 * Animation timing presets
+	 * ============================================ */
+
+	/** Fade transition - backdrops */
+	.transition-fade {
+		@apply transition-opacity duration-300 ease-in-out;
+	}
+
+	/** Slide transition - drawers */
+	.transition-slide {
+		@apply transition-transform duration-300 ease-in-out;
+	}
+
+	/** Scale transition - dialogs */
+	.transition-scale {
+		@apply transition duration-100 will-change-transform;
+	}
+
+	/** Fast transition - dropdowns, tooltips */
+	.transition-fast {
+		@apply transition duration-100 ease-in;
+	}
+
+	/** Shadow-only transition - cards */
+	.transition-shadow-only {
+		@apply transition-shadow duration-200;
+	}
+
+	/* ============================================
+	 * ICON SLOT PATTERNS
+	 * Consistent icon sizing within components
+	 * ============================================ */
+
+	/** Standard icon sizing with responsive */
+	.icon-slot {
+		@apply [&_[data-slot=icon]]:size-5;
+		@apply sm:[&_[data-slot=icon]]:size-4;
+	}
+
+	/** Muted icon color */
+	.icon-slot-muted [data-slot="icon"] {
+		color: var(--color-text-muted);
+	}
+
+	/** Icon sizing for smaller contexts */
+	.icon-sm {
+		@apply size-5 sm:size-4;
+	}
+
+	/** Icon sizing for medium contexts */
+	.icon-md {
+		@apply size-6;
+	}
+
+	/* ============================================
+	 * DATA ATTRIBUTE STATE PATTERNS
+	 * State-based styling via data-* attributes
+	 * ============================================ */
+
+	/** Disabled state styling */
+	.data-disabled {
+		@apply [&[data-disabled]]:opacity-50;
+		@apply [&[data-disabled]]:cursor-not-allowed;
+	}
+
+	/** Focus highlight for menu items */
+	.data-focus-highlight {
+		@apply [&[data-focus]]:text-white;
+		@apply [&[data-focus]_[data-slot=icon]]:text-white;
+	}
+
+	/** Hover state via data attribute */
+	.data-hover-highlight {
+		@apply [&[data-hover]]:bg-zinc-950/5;
+	}
+
+	/* ============================================
+	 * ACCESSIBILITY PATTERNS
+	 * Screen reader and focus utilities
+	 * ============================================ */
+
+	/** Screen reader only, but focusable */
+	.sr-only-focusable {
+		@apply sr-only focus:not-sr-only;
+		@apply focus:absolute focus:p-2;
+	}
+
+	/** Skip link styling */
+	.skip-link {
+		@apply sr-only focus:not-sr-only;
+		@apply focus:absolute focus:p-2;
+		@apply focus:z-50 focus:rounded focus:shadow-lg;
+	}
+	.skip-link:focus {
+		background-color: var(--color-canvas);
+		color: var(--color-text);
 	}
 }
 
 @layer utilities {
 	.bg-primary {
-		background-color: var(--brand-primary);
+		background-color: var(--color-primary);
 	}
 	.bg-secondary {
-		background-color: var(--brand-secondary);
+		background-color: var(--color-secondary);
 	}
 	.bg-accent {
-		background-color: var(--brand-tertiary);
+		background-color: var(--color-tertiary);
 	}
 	.bg-muted {
 		background-color: var(--color-surface-muted);
@@ -295,16 +753,16 @@
 		background-color: var(--color-surface-soft);
 	}
 	.bg-inverse {
-		background-color: var(--brand-primary);
+		background-color: var(--color-primary);
 	}
 	.text-primary {
-		color: var(--brand-primary);
+		color: var(--color-primary);
 	}
 	.text-secondary {
-		color: var(--brand-secondary);
+		color: var(--color-secondary);
 	}
 	.text-accent {
-		color: var(--brand-tertiary);
+		color: var(--color-tertiary);
 	}
 	.text-muted {
 		color: var(--color-text-muted);
@@ -316,13 +774,13 @@
 		color: var(--color-canvas);
 	}
 	.border-primary {
-		border-color: var(--brand-primary);
+		border-color: var(--color-primary);
 	}
 	.border-secondary {
-		border-color: var(--brand-secondary);
+		border-color: var(--color-secondary);
 	}
 	.border-accent {
-		border-color: var(--brand-tertiary);
+		border-color: var(--color-tertiary);
 	}
 	.border-muted {
 		border-color: var(--color-border-muted);
@@ -331,13 +789,13 @@
 		border-color: var(--color-border-muted);
 	}
 	.ring-primary {
-		--tw-ring-color: var(--brand-primary);
+		--tw-ring-color: var(--color-primary);
 	}
 	.ring-secondary {
-		--tw-ring-color: var(--brand-secondary);
+		--tw-ring-color: var(--color-secondary);
 	}
 	.ring-accent {
-		--tw-ring-color: var(--brand-tertiary);
+		--tw-ring-color: var(--color-tertiary);
 	}
 	.bg-status-error {
 		background-color: var(--status-error-bg);
@@ -393,57 +851,91 @@
 	}
 	.btn-solid {
 		color: var(--color-canvas);
-		background: var(--brand-primary);
-		border-color: var(--brand-primary);
+		background: var(--color-primary);
+		border-color: var(--color-primary);
+		transition:
+			background-color 150ms,
+			border-color 150ms,
+			transform 100ms;
 	}
 	.btn-solid:hover {
-		background: var(--brand-primary-muted);
+		background: var(--color-secondary);
+		border-color: var(--color-secondary);
 	}
 	.btn-solid:active {
-		background: var(--brand-primary-soft);
+		background: var(--color-tertiary);
+		border-color: var(--color-tertiary);
+		transform: scale(0.98);
+	}
+	.btn-solid:focus-visible {
+		outline: 2px solid var(--color-secondary);
+		outline-offset: 2px;
 	}
 	.btn-solid:disabled {
 		background: var(--color-border-muted);
+		border-color: var(--color-border-muted);
+		cursor: not-allowed;
+		opacity: 0.6;
 	}
 	.btn-outline {
-		color: var(--brand-primary);
+		@apply rounded-full;
+		color: var(--color-primary);
 		background: transparent;
-		border-color: var(--brand-primary);
+		border-color: var(--color-primary);
+		transition:
+			background-color 150ms,
+			border-color 150ms,
+			color 150ms,
+			transform 100ms;
 	}
 	.btn-outline:hover {
-		border-color: var(--brand-primary-muted);
-		background: var(--brand-primary-muted);
+		border-color: var(--color-secondary);
+		background: var(--color-secondary);
 		color: var(--color-canvas);
 	}
 	.btn-outline:active {
-		border-color: var(--brand-primary-soft);
-		background: var(--color-border-muted);
+		border-color: var(--color-tertiary);
+		background: var(--color-tertiary);
 		color: var(--color-canvas);
-		opacity: 0.64;
+		transform: scale(0.98);
+	}
+	.btn-outline:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
 	}
 	.btn-outline:disabled {
-		background: var(--color-border-muted);
-		color: var(--color-canvas);
-		filter: brightness(0.8) opacity(0.48) grayscale(1);
-		outline: 2px dashed var(--color-border-muted);
-		outline-offset: 2px;
+		background: transparent;
+		border-color: var(--color-border-muted);
+		color: var(--color-text-muted);
+		cursor: not-allowed;
+		opacity: 0.6;
 	}
 	.btn-subtle {
-		color: var(--color-text);
-		background: var(--color-surface-muted);
+		@apply rounded-full;
+		color: var(--color-primary);
+		background: var(--color-surface-soft);
+		transition:
+			background-color 150ms,
+			color 150ms,
+			transform 100ms;
 	}
 	.btn-subtle:hover {
-		background: var(--color-surface-soft);
+		background: var(--color-border);
+		color: var(--color-primary);
 	}
 	.btn-subtle:active {
-		background: var(--color-surface);
+		background: var(--color-border-muted);
+		transform: scale(0.98);
+	}
+	.btn-subtle:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
 	}
 	.btn-subtle:disabled {
-		background: var(--color-border-soft);
+		background: var(--color-surface-muted);
 		color: var(--color-text-muted);
-		filter: brightness(0.8) opacity(0.48) grayscale(1);
-		outline: 2px dashed var(--color-border-muted);
-		outline-offset: 2px;
+		cursor: not-allowed;
+		opacity: 0.6;
 	}
 	.input-fg {
 		color: var(--color-text);
@@ -452,13 +944,13 @@
 		background: var(--color-canvas);
 	}
 	.input-border {
-		border-color: var(--brand-secondary);
+		border-color: var(--color-secondary);
 	}
 	.input-border-hover:hover {
-		border-color: var(--brand-secondary-muted);
+		border-color: var(--color-secondary-muted);
 	}
 	.input-focus:focus {
-		outline-color: var(--brand-primary);
+		outline-color: var(--color-primary);
 	}
 	.placeholder-muted::placeholder {
 		color: var(--color-text-soft);

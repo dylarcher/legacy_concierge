@@ -13,7 +13,7 @@
  *   --base-url     Base URL for sitemap entries (defaults to production domain)
  */
 
-import { readdir, writeFile } from "node:fs/promises";
+import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -73,6 +73,21 @@ async function findHtmlFiles(dir, files = []) {
 }
 
 /**
+ * Check if an HTML file has noindex meta tag
+ * @param {string} filePath - Absolute file path
+ * @returns {Promise<boolean>} True if file should be excluded from sitemap
+ */
+async function hasNoIndexMeta(filePath) {
+	try {
+		const content = await readFile(filePath, "utf-8");
+		// Check for noindex in robots meta tag
+		return /<meta\s+name=["']robots["'][^>]*content=["'][^"']*noindex[^"']*["']/i.test(content);
+	} catch {
+		return false;
+	}
+}
+
+/**
  * Convert file path to URL path
  * @param {string} filePath - Absolute file path
  * @returns {string} URL path
@@ -128,7 +143,22 @@ async function main() {
 		const htmlFiles = await findHtmlFiles(DIST_DIR);
 		console.log(`Found ${htmlFiles.length} HTML files`);
 
-		const urls = htmlFiles.map(filePathToUrl).sort();
+		// Filter out files with noindex meta tag
+		const indexableFiles = [];
+		const excludedFiles = [];
+		for (const file of htmlFiles) {
+			if (await hasNoIndexMeta(file)) {
+				excludedFiles.push(file);
+			} else {
+				indexableFiles.push(file);
+			}
+		}
+
+		if (excludedFiles.length > 0) {
+			console.log(`Excluding ${excludedFiles.length} file(s) with noindex meta tag`);
+		}
+
+		const urls = indexableFiles.map(filePathToUrl).sort();
 		console.log(`Generating sitemap with ${urls.length} URLs...`);
 
 		const sitemap = generateSitemap(urls);
