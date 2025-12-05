@@ -1,4 +1,4 @@
-import { BaseComponent, defineElement } from "./_base.js";
+import { BaseComponent, defineElement } from "../_base.js";
 
 const RADIO_BASE_STYLES = [
 	"relative isolate flex size-[1.1875rem] shrink-0 rounded-full sm:size-[1.0625rem]",

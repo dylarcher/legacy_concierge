@@ -1,4 +1,4 @@
-import { BaseComponent, defineElement } from "./_base.js";
+import { BaseComponent, defineElement } from "../_base.js";
 
 /**
  * Native select component with custom styling

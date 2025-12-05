@@ -1,4 +1,4 @@
-import { BaseComponent, defineElement, uniqueId } from "./_base.js";
+import { BaseComponent, defineElement, uniqueId } from "../_base.js";
 
 /**
  * Fieldset container for grouping form fields

@@ -1,4 +1,4 @@
-import { BaseComponent, defineElement, FocusTrap } from "./_base.js";
+import { BaseComponent, defineElement, FocusTrap } from "../_base.js";
 
 const DIALOG_SIZES = {
 	xs: "sm:max-w-xs",

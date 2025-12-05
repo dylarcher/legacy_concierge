@@ -1,0 +1,635 @@
+/*! ***************************************************************************
+ *    PRIMITIVE PALETTE TOKENS                                __primitive.css
+ *    Design system brand identity theme varaiables
+ *  ***************************************************************************
+ */
+:root {
+	/** CANVAS COLORS
+	 *  Black & white maximum contrast tones
+	 */
+	--args-canvas-baseline: var(
+		--canvas-baseline,
+		255 255 255 /
+		var(--alpha-canvas-baseline, 1)
+	);
+	--args-canvas-inverted: var(
+		--canvas-inverted,
+		0 0 0 /
+		var(--alpha-canvas-inverted, 1)
+	);
+
+	/** COOL COLORS
+	 *  Blue, navy, teal, cyan & turquoise tones
+	 */
+	--args-cool-midnight: var(
+		--cool-midnight,
+		9 44 76 /
+		var(--alpha-cool-midnight, 1)
+	);
+	--args-cool-deep-navy: var(
+		--cool-deep-navy,
+		7 40 53 /
+		var(--alpha-cool-deep-navy, 1)
+	);
+	--args-cool-dark-navy: var(
+		--cool-dark-navy,
+		11 39 54 /
+		var(--alpha-cool-dark-navy, 1)
+	);
+	--args-cool-greyish-teal: var(
+		--cool-greyish-teal,
+		90 130 133 /
+		var(--alpha-cool-greyish-teal, 1)
+	);
+	--args-cool-subtle-teal: var(
+		--cool-subtle-teal,
+		96 170 163 /
+		var(--alpha-cool-subtle-teal, 1)
+	);
+	--args-cool-smooth-teal: var(
+		--cool-smooth-teal,
+		102 141 142 /
+		var(--alpha-cool-smooth-teal, 1)
+	);
+
+	/** NEUTRAL COLORS
+	 *  Light to dark gray/greyscale tones
+	 */
+	--args-neutral-greyscale: var(
+		--neutral-greyscale,
+		79 79 79 /
+		var(--alpha-neutral-greyscale, 1)
+	);
+	--args-neutral-dark-shadowy: var(
+		--neutral-dark-shadowy,
+		35 31 32 /
+		var(--alpha-neutral-dark-shadowy, 1)
+	);
+	--args-neutral-dark-charcoal: var(
+		--neutral-dark-charcoal,
+		24 24 24 /
+		var(--alpha-neutral-dark-charcoal, 1)
+	);
+	--args-neutral-dark-onyx: var(
+		--neutral-dark-onyx,
+		29 29 29 /
+		var(--alpha-neutral-dark-onyx, 1)
+	);
+	--args-neutral-dark-gray: var(
+		--neutral-dark-gray,
+		79 79 79 /
+		var(--alpha-neutral-dark-gray, 1)
+	);
+	--args-neutral-medium-grey: var(
+		--neutral-medium-grey,
+		137 121 125 /
+		var(--alpha-neutral-medium-grey, 1)
+	);
+	--args-neutral-light-gray: var(
+		--neutral-light-gray,
+		220 224 223 /
+		var(--alpha-neutral-light-gray, 1)
+	);
+	--args-neutral-off-white: var(
+		--neutral-off-white,
+		241 241 241 /
+		var(--alpha-neutral-off-white, 1)
+	);
+
+	/** WARM COLORS
+	 *  Brown, tan & cream tones
+	 */
+	--args-warm-sunstruck-sand: var(
+		--warm-sunstruck-sand,
+		183 170 157 /
+		var(--alpha-warm-sunstruck-sand, 1)
+	);
+	--args-warm-greyish-taupe: var(
+		--warm-greyish-taupe,
+		183 172 157 /
+		var(--alpha-warm-greyish-taupe, 1)
+	);
+	--args-warm-redish-brown: var(
+		--warm-redish-brown,
+		128 98 76 /
+		var(--alpha-warm-redish-brown, 1)
+	);
+	--args-warm-dim-taupe: var(
+		--warm-dim-taupe,
+		80 53 43 /
+		var(--alpha-warm-dim-taupe, 1)
+	);
+}
+
+@supports (color: oklch(0% 0 0 / 1)) {
+	/*? OKLCH TOKENS
+	 *  Modern color space for wider gamut & perceptual uniformity
+	 */
+	:root {
+		/** COOL COLORS
+		 *  Dark blue tones
+		 */
+		--oklch-cool-midnight: 0.25 0.045 240;
+		--oklch-cool-deep-navy: 0.22 0.03 203.13;
+		--oklch-cool-dark-navy: 0.23 0.028 205;
+
+		/** EARTH COLORS
+		 *  Teal, cyan or turquoise tones
+		 */
+		--oklch-cool-greyish-teal: 0.55 0.04 195;
+		--oklch-cool-subtle-teal: 0.68 0.08 175;
+		--oklch-cool-smooth-teal: 0.58 0.045 190;
+
+		/** WARM COLORS
+		 *  Brown, tan & cream tones
+		 */
+		--oklch-warm-sunstruck-sand: 0.71 0.027 65;
+		--oklch-warm-greyish-taupe: 0.71 0.027 65;
+		--oklch-warm-redish-brown: 0.46 0.062 54;
+		--oklch-warm-dim-taupe: 0.35 0.045 40;
+
+		/** NEUTRAL COLORS
+		 *  Light to dark gray/greyscale tones
+		 */
+		--oklch-neutral-grey: 0.42 0 0;
+		--oklch-neutral-dark-shadowy: 0.18 0.01 25;
+		--oklch-neutral-dark-charcoal: 0.15 0 0;
+		--oklch-neutral-dark-onyx: 0.16 0 0;
+		--oklch-neutral-dark-gray: 0.42 0 0;
+		--oklch-neutral-medium-grey: 0.56 0.02 10;
+		--oklch-neutral-light-gray: 0.9 0.005 200;
+		--oklch-neutral-off-white: 0.96 0 0;
+
+		/** CANVAS COLORS
+		 *  Black & white maximum contrast tones
+		 */
+		--oklch-canvas-baseline: 1 0 0;
+		--oklch-canvas-inverted: 0 0 0;
+	}
+}
+
+@font-face {
+	font-family: "Work Sans";
+	src:
+		url("../assets/fonts/work-sans/WorkSans-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/work-sans/WorkSans-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Work Sans";
+	src:
+		url("../assets/fonts/work-sans/WorkSans-Italic-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/work-sans/WorkSans-Italic-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 100 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Playfair Display";
+	src:
+		url("../assets/fonts/playfair-display/PlayfairDisplay-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/playfair-display/PlayfairDisplay-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 400 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Playfair Display";
+	src:
+		url("../assets/fonts/playfair-display/PlayfairDisplay-Italic-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/playfair-display/PlayfairDisplay-Italic-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 400 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Arvo";
+	src:
+		url("../assets/fonts/arvo/Arvo-Regular.woff2") format("woff2"),
+		url("../assets/fonts/arvo/Arvo-Regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Arvo";
+	src:
+		url("../assets/fonts/arvo/Arvo-Italic.woff2") format("woff2"),
+		url("../assets/fonts/arvo/Arvo-Italic.woff") format("woff");
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Arvo";
+	src:
+		url("../assets/fonts/arvo/Arvo-Bold.woff2") format("woff2"),
+		url("../assets/fonts/arvo/Arvo-Bold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Arvo";
+	src:
+		url("../assets/fonts/arvo/Arvo-BoldItalic.woff2") format("woff2"),
+		url("../assets/fonts/arvo/Arvo-BoldItalic.woff") format("woff");
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Nunito";
+	src:
+		url("../assets/fonts/nunito/Nunito-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/nunito/Nunito-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 200 1000;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Nunito";
+	src:
+		url("../assets/fonts/nunito/Nunito-Italic-VariableFont_wght.woff2")
+		format("woff2-variations"),
+		url("../assets/fonts/nunito/Nunito-Italic-VariableFont_wght.woff")
+		format("woff-variations");
+	font-weight: 200 1000;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Sackers Gothic";
+	src:
+		url("../assets/fonts/sackers-gothic/SackersGothicStd-Heavy.woff2")
+		format("woff2"),
+		url("../assets/fonts/sackers-gothic/SackersGothicStd-Heavy.woff")
+		format("woff");
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+
+/** TODO - unavailable webfonts
+ *  Get the missing variable weight typefaces listed below
+ *
+ *  <Slackers Gothic Std Light> @font-face {
+ *		font-family: "Sackers Gothic";
+ *		src:
+ *			url("../assets/fonts/sackers-gothic/SackersGothicStd-Light.woff2")
+ *			format("woff2"),
+ *			url("../assets/fonts/sackers-gothic/SackersGothicStd-Light.woff")
+ *			format("woff");
+ *		font-weight: 300;
+ *		font-style: normal;
+ *		font-display: swap;
+ *	}
+ *
+ *  <Slackers Gothic Std Medium> @font-face {
+ *		font-family: "Sackers Gothic";
+ *		src:
+ *			url("../assets/fonts/sackers-gothic/SackersGothicStd-Medium.woff2")
+ *			format("woff2"),
+ *			url("../assets/fonts/sackers-gothic/SackersGothicStd-Medium.woff")
+ *			format("woff");
+ *		font-weight: 500;
+ *		font-style: normal;
+ *		font-display: swap;
+ *	}
+ */
+:root {
+	/** TYPEFACE TOKENS
+	 *  Font family values for typographic hierarchy
+	 */
+	--text-body:
+		"Work Sans", -apple-system, ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+		"Noto Sans", "Liberation Sans", "Nimbus Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--text-display:
+		"Work Sans", "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial,
+		"Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol";
+	--text-title:
+		"Playfair Display", Charter, "Bitstream Charter", "Sitka Text", Cambria,
+		"Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052, Georgia,
+		"Times New Roman", serif;
+	--text-caption:
+		"Nimbus Mono PS", "Courier New", "Liberation Mono", "DejaVu Sans Mono",
+		Courier, monospace;
+	--text-accent:
+		Arvo, "Roboto Slab", Rockwell, "Rockwell Nova", "Zilla Slab", "DejaVu Serif",
+		"Sitka Small", Georgia, serif;
+	--text-heavy:
+		"Sackers Gothic", Bahnschrift, "DIN Alternate", "Franklin Gothic Medium",
+		"Nimbus Sans Narrow", "Arial Narrow", sans-serif-condensed, sans-serif;
+	--text-soft:
+		Nunito, "SF Pro Rounded", ui-rounded, "Hiragino Maru Gothic ProN", Manjari,
+		"Arial Rounded MT Bold", "Arial Rounded MT", Nunito, Calibri, sans-serif;
+	--text-code:
+		Arvo, ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas,
+		"DejaVu Sans Mono", "Liberation Mono", "Courier New", monospace;
+
+	/** FONT SIZE TOKENS
+	 *  Font size values for typographic hierarchy
+	 */
+	--text-size-xxl: clamp(2rem, calc(2rem + 1.5vw), 3.25rem); /*? 32px→52px */
+	--text-size-xl: clamp(1.5rem, calc(1.5rem + 0.5vw), 2rem); /*? 24px→32px */
+	--text-size-lg: clamp(
+		1.125rem,
+		calc(1.25rem + 0.25vw),
+		1.625rem
+	); /*? 18px→26px */
+	--text-size-md: clamp(
+		0.9375rem,
+		calc(1rem + 0.125vw),
+		1.125rem
+	); /*? 15px→18px */
+	--text-size-sm: clamp(
+		0.875rem,
+		calc(0.875rem + 0.0625vw),
+		1rem
+	); /*? 14px→16px */
+	--text-size-xs: clamp(
+		0.75rem,
+		calc(0.75rem + 0.0625vw),
+		0.875rem
+	); /*? 12px→14px */
+	--text-size-xxs: clamp(
+		0.625rem,
+		calc(0.6875rem + 0.0625vw),
+		0.8125rem
+	); /*? 10px→13px */
+
+	/** TEXT TRACK HEIGHT TOKENS
+	 *  Line height values for typographic hierarchy
+	 */
+	--line-height-xxl: 1.125;
+	--line-height-xl: 1.24;
+	--line-height-lg: 1.36;
+	--line-height-md: 1.5;
+	--line-height-sm: 1.8;
+	--line-height-xs: 1.64;
+	--line-height-xxs: 1.48;
+
+	/** CHARACTER SPACING TOKENS
+	 *  Letter spacing adjustments for typographic hierarchy
+	 */
+	--letter-spacing-xxl: 0.016em;
+	--letter-spacing-xl: 0.01em;
+	--letter-spacing-lg: 0.004em;
+	--letter-spacing-md: 0em;
+	--letter-spacing-sm: -0.006em;
+	--letter-spacing-xs: -0.009em;
+	--letter-spacing-xxs: -0.012em;
+}
+
+/*! ***************************************************************************
+ *    SEMANTIC COLOR TOKENS                                    __semantic.css
+ *    Human-readable color variables
+ *  ***************************************************************************
+ */
+:root {
+	/** PRIMARY - Principle colors
+	 *  Dark midnight blue cool tones
+	 */
+	--brand-primary: rgb(var(--args-cool-midnight));
+	--brand-primary-muted: rgb(var(--args-cool-deep-navy));
+	--brand-primary-soft: rgb(var(--args-cool-dark-navy) / 0.8);
+
+	/** SECONDARY - Accent colors
+	 *  Teal, cyan & turquoise cool tones
+	 */
+	--brand-secondary: rgb(var(--args-cool-subtle-teal));
+	--brand-secondary-muted: rgb(var(--args-cool-smooth-teal));
+	--brand-secondary-soft: rgb(var(--args-cool-greyish-teal) / 0.8);
+
+	/** TERTIARY - Supportive colors
+	 *  Brownish & tan warm tones
+	 */
+	--brand-tertiary: rgb(var(--args-warm-sunstruck-sand));
+	--brand-tertiary-muted: rgb(var(--args-warm-greyish-taupe));
+	--brand-tertiary-soft: rgb(var(--args-warm-redish-brown) / 0.8);
+
+	/** CANVAS - Background colors
+	 *  Pages, Sections, Regions, etc.
+	 */
+	--color-canvas: rgb(var(--args-canvas-baseline));
+	--color-canvas-muted: rgb(var(--args-neutral-off-white));
+	--color-canvas-soft: rgb(var(--args-neutral-light-gray) / 0.8);
+
+	/** SURFACE - Midground colors
+	 *  Cards, Panels, Modals, etc.
+	 */
+	--color-surface: rgb(var(--args-canvas-baseline));
+	--color-surface-muted: rgb(var(--args-neutral-off-white));
+	--color-surface-soft: rgb(var(--args-neutral-light-gray) / 0.8);
+
+	/** TEXT - Foreground colors
+	 *  Text, Icons, Graphics, etc.
+	 */
+	--color-text: rgb(var(--args-neutral-dark-charcoal));
+	--color-text-muted: rgb(var(--args-neutral-dark-gray));
+	--color-text-soft: rgb(var(--args-neutral-medium-grey) / 0.8);
+
+	/** BORDER - Inner outline ring
+	 *  Dividers, separators, boundaries
+	 */
+	--color-border: rgb(var(--args-neutral-light-gray));
+	--color-border-muted: rgb(var(--args-neutral-medium-grey));
+	--color-border-soft: rgb(var(--args-neutral-greyscale) / 0.8);
+
+	/** OUTLINE - Outer outline ring
+	 *  Focus rings, selection indicators
+	 */
+	--color-outline: rgb(var(--args-neutral-light-gray));
+	--color-outline-muted: rgb(var(--args-neutral-medium-grey));
+	--color-outline-soft: rgb(var(--args-neutral-greyscale) / 0.8);
+
+	/** BACKDROP - Sublevel elements
+	 *  ::after pseudo-elements, backgrounds
+	 */
+	--color-backdrop: rgb(var(--args-cool-midnight));
+	--color-backdrop-muted: rgb(var(--args-cool-deep-navy));
+	--color-backdrop-soft: rgb(var(--args-cool-dark-navy) / 0.8);
+
+	/** OVERLAY - Toplevel elements
+	 *  ::before pseudo-elements, covers
+	 */
+	--color-overlay: rgb(var(--args-cool-midnight));
+	--color-overlay-muted: rgb(var(--args-cool-deep-navy));
+	--color-overlay-soft: rgb(var(--args-cool-dark-navy) / 0.8);
+
+	/** SHADOW - Elevation & depth
+	 *  Text shadows, box shadows, drop shadows
+	 */
+	--color-shadow: rgb(var(--args-cool-midnight));
+	--color-shadow-muted: rgb(var(--args-cool-deep-navy));
+	--color-shadow-soft: rgb(var(--args-cool-dark-navy) / 0.8);
+}
+
+/*! ***************************************************************************
+ *    COMPONENT SCOPED TOKENS                                 __component.css
+ *    Element-specific module variables
+ *  ***************************************************************************
+ */
+:root {
+	/** COMPONENT ALPHA TOKENS
+	 *  Translucent colors for blending opacities w/OKLCH formats
+	 */
+	--depth-dark-charcoal: var(
+		--shadow-dark-charcoal,
+		var(--args-neutral-dark-charcoal) /
+		var(--alpha-shadow-dark-charcoal, 0.8)
+	);
+	--depth-soft-charcoal: var(
+		--shadow-soft-charcoal,
+		var(--args-neutral-dark-charcoal) /
+		var(--alpha-shadow-soft-charcoal, 0.36)
+	);
+	--depth-light-black: var(
+		--shadow-light-black,
+		var(--args-canvas-inverted) /
+		var(--alpha-shadow-light-black, 0.24)
+	);
+	--cover-dark-barely-crimson: var(
+		--overlay-dark-barely-crimson,
+		17 0 0 /*? edge-case */ /
+		var(--alpha-overlay-barely-crimson, 0.24)
+	);
+	--cover-shadowy: var(
+		--overlay-shadowy,
+		var(--args-neutral-dark-shadowy) /
+		var(--alpha-overlay-shadowy, 0.96)
+	);
+	--cover-soft-black: var(
+		--overlay-soft-black,
+		var(--args-canvas-inverted) /
+		var(--alpha-overlay-soft-black, 0.8)
+	);
+	--ring-translucent-white: var(
+		--border-translucent-white,
+		var(--args-canvas-baseline) /
+		var(--alpha-ring-translucent-white, 0.64)
+	);
+	--ring-subtle-white: var(
+		--border-subtle-white,
+		var(--args-canvas-baseline) /
+		var(--alpha-ring-subtle-white, 0.36)
+	);
+	--ring-faint-white: var(
+		--border-faint-white,
+		var(--args-canvas-baseline) /
+		var(--alpha-ring-faint-white, 0.072)
+	);
+	--ring-subtle-black: var(
+		--border-subtle-black,
+		var(--args-canvas-inverted) /
+		var(--alpha-ring-subtle-black, 0.12)
+	);
+}
+
+:root {
+	/** COMPONENT GRADIENT TOKENS
+	 *  For UI backdrop & overlay gradient treatments
+	 */
+	--linear-card-overlay: linear-gradient(
+		to top,
+		rgb(
+				var(--args-neutral-dark-shadowy) /
+				var(--alpha-semiopaque-linear-card-overlay, 0.96)
+			)
+			20%,
+		rgb(
+				var(--args-neutral-dark-shadowy) /
+				var(--alpha-translucent-linear-card-overlay, 0.12)
+			)
+			92%
+	);
+	--linear-card-overlay-dark: linear-gradient(
+		to top,
+		rgb(
+				var(--args-neutral-dark-shadowy) /
+				var(--alpha-opaque-linear-card-overlay-dark, 1)
+			)
+			12%,
+		rgb(
+				var(--args-neutral-medium-grey) /
+				var(--alpha-transparent-linear-card-overlay-dark, 0)
+			)
+			96%
+	);
+	--linear-treatment-card: linear-gradient(
+		to bottom,
+		rgb(
+				var(--args-neutral-dark-onyx) /
+				var(--alpha-transparent-linear-treatment-card, 0)
+			)
+			36%,
+		rgb(
+				var(--args-canvas-inverted) /
+				var(--alpha-semiopaque-linear-treatment-card, 0.8)
+			)
+			80%
+	);
+	--linear-treatment-dialog: linear-gradient(
+		to bottom,
+		rgb(
+				var(--args-neutral-dark-onyx) /
+				var(--alpha-translucent-linear-treatment-dialog, 0.12)
+			)
+			36%,
+		rgb(
+				var(--args-canvas-inverted) /
+				var(--alpha-semiopaque-linear-treatment-dialog, 0.96)
+			)
+			96%
+	);
+	--linear-feature-overlay: linear-gradient(
+		to bottom,
+		rgb(
+				var(--args-canvas-inverted) /
+				var(--alpha-transparent-linear-feature-overlay, 0)
+			)
+			12%,
+		rgb(
+				var(--args-canvas-inverted) /
+				var(--alpha-opaque-linear-feature-overlay, 0.64)
+			)
+			96%
+	);
+	--linear-button-teal: linear-gradient(
+		135deg,
+		rgb(
+				var(--args-cool-subtle-teal) /
+				var(--alpha-translucent-linear-button-teal, 0.36)
+			)
+			0%,
+		rgb(
+				var(--args-cool-subtle-teal) /
+				var(--alpha-semiopaque-linear-button-teal, 0.48)
+			)
+			92%
+	);
+}

@@ -12,6 +12,7 @@ A modern, high-performance website for Legacy Concierge - a premium in-home heal
 - [Testing & Validation](#testing--validation)
 - [Version Management](#version-management)
 - [Maintenance](#maintenance)
+  - [Asset Handling](#asset-handling)
 
 ## Quick Start
 
@@ -613,6 +614,90 @@ View all versions: [https://dylarcher.github.io/legacy_concierge/](https://dylar
 ```sh
 ./bin/optimize-media.sh
 ```
+
+### Asset Handling
+
+Vite automatically processes images in standard `<img src>` attributes, CSS `url()` declarations, and JavaScript `import` statements. However, it **cannot** process images in custom HTML attributes (e.g., `<hero-banner image="...">`), dynamic paths constructed at runtime, or string literals passed to component attributes.
+
+**Solution: Image Manifest**
+
+A centralized image manifest (`src/assets/image-manifest.js`) imports all images used via custom attributes, creates a lookup map from original paths to hashed URLs, and exports a `resolveImage()` function for runtime path resolution.
+
+**Usage in Components:**
+
+```javascript
+import { resolveImage } from "../../assets/image-manifest.js";
+
+// In render method:
+const imageAttr = this.getAttribute("image");
+const image = imageAttr ? resolveImage(imageAttr) : defaultImage;
+```
+
+**Usage in HTML:**
+
+Continue using readable paths in HTML attributes:
+
+```html
+<hero-banner image="/assets/media/images/beach.webp"></hero-banner>
+```
+
+The component resolves this to the hashed production URL automatically.
+
+**Adding New Images:**
+
+When adding a new image that will be used via custom attributes:
+
+1. Add the import to `src/assets/image-manifest.js`:
+
+   ```javascript
+   import newImage from "./media/images/new-image.webp";
+   ```
+
+2. Add to the imageMap:
+
+   ```javascript
+   export const imageMap = {
+       // ... existing entries
+       "/assets/media/images/new-image.webp": newImage,
+   };
+   ```
+
+3. (Optional) Export for direct use:
+
+   ```javascript
+   export { newImage };
+   ```
+
+**Components Using Image Resolution:**
+
+| Component | Attribute | File |
+|:----------|:----------|:-----|
+| `<hero-banner>` | `image` | `src/blocks/sections/hero.js` |
+| `<profile-card>` | `image` | `src/blocks/components/profile.js` |
+| `<card-treatment>` | `bg-image` | `src/blocks/components/card-treatment.js` |
+| `<ui-card-location>` | `bg-image` | `src/blocks/components/card-location.js` |
+| `<team-member>` | `bg-image` | `src/blocks/components/team-member.js` |
+| `<section-callout-image>` | `bg-image` | `src/blocks/components/section-callout-image.js` |
+| `<dialog-treatment>` | `bg-image` | `src/blocks/components/dialog-treatment.js` |
+
+**How It Works:**
+
+- **Development:** Vite serves images from original locations. The `resolveImage()` function passes through paths not in the manifest.
+- **Production:** Vite processes imports in `image-manifest.js`, each image gets a content hash (e.g., `beach-abc123.webp`), and the manifest maps original paths to hashed URLs.
+
+**Fallback Behavior:**
+
+If an image path isn't in the manifest, `resolveImage()` returns the original path unchanged (graceful degradation without cache-busting):
+
+```javascript
+resolveImage("/unknown/path.webp"); // Returns "/unknown/path.webp"
+```
+
+**Best Practices:**
+
+1. Always add to manifest when using images in custom attributes
+2. Use direct imports for fallback/default images
+3. Keep paths consistent (absolute paths starting with `/assets/`)
 
 ### Build Scripts
 

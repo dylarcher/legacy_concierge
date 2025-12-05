@@ -27,8 +27,8 @@ export const HERO_VIDEO_DISABLED = !HERO_VIDEO_ENABLED;
  */
 export const BANNER_TEMPLATE = () => `
     <template id="banner">
-        <header class="relative isolate overflow-hidden py-24 sm:py-32">
-			<div class="mx-auto max-w-7xl px-6 pt-20 pb-8 sm:pt-24 lg:px-8 lg:pt-32">
+        <header class="relative isolate overflow-hidden">
+			<div class="mx-auto max-w-7xl">
 				<video autoplay loop muted playsinline class="absolute inset-0 -z-10 size-full object-cover object-right md:object-center" poster="${defaultHeroImage}">
 					<source src="${videoMp4}" type="video/mp4">
 					<source src="${videoWebm}" type="video/webm">
@@ -146,16 +146,7 @@ export class HeroBanner extends BaseComponent {
 		style.textContent = `
 			hero-banner {
 				display: block;
-			}
-			hero-banner > header::before {
-				content: '';
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(160deg, #0128 56%, #0000 80%);
-				left: 0;
-				top: 0;
-				position: absolute;
-				z-index: -5;
+				background: var(--color-primary);
 			}
 			@keyframes bounce-scroll {
 				0%, 100% {
@@ -175,39 +166,58 @@ export class HeroBanner extends BaseComponent {
 	}
 
 	/**
+	 * Formats the heading to make "Our Purpose" italic when it appears after a comma.
+	 * Handles the default heading "Your health, Our Purpose." specially.
+	 * @param {string} heading - The heading text
+	 * @returns {Array} Array of text nodes and elements for the h() helper
+	 */
+	_formatHeading(heading) {
+		// Check if heading contains a comma (indicating two parts)
+		const commaIndex = heading.indexOf(",");
+		if (commaIndex === -1) {
+			return [heading];
+		}
+
+		const firstPart = heading.slice(0, commaIndex + 1); // "Your health,"
+		const secondPart = heading.slice(commaIndex + 1); // " Our Purpose."
+
+		return [firstPart, this.h("span", { class: "italic" }, secondPart)];
+	}
+
+	/**
 	 * Creates the gradient blur decorative elements
 	 */
 	_createGradientBlurs() {
-		const clipPath =
-			"polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)";
+		// const clipPath =
+		// 	"polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)";
 
 		return [
-			this.h(
-				"div",
-				{
-					"aria-hidden": "true",
-					class:
-						"hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl",
-				},
-				this.h("div", {
-					style: `clip-path: ${clipPath}`,
-					class:
-						"aspect-1097/845 w-274.25 bg-linear-to-tr from-[#ff4694] to-[#776fff] opacity-20",
-				}),
-			),
-			this.h(
-				"div",
-				{
-					"aria-hidden": "true",
-					class:
-						"absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:-top-112 sm:ml-16 sm:translate-x-0",
-				},
-				this.h("div", {
-					style: `clip-path: ${clipPath}`,
-					class:
-						"aspect-1097/845 w-274.25 bg-linear-to-tr from-[#ff4694] to-[#776fff] opacity-20",
-				}),
-			),
+			// this.h(
+			// 	"div",
+			// 	{
+			// 		"aria-hidden": "true",
+			// 		class:
+			// 			"hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl",
+			// 	},
+			// 	this.h("div", {
+			// 		style: `clip-path: ${clipPath}`,
+			// 		class:
+			// 			"aspect-1097/845 w-274.25 bg-linear-to-tr from-[#ff4694] to-[#776fff] opacity-20",
+			// 	}),
+			// ),
+			// this.h(
+			// 	"div",
+			// 	{
+			// 		"aria-hidden": "true",
+			// 		class:
+			// 			"absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:-top-112 sm:ml-16 sm:translate-x-0",
+			// 	},
+			// 	this.h("div", {
+			// 		style: `clip-path: ${clipPath}`,
+			// 		class:
+			// 			"aspect-1097/845 w-274.25 bg-linear-to-tr from-[#ff4694] to-[#776fff] opacity-20",
+			// 	}),
+			// ),
 		];
 	}
 
@@ -221,8 +231,10 @@ export class HeroBanner extends BaseComponent {
 		const imageAlt = this.getAttribute("image-alt") || "";
 		const primaryCta = this.getAttribute("primary-cta");
 		const primaryHref = resolvePath(this.getAttribute("primary-href") || "#");
-		const secondaryCta = this.getAttribute("secondary-cta");
-		const secondaryHref = resolvePath(this.getAttribute("secondary-href") || "#");
+		// const secondaryCta = this.getAttribute("secondary-cta");
+		// const secondaryHref = resolvePath(
+		// 	this.getAttribute("secondary-href") || "#",
+		// );
 		const align = this.getAttribute("align");
 
 		// Check for custom slotted content
@@ -238,24 +250,9 @@ export class HeroBanner extends BaseComponent {
 					{
 						href: primaryHref,
 						class:
-							"text-white bg-secondary/32 px-6 py-4 text-lg text-[clamp(1rem,1.5vw,1.25rem)] font-bold text-shadow-lg tracking-wider shadow-xs border-1 rounded-xl no-underline",
+							"text-white bg-secondary/48 backdrop-blur-[2px] text-shadow-lg px-6 py-4 text-lg text-[clamp(1rem,1.5vw,1.25rem)] font-bold text-shadow-lg tracking-wider shadow-xs border-2 border-white/64 shadow-b-4xl rounded-full no-underline hover:bg-secondary/72 hover:backdrop-blur-[0px] transition-colors mt-12",
 					},
 					primaryCta,
-				),
-			);
-		}
-
-		if (secondaryCta) {
-			ctaElements.push(
-				this.h(
-					"a",
-					{
-						href: secondaryHref,
-						class:
-							"text-white text-lg/6 text-[clamp(0.92rem,1.32vw,1.15rem)] font-semibold text-shadow-lg tracking-wide no-underline",
-					},
-					secondaryCta,
-					this.h("span", { "aria-hidden": "true" }, " →"),
 				),
 			);
 		}
@@ -271,15 +268,6 @@ export class HeroBanner extends BaseComponent {
 							"rounded-md px-6 py-4 text-md font-semibold text-shadow-lg shadow-xs no-underline",
 					},
 					"Call for more details…",
-				),
-				this.h(
-					"a",
-					{
-						href: "#",
-						class: "text-sm/6 font-semibold text-shadow-lg no-underline",
-					},
-					"Learn more",
-					this.h("span", { "aria-hidden": "true" }, " →"),
 				),
 			);
 		}
@@ -327,7 +315,7 @@ export class HeroBanner extends BaseComponent {
 						src: image,
 						alt: imageAlt,
 						class:
-							"absolute inset-0 -z-10 size-full object-cover object-right md:object-center",
+							"absolute inset-0 -z-10 size-full object-cover object-right md:object-center mt-[5rem] opacity-72",
 					})
 				: (() => {
 						const videoElement = this.h(
@@ -360,7 +348,7 @@ export class HeroBanner extends BaseComponent {
 				"div",
 				{
 					class:
-						"mx-auto max-w-6xl px-6 min-h-dvh flex items-center transform translate-y-[-24dvh] lg:translate-y-[-12dvh]",
+						"mx-auto w-[80dvw] max-w-[120rem] px-6 pt-0 min-h-dvh flex items-center -mt-24",
 				},
 				// Gradient blurs
 				...this._createGradientBlurs(),
@@ -368,27 +356,28 @@ export class HeroBanner extends BaseComponent {
 				this.h(
 					"div",
 					{
-						class: `items-center mr-auto w-full lg:w-2/3 ${textAlignClass} lg:mx-0 lg:flex-auto`,
+						class: `items-center mr-auto w-full pt-0 lg:w-2/3 ${textAlignClass} lg:mx-0 lg:flex-auto -mt-32`,
 					},
 					this.h(
 						"h1",
 						{
-							class: "tracking-wide leading-tight",
+							class:
+								"text-[#fff] font-semibold font-serif text-6xl md:text-7xl tracking-normal leading-tight text-balance",
 						},
-						heading,
+						...this._formatHeading(heading),
 					),
 					this.h(
 						"p",
 						{
 							class:
-								"mt-6 text-[clamp(1.125rem,3vw,1.75rem)] text-pretty font-medium text-shadow-lg leading-relaxed w-4/5 lg:w-2/3",
+								"mt-6 text-[clamp(1.125rem,3vw,1.75rem)] text-pretty font-medium text-shadow-lg leading-relaxed w-4/5 lg:w-2/3 max-w-4xl",
 						},
 						description,
 					),
 					this.h(
 						"div",
 						{
-							class: `mt-10 flex items-center ${justifyClass} gap-x-6`,
+							class: `mt-10 flex items-center pt-0 -mt-12 ${justifyClass} gap-x-6`,
 						},
 						...ctaElements,
 					),

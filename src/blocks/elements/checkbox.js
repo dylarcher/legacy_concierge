@@ -1,4 +1,4 @@
-import { BaseComponent, defineElement } from "./_base.js";
+import { BaseComponent, defineElement } from "../_base.js";
 
 const CHECKBOX_BASE_STYLES = [
 	"relative isolate flex size-[1.125rem] items-center justify-center rounded-[0.3125rem] sm:size-4",

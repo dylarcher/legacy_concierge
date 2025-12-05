@@ -1,179 +1,150 @@
 @import "tailwindcss";
-
-/* Import design tokens */
-@import "./tokens/color-palette.css";
-@import "./tokens/typography.css";
-
-/* Tailwind theme variables sourced from tokens.css
-	 This file maps design tokens to Tailwind color slots so
-	 classes like bg-primary, text-secondary, border-accent, etc. use tokens.
-*/
-
+@import "./tokens/_variables.css";
 @source "../blocks/**/*.{js,css}";
 @source "../pages/**/*.html";
 
 @layer theme {
 	@theme {
-		/* Map Tailwind colors to color-tokens.css primitives without light-dark() */
-		--color-primary: var(--color-navy);
-		--color-primary-hover: var(--action-primary-bg-hover);
-		--color-primary-pressed: var(--action-primary-bg-active);
-		--color-primary-disabled: var(--action-primary-bg-disabled);
+		/** COLOR MAPPINGS
+		 *  Map semantic tokens to Tailwind UI roles
+		 */
+		--color-transparent: transparent;
+		--color-primary: var(--brand-primary);
+		--color-primary-hover: var(--brand-primary-muted);
+		--color-primary-pressed: var(--brand-primary-soft);
+		--color-primary-disabled: var(--color-border-muted);
+		--color-secondary: var(--brand-secondary);
+		--color-secondary-hover: var(--brand-secondary-muted);
+		--color-secondary-pressed: var(--brand-secondary-soft);
+		--color-secondary-disabled: var(--color-border-muted);
+		--color-accent: var(--brand-tertiary);
+		--color-accent-hover: var(--brand-tertiary-muted);
+		--color-accent-pressed: var(--brand-tertiary-soft);
+		--color-accent-disabled: var(--color-border-muted);
+		--color-muted: var(--color-surface-muted);
+		--color-muted-hover: var(--color-surface-soft);
+		--color-muted-pressed: var(--color-surface);
+		--color-muted-disabled: var(--color-border-soft);
 
-		--color-secondary: var(--color-sage);
-		--color-secondary-hover: var(--action-secondary-bg-hover);
-		--color-secondary-pressed: var(--action-secondary-bg-active);
-		--color-secondary-disabled: var(--action-secondary-bg-disabled);
+		/** FOREGROUND ROLES */
+		--color-fg: var(--color-text);
+		--color-fg-muted: var(--color-text-muted);
+		--color-fg-soft: var(--color-text-soft);
+		--color-fg-inverse: var(--color-canvas);
 
-		--color-accent: var(--color-sienna);
-		--color-accent-hover: var(--action-accent-bg-hover);
-		--color-accent-pressed: var(--action-accent-bg-active);
-		--color-accent-disabled: var(--action-accent-bg-disabled);
+		/** BACKGROUND ROLES */
+		--color-bg: var(--color-canvas);
+		--color-bg-surface: var(--color-surface);
+		--color-bg-muted: var(--color-surface-muted);
+		--color-bg-inverse: var(--brand-primary);
+		--bg-depth-1: var(--color-surface-muted);
+		--bg-depth-2: var(--color-surface-soft);
 
-		--color-muted: var(--color-pearl);
-		--color-muted-hover: var(--action-muted-bg-hover);
-		--color-muted-pressed: var(--action-muted-bg-active);
-		--color-muted-disabled: color-mix(
-			in oklab,
-			var(--color-pearl) 60%,
-			var(--color-coal)
-		);
+		/** SURFACE ROLES */
+		--color-surface-primary: var(--brand-primary);
+		--color-surface-secondary: var(--brand-secondary);
+		--color-surface-accent: var(--brand-tertiary);
 
-		--color-canvas: var(--color-ivory);
-		--color-canvas-hover: color-mix(
-			in oklab,
-			var(--color-ivory) 95%,
-			var(--color-coal)
-		);
-		--color-canvas-pressed: color-mix(
-			in oklab,
-			var(--color-ivory) 90%,
-			var(--color-coal)
-		);
-		--color-canvas-disabled: color-mix(
-			in oklab,
-			var(--color-ivory) 70%,
-			var(--color-coal)
-		);
+		/** BORDER ROLES */
+		--color-border-strong: var(--color-border-muted);
+		--color-border-medium: var(--color-border);
+		--color-border-soft: var(--color-border-soft);
 
-		--color-canvastext: var(--color-coal);
-		--color-canvastext-hover: var(--color-ash);
-		--color-canvastext-pressed: var(--color-slate);
-		--color-canvastext-disabled: var(--color-silver);
+		/** OVERLAY ROLES */
+		--overlay-1: rgb(var(--args-canvas-inverted) / 0.12);
+		--overlay-2: rgb(var(--args-canvas-inverted) / 0.48);
+		--overlay-3: rgb(var(--args-canvas-inverted) / 0.8);
 
-		/* Elevation overlays */
-		--overlay-1: var(--color-overlay-alpha-min);
-		--overlay-2: var(--color-overlay-alpha-mid);
-		--overlay-3: var(--color-overlay-alpha-max);
+		/** SELECTION & FOCUS */
+		--selection-fg: var(--color-canvas);
+		--selection-bg: var(--brand-secondary);
+		--focus-ring: var(--brand-secondary);
+		--color-focus-ring: var(--brand-secondary);
+		--color-selection-fg: var(--color-canvas);
+		--color-selection-bg: var(--brand-secondary);
 
-		/* Semantic aliases for convenience */
-		--color-fg: var(--fg-primary);
-		--color-fg-muted: var(--fg-muted);
-		--color-fg-inverse: var(--fg-inverse);
+		/** STATUS TOKENS - Error */
+		--status-error-fg: rgb(180 60 60);
+		--status-error-bg: rgb(254 242 242);
+		--status-error-border: rgb(252 165 165);
+		--status-error-ring: rgb(239 68 68 / 0.4);
+		--status-error-text: rgb(153 27 27);
 
-		--color-bg: var(--bg-primary);
-		--color-bg-surface: var(--bg-surface);
-		--color-bg-muted: var(--bg-muted);
-		--color-bg-inverse: var(--bg-inverse);
+		/** STATUS TOKENS - Success */
+		--status-success-fg: rgb(34 197 94);
+		--status-success-bg: rgb(240 253 244);
+		--status-success-border: rgb(134 239 172);
+		--status-success-ring: rgb(34 197 94 / 0.4);
+		--status-success-text: rgb(21 128 61);
 
-		--color-surface-primary: var(--surface-primary);
-		--color-surface-secondary: var(--surface-secondary);
-		--color-surface-accent: var(--surface-accent);
-		--color-surface-muted: var(--surface-muted);
+		/** STATUS TOKENS - Warning */
+		--status-warning-fg: rgb(234 179 8);
+		--status-warning-bg: rgb(254 252 232);
+		--status-warning-border: rgb(253 224 71);
+		--status-warning-ring: rgb(234 179 8 / 0.4);
+		--status-warning-text: rgb(161 98 7);
 
-		--color-border-strong: var(--border-strong);
-		--color-border-medium: var(--border-medium);
-		--color-border-soft: var(--border-soft);
+		/** STATUS TOKENS - Info */
+		--status-info-fg: rgb(59 130 246);
+		--status-info-bg: rgb(239 246 255);
+		--status-info-border: rgb(147 197 253);
+		--status-info-ring: rgb(59 130 246 / 0.4);
+		--status-info-text: rgb(30 64 175);
 
-		--color-focus-ring: var(--focus-ring);
-		--color-selection-fg: var(--selection-fg);
-		--color-selection-bg: var(--selection-bg);
+		/** BUTTON TOKENS - Solid */
+		--btn-solid-fg: var(--color-canvas);
+		--btn-solid-bg: var(--brand-primary);
+		--btn-solid-bg-hover: var(--brand-primary-muted);
+		--btn-solid-bg-active: var(--brand-primary-soft);
+		--btn-solid-bg-pressed: var(--brand-primary-soft);
+		--btn-solid-bg-disabled: var(--color-border-muted);
+		--btn-solid-border: var(--brand-primary);
 
-		/* Status aliases */
-		--color-status-error: var(--color-coral);
-		--color-status-info: var(--color-iris);
-		--color-status-success: var(--color-jade);
-		--color-status-warning: var(--color-amber);
+		/** BUTTON TOKENS - Outline */
+		--btn-outline-fg: var(--brand-primary);
+		--btn-outline-bg: transparent;
+		--btn-outline-bg-hover: var(--brand-primary-soft);
+		--btn-outline-bg-pressed: var(--brand-primary-muted);
+		--btn-outline-bg-active: var(--brand-primary-muted);
+		--btn-outline-border: var(--brand-primary);
+		--btn-outline-border-hover: var(--brand-primary-muted);
 
-		--status-error-fg: var(--status-error-fg);
-		--status-error-bg: var(--status-error-bg);
-		--status-error-border: var(--status-error-border);
-		--status-error-ring: var(--status-error-ring);
-		--status-error-text: var(--status-error-text);
+		/** BUTTON TOKENS - Subtle */
+		--btn-subtle-fg: var(--brand-primary);
+		--btn-subtle-bg: var(--color-surface-muted);
+		--btn-subtle-bg-hover: var(--color-surface-soft);
+		--btn-subtle-bg-pressed: var(--color-surface);
 
-		--status-info-fg: var(--status-info-fg);
-		--status-info-bg: var(--status-info-bg);
-		--status-info-border: var(--status-info-border);
-		--status-info-ring: var(--status-info-ring);
-		--status-info-text: var(--status-info-text);
-
-		--status-success-fg: var(--status-success-fg);
-		--status-success-bg: var(--status-success-bg);
-		--status-success-border: var(--status-success-border);
-		--status-success-ring: var(--status-success-ring);
-		--status-success-text: var(--status-success-text);
-
-		--status-warning-fg: var(--status-warning-fg);
-		--status-warning-bg: var(--status-warning-bg);
-		--status-warning-border: var(--status-warning-border);
-		--status-warning-ring: var(--status-warning-ring);
-		--status-warning-text: var(--status-warning-text);
-
-		/* Component-level aliases (buttons/inputs/cards) */
-		--btn-solid-fg: var(--color-muted);
-		--btn-solid-bg: var(--color-primary);
-		--btn-solid-bg-hover: var(--color-primary-hover);
-		--btn-solid-bg-pressed: var(--color-primary-pressed);
-		--btn-solid-bg-disabled: var(--color-primary-disabled);
-		--btn-solid-border: var(--color-primary);
-
-		/* Outline buttons map to primary color and canvas backgrounds */
-		--btn-outline-fg: var(--color-primary);
-		--btn-outline-bg: var(--color-canvas);
-		--btn-outline-bg-hover: var(--color-canvas-hover);
-		--btn-outline-bg-pressed: var(--color-canvas-pressed);
-		--btn-outline-border: var(--color-primary);
-		--btn-outline-border-hover: var(--color-primary-hover);
-
-		/* Subtle buttons use muted palette */
-		--btn-subtle-fg: var(--color-primary);
-		--btn-subtle-bg: var(--color-muted);
-		--btn-subtle-bg-hover: var(--color-muted-hover);
-		--btn-subtle-bg-pressed: var(--color-muted-pressed);
-
-		/* Inputs */
-		--input-fg: var(--color-canvastext);
-		--input-bg: var(--color-canvas);
-		--input-border: var(--color-border-soft);
-		--input-border-hover: var(--color-border-strong);
-		--input-border-focus: var(--color-focus-ring);
-		--input-placeholder: var(--color-fg-muted);
+		/** INPUT TOKENS */
+		--input-fg: var(--color-text);
+		--input-bg: var(--color-surface);
+		--input-border: var(--color-border);
+		--input-border-hover: var(--color-border-muted);
+		--input-border-focus: var(--brand-secondary);
+		--input-border-invalid: rgb(var(--args-warm-redish-brown));
+		--input-placeholder: var(--color-text-soft);
 		--input-valid-ring: var(--status-success-ring);
 		--input-warning-ring: var(--status-warning-ring);
 		--input-error-ring: var(--status-error-ring);
 
-		/* Cards */
-		--card-fg: var(--color-canvastext);
-		--card-bg: var(--bg-surface);
-		--card-bg-hover: var(--bg-muted);
-		--card-border: var(--color-border-soft);
-		--card-shadow: color-mix(
-			in oklab,
-			var(--color-coal) 8%,
-			var(--color-transparent)
-		);
+		/** CARD TOKENS */
+		--card-fg: var(--color-text);
+		--card-bg: var(--color-surface);
+		--card-bg-hover: var(--color-surface-muted);
+		--card-border: var(--color-border);
+		--card-shadow: rgb(var(--depth-soft-charcoal));
 
-		/* Font families from font-tokens.css */
-		--font-sans: var(--font-body-type);
-		--font-display: var(--font-display-type);
-		--font-serif: var(--font-title-type);
-		--font-mono: var(--font-caption-type);
-		--font-slab: var(--font-accent-type);
-		--font-condensed: var(--font-heavy-type);
-		--font-rounded: var(--font-soft-type);
-		--font-code: var(--font-code-type);
+		/** FONT FAMILY MAPPINGS */
+		--font-sans: var(--text-body);
+		--font-display: var(--text-display);
+		--font-serif: var(--text-title);
+		--font-mono: var(--text-caption);
+		--font-slab: var(--text-accent);
+		--font-condensed: var(--text-heavy);
+		--font-rounded: var(--text-soft);
+		--font-code: var(--text-code);
 
-		/* Text sizes from font-tokens.css */
+		/** TYPOGRAPHY SCALE */
 		--text-xxl: var(--text-size-xxl);
 		--text-xl: var(--text-size-xl);
 		--text-lg: var(--text-size-lg);
@@ -182,7 +153,7 @@
 		--text-xs: var(--text-size-xs);
 		--text-xxs: var(--text-size-xxs);
 
-		/* Line heights from font-tokens.css */
+		/** LINE HEIGHT MAPPINGS */
 		--leading-xxl: var(--line-height-xxl);
 		--leading-xl: var(--line-height-xl);
 		--leading-lg: var(--line-height-lg);
@@ -190,7 +161,8 @@
 		--leading-sm: var(--line-height-sm);
 		--leading-xs: var(--line-height-xs);
 
-		/* Utility aliases to Tailwind classnames for direct usage */
+		/** LETTER SPACING MAPPINGS */
+		--tracking-xxl: var(--letter-spacing-xxl);
 		--tracking-lg: var(--letter-spacing-lg);
 		--tracking-md: var(--letter-spacing-md);
 		--tracking-sm: var(--letter-spacing-sm);
@@ -200,177 +172,89 @@
 }
 
 @layer base {
-	/* Base typography and layout resets */
-	*,
-	*::before,
-	*::after {
+	::before,
+	::after,
+	* {
 		box-sizing: border-box;
 	}
-
-	html {
+	:root {
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		text-rendering: geometricPrecision;
-		font-family: var(--font-body-type);
+		font-family: var(--text-body);
 		font-size: var(--text-size-sm);
 		line-height: var(--line-height-md);
 		letter-spacing: var(--letter-spacing-md);
-		color: var(--fg-primary);
-		background: var(--bg-primary);
+		color: var(--color-text);
+		background: var(--color-canvas);
 	}
-
+	html,
 	body {
-		margin: 0;
-		padding: 0;
+		overflow-x: hidden;
+		padding: unset;
+		margin: unset;
 	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		font-weight: 600;
-		margin: 0;
-	}
-
-	h1,
-	h2,
-	h4 {
-		font-family: var(--font-title-type);
-	}
-
-	h3,
-	h6 {
-		font-family: var(--font-display-type);
-	}
-
-	#featured h3 {
-		font-family: var(--font-title-type);
-		font-weight: 600;
-	}
-
-	h1 {
-		font-size: var(--text-size-xxl);
-		line-height: var(--line-height-xxl);
-		letter-spacing: var(--letter-spacing-xxs);
-		text-transform: uppercase;
-	}
-
-	h2 {
-		font-size: var(--text-size-xl);
-		line-height: var(--line-height-xl);
-		letter-spacing: var(--letter-spacing-lg);
-	}
-
-	h3 {
-		font-size: var(--text-size-lg);
-		line-height: var(--line-height-lg);
-		letter-spacing: var(--letter-spacing-xxs);
-		font-weight: 500;
-	}
-
-	h4 {
-		font-size: var(--text-size-md);
-		line-height: var(--line-height-md);
-		letter-spacing: var(--letter-spacing-xxl);
-		font-style: italic;
-		font-weight: 700;
-	}
-
-	h5 {
-		font-family: var(--font-condensed);
-		font-size: var(--text-size-xs);
-		line-height: var(--line-height-sm);
-		letter-spacing: var(--letter-spacing-xxl);
-		font-weight: bolder;
-		text-transform: uppercase;
-	}
-
-	h6 {
-		font-family: var(--font-soft-type);
-		font-size: var(--text-size-xs);
-		line-height: var(--line-height-xs);
-		letter-spacing: var(--letter-spacing-md);
-		font-weight: 700;
-	}
-
-	p {
-		margin: 0;
-	}
-
-	:any-link,
-	a {
-		color: var(--color-primary);
-		text-decoration: none;
-	}
-
-	a:hover {
-		color: var(--color-primary-hover);
-	}
-
-	caption,
-	label,
-	samp,
-	var {
-		font-family: var(--font-caption-type);
-		font-size: var(--text-size-sm);
-	}
-
-	code,
-	pre {
-		font-family: var(--font-code-type);
-		font-size: var(--text-size-sm);
-	}
-
 	::selection {
 		color: var(--selection-fg);
 		background: var(--selection-bg);
 	}
-
-	*:focus-visible {
-		outline: 1px dashed var(--color-iris);
-		outline-offset: 3px;
+	:focus-visible {
+		outline: 2px solid var(--focus-ring);
+		outline-offset: 2px;
+	}
+	[aria-invalid="true" i],
+	:invalid {
+		border-color: var(--input-border-invalid);
+	}
+	[aria-disabled="true" i],
+	:disabled {
+		filter: brightness(0.8) grayscale(0.96) opacity(0.64);
+		cursor: not-allowed;
+	}
+	[aria-busy="true" i],
+	[inert] {
+		user-select: none;
+		filter: grayscale(0.36) opacity(0.12);
+	}
+	[role="banner" i] {
+		background-color: var(--color-canvas-muted);
+		box-shadow: 0 2px 6px -4px var(--brand-primary-muted);
 	}
 }
 
 @layer components {
-	/* Custom minimal scrollbar - 75% width, centered */
 	.scrollbar-minimal {
-		scrollbar-width: none; /* Firefox - hide native */
-		-ms-overflow-style: none; /* IE/Edge - hide native */
-		&::-webkit-scrollbar {
-			display: none; /* Chrome/Safari - hide native */
-		}
-
+		scrollbar-width: none; /*? FF */
+		-ms-overflow-style: none; /*? IE */
 		position: relative;
 	}
-
+	.scrollbar-minimal::-webkit-scrollbar {
+		display: none; /*? Webkit */
+	}
 	.scrollbar-minimal-track {
 		position: relative;
 		margin-top: 1.5rem;
 		margin-inline: auto;
-		width: 75%;
-		height: 4px;
+		inline-size: 72%;
+		block-size: 0.25rem;
 		background: rgb(0 0 0 / 10%);
 		border-radius: 2px;
 	}
-
 	.scrollbar-minimal-thumb {
 		position: absolute;
 		top: 0;
 		left: 0;
-		height: 100%;
-		min-width: 2rem;
-		background: var(--color-accent);
+		block-size: 100%;
+		min-inline-size: 2rem;
+		background: var(--brand-secondary-muted);
 		border-radius: 2px;
 		cursor: grab;
 		transition:
-			background 0.2s,
-			transform 0.1s;
+			background 0.24s,
+			transform 0.12s;
 
 		&:hover {
-			background: var(--color-primary);
+			background: var(--brand-secondary);
 		}
 
 		&:active {
@@ -378,7 +262,6 @@
 			transform: scaleY(1.5);
 		}
 	}
-
 	global-nav :is(button, a, :any-link) {
 		text-transform: uppercase;
 		letter-spacing: var(--letter-spacing-lg);
@@ -386,86 +269,76 @@
 	}
 }
 
-/* Utility aliases to Tailwind classnames for direct usage */
 @layer utilities {
-	/* Backgrounds */
 	.bg-primary {
-		background-color: var(--color-primary);
+		background-color: var(--brand-primary);
 	}
 	.bg-secondary {
-		background-color: var(--color-secondary);
+		background-color: var(--brand-secondary);
 	}
 	.bg-accent {
-		background-color: var(--color-accent);
+		background-color: var(--brand-tertiary);
 	}
 	.bg-muted {
-		background-color: var(--color-bg-muted);
+		background-color: var(--color-surface-muted);
 	}
 	.bg-canvas {
 		background-color: var(--color-canvas);
 	}
 	.bg-surface {
-		background-color: var(--color-bg-surface);
+		background-color: var(--color-surface);
 	}
 	.bg-depth-1 {
-		background-color: var(--bg-depth-1);
+		background-color: var(--color-surface-muted);
 	}
 	.bg-depth-2 {
-		background-color: var(--bg-depth-2);
+		background-color: var(--color-surface-soft);
 	}
 	.bg-inverse {
-		background-color: var(--color-bg-inverse);
+		background-color: var(--brand-primary);
 	}
-
-	/* Text */
 	.text-primary {
-		color: var(--color-primary);
+		color: var(--brand-primary);
 	}
 	.text-secondary {
-		color: var(--color-secondary);
+		color: var(--brand-secondary);
 	}
 	.text-accent {
-		color: var(--color-accent);
+		color: var(--brand-tertiary);
 	}
 	.text-muted {
-		color: var(--color-fg-muted);
+		color: var(--color-text-muted);
 	}
 	.text-canvas {
-		color: var(--color-canvastext);
+		color: var(--color-text);
 	}
 	.text-inverse {
-		color: var(--color-fg-inverse);
+		color: var(--color-canvas);
 	}
-
-	/* Borders */
 	.border-primary {
-		border-color: var(--color-primary);
+		border-color: var(--brand-primary);
 	}
 	.border-secondary {
-		border-color: var(--color-secondary);
+		border-color: var(--brand-secondary);
 	}
 	.border-accent {
-		border-color: var(--color-accent);
+		border-color: var(--brand-tertiary);
 	}
 	.border-muted {
-		border-color: var(--color-muted);
+		border-color: var(--color-border-muted);
 	}
 	.border-strong {
-		border-color: var(--color-border-strong);
+		border-color: var(--color-border-muted);
 	}
-
-	/* Rings / Focus */
 	.ring-primary {
-		--tw-ring-color: var(--color-primary);
+		--tw-ring-color: var(--brand-primary);
 	}
 	.ring-secondary {
-		--tw-ring-color: var(--color-secondary);
+		--tw-ring-color: var(--brand-secondary);
 	}
 	.ring-accent {
-		--tw-ring-color: var(--color-accent);
+		--tw-ring-color: var(--brand-tertiary);
 	}
-
-	/* Status utilities */
 	.bg-status-error {
 		background-color: var(--status-error-bg);
 	}
@@ -478,7 +351,6 @@
 	.bg-status-warning {
 		background-color: var(--status-warning-bg);
 	}
-
 	.text-status-error,
 	.text-badge-error {
 		color: var(--status-error-text);
@@ -495,7 +367,6 @@
 	.text-badge-warning {
 		color: var(--status-warning-text);
 	}
-
 	.border-status-error {
 		border-color: var(--status-error-border);
 	}
@@ -508,7 +379,6 @@
 	.border-status-warning {
 		border-color: var(--status-warning-border);
 	}
-
 	.ring-status-error {
 		--tw-ring-color: var(--status-error-ring);
 	}
@@ -521,100 +391,86 @@
 	.ring-status-warning {
 		--tw-ring-color: var(--status-warning-ring);
 	}
-
-	/* Buttons (semantic) */
 	.btn-solid {
 		color: var(--color-canvas);
-		background: var(--color-primary);
-		border-color: var(--color-primary);
+		background: var(--brand-primary);
+		border-color: var(--brand-primary);
 	}
 	.btn-solid:hover {
-		background: var(--color-primary-hover);
+		background: var(--brand-primary-muted);
 	}
 	.btn-solid:active {
-		background: var(--color-primary-pressed);
+		background: var(--brand-primary-soft);
 	}
 	.btn-solid:disabled {
-		background: var(--color-primary-disabled);
+		background: var(--color-border-muted);
 	}
-
 	.btn-outline {
-		color: var(--color-primary);
-		background: var(--color-transparent);
-		border-color: var(--color-primary);
+		color: var(--brand-primary);
+		background: transparent;
+		border-color: var(--brand-primary);
 	}
-
 	.btn-outline:hover {
-		border-color: var(--color-primary-hover);
-		background: var(--color-primary-hover);
+		border-color: var(--brand-primary-muted);
+		background: var(--brand-primary-muted);
 		color: var(--color-canvas);
 	}
-
 	.btn-outline:active {
-		border-color: var(--color-primary-pressed);
-		background: var(--color-primary-disabled);
+		border-color: var(--brand-primary-soft);
+		background: var(--color-border-muted);
 		color: var(--color-canvas);
 		opacity: 0.64;
 	}
-
 	.btn-outline:disabled {
-		background: var(--color-primary-disabled);
+		background: var(--color-border-muted);
 		color: var(--color-canvas);
 		filter: brightness(0.8) opacity(0.48) grayscale(1);
-		outline: 2px dashed var(--color-slate);
+		outline: 2px dashed var(--color-border-muted);
 		outline-offset: 2px;
 	}
-
 	.btn-subtle {
-		color: var(--color-canvastext);
-		background: var(--color-muted);
+		color: var(--color-text);
+		background: var(--color-surface-muted);
 	}
-
 	.btn-subtle:hover {
-		background: var(--color-muted-hover);
+		background: var(--color-surface-soft);
 	}
-
 	.btn-subtle:active {
-		background: var(--color-muted-pressed);
+		background: var(--color-surface);
 	}
-
 	.btn-subtle:disabled {
-		background: var(--color-muted-disabled);
-		color: var(--color-canvastext-disabled);
+		background: var(--color-border-soft);
+		color: var(--color-text-muted);
 		filter: brightness(0.8) opacity(0.48) grayscale(1);
-		outline: 2px dashed var(--color-slate);
+		outline: 2px dashed var(--color-border-muted);
 		outline-offset: 2px;
 	}
-
-	/* Inputs */
 	.input-fg {
-		color: var(--color-canvastext);
+		color: var(--color-text);
 	}
 	.input-bg {
 		background: var(--color-canvas);
 	}
 	.input-border {
-		border-color: var(--color-secondary);
+		border-color: var(--brand-secondary);
 	}
 	.input-border-hover:hover {
-		border-color: var(--color-secondary-hover);
+		border-color: var(--brand-secondary-muted);
 	}
 	.input-focus:focus {
-		outline-color: var(--color-primary);
+		outline-color: var(--brand-primary);
 	}
 	.placeholder-muted::placeholder {
-		color: var(--fg-subtle);
+		color: var(--color-text-soft);
 	}
-
-	/* Cards */
 	.card-fg {
-		color: var(--color-canvastext);
+		color: var(--color-text);
 	}
 	.card-bg {
-		background: var(--color-muted);
+		background: var(--color-surface-muted);
 	}
 	.card-bg-hover:hover {
-		background: var(--color-muted-hover);
+		background: var(--color-surface-soft);
 	}
 	.card-border {
 		border-color: var(--color-border-soft);

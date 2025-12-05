@@ -7,10 +7,10 @@
 	await import("./blocks/components/quote.js");
 	await import("./blocks/components/card-role.js");
 
-	// Custom scrollbar for #featured
-	const initCustomScrollbar = () => {
-		const scrollContainer = document.getElementById("featured");
-		const thumb = document.getElementById("featured-scrollbar-thumb");
+	// Custom scrollbar factory for horizontal scroll containers
+	const initCustomScrollbar = (scrollContainerId, thumbId) => {
+		const scrollContainer = document.getElementById(scrollContainerId);
+		const thumb = document.getElementById(thumbId);
 		const track = thumb?.parentElement;
 
 		if (!scrollContainer || !thumb || !track) return;
@@ -78,9 +78,16 @@
 		updateThumb();
 	};
 
+	const initAllScrollbars = () => {
+		// Initialize scrollbar for #featured-cards
+		initCustomScrollbar("featured-cards", "featured-scrollbar-thumb");
+		// Initialize scrollbar for #treatment-cards
+		initCustomScrollbar("treatment-cards", "treatment-scrollbar-thumb");
+	};
+
 	if (document.readyState === "loading") {
-		document.addEventListener("DOMContentLoaded", initCustomScrollbar);
+		document.addEventListener("DOMContentLoaded", initAllScrollbars);
 	} else {
-		initCustomScrollbar();
+		initAllScrollbars();
 	}
 })();
