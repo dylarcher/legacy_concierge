@@ -121,7 +121,7 @@
 		--input-border: var(--color-border);
 		--input-border-hover: var(--color-border-muted);
 		--input-border-focus: var(--color-secondary);
-		--input-border-invalid: rgb(var(--hues-warm-redish-brown));
+		--input-border-invalid: rgb(var(--hues-warm-brown));
 		--input-placeholder: var(--color-text-soft);
 		--input-valid-ring: var(--status-success-ring);
 		--input-warning-ring: var(--status-warning-ring);

@@ -7,39 +7,39 @@
 
 :root {
 	/** PRIMARY - Principle colors
-	 *  Dark midnight blue cool tones
+	 *  Dark blue cool tones
 	 */
-	--color-primary: rgb(var(--hues-cool-midnight));
-	--color-primary-muted: rgb(var(--hues-cool-deep-navy));
-	--color-primary-soft: rgb(var(--hues-cool-dark-navy) / 0.8);
+	--color-primary: rgb(var(--hues-cool-dark-blue));
+	--color-primary-muted: rgb(var(--hues-cool-dark-teal));
+	--color-primary-soft: rgb(var(--hues-cool-teal) / 0.8);
 
 	/** SECONDARY - Accent colors
-	 *  Teal, cyan & turquoise cool tones
+	 *  Teal cool tones
 	 */
-	--color-secondary: rgb(var(--hues-cool-subtle-teal));
-	--color-secondary-muted: rgb(var(--hues-cool-smooth-teal));
-	--color-secondary-soft: rgb(var(--hues-cool-greyish-teal) / 0.8);
+	--color-secondary: rgb(var(--hues-cool-teal));
+	--color-secondary-muted: rgb(var(--hues-cool-dark-teal));
+	--color-secondary-soft: rgb(var(--hues-cool-dark-teal) / 0.8);
 
 	/** TERTIARY - Supportive colors
-	 *  Brownish & tan warm tones
+	 *  Tan, beige & brown warm tones
 	 */
-	--color-tertiary: rgb(var(--hues-warm-sunstruck-sand));
-	--color-tertiary-muted: rgb(var(--hues-warm-greyish-taupe));
-	--color-tertiary-soft: rgb(var(--hues-warm-redish-brown) / 0.8);
+	--color-tertiary: rgb(var(--hues-warm-tan));
+	--color-tertiary-muted: rgb(var(--hues-warm-beige));
+	--color-tertiary-soft: rgb(var(--hues-warm-brown) / 0.8);
 
 	/** CANVAS - Background colors
 	 *  Pages, Sections, Regions, etc.
 	 */
 	--color-canvas: rgb(var(--hues-canvas-baseline));
-	--color-canvas-muted: rgb(var(--hues-neutral-off-white));
-	--color-canvas-soft: rgb(var(--hues-neutral-light-gray) / 0.8);
+	--color-canvas-muted: rgb(var(--hues-warm-cream));
+	--color-canvas-soft: rgb(var(--hues-warm-beige) / 0.8);
 
 	/** SURFACE - Midground colors
 	 *  Cards, Panels, Modals, etc.
 	 */
 	--color-surface: rgb(var(--hues-canvas-baseline));
-	--color-surface-muted: rgb(var(--hues-neutral-off-white));
-	--color-surface-soft: rgb(var(--hues-neutral-light-gray) / 0.64);
+	--color-surface-muted: rgb(var(--hues-warm-cream));
+	--color-surface-soft: rgb(var(--hues-warm-beige) / 0.64);
 
 	/** TEXT - Foreground colors
 	 *  Text, Icons, Graphics, etc.
@@ -65,21 +65,21 @@
 	/** BACKDROP - Sublevel elements
 	 *  ::after pseudo-elements, backgrounds
 	 */
-	--color-backdrop: rgb(var(--hues-cool-midnight));
-	--color-backdrop-muted: rgb(var(--hues-cool-deep-navy));
-	--color-backdrop-soft: rgb(var(--hues-cool-dark-navy) / 0.8);
+	--color-backdrop: rgb(var(--hues-cool-dark-blue));
+	--color-backdrop-muted: rgb(var(--hues-cool-dark-teal));
+	--color-backdrop-soft: rgb(var(--hues-cool-teal) / 0.8);
 
 	/** OVERLAY - Toplevel elements
 	 *  ::before pseudo-elements, covers
 	 */
-	--color-overlay: rgb(var(--hues-cool-midnight));
-	--color-overlay-muted: rgb(var(--hues-cool-deep-navy));
-	--color-overlay-soft: rgb(var(--hues-cool-dark-navy) / 0.8);
+	--color-overlay: rgb(var(--hues-cool-dark-blue));
+	--color-overlay-muted: rgb(var(--hues-cool-dark-teal));
+	--color-overlay-soft: rgb(var(--hues-cool-teal) / 0.8);
 
 	/** SHADOW - Elevation & depth
 	 *  Text shadows, box shadows, drop shadows
 	 */
-	--color-shadow: rgb(var(--hues-cool-midnight));
-	--color-shadow-muted: rgb(var(--hues-cool-deep-navy));
-	--color-shadow-soft: rgb(var(--hues-cool-dark-navy) / 0.8);
+	--color-shadow: rgb(var(--hues-cool-dark-blue));
+	--color-shadow-muted: rgb(var(--hues-cool-dark-teal));
+	--color-shadow-soft: rgb(var(--hues-cool-teal) / 0.8);
 }

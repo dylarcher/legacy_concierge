@@ -133,12 +133,12 @@
 	--linear-button-teal: linear-gradient(
 		135deg,
 		rgb(
-				var(--hues-cool-subtle-teal) /
+				var(--hues-cool-teal) /
 				var(--alpha-translucent-linear-button-teal, 0.36)
 			)
 			0%,
 		rgb(
-				var(--hues-cool-subtle-teal) /
+				var(--hues-cool-teal) /
 				var(--alpha-semiopaque-linear-button-teal, 0.48)
 			)
 			92%
