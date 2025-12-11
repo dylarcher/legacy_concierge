@@ -636,8 +636,9 @@ class NavBar extends BaseComponent {
 				"div",
 				{
 					class:
-						"dropdown-menu absolute left-0 z-50 mt-5 hidden w-screen max-w-max px-4 transition duration-200 ease-out opacity-0 translate-y-1",
-					style: "max-width: min(calc(100vw - 2rem), 48rem);",
+						"dropdown-menu absolute left-0 z-10 mt-5 hidden w-screen max-w-max overflow-visible px-4 transition duration-200 ease-out opacity-0 translate-y-1",
+					style:
+						"max-width: min(calc(100vw - 2rem), 48rem); min-width: max-content; min-height: max-content; padding: unset; border-radius: 0px 0px 12px 12px; margin-top: 1.75rem; overflow: hidden; box-shadow: none;",
 				},
 				this.h(
 					"div",
