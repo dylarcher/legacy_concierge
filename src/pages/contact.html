@@ -28,38 +28,48 @@
 
 	<body role="document" class="bg-depth-1">
 		<div role="application" class="text-primary">
-			<global-nav>
-				<a href="/">Home</a>
-				<a href="/pages/services">Services</a>
-				<a href="/pages/about">About</a>
-				<a href="/pages/team">Team</a>
-				<a href="/pages/contact">Contact</a>
-			</global-nav>
+			<header
+				class="card-shadow absolute bg-canvas inset-x-0 top-0 w-full z-50"
+				role="banner"
+			>
+				<global-nav>
+					<a href="/">Home</a>
+					<a href="/pages/services">Services</a>
+					<a href="/pages/about">About</a>
+					<a href="/pages/team">Team</a>
+					<a href="/pages/contact">Contact</a>
+				</global-nav>
+			</header>
 			<main role="main">
-				<section class="relative bg-canvas py-16 overflow-hidden">
+				<section class="relative bg-canvas py-24 overflow-hidden min-h-screen">
 					<!-- Background Image -->
 					<div class="absolute inset-0 z-0">
 						<img
 							src="/assets/media/images/rocky-shoreline-waves.webp"
 							alt="Rocky shoreline with ocean waves"
-							class="w-full h-full object-cover opacity-80"
+							class="w-full h-full object-cover"
 						>
+						<div
+							class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-transparent"
+						></div>
 					</div>
 
 					<!-- Content Container -->
-					<div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-						<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					<div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 py-12">
+						<div
+							class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start"
+						>
 							<!-- Left Column: Heading and Buttons -->
-							<div class="space-y-8">
+							<div class="space-y-8 pt-8">
 								<div class="space-y-6">
 									<h1
-										class="font-serif text-5xl font-normal text-canvas leading-tight"
+										class="font-serif text-5xl md:text-6xl font-normal leading-tight"
 									>
 										We would love
 										<br>
 										to hear from you.
 									</h1>
-									<div class="space-y-3 text-lg text-muted">
+									<div class="space-y-2 text-base md:text-lg leading-relaxed">
 										<p>Our team is available 24/7.</p>
 										<p>Contact us to learn more about how</p>
 										<p>we can help you and your family.</p>
@@ -69,53 +79,132 @@
 								<div class="flex flex-col gap-4 max-w-xs">
 									<a
 										href="tel:+18005551234"
-										class="inline-flex items-center justify-center gap-2 rounded-full backdrop-blur-sm px-8 py-4 text-base font-semibold shadow-lg transition-colors"
+										class="inline-flex items-center justify-center gap-2 rounded-full bg-accent hover:bg-accent/90 text-primary px-8 py-4 text-base font-semibold shadow-lg transition-all hover:shadow-xl"
 									>
 										CALL US
 									</a>
 									<a
 										href="mailto:support@legacyconcierge.com"
-										class="inline-flex items-center justify-center gap-2 rounded-full backdrop-blur-sm px-8 py-4 text-base font-semibold shadow-lg transition-colors"
+										class="inline-flex items-center justify-center gap-2 rounded-full bg-accent hover:bg-accent/90 text-primary px-8 py-4 text-base font-semibold shadow-lg transition-all hover:shadow-xl"
 									>
 										EMAIL US
 									</a>
 								</div>
 							</div>
 
-							<!-- Right Column: Jotform -->
+							<!-- Right Column: Contact Form -->
 							<div
-								class="bg-canvas/95 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden"
+								class="bg-canvas/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden p-8 md:p-10"
 							>
-								<iframe
-									id="JotFormIFrame-contact-us"
-									title="Contact Us"
-									onload="window.parent.scrollTo(0,0)"
-									allowtransparency="true"
-									allow="geolocation; microphone; camera; fullscreen"
-									src="https://form.jotform.com/Legacyhomecarela/contact-us"
-									frameborder="0"
-									style="min-width:100%;max-width:100%;height:539px;border:none;"
-									scrolling="no"
-								></iframe>
-								<script>
-								(async () => {
-									await import(
-										"https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"
-									).then((module) => {
-										module.jotformEmbedHandler(
-											"iframe[id='JotFormIFrame-contact-us']",
-											"https://form.jotform.com/",
-										);
-									});
-								})();
-								</script>
+								<form
+									action="https://formspree.io/f/YOUR_FORM_ID"
+									method="POST"
+									class="space-y-6"
+								>
+									<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+										<!-- First Name -->
+										<div>
+											<label
+												for="first-name"
+												class="block text-sm font-medium text-muted mb-2"
+											>
+												First Name*
+											</label>
+											<input
+												type="text"
+												id="first-name"
+												name="first-name"
+												required
+												class="w-full px-4 py-3 rounded-lg border border-zinc-300 bg-canvas focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
+											>
+										</div>
+
+										<!-- Last Name -->
+										<div>
+											<label
+												for="last-name"
+												class="block text-sm font-medium text-muted mb-2"
+											>
+												Last Name*
+											</label>
+											<input
+												type="text"
+												id="last-name"
+												name="last-name"
+												required
+												class="w-full px-4 py-3 rounded-lg border border-zinc-300 bg-canvas focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
+											>
+										</div>
+									</div>
+
+									<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+										<!-- Email -->
+										<div>
+											<label
+												for="email"
+												class="block text-sm font-medium text-muted mb-2"
+											>
+												Email*
+											</label>
+											<input
+												type="email"
+												id="email"
+												name="email"
+												required
+												class="w-full px-4 py-3 rounded-lg border border-zinc-300 bg-canvas focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
+											>
+										</div>
+
+										<!-- Phone -->
+										<div>
+											<label
+												for="phone"
+												class="block text-sm font-medium text-muted mb-2"
+											>
+												Phone
+											</label>
+											<input
+												type="tel"
+												id="phone"
+												name="phone"
+												class="w-full px-4 py-3 rounded-lg border border-zinc-300 bg-canvas focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow"
+											>
+										</div>
+									</div>
+
+									<!-- Message -->
+									<div>
+										<label
+											for="message"
+											class="block text-sm font-medium text-muted mb-2"
+										>
+											How can we help?
+										</label>
+										<textarea
+											id="message"
+											name="message"
+											rows="4"
+											class="w-full px-4 py-3 rounded-lg border border-zinc-300 bg-canvas focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow resize-none"
+										></textarea>
+									</div>
+
+									<!-- Submit Button -->
+									<button
+										type="submit"
+										class="w-full bg-accent hover:bg-accent/90 text-primary px-8 py-4 rounded-full text-base font-semibold shadow-lg transition-all hover:shadow-xl"
+									>
+										SUBMIT
+									</button>
+								</form>
 							</div>
 						</div>
 					</div>
 				</section>
 			</main>
-			<global-footer></global-footer>
+			<footer class="bg-secondary">
+				<global-footer></global-footer>
+			</footer>
 		</div>
-		<script type="module" src="/main.js"></script>
+		<script type="module" src="../main.js"></script>
 	</body>
 </html>

@@ -25,13 +25,18 @@
 
 	<body role="document" class="bg-depth-1">
 		<div role="application" class="text-primary">
-			<global-nav>
-				<a href="/">Home</a>
-				<a href="/pages/services">Services</a>
-				<a href="/pages/about">About</a>
-				<a href="/pages/team">Team</a>
-				<a href="/pages/contact">Contact</a>
-			</global-nav>
+			<header
+				class="card-shadow absolute bg-canvas inset-x-0 top-0 w-full z-50"
+				role="banner"
+			>
+				<global-nav>
+					<a href="/">Home</a>
+					<a href="/pages/services">Services</a>
+					<a href="/pages/about">About</a>
+					<a href="/pages/team">Team</a>
+					<a href="/pages/contact">Contact</a>
+				</global-nav>
+			</header>
 			<main role="main">
 				<hero-banner
 					heading="OUR TEAM"
@@ -276,6 +281,194 @@
 					</div>
 				</section>
 
+				<section
+					class="relative isolate overflow-hidden py-20"
+					aria-labelledby="contact-heading"
+				>
+					<div class="absolute inset-0">
+						<img
+							src="/assets/media/images/palm-frawns-silhouette.wide.jpg"
+							alt=""
+							class="h-full w-full object-cover"
+							loading="lazy"
+						>
+						<div
+							class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/38 to-black/24"
+							aria-hidden="true"
+						></div>
+					</div>
+
+					<div class="relative mx-auto max-w-7xl px-6 lg:px-8">
+						<div
+							class="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]"
+						>
+							<div
+								class="rounded-3xl bg-white/85 p-8 shadow-2xl backdrop-blur-md ring-1 ring-[var(--color-border-soft)] sm:p-10"
+							>
+								<p
+									class="text-sm font-semibold tracking-[var(--letter-spacing-lg)] text-[var(--color-secondary)]"
+								>
+									Always on call
+								</p>
+								<h2
+									id="contact-heading"
+									class="mt-3 font-[var(--font-serif)] text-3xl leading-tight text-[var(--color-text)] sm:text-4xl"
+								>
+									We would love to hear from you.
+								</h2>
+								<p class="mt-4 text-base text-[var(--color-text-muted)]">
+									Our team is available 24/7. Contact us to learn more about how
+									we can help you and your family.
+								</p>
+
+								<div
+									class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center"
+								>
+									<a
+										href="tel:+18552536243"
+										class="inline-flex items-center justify-center gap-2 rounded-full border border-white/80 bg-[var(--color-tertiary)] px-6 py-3 text-base font-semibold text-[var(--color-canvas)] shadow-lg transition-colors hover:bg-[var(--color-tertiary-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-secondary)]"
+									>
+										Call us
+									</a>
+									<a
+										href="mailto:hello@legacyconcierge.com"
+										class="inline-flex items-center justify-center gap-2 rounded-full border border-white/80 bg-white/70 px-6 py-3 text-base font-semibold text-[var(--color-text)] shadow-lg transition-colors hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-secondary)]"
+									>
+										Email us
+									</a>
+								</div>
+							</div>
+
+							<form
+								class="rounded-3xl bg-white/90 p-8 shadow-2xl backdrop-blur-md ring-1 ring-[var(--color-border-soft)] sm:p-10"
+								method="post"
+								action="/pages/contact"
+								aria-describedby="contact-helper"
+							>
+								<div class="grid gap-4 sm:grid-cols-2">
+									<label
+										class="flex flex-col gap-2 text-sm font-medium text-[var(--color-text)]"
+										for="first-name"
+									>
+										<span>
+											First Name
+											<span
+												aria-hidden="true"
+												class="text-[var(--color-secondary)]"
+												>*</span
+											>
+										</span>
+										<input
+											id="first-name"
+											name="first-name"
+											autocomplete="given-name"
+											required
+											type="text"
+											class="block w-full rounded-xl border border-[var(--color-border-soft)] bg-[var(--color-surface-muted)] px-4 py-3 text-base text-[var(--color-text)] placeholder:text-[var(--color-text-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-secondary)]"
+											placeholder="Enter your first name"
+										>
+									</label>
+									<label
+										class="flex flex-col gap-2 text-sm font-medium text-[var(--color-text)]"
+										for="last-name"
+									>
+										<span>
+											Last Name
+											<span
+												aria-hidden="true"
+												class="text-[var(--color-secondary)]"
+												>*</span
+											>
+										</span>
+										<input
+											id="last-name"
+											name="last-name"
+											autocomplete="family-name"
+											required
+											type="text"
+											class="block w-full rounded-xl border border-[var(--color-border-soft)] bg-[var(--color-surface-muted)] px-4 py-3 text-base text-[var(--color-text)] placeholder:text-[var(--color-text-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-secondary)]"
+											placeholder="Enter your last name"
+										>
+									</label>
+									<label
+										class="flex flex-col gap-2 text-sm font-medium text-[var(--color-text)]"
+										for="email"
+									>
+										<span>
+											Email
+											<span
+												aria-hidden="true"
+												class="text-[var(--color-secondary)]"
+												>*</span
+											>
+										</span>
+										<input
+											id="email"
+											name="email"
+											autocomplete="email"
+											required
+											type="email"
+											class="block w-full rounded-xl border border-[var(--color-border-soft)] bg-[var(--color-surface-muted)] px-4 py-3 text-base text-[var(--color-text)] placeholder:text-[var(--color-text-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-secondary)]"
+											placeholder="name@email.com"
+										>
+									</label>
+									<label
+										class="flex flex-col gap-2 text-sm font-medium text-[var(--color-text)]"
+										for="phone"
+									>
+										<span
+											>Phone
+											<span class="text-[var(--color-text-soft)]"
+												>(optional)</span
+											></span
+										>
+										<input
+											id="phone"
+											name="phone"
+											autocomplete="tel"
+											type="tel"
+											class="block w-full rounded-xl border border-[var(--color-border-soft)] bg-[var(--color-surface-muted)] px-4 py-3 text-base text-[var(--color-text)] placeholder:text-[var(--color-text-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-secondary)]"
+											placeholder="(555) 123-4567"
+											inputmode="tel"
+											pattern="[0-9()+\-\s]*"
+										>
+									</label>
+								</div>
+
+								<label
+									class="mt-4 flex flex-col gap-2 text-sm font-medium text-[var(--color-text)]"
+									for="message"
+								>
+									<span>How can we help?</span>
+									<textarea
+										id="message"
+										name="message"
+										rows="4"
+										required
+										class="block w-full resize-none rounded-xl border border-[var(--color-border-soft)] bg-[var(--color-surface-muted)] px-4 py-3 text-base text-[var(--color-text)] placeholder:text-[var(--color-text-soft)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-secondary)]"
+										placeholder="Share a few details so we can personalize your care plan"
+									></textarea>
+								</label>
+
+								<p
+									id="contact-helper"
+									class="mt-4 text-sm text-[var(--color-text-muted)]"
+								>
+									We respond within the same day and always safeguard your
+									privacy.
+								</p>
+
+								<button
+									type="submit"
+									class="mt-6 inline-flex w-full items-center justify-center rounded-full bg-[var(--color-tertiary)] px-6 py-3 text-base font-semibold text-[var(--color-canvas)] shadow-lg transition-colors hover:bg-[var(--color-tertiary-muted)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-secondary)]"
+								>
+									Submit
+								</button>
+							</form>
+						</div>
+					</div>
+				</section>
+
 				<section class="py-16">
 					<div class="mx-auto max-w-4xl px-6 lg:px-8 text-center">
 						<h2 class="mb-6">Join Our Team</h2>
@@ -293,7 +486,9 @@
 					</div>
 				</section>
 			</main>
-			<global-footer></global-footer>
+			<footer class="bg-secondary">
+				<global-footer></global-footer>
+			</footer>
 		</div>
 		<script type="module" src="/main.js"></script>
 	</body>

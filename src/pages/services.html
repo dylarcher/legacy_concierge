@@ -27,13 +27,18 @@
 
 	<body role="document" class="bg-depth-1">
 		<div role="application" class="text-primary">
-			<global-nav>
-				<a href="/">Home</a>
-				<a href="/pages/services">Services</a>
-				<a href="/pages/about">About</a>
-				<a href="/pages/team">Team</a>
-				<a href="/pages/contact">Contact</a>
-			</global-nav>
+			<header
+				class="card-shadow absolute bg-canvas inset-x-0 top-0 w-full z-50"
+				role="banner"
+			>
+				<global-nav>
+					<a href="/">Home</a>
+					<a href="/pages/services">Services</a>
+					<a href="/pages/about">About</a>
+					<a href="/pages/team">Team</a>
+					<a href="/pages/contact">Contact</a>
+				</global-nav>
+			</header>
 			<main role="main">
 				<section class="relative bg-canvas pt-24 pb-16">
 					<div class="mx-auto max-w-5xl px-6 lg:px-8">
@@ -153,7 +158,9 @@
 					</div>
 				</section>
 			</main>
-			<global-footer></global-footer>
+			<footer class="bg-secondary">
+				<global-footer></global-footer>
+			</footer>
 		</div>
 		<script type="module" src="../main.js"></script>
 	</body>
