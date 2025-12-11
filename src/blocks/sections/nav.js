@@ -479,18 +479,24 @@ class NavBar extends BaseComponent {
 		// Get the scrollable content container (the inner div with rounded corners)
 		const scrollContainer = menu.querySelector(":scope > div");
 		if (scrollContainer) {
-			if (scrollContainer.scrollHeight > maxAvailableHeight) {
-				scrollContainer.style.maxHeight = `${maxAvailableHeight}px`;
-				scrollContainer.style.overflowY = "auto";
-				// Add smooth scrolling and hide scrollbar on webkit
-				scrollContainer.style.scrollBehavior = "smooth";
-				scrollContainer.style.scrollbarWidth = "thin";
-			} else {
-				// Reset if there's enough space
-				scrollContainer.style.maxHeight = "";
-				scrollContainer.style.overflowY = "";
-				scrollContainer.style.scrollBehavior = "";
-				scrollContainer.style.scrollbarWidth = "";
+			// Only enable scrolling on the inner grid content to avoid double scrollbars
+			const gridContent = scrollContainer.querySelector(
+				":scope > .dropdown-grid",
+			);
+			if (gridContent) {
+				if (gridContent.scrollHeight > maxAvailableHeight) {
+					gridContent.style.maxHeight = `${maxAvailableHeight}px`;
+					gridContent.style.overflowY = "auto";
+					gridContent.style.scrollBehavior = "smooth";
+					gridContent.style.scrollbarWidth = "thin";
+					// Ensure outer container stays overflow-visible
+					scrollContainer.style.overflow = "visible";
+				} else {
+					gridContent.style.maxHeight = "";
+					gridContent.style.overflowY = "";
+					gridContent.style.scrollBehavior = "";
+					gridContent.style.scrollbarWidth = "";
+				}
 			}
 		}
 	}
@@ -637,7 +643,7 @@ class NavBar extends BaseComponent {
 					"div",
 					{
 						class:
-							"w-full flex-auto overflow-hidden rounded-3xl bg-canvas text-sm/6 shadow-lg outline-1 border-soft",
+							"w-full flex-auto overflow-hidden rounded-b-3xl rounded-t-none bg-white text-sm/6 shadow-lg",
 						style: "max-width: min(calc(100vw - 2rem), 48rem);",
 					},
 					this.h(
@@ -684,7 +690,7 @@ class NavBar extends BaseComponent {
 					action &&
 						this.h(
 							"div",
-							{ class: "bg-depth-1 px-8 py-6" },
+							{ class: "bg-white px-8 py-6" },
 							this.h(
 								"div",
 								{ class: "flex items-center gap-x-3" },

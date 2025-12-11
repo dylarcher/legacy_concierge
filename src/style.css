@@ -271,7 +271,7 @@
 	 * SECTION & LAYOUT WRAPPERS
 	 * ============================================ */
 	.section-wrapper {
-		@apply mx-auto xl:w-[80dvw] max-w-[120rem] px-6 xl:px-8;
+		@apply w-full px-[56px];
 	}
 
 	/* ============================================
@@ -415,11 +415,11 @@
 	}
 
 	.region-contain {
-		@apply mx-auto w-full max-w-7xl px-6 lg:px-8 xl:px-12;
+		@apply w-full;
 	}
 
 	.navbar-contain {
-		@apply mx-auto xl:w-[80dvw] max-w-[120rem] px-6 lg:px-8 xl:px-12;
+		@apply w-full px-[56px];
 	}
 
 	/* ============================================
@@ -968,5 +968,98 @@
 	}
 	.card-shadow {
 		box-shadow: 0 2px 4px var(--card-shadow);
+	}
+
+	/* ============================================
+	 * TYPOGRAPHY - HEADING SIZES & WEIGHTS
+	 * ============================================ */
+
+	/** H1 Headings - 60px with normal weight */
+	h1,
+	.h1 {
+		font-size: 60px;
+		font-weight: 400;
+		line-height: 1.2;
+	}
+
+	/** H2 Headings - 54px with normal weight */
+	h2,
+	.h2 {
+		font-size: 54px;
+		font-weight: 400;
+		line-height: 1.3;
+	}
+
+	/** Remove bold from all headings globally */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: 400 !important;
+	}
+
+	/* ============================================
+	 * SECTION PADDING - 56px LEFT/RIGHT EDGES
+	 * ============================================ */
+
+	/** Utility class for 56px padding */
+	.px-edge {
+		@apply px-[56px];
+	}
+
+	/** Apply edge padding to primary containers */
+	main section {
+		@apply px-[56px];
+	}
+
+	main section > div {
+		@apply px-[56px];
+	}
+
+	/** Apply edge padding to banner and footer containers */
+	[role="banner"],
+	header[role="banner"],
+	footer,
+	[role="contentinfo"] {
+		@apply px-[56px];
+	}
+
+	/** Responsive adjustment for smaller screens */
+	@media (max-width: 768px) {
+		.px-edge,
+		main section,
+		main section > div,
+		[role="banner"],
+		header[role="banner"],
+		footer,
+		[role="contentinfo"] {
+			@apply px-4;
+		}
+	}
+
+	/* ============================================
+	 * SECTION-SPECIFIC ALIGNMENT RULES
+	 * ============================================ */
+
+	/** Concierge Nursing vs Home Care - Left align table content */
+	#us-verse table th,
+	#us-verse table td {
+		text-align: left !important;
+	}
+
+	/** Our Process - Left align paragraph */
+	#we-treat > header > div:last-child > p {
+		text-align: left;
+	}
+
+	/* ============================================
+	 * LAYOUT OVERRIDES - REMOVE MAX WIDTH LIMITS
+	 * ============================================ */
+
+	/** Neutralize any Tailwind max-w-* constraints globally */
+	:where([class*="max-w-"]) {
+		max-width: 100% !important;
 	}
 }
