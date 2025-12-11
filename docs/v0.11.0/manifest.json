@@ -1,0 +1,39 @@
+{
+	"background_color": "#f8f8ff",
+	"categories": ["health", "medical", "lifestyle"],
+	"description": "Elite concierge nursing services providing compassionate, personalized in-home care for post-surgical recovery, chronic condition management, wellness optimization, and palliative support.",
+	"dir": "ltr",
+	"display": "standalone",
+	"icons": [
+		{
+			"purpose": "any",
+			"sizes": "512x512",
+			"src": "/google-touch-icon.svg",
+			"type": "image/svg+xml"
+		}
+	],
+	"lang": "en-US",
+	"name": "Legacy Concierge - Premier In-Home Nursing Care",
+	"orientation": "portrait-primary",
+	"prefer_related_applications": false,
+	"scope": "/",
+	"screenshots": [
+		{
+			"form_factor": "wide",
+			"label": "Legacy Concierge homepage on desktop",
+			"sizes": "1280x720",
+			"src": "/assets/media/images/blue-green-waves-brown-beach.png",
+			"type": "image/png"
+		},
+		{
+			"form_factor": "narrow",
+			"label": "Legacy Concierge homepage on mobile",
+			"sizes": "1080x1920",
+			"src": "/assets/media/images/scenic-beach-calm-waves-cove-cliffs.png",
+			"type": "image/png"
+		}
+	],
+	"short_name": "Legacy Concierge",
+	"start_url": "/",
+	"theme_color": "#60aaa3"
+}
