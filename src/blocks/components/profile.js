@@ -1,4 +1,4 @@
-import { resolveImage } from "../../assets/image-manifest.js";
+import { resolveImage } from "../../utilities/image-manifest.js";
 import { BaseComponent, defineElement } from "../_base.js";
 
 // Default fallback avatar path (will be resolved through manifest when image exists)

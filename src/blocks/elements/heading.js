@@ -1,93 +1,130 @@
-import { BaseComponent, defineElement } from "../_base.js";
+/**
+ * Heading Element Templates
+ * Tailwind CSS Plus / Catalyst-style heading templates
+ *
+ * @module elements/heading
+ */
+
+import { clsx, createElement } from "../../utilities/dom.js";
 
 /**
- * Heading component for page titles
+ * Base heading styles
+ * @type {string}
+ */
+export const HEADING_BASE = "text-canvas font-semibold";
+
+/**
+ * Heading level styles
+ * @type {Object<number, string>}
+ */
+export const HEADING_LEVELS = {
+	1: "text-2xl/8 sm:text-xl/8",
+	2: "text-xl/8 sm:text-lg/8",
+	3: "text-lg/7 sm:text-base/7",
+	4: "text-base/7 sm:text-sm/6",
+	5: "text-sm/6",
+	6: "text-xs/6",
+};
+
+/**
+ * Creates a heading element with Tailwind CSS Plus styling
  *
- * @element ui-heading
- * @attr {number} level - Heading level (1-6), defaults to 1
+ * @param {Object} options - Heading configuration
+ * @param {1|2|3|4|5|6} [options.level=1] - Heading level (1-6)
+ * @param {string} [options.className] - Additional classes
+ * @param {Object} [options.attributes] - Additional HTML attributes
+ * @returns {HTMLHeadingElement} Heading element
  *
  * @example
- * <ui-heading>Page Title</ui-heading>
- * <ui-heading level="2">Section Title</ui-heading>
+ * const h1 = createHeading({ level: 1 });
+ * h1.textContent = "Page Title";
+ *
+ * @example
+ * const h2 = createHeading({ level: 2, className: "mt-8" });
  */
-export class Heading extends BaseComponent {
-	static get observedAttributes() {
-		return ["level"];
-	}
+export function createHeading(options = {}) {
+	const { level = 1, className = "", attributes = {} } = options;
 
-	connectedCallback() {
-		this.render();
-	}
+	const validLevel = Math.min(Math.max(level, 1), 6);
+	const tagName = `h${validLevel}`;
 
-	attributeChangedCallback() {
-		if (this.isConnected) {
-			this.render();
-		}
-	}
+	const headingClasses = clsx(
+		HEADING_BASE,
+		HEADING_LEVELS[validLevel] || HEADING_LEVELS[1],
+		className,
+	);
 
-	render() {
-		const level = parseInt(this.getAttribute("level") || "1", 10);
-		const tag = `h${Math.min(Math.max(level, 1), 6)}`;
-
-		const classes = this.clsx(
-			"text-2xl/8 font-semibold text-canvas sm:text-xl/8",
-			this.className,
-		);
-
-		const children = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const heading = this.h(tag, { class: classes });
-		for (const child of children) {
-			heading.appendChild(child);
-		}
-		this.appendChild(heading);
-	}
+	return createElement(tagName, {
+		class: headingClasses,
+		...attributes,
+	});
 }
 
 /**
- * Subheading component for section titles
+ * Creates a subheading element (smaller text, typically under main heading)
  *
- * @element ui-subheading
- * @attr {number} level - Heading level (1-6), defaults to 2
- *
- * @example
- * <ui-subheading>Section Title</ui-subheading>
+ * @param {Object} options - Subheading configuration
+ * @param {string} [options.className] - Additional classes
+ * @param {Object} [options.attributes] - Additional HTML attributes
+ * @returns {HTMLParagraphElement} Subheading element
  */
-export class Subheading extends BaseComponent {
-	static get observedAttributes() {
-		return ["level"];
-	}
+export function createSubheading(options = {}) {
+	const { className = "", attributes = {} } = options;
 
-	connectedCallback() {
-		this.render();
-	}
-
-	attributeChangedCallback() {
-		if (this.isConnected) {
-			this.render();
-		}
-	}
-
-	render() {
-		const level = parseInt(this.getAttribute("level") || "2", 10);
-		const tag = `h${Math.min(Math.max(level, 1), 6)}`;
-
-		const classes = this.clsx(
-			"text-base/7 font-semibold text-canvas sm:text-sm/6",
-			this.className,
-		);
-
-		const children = Array.from(this.childNodes);
-		this.innerHTML = "";
-
-		const heading = this.h(tag, { class: classes });
-		for (const child of children) {
-			heading.appendChild(child);
-		}
-		this.appendChild(heading);
-	}
+	return createElement("p", {
+		class: clsx("text-base/6 text-muted sm:text-sm/6", className),
+		...attributes,
+	});
 }
 
-defineElement("ui-heading", UIHeading);
-defineElement("ui-subheading", UISubheading);
+/**
+ * Creates a heading template element
+ *
+ * @param {Object} options - Heading configuration
+ * @returns {HTMLTemplateElement} Template containing heading markup
+ */
+export function createHeadingTemplate(options = {}) {
+	const template = document.createElement("template");
+	const heading = createHeading(options);
+	template.content.appendChild(heading);
+	return template;
+}
+
+/**
+ * Pre-defined heading templates for common use cases
+ */
+export const headingTemplates = {
+	/** H1 - Page title */
+	h1: () => createHeading({ level: 1 }),
+
+	/** H2 - Section title */
+	h2: () => createHeading({ level: 2 }),
+
+	/** H3 - Subsection title */
+	h3: () => createHeading({ level: 3 }),
+
+	/** H4 - Minor heading */
+	h4: () => createHeading({ level: 4 }),
+
+	/** H5 - Small heading */
+	h5: () => createHeading({ level: 5 }),
+
+	/** H6 - Smallest heading */
+	h6: () => createHeading({ level: 6 }),
+
+	/** Page title with subheading */
+	pageTitle: (title, subtitle) => {
+		const container = createElement("div");
+		const h1 = createHeading({ level: 1 });
+		h1.textContent = title;
+		container.appendChild(h1);
+
+		if (subtitle) {
+			const sub = createSubheading();
+			sub.textContent = subtitle;
+			container.appendChild(sub);
+		}
+
+		return container;
+	},
+};

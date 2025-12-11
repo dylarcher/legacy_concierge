@@ -1,11 +1,5 @@
 (async () => {
-	await import("./blocks/sections/nav.js");
-	await import("./blocks/sections/hero.js");
-	await import("./blocks/sections/footer.js");
-	await import("./blocks/components/profile.js");
-	await import("./blocks/components/location.js");
-	await import("./blocks/components/quote.js");
-	await import("./blocks/components/card-role.js");
+	await import("./blocks/ui.js");
 
 	// Custom scrollbar factory for horizontal scroll containers
 	const initCustomScrollbar = (scrollContainerId, thumbId) => {

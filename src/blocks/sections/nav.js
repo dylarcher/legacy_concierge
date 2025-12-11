@@ -630,7 +630,7 @@ class NavBar extends BaseComponent {
 				"div",
 				{
 					class:
-						"dropdown-menu absolute left-0 z-10 mt-5 hidden w-screen max-w-max overflow-visible px-4 transition duration-200 ease-out opacity-0 translate-y-1",
+						"dropdown-menu absolute left-0 z-50 mt-5 hidden w-screen max-w-max px-4 transition duration-200 ease-out opacity-0 translate-y-1",
 					style: "max-width: min(calc(100vw - 2rem), 48rem);",
 				},
 				this.h(
@@ -793,7 +793,7 @@ class NavBar extends BaseComponent {
 	 * @param {string} className - CSS class names to apply to the SVG
 	 * @returns {SVGElement} The brand logo SVG
 	 */
-	#createBrandLogoSVG(className = "h-8 w-auto") {
+	#createBrandLogoSVG(className = "h-8 w-auto max-w-[148px]") {
 		return this.svg(
 			"svg",
 			{
@@ -874,7 +874,9 @@ class NavBar extends BaseComponent {
 			// Container wrapper
 			this.h(
 				"div",
-				{ class: "card-shadow mx-auto w-[80dvw] max-w-[120rem] px-6 lg:px-8" },
+				{
+					class: "region-contain",
+				},
 				// Main nav
 				this.h(
 					"nav",
@@ -1146,7 +1148,7 @@ class NavBar extends BaseComponent {
 			this.h(
 				"div",
 				{
-					class: "bg-canvas rounded-xl shadow-2xl ring-1 border-soft",
+					class: "bg-canvas rounded-xl shadow-2xl",
 				},
 				this.h(
 					"form",
@@ -1209,7 +1211,7 @@ class NavBar extends BaseComponent {
 			"div",
 			{
 				class:
-					"mobile-menu-panel fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-canvas p-6 sm:max-w-sm sm:ring-1 border-soft lg:hidden hidden",
+					"mobile-menu-panel fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-canvas p-6 sm:max-w-sm lg:hidden hidden",
 				role: "dialog",
 				"aria-modal": "true",
 				ref: (el) => {
@@ -1244,7 +1246,7 @@ class NavBar extends BaseComponent {
 				this.h(
 					"div",
 					{
-						class: "-my-6 divide-y border-soft",
+						class: "-my-6 divide-y",
 					},
 					this.h(
 						"div",
