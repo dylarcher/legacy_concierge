@@ -41,104 +41,346 @@
 				</global-nav>
 			</header>
 			<main role="main">
-				<hero-banner
-					heading="SERVICE LOCATIONS"
-					description="Serving All of Southern California"
-					image="/assets/media/images/birds-eye-view-of-coastal-town.webp"
-					image-alt="Bird's eye view of coastal town"
-					no-video
-					align="center"
-				></hero-banner>
+				<!-- Page Header -->
+				<header class="relative min-h-[70vh] overflow-hidden pt-40 pb-16">
+					<img
+						src="/assets/media/images/birds-eye-view-of-coastal-town.webp"
+						alt="Bird's eye view of coastal town"
+						class="absolute inset-0 -z-10 size-full object-cover object-center"
+					>
+					<div
+						class="absolute inset-0 -z-10 bg-gradient-to-b from-white/40 via-white/20 to-white/60"
+					></div>
 
-				<section class="bg-canvas py-16">
-					<div class="mx-auto max-w-4xl px-[56px]">
-						<div class="prose prose-lg prose-zinc mx-auto text-center">
-							<p class="lead text-xl text-muted">
-								Legacy Concierge proudly provides concierge nursing and home
-								care services throughout Southern California, ensuring every
-								client has access to exceptional, personalized care wherever
-								they reside.
-							</p>
+					<div class="mx-auto max-w-7xl px-[56px]">
+						<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+							<!-- Left Column: Title & CTA -->
+							<div class="flex flex-col justify-start">
+								<h1 class="font-serif text-5xl md:text-6xl text-primary mb-4">
+									OUR LOCATIONS
+								</h1>
+								<p
+									class="font-serif text-2xl md:text-3xl text-primary leading-snug"
+								>
+									Serving All of
+									<em class="italic">Southern California</em>—
+								</p>
+								<div class="mt-10">
+									<a
+										href="tel:+18552536243"
+										class="inline-flex items-center justify-center gap-2 rounded-full border-2 border-tertiary bg-tertiary px-8 py-3 font-medium text-white shadow-sm transition-colors hover:bg-transparent hover:text-tertiary"
+									>
+										CALL FOR MORE INFO
+									</a>
+								</div>
+							</div>
 
-							<p>
-								Our flagship locations in <strong>Santa Monica</strong>, <strong
-									>Newport Beach</strong
-								>, and <strong>La Jolla</strong>serve as hubs for delivering
-								premier healthcare to homes across Los Angeles, Orange County,
-								and San Diego. We currently cover the entirety of these three
-								major metropolitan areas, with plans to expand further
-								throughout Southern California by the end of 2026.
-							</p>
+							<!-- Right Column: Description Text -->
+							<div class="text-primary text-lg leading-relaxed space-y-6">
+								<p>
+									Legacy Concierge proudly provides concierge nursing and home
+									care services throughout Southern California, ensuring every
+									client has access to exceptional, personalized care wherever
+									they reside.
+								</p>
+								<p>
+									Our flagship locations in Santa Monica, Newport Beach, and La
+									Jolla anchor our network of elite providers across Los
+									Angeles, Orange County, and San Diego. From the coastlines to
+									the valleys, our nurses and clinical teams are available to
+									serve clients in every surrounding region — delivering the
+									same level of precision, compassion, and discretion that
+									define our standard of excellence.
+								</p>
+								<p>
+									As we continue to grow, Legacy Concierge is expanding into new
+									California markets by the end of 2026. Our mission is to bring
+									our best-in-class care model to more families, more
+									communities, and more homes.
+								</p>
+							</div>
 						</div>
 					</div>
-				</section>
+				</header>
 
 				<section class="bg-depth-1 py-16">
 					<div class="mx-auto max-w-7xl px-[56px]">
-						<h2 class="text-center mb-12">Our Coverage Areas</h2>
-						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-							<location-card
-								region="Los Angeles County"
-								icon="nav-location"
-								coverage="Greater LA metro, Beverly Hills, Santa Monica, Malibu, Pasadena, and all surrounding communities"
-							></location-card>
+						<h2 class="text-center mb-12">
+							<span
+								class="font-serif italic text-secondary text-3xl md:text-4xl"
+							>
+								Unmatched Care, From Every Corner of Southern California
+							</span>
+						</h2>
+						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+							<!-- Los Angeles County -->
+							<div
+								class="relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-zinc-950/5 group"
+							>
+								<div class="text-white aspect-square overflow-hidden">
+									<img
+										src="/assets/media/images/partial-palm-tree-frawns-at-dusk.webp"
+										alt="Los Angeles County"
+										class="w-full h-full object-cover transition-transform duration-300"
+									>
+								</div>
+								<div
+									class="absolute inset-0 bg-linear-to-t from-zinc-900/90 via-zinc-900/50 to-transparent"
+								></div>
+								<div
+									class="text-white absolute bottom-0 left-0 right-0 h-full p-6 flex flex-col justify-between"
+								>
+									<h3 class="text-2xl font-serif italic mb-2">
+										Los Angeles County
+									</h3>
+									<a
+										href="#los-angeles"
+										class="bg-white/70 text-primary inline-flex items-center gap-2 text-sm w-max transition-colors px-6 py-2 rounded-full font-semibold"
+									>
+										VIEW LOCATIONS
+									</a>
+								</div>
+							</div>
 
-							<location-card
-								region="Orange County"
-								icon="nav-location"
-								coverage="Irvine, Newport Beach, Laguna Beach, Anaheim, Huntington Beach, and all Orange County cities"
-							></location-card>
+							<!-- Orange County -->
+							<div
+								class="text-white relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-zinc-950/5 group"
+							>
+								<div class="aspect-square overflow-hidden">
+									<img
+										src="/assets/media/images/birds-eye-view-of-coastal-town.webp"
+										alt="Orange County"
+										class="w-full h-full object-cover transition-transform duration-300"
+									>
+								</div>
+								<div
+									class="absolute inset-0 bg-linear-to-t from-zinc-900/90 via-zinc-900/50 to-transparent"
+								></div>
+								<div
+									class="absolute bottom-0 left-0 right-0 h-full p-6 flex flex-col justify-between"
+								>
+									<h3 class="text-white text-2xl font-serif italic mb-2">
+										Orange County
+									</h3>
+									<a
+										href="#orange"
+										class="bg-white/70 text-primary inline-flex items-center gap-2 text-sm w-max transition-colors px-6 py-2 rounded-full font-semibold"
+									>
+										VIEW LOCATIONS
+									</a>
+								</div>
+							</div>
 
-							<location-card
-								region="San Diego County"
-								icon="<
-"
-								coverage="San Diego, La Jolla, Del Mar, Carlsbad, Encinitas, and North County communities"
-							></location-card>
+							<!-- San Diego County -->
+							<div
+								class="text-white relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-zinc-950/5 group"
+							>
+								<div class="aspect-square overflow-hidden">
+									<img
+										src="/assets/media/images/scenic-beach-calm-waves-cove-cliffs.webp"
+										alt="San Diego County"
+										class="w-full h-full object-cover transition-transform duration-300"
+									>
+								</div>
+								<div
+									class="absolute inset-0 bg-linear-to-t from-zinc-900/90 via-zinc-900/50 to-transparent"
+								></div>
+								<div
+									class="absolute bottom-0 left-0 right-0 h-full p-6 flex flex-col justify-between"
+								>
+									<h3 class="text-2xl font-serif italic mb-2">
+										San Diego County
+									</h3>
+									<a
+										href="#san-diego"
+										class="bg-white/70 text-primary inline-flex items-center gap-2 text-sm w-max transition-colors px-6 py-2 rounded-full font-semibold"
+									>
+										VIEW LOCATIONS
+									</a>
+								</div>
+							</div>
 
-							<location-card
-								region="Ventura County"
-								icon="nav-location"
-								coverage="Thousand Oaks, Ventura, Oxnard, Camarillo, and all Ventura County areas"
-							></location-card>
+							<!-- Ventura County -->
+							<div
+								class="text-white relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-zinc-950/5 group"
+							>
+								<div class="aspect-square overflow-hidden">
+									<img
+										src="assets/media/images/rocky-shoreline-waves.webp"
+										alt="Ventura County"
+										class="w-full h-full object-cover transition-transform duration-300"
+									>
+								</div>
+								<div
+									class="absolute inset-0 bg-linear-to-t from-zinc-900/90 via-zinc-900/50 to-transparent"
+								></div>
+								<div
+									class="absolute bottom-0 left-0 right-0 h-full p-6 flex flex-col justify-between"
+								>
+									<h3 class="text-2xl font-serif italic mb-2">
+										Ventura County
+									</h3>
+									<a
+										href="#ventura"
+										class="bg-white/70 text-primary w-max inline-flex items-center gap-2 text-sm transition-colors px-6 py-2 rounded-full font-semibold"
+									>
+										VIEW LOCATIONS
+									</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>
 
 				<section class="bg-canvas py-16">
-					<div class="mx-auto max-w-6xl px-[56px]">
-						<h2 class="text-center mb-8">
-							Unmatched Care, From Every Corner of Southern California
-						</h2>
-						<p class="text-xl text-center mb-12 max-w-3xl mx-auto">
-							Whether you're in the heart of Los Angeles or the coastal
-							communities of San Diego, Legacy Concierge brings world-class
-							nursing care directly to your home.
-						</p>
+					<div class="mx-auto max-w-7xl px-[56px]">
+						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+							<!-- Los Angeles County -->
+							<div id="los-angeles">
+								<h3
+									class="font-serif italic text-xl text-white bg-secondary px-4 py-3 rounded-t-lg mb-0"
+								>
+									Los Angeles County
+								</h3>
+								<ul
+									class="bg-depth-1 rounded-b-lg px-4 py-4 space-y-2 text-sm text-primary"
+								>
+									<li>• Agoura Hills</li>
+									<li>• Arcadia</li>
+									<li>• Bel Air</li>
+									<li>• Beverly Hills</li>
+									<li>• Brentwood</li>
+									<li>• Burbank</li>
+									<li>• Calabasas</li>
+									<li>• Culver City</li>
+									<li>• El Segundo</li>
+									<li>• Encino</li>
+									<li>• Glendale</li>
+									<li>• Granada Hills</li>
+									<li>• Hermosa Beach</li>
+									<li>• Hollywood</li>
+									<li>• Hollywood Hills</li>
+									<li>• La Cañada Flintridge</li>
+									<li>• Long Beach</li>
+									<li>• Los Angeles</li>
+									<li>• Malibu</li>
+									<li>• Manhattan Beach</li>
+									<li>• Marina del Rey</li>
+									<li>• Northridge</li>
+									<li>• Pacific Palisades</li>
+									<li>• Palos Verdes</li>
+									<li>• Pasadena</li>
+									<li>• Playa del Rey</li>
+									<li>• Redondo Beach</li>
+									<li>• San Marino</li>
+									<li>• Santa Monica</li>
+									<li>• Sherman Oaks</li>
+									<li>• Studio City</li>
+									<li>• Tarzana</li>
+									<li>• Toluca Lake</li>
+									<li>• Topanga</li>
+									<li>• Venice</li>
+									<li>• West Hollywood</li>
+									<li>• Westwood</li>
+									<li>• Woodland Hills</li>
+								</ul>
+							</div>
 
-						<div
-							class="aspect-video rounded-xl overflow-hidden shadow-2xl relative"
-						>
-							<div class="absolute inset-0 flex items-center justify-center">
-								<div class="text-center p-8">
-									<svg
-										class="w-16 h-16 mx-auto mb-4 text-zinc-400"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											stroke-width="2"
-											d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-										/>
-									</svg>
-									<p class="font-semibold">Interactive Map Coming Soon</p>
-									<p class="text-sm mt-2">
-										Explore our complete service coverage area
-									</p>
-								</div>
+							<!-- Orange County -->
+							<div id="orange">
+								<h3
+									class="font-serif italic text-xl text-white bg-secondary px-4 py-3 rounded-t-lg mb-0"
+								>
+									Orange County
+								</h3>
+								<ul
+									class="bg-depth-1 rounded-b-lg px-4 py-4 space-y-2 text-sm text-primary"
+								>
+									<li>• Aliso Viejo</li>
+									<li>• Anaheim</li>
+									<li>• Balboa Island</li>
+									<li>• Corona del Mar</li>
+									<li>• Costa Mesa</li>
+									<li>• Coto de Caza</li>
+									<li>• Dana Point</li>
+									<li>• Fullerton</li>
+									<li>• Huntington Beach</li>
+									<li>• Irvine</li>
+									<li>• Ladera Ranch</li>
+									<li>• Laguna Beach</li>
+									<li>• Laguna Hills</li>
+									<li>• Laguna Niguel</li>
+									<li>• Lake Forest</li>
+									<li>• Mission Viejo</li>
+									<li>• Newport Beach</li>
+									<li>• Newport Coast</li>
+									<li>• Orange</li>
+									<li>• Rancho Santa Margarita</li>
+									<li>• San Clemente</li>
+									<li>• San Juan Capistrano</li>
+									<li>• Seal Beach</li>
+									<li>• Tustin</li>
+									<li>• Yorba Linda</li>
+								</ul>
+							</div>
+
+							<!-- San Diego County -->
+							<div id="san-diego">
+								<h3
+									class="font-serif italic text-xl text-white bg-secondary px-4 py-3 rounded-t-lg mb-0"
+								>
+									San Diego County
+								</h3>
+								<ul
+									class="bg-depth-1 rounded-b-lg px-4 py-4 space-y-2 text-sm text-primary"
+								>
+									<li>• Carlsbad</li>
+									<li>• Carmel Valley</li>
+									<li>• Chula Vista</li>
+									<li>• Coronado</li>
+									<li>• Del Mar</li>
+									<li>• Encinitas</li>
+									<li>• Escondido</li>
+									<li>• La Jolla</li>
+									<li>• La Mesa</li>
+									<li>• Oceanside</li>
+									<li>• Point Loma</li>
+									<li>• Poway</li>
+									<li>• Rancho Bernardo</li>
+									<li>• Rancho Santa Fe</li>
+									<li>• San Diego</li>
+									<li>• San Marcos</li>
+									<li>• Scripps Ranch</li>
+									<li>• Solana Beach</li>
+									<li>• Vista</li>
+								</ul>
+							</div>
+
+							<!-- Ventura County -->
+							<div id="ventura">
+								<h3
+									class="font-serif italic text-xl text-white bg-secondary px-4 py-3 rounded-t-lg mb-0"
+								>
+									Ventura County
+								</h3>
+								<ul
+									class="bg-depth-1 rounded-b-lg px-4 py-4 space-y-2 text-sm text-primary"
+								>
+									<li>• Camarillo</li>
+									<li>• Fillmore</li>
+									<li>• Lake Sherwood</li>
+									<li>• Moorpark</li>
+									<li>• Newbury Park</li>
+									<li>• Oak Park</li>
+									<li>• Ojai</li>
+									<li>• Oxnard</li>
+									<li>• Port Hueneme</li>
+									<li>• Santa Paula</li>
+									<li>• Simi Valley</li>
+									<li>• Thousand Oaks</li>
+									<li>• Ventura</li>
+									<li>• Westlake Village</li>
+								</ul>
 							</div>
 						</div>
 					</div>

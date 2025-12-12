@@ -121,6 +121,7 @@ export class HeroBanner extends BaseComponent {
 			"secondary-cta",
 			"secondary-href",
 			"align",
+			"theme",
 		];
 	}
 
@@ -185,6 +186,24 @@ export class HeroBanner extends BaseComponent {
 	}
 
 	/**
+	 * Formats description text with italic support using *text* syntax.
+	 * @param {string} description - The description text
+	 * @returns {Array} Array of text nodes and elements for the h() helper
+	 */
+	_formatDescription(description) {
+		// Match *text* for italic
+		const parts = description.split(/(\*[^*]+\*)/g);
+		return parts
+			.map((part) => {
+				if (part.startsWith("*") && part.endsWith("*")) {
+					return this.h("span", { class: "italic" }, part.slice(1, -1));
+				}
+				return part;
+			})
+			.filter(Boolean);
+	}
+
+	/**
 	 * Creates the gradient blur decorative elements
 	 */
 	_createGradientBlurs() {
@@ -236,6 +255,16 @@ export class HeroBanner extends BaseComponent {
 		// 	this.getAttribute("secondary-href") || "#",
 		// );
 		const align = this.getAttribute("align");
+		const theme = this.getAttribute("theme") || "dark"; // "dark" = white text on dark bg, "light" = dark text on light bg
+
+		// Theme-aware color classes
+		const isLightTheme = theme === "light";
+		const headerTextClass = isLightTheme ? "text-primary" : "text-white";
+		const headingColorClass = isLightTheme ? "text-primary" : "text-[#fff]";
+		const descriptionClass = isLightTheme ? "" : "text-shadow-lg";
+		const scrollIndicatorColorClass = isLightTheme
+			? "text-primary/70"
+			: "text-white/70";
 
 		// Check for custom slotted content
 		const hasCustomContent = this.children.length > 0 && !this._rendered;
@@ -306,7 +335,7 @@ export class HeroBanner extends BaseComponent {
 		const header = this.h(
 			"header",
 			{
-				class: "text-white relative isolate overflow-hidden min-h-dvh",
+				class: `${headerTextClass} relative isolate overflow-hidden min-h-dvh`,
 			},
 			// Background video with image fallback (video is default unless no-video attribute is set)
 			hasVideoDisabled
@@ -360,18 +389,16 @@ export class HeroBanner extends BaseComponent {
 					this.h(
 						"h1",
 						{
-							class:
-								"text-[#fff] font-semibold font-serif text-6xl md:text-7xl tracking-normal leading-tight text-balance",
+							class: `${headingColorClass} font-semibold font-serif text-6xl md:text-7xl tracking-normal leading-tight text-balance`,
 						},
 						...this._formatHeading(heading),
 					),
 					this.h(
 						"p",
 						{
-							class:
-								"mt-6 text-[clamp(1.125rem,3vw,1.75rem)] text-pretty font-medium text-shadow-lg leading-relaxed w-4/5 lg:w-2/3 max-w-4xl",
+							class: `mt-6 text-[clamp(1.125rem,3vw,1.75rem)] text-pretty font-medium ${descriptionClass} leading-relaxed w-4/5 lg:w-2/3 max-w-4xl`,
 						},
-						description,
+						...this._formatDescription(description),
 					),
 					this.h(
 						"div",
@@ -409,7 +436,7 @@ export class HeroBanner extends BaseComponent {
 			this.svg(
 				"svg",
 				{
-					class: "size-8 text-white/70",
+					class: `size-8 ${scrollIndicatorColorClass}`,
 					fill: "none",
 					viewBox: "0 0 24 24",
 					"stroke-width": "2",
