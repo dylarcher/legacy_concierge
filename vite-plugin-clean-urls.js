@@ -177,8 +177,8 @@ export function cleanUrlsPlugin() {
 				// Track which paths we've transformed (to avoid double-processing)
 				const transformedPaths = new Set();
 
-				// For files being restructured, FIRST add one more ../ to existing relative paths
-				// (these are paths from the original HTML that need adjustment)
+				// For files being restructured, add one more ../ to ALL existing relative paths
+				// (these paths need adjustment because the file moves one level deeper)
 				if (willBeRestructured) {
 					// Handle href attributes with relative paths (starting with ../)
 					result = result.replace(
@@ -199,13 +199,49 @@ export function cleanUrlsPlugin() {
 					);
 				}
 
-				// Update internal links - convert absolute to relative and remove .html
-				// These paths are calculated for the FINAL location, so they don't need adjustment
+				// Update internal navigation links - convert absolute to relative and remove .html
+				// ONLY transform paths that look like page navigation (end with .html or are directories)
+				// DO NOT transform paths to static assets - Vite handles those with base path
 				result = result.replace(
 					/href="(\/[^"]*?)"/g,
 					(match, path) => {
 						// Skip external URLs and special paths
 						if (path.startsWith("//")) {
+							return match;
+						}
+
+						// Only transform paths that look like page navigation:
+						// - Paths ending in .html
+						// - Paths to /pages/ directories
+						// - Root path /
+						// - Paths without file extensions (clean URLs)
+						const isPageNavigation =
+							path === "/" ||
+							path.endsWith(".html") ||
+							path.startsWith("/pages/") ||
+							path.startsWith("/pages") ||
+							// Path without extension and doesn't have a dot in the last segment
+							(!path.includes(".") || !path.split("/").pop().includes("."));
+
+						// Skip anything that looks like a static asset
+						const isStaticAsset =
+							path.includes("/assets/") ||
+							path.endsWith(".svg") ||
+							path.endsWith(".png") ||
+							path.endsWith(".ico") ||
+							path.endsWith(".webp") ||
+							path.endsWith(".jpg") ||
+							path.endsWith(".jpeg") ||
+							path.endsWith(".gif") ||
+							path.endsWith(".css") ||
+							path.endsWith(".js") ||
+							path.endsWith(".json") ||
+							path.endsWith(".xml") ||
+							path.endsWith(".txt") ||
+							path.endsWith(".woff") ||
+							path.endsWith(".woff2");
+
+						if (isStaticAsset || !isPageNavigation) {
 							return match;
 						}
 
@@ -219,11 +255,27 @@ export function cleanUrlsPlugin() {
 					}
 				);
 
-				// Update src attributes for scripts (absolute paths)
+				// Update src attributes for images in custom attributes
+				// Only transform image paths that are from our assets/media folder
+				// DO NOT transform Vite-injected script paths
 				result = result.replace(
 					/src="(\/[^"]*?)"/g,
 					(match, path) => {
 						if (path.startsWith("//")) {
+							return match;
+						}
+
+						// Only transform paths to our media folder images
+						// Skip script tags and Vite-generated assets
+						const isMediaImage =
+							path.includes("/assets/media/") &&
+							(path.endsWith(".webp") ||
+								path.endsWith(".jpg") ||
+								path.endsWith(".jpeg") ||
+								path.endsWith(".png") ||
+								path.endsWith(".gif"));
+
+						if (!isMediaImage) {
 							return match;
 						}
 
