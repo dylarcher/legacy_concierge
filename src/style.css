@@ -30,7 +30,8 @@
 		--color-fg: var(--color-text);
 		--color-fg-muted: var(--color-text-muted);
 		--color-fg-soft: var(--color-text-soft);
-		--color-fg-inverse: var(--color-canvas);
+		--color-fg-shadowy: var(--color-text-shadowy);
+		--color-fg-inverse: var(--color-text-inverse);
 
 		/** BACKGROUND ROLES */
 		--color-bg: var(--color-canvas);

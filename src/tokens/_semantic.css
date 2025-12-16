@@ -47,6 +47,8 @@
 	--color-text: rgb(var(--hues-neutral-dark-charcoal));
 	--color-text-muted: rgb(var(--hues-neutral-dark-gray));
 	--color-text-soft: rgb(var(--hues-neutral-medium-grey) / 0.8);
+	--color-text-shadowy: rgb(var(--hues-neutral-dark-shadowy));
+	--color-text-inverse: rgb(var(--hues-canvas-baseline));
 
 	/** BORDER - Inner outline ring
 	 *  Dividers, separators, boundaries
