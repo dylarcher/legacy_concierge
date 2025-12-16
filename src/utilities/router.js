@@ -66,6 +66,10 @@ export function resolveHref(href) {
 
 	// For absolute paths starting with /
 	if (href.startsWith("/")) {
+		// Skip if path already starts with BASE_URL (already resolved by resolvePath)
+		if (BASE_URL !== "/" && href.startsWith(BASE_URL)) {
+			return normalizePath(href);
+		}
 		const cleanPath = href.slice(1);
 		return normalizePath(`${BASE_URL}${cleanPath}`);
 	}
