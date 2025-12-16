@@ -1,4 +1,9 @@
 (async () => {
+	// Initialize router for clean URL handling
+	const { initRouter } = await import("./utilities/router.js");
+	initRouter();
+
+	// Import UI components
 	await import("./blocks/ui.js");
 
 	// Custom scrollbar factory for horizontal scroll containers
