@@ -167,6 +167,17 @@ This is a well-structured vanilla Web Components project for a healthcare servic
 
 ## 5. Build Tooling & Scripts
 
+### 5.0 Clean URL Routing (Implemented v0.14.2)
+
+**Status:** ✓ Resolved
+
+The project now has a comprehensive clean URL routing system:
+- `vite-plugin-clean-urls.js` - Auto-discovers HTML pages, transforms paths at build time
+- `src/utilities/router.js` - Runtime path resolution for dynamic base URLs
+- `public/404.html` - GitHub Pages fallback handling
+
+This addresses GitHub Pages deployment with versioned paths (`/legacy_concierge/v#.#.#/`).
+
 ### 5.1 Hardcoded Values in Build Scripts
 
 **Issue:** `build-gh-pages.js` and other scripts have hardcoded paths and repository names
@@ -286,11 +297,13 @@ This is a well-structured vanilla Web Components project for a healthcare servic
 
 ### 8.3 Incomplete CHANGELOG
 
-**Issue:** CHANGELOG jumps from 0.1.0 to 0.2.0 to current 0.13.6 without intermediate entries
+**Issue:** CHANGELOG jumps from 0.1.0 to 0.2.0 to current - intermediate entries missing
+
+**Status:** Partially addressed - CHANGELOG now includes entries through v0.14.2
 
 **Suggestions:**
 
-- Backfill missing version entries
+- Backfill missing version entries between 0.3.x and 0.14.x
 - Add automated changelog generation
 - Link to GitHub releases
 
@@ -391,8 +404,14 @@ The Legacy Concierge codebase has a solid foundation with thoughtful architectur
 
 1. **Testing infrastructure** - Critical gap with no tests
 2. **Component size reduction** - nav.js needs decomposition
-3. **Documentation accuracy** - Code/docs misalignment
+3. **Documentation accuracy** - Code/docs misalignment (partially addressed in v0.14.2)
 4. **Token system simplification** - Clearer CSS hierarchy
 5. **Open TODOs** - Resolve or document deferrals
+
+**Recent Improvements (v0.14.2):**
+- ✓ Clean URL routing system implemented
+- ✓ GitHub Pages versioned deployment support
+- ✓ Auto-discovery of HTML pages for Vite build
+- ✓ Documentation updated to reflect current structure
 
 The project is well-positioned for growth with recommended improvements focusing on maintainability and developer experience.
