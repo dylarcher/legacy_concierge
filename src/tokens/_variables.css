@@ -143,4 +143,22 @@
 			)
 			92%
 	);
+	--linear-hero-overlay: linear-gradient(
+		to right,
+		rgb(
+				var(--hues-cool-dark-blue) /
+				var(--alpha-semiopaque-linear-hero-overlay, 0.72)
+			)
+			0%,
+		rgb(
+				var(--hues-cool-teal) /
+				var(--alpha-translucent-linear-hero-overlay, 0.24)
+			)
+			60%,
+		rgb(
+				var(--hues-canvas-inverted) /
+				var(--alpha-transparent-linear-hero-overlay, 0)
+			)
+			100%
+	);
 }
