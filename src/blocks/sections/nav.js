@@ -899,7 +899,7 @@ class NavBar extends BaseComponent {
 						this.h(
 							"a",
 							{
-								href: "/",
+								href: resolvePath("/"),
 								class: "-m-1.5 p-1.5 text-canvas",
 							},
 							this.h("span", { class: "sr-only" }, brand),
@@ -1231,7 +1231,7 @@ class NavBar extends BaseComponent {
 				{ class: "flex items-center justify-between" },
 				this.h(
 					"a",
-					{ href: "/", class: "-m-1.5 p-1.5 text-canvas" },
+					{ href: resolvePath("/"), class: "-m-1.5 p-1.5 text-canvas" },
 					this.h("span", { class: "sr-only" }, brand),
 					this.#createBrandLogoSVG("h-8 w-auto"),
 				),
