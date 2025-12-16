@@ -1,0 +1,302 @@
+{
+  "post-op": {
+    "html": "src/pages/treatments/post-op.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/post-op/pexels-medhat-ayad-122846-447592.webp",
+        "fallback": "../../assets/media/images/services/post-op/pexels-medhat-ayad-122846-447592.jpg",
+        "filename": "pexels-medhat-ayad-122846-447592"
+      },
+      {
+        "webp": "../../assets/media/images/services/post-op/post-operation-recovery-private-concierge-nursing-near-me-southern-california.webp",
+        "fallback": "../../assets/media/images/services/post-op/post-operation-recovery-private-concierge-nursing-near-me-southern-california.jpg",
+        "filename": "post-operation-recovery-private-concierge-nursing-near-me-southern-california"
+      }
+    ]
+  },
+  "ms": {
+    "html": "src/pages/services/ms.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/ms/DSC02146.webp",
+        "fallback": "../../assets/media/images/services/ms/DSC02146.jpg",
+        "filename": "DSC02146"
+      },
+      {
+        "webp": "../../assets/media/images/services/ms/pexels-cottonbro-7235054-1.webp",
+        "fallback": "../../assets/media/images/services/ms/pexels-cottonbro-7235054-1.jpg",
+        "filename": "pexels-cottonbro-7235054-1"
+      },
+      {
+        "webp": "../../assets/media/images/services/ms/pexels-maksgelatin-43522472028129.webp",
+        "fallback": "../../assets/media/images/services/ms/pexels-maksgelatin-43522472028129.jpg",
+        "filename": "pexels-maksgelatin-43522472028129"
+      }
+    ]
+  },
+  "alzheimers": {
+    "html": "src/pages/services/alzheimers.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/alzheimers/pexels-ivan-samkov-8964676.webp",
+        "fallback": "../../assets/media/images/services/alzheimers/pexels-ivan-samkov-8964676.jpg",
+        "filename": "pexels-ivan-samkov-8964676"
+      },
+      {
+        "webp": "../../assets/media/images/services/alzheimers/pexels-tima-miroshnichenko-6011667.webp",
+        "fallback": "../../assets/media/images/services/alzheimers/pexels-tima-miroshnichenko-6011667.jpg",
+        "filename": "pexels-tima-miroshnichenko-6011667"
+      }
+    ]
+  },
+  "stroke": {
+    "html": "src/pages/services/stroke.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/stroke/DSC01906.webp",
+        "fallback": "../../assets/media/images/services/stroke/DSC01906.jpg",
+        "filename": "DSC01906"
+      },
+      {
+        "webp": "../../assets/media/images/services/stroke/pexels-cottonbro-5723883-MxVmR.webp",
+        "fallback": "../../assets/media/images/services/stroke/pexels-cottonbro-5723883-MxVmR.jpg",
+        "filename": "pexels-cottonbro-5723883-MxVmR"
+      },
+      {
+        "webp": "../../assets/media/images/services/stroke/pexels-matthiaszomer-3396202028129.webp",
+        "fallback": "../../assets/media/images/services/stroke/pexels-matthiaszomer-3396202028129.jpg",
+        "filename": "pexels-matthiaszomer-3396202028129"
+      }
+    ]
+  },
+  "cardiac": {
+    "html": "src/pages/treatments/cardiac.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/cardiac/pexels-pavel-danilyuk-7108388.webp",
+        "fallback": "../../assets/media/images/services/cardiac/pexels-pavel-danilyuk-7108388.jpg",
+        "filename": "pexels-pavel-danilyuk-7108388"
+      },
+      {
+        "webp": "../../assets/media/images/services/cardiac/pexels-shvetsa-4226258-e1753975115186.webp",
+        "fallback": "../../assets/media/images/services/cardiac/pexels-shvetsa-4226258-e1753975115186.jpg",
+        "filename": "pexels-shvetsa-4226258-e1753975115186"
+      }
+    ]
+  },
+  "ostomy": {
+    "html": "src/pages/services/ostomy.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/ostomy/pexels-cedric-fauntleroy-4270088.webp",
+        "fallback": "../../assets/media/images/services/ostomy/pexels-cedric-fauntleroy-4270088.jpg",
+        "filename": "pexels-cedric-fauntleroy-4270088"
+      },
+      {
+        "webp": "../../assets/media/images/services/ostomy/pexels-cottonbro-5853836.webp",
+        "fallback": "../../assets/media/images/services/ostomy/pexels-cottonbro-5853836.jpg",
+        "filename": "pexels-cottonbro-5853836"
+      },
+      {
+        "webp": "../../assets/media/images/services/ostomy/pexels-heyho-6636262.webp",
+        "fallback": "../../assets/media/images/services/ostomy/pexels-heyho-6636262.jpg",
+        "filename": "pexels-heyho-6636262"
+      }
+    ]
+  },
+  "diabetes": {
+    "html": "src/pages/services/diabetes.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/diabetes/pexels-cottonbro-8862271.webp",
+        "fallback": "../../assets/media/images/services/diabetes/pexels-cottonbro-8862271.jpg",
+        "filename": "pexels-cottonbro-8862271"
+      },
+      {
+        "webp": "../../assets/media/images/services/diabetes/pexels-jill-burrow-6681870.webp",
+        "fallback": "../../assets/media/images/services/diabetes/pexels-jill-burrow-6681870.jpg",
+        "filename": "pexels-jill-burrow-6681870"
+      },
+      {
+        "webp": "../../assets/media/images/services/diabetes/smartsnap_6-30-2025_at_13-08-50.webp",
+        "fallback": "../../assets/media/images/services/diabetes/smartsnap_6-30-2025_at_13-08-50.png",
+        "filename": "smartsnap_6-30-2025_at_13-08-50"
+      }
+    ]
+  },
+  "parkinsons": {
+    "html": "src/pages/services/parkinsons.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/parkinsons/DSC02123.webp",
+        "fallback": "../../assets/media/images/services/parkinsons/DSC02123.jpg",
+        "filename": "DSC02123"
+      },
+      {
+        "webp": "../../assets/media/images/services/parkinsons/pexels-dina-nasyrova-2006209-3979010.webp",
+        "fallback": "../../assets/media/images/services/parkinsons/pexels-dina-nasyrova-2006209-3979010.jpg",
+        "filename": "pexels-dina-nasyrova-2006209-3979010"
+      },
+      {
+        "webp": "../../assets/media/images/services/parkinsons/pexels-shvetsa-4226139.webp",
+        "fallback": "../../assets/media/images/services/parkinsons/pexels-shvetsa-4226139.jpg",
+        "filename": "pexels-shvetsa-4226139"
+      }
+    ]
+  },
+  "dementia": {
+    "html": "src/pages/services/dementia.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/dementia/personalized-dementia-care-2.webp",
+        "fallback": "../../assets/media/images/services/dementia/personalized-dementia-care-2.jpg",
+        "filename": "personalized-dementia-care-2"
+      },
+      {
+        "webp": "../../assets/media/images/services/dementia/personalized-dementia-care.webp",
+        "fallback": "../../assets/media/images/services/dementia/personalized-dementia-care.jpg",
+        "filename": "personalized-dementia-care"
+      },
+      {
+        "webp": "../../assets/media/images/services/dementia/unrivaled-dementia-care.webp",
+        "fallback": "../../assets/media/images/services/dementia/unrivaled-dementia-care.jpg",
+        "filename": "unrivaled-dementia-care"
+      }
+    ]
+  },
+  "oncology": {
+    "html": "src/pages/services/oncology.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/oncology/pexels-chokniti-khongchum-1197604-2280547.webp",
+        "fallback": "../../assets/media/images/services/oncology/pexels-chokniti-khongchum-1197604-2280547.jpg",
+        "filename": "pexels-chokniti-khongchum-1197604-2280547"
+      },
+      {
+        "webp": "../../assets/media/images/services/oncology/pexels-readymade-3850759-AODCg.webp",
+        "fallback": "../../assets/media/images/services/oncology/pexels-readymade-3850759-AODCg.jpg",
+        "filename": "pexels-readymade-3850759-AODCg"
+      }
+    ]
+  },
+  "rehab": {
+    "html": "src/pages/treatments/rehab.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/rehab/pexels-sithumrulzs-6922503.webp",
+        "fallback": "../../assets/media/images/services/rehab/pexels-sithumrulzs-6922503.jpg",
+        "filename": "pexels-sithumrulzs-6922503"
+      },
+      {
+        "webp": "../../assets/media/images/services/rehab/rehab-private-concierge-nursing-near-me.webp",
+        "fallback": "../../assets/media/images/services/rehab/rehab-private-concierge-nursing-near-me.jpg",
+        "filename": "rehab-private-concierge-nursing-near-me"
+      }
+    ]
+  },
+  "iv": {
+    "html": "src/pages/treatments/iv.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/iv/iv-infusion-therapy-private-duty-nursing-near-me-.webp",
+        "fallback": "../../assets/media/images/services/iv/iv-infusion-therapy-private-duty-nursing-near-me-.jpg",
+        "filename": "iv-infusion-therapy-private-duty-nursing-near-me-"
+      },
+      {
+        "webp": "../../assets/media/images/services/iv/pexels-cottonbro-6191530.webp",
+        "fallback": "../../assets/media/images/services/iv/pexels-cottonbro-6191530.jpg",
+        "filename": "pexels-cottonbro-6191530"
+      }
+    ]
+  },
+  "als": {
+    "html": "src/pages/services/als.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/als/DSC01932.webp",
+        "fallback": "../../assets/media/images/services/als/DSC01932.jpg",
+        "filename": "DSC01932"
+      },
+      {
+        "webp": "../../assets/media/images/services/als/pexels-karolina-grabowska-7602816.webp",
+        "fallback": "../../assets/media/images/services/als/pexels-karolina-grabowska-7602816.jpg",
+        "filename": "pexels-karolina-grabowska-7602816"
+      },
+      {
+        "webp": "../../assets/media/images/services/als/pexels-pixabay-161477.webp",
+        "fallback": "../../assets/media/images/services/als/pexels-pixabay-161477.jpg",
+        "filename": "pexels-pixabay-161477"
+      }
+    ]
+  },
+  "eating": {
+    "html": "src/pages/treatments/eating.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/eating/pexels-enginakyurt-1435735-e1753975162661.webp",
+        "fallback": "../../assets/media/images/services/eating/pexels-enginakyurt-1435735-e1753975162661.jpg",
+        "filename": "pexels-enginakyurt-1435735-e1753975162661"
+      },
+      {
+        "webp": "../../assets/media/images/services/eating/pexels-vovaflame-4159894.webp",
+        "fallback": "../../assets/media/images/services/eating/pexels-vovaflame-4159894.jpg",
+        "filename": "pexels-vovaflame-4159894"
+      }
+    ]
+  },
+  "heart-disease": {
+    "html": "src/pages/services/heart-disease.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/heart-disease/DSC01971.webp",
+        "fallback": "../../assets/media/images/services/heart-disease/DSC01971.jpg",
+        "filename": "DSC01971"
+      },
+      {
+        "webp": "../../assets/media/images/services/heart-disease/pexels-lukas-medvedevas-6228921-6062838.webp",
+        "fallback": "../../assets/media/images/services/heart-disease/pexels-lukas-medvedevas-6228921-6062838.jpg",
+        "filename": "pexels-lukas-medvedevas-6228921-6062838"
+      },
+      {
+        "webp": "../../assets/media/images/services/heart-disease/pexels-pavel-danilyuk-71083882028129.webp",
+        "fallback": "../../assets/media/images/services/heart-disease/pexels-pavel-danilyuk-71083882028129.jpg",
+        "filename": "pexels-pavel-danilyuk-71083882028129"
+      }
+    ]
+  },
+  "pain": {
+    "html": "src/pages/treatments/pain.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/pain/pain-management-private-duty-concierge-nurses-near-me-.webp",
+        "fallback": "../../assets/media/images/services/pain/pain-management-private-duty-concierge-nurses-near-me-.jpg",
+        "filename": "pain-management-private-duty-concierge-nurses-near-me-"
+      },
+      {
+        "webp": "../../assets/media/images/services/pain/pexels-ivan-samkov-8964666.webp",
+        "fallback": "../../assets/media/images/services/pain/pexels-ivan-samkov-8964666.jpg",
+        "filename": "pexels-ivan-samkov-8964666"
+      }
+    ]
+  },
+  "tbi": {
+    "html": "src/pages/services/tbi.html",
+    "images": [
+      {
+        "webp": "../../assets/media/images/services/tbi/pexels-lukas-medvedevas-6228921-6062838-1.webp",
+        "fallback": "../../assets/media/images/services/tbi/pexels-lukas-medvedevas-6228921-6062838-1.jpg",
+        "filename": "pexels-lukas-medvedevas-6228921-6062838-1"
+      },
+      {
+        "webp": "../../assets/media/images/services/tbi/pexels-magda-ehlers-pexels-27376664.webp",
+        "fallback": "../../assets/media/images/services/tbi/pexels-magda-ehlers-pexels-27376664.jpg",
+        "filename": "pexels-magda-ehlers-pexels-27376664"
+      },
+      {
+        "webp": "../../assets/media/images/services/tbi/pexels-olly-3768131.webp",
+        "fallback": "../../assets/media/images/services/tbi/pexels-olly-3768131.jpg",
+        "filename": "pexels-olly-3768131"
+      }
+    ]
+  }
+}
