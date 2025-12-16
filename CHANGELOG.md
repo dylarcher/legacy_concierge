@@ -26,17 +26,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - `src/utilities/router.js` - Runtime path resolution utility
   - `public/404.html` - GitHub Pages fallback with styled error page
 - Auto-discovery of HTML pages for Vite build configuration
+- Relative path calculation for dynamic base URLs (`/legacy_concierge/v#.#.#/`)
 
 ### Changed
 
 - `vite.config.js` now uses auto-discovered HTML inputs
 - All absolute paths converted to relative paths at build time
-- HTML files restructured as directories for extension-less URLs
+- HTML files restructured as directories for extension-less URLs (`page.html` → `page/index.html`)
 
 ### Fixed
 
 - GitHub Pages routing broken links when deployed to versioned paths
-- Pages now load without `.html` extension
+- Pages now load without `.html` extension in both local and production environments
 
 ## [0.14.1] - 2024-12-16
 
@@ -47,12 +48,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Changed
 
 - Optimized 4 images for web (7.1MB → 1.07MB JPEG, 658KB WebP)
+- "Care Plans Beyond Comparison" section image
+
+### Changed
+
+- Optimized 4 images for web (7.1MB → 1.07MB JPEG, 658KB WebP - 91% reduction)
 - Updated `pages/partners.html` with new banner and section images
 - Updated `pages/team.html` with new banner image
 
 ### Removed
 
-- Duplicate `pages/careers.html` file
+- Duplicate `pages/careers.html` file (correct version at `pages/team/careers.html`)
 
 ## [0.3.2] - 2024-12-11
 

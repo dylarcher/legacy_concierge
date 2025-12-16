@@ -1,9 +1,9 @@
 # Legacy Concierge Website Review Checklist
 
-**Project:** Legacy Concierge  
-**Version:** 0.13.6  
-**Review Date:** _______________  
-**Reviewer:** _______________  
+**Project:** Legacy Concierge
+**Version:** 0.14.2
+**Review Date:** _______________
+**Reviewer:** _______________
 **Sign-off:** ☐ Approved / ☐ Needs Revision
 
 ---
@@ -30,18 +30,19 @@
 
 ### Main Pages
 
+All pages use clean URLs (extension-less). Files are built as `page/index.html`.
+
 | Page | Status | Content Accurate | Links Working | Notes |
 |------|--------|------------------|---------------|-------|
-| `index.html` (Home) | ☐ | ☐ | ☐ | |
-| `pages/about.html` | ☐ | ☐ | ☐ | |
-| `pages/team.html` | ☐ | ☐ | ☐ | |
-| `pages/services.html` | ☐ | ☐ | ☐ | |
-| `pages/locations.html` | ☐ | ☐ | ☐ | |
-| `pages/contact.html` | ☐ | ☐ | ☐ | |
-| `pages/careers.html` | ☐ | ☐ | ☐ | |
-| `pages/partners.html` | ☐ | ☐ | ☐ | |
-| `pages/blog.html` | ☐ | ☐ | ☐ | |
-| `pages/demo.html` | ☐ | ☐ | ☐ | |
+| `/` (Home) | ☐ | ☐ | ☐ | |
+| `/pages/about` | ☐ | ☐ | ☐ | |
+| `/pages/team` | ☐ | ☐ | ☐ | |
+| `/pages/team/careers` | ☐ | ☐ | ☐ | |
+| `/pages/services` | ☐ | ☐ | ☐ | |
+| `/pages/locations` | ☐ | ☐ | ☐ | |
+| `/pages/contact` | ☐ | ☐ | ☐ | |
+| `/pages/partners` | ☐ | ☐ | ☐ | |
+| `/pages/blog` | ☐ | ☐ | ☐ | |
 
 ### Service Condition Pages (`pages/services/`)
 
@@ -119,9 +120,10 @@
 
 - [ ] Consistent navigation across all pages
 - [ ] Breadcrumbs functional (if applicable)
-- [ ] 404 page exists and styled (`docs/404.html`)
+- [ ] 404 page exists and styled (`public/404.html`)
 - [ ] No orphan pages (all pages accessible via navigation)
-- [ ] Logical URL structure
+- [ ] Logical URL structure (clean URLs without .html extension)
+- [ ] Router utility functioning for GitHub Pages deployment
 
 ---
 
@@ -518,5 +520,5 @@
 
 ---
 
-**Checklist Version:** 1.0  
-**Last Updated:** December 12, 2025
+**Checklist Version:** 1.1
+**Last Updated:** December 16, 2024
