@@ -8,6 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.14.3] - 2024-12-16
+
+### Fixed
+
+- **vite-plugin-clean-urls.js** - Fixed CSS/JS paths breaking on GitHub Pages deployment
+  - Vite-generated asset paths (CSS, JS, fonts) now left as absolute with base path
+  - Only navigation links converted to relative paths
+  - Static assets (favicon, icons) properly adjusted for restructured files
+
 ## [0.14.2] - 2024-12-16
 
 ### Added
@@ -35,6 +44,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 
 - New hero images for partners and team pages
+
+### Changed
+
+- Optimized 4 images for web (7.1MB → 1.07MB JPEG, 658KB WebP)
 - "Care Plans Beyond Comparison" section image
 
 ### Changed
