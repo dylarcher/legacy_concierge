@@ -16,6 +16,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   - Vite-generated asset paths (CSS, JS, fonts) now left as absolute with base path
   - Only navigation links converted to relative paths
   - Static assets (favicon, icons) properly adjusted for restructured files
+- **router.js** - Fixed doubled BASE_URL in navigation links
+  - `resolveHref` now checks if path already contains BASE_URL before prepending
+  - Prevents `/legacy_concierge/v#.#.#/legacy_concierge/v#.#.#/...` doubled paths
+  - Navigation links now work correctly from pages at any nesting depth
 
 ## [0.14.2] - 2024-12-16
 
