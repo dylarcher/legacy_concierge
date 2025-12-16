@@ -2,8 +2,12 @@ import { resolve } from "node:path";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import { analyzer } from "vite-bundle-analyzer";
+import { cleanUrlsPlugin, generateInputConfig } from "./vite-plugin-clean-urls.js";
 
 const root = resolve(import.meta.dirname, "src");
+
+// Auto-discover all HTML pages
+const htmlInputs = generateInputConfig(root);
 
 export default defineConfig({
 	root,
@@ -11,7 +15,9 @@ export default defineConfig({
 	publicDir: resolve(import.meta.dirname, "public"),
 	plugins: [
 		tailwindcss(),
-		// Disabled by default - enable only when needed with ANALYZE=true
+		// Clean URLs plugin - transforms page.html to page/index.html during build
+		cleanUrlsPlugin(),
+		// Bundle analyzer - disabled by default, enable with ANALYZE=true
 		...(process.env.ANALYZE
 			? [
 					analyzer({
@@ -29,22 +35,14 @@ export default defineConfig({
 		emptyOutDir: true,
 		cssCodeSplit: false,
 		sourcemap: true,
-		assetsInlineLimit: 0, // Don't inline assets - keep them as separate files
+		assetsInlineLimit: 0,
 		rollupOptions: {
-			input: {
-				main: resolve(root, "index.html"),
-				about: resolve(root, "pages/about.html"),
-				contact: resolve(root, "pages/contact.html"),
-				team: resolve(root, "pages/team.html"),
-				partners: resolve(root, "pages/partners.html"),
-				locations: resolve(root, "pages/locations.html"),
-				services: resolve(root, "pages/services.html"),
-				treatments: resolve(root, "pages/treatments.html"),
-				blog: resolve(root, "pages/blog.html"),
-				legal: resolve(root, "pages/legal.html"),
-				demo: resolve(root, "pages/demo.html"),
-			},
+			input: htmlInputs,
 		},
+	},
+	server: {
+		// Handle clean URLs in dev server
+		middlewareMode: false,
 	},
 	test: {
 		environment: "jsdom",
