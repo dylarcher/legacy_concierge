@@ -329,3 +329,11 @@ All variants include:
 3. **Responsive Behavior**: Most patterns include responsive adjustments using `sm:` breakpoint prefixes.
 
 4. **Combining Classes**: These utilities are designed to be combined with each other and standard Tailwind classes for maximum flexibility.
+
+5. **Source File**: All component utilities are defined in `src/style.css`.
+
+---
+
+**Document Version:** 1.0
+**Last Updated:** December 16, 2024
+**Project Version:** 0.14.2

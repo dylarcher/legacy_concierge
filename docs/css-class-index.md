@@ -429,3 +429,9 @@ These CSS variables are available via `@theme` and can be used directly:
 
 ### Focus & Selection
 - `--focus-ring`, `--selection-fg`, `--selection-bg`
+
+---
+
+**Document Version:** 1.0
+**Last Updated:** December 16, 2024
+**Project Version:** 0.14.2

@@ -97,9 +97,10 @@ legacy_concierge/
 │   │       ├── nav.js          # global-nav
 │   │       ├── hero.js         # hero-banner
 │   │       └── footer.js       # global-footer
-│   ├── pages/                  # HTML pages
+│   ├── pages/                  # HTML pages (auto-discovered)
 │   │   ├── about.html
 │   │   ├── contact.html
+│   │   ├── partners.html
 │   │   ├── services.html
 │   │   ├── team.html
 │   │   ├── blog/               # Blog posts
@@ -107,12 +108,16 @@ legacy_concierge/
 │   │   ├── services/           # Service pages
 │   │   ├── team/               # Team profiles
 │   │   └── treatments/         # Treatment pages
+│   ├── utilities/              # Runtime utilities
+│   │   └── router.js           # Clean URL routing
 │   └── tokens/
 │       ├── color-palette.css   # Color definitions
 │       └── typography.css      # Font tokens
+├── vite-plugin-clean-urls.js   # Build-time URL transformation
 ├── bin/                        # Build & utility scripts
 ├── docs/                       # Version deployments
 └── public/                     # Static assets
+    ├── 404.html                # GitHub Pages fallback
     ├── humans.txt
     ├── manifest.json
     ├── robots.txt
@@ -509,10 +514,21 @@ defineElement("my-component", MyComponent);
 
 ### Adding New Pages
 
-1. Create HTML in `src/pages/`
+1. Create HTML in `src/pages/` - pages are **auto-discovered** by Vite
 2. Add images to `src/assets/media/images/`
-3. Update `vite.config.js` build.rollupOptions.input if needed
+3. Update `src/assets/image-manifest.js` if using custom image attributes
 4. Run `bun run validate:all`
+
+**Clean URL Routing:**
+
+Pages are automatically transformed for extension-less URLs:
+- `src/pages/about.html` → `/pages/about/` (built as `about/index.html`)
+- `src/pages/services/als.html` → `/pages/services/als/`
+
+Use absolute paths in links (they're converted to relative at build time):
+```html
+<a href="/pages/about">About Us</a>
+```
 
 To create a new versioned deployment for GitHub Pages:
 
@@ -574,6 +590,8 @@ Deploy versioned builds to GitHub Pages:
 
 View all versions: [https://dylarcher.github.io/legacy_concierge/](https://dylarcher.github.io/legacy_concierge/)
 
+- **v0.14.2** - Clean URL routing, GitHub Pages path fix
+- **v0.14.1** - Image optimization, page updates
 - **v0.3.1** - Media optimization (48% size reduction)
 - **v0.3.0** - Navigation restructure + dropdowns
 - **v0.2.0** - Initial versioned release
@@ -706,17 +724,23 @@ Located in `bin/`:
 | Script | Purpose |
 |:-------|:--------|
 | `build-gh-pages.js` | Generate versioned docs |
-| `generate-sitemap.js` | Create XML sitemap |
-| `validate-tailwind-classes.js` | Check Tailwind usage |
+| `build-styleguide-components.js` | Build component styleguide |
+| `convert-fonts.py` | Font format conversion |
 | `find-unused-tailwind.js` | Find unused classes |
+| `generate-sitemap.js` | Create XML sitemap |
+| `generate-version-index.js` | Generate docs index page |
+| `manage-versions.js` | Version management CLI |
 | `optimize-media.sh` | Compress images/videos |
 | `pre-commit.sh` | Pre-commit validation |
+| `remove-state-classes.js` | Clean unused state classes |
+| `validate-tailwind-classes.js` | Check Tailwind usage |
 
 ### Configuration Files
 
 | File | Purpose |
 |:-----|:--------|
 | `vite.config.js` | Vite build config |
+| `vite-plugin-clean-urls.js` | Clean URL transformation plugin |
 | `biome.jsonc` | Linter/formatter rules |
 | `vitest.setup.js` | Test environment |
 | `.stylelintrc.json` | CSS linting rules |
@@ -855,17 +879,21 @@ Relies on native Web Components (Custom Elements v1, Shadow DOM).
 
 ## Pages
 
+All pages use clean URLs (extension-less):
+
 | Route | Description |
 |:------|:------------|
 | `/` | Homepage with hero + services |
-| `/pages/about.html` | About + CEO video |
-| `/pages/contact.html` | Contact form (Jotform) |
-| `/pages/partners.html` | Partner network |
-| `/pages/services.html` | Services overview |
-| `/pages/team.html` | Team profiles |
-| `/pages/locations.html` | Service area map |
+| `/pages/about` | About + CEO video |
+| `/pages/contact` | Contact form (Jotform) |
+| `/pages/locations` | Service area map |
+| `/pages/partners` | Partner network |
+| `/pages/services` | Services overview |
+| `/pages/team` | Team profiles |
+| `/pages/blog/` | Blog posts |
 | `/pages/legal/` | Privacy, terms, HIPAA |
-| `/pages/services/` | Specialty pages |
+| `/pages/services/` | Specialty condition pages (ALS, MS, etc.) |
+| `/pages/team/` | Team member profiles, careers |
 | `/pages/treatments/` | Treatment information |
 
 ## Contributing
