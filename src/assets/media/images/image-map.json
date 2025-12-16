@@ -1,0 +1,628 @@
+{
+	"banners": {
+		"services": [
+			{
+				"fallback": "als.jpg",
+				"filename": "als",
+				"webp": null
+			},
+			{
+				"fallback": "alzheimers_care.jpg",
+				"filename": "alzheimers_care",
+				"webp": null
+			},
+			{
+				"fallback": "diabetes.jpg",
+				"filename": "diabetes",
+				"webp": null
+			},
+			{
+				"fallback": "dementia.jpg",
+				"filename": "dementia",
+				"webp": null
+			},
+			{
+				"fallback": "heart_disease.jpg",
+				"filename": "heart_disease",
+				"webp": null
+			},
+			{
+				"fallback": "multiple_sclerosis.png",
+				"filename": "multiple_sclerosis",
+				"webp": null
+			},
+			{
+				"fallback": "oncology.png",
+				"filename": "oncology",
+				"webp": null
+			},
+			{
+				"fallback": "ostomy_care.jpg",
+				"filename": "ostomy_care",
+				"webp": null
+			},
+			{
+				"fallback": "parkinsons_care.jpg",
+				"filename": "parkinsons_care",
+				"webp": null
+			},
+			{
+				"fallback": "stroke_recovery.jpg",
+				"filename": "stroke_recovery",
+				"webp": null
+			},
+			{
+				"fallback": "traumatic_brain_injury.jpg",
+				"filename": "traumatic_brain_injury",
+				"webp": null
+			}
+		],
+		"treatments": [
+			{
+				"fallback": "cardiac_care.png",
+				"filename": "cardiac_care",
+				"webp": null
+			},
+			{
+				"fallback": "eating_support.jpg",
+				"filename": "eating_support",
+				"webp": null
+			},
+			{
+				"fallback": "iv_therapy.png",
+				"filename": "iv_therapy",
+				"webp": null
+			},
+			{
+				"fallback": "neurological_care.jpg",
+				"filename": "neurological_care",
+				"webp": null
+			},
+			{
+				"fallback": "pain_management.png",
+				"filename": "pain_management",
+				"webp": null
+			},
+			{
+				"fallback": "palliative_care.png",
+				"filename": "palliative_care",
+				"webp": null
+			},
+			{
+				"fallback": "treat_oncology.png",
+				"filename": "treat_oncology",
+				"webp": null
+			}
+		]
+	},
+	"grayscale": [
+		{
+			"fallback": "elite-female-nurse-stethascope.grayscale.png",
+			"filename": "elite-female-nurse-stethascope.grayscale",
+			"webp": "elite-female-nurse-stethascope.grayscale.webp"
+		},
+		{
+			"fallback": "elite-nurses-posing.grayscale.png",
+			"filename": "elite-nurses-posing.grayscale",
+			"webp": "elite-nurses-posing.grayscale.webp"
+		},
+		{
+			"fallback": "loved-one-giving-patient-support.grayscale.png",
+			"filename": "loved-one-giving-patient-support.grayscale",
+			"webp": "loved-one-giving-patient-support.grayscale.webp"
+		},
+		{
+			"fallback": "medica-professional-couch.grayscale.png",
+			"filename": "medica-professional-couch.grayscale",
+			"webp": "medica-professional-couch.grayscale.webp"
+		},
+		{
+			"fallback": "reviewing-medical-docs.grayscale.png",
+			"filename": "reviewing-medical-docs.grayscale",
+			"webp": "reviewing-medical-docs.grayscale.webp"
+		},
+		{
+			"fallback": "reviewing-nutrition-diet.grayscale.png",
+			"filename": "reviewing-nutrition-diet.grayscale",
+			"webp": "reviewing-nutrition-diet.grayscale.webp"
+		}
+	],
+	"members": [
+		{
+			"fallback": "alex-hakim.jpg",
+			"filename": "alex-hakim",
+			"webp": "alex-hakim.webp"
+		},
+		{
+			"fallback": "andrew-parker.jpg",
+			"filename": "andrew-parker",
+			"webp": "andrew-parker.webp"
+		},
+		{
+			"fallback": "cassie-leger.jpg",
+			"filename": "cassie-leger",
+			"webp": "cassie-leger.webp"
+		},
+		{
+			"fallback": "david-kidushim.jpg",
+			"filename": "david-kidushim",
+			"webp": "david-kidushim.webp"
+		},
+		{
+			"fallback": "diane-aguayo.jpg",
+			"filename": "diane-aguayo",
+			"webp": "diane-aguayo.webp"
+		},
+		{
+			"fallback": "elie-castillo.jpg",
+			"filename": "elie-castillo",
+			"webp": "elie-castillo.webp"
+		},
+		{
+			"fallback": "eyleen-montero.jpg",
+			"filename": "eyleen-montero",
+			"webp": "eyleen-montero.webp"
+		},
+		{
+			"fallback": "grace-macura.jpg",
+			"filename": "grace-macura",
+			"webp": "grace-macura.webp"
+		},
+		{
+			"fallback": "hannah-artille.jpg",
+			"filename": "hannah-artille",
+			"webp": "hannah-artille.webp"
+		},
+		{
+			"fallback": "heather-daggs.jpg",
+			"filename": "heather-daggs",
+			"webp": "heather-daggs.webp"
+		},
+		{
+			"fallback": "janelle-ong.jpg",
+			"filename": "janelle-ong",
+			"webp": "janelle-ong.webp"
+		},
+		{
+			"fallback": "jason-kidushim.jpg",
+			"filename": "jason-kidushim",
+			"webp": "jason-kidushim.webp"
+		},
+		{
+			"fallback": "joshua-edwards.jpg",
+			"filename": "joshua-edwards",
+			"webp": "joshua-edwards.webp"
+		},
+		{
+			"fallback": "kurt-davis.jpg",
+			"filename": "kurt-davis",
+			"webp": "kurt-davis.webp"
+		},
+		{
+			"fallback": "luca-ferrari.jpg",
+			"filename": "luca-ferrari",
+			"webp": "luca-ferrari.webp"
+		},
+		{
+			"fallback": "melissa-dempsey.jpg",
+			"filename": "melissa-dempsey",
+			"webp": "melissa-dempsey.webp"
+		},
+		{
+			"fallback": "reese-morgan.jpg",
+			"filename": "reese-morgan",
+			"webp": "reese-morgan.webp"
+		},
+		{
+			"fallback": "rylie-olgin.jpg",
+			"filename": "rylie-olgin",
+			"webp": "rylie-olgin.webp"
+		},
+		{
+			"fallback": "sarah-brodbeck.jpg",
+			"filename": "sarah-brodbeck",
+			"webp": "sarah-brodbeck.webp"
+		},
+		{
+			"fallback": "zehra-dhanani.jpg",
+			"filename": "zehra-dhanani",
+			"webp": "zehra-dhanani.webp"
+		}
+	],
+	"muted": [
+		{
+			"fallback": "antique-couch-nurse-patient.muted.png",
+			"filename": "antique-couch-nurse-patient.muted",
+			"webp": "antique-couch-nurse-patient.muted.webp"
+		},
+		{
+			"fallback": "holding-hands.muted.png",
+			"filename": "holding-hands.muted",
+			"webp": "holding-hands.muted.webp"
+		},
+		{
+			"fallback": "nurses-posing-for-photo.muted.png",
+			"filename": "nurses-posing-for-photo.muted",
+			"webp": "nurses-posing-for-photo.muted.webp"
+		},
+		{
+			"fallback": "palm-frawn-shadows-on-backdrop.muted.png",
+			"filename": "palm-frawn-shadows-on-backdrop.muted",
+			"webp": "palm-frawn-shadows-on-backdrop.muted.webp"
+		},
+		{
+			"fallback": "twenty-four-hour-care-tall.muted.png",
+			"filename": "twenty-four-hour-care-tall.muted",
+			"webp": "twenty-four-hour-care-tall.muted.webp"
+		}
+	],
+	"pages": {
+		"als": {
+			"html": "src/pages/services/als.html",
+			"images": [
+				{
+					"fallback": "expertise/als/DSC01932.jpg",
+					"filename": "DSC01932",
+					"webp": "expertise/als/DSC01932.webp"
+				},
+				{
+					"fallback": "expertise/als/pexels-karolina-grabowska-7602816.jpg",
+					"filename": "pexels-karolina-grabowska-7602816",
+					"webp": "expertise/als/pexels-karolina-grabowska-7602816.webp"
+				},
+				{
+					"fallback": "expertise/als/pexels-pixabay-161477.jpg",
+					"filename": "pexels-pixabay-161477",
+					"webp": "expertise/als/pexels-pixabay-161477.webp"
+				}
+			]
+		},
+		"alzheimers": {
+			"html": "src/pages/services/alzheimers.html",
+			"images": [
+				{
+					"fallback": "expertise/alzheimers/pexels-ivan-samkov-8964676.jpg",
+					"filename": "pexels-ivan-samkov-8964676",
+					"webp": "expertise/alzheimers/pexels-ivan-samkov-8964676.webp"
+				},
+				{
+					"fallback": "expertise/alzheimers/pexels-tima-miroshnichenko-6011667.jpg",
+					"filename": "pexels-tima-miroshnichenko-6011667",
+					"webp": "expertise/alzheimers/pexels-tima-miroshnichenko-6011667.webp"
+				}
+			]
+		},
+		"cardiac": {
+			"html": "src/pages/treatments/cardiac.html",
+			"images": [
+				{
+					"fallback": "expertise/cardiac/pexels-pavel-danilyuk-7108388.jpg",
+					"filename": "pexels-pavel-danilyuk-7108388",
+					"webp": "expertise/cardiac/pexels-pavel-danilyuk-7108388.webp"
+				},
+				{
+					"fallback": "expertise/cardiac/pexels-shvetsa-4226258-e1753975115186.jpg",
+					"filename": "pexels-shvetsa-4226258-e1753975115186",
+					"webp": "expertise/cardiac/pexels-shvetsa-4226258-e1753975115186.webp"
+				}
+			]
+		},
+		"dementia": {
+			"html": "src/pages/services/dementia.html",
+			"images": [
+				{
+					"fallback": "expertise/dementia/personalized-dementia-care-2.jpg",
+					"filename": "personalized-dementia-care-2",
+					"webp": "expertise/dementia/personalized-dementia-care-2.webp"
+				},
+				{
+					"fallback": "expertise/dementia/personalized-dementia-care.jpg",
+					"filename": "personalized-dementia-care",
+					"webp": "expertise/dementia/personalized-dementia-care.webp"
+				},
+				{
+					"fallback": "expertise/dementia/unrivaled-dementia-care.jpg",
+					"filename": "unrivaled-dementia-care",
+					"webp": "expertise/dementia/unrivaled-dementia-care.webp"
+				}
+			]
+		},
+		"diabetes": {
+			"html": "src/pages/services/diabetes.html",
+			"images": [
+				{
+					"fallback": "expertise/diabetes/pexels-cottonbro-8862271.jpg",
+					"filename": "pexels-cottonbro-8862271",
+					"webp": "expertise/diabetes/pexels-cottonbro-8862271.webp"
+				},
+				{
+					"fallback": "expertise/diabetes/pexels-jill-burrow-6681870.jpg",
+					"filename": "pexels-jill-burrow-6681870",
+					"webp": "expertise/diabetes/pexels-jill-burrow-6681870.webp"
+				},
+				{
+					"fallback": "expertise/diabetes/smartsnap_6-30-2025_at_13-08-50.png",
+					"filename": "smartsnap_6-30-2025_at_13-08-50",
+					"webp": "expertise/diabetes/smartsnap_6-30-2025_at_13-08-50.webp"
+				}
+			]
+		},
+		"eating": {
+			"html": "src/pages/treatments/eating.html",
+			"images": [
+				{
+					"fallback": "expertise/eating/pexels-enginakyurt-1435735-e1753975162661.jpg",
+					"filename": "pexels-enginakyurt-1435735-e1753975162661",
+					"webp": "expertise/eating/pexels-enginakyurt-1435735-e1753975162661.webp"
+				},
+				{
+					"fallback": "expertise/eating/pexels-vovaflame-4159894.jpg",
+					"filename": "pexels-vovaflame-4159894",
+					"webp": "expertise/eating/pexels-vovaflame-4159894.webp"
+				}
+			]
+		},
+		"heart-disease": {
+			"html": "src/pages/services/heart-disease.html",
+			"images": [
+				{
+					"fallback": "expertise/heart-disease/DSC01971.jpg",
+					"filename": "DSC01971",
+					"webp": "expertise/heart-disease/DSC01971.webp"
+				},
+				{
+					"fallback": "expertise/heart-disease/pexels-lukas-medvedevas-6228921-6062838.jpg",
+					"filename": "pexels-lukas-medvedevas-6228921-6062838",
+					"webp": "expertise/heart-disease/pexels-lukas-medvedevas-6228921-6062838.webp"
+				},
+				{
+					"fallback": "expertise/heart-disease/pexels-pavel-danilyuk-71083882028129.jpg",
+					"filename": "pexels-pavel-danilyuk-71083882028129",
+					"webp": "expertise/heart-disease/pexels-pavel-danilyuk-71083882028129.webp"
+				}
+			]
+		},
+		"iv": {
+			"html": "src/pages/treatments/iv.html",
+			"images": [
+				{
+					"fallback": "expertise/iv/iv-infusion-therapy-private-duty-nursing-near-me-.jpg",
+					"filename": "iv-infusion-therapy-private-duty-nursing-near-me-",
+					"webp": "expertise/iv/iv-infusion-therapy-private-duty-nursing-near-me-.webp"
+				},
+				{
+					"fallback": "expertise/iv/pexels-cottonbro-6191530.jpg",
+					"filename": "pexels-cottonbro-6191530",
+					"webp": "expertise/iv/pexels-cottonbro-6191530.webp"
+				}
+			]
+		},
+		"ms": {
+			"html": "src/pages/services/ms.html",
+			"images": [
+				{
+					"fallback": "expertise/ms/DSC02146.jpg",
+					"filename": "DSC02146",
+					"webp": "expertise/ms/DSC02146.webp"
+				},
+				{
+					"fallback": "expertise/ms/pexels-cottonbro-7235054-1.jpg",
+					"filename": "pexels-cottonbro-7235054-1",
+					"webp": "expertise/ms/pexels-cottonbro-7235054-1.webp"
+				},
+				{
+					"fallback": "expertise/ms/pexels-maksgelatin-43522472028129.jpg",
+					"filename": "pexels-maksgelatin-43522472028129",
+					"webp": "expertise/ms/pexels-maksgelatin-43522472028129.webp"
+				}
+			]
+		},
+		"oncology": {
+			"html": "src/pages/services/oncology.html",
+			"images": [
+				{
+					"fallback": "expertise/oncology/pexels-chokniti-khongchum-1197604-2280547.jpg",
+					"filename": "pexels-chokniti-khongchum-1197604-2280547",
+					"webp": "expertise/oncology/pexels-chokniti-khongchum-1197604-2280547.webp"
+				},
+				{
+					"fallback": "expertise/oncology/pexels-readymade-3850759-AODCg.jpg",
+					"filename": "pexels-readymade-3850759-AODCg",
+					"webp": "expertise/oncology/pexels-readymade-3850759-AODCg.webp"
+				}
+			]
+		},
+		"ostomy": {
+			"html": "src/pages/services/ostomy.html",
+			"images": [
+				{
+					"fallback": "expertise/ostomy/pexels-cedric-fauntleroy-4270088.jpg",
+					"filename": "pexels-cedric-fauntleroy-4270088",
+					"webp": "expertise/ostomy/pexels-cedric-fauntleroy-4270088.webp"
+				},
+				{
+					"fallback": "expertise/ostomy/pexels-cottonbro-5853836.jpg",
+					"filename": "pexels-cottonbro-5853836",
+					"webp": "expertise/ostomy/pexels-cottonbro-5853836.webp"
+				},
+				{
+					"fallback": "expertise/ostomy/pexels-heyho-6636262.jpg",
+					"filename": "pexels-heyho-6636262",
+					"webp": "expertise/ostomy/pexels-heyho-6636262.webp"
+				}
+			]
+		},
+		"pain": {
+			"html": "src/pages/treatments/pain.html",
+			"images": [
+				{
+					"fallback": "expertise/pain/pain-management-private-duty-concierge-nurses-near-me-.jpg",
+					"filename": "pain-management-private-duty-concierge-nurses-near-me-",
+					"webp": "expertise/pain/pain-management-private-duty-concierge-nurses-near-me-.webp"
+				},
+				{
+					"fallback": "expertise/pain/pexels-ivan-samkov-8964666.jpg",
+					"filename": "pexels-ivan-samkov-8964666",
+					"webp": "expertise/pain/pexels-ivan-samkov-8964666.webp"
+				}
+			]
+		},
+		"parkinsons": {
+			"html": "src/pages/services/parkinsons.html",
+			"images": [
+				{
+					"fallback": "expertise/parkinsons/DSC02123.jpg",
+					"filename": "DSC02123",
+					"webp": "expertise/parkinsons/DSC02123.webp"
+				},
+				{
+					"fallback": "expertise/parkinsons/pexels-dina-nasyrova-2006209-3979010.jpg",
+					"filename": "pexels-dina-nasyrova-2006209-3979010",
+					"webp": "expertise/parkinsons/pexels-dina-nasyrova-2006209-3979010.webp"
+				},
+				{
+					"fallback": "expertise/parkinsons/pexels-shvetsa-4226139.jpg",
+					"filename": "pexels-shvetsa-4226139",
+					"webp": "expertise/parkinsons/pexels-shvetsa-4226139.webp"
+				}
+			]
+		},
+		"post-op": {
+			"html": "src/pages/treatments/post-op.html",
+			"images": [
+				{
+					"fallback": "expertise/post-op/pexels-medhat-ayad-122846-447592.jpg",
+					"filename": "pexels-medhat-ayad-122846-447592",
+					"webp": "expertise/post-op/pexels-medhat-ayad-122846-447592.webp"
+				},
+				{
+					"fallback": "expertise/post-op/post-operation-recovery-private-concierge-nursing-near-me-southern-california.jpg",
+					"filename": "post-operation-recovery-private-concierge-nursing-near-me-southern-california",
+					"webp": "expertise/post-op/post-operation-recovery-private-concierge-nursing-near-me-southern-california.webp"
+				}
+			]
+		},
+		"rehab": {
+			"html": "src/pages/treatments/rehab.html",
+			"images": [
+				{
+					"fallback": "expertise/rehab/pexels-sithumrulzs-6922503.jpg",
+					"filename": "pexels-sithumrulzs-6922503",
+					"webp": "expertise/rehab/pexels-sithumrulzs-6922503.webp"
+				},
+				{
+					"fallback": "expertise/rehab/rehab-private-concierge-nursing-near-me.jpg",
+					"filename": "rehab-private-concierge-nursing-near-me",
+					"webp": "expertise/rehab/rehab-private-concierge-nursing-near-me.webp"
+				}
+			]
+		},
+		"stroke": {
+			"html": "src/pages/services/stroke.html",
+			"images": [
+				{
+					"fallback": "expertise/stroke/DSC01906.jpg",
+					"filename": "DSC01906",
+					"webp": "expertise/stroke/DSC01906.webp"
+				},
+				{
+					"fallback": "expertise/stroke/pexels-cottonbro-5723883-MxVmR.jpg",
+					"filename": "pexels-cottonbro-5723883-MxVmR",
+					"webp": "expertise/stroke/pexels-cottonbro-5723883-MxVmR.webp"
+				},
+				{
+					"fallback": "expertise/stroke/pexels-matthiaszomer-3396202028129.jpg",
+					"filename": "pexels-matthiaszomer-3396202028129",
+					"webp": "expertise/stroke/pexels-matthiaszomer-3396202028129.webp"
+				}
+			]
+		},
+		"tbi": {
+			"html": "src/pages/services/tbi.html",
+			"images": [
+				{
+					"fallback": "expertise/tbi/pexels-lukas-medvedevas-6228921-6062838-1.jpg",
+					"filename": "pexels-lukas-medvedevas-6228921-6062838-1",
+					"webp": "expertise/tbi/pexels-lukas-medvedevas-6228921-6062838-1.webp"
+				},
+				{
+					"fallback": "expertise/tbi/pexels-magda-ehlers-pexels-27376664.jpg",
+					"filename": "pexels-magda-ehlers-pexels-27376664",
+					"webp": "expertise/tbi/pexels-magda-ehlers-pexels-27376664.webp"
+				},
+				{
+					"fallback": "expertise/tbi/pexels-olly-3768131.jpg",
+					"filename": "pexels-olly-3768131",
+					"webp": "expertise/tbi/pexels-olly-3768131.webp"
+				}
+			]
+		}
+	},
+	"root": [
+		{
+			"fallback": "blue-green-waves-brown-beach.png",
+			"filename": "blue-green-waves-brown-beach",
+			"webp": "blue-green-waves-brown-beach.webp"
+		},
+		{
+			"fallback": "nurse-adjusting-iv-medication.png",
+			"filename": "nurse-adjusting-iv-medication",
+			"webp": "nurse-adjusting-iv-medication.webp"
+		},
+		{
+			"fallback": "birds-eye-view-of-coastal-town.png",
+			"filename": "birds-eye-view-of-coastal-town",
+			"webp": "birds-eye-view-of-coastal-town.webp"
+		},
+		{
+			"fallback": "rocky-shoreline-waves.png",
+			"filename": "rocky-shoreline-waves",
+			"webp": "rocky-shoreline-waves.webp"
+		},
+		{
+			"fallback": "scenic-beach-calm-waves-cove-cliffs.png",
+			"filename": "scenic-beach-calm-waves-cove-cliffs",
+			"webp": "scenic-beach-calm-waves-cove-cliffs.webp"
+		},
+		{
+			"fallback": "top-down-view-of-rocky-beach.png",
+			"filename": "top-down-view-of-rocky-beach",
+			"webp": "top-down-view-of-rocky-beach.webp"
+		},
+		{
+			"fallback": "rocky-cliffs-and-ocean-waves.png",
+			"filename": "rocky-cliffs-and-ocean-waves",
+			"webp": null
+		},
+		{
+			"fallback": "palm-frawns-silhouette.jpg",
+			"filename": "palm-frawns-silhouette",
+			"webp": null
+		},
+		{
+			"fallback": "nurse-checking-patient-breathing.wide.png",
+			"filename": "nurse-checking-patient-breathing.wide",
+			"webp": "nurse-checking-patient-breathing.wide.webp"
+		},
+		{
+			"fallback": "palm-frawns-silhouette.wide.jpg",
+			"filename": "palm-frawns-silhouette.wide",
+			"webp": null
+		},
+		{
+			"fallback": "nurse-checking-patient-breathing.png",
+			"filename": "nurse-checking-patient-breathing",
+			"webp": "nurse-checking-patient-breathing.webp"
+		},
+		{
+			"fallback": "partial-palm-tree-frawns-at-dusk.png",
+			"filename": "partial-palm-tree-frawns-at-dusk",
+			"webp": "partial-palm-tree-frawns-at-dusk.webp"
+		},
+		{
+			"fallback": null,
+			"filename": "DSC02204",
+			"webp": "DSC02204.webp"
+		}
+	]
+}
