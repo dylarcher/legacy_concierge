@@ -25,6 +25,7 @@ _pkgs/
 .ref/
 
 # Temporary files
+.extract/
 .claude/
 .cache/
 .pkgs/
