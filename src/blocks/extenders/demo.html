@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Extender Components - Legacy Concierge</title>
+	<link rel="stylesheet" href="../../style.css">
+	<style>
+		html { scroll-behavior: smooth; }
+		.demo-section { scroll-margin-top: 100px; }
+		.component-preview {
+			background: repeating-linear-gradient(
+				45deg,
+				transparent,
+				transparent 10px,
+				rgba(0,0,0,0.02) 10px,
+				rgba(0,0,0,0.02) 20px
+			);
+		}
+	</style>
+</head>
+<body class="bg-canvas text-canvas">
+
+	<!-- Fixed Header -->
+	<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b" style="background-color: var(--color-surface); border-color: var(--color-border-soft);">
+		<div class="max-w-7xl mx-auto px-[56px] py-4 flex items-center justify-between">
+			<div class="flex items-center gap-3">
+				<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-sm">EX</div>
+				<span class="font-semibold">Extender Components</span>
+			</div>
+			<nav class="hidden md:flex items-center gap-6 text-sm">
+				<a href="#accordion" class="text-muted hover:text-canvas transition-colors">Accordion</a>
+				<a href="#tabs" class="text-muted hover:text-canvas transition-colors">Tabs</a>
+				<a href="#cards" class="text-muted hover:text-canvas transition-colors">Cards</a>
+				<a href="#slider" class="text-muted hover:text-canvas transition-colors">Slider</a>
+				<a href="#video" class="text-muted hover:text-canvas transition-colors">Video</a>
+				<a href="#media-text" class="text-muted hover:text-canvas transition-colors">Media Text</a>
+				<a href="#sections" class="text-muted hover:text-canvas transition-colors">Sections</a>
+				<a href="#split" class="text-muted hover:text-canvas transition-colors">Split</a>
+			</nav>
+			<button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-muted">
+				<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+				</svg>
+			</button>
+		</div>
+		<!-- Mobile Menu -->
+		<nav id="mobile-menu" class="hidden md:hidden border-t px-[56px] py-4 space-y-3" style="border-color: var(--color-border-soft);">
+			<a href="#accordion" class="block text-muted">Accordion</a>
+			<a href="#tabs" class="block text-muted">Tabs</a>
+			<a href="#cards" class="block text-muted">Cards</a>
+			<a href="#slider" class="block text-muted">Slider</a>
+			<a href="#video" class="block text-muted">Video</a>
+			<a href="#media-text" class="block text-muted">Media Text</a>
+			<a href="#sections" class="block text-muted">Sections</a>
+			<a href="#split" class="block text-muted">Split</a>
+		</nav>
+	</header>
+
+	<main class="pt-20">
+		<!-- Hero -->
+		<section class="py-20 px-[56px]" style="background: linear-gradient(to bottom right, var(--color-surface-muted), var(--color-surface-soft));">
+			<div class="max-w-4xl mx-auto text-center">
+				<h1 class="text-4xl md:text-5xl font-serif mb-4">Extender Components</h1>
+				<p class="text-lg text-muted mb-8 max-w-2xl mx-auto">
+					Reusable layout and content components styled with the Legacy Concierge design system. All components support URL hash state for deep linking.
+				</p>
+				<div class="flex flex-wrap justify-center gap-3 text-sm">
+					<span class="px-3 py-1 rounded-full" style="background: var(--color-surface); border: 1px solid var(--color-border-soft);">Design Tokens</span>
+					<span class="px-3 py-1 rounded-full" style="background: var(--color-surface); border: 1px solid var(--color-border-soft);">URL Hash Sync</span>
+					<span class="px-3 py-1 rounded-full" style="background: var(--color-surface); border: 1px solid var(--color-border-soft);">Accessible</span>
+					<span class="px-3 py-1 rounded-full" style="background: var(--color-surface); border: 1px solid var(--color-border-soft);">BaseComponent</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- ======================= ACCORDION ======================= -->
+		<section id="accordion" class="demo-section border-t" style="border-color: var(--color-border-soft);">
+			<div class="max-w-5xl mx-auto px-[56px] py-16">
+				<header class="mb-8">
+					<span class="text-xs font-medium uppercase tracking-wider" style="color: var(--color-secondary);">Component</span>
+					<h2 class="text-3xl font-serif mt-1">Details Accordion</h2>
+					<p class="text-muted mt-2">Native HTMLDetailsElement-based accordion with expand/collapse controls.</p>
+				</header>
+
+				<tab-panel tab-style="pills" class="mb-8">
+					<div slot="tabs">
+						<button data-tab="acc-basic">Basic</button>
+						<button data-tab="acc-controls">With Controls</button>
+						<button data-tab="acc-single">Single Open</button>
+						<button data-tab="acc-hash">URL Hash</button>
+					</div>
+
+					<!-- Basic -->
+					<div data-panel="acc-basic" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;details-accordion&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<details-accordion>
+								<details>
+									<summary>What services do you offer?</summary>
+									<div class="p-5 text-muted">We offer comprehensive concierge nursing services including specialized care, post-operative recovery, and 24/7 monitoring.</div>
+								</details>
+								<details>
+									<summary>How do I schedule a consultation?</summary>
+									<div class="p-5 text-muted">Contact us via phone, email, or the website form. We respond within 24 hours.</div>
+								</details>
+								<details>
+									<summary>What are your hours?</summary>
+									<div class="p-5 text-muted">Office hours are Monday-Friday 9-5, but nursing services are available 24/7.</div>
+								</details>
+							</details-accordion>
+						</div>
+					</div>
+
+					<!-- With Controls -->
+					<div data-panel="acc-controls" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;details-accordion <span style="color: var(--color-secondary);">show-controls animate</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<details-accordion show-controls animate>
+								<details>
+									<summary>Panel One</summary>
+									<div class="p-5 text-muted">Expand/Collapse All buttons appear above the accordion.</div>
+								</details>
+								<details>
+									<summary>Panel Two</summary>
+									<div class="p-5 text-muted">Smooth animations when opening and closing panels.</div>
+								</details>
+								<details>
+									<summary>Panel Three</summary>
+									<div class="p-5 text-muted">Try the buttons to control all panels at once.</div>
+								</details>
+							</details-accordion>
+						</div>
+					</div>
+
+					<!-- Single Open -->
+					<div data-panel="acc-single" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;details-accordion <span style="color: var(--color-secondary);">single-open animate</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<details-accordion single-open animate>
+								<details>
+									<summary>First Item</summary>
+									<div class="p-5 text-muted">Only one panel can be open at a time.</div>
+								</details>
+								<details>
+									<summary>Second Item</summary>
+									<div class="p-5 text-muted">Opening this closes the previous panel.</div>
+								</details>
+								<details>
+									<summary>Third Item</summary>
+									<div class="p-5 text-muted">Great for FAQ sections or settings panels.</div>
+								</details>
+							</details-accordion>
+						</div>
+					</div>
+
+					<!-- URL Hash -->
+					<div data-panel="acc-hash" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;details-accordion <span style="color: var(--color-secondary);">sync-hash hash-prefix="faq"</span>&gt;</code>
+							<div class="mt-2 text-xs text-muted">Try: <a href="#faq-pricing" style="color: var(--color-secondary);">faq-pricing</a></div>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<details-accordion single-open animate sync-hash hash-prefix="faq">
+								<details id="services" data-panel="services">
+									<summary>Services</summary>
+									<div class="p-5 text-muted">Panel state syncs with URL hash.</div>
+								</details>
+								<details id="pricing" data-panel="pricing">
+									<summary>Pricing</summary>
+									<div class="p-5 text-muted">Share links that open specific panels.</div>
+								</details>
+								<details id="contact" data-panel="contact">
+									<summary>Contact</summary>
+									<div class="p-5 text-muted">Deep linking for better UX.</div>
+								</details>
+							</details-accordion>
+						</div>
+					</div>
+				</tab-panel>
+			</div>
+		</section>
+
+		<!-- ======================= TABS ======================= -->
+		<section id="tabs" class="demo-section border-t" style="border-color: var(--color-border-soft); background: var(--color-surface-muted);">
+			<div class="max-w-5xl mx-auto px-[56px] py-16">
+				<header class="mb-8">
+					<span class="text-xs font-medium uppercase tracking-wider" style="color: var(--color-secondary);">Component</span>
+					<h2 class="text-3xl font-serif mt-1">Tab Panel</h2>
+					<p class="text-muted mt-2">Accessible tabs with multiple styles and keyboard navigation.</p>
+				</header>
+
+				<tab-panel tab-style="pills" class="mb-8">
+					<div slot="tabs">
+						<button data-tab="tab-pills">Pills</button>
+						<button data-tab="tab-underline">Underline</button>
+						<button data-tab="tab-boxed">Boxed</button>
+						<button data-tab="tab-align">Alignment</button>
+					</div>
+
+					<!-- Pills Style -->
+					<div data-panel="tab-pills" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;tab-panel <span style="color: var(--color-secondary);">tab-style="pills"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<tab-panel tab-style="pills">
+								<div slot="tabs">
+									<button data-tab="p1">Overview</button>
+									<button data-tab="p2">Features</button>
+									<button data-tab="p3">Pricing</button>
+								</div>
+								<div data-panel="p1" class="py-4 text-muted">Overview content with pill-style tabs (default).</div>
+								<div data-panel="p2" class="py-4 text-muted">Features content. Use arrow keys to navigate.</div>
+								<div data-panel="p3" class="py-4 text-muted">Pricing content panel.</div>
+							</tab-panel>
+						</div>
+					</div>
+
+					<!-- Underline Style -->
+					<div data-panel="tab-underline" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;tab-panel <span style="color: var(--color-secondary);">tab-style="underline"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<tab-panel tab-style="underline">
+								<div slot="tabs">
+									<button data-tab="u1">Tab One</button>
+									<button data-tab="u2">Tab Two</button>
+									<button data-tab="u3">Tab Three</button>
+								</div>
+								<div data-panel="u1" class="py-4 text-muted">Underline style with border indicator.</div>
+								<div data-panel="u2" class="py-4 text-muted">Clean, minimal appearance.</div>
+								<div data-panel="u3" class="py-4 text-muted">Third tab content.</div>
+							</tab-panel>
+						</div>
+					</div>
+
+					<!-- Boxed Style -->
+					<div data-panel="tab-boxed" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;tab-panel <span style="color: var(--color-secondary);">tab-style="boxed"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<tab-panel tab-style="boxed">
+								<div slot="tabs">
+									<button data-tab="b1">Info</button>
+									<button data-tab="b2">Settings</button>
+								</div>
+								<div data-panel="b1" class="py-4 text-muted">Boxed tabs with bordered appearance.</div>
+								<div data-panel="b2" class="py-4 text-muted">Settings panel content.</div>
+							</tab-panel>
+						</div>
+					</div>
+
+					<!-- Alignment -->
+					<div data-panel="tab-align" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;tab-panel <span style="color: var(--color-secondary);">tab-align="center|right"</span>&gt;</code>
+						</div>
+						<div class="space-y-6">
+							<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+								<p class="text-xs text-muted mb-3">tab-align="center"</p>
+								<tab-panel tab-style="pills" tab-align="center">
+									<div slot="tabs">
+										<button data-tab="c1">One</button>
+										<button data-tab="c2">Two</button>
+									</div>
+									<div data-panel="c1" class="py-4 text-center text-muted">Centered tabs.</div>
+									<div data-panel="c2" class="py-4 text-center text-muted">Second panel.</div>
+								</tab-panel>
+							</div>
+							<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+								<p class="text-xs text-muted mb-3">tab-align="right"</p>
+								<tab-panel tab-style="pills" tab-align="right">
+									<div slot="tabs">
+										<button data-tab="r1">One</button>
+										<button data-tab="r2">Two</button>
+									</div>
+									<div data-panel="r1" class="py-4 text-right text-muted">Right-aligned tabs.</div>
+									<div data-panel="r2" class="py-4 text-right text-muted">Second panel.</div>
+								</tab-panel>
+							</div>
+						</div>
+					</div>
+				</tab-panel>
+			</div>
+		</section>
+
+		<!-- ======================= CARDS ======================= -->
+		<section id="cards" class="demo-section border-t" style="border-color: var(--color-border-soft);">
+			<div class="max-w-5xl mx-auto px-[56px] py-16">
+				<header class="mb-8">
+					<span class="text-xs font-medium uppercase tracking-wider" style="color: var(--color-secondary);">Component</span>
+					<h2 class="text-3xl font-serif mt-1">Content Card</h2>
+					<p class="text-muted mt-2">Versatile cards with images, expandable content, and multiple interaction modes.</p>
+				</header>
+
+				<tab-panel tab-style="pills" class="mb-8">
+					<div slot="tabs">
+						<button data-tab="card-featured">Featured Image</button>
+						<button data-tab="card-bg">Background Image</button>
+						<button data-tab="card-actions">Action Types</button>
+						<button data-tab="card-capabilities">Capabilities</button>
+					</div>
+
+					<!-- Featured Image -->
+					<div data-panel="card-featured" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;content-card <span style="color: var(--color-secondary);">image-mode="featured"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<div class="max-w-sm">
+								<content-card
+									image="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600"
+									image-mode="featured"
+									title="Featured Image Card"
+									tagline="Image appears at the top"
+									capability="expand"
+									action-text="Learn More"
+								>
+									<p class="text-sm text-muted">Card with a featured image displayed above the content area.</p>
+									<div slot="expanded">
+										<p class="text-muted">This expanded content appears inline when the card is opened.</p>
+									</div>
+								</content-card>
+							</div>
+						</div>
+					</div>
+
+					<!-- Background Image -->
+					<div data-panel="card-bg" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;content-card <span style="color: var(--color-secondary);">image-mode="background" invert</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<div class="grid md:grid-cols-2 gap-6">
+								<content-card
+									image="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800"
+									image-mode="background"
+									title="Background Mode"
+									tagline="Full cover image"
+									body-align-v="bottom"
+									action-type="icon"
+									capability="expand"
+									invert
+								>
+									<p class="text-sm" style="color: rgba(255,255,255,0.8);">Content overlays the background image with gradient.</p>
+									<div slot="expanded">
+										<p style="color: rgba(255,255,255,0.8);">Expanded content with inverted (light) text colors.</p>
+									</div>
+								</content-card>
+								<content-card
+									image="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800"
+									image-mode="background"
+									image-position="top"
+									title="Custom Position"
+									tagline="image-position: top"
+									title-align="center"
+									body-align-v="bottom"
+									body-align-h="center"
+									action-type="button"
+									action-align="center"
+									capability="expand"
+									invert
+								>
+									<p class="text-sm" style="color: rgba(255,255,255,0.8);">Centered text with custom image positioning.</p>
+									<div slot="expanded">
+										<p style="color: rgba(255,255,255,0.8);">Centered expanded content.</p>
+									</div>
+								</content-card>
+							</div>
+						</div>
+					</div>
+
+					<!-- Action Types -->
+					<div data-panel="card-actions" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;content-card <span style="color: var(--color-secondary);">action-type="button|icon" action-align="left|center|block"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<div class="grid md:grid-cols-3 gap-6">
+								<content-card title="Left Button" action-type="button" action-align="left" action-text="Click Me" capability="expand">
+									<p class="text-sm text-muted">Default left-aligned button.</p>
+									<div slot="expanded"><p>Expanded!</p></div>
+								</content-card>
+								<content-card title="Center Button" action-type="button" action-align="center" action-text="Centered" capability="expand">
+									<p class="text-sm text-muted">Centered button alignment.</p>
+									<div slot="expanded"><p>Expanded!</p></div>
+								</content-card>
+								<content-card title="Block Button" action-type="button" action-align="block" action-text="Full Width" capability="expand">
+									<p class="text-sm text-muted">Full-width block button.</p>
+									<div slot="expanded"><p>Expanded!</p></div>
+								</content-card>
+							</div>
+						</div>
+					</div>
+
+					<!-- Capabilities -->
+					<div data-panel="card-capabilities" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;content-card <span style="color: var(--color-secondary);">capability="expand|display|route"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<div class="grid md:grid-cols-3 gap-6">
+								<content-card
+									image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400"
+									image-mode="featured"
+									title="Expand"
+									capability="expand"
+									action-text="Expand Inline"
+								>
+									<p class="text-sm text-muted">Expands content inline.</p>
+									<div slot="expanded">
+										<p class="text-muted">This content expands within the card itself.</p>
+									</div>
+								</content-card>
+								<content-card
+									image="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400"
+									image-mode="featured"
+									title="Display"
+									capability="display"
+									action-text="Open Modal"
+								>
+									<p class="text-sm text-muted">Opens in a modal dialog.</p>
+									<div slot="expanded">
+										<p>This content appears in a modal overlay. Press Escape or click outside to close.</p>
+									</div>
+								</content-card>
+								<content-card
+									image="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=400"
+									image-mode="featured"
+									title="Route"
+									capability="route"
+									href="#accordion"
+									action-text="Navigate"
+								>
+									<p class="text-sm text-muted">Links to another page/section.</p>
+								</content-card>
+							</div>
+						</div>
+					</div>
+				</tab-panel>
+			</div>
+		</section>
+
+		<!-- ======================= SLIDER ======================= -->
+		<section id="slider" class="demo-section border-t text-inverse" style="border-color: var(--color-border-soft); background: var(--color-primary);">
+			<div class="max-w-5xl mx-auto px-[56px] py-16">
+				<header class="mb-8">
+					<span class="text-xs font-medium uppercase tracking-wider" style="color: var(--color-tertiary);">Component</span>
+					<h2 class="text-3xl font-serif mt-1">Scroll Slider</h2>
+					<p style="color: rgba(255,255,255,0.7);" class="mt-2">Horizontal carousel with custom scrollbar, snap behavior, and auto-scroll.</p>
+				</header>
+
+				<tab-panel tab-style="pills" class="mb-8">
+					<div slot="tabs">
+						<button data-tab="slider-basic">Basic</button>
+						<button data-tab="slider-arrows">With Arrows</button>
+						<button data-tab="slider-auto">Auto-Scroll</button>
+						<button data-tab="slider-hash">URL Hash</button>
+					</div>
+
+					<!-- Basic -->
+					<div data-panel="slider-basic" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: rgba(255,255,255,0.1);">
+							<code class="text-sm" style="color: rgba(255,255,255,0.7);">&lt;scroll-slider <span style="color: var(--color-tertiary);">show-scrollbar snap</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: rgba(255,255,255,0.2);">
+							<scroll-slider show-scrollbar snap gap="1">
+								<div class="w-64 h-40 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center font-bold shrink-0">Slide 1</div>
+								<div class="w-64 h-40 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl flex items-center justify-center font-bold shrink-0">Slide 2</div>
+								<div class="w-64 h-40 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center font-bold shrink-0">Slide 3</div>
+								<div class="w-64 h-40 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center font-bold shrink-0">Slide 4</div>
+								<div class="w-64 h-40 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center font-bold shrink-0">Slide 5</div>
+							</scroll-slider>
+						</div>
+					</div>
+
+					<!-- With Arrows -->
+					<div data-panel="slider-arrows" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: rgba(255,255,255,0.1);">
+							<code class="text-sm" style="color: rgba(255,255,255,0.7);">&lt;scroll-slider <span style="color: var(--color-tertiary);">show-arrows show-scrollbar snap-align="center"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: rgba(255,255,255,0.2);">
+							<scroll-slider show-arrows show-scrollbar snap snap-align="center" gap="1">
+								<div class="w-72 h-44 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);">Item A</div>
+								<div class="w-72 h-44 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);">Item B</div>
+								<div class="w-72 h-44 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);">Item C</div>
+								<div class="w-72 h-44 rounded-lg flex items-center justify-center shrink-0" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);">Item D</div>
+							</scroll-slider>
+						</div>
+					</div>
+
+					<!-- Auto-Scroll -->
+					<div data-panel="slider-auto" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: rgba(255,255,255,0.1);">
+							<code class="text-sm" style="color: rgba(255,255,255,0.7);">&lt;scroll-slider <span style="color: var(--color-tertiary);">auto-scroll auto-scroll-interval="3000" pause-on-hover</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: rgba(255,255,255,0.2);">
+							<scroll-slider show-scrollbar auto-scroll auto-scroll-interval="3000" pause-on-hover gap="1.5">
+								<div class="w-80 h-48 rounded-xl overflow-hidden shrink-0">
+									<img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400" alt="" class="w-full h-full object-cover">
+								</div>
+								<div class="w-80 h-48 rounded-xl overflow-hidden shrink-0">
+									<img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400" alt="" class="w-full h-full object-cover">
+								</div>
+								<div class="w-80 h-48 rounded-xl overflow-hidden shrink-0">
+									<img src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=400" alt="" class="w-full h-full object-cover">
+								</div>
+								<div class="w-80 h-48 rounded-xl overflow-hidden shrink-0">
+									<img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=400" alt="" class="w-full h-full object-cover">
+								</div>
+							</scroll-slider>
+						</div>
+					</div>
+
+					<!-- URL Hash -->
+					<div data-panel="slider-hash" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: rgba(255,255,255,0.1);">
+							<code class="text-sm" style="color: rgba(255,255,255,0.7);">&lt;scroll-slider <span style="color: var(--color-tertiary);">sync-hash hash-prefix="team"</span>&gt;</code>
+							<div class="mt-2 text-xs" style="color: rgba(255,255,255,0.5);">Try: <a href="#team-dr-jones" style="color: var(--color-tertiary);">#team-dr-jones</a></div>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: rgba(255,255,255,0.2);">
+							<scroll-slider show-scrollbar show-arrows snap sync-hash hash-prefix="team" gap="1">
+								<div id="dr-smith" data-slide="dr-smith" class="w-56 rounded-xl p-4 shrink-0" style="background: rgba(255,255,255,0.1);">
+									<div class="w-full h-28 rounded-lg mb-3" style="background: rgba(255,255,255,0.1);"></div>
+									<h4 class="font-semibold">Dr. Smith</h4>
+									<p class="text-sm" style="color: rgba(255,255,255,0.6);">Medical Director</p>
+								</div>
+								<div id="dr-jones" data-slide="dr-jones" class="w-56 rounded-xl p-4 shrink-0" style="background: rgba(255,255,255,0.1);">
+									<div class="w-full h-28 rounded-lg mb-3" style="background: rgba(255,255,255,0.1);"></div>
+									<h4 class="font-semibold">Dr. Jones</h4>
+									<p class="text-sm" style="color: rgba(255,255,255,0.6);">Head Nurse</p>
+								</div>
+								<div id="dr-wilson" data-slide="dr-wilson" class="w-56 rounded-xl p-4 shrink-0" style="background: rgba(255,255,255,0.1);">
+									<div class="w-full h-28 rounded-lg mb-3" style="background: rgba(255,255,255,0.1);"></div>
+									<h4 class="font-semibold">Dr. Wilson</h4>
+									<p class="text-sm" style="color: rgba(255,255,255,0.6);">Specialist</p>
+								</div>
+								<div id="dr-chen" data-slide="dr-chen" class="w-56 rounded-xl p-4 shrink-0" style="background: rgba(255,255,255,0.1);">
+									<div class="w-full h-28 rounded-lg mb-3" style="background: rgba(255,255,255,0.1);"></div>
+									<h4 class="font-semibold">Dr. Chen</h4>
+									<p class="text-sm" style="color: rgba(255,255,255,0.6);">Consultant</p>
+								</div>
+							</scroll-slider>
+						</div>
+					</div>
+				</tab-panel>
+			</div>
+		</section>
+
+		<!-- ======================= VIDEO ======================= -->
+		<section id="video" class="demo-section border-t" style="border-color: var(--color-border-soft);">
+			<div class="max-w-5xl mx-auto px-[56px] py-16">
+				<header class="mb-8">
+					<span class="text-xs font-medium uppercase tracking-wider" style="color: var(--color-secondary);">Component</span>
+					<h2 class="text-3xl font-serif mt-1">Video Player</h2>
+					<p class="text-muted mt-2">HTML5 video wrapper with standard attributes and event handling.</p>
+				</header>
+
+				<tab-panel tab-style="pills" class="mb-8">
+					<div slot="tabs">
+						<button data-tab="video-basic">Basic</button>
+						<button data-tab="video-poster">With Poster</button>
+						<button data-tab="video-background">Background Mode</button>
+						<button data-tab="video-aspect">Aspect Ratios</button>
+					</div>
+
+					<!-- Basic -->
+					<div data-panel="video-basic" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;video-player <span style="color: var(--color-secondary);">src="video.mp4" controls</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<video-player
+								src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+								controls
+								aspect-ratio="16/9"
+								width="100%"
+							></video-player>
+						</div>
+					</div>
+
+					<!-- With Poster -->
+					<div data-panel="video-poster" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;video-player <span style="color: var(--color-secondary);">poster="thumbnail.jpg" preload="none"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<div class="max-w-lg mx-auto">
+								<video-player
+									src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+									poster="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800"
+									controls
+									preload="none"
+									aspect-ratio="16/9"
+								></video-player>
+							</div>
+						</div>
+					</div>
+
+					<!-- Background Mode -->
+					<div data-panel="video-background" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;video-player <span style="color: var(--color-secondary);">autoplay loop muted</span> controls="false"&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<div class="relative rounded-xl overflow-hidden">
+								<video-player
+									src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+									autoplay
+									loop
+									muted
+									controls="false"
+									aspect-ratio="21/9"
+								></video-player>
+								<div class="absolute inset-0 flex items-center justify-center" style="background: rgba(0,0,0,0.4);">
+									<div class="text-center text-white">
+										<h3 class="text-2xl font-serif mb-2">Background Video</h3>
+										<p class="text-sm" style="color: rgba(255,255,255,0.8);">Autoplay, loop, muted - perfect for hero sections</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Aspect Ratios -->
+					<div data-panel="video-aspect" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;video-player <span style="color: var(--color-secondary);">aspect-ratio="16/9|4/3|21/9|1/1"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<div class="grid md:grid-cols-2 gap-6">
+								<div>
+									<p class="text-xs text-muted mb-2">aspect-ratio="16/9" (default)</p>
+									<video-player
+										src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+										controls
+										preload="none"
+										poster="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400"
+										aspect-ratio="16/9"
+									></video-player>
+								</div>
+								<div>
+									<p class="text-xs text-muted mb-2">aspect-ratio="4/3"</p>
+									<video-player
+										src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+										controls
+										preload="none"
+										poster="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=400"
+										aspect-ratio="4/3"
+									></video-player>
+								</div>
+							</div>
+						</div>
+					</div>
+				</tab-panel>
+			</div>
+		</section>
+
+		<!-- ======================= MEDIA TEXT ======================= -->
+		<section id="media-text" class="demo-section border-t" style="border-color: var(--color-border-soft); background: var(--color-surface-muted);">
+			<div class="max-w-5xl mx-auto px-[56px] py-16">
+				<header class="mb-8">
+					<span class="text-xs font-medium uppercase tracking-wider" style="color: var(--color-secondary);">Component</span>
+					<h2 class="text-3xl font-serif mt-1">Media Text</h2>
+					<p class="text-muted mt-2">Two-column image + text layout with simple, focused API.</p>
+				</header>
+
+				<tab-panel tab-style="pills" class="mb-8">
+					<div slot="tabs">
+						<button data-tab="media-basic">Basic</button>
+						<button data-tab="media-position">Image Position</button>
+						<button data-tab="media-ratios">Ratios</button>
+						<button data-tab="media-options">Options</button>
+					</div>
+
+					<!-- Basic -->
+					<div data-panel="media-basic" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;media-text <span style="color: var(--color-secondary);">image="photo.jpg" title="Title"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<media-text
+								image="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800"
+								title="Quality Care You Deserve"
+							>
+								<p class="text-muted">Legacy Concierge provides personalized healthcare services tailored to your unique needs. Our team of dedicated professionals ensures you receive the highest standard of care in the comfort of your home.</p>
+								<a href="#" slot="action" class="btn-base btn-padding btn-solid inline-block no-underline">Learn More</a>
+							</media-text>
+						</div>
+					</div>
+
+					<!-- Image Position -->
+					<div data-panel="media-position" class="pt-6 space-y-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;media-text <span style="color: var(--color-secondary);">image-position="left|right"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">image-position="left" (default)</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600"
+								image-position="left"
+								title="Image on Left"
+							>
+								<p class="text-muted">The image appears on the left side by default, with text content on the right.</p>
+							</media-text>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">image-position="right"</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=600"
+								image-position="right"
+								title="Image on Right"
+							>
+								<p class="text-muted">Set image-position="right" to flip the layout with text on the left.</p>
+							</media-text>
+						</div>
+					</div>
+
+					<!-- Ratios -->
+					<div data-panel="media-ratios" class="pt-6 space-y-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;media-text <span style="color: var(--color-secondary);">ratio="50-50|60-40|40-60"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">ratio="60-40" (larger image)</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800"
+								ratio="60-40"
+								title="Larger Image Focus"
+							>
+								<p class="text-muted">60-40 ratio gives more visual emphasis to the image while keeping text compact.</p>
+							</media-text>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">ratio="40-60" (larger text area)</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600"
+								ratio="40-60"
+								title="More Room for Content"
+							>
+								<p class="text-muted">40-60 ratio provides more space for longer text content while still featuring a supporting image.</p>
+								<p class="text-muted mt-2">Perfect for detailed descriptions or multiple paragraphs.</p>
+							</media-text>
+						</div>
+					</div>
+
+					<!-- Options -->
+					<div data-panel="media-options" class="pt-6 space-y-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;media-text <span style="color: var(--color-secondary);">align="start|center|end" reverse-mobile image-fit="cover|contain"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">align="center" (vertical centering)</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600"
+								align="center"
+								title="Centered Alignment"
+							>
+								<p class="text-muted">Short text that vertically centers with the image.</p>
+							</media-text>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">reverse-mobile (image below text on mobile)</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600"
+								reverse-mobile
+								title="Mobile Optimized"
+							>
+								<p class="text-muted">On mobile devices, the text will appear first with the image below. Try resizing your browser to see the effect.</p>
+								<a href="#" slot="action" class="btn-base btn-padding btn-outline inline-block no-underline">Contact Us</a>
+							</media-text>
+						</div>
+					</div>
+				</tab-panel>
+			</div>
+		</section>
+
+		<!-- ======================= SECTIONS ======================= -->
+		<section id="sections" class="demo-section border-t" style="border-color: var(--color-border-soft);">
+			<div class="max-w-5xl mx-auto px-[56px] py-16">
+				<header class="mb-8">
+					<span class="text-xs font-medium uppercase tracking-wider" style="color: var(--color-secondary);">Component</span>
+					<h2 class="text-3xl font-serif mt-1">Content Section</h2>
+					<p class="text-muted mt-2">Section wrapper with backgrounds, overlays, and blur effects.</p>
+				</header>
+
+				<tab-panel tab-style="pills" class="mb-8">
+					<div slot="tabs">
+						<button data-tab="sec-overlay">Overlays</button>
+						<button data-tab="sec-blur">Blur Effect</button>
+						<button data-tab="sec-options">Options</button>
+					</div>
+
+					<!-- Overlays -->
+					<div data-panel="sec-overlay" class="pt-6 space-y-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;content-section <span style="color: var(--color-secondary);">overlay="dark|light|gradient"</span>&gt;</code>
+						</div>
+						<content-section
+							background="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200"
+							overlay="dark"
+							overlay-opacity="70"
+							padding="md"
+							align="center"
+							invert
+						>
+							<h3 class="text-xl font-semibold mb-2">Dark Overlay</h3>
+							<p style="color: rgba(255,255,255,0.8);">overlay="dark" overlay-opacity="70"</p>
+						</content-section>
+						<content-section
+							background="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1200"
+							overlay="light"
+							overlay-opacity="85"
+							padding="md"
+							align="center"
+						>
+							<h3 class="text-xl font-semibold mb-2">Light Overlay</h3>
+							<p class="text-muted">overlay="light" overlay-opacity="85"</p>
+						</content-section>
+						<content-section
+							background="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200"
+							overlay="gradient"
+							overlay-opacity="80"
+							padding="md"
+							align="center"
+							invert
+						>
+							<h3 class="text-xl font-semibold mb-2">Gradient Overlay</h3>
+							<p style="color: rgba(255,255,255,0.8);">overlay="gradient" - uses design token gradient</p>
+						</content-section>
+					</div>
+
+					<!-- Blur -->
+					<div data-panel="sec-blur" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;content-section <span style="color: var(--color-secondary);">blur blur-amount="12"</span>&gt;</code>
+						</div>
+						<content-section
+							background="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=1200"
+							overlay="dark"
+							overlay-opacity="40"
+							blur
+							blur-amount="12"
+							padding="lg"
+							width="narrow"
+							align="center"
+							invert
+						>
+							<h3 class="text-xl font-semibold mb-2">Frosted Glass Effect</h3>
+							<p style="color: rgba(255,255,255,0.9);">Content wrapped in a blur container for depth and focus.</p>
+						</content-section>
+					</div>
+
+					<!-- Options -->
+					<div data-panel="sec-options" class="pt-6 space-y-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">padding="sm|md|lg|xl" width="narrow|normal|wide|full" align="left|center|right"</code>
+						</div>
+						<content-section background-color="secondary" padding="sm" align="center" invert>
+							<p class="font-medium">padding="sm" + background-color (secondary)</p>
+						</content-section>
+						<content-section
+							background="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=1200"
+							background-fixed
+							overlay="dark"
+							overlay-opacity="60"
+							padding="lg"
+							align="center"
+							invert
+						>
+							<h3 class="text-xl font-semibold mb-2">Fixed Background (Parallax)</h3>
+							<p style="color: rgba(255,255,255,0.8);">background-fixed creates a parallax scroll effect.</p>
+						</content-section>
+					</div>
+				</tab-panel>
+			</div>
+		</section>
+
+		<!-- ======================= SPLIT ======================= -->
+		<section id="split" class="demo-section border-t" style="border-color: var(--color-border-soft); background: var(--color-surface-muted);">
+			<div class="max-w-5xl mx-auto px-[56px] py-16">
+				<header class="mb-8">
+					<span class="text-xs font-medium uppercase tracking-wider" style="color: var(--color-secondary);">Component</span>
+					<h2 class="text-3xl font-serif mt-1">Split Section</h2>
+					<p class="text-muted mt-2">Two-column layouts with various ratios and dividers.</p>
+				</header>
+
+				<tab-panel tab-style="pills" class="mb-8">
+					<div slot="tabs">
+						<button data-tab="split-ratio">Ratios</button>
+						<button data-tab="split-divider">Dividers</button>
+						<button data-tab="split-align">Alignment</button>
+					</div>
+
+					<!-- Ratios -->
+					<div data-panel="split-ratio" class="pt-6 space-y-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;split-section <span style="color: var(--color-secondary);">ratio="50-50|60-40|70-30"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-3">ratio="50-50" (default)</p>
+							<split-section ratio="50-50" gap="4">
+								<div slot="start" class="p-4 rounded-lg text-center" style="background: var(--color-surface-muted);">50%</div>
+								<div slot="end" class="p-4 rounded-lg text-center" style="background: var(--color-surface-muted);">50%</div>
+							</split-section>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-3">ratio="60-40"</p>
+							<split-section ratio="60-40" gap="4">
+								<div slot="start" class="p-4 rounded-lg text-center" style="background: var(--color-surface-muted);">60%</div>
+								<div slot="end" class="p-4 rounded-lg text-center" style="background: var(--color-surface-muted);">40%</div>
+							</split-section>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-3">ratio="30-70"</p>
+							<split-section ratio="30-70" gap="4">
+								<div slot="start" class="p-4 rounded-lg text-center" style="background: var(--color-surface-muted);">30%</div>
+								<div slot="end" class="p-4 rounded-lg text-center" style="background: var(--color-surface-muted);">70%</div>
+							</split-section>
+						</div>
+					</div>
+
+					<!-- Dividers -->
+					<div data-panel="split-divider" class="pt-6 space-y-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;split-section <span style="color: var(--color-secondary);">divider="line|gradient|dot"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-3">divider="line"</p>
+							<split-section divider="line" gap="6">
+								<div slot="start" class="text-muted">Left column content with a line divider between columns.</div>
+								<div slot="end" class="text-muted">Right column content.</div>
+							</split-section>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-3">divider="gradient"</p>
+							<split-section divider="gradient" gap="6">
+								<div slot="start" class="text-muted">Gradient divider fades at the edges.</div>
+								<div slot="end" class="text-muted">Creates a subtle separation.</div>
+							</split-section>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-3">divider="dot"</p>
+							<split-section divider="dot" gap="6">
+								<div slot="start" class="text-muted">Dot divider with three vertical dots.</div>
+								<div slot="end" class="text-muted">Decorative separator option.</div>
+							</split-section>
+						</div>
+					</div>
+
+					<!-- Alignment -->
+					<div data-panel="split-align" class="pt-6 space-y-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;split-section <span style="color: var(--color-secondary);">align="start|center|end|stretch" reverse-mobile</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-3">align="stretch"</p>
+							<split-section align="stretch" gap="4">
+								<div slot="start" class="p-4 rounded-lg" style="background: var(--color-surface-muted);">
+									<p>Short content</p>
+								</div>
+								<div slot="end" class="p-4 rounded-lg" style="background: var(--color-surface-muted);">
+									<p>Taller content</p>
+									<p class="mt-2">Both columns stretch to match height.</p>
+								</div>
+							</split-section>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-3">reverse-mobile - order flips on small screens</p>
+							<split-section ratio="30-70" gap="4" reverse-mobile>
+								<div slot="start" class="p-4 rounded-lg text-center text-inverse" style="background: var(--color-secondary);">First (appears second on mobile)</div>
+								<div slot="end" class="p-4 rounded-lg text-center" style="background: var(--color-surface-muted);">Second (appears first on mobile)</div>
+							</split-section>
+						</div>
+					</div>
+				</tab-panel>
+			</div>
+		</section>
+
+	</main>
+
+	<!-- Back to Top -->
+	<a href="#" class="fixed bottom-6 right-6 p-3 rounded-full shadow-lg hover:scale-110 transition-transform" style="background: var(--color-primary); color: var(--color-text-inverse);">
+		<svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
+		</svg>
+	</a>
+
+	<!-- Mobile Menu Toggle Script -->
+	<script>
+		document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+			document.getElementById('mobile-menu').classList.toggle('hidden');
+		});
+		document.querySelectorAll('#mobile-menu a').forEach(link => {
+			link.addEventListener('click', () => {
+				document.getElementById('mobile-menu').classList.add('hidden');
+			});
+		});
+	</script>
+
+	<!-- Load Components -->
+	<script type="module">
+		import "./index.js";
+	</script>
+
+</body>
+</html>

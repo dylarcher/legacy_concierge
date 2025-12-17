@@ -8,6 +8,40 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **Extender Components** - Migrated reusable layout components from `.extract/components/`
+  - `src/blocks/extenders/_base.js` - Re-exports base utilities with hash utilities
+  - `src/blocks/extenders/content-card.js` - Versatile card with featured/background images
+  - `src/blocks/extenders/content-section.js` - Section wrapper with backgrounds and overlays
+  - `src/blocks/extenders/details-accordion.js` - Native details/summary accordion
+  - `src/blocks/extenders/scroll-slider.js` - Horizontal carousel with custom scrollbar
+  - `src/blocks/extenders/split-section.js` - Two-column layout with dividers
+  - `src/blocks/extenders/tab-panel.js` - Tab interface with multiple styles
+  - `src/blocks/extenders/index.js` - Barrel export for all extender components
+- **New Extender Components**
+  - `src/blocks/extenders/video-player.js` - HTML5 video wrapper with controls, poster, autoplay, loop, muted, aspect-ratio attributes
+  - `src/blocks/extenders/media-text.js` - Two-column image/text layout with position, ratio, alignment, and mobile reverse options
+- **Global Search** - Quick links autocomplete in navbar search dialog
+  - Added search index with 30+ pages (Main, Treatments, Expertise, Legal categories)
+  - Keyboard navigation (arrow keys, enter to select, escape to close)
+  - Results show page title with category badge
+  - Located in `src/blocks/sections/nav.js`
+
+### Changed
+
+- **Extender styling** - Updated extracted components to use design system tokens
+  - Replaced hardcoded colors with `var(--color-*)` semantic tokens
+  - Applied design system utilities: `card-interactive`, `btn-solid`, `scrollbar-minimal`
+  - Used gradient tokens: `--linear-card-overlay`, `--linear-feature-overlay`
+  - Applied 56px edge padding consistent with main stylesheet
+- **Homepage Services Section** - Replaced disease-focused services with treatment programs
+  - Updated "COMPREHENSIVE CARE SERVICES" grid to link to `/pages/treatments/` instead of `/pages/services/`
+  - Now features: Cardiac Care, Eating Disorder Support, IV Therapy, Neurological Care, Oncology Care, Pain Management, Palliative Care, Post-Operative Care, Respiratory Care
+- **Extenders Demo Page** - Added sections for video-player and media-text components
+  - Updated navigation to include Video and Media Text links
+  - Added interactive demos with tabs for different configurations
+
 ## [0.14.3] - 2024-12-16
 
 ### Fixed

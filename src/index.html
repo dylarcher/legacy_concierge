@@ -226,7 +226,8 @@
 							</div>
 							<ul class="lg:row-start-2 lg:max-w-md">
 								<li
-									class="bg-[rgb(var(--hues-warm-redish-brown))] py-4 px-6 flex justify-between font-medium tracking-normal mb-4 rounded-3xl">
+									class="bg-[#80624C] py-4 px-6 flex justify-between font-medium 
+									text-black tracking-normal mb-4 rounded-3xl">
 									<div>Assisted Living Facility</div>
 									<div>70 - 100 patients : 1 RN</div>
 								</li>
@@ -283,50 +284,46 @@
 							specialty.
 						</p>
 					</div>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						<a href="./pages/services/alzheimers"
+					<div class="grid grid-cols-2 gap-6">
+						<a href="./pages/treatments/cardiac"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Alzheimer's Care
+							Cardiac Care
 						</a>
-						<a href="./pages/services/als"
+						<a href="./pages/treatments/eating"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							ALS Care
+							Eating Disorder Support
 						</a>
-						<a href="./pages/services/dementia"
+						<a href="./pages/treatments/iv"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Dementia Care
+							IV Therapy
 						</a>
-						<a href="./pages/services/diabetes"
+						<a href="./pages/treatments/neurological"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Diabetes Management
+							Neurological Care
 						</a>
-						<a href="./pages/services/heart-disease"
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Heart Disease Care
-						</a>
-						<a href="./pages/services/ms"
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Multiple Sclerosis Care
-						</a>
-						<a href="./pages/services/oncology"
+						<a href="./pages/treatments/oncology"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
 							Oncology Care
 						</a>
-						<a href="./pages/services/ostomy"
+						<a href="./pages/treatments/pain"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Ostomy Management
+							Pain Management
 						</a>
-						<a href="./pages/services/parkinsons"
+						<a href="./pages/treatments/palliative"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Parkinson's Care
+							Palliative Care
 						</a>
-						<a href="./pages/services/stroke"
+						<a href="./pages/treatments/post-op"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Stroke Recovery
+							Post-Operative Care
 						</a>
-						<a href="./pages/services/tbi"
+						<a href="./pages/treatments/respiratory"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Traumatic Brain Injury Care
+							Respiratory Care
+						</a>
+						<a href="./pages/treatments/wellness"
+							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
+							Wellness Programs
 						</a>
 					</div>
 				</div>
@@ -422,35 +419,58 @@
 				</div>
 			</section>
 
-			<section id="we-treat" class="py-24 overflow-x-hidden">
-				<header class="mx-auto max-w-8xl px-[56px]">
-					<!-- Section Header -->
-					<div class="flex flex-wrap items-center justify-start max-w-4xl lg:justify-center gap-4 mb-12 mx-auto">
-						<h2
-							class="font-serif text-secondary text-3xl md:text-4xl lg:text-5xl tracking-normal text-balance">
-							OUR PROCESS
-						</h2>
-						<div class="hidden sm:block w-48 h-px bg-[#0b2736]/30 mt-1"></div>
-						<p class="font-serif text-primary text-md lg:text-lg tracking-normal text-nowrap">
-							Designed for
-							<span class="italic">Clinical Precision</span> and
-							<span class="italic">Complete Peace of Mind</span>
-						</p>
-					</div>
+			<section id="ceo-note" class="py-8">
+				<div class="relative mx-auto max-w-4xl px-[56px] mt-12 text-center">
+					<video 
+						class="w-max mx-auto h-auto rounded-2xl shadow-lg ring-1 ring-zinc-950/5"
+						poster="/assets/media/videos/lcintro-poster.jpg"
+						preload="metadata"
+						playsinline
+						controls>
+						<source src="/assets/media/videos/lcintro.webm" type="video/webm">
+						<source src="/assets/media/videos/lcintro.mp4" type="video/mp4">
+						<source src="/assets/media/videos/lcintro.ogv" type="video/ogg">
+						Your browser does not support the video tag.
+					</video>
+					<!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						fill="currentColor"
+						class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-24 text-white/80 m-auto">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path
+							d="M17 3.34a10 10 0 1 1 -15 8.66l.005 -.324a10 10 0 0 1 14.995 -8.336m-5.293 4.953a1 1 0 0 0 -1.707 .707v6c0 .217 .07 .433 .21 .613l.083 .094a1 1 0 0 0 1.414 0l3 -3a1 1 0 0 0 0 -1.414z" />
+					</svg>
+					<img class="m-auto" src="/assets/media/videos/ceo-video-placeholder.webp" alt="CEO Note Background"
+						class="hidden"> -->
+				</div>
+			</section>
 
-					<!-- Section Description -->
-					<div class="max-w-4xl mx-auto text-center mb-12">
-						<p class="text-primary text-sm lg:text-md">
+			<section id="we-treat" class="py-24 overflow-x-hidden">
+				<header class="mx-auto max-w-4xl px-[56px]" style="max-width:1240px !important">
+					<!-- Section Header -->
+						<div class="flex flex-wrap items-center justify-start lg:justify-start gap-4 mb-12">
+							<h2
+								class="font-serif text-secondary text-3xl md:text-4xl lg:text-5xl tracking-normal text-balance">
+								OUR PROCESS
+							</h2>
+							<div class="hidden sm:block w-48 h-px bg-[#0b2736]/30 mt-1"></div>
+							<p class="font-serif text-primary text-md lg:text-lg tracking-normal text-nowrap">
+								Designed for
+								<span class="italic">Clinical Precision</span> and
+								<span class="italic">Complete Peace of Mind</span>
+							</p>
+						</div>
+
+						<!-- Section Description -->
+						<p class="text-primary text-sm lg:text-md mb-0">
 							At Legacy Concierge, every client's journey begins with an
 							uncompromising standard of medical excellence. Our four-step
 							process ensures your care is clinically precise, fully
 							coordinated, and personally tailored — from your first call to
 							your final recovery milestone.
 						</p>
-					</div>
 				</header>
 				<div id="treatment-cards"
-					class="scrollbar-minimal mt-11 flex items-stretch gap-6 sm:mt-16 px-[56px] overflow-x-auto 3xl:overflow-x-visible 2xl:justify-center pb-8 mb-8">
+					class="scrollbar-minimal mt-11 flex items-stretch gap-6 sm:mt-16 px-[56px] overflow-x-auto 3xl:overflow-x-visible 2xl:justify-center">
 					<!-- Treatment Card A: Comprehensive Medical & Environmental Assessment -->
 					<div
 						class="relative shrink-0 w-80 sm:w-96 2xl:w-[calc(25%-1.5rem)] 2xl:min-w-80 rounded-2xl overflow-hidden group">
@@ -462,8 +482,9 @@
 						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
 						</div>
 						<button type="button"
-							class="bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-colors outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100"
-							aria-label="Expand card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 hover:rotate-45 opacity-80 hover:opacity-100"
+							aria-label="Learn more about Comprehensive Medical Assessment"
+							data-dialog="treatment-dialog-assessment"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 								fill="currentColor" class="w-full bg-primary rounded-full">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 								<path
@@ -488,8 +509,9 @@
 						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
 						</div>
 						<button type="button"
-							class="bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-colors outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100"
-							aria-label="Expand card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 hover:rotate-45 opacity-80 hover:opacity-100"
+							aria-label="Learn more about Building Your Care Team"
+							data-dialog="treatment-dialog-team"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 								fill="currentColor" class="w-full bg-primary rounded-full">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 								<path
@@ -514,8 +536,9 @@
 						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
 						</div>
 						<button type="button"
-							class="bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-colors outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100"
-							aria-label="Expand card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 hover:rotate-45 opacity-80 hover:opacity-100"
+							aria-label="Learn more about Your Care Plan"
+							data-dialog="treatment-dialog-plan"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 								fill="currentColor" class="w-full bg-primary rounded-full">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 								<path
@@ -540,8 +563,9 @@
 						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
 						</div>
 						<button type="button"
-							class="bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-colors outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100"
-							aria-label="Expand card"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 hover:rotate-45 opacity-80 hover:opacity-100"
+							aria-label="Learn more about Clinical Oversight"
+							data-dialog="treatment-dialog-oversight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
 								fill="currentColor" class="w-full bg-primary rounded-full">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 								<path
@@ -555,22 +579,41 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- Treatment Dialogs -->
+				<treatment-dialog
+					id="treatment-dialog-assessment"
+					title="Comprehensive Medical & Environmental Assessment"
+					image="/assets/media/images/grayscale/medica-professional-couch.grayscale.webp">
+					<p>We begin with a thorough clinical evaluation of your health history, current conditions, and care goals.</p>
+					<p>Our team also assesses your home environment to ensure it supports safe, effective care delivery.</p>
+				</treatment-dialog>
+
+				<treatment-dialog
+					id="treatment-dialog-team"
+					title="Build Your Personalized Care Team"
+					image="/assets/media/images/grayscale/elite-nurses-posing.grayscale.webp">
+					<p>We hand-select elite nurses from our network who match your specific medical needs and personal preferences.</p>
+					<p>Your dedicated care team is built around you, ensuring continuity and trust from day one.</p>
+				</treatment-dialog>
+
+				<treatment-dialog
+					id="treatment-dialog-plan"
+					title="Develop & Approve Your Personalized Care Plan"
+					image="/assets/media/images/grayscale/reviewing-nutrition-diet.grayscale.webp">
+					<p>Working closely with you and your physicians, we create a comprehensive care plan tailored to your unique needs.</p>
+					<p>Every detail is reviewed and approved by you before care begins, ensuring complete alignment with your goals.</p>
+				</treatment-dialog>
+
+				<treatment-dialog
+					id="treatment-dialog-oversight"
+					title="Begin Ongoing Clinical Oversight & Adaptive Care"
+					image="/assets/media/images/grayscale/loved-one-giving-patient-support.grayscale.webp">
+					<p>Your care begins with 24/7 clinical oversight, real-time monitoring, and seamless coordination with your medical team.</p>
+					<p>As your needs evolve, we adapt your care plan to ensure optimal outcomes every step of the way.</p>
+				</treatment-dialog>
 				<div class="scrollbar-minimal-track mt-8 2xl:hidden" aria-hidden="true">
 					<div class="scrollbar-minimal-thumb" id="treatment-scrollbar-thumb"></div>
-				</div>
-			</section>
-
-			<section id="ceo-note" class="py-8">
-				<div class="relative mx-auto max-w-4xl px-[56px] mb-12 text-center">
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-						fill="currentColor"
-						class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-24 text-white/80 m-auto">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-						<path
-							d="M17 3.34a10 10 0 1 1 -15 8.66l.005 -.324a10 10 0 0 1 14.995 -8.336m-5.293 4.953a1 1 0 0 0 -1.707 .707v6c0 .217 .07 .433 .21 .613l.083 .094a1 1 0 0 0 1.414 0l3 -3a1 1 0 0 0 0 -1.414z" />
-					</svg>
-					<img class="m-auto" src="/assets/media/videos/ceo-video-placeholder.webp" alt="CEO Note Background"
-						class="hidden">
 				</div>
 			</section>
 
