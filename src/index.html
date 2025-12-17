@@ -226,7 +226,8 @@
 							</div>
 							<ul class="lg:row-start-2 lg:max-w-md">
 								<li
-									class="bg-[rgb(var(--hues-warm-redish-brown))] py-4 px-6 flex justify-between font-medium tracking-normal mb-4 rounded-3xl">
+									class="bg-[#80624C] py-4 px-6 flex justify-between font-medium 
+									text-black tracking-normal mb-4 rounded-3xl">
 									<div>Assisted Living Facility</div>
 									<div>70 - 100 patients : 1 RN</div>
 								</li>
@@ -283,50 +284,46 @@
 							specialty.
 						</p>
 					</div>
-					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-						<a href="./pages/services/alzheimers"
+					<div class="grid grid-cols-2 gap-6">
+						<a href="./pages/treatments/cardiac"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Alzheimer's Care
+							Cardiac Care
 						</a>
-						<a href="./pages/services/als"
+						<a href="./pages/treatments/eating"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							ALS Care
+							Eating Disorder Support
 						</a>
-						<a href="./pages/services/dementia"
+						<a href="./pages/treatments/iv"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Dementia Care
+							IV Therapy
 						</a>
-						<a href="./pages/services/diabetes"
+						<a href="./pages/treatments/neurological"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Diabetes Management
+							Neurological Care
 						</a>
-						<a href="./pages/services/heart-disease"
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Heart Disease Care
-						</a>
-						<a href="./pages/services/ms"
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Multiple Sclerosis Care
-						</a>
-						<a href="./pages/services/oncology"
+						<a href="./pages/treatments/oncology"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
 							Oncology Care
 						</a>
-						<a href="./pages/services/ostomy"
+						<a href="./pages/treatments/pain"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Ostomy Management
+							Pain Management
 						</a>
-						<a href="./pages/services/parkinsons"
+						<a href="./pages/treatments/palliative"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Parkinson's Care
+							Palliative Care
 						</a>
-						<a href="./pages/services/stroke"
+						<a href="./pages/treatments/post-op"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Stroke Recovery
+							Post-Operative Care
 						</a>
-						<a href="./pages/services/tbi"
+						<a href="./pages/treatments/respiratory"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
-							Traumatic Brain Injury Care
+							Respiratory Care
+						</a>
+						<a href="./pages/treatments/wellness"
+							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-md no-underline">
+							Wellness Programs
 						</a>
 					</div>
 				</div>
@@ -422,6 +419,31 @@
 				</div>
 			</section>
 
+			<section id="ceo-note" class="py-8">
+				<div class="relative mx-auto max-w-4xl px-[56px] mt-12 text-center">
+					<video 
+						class="w-max mx-auto h-auto rounded-2xl shadow-lg ring-1 ring-zinc-950/5"
+						poster="/assets/media/videos/lcintro-poster.jpg"
+						preload="metadata"
+						playsinline
+						controls>
+						<source src="/assets/media/videos/lcintro.webm" type="video/webm">
+						<source src="/assets/media/videos/lcintro.mp4" type="video/mp4">
+						<source src="/assets/media/videos/lcintro.ogv" type="video/ogg">
+						Your browser does not support the video tag.
+					</video>
+					<!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						fill="currentColor"
+						class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-24 text-white/80 m-auto">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path
+							d="M17 3.34a10 10 0 1 1 -15 8.66l.005 -.324a10 10 0 0 1 14.995 -8.336m-5.293 4.953a1 1 0 0 0 -1.707 .707v6c0 .217 .07 .433 .21 .613l.083 .094a1 1 0 0 0 1.414 0l3 -3a1 1 0 0 0 0 -1.414z" />
+					</svg>
+					<img class="m-auto" src="/assets/media/videos/ceo-video-placeholder.webp" alt="CEO Note Background"
+						class="hidden"> -->
+				</div>
+			</section>
+
 			<section id="we-treat" class="py-24 overflow-x-hidden">
 				<header class="mx-auto max-w-8xl px-[56px]">
 					<!-- Section Header -->
@@ -439,7 +461,7 @@
 					</div>
 
 					<!-- Section Description -->
-					<div class="max-w-4xl mx-auto text-center mb-12">
+					<div class="max-w-xl mx-auto text-center mb-12">
 						<p class="text-primary text-sm lg:text-md">
 							At Legacy Concierge, every client's journey begins with an
 							uncompromising standard of medical excellence. Our four-step
@@ -557,31 +579,6 @@
 				</div>
 				<div class="scrollbar-minimal-track mt-8 2xl:hidden" aria-hidden="true">
 					<div class="scrollbar-minimal-thumb" id="treatment-scrollbar-thumb"></div>
-				</div>
-			</section>
-
-			<section id="ceo-note" class="py-8">
-				<div class="relative mx-auto max-w-4xl px-[56px] mb-12 text-center">
-					<video 
-						class="w-max mx-auto h-auto rounded-2xl shadow-lg ring-1 ring-zinc-950/5"
-						poster="/assets/media/videos/lcintro-poster.jpg"
-						preload="metadata"
-						playsinline
-						controls>
-						<source src="/assets/media/videos/lcintro.webm" type="video/webm">
-						<source src="/assets/media/videos/lcintro.mp4" type="video/mp4">
-						<source src="/assets/media/videos/lcintro.ogv" type="video/ogg">
-						Your browser does not support the video tag.
-					</video>
-					<!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-						fill="currentColor"
-						class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-24 text-white/80 m-auto">
-						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-						<path
-							d="M17 3.34a10 10 0 1 1 -15 8.66l.005 -.324a10 10 0 0 1 14.995 -8.336m-5.293 4.953a1 1 0 0 0 -1.707 .707v6c0 .217 .07 .433 .21 .613l.083 .094a1 1 0 0 0 1.414 0l3 -3a1 1 0 0 0 0 -1.414z" />
-					</svg>
-					<img class="m-auto" src="/assets/media/videos/ceo-video-placeholder.webp" alt="CEO Note Background"
-						class="hidden"> -->
 				</div>
 			</section>
 
