@@ -20,28 +20,104 @@ const SEARCH_INDEX = [
 	{ title: "Locations", path: "/pages/locations", category: "Main" },
 	{ title: "Blog", path: "/pages/blog", category: "Main" },
 	// Treatment Programs
-	{ title: "Cardiac Care", path: "/pages/treatments/cardiac", category: "Treatments" },
-	{ title: "Eating Disorder Support", path: "/pages/treatments/eating", category: "Treatments" },
+	{
+		title: "Cardiac Care",
+		path: "/pages/treatments/cardiac",
+		category: "Treatments",
+	},
+	{
+		title: "Eating Disorder Support",
+		path: "/pages/treatments/eating",
+		category: "Treatments",
+	},
 	{ title: "IV Therapy", path: "/pages/treatments/iv", category: "Treatments" },
-	{ title: "Neurological Care", path: "/pages/treatments/neurological", category: "Treatments" },
-	{ title: "Oncology Care", path: "/pages/treatments/oncology", category: "Treatments" },
-	{ title: "Pain Management", path: "/pages/treatments/pain", category: "Treatments" },
-	{ title: "Palliative Care", path: "/pages/treatments/palliative", category: "Treatments" },
-	{ title: "Post-Operative Care", path: "/pages/treatments/post-op", category: "Treatments" },
-	{ title: "Rehabilitation", path: "/pages/treatments/rehab", category: "Treatments" },
-	{ title: "Respiratory Care", path: "/pages/treatments/respiratory", category: "Treatments" },
-	{ title: "Wellness Programs", path: "/pages/treatments/wellness", category: "Treatments" },
+	{
+		title: "Neurological Care",
+		path: "/pages/treatments/neurological",
+		category: "Treatments",
+	},
+	{
+		title: "Oncology Care",
+		path: "/pages/treatments/oncology",
+		category: "Treatments",
+	},
+	{
+		title: "Pain Management",
+		path: "/pages/treatments/pain",
+		category: "Treatments",
+	},
+	{
+		title: "Palliative Care",
+		path: "/pages/treatments/palliative",
+		category: "Treatments",
+	},
+	{
+		title: "Post-Operative Care",
+		path: "/pages/treatments/post-op",
+		category: "Treatments",
+	},
+	{
+		title: "Rehabilitation",
+		path: "/pages/treatments/rehab",
+		category: "Treatments",
+	},
+	{
+		title: "Respiratory Care",
+		path: "/pages/treatments/respiratory",
+		category: "Treatments",
+	},
+	{
+		title: "Wellness Programs",
+		path: "/pages/treatments/wellness",
+		category: "Treatments",
+	},
 	// Expertise/Services
-	{ title: "Alzheimer's Care", path: "/pages/services/alzheimers", category: "Expertise" },
+	{
+		title: "Alzheimer's Care",
+		path: "/pages/services/alzheimers",
+		category: "Expertise",
+	},
 	{ title: "ALS Care", path: "/pages/services/als", category: "Expertise" },
-	{ title: "Dementia Care", path: "/pages/services/dementia", category: "Expertise" },
-	{ title: "Diabetes Management", path: "/pages/services/diabetes", category: "Expertise" },
-	{ title: "Heart Disease Care", path: "/pages/services/heart-disease", category: "Expertise" },
-	{ title: "Multiple Sclerosis Care", path: "/pages/services/ms", category: "Expertise" },
-	{ title: "Ostomy Management", path: "/pages/services/ostomy", category: "Expertise" },
-	{ title: "Parkinson's Care", path: "/pages/services/parkinsons", category: "Expertise" },
-	{ title: "Stroke Recovery", path: "/pages/services/stroke", category: "Expertise" },
-	{ title: "Traumatic Brain Injury Care", path: "/pages/services/tbi", category: "Expertise" },
+	{
+		title: "Dementia Care",
+		path: "/pages/services/dementia",
+		category: "Expertise",
+	},
+	{
+		title: "Diabetes Management",
+		path: "/pages/services/diabetes",
+		category: "Expertise",
+	},
+	{
+		title: "Heart Disease Care",
+		path: "/pages/services/heart-disease",
+		category: "Expertise",
+	},
+	{
+		title: "Multiple Sclerosis Care",
+		path: "/pages/services/ms",
+		category: "Expertise",
+	},
+	{
+		title: "Ostomy Management",
+		path: "/pages/services/ostomy",
+		category: "Expertise",
+	},
+	{
+		title: "Parkinson's Care",
+		path: "/pages/services/parkinsons",
+		category: "Expertise",
+	},
+	{
+		title: "Stroke Recovery",
+		path: "/pages/services/stroke",
+		category: "Expertise",
+	},
+	{
+		title: "Traumatic Brain Injury Care",
+		path: "/pages/services/tbi",
+		category: "Expertise",
+	},
 	// Legal
 	{ title: "Terms of Service", path: "/pages/legal/terms", category: "Legal" },
 	{ title: "Privacy Policy", path: "/pages/legal/privacy", category: "Legal" },
@@ -429,7 +505,8 @@ class NavBar extends BaseComponent {
 					"span",
 					{
 						class: "text-xs px-2 py-0.5 rounded-full",
-						style: "color: var(--color-text-muted); background: var(--color-surface-muted)",
+						style:
+							"color: var(--color-text-muted); background: var(--color-surface-muted)",
 					},
 					result.category,
 				),
@@ -1134,11 +1211,11 @@ class NavBar extends BaseComponent {
 									text: "About Legacy",
 									desc: "Learn about our mission and values",
 								},
-								{
-									href: resolvePath("/pages/team/careers"),
-									text: "Careers",
-									desc: "Join our team of healthcare professionals",
-								},
+								// {
+								// 	href: resolvePath("/pages/team/careers"),
+								// 	text: "Careers",
+								// 	desc: "Join our team of healthcare professionals",
+								// },
 								{
 									href: resolvePath("/pages/partners"),
 									text: "Partners",
@@ -1407,7 +1484,8 @@ class NavBar extends BaseComponent {
 				),
 				// Search results container
 				this.h("div", {
-					class: "search-results hidden max-h-80 overflow-y-auto border-t border-soft",
+					class:
+						"search-results hidden max-h-80 overflow-y-auto border-t border-soft",
 					ref: (el) => {
 						this.#searchResults = el;
 					},

@@ -6,6 +6,22 @@
 	// Import UI components
 	await import("./blocks/ui.js");
 
+	// Initialize treatment card dialog triggers
+	const initTreatmentDialogs = () => {
+		const triggers = document.querySelectorAll(".treatment-card-trigger");
+		triggers.forEach((trigger) => {
+			trigger.addEventListener("click", (event) => {
+				event.preventDefault();
+				event.stopPropagation();
+				const dialogId = trigger.dataset.dialog;
+				const dialog = document.getElementById(dialogId);
+				if (dialog && typeof dialog.open === "function") {
+					dialog.open();
+				}
+			});
+		});
+	};
+
 	// Custom scrollbar factory for horizontal scroll containers
 	const initCustomScrollbar = (scrollContainerId, thumbId) => {
 		const scrollContainer = document.getElementById(scrollContainerId);
@@ -85,8 +101,12 @@
 	};
 
 	if (document.readyState === "loading") {
-		document.addEventListener("DOMContentLoaded", initAllScrollbars);
+		document.addEventListener("DOMContentLoaded", () => {
+			initAllScrollbars();
+			initTreatmentDialogs();
+		});
 	} else {
 		initAllScrollbars();
+		initTreatmentDialogs();
 	}
 })();

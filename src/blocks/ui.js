@@ -6,6 +6,8 @@ export * from "./elements/heading.js";
 export * from "./elements/input.js";
 export * from "./elements/termlist.js";
 export * from "./elements/text.js";
+export * from "./extenders/index.js";
+export * from "./components/treatment-dialog.js";
 export * from "./sections/footer.js";
 export * from "./sections/hero.js";
 export * from "./sections/nav.js";
