@@ -33,6 +33,8 @@
 				<a href="#tabs" class="text-muted hover:text-canvas transition-colors">Tabs</a>
 				<a href="#cards" class="text-muted hover:text-canvas transition-colors">Cards</a>
 				<a href="#slider" class="text-muted hover:text-canvas transition-colors">Slider</a>
+				<a href="#video" class="text-muted hover:text-canvas transition-colors">Video</a>
+				<a href="#media-text" class="text-muted hover:text-canvas transition-colors">Media Text</a>
 				<a href="#sections" class="text-muted hover:text-canvas transition-colors">Sections</a>
 				<a href="#split" class="text-muted hover:text-canvas transition-colors">Split</a>
 			</nav>
@@ -48,6 +50,8 @@
 			<a href="#tabs" class="block text-muted">Tabs</a>
 			<a href="#cards" class="block text-muted">Cards</a>
 			<a href="#slider" class="block text-muted">Slider</a>
+			<a href="#video" class="block text-muted">Video</a>
+			<a href="#media-text" class="block text-muted">Media Text</a>
 			<a href="#sections" class="block text-muted">Sections</a>
 			<a href="#split" class="block text-muted">Split</a>
 		</nav>
@@ -546,6 +550,234 @@
 									<p class="text-sm" style="color: rgba(255,255,255,0.6);">Consultant</p>
 								</div>
 							</scroll-slider>
+						</div>
+					</div>
+				</tab-panel>
+			</div>
+		</section>
+
+		<!-- ======================= VIDEO ======================= -->
+		<section id="video" class="demo-section border-t" style="border-color: var(--color-border-soft);">
+			<div class="max-w-5xl mx-auto px-[56px] py-16">
+				<header class="mb-8">
+					<span class="text-xs font-medium uppercase tracking-wider" style="color: var(--color-secondary);">Component</span>
+					<h2 class="text-3xl font-serif mt-1">Video Player</h2>
+					<p class="text-muted mt-2">HTML5 video wrapper with standard attributes and event handling.</p>
+				</header>
+
+				<tab-panel tab-style="pills" class="mb-8">
+					<div slot="tabs">
+						<button data-tab="video-basic">Basic</button>
+						<button data-tab="video-poster">With Poster</button>
+						<button data-tab="video-background">Background Mode</button>
+						<button data-tab="video-aspect">Aspect Ratios</button>
+					</div>
+
+					<!-- Basic -->
+					<div data-panel="video-basic" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;video-player <span style="color: var(--color-secondary);">src="video.mp4" controls</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<video-player
+								src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+								controls
+								aspect-ratio="16/9"
+								width="100%"
+							></video-player>
+						</div>
+					</div>
+
+					<!-- With Poster -->
+					<div data-panel="video-poster" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;video-player <span style="color: var(--color-secondary);">poster="thumbnail.jpg" preload="none"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<div class="max-w-lg mx-auto">
+								<video-player
+									src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+									poster="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800"
+									controls
+									preload="none"
+									aspect-ratio="16/9"
+								></video-player>
+							</div>
+						</div>
+					</div>
+
+					<!-- Background Mode -->
+					<div data-panel="video-background" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;video-player <span style="color: var(--color-secondary);">autoplay loop muted</span> controls="false"&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<div class="relative rounded-xl overflow-hidden">
+								<video-player
+									src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+									autoplay
+									loop
+									muted
+									controls="false"
+									aspect-ratio="21/9"
+								></video-player>
+								<div class="absolute inset-0 flex items-center justify-center" style="background: rgba(0,0,0,0.4);">
+									<div class="text-center text-white">
+										<h3 class="text-2xl font-serif mb-2">Background Video</h3>
+										<p class="text-sm" style="color: rgba(255,255,255,0.8);">Autoplay, loop, muted - perfect for hero sections</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Aspect Ratios -->
+					<div data-panel="video-aspect" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface-muted);">
+							<code class="text-sm text-muted">&lt;video-player <span style="color: var(--color-secondary);">aspect-ratio="16/9|4/3|21/9|1/1"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft);">
+							<div class="grid md:grid-cols-2 gap-6">
+								<div>
+									<p class="text-xs text-muted mb-2">aspect-ratio="16/9" (default)</p>
+									<video-player
+										src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+										controls
+										preload="none"
+										poster="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400"
+										aspect-ratio="16/9"
+									></video-player>
+								</div>
+								<div>
+									<p class="text-xs text-muted mb-2">aspect-ratio="4/3"</p>
+									<video-player
+										src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+										controls
+										preload="none"
+										poster="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=400"
+										aspect-ratio="4/3"
+									></video-player>
+								</div>
+							</div>
+						</div>
+					</div>
+				</tab-panel>
+			</div>
+		</section>
+
+		<!-- ======================= MEDIA TEXT ======================= -->
+		<section id="media-text" class="demo-section border-t" style="border-color: var(--color-border-soft); background: var(--color-surface-muted);">
+			<div class="max-w-5xl mx-auto px-[56px] py-16">
+				<header class="mb-8">
+					<span class="text-xs font-medium uppercase tracking-wider" style="color: var(--color-secondary);">Component</span>
+					<h2 class="text-3xl font-serif mt-1">Media Text</h2>
+					<p class="text-muted mt-2">Two-column image + text layout with simple, focused API.</p>
+				</header>
+
+				<tab-panel tab-style="pills" class="mb-8">
+					<div slot="tabs">
+						<button data-tab="media-basic">Basic</button>
+						<button data-tab="media-position">Image Position</button>
+						<button data-tab="media-ratios">Ratios</button>
+						<button data-tab="media-options">Options</button>
+					</div>
+
+					<!-- Basic -->
+					<div data-panel="media-basic" class="pt-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;media-text <span style="color: var(--color-secondary);">image="photo.jpg" title="Title"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<media-text
+								image="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800"
+								title="Quality Care You Deserve"
+							>
+								<p class="text-muted">Legacy Concierge provides personalized healthcare services tailored to your unique needs. Our team of dedicated professionals ensures you receive the highest standard of care in the comfort of your home.</p>
+								<a href="#" slot="action" class="btn-base btn-padding btn-solid inline-block no-underline">Learn More</a>
+							</media-text>
+						</div>
+					</div>
+
+					<!-- Image Position -->
+					<div data-panel="media-position" class="pt-6 space-y-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;media-text <span style="color: var(--color-secondary);">image-position="left|right"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">image-position="left" (default)</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600"
+								image-position="left"
+								title="Image on Left"
+							>
+								<p class="text-muted">The image appears on the left side by default, with text content on the right.</p>
+							</media-text>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">image-position="right"</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=600"
+								image-position="right"
+								title="Image on Right"
+							>
+								<p class="text-muted">Set image-position="right" to flip the layout with text on the left.</p>
+							</media-text>
+						</div>
+					</div>
+
+					<!-- Ratios -->
+					<div data-panel="media-ratios" class="pt-6 space-y-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;media-text <span style="color: var(--color-secondary);">ratio="50-50|60-40|40-60"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">ratio="60-40" (larger image)</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800"
+								ratio="60-40"
+								title="Larger Image Focus"
+							>
+								<p class="text-muted">60-40 ratio gives more visual emphasis to the image while keeping text compact.</p>
+							</media-text>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">ratio="40-60" (larger text area)</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600"
+								ratio="40-60"
+								title="More Room for Content"
+							>
+								<p class="text-muted">40-60 ratio provides more space for longer text content while still featuring a supporting image.</p>
+								<p class="text-muted mt-2">Perfect for detailed descriptions or multiple paragraphs.</p>
+							</media-text>
+						</div>
+					</div>
+
+					<!-- Options -->
+					<div data-panel="media-options" class="pt-6 space-y-6">
+						<div class="mb-4 p-3 rounded-lg" style="background: var(--color-surface);">
+							<code class="text-sm text-muted">&lt;media-text <span style="color: var(--color-secondary);">align="start|center|end" reverse-mobile image-fit="cover|contain"</span>&gt;</code>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">align="center" (vertical centering)</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600"
+								align="center"
+								title="Centered Alignment"
+							>
+								<p class="text-muted">Short text that vertically centers with the image.</p>
+							</media-text>
+						</div>
+						<div class="component-preview p-6 rounded-xl border" style="border-color: var(--color-border-soft); background: var(--color-surface);">
+							<p class="text-xs text-muted mb-4">reverse-mobile (image below text on mobile)</p>
+							<media-text
+								image="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600"
+								reverse-mobile
+								title="Mobile Optimized"
+							>
+								<p class="text-muted">On mobile devices, the text will appear first with the image below. Try resizing your browser to see the effect.</p>
+								<a href="#" slot="action" class="btn-base btn-padding btn-outline inline-block no-underline">Contact Us</a>
+							</media-text>
 						</div>
 					</div>
 				</tab-panel>

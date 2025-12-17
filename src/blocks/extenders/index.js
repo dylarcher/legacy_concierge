@@ -26,6 +26,10 @@ export { SplitSection } from "./split-section.js";
 export { ContentCard } from "./content-card.js";
 export { ScrollSlider } from "./scroll-slider.js";
 
+// Media Components
+export { VideoPlayer } from "./video-player.js";
+export { MediaText } from "./media-text.js";
+
 // Interactive Components
 export { DetailsAccordion } from "./details-accordion.js";
 export { TabPanel } from "./tab-panel.js";
