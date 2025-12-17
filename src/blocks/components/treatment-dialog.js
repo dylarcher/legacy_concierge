@@ -124,111 +124,173 @@ export class TreatmentDialog extends BaseComponent {
 		const title = this.getAttribute("title") || "";
 		const image = this.getAttribute("image") || "";
 
-		// Clear existing content
-		this.innerHTML = "";
+		// Use shadow DOM for slot functionality
+		if (!this.shadowRoot) {
+			this.attachShadow({ mode: "open" });
+		}
+
+		// Clear existing shadow content
+		this.shadowRoot.innerHTML = "";
+
+		// Create style element
+		const style = document.createElement("style");
+		style.textContent = `
+			:host {
+				display: contents;
+			}
+			dialog {
+				position: fixed;
+				inset: 0;
+				width: 100dvw;
+				height: 100dvh;
+				max-width: 100dvw;
+				max-height: 100dvh;
+				margin: 0;
+				padding: 56px;
+				border: none;
+				outline: none;
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				overflow-y: auto;
+				box-sizing: border-box;
+			}
+			dialog::backdrop {
+				background: transparent;
+			}
+			.gradient-overlay {
+				position: fixed;
+				inset: 0;
+				width: 100%;
+				height: 100dvh;
+				background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.80) 50%, rgba(0,0,0,0.60));
+				pointer-events: none;
+			}
+			.close-button {
+				position: absolute;
+				top: 48px;
+				right: 48px;
+				z-index: 10;
+				width: 48px;
+				height: 48px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background: white;
+				color: black;
+				border: none;
+				border-radius: 50%;
+				cursor: pointer;
+				outline: none;
+				padding: 12px;
+				transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+			}
+			.close-button:hover {
+				transform: scale(1.1);
+			}
+			.close-button svg {
+				width: 100%;
+				height: 100%;
+			}
+			.content-container {
+				position: relative;
+				z-index: 1;
+				min-height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				align-items: flex-start;
+				max-width: 960px;
+				box-sizing: border-box;
+			}
+			.dialog-title {
+				font-family: "Playfair Display", serif;
+				font-size: clamp(2rem, 5vw, 3.5rem);
+				font-weight: 400;
+				color: white;
+				margin: 0 0 1.5rem 0;
+				line-height: 1.2;
+			}
+			.content-slot {
+				font-family: "Work Sans", sans-serif;
+				font-size: 1.25rem;
+				line-height: 1.6;
+				color: white;
+			}
+			.content-slot p {
+				margin: 0 0 1rem 0;
+			}
+			.placeholder {
+				font-style: italic;
+				color: white;
+			}
+			::slotted(*) {
+				font-family: "Work Sans", sans-serif;
+				color: white;
+			}
+			@keyframes fade-in {
+				from { opacity: 0; }
+				to { opacity: 1; }
+			}
+			@keyframes fade-out {
+				from { opacity: 1; }
+				to { opacity: 0; }
+			}
+			dialog[data-state="open"] {
+				animation: fade-in 0.2s ease-out forwards;
+			}
+			dialog[data-state="closing"] {
+				animation: fade-out 0.2s ease-out forwards;
+			}
+		`;
+		this.shadowRoot.appendChild(style);
 
 		// Create dialog element
-		this.#dialog = this.h("dialog", {
-			class: [
-				"fixed inset-0 z-50 m-0 h-full max-h-full w-full max-w-full",
-				"overflow-y-auto bg-transparent p-0 border-0",
-				"backdrop:bg-transparent",
-				"[&[data-state=open]]:animate-fade-in",
-				"[&[data-state=closing]]:animate-fade-out",
-			].join(" "),
-			"data-state": "closed",
-		});
+		this.#dialog = document.createElement("dialog");
+		this.#dialog.dataset.state = "closed";
 
-		// Background image container
-		const bgContainer = this.h("div", {
-			class: "fixed inset-0 w-full h-full",
-		});
-
-		// Background image
+		// Set background image
 		if (image) {
-			const bgImage = this.h("img", {
-				src: image,
-				alt: "",
-				role: "presentation",
-				class: "absolute inset-0 w-full h-full object-cover",
-			});
-			bgContainer.appendChild(bgImage);
+			this.#dialog.style.backgroundImage = `url('${image}')`;
 		}
 
 		// Gradient overlay
-		const gradientOverlay = this.h("div", {
-			class: "absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/40",
-		});
-		bgContainer.appendChild(gradientOverlay);
+		const gradientOverlay = document.createElement("div");
+		gradientOverlay.className = "gradient-overlay";
+		this.#dialog.appendChild(gradientOverlay);
 
-		this.#dialog.appendChild(bgContainer);
-
-		// Close button (the "+" rotated to "x")
-		this.#closeButton = this.h(
-			"button",
-			{
-				type: "button",
-				class: [
-					"fixed top-6 right-6 z-10 size-14 rounded-full",
-					"flex items-center justify-center",
-					"bg-primary text-white",
-					"transform rotate-45 scale-125",
-					"hover:scale-150 hover:bg-primary/90",
-					"transition-all duration-300 ease-out",
-					"cursor-pointer border-0 outline-none",
-					"focus:ring-2 focus:ring-white/50",
-				].join(" "),
-				"aria-label": "Close dialog",
-			},
-			this.#createPlusIcon(),
-		);
+		// Close button (X icon)
+		this.#closeButton = document.createElement("button");
+		this.#closeButton.type = "button";
+		this.#closeButton.className = "close-button";
+		this.#closeButton.setAttribute("aria-label", "Close dialog");
+		this.#closeButton.appendChild(this.#createCloseIcon());
 		this.#dialog.appendChild(this.#closeButton);
 
 		// Content container
-		const contentContainer = this.h("div", {
-			class: [
-				"relative z-0 min-h-full flex flex-col",
-				"justify-end items-center",
-				"p-8 pb-16 sm:p-12 md:p-16 lg:p-24",
-			].join(" "),
-		});
+		const contentContainer = document.createElement("div");
+		contentContainer.className = "content-container";
 
 		// Title
 		if (title) {
-			const titleEl = this.h(
-				"h2",
-				{
-					class: [
-						"text-white font-serif text-3xl md:text-4xl lg:text-5xl",
-						"text-center mb-8 max-w-4xl",
-					].join(" "),
-				},
-				title,
-			);
+			const titleEl = document.createElement("h2");
+			titleEl.className = "dialog-title";
+			titleEl.textContent = title;
 			contentContainer.appendChild(titleEl);
 		}
 
 		// Slot for user content
-		const contentSlot = this.h("div", {
-			class: [
-				"text-white/90 text-lg md:text-xl",
-				"text-center max-w-3xl",
-				"space-y-6",
-			].join(" "),
-		});
+		const contentSlot = document.createElement("div");
+		contentSlot.className = "content-slot";
 
-		// Move slotted content
-		const slottedContent = this.h("slot");
+		// Slot element
+		const slottedContent = document.createElement("slot");
 		contentSlot.appendChild(slottedContent);
 
-		// Placeholder content if no slot content
-		const placeholder = this.h(
-			"p",
-			{
-				class: "text-white/70 italic",
-			},
-			"More information coming soon...",
-		);
+		// Placeholder content
+		const placeholder = document.createElement("p");
+		placeholder.className = "placeholder";
+		placeholder.textContent = "More information coming soon...";
 		contentSlot.appendChild(placeholder);
 
 		contentContainer.appendChild(contentSlot);
@@ -239,56 +301,38 @@ export class TreatmentDialog extends BaseComponent {
 		this.#dialog.addEventListener("click", this.#handleBackdropClick);
 		this.#closeButton.addEventListener("click", this.#handleCloseClick);
 
-		// Use shadow DOM for slot functionality
-		if (!this.shadowRoot) {
-			this.attachShadow({ mode: "open" });
-		}
-		this.shadowRoot.innerHTML = `
-			<style>
-				:host {
-					display: contents;
-				}
-				@keyframes fade-in {
-					from { opacity: 0; }
-					to { opacity: 1; }
-				}
-				@keyframes fade-out {
-					from { opacity: 1; }
-					to { opacity: 0; }
-				}
-				dialog[data-state="open"] {
-					animation: fade-in 0.2s ease-out forwards;
-				}
-				dialog[data-state="closing"] {
-					animation: fade-out 0.2s ease-out forwards;
-				}
-			</style>
-		`;
 		this.shadowRoot.appendChild(this.#dialog);
 	}
 
 	/**
-	 * Creates the plus icon SVG
+	 * Creates the close (X) icon SVG
 	 * @returns {SVGElement}
 	 */
-	#createPlusIcon() {
-		return this.svg(
-			"svg",
-			{
-				xmlns: "http://www.w3.org/2000/svg",
-				viewBox: "0 0 24 24",
-				fill: "currentColor",
-				class: "size-full p-2",
-			},
-			this.svg("path", {
-				"stroke": "none",
-				"d": "M0 0h24v24H0z",
-				"fill": "none",
-			}),
-			this.svg("path", {
-				d: "M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z",
-			}),
-		);
+	#createCloseIcon() {
+		const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+		svg.setAttribute("viewBox", "0 0 24 24");
+		svg.setAttribute("fill", "none");
+		svg.setAttribute("stroke", "currentColor");
+		svg.setAttribute("stroke-width", "2.5");
+		svg.setAttribute("stroke-linecap", "round");
+		svg.setAttribute("stroke-linejoin", "round");
+
+		const line1 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+		line1.setAttribute("x1", "6");
+		line1.setAttribute("y1", "6");
+		line1.setAttribute("x2", "18");
+		line1.setAttribute("y2", "18");
+
+		const line2 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+		line2.setAttribute("x1", "6");
+		line2.setAttribute("y1", "18");
+		line2.setAttribute("x2", "18");
+		line2.setAttribute("y2", "6");
+
+		svg.appendChild(line1);
+		svg.appendChild(line2);
+
+		return svg;
 	}
 }
 
