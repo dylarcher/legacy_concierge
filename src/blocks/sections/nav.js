@@ -6,6 +6,49 @@ import {
 } from "../_base.js";
 
 /**
+ * Search index for quick links autocomplete
+ * @constant {Array<{title: string, path: string, category?: string}>}
+ */
+const SEARCH_INDEX = [
+	// Main Pages
+	{ title: "Home", path: "/", category: "Main" },
+	{ title: "About Legacy", path: "/pages/about", category: "Main" },
+	{ title: "Contact Us", path: "/pages/contact", category: "Main" },
+	{ title: "Our Team", path: "/pages/team", category: "Main" },
+	{ title: "Careers", path: "/pages/team/careers", category: "Main" },
+	{ title: "Partners", path: "/pages/partners", category: "Main" },
+	{ title: "Locations", path: "/pages/locations", category: "Main" },
+	{ title: "Blog", path: "/pages/blog", category: "Main" },
+	// Treatment Programs
+	{ title: "Cardiac Care", path: "/pages/treatments/cardiac", category: "Treatments" },
+	{ title: "Eating Disorder Support", path: "/pages/treatments/eating", category: "Treatments" },
+	{ title: "IV Therapy", path: "/pages/treatments/iv", category: "Treatments" },
+	{ title: "Neurological Care", path: "/pages/treatments/neurological", category: "Treatments" },
+	{ title: "Oncology Care", path: "/pages/treatments/oncology", category: "Treatments" },
+	{ title: "Pain Management", path: "/pages/treatments/pain", category: "Treatments" },
+	{ title: "Palliative Care", path: "/pages/treatments/palliative", category: "Treatments" },
+	{ title: "Post-Operative Care", path: "/pages/treatments/post-op", category: "Treatments" },
+	{ title: "Rehabilitation", path: "/pages/treatments/rehab", category: "Treatments" },
+	{ title: "Respiratory Care", path: "/pages/treatments/respiratory", category: "Treatments" },
+	{ title: "Wellness Programs", path: "/pages/treatments/wellness", category: "Treatments" },
+	// Expertise/Services
+	{ title: "Alzheimer's Care", path: "/pages/services/alzheimers", category: "Expertise" },
+	{ title: "ALS Care", path: "/pages/services/als", category: "Expertise" },
+	{ title: "Dementia Care", path: "/pages/services/dementia", category: "Expertise" },
+	{ title: "Diabetes Management", path: "/pages/services/diabetes", category: "Expertise" },
+	{ title: "Heart Disease Care", path: "/pages/services/heart-disease", category: "Expertise" },
+	{ title: "Multiple Sclerosis Care", path: "/pages/services/ms", category: "Expertise" },
+	{ title: "Ostomy Management", path: "/pages/services/ostomy", category: "Expertise" },
+	{ title: "Parkinson's Care", path: "/pages/services/parkinsons", category: "Expertise" },
+	{ title: "Stroke Recovery", path: "/pages/services/stroke", category: "Expertise" },
+	{ title: "Traumatic Brain Injury Care", path: "/pages/services/tbi", category: "Expertise" },
+	// Legal
+	{ title: "Terms of Service", path: "/pages/legal/terms", category: "Legal" },
+	{ title: "Privacy Policy", path: "/pages/legal/privacy", category: "Legal" },
+	{ title: "HIPAA Notice", path: "/pages/legal/hipaa", category: "Legal" },
+];
+
+/**
  * Navigation bar template with responsive mobile menu.
  * @constant {string}
  */
@@ -154,6 +197,10 @@ class NavBar extends BaseComponent {
 	#boundHandleEscapeKeyPress = null;
 	#boundHandleSearchBackdropClick = null;
 	#boundHandleResize = null;
+	#searchInput = null;
+	#searchResults = null;
+	#searchResultIndex = -1;
+	#filteredResults = [];
 
 	connectedCallback() {
 		this.#injectComponentStyles();
@@ -268,7 +315,159 @@ class NavBar extends BaseComponent {
 				this.#boundHandleSearchBackdropClick,
 			);
 			this.#searchDialog.close();
+			this.#clearSearchResults();
 			this.emit("search-close");
+		}
+	}
+
+	/**
+	 * Handles search input changes
+	 * @param {Event} event - The input event
+	 * @returns {void}
+	 */
+	#handleSearchInput = (event) => {
+		const query = event.target.value.trim().toLowerCase();
+
+		if (query.length === 0) {
+			this.#clearSearchResults();
+			return;
+		}
+
+		// Filter search index
+		this.#filteredResults = SEARCH_INDEX.filter((item) =>
+			item.title.toLowerCase().includes(query),
+		).slice(0, 8);
+
+		this.#searchResultIndex = -1;
+		this.#renderSearchResults();
+	};
+
+	/**
+	 * Handles keyboard navigation in search results
+	 * @param {KeyboardEvent} event - The keyboard event
+	 * @returns {void}
+	 */
+	#handleSearchKeydown = (event) => {
+		if (this.#filteredResults.length === 0) return;
+
+		switch (event.key) {
+			case "ArrowDown":
+				event.preventDefault();
+				this.#searchResultIndex = Math.min(
+					this.#searchResultIndex + 1,
+					this.#filteredResults.length - 1,
+				);
+				this.#updateResultHighlight();
+				break;
+			case "ArrowUp":
+				event.preventDefault();
+				this.#searchResultIndex = Math.max(this.#searchResultIndex - 1, -1);
+				this.#updateResultHighlight();
+				break;
+			case "Enter":
+				event.preventDefault();
+				if (this.#searchResultIndex >= 0) {
+					this.#selectSearchResult(this.#searchResultIndex);
+				} else if (this.#filteredResults.length > 0) {
+					this.#selectSearchResult(0);
+				}
+				break;
+			case "Escape":
+				this.closeSearch();
+				break;
+		}
+	};
+
+	/**
+	 * Selects a search result and navigates to it
+	 * @param {number} index - The result index
+	 * @returns {void}
+	 */
+	#selectSearchResult(index) {
+		const result = this.#filteredResults[index];
+		if (result) {
+			this.closeSearch();
+			window.location.href = resolvePath(result.path);
+		}
+	}
+
+	/**
+	 * Renders the search results list
+	 * @returns {void}
+	 */
+	#renderSearchResults() {
+		if (!this.#searchResults) return;
+
+		this.#searchResults.innerHTML = "";
+
+		if (this.#filteredResults.length === 0) {
+			this.#searchResults.classList.add("hidden");
+			return;
+		}
+
+		this.#searchResults.classList.remove("hidden");
+
+		this.#filteredResults.forEach((result, index) => {
+			const item = this.h(
+				"a",
+				{
+					href: resolvePath(result.path),
+					class:
+						"search-result-item flex items-center gap-3 px-4 py-3 text-sm hover:bg-muted transition-colors cursor-pointer no-underline",
+					"data-index": index,
+					onClick: (event) => {
+						event.preventDefault();
+						this.#selectSearchResult(index);
+					},
+				},
+				this.h(
+					"span",
+					{ class: "flex-1", style: "color: var(--color-text)" },
+					result.title,
+				),
+				this.h(
+					"span",
+					{
+						class: "text-xs px-2 py-0.5 rounded-full",
+						style: "color: var(--color-text-muted); background: var(--color-surface-muted)",
+					},
+					result.category,
+				),
+			);
+			this.#searchResults.appendChild(item);
+		});
+	}
+
+	/**
+	 * Updates the visual highlight on search results
+	 * @returns {void}
+	 */
+	#updateResultHighlight() {
+		if (!this.#searchResults) return;
+
+		const items = this.#searchResults.querySelectorAll(".search-result-item");
+		items.forEach((item, index) => {
+			if (index === this.#searchResultIndex) {
+				item.style.backgroundColor = "var(--color-muted)";
+			} else {
+				item.style.backgroundColor = "";
+			}
+		});
+	}
+
+	/**
+	 * Clears the search results
+	 * @returns {void}
+	 */
+	#clearSearchResults() {
+		this.#filteredResults = [];
+		this.#searchResultIndex = -1;
+		if (this.#searchResults) {
+			this.#searchResults.innerHTML = "";
+			this.#searchResults.classList.add("hidden");
+		}
+		if (this.#searchInput) {
+			this.#searchInput.value = "";
 		}
 	}
 
@@ -871,7 +1070,7 @@ class NavBar extends BaseComponent {
 		const headerClass = this.clsx(
 			isFixed ? "fixed" : "absolute",
 			"inset-x-0 top-0 z-50",
-			!isTransparent && "bg-canvas/92 backdrop-blur-sm",
+			!isTransparent && "bg-white/92 backdrop-blur-sm",
 		);
 
 		// Build the header
@@ -1155,7 +1354,7 @@ class NavBar extends BaseComponent {
 			this.h(
 				"div",
 				{
-					class: "bg-canvas rounded-xl shadow-2xl",
+					class: "bg-canvas rounded-xl shadow-2xl overflow-hidden",
 				},
 				this.h(
 					"form",
@@ -1188,7 +1387,12 @@ class NavBar extends BaseComponent {
 						placeholder: "Search...",
 						autofocus: true,
 						class:
-							"w-full rounded-xl border-0 py-4 pl-12 pr-4 input-fg placeholder-muted sm:text-sm/6",
+							"w-full rounded-t-xl border-0 py-4 pl-12 pr-14 input-fg placeholder-muted sm:text-sm/6",
+						onInput: this.#handleSearchInput,
+						onKeydown: this.#handleSearchKeydown,
+						ref: (el) => {
+							this.#searchInput = el;
+						},
 					}),
 					this.h(
 						"button",
@@ -1201,6 +1405,13 @@ class NavBar extends BaseComponent {
 						"ESC",
 					),
 				),
+				// Search results container
+				this.h("div", {
+					class: "search-results hidden max-h-80 overflow-y-auto border-t border-soft",
+					ref: (el) => {
+						this.#searchResults = el;
+					},
+				}),
 			),
 		);
 
