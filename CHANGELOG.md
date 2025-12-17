@@ -8,6 +8,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **Extender Components** - Migrated reusable layout components from `.extract/components/`
+  - `src/blocks/extenders/_base.js` - Re-exports base utilities with hash utilities
+  - `src/blocks/extenders/content-card.js` - Versatile card with featured/background images
+  - `src/blocks/extenders/content-section.js` - Section wrapper with backgrounds and overlays
+  - `src/blocks/extenders/details-accordion.js` - Native details/summary accordion
+  - `src/blocks/extenders/scroll-slider.js` - Horizontal carousel with custom scrollbar
+  - `src/blocks/extenders/split-section.js` - Two-column layout with dividers
+  - `src/blocks/extenders/tab-panel.js` - Tab interface with multiple styles
+  - `src/blocks/extenders/index.js` - Barrel export for all extender components
+
+### Changed
+
+- **Extender styling** - Updated extracted components to use design system tokens
+  - Replaced hardcoded colors with `var(--color-*)` semantic tokens
+  - Applied design system utilities: `card-interactive`, `btn-solid`, `scrollbar-minimal`
+  - Used gradient tokens: `--linear-card-overlay`, `--linear-feature-overlay`
+  - Applied 56px edge padding consistent with main stylesheet
+
 ## [0.14.3] - 2024-12-16
 
 ### Fixed
