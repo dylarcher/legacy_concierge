@@ -100,13 +100,38 @@
 		initCustomScrollbar("treatment-cards", "treatment-scrollbar-thumb");
 	};
 
+	const initVideoPoster = () => {
+		const video = document.getElementById("homepage-video");
+		const poster = document.getElementById("video-poster");
+
+		if (!video || !poster) return;
+
+		// Play video when poster is clicked
+		poster.addEventListener("click", () => {
+			poster.classList.add("hidden");
+			video.play();
+		});
+
+		// Also hide poster if video is played via controls
+		video.addEventListener("play", () => {
+			poster.classList.add("hidden");
+		});
+
+		// Show poster again if video ends (optional)
+		video.addEventListener("ended", () => {
+			poster.classList.remove("hidden");
+		});
+	};
+
 	if (document.readyState === "loading") {
 		document.addEventListener("DOMContentLoaded", () => {
 			initAllScrollbars();
 			initTreatmentDialogs();
+			initVideoPoster();
 		});
 	} else {
 		initAllScrollbars();
 		initTreatmentDialogs();
+		initVideoPoster();
 	}
 })();
