@@ -37,26 +37,31 @@
 			</global-nav>
 			<main role="main">
 				<!-- Hero Section with Background Image -->
-				<section class="relative bg-inverse py-24 overflow-hidden text-white">
+				<header class="relative min-h-[70vh] overflow-hidden pt-40 pb-16">
 					<!-- Background Image -->
-					<div class="absolute inset-0 z-0">
-						<img
-							src="../assets/media/images/pexels-hellojoshwithers-15876209.webp"
-							alt="Serene coastal landscape"
-							class="w-full h-full object-cover opacity-60"
-						>
-					</div>
+					<img
+						src="../assets/media/images/pexels-hellojoshwithers-15876209.webp"
+						alt="Serene coastal landscape"
+						class="absolute inset-0 size-full object-cover object-center"
+					>
+					<!-- Frosted Glass Overlay -->
+					<div
+						class="absolute inset-6 bg-white/12 rounded-3xl mt-24"
+						style="backdrop-filter: blur(12px);"
+					></div>
 
 					<!-- Content Container -->
-					<div class="relative z-10 mx-auto max-w-6xl px-[56px]">
-						<h1 class="mb-4 text-white">Pinnacle Allies in Care</h1>
-						<p class="font-serif text-2xl md:text-3xl mb-8 text-white/90">
+					<div class="mx-auto max-w-6xl px-[56px] relative z-10">
+						<h1 class="font-serif text-5xl md:text-6xl text-primary mb-4">
+							PINNACLE ALLIES IN CARE
+						</h1>
+						<p
+							class="font-serif text-2xl md:text-3xl text-primary leading-snug mb-8"
+						>
 							A Network Built for You
 						</p>
 
-						<div
-							class="prose prose-lg prose-invert max-w-4xl space-y-4 text-white/90"
-						>
+						<div class="prose prose-lg max-w-4xl space-y-4 text-primary">
 							<p>
 								At Legacy Concierge, every care plan begins with one essential
 								question: What will best support this individual's health,
@@ -74,7 +79,7 @@
 							</p>
 						</div>
 					</div>
-				</section>
+				</header>
 
 				<!-- Care Plans Section -->
 				<section class="bg-canvas py-16">
@@ -84,7 +89,7 @@
 						>
 							<!-- Left: Text Content -->
 							<div>
-								<h2 class="mb-6">
+								<h2 class="font-serif mb-6">
 									Care Plans
 									<br>
 									Beyond Comparison
@@ -110,104 +115,12 @@
 							</div>
 
 							<!-- Right: Image -->
-							<div class="relative">
+							<div class="relative w-1/2 mx-auto">
 								<img
 									src="../assets/media/images/DSC02204.webp"
 									alt="Premium concierge care setting"
 									class="w-full h-auto rounded-2xl shadow-2xl"
 								>
-							</div>
-						</div>
-
-						<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-							<div
-								class="bg-linear-to-br from-cyan-50 to-white rounded-xl p-8 ring-1 ring-zinc-950/5 shadow-lg"
-							>
-								<div class="text-primary text-4xl mb-4">🏥</div>
-								<h3 class="mb-4">Essential Care</h3>
-								<p class="text-muted mb-6">
-									Foundational medical support with regular check-ins,
-									medication management, and vital sign monitoring. Perfect for
-									maintaining health and preventing complications.
-								</p>
-								<ul class="space-y-2 text-sm text-muted">
-									<li class="flex items-start gap-2">
-										<span class="text-cyan-500">✓</span>
-										<span>Daily health assessments</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<span class="text-cyan-500">✓</span>
-										<span>Medication administration</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<span class="text-cyan-500">✓</span>
-										<span>Vital sign monitoring</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<span class="text-cyan-500">✓</span>
-										<span>Care coordination</span>
-									</li>
-								</ul>
-							</div>
-
-							<div
-								class="bg-linear-to-br from-amber-50 to-white rounded-xl p-8 ring-1 ring-zinc-950/5 shadow-lg"
-							>
-								<div class="text-4xl mb-4">💎</div>
-								<h3 class="mb-4">Premier Care</h3>
-								<p class="text-muted mb-6">
-									Advanced medical oversight with specialist collaboration,
-									complex care management, and 24/7 availability. Ideal for
-									managing chronic conditions.
-								</p>
-								<ul class="space-y-2 text-sm text-muted">
-									<li class="flex items-start gap-2">
-										<span class="text-amber-500">✓</span>
-										<span>Everything in Essential</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<span class="text-amber-500">✓</span>
-										<span>Specialist coordination</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<span class="text-amber-500">✓</span>
-										<span>Advanced procedures</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<span class="text-amber-500">✓</span>
-										<span>24/7 on-call support</span>
-									</li>
-								</ul>
-							</div>
-
-							<div
-								class="bg-linear-to-br from-purple-50 to-white rounded-xl p-8 ring-1 ring-zinc-950/5 shadow-lg"
-							>
-								<div class="text-4xl mb-4">👑</div>
-								<h3 class="mb-4">Bespoke Care</h3>
-								<p class="text-muted mb-6">
-									White-glove service with complete customization. A dedicated
-									care team orchestrates every detail of your health journey
-									with precision and grace.
-								</p>
-								<ul class="space-y-2 text-sm text-muted">
-									<li class="flex items-start gap-2">
-										<span class="text-purple-500">✓</span>
-										<span>Everything in Premier</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<span class="text-purple-500">✓</span>
-										<span>Dedicated care director</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<span class="text-purple-500">✓</span>
-										<span>Concierge coordination</span>
-									</li>
-									<li class="flex items-start gap-2">
-										<span class="text-purple-500">✓</span>
-										<span>Unlimited customization</span>
-									</li>
-								</ul>
 							</div>
 						</div>
 					</div>
@@ -216,7 +129,9 @@
 				<!-- A Living Network Section -->
 				<section class="bg-depth-1 py-16">
 					<div class="mx-auto max-w-6xl px-[56px]">
-						<h2 class="text-center mb-6">A Living Network of Expertise</h2>
+						<h2 class="font-serif text-center mb-6">
+							A Living Network of Expertise
+						</h2>
 
 						<div
 							class="prose prose-lg text-muted mx-auto max-w-4xl text-center mb-12 space-y-4"
@@ -282,7 +197,7 @@
 				<!-- Partner With Legacy Section -->
 				<section class="bg-canvas py-16">
 					<div class="mx-auto max-w-6xl px-[56px]">
-						<h2 class="text-center mb-4">Partner With Legacy</h2>
+						<h2 class="font-serif text-center mb-4">Partner With Legacy</h2>
 						<p class="font-serif text-2xl text-canvas text-center mb-8">
 							Join a Standard of Care That Redefines Excellence
 						</p>
@@ -316,20 +231,21 @@
 				</section>
 
 				<!-- Collaborations Beyond Healthcare Section -->
-				<section class="relative py-16 overflow-hidden">
-					<!-- Background Image -->
-					<div class="absolute inset-0 z-0">
+				<section class="grid grid-cols-1 lg:grid-cols-2">
+					<!-- Left: Image -->
+					<div class="relative min-h-[400px] lg:min-h-full">
 						<img
 							src="../assets/media/images/pexels-alesiakozik-7797009.webp"
 							alt="Elegant wellness collaboration setting"
-							class="w-full h-full object-cover opacity-40"
+							class="absolute inset-0 w-full h-full object-cover"
 						>
 					</div>
 
-					<div class="relative z-10 mx-auto max-w-6xl px-[56px]">
-						<h2 class="mb-6">Collaborations Beyond Healthcare</h2>
+					<!-- Right: Content -->
+					<div class="py-16 px-[56px]">
+						<h2 class="font-serif mb-6">Collaborations Beyond Healthcare</h2>
 
-						<div class="prose prose-lg max-w-3xl space-y-4">
+						<div class="prose prose-lg space-y-4">
 							<p>
 								Legacy Concierge also collaborates with elevated brands in
 								wellness, lifestyle, and design to create experiences that
@@ -351,7 +267,7 @@
 						<div class="mt-8">
 							<a
 								href="../contact"
-								class="inline-flex items-center justify-center gap-2 rounded-xl bg-canvas px-8 py-4 text-lg text-canvas shadow-sm"
+								class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-8 py-4 text-lg text-white shadow-sm hover:bg-primary/90 transition-colors"
 							>
 								Submit Collaboration Inquiry
 							</a>
