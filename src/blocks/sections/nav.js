@@ -25,30 +25,10 @@ const SEARCH_INDEX = [
 		path: "/pages/treatments/cardiac",
 		category: "Treatments",
 	},
-	{
-		title: "Eating Disorder Support",
-		path: "/pages/treatments/eating",
-		category: "Treatments",
-	},
 	{ title: "IV Therapy", path: "/pages/treatments/iv", category: "Treatments" },
-	{
-		title: "Neurological Care",
-		path: "/pages/treatments/neurological",
-		category: "Treatments",
-	},
-	{
-		title: "Oncology Care",
-		path: "/pages/treatments/oncology",
-		category: "Treatments",
-	},
 	{
 		title: "Pain Management",
 		path: "/pages/treatments/pain",
-		category: "Treatments",
-	},
-	{
-		title: "Palliative Care",
-		path: "/pages/treatments/palliative",
 		category: "Treatments",
 	},
 	{
@@ -59,16 +39,6 @@ const SEARCH_INDEX = [
 	{
 		title: "Rehabilitation",
 		path: "/pages/treatments/rehab",
-		category: "Treatments",
-	},
-	{
-		title: "Respiratory Care",
-		path: "/pages/treatments/respiratory",
-		category: "Treatments",
-	},
-	{
-		title: "Wellness Programs",
-		path: "/pages/treatments/wellness",
 		category: "Treatments",
 	},
 	// Expertise/Services
@@ -1244,24 +1214,9 @@ class NavBar extends BaseComponent {
 									desc: "Comprehensive cardiac recovery and monitoring",
 								},
 								{
-									href: resolvePath("/pages/treatments/eating"),
-									text: "Eating Support",
-									desc: "Nutrition and dietary management",
-								},
-								{
 									href: resolvePath("/pages/treatments/iv"),
 									text: "IV Therapy",
 									desc: "Hydration and medication infusions",
-								},
-								{
-									href: resolvePath("/pages/treatments/neurological"),
-									text: "Neurological Care",
-									desc: "Specialized neurological support",
-								},
-								{
-									href: resolvePath("/pages/treatments/oncology"),
-									text: "Oncology Care",
-									desc: "Cancer treatment and recovery support",
 								},
 								{
 									href: resolvePath("/pages/treatments/pain"),
@@ -1269,24 +1224,14 @@ class NavBar extends BaseComponent {
 									desc: "Advanced pain relief strategies",
 								},
 								{
-									href: resolvePath("/pages/treatments/palliative"),
-									text: "Palliative Care",
-									desc: "Comfort-focused end-of-life support",
-								},
-								{
 									href: resolvePath("/pages/treatments/post-op"),
 									text: "Post-Operative Care",
 									desc: "Surgical recovery and wound care",
 								},
 								{
-									href: resolvePath("/pages/treatments/respiratory"),
-									text: "Respiratory Care",
-									desc: "Breathing support and oxygen therapy",
-								},
-								{
-									href: resolvePath("/pages/treatments/wellness"),
-									text: "Wellness Programs",
-									desc: "Preventive care and health optimization",
+									href: resolvePath("/pages/treatments/rehab"),
+									text: "Rehabilitation",
+									desc: "Recovery and rehabilitation programs",
 								},
 							],
 							{
@@ -1363,14 +1308,15 @@ class NavBar extends BaseComponent {
 									"Advanced treatments tailored to your unique health needs.",
 							},
 						),
-						this.h(
-							"a",
-							{
-								href: resolvePath("/pages/team"),
-								class: "text-sm/6 font-semibold text-canvas text-uppercase",
-							},
-							"Team",
-						),
+						// Team link commented out for launch
+						// this.h(
+						// 	"a",
+						// 	{
+						// 		href: resolvePath("/pages/team"),
+						// 		class: "text-sm/6 font-semibold text-canvas text-uppercase",
+						// 	},
+						// 	"Team",
+						// ),
 						this.h(
 							"a",
 							{
@@ -1558,38 +1504,18 @@ class NavBar extends BaseComponent {
 								href: resolvePath("/pages/treatments/cardiac"),
 								text: "Cardiac Care",
 							},
-							{
-								href: resolvePath("/pages/treatments/eating"),
-								text: "Eating Support",
-							},
 							{ href: resolvePath("/pages/treatments/iv"), text: "IV Therapy" },
-							{
-								href: resolvePath("/pages/treatments/neurological"),
-								text: "Neurological Care",
-							},
-							{
-								href: resolvePath("/pages/treatments/oncology"),
-								text: "Oncology Care",
-							},
 							{
 								href: resolvePath("/pages/treatments/pain"),
 								text: "Pain Management",
-							},
-							{
-								href: resolvePath("/pages/treatments/palliative"),
-								text: "Palliative Care",
 							},
 							{
 								href: resolvePath("/pages/treatments/post-op"),
 								text: "Post-Operative Care",
 							},
 							{
-								href: resolvePath("/pages/treatments/respiratory"),
-								text: "Respiratory Care",
-							},
-							{
-								href: resolvePath("/pages/treatments/wellness"),
-								text: "Wellness Programs",
+								href: resolvePath("/pages/treatments/rehab"),
+								text: "Rehabilitation",
 							},
 						]),
 						this.#createMobileDropdown("Expertise", [
@@ -1635,16 +1561,17 @@ class NavBar extends BaseComponent {
 								text: "Traumatic Brain Injury",
 							},
 						]),
-						this.h(
-							"a",
-							{
-								href: resolvePath("/pages/team"),
-								class:
-									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas text-uppercase",
-								onClick: () => this.closeMenu(),
-							},
-							"TEAM",
-						),
+						// Team link commented out for launch
+						// this.h(
+						// 	"a",
+						// 	{
+						// 		href: resolvePath("/pages/team"),
+						// 		class:
+						// 			"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas text-uppercase",
+						// 		onClick: () => this.closeMenu(),
+						// 	},
+						// 	"TEAM",
+						// ),
 						this.h(
 							"a",
 							{

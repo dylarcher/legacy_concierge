@@ -423,7 +423,7 @@
 				<div class="relative mx-auto max-w-4xl px-[56px] mt-12 text-center" style="max-width: 960px !important">
 					<video 
 						class="w-max mx-auto h-auto rounded-2xl shadow-lg ring-1 ring-zinc-950/5"
-						poster="/assets/media/videos/lcintro-poster.jpg"
+						poster="/assets/media/videos/lcintro-poster.png"
 						preload="metadata"
 						playsinline
 						controls>
@@ -444,175 +444,224 @@
 				</div>
 			</section>
 
-			<section id="we-treat" class="py-24 overflow-x-hidden">
-				<header class="mx-auto max-w-4xl px-[56px]" style="max-width:1240px !important">
-					<!-- Section Header -->
-						<div class="flex flex-wrap items-center justify-start lg:justify-start gap-4 mb-12">
-							<h2
-								class="font-serif text-secondary text-3xl md:text-4xl lg:text-5xl tracking-normal text-balance">
-								OUR PROCESS
-							</h2>
-							<div class="hidden sm:block w-48 h-px bg-[#0b2736]/30 mt-1"></div>
-							<p class="font-serif text-primary text-md lg:text-lg tracking-normal text-nowrap">
-								Designed for
-								<span class="italic">Clinical Precision</span> and
-								<span class="italic">Complete Peace of Mind</span>
-							</p>
-						</div>
+			<section id="we-treat" class="py-24 overflow-x-clip">
+				<div class="pl-[56px]">
+					<header class="max-w-[1920px]">
+						<!-- Section Header -->
+							<div class="flex flex-wrap items-center justify-start lg:justify-start gap-4 mb-12">
+								<h2
+									class="font-serif text-secondary text-3xl md:text-4xl lg:text-5xl tracking-normal text-balance">
+									OUR PROCESS
+								</h2>
+								<div class="hidden sm:block w-48 h-px bg-[#0b2736]/30 mt-1"></div>
+								<p class="font-serif text-primary text-md lg:text-lg tracking-normal text-nowrap">
+									Designed for
+									<span class="italic">Clinical Precision</span> and
+									<span class="italic">Complete Peace of Mind</span>
+								</p>
+							</div>
 
-						<!-- Section Description -->
-						<p class="text-primary text-sm lg:text-md mb-0">
-							At Legacy Concierge, every client's journey begins with an
-							uncompromising standard of medical excellence. Our four-step
-							process ensures your care is clinically precise, fully
-							coordinated, and personally tailored — from your first call to
-							your final recovery milestone.
-						</p>
-				</header>
-				<div id="treatment-cards"
-					class="scrollbar-minimal mt-11 flex items-stretch gap-6 sm:mt-16 px-[56px] overflow-x-auto 3xl:overflow-x-visible 2xl:justify-center">
+							<!-- Section Description -->
+							<p class="text-primary text-sm lg:text-md mb-0 max-w-4xl">
+								At Legacy Concierge, every client's journey begins with an
+								uncompromising standard of medical excellence. Our four-step
+								process ensures your care is clinically precise, fully
+								coordinated, and personally tailored — from your first call to
+								your final recovery milestone.
+							</p>
+					</header>
+					<div id="treatment-cards"
+						class="scrollbar-minimal mt-11 flex items-stretch gap-6 sm:mt-16 pr-[56px] overflow-x-auto">
 					<!-- Treatment Card A: Comprehensive Medical & Environmental Assessment -->
 					<div
-						class="relative shrink-0 w-80 sm:w-96 2xl:w-[calc(25%-1.5rem)] 2xl:min-w-80 rounded-2xl overflow-hidden group">
-						<div class="aspect-[7/8] overflow-hidden">
+						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[480px]"
+						data-expanded="true">
+						<!-- Background Image (spans full card when expanded) -->
+						<div class="absolute inset-0">
 							<img src="/assets/media/images/grayscale/medica-professional-couch.grayscale.webp"
 								alt="Healthcare professional reviewing documents in a modern living room"
 								class="w-full h-full object-cover transition-transform duration-300">
+							<div class="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
 						</div>
-						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
-						</div>
+						
+						<!-- Toggle Button -->
 						<button type="button"
-							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 hover:rotate-45 opacity-80 hover:opacity-100"
-							aria-label="Learn more about Comprehensive Medical Assessment"
-							data-dialog="treatment-dialog-assessment"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-								fill="currentColor" class="w-full bg-primary rounded-full">
+							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100 z-10"
+							aria-label="Expand details about Comprehensive Medical Assessment">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full bg-primary rounded-full treatment-card-icon transition-transform duration-300" style="transform: rotate(45deg)">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-								<path
-									d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
+								<path d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
 							</svg>
 						</button>
-						<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-							<h3 class="font-semibold text-lg leading-tight">
-								Comprehensive Medical &amp;<br />Environmental Assessment
-							</h3>
+
+						<!-- Content Area -->
+						<div class="relative flex h-full">
+							<!-- Collapsed Title (shown when not expanded) -->
+							<div class="treatment-card-collapsed absolute bottom-0 left-0 right-0 p-6 text-white transition-opacity duration-300" style="opacity: 0">
+								<h3 class="font-semibold text-lg leading-tight">
+									Comprehensive Medical &amp;<br />Environmental Assessment
+								</h3>
+							</div>
+							
+							<!-- Expanded Content (hidden when collapsed) -->
+							<div class="treatment-card-expanded absolute inset-0 flex flex-col justify-end p-8 text-white transition-opacity duration-300" style="opacity: 1">
+								<h4 class="font-serif italic text-2xl mb-1">Comprehensive Medical &amp;</h4>
+								<h4 class="font-semibold text-xl mb-4">Environmental Assessment</h4>
+								<p class="text-white/90 text-sm leading-relaxed">
+									Our clinical team begins with a <strong class="text-white">360° evaluation</strong> of your health status, lifestyle, and environment. We review your <strong class="text-white">medical history, current conditions, surgical plans, and physician notes</strong>, then conduct an in-home or virtual assessment to identify everything needed for safe, optimized recovery — including mobility requirements, nutrition, and emotional wellbeing.
+								</p>
+							</div>
 						</div>
 					</div>
 
 					<!-- Treatment Card B: Build Your Personalized Care Team -->
 					<div
-						class="relative shrink-0 w-80 sm:w-96 2xl:w-[calc(25%-1.5rem)] 2xl:min-w-80 rounded-2xl overflow-hidden group">
-						<div class="aspect-[7/8] overflow-hidden">
+						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[480px]"
+						data-expanded="false">
+						<!-- Background Image (spans full card when expanded) -->
+						<div class="absolute inset-0">
 							<img src="/assets/media/images/grayscale/elite-nurses-posing.grayscale.webp"
 								alt="Healthcare team members posing together"
 								class="w-full h-full object-cover transition-transform duration-300">
+							<div class="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
 						</div>
-						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
-						</div>
+						
+						<!-- Toggle Button -->
 						<button type="button"
-							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 hover:rotate-45 opacity-80 hover:opacity-100"
-							aria-label="Learn more about Building Your Care Team"
-							data-dialog="treatment-dialog-team"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-								fill="currentColor" class="w-full bg-primary rounded-full">
+							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100 z-10"
+							aria-label="Expand details about Building Your Care Team">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full bg-primary rounded-full treatment-card-icon transition-transform duration-300">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-								<path
-									d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
+								<path d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
 							</svg>
 						</button>
-						<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-							<h3 class="font-semibold text-lg leading-tight">
-								Build Your<br />Personalized Care Team
-							</h3>
+
+						<!-- Content Area -->
+						<div class="relative flex h-full">
+							<!-- Collapsed Title (shown when not expanded) -->
+							<div class="treatment-card-collapsed absolute bottom-0 left-0 right-0 p-6 text-white transition-opacity duration-300">
+								<h3 class="font-semibold text-lg leading-tight">
+									Build Your<br />Personalized Care Team
+								</h3>
+							</div>
+							
+							<!-- Expanded Content (hidden when collapsed) -->
+							<div class="treatment-card-expanded absolute inset-0 flex flex-col justify-end p-8 text-white opacity-0 transition-opacity duration-300">
+								<h4 class="font-semibold text-xl mb-1">Build Your</h4>
+								<h4 class="font-serif italic text-2xl mb-4">Personalized Care Team</h4>
+								<p class="text-white/90 text-sm leading-relaxed mb-3">
+									We hand-select your <strong class="text-white">dedicated care team</strong>, led by a <strong class="text-white">concierge registered nurse (RN) and supported by specialists across our</strong> elite network — including physicians, physical therapists, nutritionists, and wellness experts.
+								</p>
+								<p class="text-white/90 text-sm leading-relaxed">
+									Every professional assigned is vetted for <strong class="text-white">clinical expertise, emotional intelligence, and alignment</strong> with your personal goals. Whether you require 24-hour RN presence, shift-based oversight, or multidisciplinary coordination, we create a structure that ensures consistency, safety, and discretion.
+								</p>
+							</div>
 						</div>
 					</div>
 
 					<!-- Treatment Card C: Develop & Approve Your Personalized Care Plan -->
 					<div
-						class="relative shrink-0 w-80 sm:w-96 2xl:w-[calc(25%-1.5rem)] 2xl:min-w-80 rounded-2xl overflow-hidden group">
-						<div class="aspect-[7/8] overflow-hidden">
+						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[480px]"
+						data-expanded="false">
+						<!-- Background Image (spans full card when expanded) -->
+						<div class="absolute inset-0">
 							<img src="/assets/media/images/grayscale/reviewing-nutrition-diet.grayscale.webp"
 								alt="Healthcare professional reviewing nutrition and diet plan with patient"
 								class="w-full h-full object-cover transition-transform duration-300">
+							<div class="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
 						</div>
-						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
-						</div>
+						
+						<!-- Toggle Button -->
 						<button type="button"
-							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 hover:rotate-45 opacity-80 hover:opacity-100"
-							aria-label="Learn more about Your Care Plan"
-							data-dialog="treatment-dialog-plan"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-								fill="currentColor" class="w-full bg-primary rounded-full">
+							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100 z-10"
+							aria-label="Expand details about Your Care Plan">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full bg-primary rounded-full treatment-card-icon transition-transform duration-300">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-								<path
-									d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
+								<path d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
 							</svg>
 						</button>
-						<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-							<h3 class="font-semibold text-lg leading-tight">
-								Develop &amp; Approve<br />Your Personalized Care Plan
-							</h3>
+
+						<!-- Content Area -->
+						<div class="relative flex h-full">
+							<!-- Collapsed Title (shown when not expanded) -->
+							<div class="treatment-card-collapsed absolute bottom-0 left-0 right-0 p-6 text-white transition-opacity duration-300">
+								<h3 class="font-semibold text-lg leading-tight">
+									Develop &amp; Approve<br />Your Personalized Care Plan
+								</h3>
+							</div>
+							
+							<!-- Expanded Content (hidden when collapsed) -->
+							<div class="treatment-card-expanded absolute inset-0 flex flex-col justify-end p-8 text-white opacity-0 transition-opacity duration-300 overflow-y-auto">
+								<h4 class="font-serif italic text-2xl mb-1">Develop &amp; Approve</h4>
+								<h4 class="font-semibold text-xl mb-4">Your Personalized Care Plan</h4>
+								<p class="text-white/90 text-sm leading-relaxed mb-3">
+									Your plan of care is not templated — it's engineered. We integrate input from your <strong class="text-white">surgeons, primary care physicians, and specialists</strong>, synthesizing complex medical directives into a clear, actionable plan tailored to your condition and environment.
+								</p>
+								<div class="bg-white/10 rounded-lg p-3 mb-3">
+									<p class="font-semibold text-white text-sm mb-2">This includes:</p>
+									<ul class="text-white/90 text-xs space-y-1 list-disc list-inside">
+										<li>Medication and wound management protocols</li>
+										<li>IV or infusion therapy scheduling</li>
+										<li>Rehabilitation and mobility planning</li>
+										<li>Nutritional and recovery timelines</li>
+										<li>Environmental safety adaptations</li>
+										<li>Real-time communication with your care team and family</li>
+									</ul>
+								</div>
+								<p class="text-white/90 text-xs leading-relaxed">
+									Every plan is reviewed by our clinical leadership for accuracy, oversight, and compliance with state and federal healthcare standards.
+								</p>
+							</div>
 						</div>
 					</div>
 
 					<!-- Treatment Card D: Begin Ongoing Clinical Oversight & Adaptive Care -->
 					<div
-						class="relative shrink-0 w-80 sm:w-96 2xl:w-[calc(25%-1.5rem)] 2xl:min-w-80 rounded-2xl overflow-hidden group">
-						<div class="aspect-[7/8] overflow-hidden">
+						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[480px]"
+						data-expanded="false">
+						<!-- Background Image (spans full card when expanded) -->
+						<div class="absolute inset-0">
 							<img src="/assets/media/images/grayscale/loved-one-giving-patient-support.grayscale.webp"
 								alt="Loved one providing support to patient"
 								class="w-full h-full object-cover transition-transform duration-300">
+							<div class="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent"></div>
 						</div>
-						<div class="absolute inset-0 bg-linear-to-t from-black/100 via-black/20 to-transparent">
-						</div>
+						
+						<!-- Toggle Button -->
 						<button type="button"
-							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 hover:rotate-45 opacity-80 hover:opacity-100"
-							aria-label="Learn more about Clinical Oversight"
-							data-dialog="treatment-dialog-oversight"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-								fill="currentColor" class="w-full bg-primary rounded-full">
+							class="treatment-card-trigger bg-transparent absolute top-4 right-4 size-10 rounded-full flex items-center justify-center text-white transition-all duration-300 outline-4 -outline-offset-4 p-0 transform scale-100 hover:scale-120 opacity-80 hover:opacity-100 z-10"
+							aria-label="Expand details about Clinical Oversight">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full bg-primary rounded-full treatment-card-icon transition-transform duration-300">
 								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-								<path
-									d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
+								<path d="M4.929 4.929a10 10 0 1 1 14.141 14.141a10 10 0 0 1 -14.14 -14.14zm8.071 4.071a1 1 0 1 0 -2 0v2h-2a1 1 0 1 0 0 2h2v2a1 1 0 1 0 2 0v-2h2a1 1 0 1 0 0 -2h-2v-2z" />
 							</svg>
 						</button>
-						<div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-							<h3 class="font-semibold text-lg leading-tight">
-								Begin Ongoing Clinical<br />Oversight &amp; Adaptive Care
-							</h3>
+
+						<!-- Content Area -->
+						<div class="relative flex h-full">
+							<!-- Collapsed Title (shown when not expanded) -->
+							<div class="treatment-card-collapsed absolute bottom-0 left-0 right-0 p-6 text-white transition-opacity duration-300">
+								<h3 class="font-semibold text-lg leading-tight">
+									Begin Ongoing Clinical<br />Oversight &amp; Adaptive Care
+								</h3>
+							</div>
+							
+							<!-- Expanded Content (hidden when collapsed) -->
+							<div class="treatment-card-expanded absolute inset-0 flex flex-col justify-end p-8 text-white opacity-0 transition-opacity duration-300">
+								<h4 class="font-semibold text-xl mb-1">Begin Ongoing Clinical</h4>
+								<h4 class="font-serif italic text-2xl mb-4">Oversight &amp; Adaptive Care</h4>
+								<p class="text-white/90 text-sm leading-relaxed mb-3">
+									Once care begins, your concierge nurse manages <strong class="text-white">daily medical tasks, continuous vitals tracking, and proactive symptom monitoring.</strong> Behind the scenes, our <strong class="text-white">clinical directors</strong> review reports, ensuring early detection of complications and immediate intervention when necessary.
+								</p>
+								<p class="text-white/90 text-sm leading-relaxed">
+									We maintain <strong class="text-white">24/7 care coordination</strong>, seamless physician communication, and real-time updates through secure digital platforms. If your needs evolve, your plan adapts — instantly.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
-
-				<!-- Treatment Dialogs -->
-				<treatment-dialog
-					id="treatment-dialog-assessment"
-					title="Comprehensive Medical & Environmental Assessment"
-					image="/assets/media/images/grayscale/medica-professional-couch.grayscale.webp">
-					<p>We begin with a thorough clinical evaluation of your health history, current conditions, and care goals.</p>
-					<p>Our team also assesses your home environment to ensure it supports safe, effective care delivery.</p>
-				</treatment-dialog>
-
-				<treatment-dialog
-					id="treatment-dialog-team"
-					title="Build Your Personalized Care Team"
-					image="/assets/media/images/grayscale/elite-nurses-posing.grayscale.webp">
-					<p>We hand-select elite nurses from our network who match your specific medical needs and personal preferences.</p>
-					<p>Your dedicated care team is built around you, ensuring continuity and trust from day one.</p>
-				</treatment-dialog>
-
-				<treatment-dialog
-					id="treatment-dialog-plan"
-					title="Develop & Approve Your Personalized Care Plan"
-					image="/assets/media/images/grayscale/reviewing-nutrition-diet.grayscale.webp">
-					<p>Working closely with you and your physicians, we create a comprehensive care plan tailored to your unique needs.</p>
-					<p>Every detail is reviewed and approved by you before care begins, ensuring complete alignment with your goals.</p>
-				</treatment-dialog>
-
-				<treatment-dialog
-					id="treatment-dialog-oversight"
-					title="Begin Ongoing Clinical Oversight & Adaptive Care"
-					image="/assets/media/images/grayscale/loved-one-giving-patient-support.grayscale.webp">
-					<p>Your care begins with 24/7 clinical oversight, real-time monitoring, and seamless coordination with your medical team.</p>
-					<p>As your needs evolve, we adapt your care plan to ensure optimal outcomes every step of the way.</p>
-				</treatment-dialog>
-				<div class="scrollbar-minimal-track mt-8 2xl:hidden" aria-hidden="true">
+				</div>
+				<div class="scrollbar-minimal-track mt-8 pl-[56px] 2xl:hidden" aria-hidden="true">
 					<div class="scrollbar-minimal-thumb" id="treatment-scrollbar-thumb"></div>
 				</div>
 			</section>

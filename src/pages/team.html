@@ -1991,7 +1991,7 @@
 
 				<section class="bg-canvas py-16">
 					<div class="mx-auto max-w-7xl px-[56px]">
-						<h2 class="text-center mb-4">Our Commitment to Excellence</h2>
+						<h2 class="font-serif text-center mb-4">Our Commitment to Excellence</h2>
 						<p class="text-xl text-center text-muted mb-12 max-w-3xl mx-auto">
 							Our nurses represent the top 3% of expertly vetted, highly trained
 							professionals in their field. Each brings specialized expertise
@@ -2207,7 +2207,7 @@
 
 				<section class="py-16">
 					<div class="mx-auto max-w-4xl px-[56px] text-center">
-						<h2 class="mb-6">Join Our Team</h2>
+						<h2 class="font-serif mb-6">Join Our Team</h2>
 						<p class="text-xl text-muted mb-8">
 							Are you a passionate healthcare professional looking to make a
 							real difference? We're always seeking exceptional talent to join
@@ -2227,5 +2227,92 @@
 			</footer>
 		</div>
 		<script type="module" src="/main.js"></script>
+		<script>
+			// Team page tab switching functionality
+			const initTeamTabs = () => {
+				// Handle tab switching for each team member card
+				document.querySelectorAll(".team-tab-btn").forEach((button) => {
+					button.addEventListener("click", () => {
+						const tabId = button.dataset.tab;
+						const container = button.closest(".lg\\:flex-1");
+						if (!container) return;
+
+						// Update button states within this container
+						container.querySelectorAll(".team-tab-btn").forEach((btn) => {
+							if (btn.dataset.tab === tabId) {
+								btn.classList.add("active", "border-2", "border-primary/20", "bg-white", "text-primary");
+								btn.classList.remove("bg-secondary", "text-white");
+							} else {
+								btn.classList.remove("active", "border-2", "border-primary/20", "bg-white", "text-primary");
+								btn.classList.add("bg-secondary", "text-white");
+							}
+						});
+
+						// Update content visibility within this container
+						container.querySelectorAll(".team-tab-content").forEach((content) => {
+							if (content.dataset.content === tabId) {
+								content.classList.remove("hidden");
+							} else {
+								content.classList.add("hidden");
+							}
+						});
+					});
+				});
+			};
+
+			// Single-open accordion behavior with dynamic styling
+			const initTeamAccordion = () => {
+				const accordion = document.getElementById("team-accordion");
+				if (!accordion) return;
+
+				const details = accordion.querySelectorAll("details");
+
+				const updateAccordionStyling = (openedDetails) => {
+					details.forEach((detail) => {
+						const summary = detail.querySelector("summary");
+						if (detail === openedDetails && detail.open) {
+							// Open state: bg-secondary with white text
+							summary.classList.remove("bg-white", "border", "border-zinc-200", "text-primary", "shadow-sm");
+							summary.classList.add("bg-secondary", "text-white");
+						} else {
+							// Closed state: bg-white with border
+							summary.classList.remove("bg-secondary", "text-white");
+							summary.classList.add("bg-white", "border", "border-zinc-200", "text-primary", "shadow-sm");
+						}
+					});
+				};
+
+				details.forEach((detail) => {
+					detail.addEventListener("toggle", () => {
+						if (detail.open) {
+							// Close all other details
+							details.forEach((otherDetail) => {
+								if (otherDetail !== detail && otherDetail.open) {
+									otherDetail.open = false;
+								}
+							});
+						}
+						updateAccordionStyling(detail);
+					});
+				});
+
+				// Initialize styling for the default open accordion
+				const openDetail = accordion.querySelector("details[open]");
+				if (openDetail) {
+					updateAccordionStyling(openDetail);
+				}
+			};
+
+			// Initialize when DOM is ready
+			if (document.readyState === "loading") {
+				document.addEventListener("DOMContentLoaded", () => {
+					initTeamTabs();
+					initTeamAccordion();
+				});
+			} else {
+				initTeamTabs();
+				initTeamAccordion();
+			}
+		</script>
 	</body>
 </html>
