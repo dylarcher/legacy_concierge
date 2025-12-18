@@ -25,7 +25,17 @@ const SEARCH_INDEX = [
 		path: "/pages/treatments/cardiac",
 		category: "Treatments",
 	},
+	{
+		title: "Eating Disorders",
+		path: "/pages/treatments/eating-disorders",
+		category: "Treatments",
+	},
 	{ title: "IV Therapy", path: "/pages/treatments/iv", category: "Treatments" },
+	{
+		title: "Mental Health",
+		path: "/pages/treatments/mental-health",
+		category: "Treatments",
+	},
 	{
 		title: "Pain Management",
 		path: "/pages/treatments/pain",
@@ -1214,9 +1224,19 @@ class NavBar extends BaseComponent {
 									desc: "Comprehensive cardiac recovery and monitoring",
 								},
 								{
+									href: resolvePath("/pages/treatments/eating-disorders"),
+									text: "Eating Disorders",
+									desc: "Compassionate eating disorder care and monitoring",
+								},
+								{
 									href: resolvePath("/pages/treatments/iv"),
 									text: "IV Therapy",
 									desc: "Hydration and medication infusions",
+								},
+								{
+									href: resolvePath("/pages/treatments/mental-health"),
+									text: "Mental Health",
+									desc: "Personalized mental health support and care",
 								},
 								{
 									href: resolvePath("/pages/treatments/pain"),
@@ -1504,7 +1524,15 @@ class NavBar extends BaseComponent {
 								href: resolvePath("/pages/treatments/cardiac"),
 								text: "Cardiac Care",
 							},
+							{
+								href: resolvePath("/pages/treatments/eating-disorders"),
+								text: "Eating Disorders",
+							},
 							{ href: resolvePath("/pages/treatments/iv"), text: "IV Therapy" },
+							{
+								href: resolvePath("/pages/treatments/mental-health"),
+								text: "Mental Health",
+							},
 							{
 								href: resolvePath("/pages/treatments/pain"),
 								text: "Pain Management",
