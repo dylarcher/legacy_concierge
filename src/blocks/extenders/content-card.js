@@ -62,6 +62,7 @@ export class ContentCard extends BaseComponent {
 
 	#dialog = null;
 	#boundHashChange = null;
+	#isExpanded = false;
 
 	connectedCallback() {
 		this.render();
