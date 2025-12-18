@@ -50,37 +50,37 @@ export const FOOTER_TEMPLATE = `
 						<h3 class="text-sm font-bold text-white">Conditions</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Amyotrophic Lateral Sclerosis</a>
+								<a href="/pages/services/als" class="text-sm/6 text-white text-underline">Amyotrophic Lateral Sclerosis</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Alzheimer's</a>
+								<a href="/pages/services/alzheimers" class="text-sm/6 text-white text-underline">Alzheimer's</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Dementia</a>
+								<a href="/pages/services/dementia" class="text-sm/6 text-white text-underline">Dementia</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Diabetes</a>
+								<a href="/pages/services/diabetes" class="text-sm/6 text-white text-underline">Diabetes</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Heart Disease</a>
+								<a href="/pages/services/heart-disease" class="text-sm/6 text-white text-underline">Heart Disease</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Multiple Sclerosis</a>
+								<a href="/pages/services/ms" class="text-sm/6 text-white text-underline">Multiple Sclerosis</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Oncology</a>
+								<a href="/pages/services/oncology" class="text-sm/6 text-white text-underline">Oncology</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Ostomy</a>
+								<a href="/pages/services/ostomy" class="text-sm/6 text-white text-underline">Ostomy</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Parkinson's</a>
+								<a href="/pages/services/parkinsons" class="text-sm/6 text-white text-underline">Parkinson's</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Stroke Recovery</a>
+								<a href="/pages/services/stroke" class="text-sm/6 text-white text-underline">Stroke Recovery</a>
 							</li>
 							<li>
-								<a href="#" class="text-sm/6 text-white text-underline">Traumatic Brain Injury</a>
+								<a href="/pages/services/tbi" class="text-sm/6 text-white text-underline">Traumatic Brain Injury</a>
 							</li>
 						</ul>
 					</div>
