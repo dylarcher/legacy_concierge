@@ -21,7 +21,13 @@
  * @fires slider-snap - When snap position changes
  */
 
-import { BaseComponent, defineElement, clsx, uniqueId, hashUtils } from "./_base.js";
+import {
+	BaseComponent,
+	clsx,
+	defineElement,
+	hashUtils,
+	uniqueId,
+} from "./_base.js";
 
 export class ScrollSlider extends BaseComponent {
 	static get observedAttributes() {
@@ -300,7 +306,8 @@ export class ScrollSlider extends BaseComponent {
 		const scrollableWidth = scrollWidth - clientWidth;
 		const scrollRatio = dx / (trackWidth - thumbWidth);
 
-		this.#container.scrollLeft = this.#scrollLeft + scrollRatio * scrollableWidth;
+		this.#container.scrollLeft =
+			this.#scrollLeft + scrollRatio * scrollableWidth;
 	};
 
 	#handleMouseUp = () => {
@@ -312,7 +319,8 @@ export class ScrollSlider extends BaseComponent {
 	};
 
 	#handleTrackClick = (event) => {
-		if (!this.#container || !this.#track || event.target === this.#thumb) return;
+		if (!this.#container || !this.#track || event.target === this.#thumb)
+			return;
 
 		const trackRect = this.#track.getBoundingClientRect();
 		const clickX = event.clientX - trackRect.left;
@@ -363,7 +371,10 @@ export class ScrollSlider extends BaseComponent {
 
 		if (this.#thumb) {
 			this.#boundHandlers.thumbMouseDown = this.#handleThumbMouseDown;
-			this.#thumb.addEventListener("mousedown", this.#boundHandlers.thumbMouseDown);
+			this.#thumb.addEventListener(
+				"mousedown",
+				this.#boundHandlers.thumbMouseDown,
+			);
 		}
 
 		if (this.#track) {
@@ -402,7 +413,10 @@ export class ScrollSlider extends BaseComponent {
 			this.#container.removeEventListener("scroll", this.#boundHandlers.scroll);
 		}
 		if (this.#thumb && this.#boundHandlers.thumbMouseDown) {
-			this.#thumb.removeEventListener("mousedown", this.#boundHandlers.thumbMouseDown);
+			this.#thumb.removeEventListener(
+				"mousedown",
+				this.#boundHandlers.thumbMouseDown,
+			);
 		}
 		if (this.#track && this.#boundHandlers.trackClick) {
 			this.#track.removeEventListener("click", this.#boundHandlers.trackClick);
@@ -516,19 +530,16 @@ export class ScrollSlider extends BaseComponent {
 
 		// Create container
 		const containerId = uniqueId("slider");
-		this.#container = this.h(
-			"div",
-			{
-				id: containerId,
-				class: clsx(
-					"slider-container scrollbar-minimal",
-					"flex overflow-x-auto",
-					this.snap && "snap-x snap-mandatory",
-				),
-				style: { gap: `${this.gap}rem` },
-				"data-slider-ui": "",
-			},
-		);
+		this.#container = this.h("div", {
+			id: containerId,
+			class: clsx(
+				"slider-container scrollbar-minimal",
+				"flex overflow-x-auto",
+				this.snap && "snap-x snap-mandatory",
+			),
+			style: { gap: `${this.gap}rem` },
+			"data-slider-ui": "",
+		});
 
 		// Apply snap to items
 		existingChildren.forEach((child) => {
@@ -541,7 +552,9 @@ export class ScrollSlider extends BaseComponent {
 
 		// Create arrow buttons
 		const leftArrow = this.showArrows ? this.#createArrowButton("left") : null;
-		const rightArrow = this.showArrows ? this.#createArrowButton("right") : null;
+		const rightArrow = this.showArrows
+			? this.#createArrowButton("right")
+			: null;
 
 		if (leftArrow) leftArrow.setAttribute("data-slider-ui", "");
 		if (rightArrow) rightArrow.setAttribute("data-slider-ui", "");
@@ -549,13 +562,10 @@ export class ScrollSlider extends BaseComponent {
 		// Create scrollbar using design system utilities
 		let scrollbarEl = null;
 		if (this.showScrollbar) {
-			this.#track = this.h(
-				"div",
-				{
-					class: "scrollbar-minimal-track",
-					style: { width: `${this.scrollbarWidth}%` },
-				},
-			);
+			this.#track = this.h("div", {
+				class: "scrollbar-minimal-track",
+				style: { width: `${this.scrollbarWidth}%` },
+			});
 
 			this.#thumb = this.h("div", {
 				class: "scrollbar-minimal-thumb",

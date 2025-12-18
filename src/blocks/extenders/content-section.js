@@ -22,7 +22,7 @@
  * @slot - Default slot for section content
  */
 
-import { BaseComponent, defineElement, clsx } from "./_base.js";
+import { BaseComponent, clsx, defineElement } from "./_base.js";
 
 export class ContentSection extends BaseComponent {
 	static get observedAttributes() {
@@ -231,7 +231,9 @@ export class ContentSection extends BaseComponent {
 									backgroundImage: `url(${this.background})`,
 									backgroundSize: "cover",
 									backgroundPosition: this.backgroundPosition,
-									backgroundAttachment: this.backgroundFixed ? "fixed" : "scroll",
+									backgroundAttachment: this.backgroundFixed
+										? "fixed"
+										: "scroll",
 								}
 							: undefined,
 						"aria-hidden": "true",
@@ -244,8 +246,14 @@ export class ContentSection extends BaseComponent {
 		const contentWrapper = this.h(
 			"div",
 			{
-				class: clsx("relative z-10", this.#getWidthClass(), this.#getAlignClass()),
-				style: this.invert ? "color: var(--color-text-inverse)" : "color: var(--color-text)",
+				class: clsx(
+					"relative z-10",
+					this.#getWidthClass(),
+					this.#getAlignClass(),
+				),
+				style: this.invert
+					? "color: var(--color-text-inverse)"
+					: "color: var(--color-text)",
 			},
 			this.#createBlurWrapper(slotContent),
 		);
@@ -254,7 +262,11 @@ export class ContentSection extends BaseComponent {
 		const section = this.h(
 			"section",
 			{
-				class: clsx("relative overflow-hidden", this.#getPaddingClass(), "px-[56px]"),
+				class: clsx(
+					"relative overflow-hidden",
+					this.#getPaddingClass(),
+					"px-[56px]",
+				),
 				"data-section-ui": "",
 			},
 			backgroundLayer,

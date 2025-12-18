@@ -317,13 +317,19 @@ export class TreatmentDialog extends BaseComponent {
 		svg.setAttribute("stroke-linecap", "round");
 		svg.setAttribute("stroke-linejoin", "round");
 
-		const line1 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+		const line1 = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"line",
+		);
 		line1.setAttribute("x1", "6");
 		line1.setAttribute("y1", "6");
 		line1.setAttribute("x2", "18");
 		line1.setAttribute("y2", "18");
 
-		const line2 = document.createElementNS("http://www.w3.org/2000/svg", "line");
+		const line2 = document.createElementNS(
+			"http://www.w3.org/2000/svg",
+			"line",
+		);
 		line2.setAttribute("x1", "6");
 		line2.setAttribute("y1", "18");
 		line2.setAttribute("x2", "18");

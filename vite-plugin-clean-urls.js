@@ -5,8 +5,17 @@
  * - Updates internal links to use clean URLs
  */
 
-import { readdirSync, statSync, existsSync, mkdirSync, renameSync, readFileSync, writeFileSync, unlinkSync } from "node:fs";
-import { join, relative, dirname, basename } from "node:path";
+import {
+	existsSync,
+	mkdirSync,
+	readdirSync,
+	readFileSync,
+	renameSync,
+	statSync,
+	unlinkSync,
+	writeFileSync,
+} from "node:fs";
+import { basename, dirname, join, relative } from "node:path";
 
 /**
  * Recursively finds all HTML files in a directory
@@ -26,7 +35,11 @@ function findHtmlFiles(dir, baseDir = dir) {
 
 			if (stat.isDirectory()) {
 				// Skip node_modules, dist, and hidden directories
-				if (!entry.startsWith(".") && entry !== "node_modules" && entry !== "dist") {
+				if (
+					!entry.startsWith(".") &&
+					entry !== "node_modules" &&
+					entry !== "dist"
+				) {
 					htmlFiles.push(...findHtmlFiles(fullPath, baseDir));
 				}
 			} else if (entry.endsWith(".html")) {
@@ -154,14 +167,20 @@ export function cleanUrlsPlugin() {
 				const htmlPath = ctx.path || ctx.filename || "";
 
 				// Remove leading slash for consistent handling
-				const cleanHtmlPath = htmlPath.startsWith("/") ? htmlPath.slice(1) : htmlPath;
+				const cleanHtmlPath = htmlPath.startsWith("/")
+					? htmlPath.slice(1)
+					: htmlPath;
 
 				// Determine if this file will be restructured
 				// Files that aren't index.html will become dir/index.html
 				const fileName = basename(cleanHtmlPath);
 				let outputPath = cleanHtmlPath;
 
-				if (fileName !== "index.html" && fileName.endsWith(".html") && fileName !== "404.html") {
+				if (
+					fileName !== "index.html" &&
+					fileName.endsWith(".html") &&
+					fileName !== "404.html"
+				) {
 					// This file will be moved to dir/index.html
 					outputPath = cleanHtmlPath.replace(/\.html$/, "/index.html");
 				}
@@ -172,7 +191,10 @@ export function cleanUrlsPlugin() {
 				let result = html;
 
 				// Check if file will be restructured (non-index.html files get one more directory level)
-				const willBeRestructured = fileName !== "index.html" && fileName.endsWith(".html") && fileName !== "404.html";
+				const willBeRestructured =
+					fileName !== "index.html" &&
+					fileName.endsWith(".html") &&
+					fileName !== "404.html";
 
 				// Track which paths we've transformed (to avoid double-processing)
 				const transformedPaths = new Set();
@@ -181,108 +203,103 @@ export function cleanUrlsPlugin() {
 				// (these paths need adjustment because the file moves one level deeper)
 				if (willBeRestructured) {
 					// Handle href attributes with relative paths (starting with ../)
-					result = result.replace(
-						/href="(\.\.\/[^"]*?)"/g,
-						(match, path) => {
-							transformedPaths.add(`href="../${path}"`);
-							return `href="../${path}"`;
-						}
-					);
+					result = result.replace(/href="(\.\.\/[^"]*?)"/g, (match, path) => {
+						transformedPaths.add(`href="../${path}"`);
+						return `href="../${path}"`;
+					});
 
 					// Handle src attributes with relative paths (starting with ../)
-					result = result.replace(
-						/src="(\.\.\/[^"]*?)"/g,
-						(match, path) => {
-							transformedPaths.add(`src="../${path}"`);
-							return `src="../${path}"`;
-						}
-					);
+					result = result.replace(/src="(\.\.\/[^"]*?)"/g, (match, path) => {
+						transformedPaths.add(`src="../${path}"`);
+						return `src="../${path}"`;
+					});
 				}
 
 				// Update internal navigation links - convert absolute to relative and remove .html
 				// ONLY transform paths that look like page navigation (end with .html or are directories)
 				// DO NOT transform paths to static assets - Vite handles those with base path
-				result = result.replace(
-					/href="(\/[^"]*?)"/g,
-					(match, path) => {
-						// Skip external URLs and special paths
-						if (path.startsWith("//")) {
-							return match;
-						}
-
-						// Only transform paths that look like page navigation:
-						// - Paths ending in .html
-						// - Paths to /pages/ directories
-						// - Root path /
-						// - Paths without file extensions (clean URLs)
-						const isPageNavigation =
-							path === "/" ||
-							path.endsWith(".html") ||
-							path.startsWith("/pages/") ||
-							path.startsWith("/pages") ||
-							// Path without extension and doesn't have a dot in the last segment
-							(!path.includes(".") || !path.split("/").pop().includes("."));
-
-						// Skip anything that looks like a static asset
-						const isStaticAsset =
-							path.includes("/assets/") ||
-							path.endsWith(".svg") ||
-							path.endsWith(".png") ||
-							path.endsWith(".ico") ||
-							path.endsWith(".webp") ||
-							path.endsWith(".jpg") ||
-							path.endsWith(".jpeg") ||
-							path.endsWith(".gif") ||
-							path.endsWith(".css") ||
-							path.endsWith(".js") ||
-							path.endsWith(".json") ||
-							path.endsWith(".xml") ||
-							path.endsWith(".txt") ||
-							path.endsWith(".woff") ||
-							path.endsWith(".woff2");
-
-						if (isStaticAsset || !isPageNavigation) {
-							return match;
-						}
-
-						// Remove .html extension if present
-						let cleanPath = path.replace(/\.html$/, "");
-
-						// Convert to relative path
-						const relativePath = calculateRelativePath(normalizedOutputPath, cleanPath);
-
-						return `href="${relativePath}"`;
+				result = result.replace(/href="(\/[^"]*?)"/g, (match, path) => {
+					// Skip external URLs and special paths
+					if (path.startsWith("//")) {
+						return match;
 					}
-				);
+
+					// Only transform paths that look like page navigation:
+					// - Paths ending in .html
+					// - Paths to /pages/ directories
+					// - Root path /
+					// - Paths without file extensions (clean URLs)
+					const isPageNavigation =
+						path === "/" ||
+						path.endsWith(".html") ||
+						path.startsWith("/pages/") ||
+						path.startsWith("/pages") ||
+						// Path without extension and doesn't have a dot in the last segment
+						!path.includes(".") ||
+						!path.split("/").pop().includes(".");
+
+					// Skip anything that looks like a static asset
+					const isStaticAsset =
+						path.includes("/assets/") ||
+						path.endsWith(".svg") ||
+						path.endsWith(".png") ||
+						path.endsWith(".ico") ||
+						path.endsWith(".webp") ||
+						path.endsWith(".jpg") ||
+						path.endsWith(".jpeg") ||
+						path.endsWith(".gif") ||
+						path.endsWith(".css") ||
+						path.endsWith(".js") ||
+						path.endsWith(".json") ||
+						path.endsWith(".xml") ||
+						path.endsWith(".txt") ||
+						path.endsWith(".woff") ||
+						path.endsWith(".woff2");
+
+					if (isStaticAsset || !isPageNavigation) {
+						return match;
+					}
+
+					// Remove .html extension if present
+					const cleanPath = path.replace(/\.html$/, "");
+
+					// Convert to relative path
+					const relativePath = calculateRelativePath(
+						normalizedOutputPath,
+						cleanPath,
+					);
+
+					return `href="${relativePath}"`;
+				});
 
 				// Update src attributes for images in custom attributes
 				// Only transform image paths that are from our assets/media folder
 				// DO NOT transform Vite-injected script paths
-				result = result.replace(
-					/src="(\/[^"]*?)"/g,
-					(match, path) => {
-						if (path.startsWith("//")) {
-							return match;
-						}
-
-						// Only transform paths to our media folder images
-						// Skip script tags and Vite-generated assets
-						const isMediaImage =
-							path.includes("/assets/media/") &&
-							(path.endsWith(".webp") ||
-								path.endsWith(".jpg") ||
-								path.endsWith(".jpeg") ||
-								path.endsWith(".png") ||
-								path.endsWith(".gif"));
-
-						if (!isMediaImage) {
-							return match;
-						}
-
-						const relativePath = calculateRelativePath(normalizedOutputPath, path);
-						return `src="${relativePath}"`;
+				result = result.replace(/src="(\/[^"]*?)"/g, (match, path) => {
+					if (path.startsWith("//")) {
+						return match;
 					}
-				);
+
+					// Only transform paths to our media folder images
+					// Skip script tags and Vite-generated assets
+					const isMediaImage =
+						path.includes("/assets/media/") &&
+						(path.endsWith(".webp") ||
+							path.endsWith(".jpg") ||
+							path.endsWith(".jpeg") ||
+							path.endsWith(".png") ||
+							path.endsWith(".gif"));
+
+					if (!isMediaImage) {
+						return match;
+					}
+
+					const relativePath = calculateRelativePath(
+						normalizedOutputPath,
+						path,
+					);
+					return `src="${relativePath}"`;
+				});
 
 				return result;
 			},
@@ -327,9 +344,14 @@ export function cleanUrlsPlugin() {
 					// Remove original file
 					unlinkSync(filePath);
 
-					console.log(`  ✓ ${relative(outDir, filePath)} → ${relative(outDir, newPath)}`);
+					console.log(
+						`  ✓ ${relative(outDir, filePath)} → ${relative(outDir, newPath)}`,
+					);
 				} catch (error) {
-					console.error(`  ✗ Failed to restructure ${filePath}:`, error.message);
+					console.error(
+						`  ✗ Failed to restructure ${filePath}:`,
+						error.message,
+					);
 				}
 			};
 
@@ -344,7 +366,11 @@ export function cleanUrlsPlugin() {
 
 						if (stat.isDirectory()) {
 							processDirectory(fullPath);
-						} else if (entry.endsWith(".html") && entry !== "index.html" && entry !== "404.html") {
+						} else if (
+							entry.endsWith(".html") &&
+							entry !== "index.html" &&
+							entry !== "404.html"
+						) {
 							restructureFile(fullPath);
 						}
 					}

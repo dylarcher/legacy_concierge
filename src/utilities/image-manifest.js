@@ -20,10 +20,15 @@ import blueGreenWavesBrownBeach from "../assets/media/images/blue-green-waves-br
 import palmFrawnsShilouette from "../assets/media/images/palm-frawns-silhouette.jpg";
 import topDownViewOfRockyBeach from "../assets/media/images/top-down-view-of-rocky-beach.webp";
 
-// Profile/avatar images
-// TODO: Add these imports once the placeholder images are created:
-// import placeholderJason from "./media/images/placeholder-jason.webp";
-// import placeholderAvatar from "./media/images/placeholder-avatar.webp";
+/**
+ * Profile/avatar images
+ *
+ * Note: Placeholder images are not currently used. The team page
+ * uses actual profile photos or initials via CSS. If placeholder
+ * images are needed in the future, add imports here:
+ *
+ * import placeholderAvatar from "../assets/media/images/placeholder-avatar.webp";
+ */
 
 /**
  * Maps original asset paths to Vite-processed (hashed) URLs.
@@ -41,8 +46,7 @@ export const imageMap = {
 		birdsEyeViewOfCoastalTown,
 	"/assets/media/images/palm-frawns-silhouette.jpg.jpg": palmFrawnsShilouette,
 
-	// TODO: Uncomment once placeholder images are created:
-	// "/assets/media/images/placeholder-jason.webp": placeholderJason,
+	// Add placeholder image mappings here when needed:
 	// "/assets/media/images/placeholder-avatar.webp": placeholderAvatar,
 };
 

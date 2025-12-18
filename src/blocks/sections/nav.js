@@ -1,262 +1,32 @@
-import {
-	BaseComponent,
-	defineElement,
-	FocusTrap,
-	resolvePath,
-} from "../_base.js";
-
-/**
- * Search index for quick links autocomplete
- * @constant {Array<{title: string, path: string, category?: string}>}
- */
-const SEARCH_INDEX = [
-	// Main Pages
-	{ title: "Home", path: "/", category: "Main" },
-	{ title: "About Legacy", path: "/pages/about", category: "Main" },
-	{ title: "Contact Us", path: "/pages/contact", category: "Main" },
-	{ title: "Our Team", path: "/pages/team", category: "Main" },
-	{ title: "Careers", path: "/pages/team/careers", category: "Main" },
-	{ title: "Partners", path: "/pages/partners", category: "Main" },
-	{ title: "Locations", path: "/pages/locations", category: "Main" },
-	{ title: "Blog", path: "/pages/blog", category: "Main" },
-	// Treatment Programs
-	{
-		title: "Cardiac Care",
-		path: "/pages/treatments/cardiac",
-		category: "Treatments",
-	},
-	{
-		title: "Eating Disorders",
-		path: "/pages/treatments/eating-disorders",
-		category: "Treatments",
-	},
-	{ title: "IV Therapy", path: "/pages/treatments/iv", category: "Treatments" },
-	{
-		title: "Mental Health",
-		path: "/pages/treatments/mental-health",
-		category: "Treatments",
-	},
-	{
-		title: "Pain Management",
-		path: "/pages/treatments/pain",
-		category: "Treatments",
-	},
-	{
-		title: "Post-Operative Care",
-		path: "/pages/treatments/post-op",
-		category: "Treatments",
-	},
-	{
-		title: "Rehabilitation",
-		path: "/pages/treatments/rehab",
-		category: "Treatments",
-	},
-	// Expertise/Services
-	{
-		title: "Alzheimer's Care",
-		path: "/pages/services/alzheimers",
-		category: "Expertise",
-	},
-	{ title: "ALS Care", path: "/pages/services/als", category: "Expertise" },
-	{
-		title: "Dementia Care",
-		path: "/pages/services/dementia",
-		category: "Expertise",
-	},
-	{
-		title: "Diabetes Management",
-		path: "/pages/services/diabetes",
-		category: "Expertise",
-	},
-	{
-		title: "Heart Disease Care",
-		path: "/pages/services/heart-disease",
-		category: "Expertise",
-	},
-	{
-		title: "Multiple Sclerosis Care",
-		path: "/pages/services/ms",
-		category: "Expertise",
-	},
-	{
-		title: "Ostomy Management",
-		path: "/pages/services/ostomy",
-		category: "Expertise",
-	},
-	{
-		title: "Parkinson's Care",
-		path: "/pages/services/parkinsons",
-		category: "Expertise",
-	},
-	{
-		title: "Stroke Recovery",
-		path: "/pages/services/stroke",
-		category: "Expertise",
-	},
-	{
-		title: "Traumatic Brain Injury Care",
-		path: "/pages/services/tbi",
-		category: "Expertise",
-	},
-	// Legal
-	{ title: "Terms of Service", path: "/pages/legal/terms", category: "Legal" },
-	{ title: "Privacy Policy", path: "/pages/legal/privacy", category: "Legal" },
-	{ title: "HIPAA Notice", path: "/pages/legal/hipaa", category: "Legal" },
-];
-
-/**
- * Navigation bar template with responsive mobile menu.
- * @constant {string}
- */
-export const NAVBAR_TEMPLATE = `
-    <template id="navbar">
-		<div class="mx-auto max-w-9xl px-6 lg:px-8">
-			<nav role="navigation" aria-label="Global" class="flex items-center justify-between py-6">
-			<div class="flex">
-				<a href="#" class="-m-1.5 p-1.5">
-					<span class="sr-only">Legacy Concierge</span>
-					<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto 
-					<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="" class="h-8 w-auto not-
-				</a>
-			</div>
-			<div class="flex lg:hidden">
-				<button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 
-					<span class="sr-only">Open main menu</span>
-					<svg fill="none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-						<path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
-					</svg>
-				</button>
-			</div>
-			<div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12">
-				<a href="#" class="text-sm/6 font-semibold 
-				<a href="##" class="text-sm/6 font-semibold 
-				<a href="##" class="text-sm/6 font-semibold 
-				<a href="##" class="text-sm/6 font-semibold 
-				<a href="##" class="text-sm/6 font-semibold 
-			</div>
-			<div class="hidden lg:flex lg:ml-8">
-				<button type="button" command="show-modal" commandfor="search-dialog" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 
-					<span class="sr-only">Search</span>
-					<svg fill="currentColor" width="18" height="18" aria-hidden="true" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" name="icon-search">
-						<title>Search</title>
-						<desc>Icon</desc>
-						<path d="M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
-					</svg>
-				</button>
-			</div>
-			</nav>
-		</div>
-		<dialog id="search-dialog" class="backdrop:p-0 w-full max-w-lg rounded-xl fixed top-[87px] left-auto right-0 ml-6">
-			<div class="bg-canvas rounded-xl shadow-2xl ring-1 border-soft">
-				<form method="dialog" class="relative">
-					<svg fill="currentColor" width="18" height="18" aria-hidden="true" role="img" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" name="icon-search" class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
-						<title>Search</title>
-						<desc>Icon</desc>
-						<path d="M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" />
-					</svg>
-					<input type="search" name="search" placeholder="Search..." autofocus class="w-full rounded-xl border-0 py-4 pl-12 pr-4 placeholder:sm:text-sm/6" />
-					<button type="button" command="close" commandfor="search-dialog" class="absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium 
-						ESC
-					</button>
-				</form>
-			</div>
-		</dialog>
-		<el-dialog>
-			<dialog id="mobile-menu" class="backdrop:lg:hidden">
-				<div tabindex="0" class="fixed inset-0">
-					<el-dialog-panel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 
-						<div class="flex items-center justify-between">
-							<a href="#" class="-m-1.5 p-1.5">
-								<span class="sr-only">Your Company</span>
-								<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto 
-								<img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="" class="h-8 w-auto not-
-							</a>
-							<button type="button" command="close" commandfor="mobile-menu" class="-m-2.5 rounded-md p-2.5 
-								<span class="sr-only">Close menu</span>
-								<svg fill="none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-								<path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-								</svg>
-							</button>
-						</div>
-						<div class="mt-6 flow-root">
-							<div class="-my-6 divide-y divide-gray-500/10 
-								<div class="space-y-2 py-6">
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold 
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold 
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold 
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold 
-								</div>
-								<div class="py-6">
-									<a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold 
-								</div>
-							</div>
-						</div>
-					</el-dialog-panel>
-				</div>
-			</dialog>
-		</el-dialog>
-    </template>
-`;
+import { BaseComponent, defineElement, resolvePath } from "../_base.js";
+// Import extracted components
+import "./search-dialog.js";
+import "./mobile-nav.js";
 
 /**
  * Navigation bar web component with responsive mobile drawer menu.
  *
- * @element ui-navbar
- * @attr {string} logo - Logo image URL
- * @attr {string} logo-dark - Logo image URL for dark mode
- * @attr {string} logo-alt - Logo alt text
+ * @element global-nav
  * @attr {string} brand - Brand name (shown in sr-only, used if no logo)
- * @attr {string} cta-text - CTA button text
- * @attr {string} cta-href - CTA button URL
  * @attr {boolean} fixed - Whether navbar is fixed positioned
  * @attr {boolean} transparent - Whether navbar has transparent background
  *
- * @slot - Default slot for nav links
- * @slot logo - Custom logo content
- * @slot cta - Custom CTA content
- * @slot mobile - Custom mobile menu content
- *
  * @fires menu-open - When mobile menu opens
  * @fires menu-close - When mobile menu closes
+ * @fires search-open - When search dialog opens
+ * @fires search-close - When search dialog closes
  *
  * @example
- * <!-- Basic usage -->
- * <global-nav logo="/logo.svg" brand="My Company">
- *   <a href="/">Home</a>
- *   <a href="/about">About</a>
- *   <a href="/contact">Contact</a>
- * </global-nav>
- *
- * @example
- * <!-- With CTA -->
- * <global-nav brand="Acme" cta-text="Sign Up" cta-href="/signup">
- *   <a href="/features">Features</a>
- *   <a href="/pricing">Pricing</a>
- * </global-nav>
+ * <global-nav brand="My Company"></global-nav>
  */
 class NavBar extends BaseComponent {
 	static get observedAttributes() {
-		return [
-			"logo",
-			"logo-dark",
-			"logo-alt",
-			"brand",
-			"cta-text",
-			"cta-href",
-			"fixed",
-			"transparent",
-		];
+		return ["brand", "fixed", "transparent"];
 	}
 
-	#isMenuOpen = false;
-	#focusTrap = null;
-	#boundHandleEscapeKeyPress = null;
-	#boundHandleSearchBackdropClick = null;
+	#mobileNav = null;
+	#searchDialog = null;
 	#boundHandleResize = null;
-	#searchInput = null;
-	#searchResults = null;
-	#searchResultIndex = -1;
-	#filteredResults = [];
 
 	connectedCallback() {
 		this.#injectComponentStyles();
@@ -265,16 +35,6 @@ class NavBar extends BaseComponent {
 	}
 
 	disconnectedCallback() {
-		this.#focusTrap?.deactivate();
-		if (this.#boundHandleEscapeKeyPress) {
-			document.removeEventListener("keydown", this.#boundHandleEscapeKeyPress);
-		}
-		if (this.#boundHandleSearchBackdropClick && this.#searchDialog) {
-			this.#searchDialog.removeEventListener(
-				"click",
-				this.#boundHandleSearchBackdropClick,
-			);
-		}
 		if (this.#boundHandleResize) {
 			window.removeEventListener("resize", this.#boundHandleResize);
 		}
@@ -287,35 +47,18 @@ class NavBar extends BaseComponent {
 		}
 	}
 
-	#searchDialog = null;
-	#backdrop = null;
-	#panel = null;
-
 	/**
 	 * Injects component-specific styles into the document head
 	 * @returns {void}
 	 */
 	#injectComponentStyles() {
-		if (document.getElementById("navbar-template-styles")) return;
+		if (document.getElementById("navbar-styles")) return;
 
 		const style = document.createElement("style");
-		style.id = "navbar-template-styles";
+		style.id = "navbar-styles";
 		style.textContent = `
-			ui-navbar {
+			global-nav {
 				display: block;
-			}
-			ui-navbar .mobile-menu-backdrop {
-				transition: opacity 0.3s ease-out;
-			}
-			ui-navbar .mobile-menu-panel {
-				transition: transform 0.3s ease-in-out;
-			}
-			ui-navbar .mobile-menu-backdrop.hidden {
-				opacity: 0;
-				pointer-events: none;
-			}
-			ui-navbar .mobile-menu-panel.hidden {
-				transform: translateX(100%);
 			}
 		`;
 		document.head.appendChild(style);
@@ -327,9 +70,7 @@ class NavBar extends BaseComponent {
 	 * @returns {void}
 	 */
 	openMenu() {
-		this.#isMenuOpen = true;
-		this.#updateMobileMenuVisibility();
-		this.emit("menu-open");
+		this.#mobileNav?.open();
 	}
 
 	/**
@@ -338,9 +79,7 @@ class NavBar extends BaseComponent {
 	 * @returns {void}
 	 */
 	closeMenu() {
-		this.#isMenuOpen = false;
-		this.#updateMobileMenuVisibility();
-		this.emit("menu-close");
+		this.#mobileNav?.close();
 	}
 
 	/**
@@ -349,14 +88,7 @@ class NavBar extends BaseComponent {
 	 * @returns {void}
 	 */
 	openSearch() {
-		if (this.#searchDialog) {
-			this.#searchDialog.showModal();
-			this.#searchDialog.addEventListener(
-				"click",
-				this.#boundHandleSearchBackdropClick,
-			);
-			this.emit("search-open");
-		}
+		this.#searchDialog?.open();
 	}
 
 	/**
@@ -365,228 +97,7 @@ class NavBar extends BaseComponent {
 	 * @returns {void}
 	 */
 	closeSearch() {
-		if (this.#searchDialog) {
-			this.#searchDialog.removeEventListener(
-				"click",
-				this.#boundHandleSearchBackdropClick,
-			);
-			this.#searchDialog.close();
-			this.#clearSearchResults();
-			this.emit("search-close");
-		}
-	}
-
-	/**
-	 * Handles search input changes
-	 * @param {Event} event - The input event
-	 * @returns {void}
-	 */
-	#handleSearchInput = (event) => {
-		const query = event.target.value.trim().toLowerCase();
-
-		if (query.length === 0) {
-			this.#clearSearchResults();
-			return;
-		}
-
-		// Filter search index
-		this.#filteredResults = SEARCH_INDEX.filter((item) =>
-			item.title.toLowerCase().includes(query),
-		).slice(0, 8);
-
-		this.#searchResultIndex = -1;
-		this.#renderSearchResults();
-	};
-
-	/**
-	 * Handles keyboard navigation in search results
-	 * @param {KeyboardEvent} event - The keyboard event
-	 * @returns {void}
-	 */
-	#handleSearchKeydown = (event) => {
-		if (this.#filteredResults.length === 0) return;
-
-		switch (event.key) {
-			case "ArrowDown":
-				event.preventDefault();
-				this.#searchResultIndex = Math.min(
-					this.#searchResultIndex + 1,
-					this.#filteredResults.length - 1,
-				);
-				this.#updateResultHighlight();
-				break;
-			case "ArrowUp":
-				event.preventDefault();
-				this.#searchResultIndex = Math.max(this.#searchResultIndex - 1, -1);
-				this.#updateResultHighlight();
-				break;
-			case "Enter":
-				event.preventDefault();
-				if (this.#searchResultIndex >= 0) {
-					this.#selectSearchResult(this.#searchResultIndex);
-				} else if (this.#filteredResults.length > 0) {
-					this.#selectSearchResult(0);
-				}
-				break;
-			case "Escape":
-				this.closeSearch();
-				break;
-		}
-	};
-
-	/**
-	 * Selects a search result and navigates to it
-	 * @param {number} index - The result index
-	 * @returns {void}
-	 */
-	#selectSearchResult(index) {
-		const result = this.#filteredResults[index];
-		if (result) {
-			this.closeSearch();
-			window.location.href = resolvePath(result.path);
-		}
-	}
-
-	/**
-	 * Renders the search results list
-	 * @returns {void}
-	 */
-	#renderSearchResults() {
-		if (!this.#searchResults) return;
-
-		this.#searchResults.innerHTML = "";
-
-		if (this.#filteredResults.length === 0) {
-			this.#searchResults.classList.add("hidden");
-			return;
-		}
-
-		this.#searchResults.classList.remove("hidden");
-
-		this.#filteredResults.forEach((result, index) => {
-			const item = this.h(
-				"a",
-				{
-					href: resolvePath(result.path),
-					class:
-						"search-result-item flex items-center gap-3 px-4 py-3 text-sm hover:bg-muted transition-colors cursor-pointer no-underline",
-					"data-index": index,
-					onClick: (event) => {
-						event.preventDefault();
-						this.#selectSearchResult(index);
-					},
-				},
-				this.h(
-					"span",
-					{ class: "flex-1", style: "color: var(--color-text)" },
-					result.title,
-				),
-				this.h(
-					"span",
-					{
-						class: "text-xs px-2 py-0.5 rounded-full",
-						style:
-							"color: var(--color-text-muted); background: var(--color-surface-muted)",
-					},
-					result.category,
-				),
-			);
-			this.#searchResults.appendChild(item);
-		});
-	}
-
-	/**
-	 * Updates the visual highlight on search results
-	 * @returns {void}
-	 */
-	#updateResultHighlight() {
-		if (!this.#searchResults) return;
-
-		const items = this.#searchResults.querySelectorAll(".search-result-item");
-		items.forEach((item, index) => {
-			if (index === this.#searchResultIndex) {
-				item.style.backgroundColor = "var(--color-muted)";
-			} else {
-				item.style.backgroundColor = "";
-			}
-		});
-	}
-
-	/**
-	 * Clears the search results
-	 * @returns {void}
-	 */
-	#clearSearchResults() {
-		this.#filteredResults = [];
-		this.#searchResultIndex = -1;
-		if (this.#searchResults) {
-			this.#searchResults.innerHTML = "";
-			this.#searchResults.classList.add("hidden");
-		}
-		if (this.#searchInput) {
-			this.#searchInput.value = "";
-		}
-	}
-
-	/**
-	 * Toggles the mobile menu open/closed state
-	 * @returns {void}
-	 */
-	toggleMenu() {
-		if (this.#isMenuOpen) {
-			this.closeMenu();
-		} else {
-			this.openMenu();
-		}
-	}
-
-	/**
-	 * Updates mobile menu visibility and manages focus trap
-	 * @returns {void}
-	 */
-	#updateMobileMenuVisibility() {
-		const backdrop = this.#backdrop;
-		const panel = this.#panel;
-
-		if (!backdrop || !panel) return;
-
-		if (this.#isMenuOpen) {
-			backdrop.classList.remove("hidden");
-			panel.classList.remove("hidden");
-			document.body.style.overflow = "hidden";
-
-			this.#focusTrap = new FocusTrap(panel);
-			this.#focusTrap.activate();
-		} else {
-			backdrop.classList.add("hidden");
-			panel.classList.add("hidden");
-			document.body.style.overflow = "";
-
-			this.#focusTrap?.deactivate();
-			this.#focusTrap = null;
-		}
-	}
-
-	/**
-	 * Handles escape key press to close mobile menu
-	 * @param {KeyboardEvent} event - The keyboard event
-	 * @returns {void}
-	 */
-	#handleEscapeKeyPress(event) {
-		if (event.key === "Escape" && this.#isMenuOpen) {
-			this.closeMenu();
-		}
-	}
-
-	/**
-	 * Handles click on search dialog backdrop to close it
-	 * @param {MouseEvent} event - The mouse event
-	 * @returns {void}
-	 */
-	#handleSearchBackdropClick(event) {
-		if (event.target === this.#searchDialog) {
-			this.closeSearch();
-		}
+		this.#searchDialog?.close();
 	}
 
 	/**
@@ -594,14 +105,8 @@ class NavBar extends BaseComponent {
 	 * @returns {void}
 	 */
 	#initializeEventListeners() {
-		this.#boundHandleEscapeKeyPress = this.#handleEscapeKeyPress.bind(this);
-		this.#boundHandleSearchBackdropClick =
-			this.#handleSearchBackdropClick.bind(this);
-		document.addEventListener("keydown", this.#boundHandleEscapeKeyPress);
-
 		// Close dropdowns when clicking outside
 		document.addEventListener("click", (e) => {
-			// Check if click is outside all dropdown containers
 			const dropdownContainer = e.target.closest(
 				".relative:has(> .dropdown-menu)",
 			);
@@ -629,11 +134,9 @@ class NavBar extends BaseComponent {
 	#resetDropdownStyles(menu) {
 		menu.classList.add("hidden", "opacity-0", "translate-y-1");
 		menu.classList.remove("opacity-100", "translate-y-0");
-		// Reset positioning
 		menu.style.left = "";
 		menu.style.right = "";
 		menu.style.transform = "";
-		// Reset scroll container styles
 		const scrollContainer = menu.querySelector(":scope > div");
 		if (scrollContainer) {
 			scrollContainer.style.maxHeight = "";
@@ -645,65 +148,50 @@ class NavBar extends BaseComponent {
 
 	/**
 	 * Positions a dropdown menu to ensure it stays within the viewport
-	 * and opens toward the center of the page with a 25% offset from trigger
 	 * @param {HTMLElement} menu - The dropdown menu element
 	 * @returns {void}
 	 */
 	#positionDropdownInViewport(menu) {
-		// Reset positioning first
 		menu.style.left = "";
 		menu.style.right = "";
 		menu.style.transform = "";
 
 		const viewportWidth = window.innerWidth;
 		const viewportCenter = viewportWidth / 2;
-		const viewportPadding = 16; // Minimum padding from viewport edge
+		const viewportPadding = 16;
 
-		// Get the trigger button's position
 		const triggerButton = menu.previousElementSibling;
 		const triggerRect = triggerButton?.getBoundingClientRect();
 		const triggerCenter = triggerRect
 			? triggerRect.left + triggerRect.width / 2
 			: 0;
 
-		// Get menu width for offset calculation
 		const menuWidth = menu.offsetWidth;
-		const offsetPercent = 0.25; // 25% offset from trigger
+		const offsetPercent = 0.25;
 		const offset = menuWidth * offsetPercent;
 
-		// Determine if trigger is on left or right side of viewport
 		const isOnRightSide = triggerCenter > viewportCenter;
 
-		// Position dropdown to open toward center with 25% offset
 		if (isOnRightSide) {
-			// Trigger is on right side - align dropdown toward left with 25% overlap
-			// Position so 25% of the dropdown extends past the right edge of trigger
 			menu.style.left = "auto";
 			menu.style.right = `-${offset}px`;
 		} else {
-			// Trigger is on left side - align dropdown toward right with 25% overlap
-			// Position so 25% of the dropdown extends past the left edge of trigger
 			menu.style.left = `-${offset}px`;
 			menu.style.right = "auto";
 		}
 
-		// After initial positioning, check for overflow and adjust
 		const menuRect = menu.getBoundingClientRect();
 
-		// Check if dropdown overflows right edge
 		if (menuRect.right > viewportWidth - viewportPadding) {
 			const overflow = menuRect.right - (viewportWidth - viewportPadding);
 			menu.style.transform = `translateX(-${overflow}px)`;
 		}
 
-		// Check if dropdown overflows left edge
 		const adjustedRect = menu.getBoundingClientRect();
 		if (adjustedRect.left < viewportPadding) {
-			// Shift right to keep within left edge
 			const leftOverflow = viewportPadding - adjustedRect.left;
 			const currentTransform = menu.style.transform;
 			if (currentTransform) {
-				// Combine with existing transform
 				const existingX =
 					Number.parseFloat(
 						currentTransform.replace(/translateX\((-?\d+\.?\d*)px\)/, "$1"),
@@ -714,11 +202,9 @@ class NavBar extends BaseComponent {
 			}
 		}
 
-		// Check if viewport is too narrow for multi-column layout
 		const gridContent = menu.querySelector(".dropdown-grid");
 		if (gridContent) {
-			// Collapse to single column if viewport width is less than dropdown's natural 2-col width
-			const minTwoColWidth = 640; // ~md breakpoint where 2 cols make sense
+			const minTwoColWidth = 640;
 			if (viewportWidth < minTwoColWidth) {
 				gridContent.style.gridTemplateColumns = "1fr";
 			} else {
@@ -726,117 +212,41 @@ class NavBar extends BaseComponent {
 			}
 		}
 
-		// Handle vertical overflow - enable scrolling if dropdown is too tall
 		const viewportHeight = window.innerHeight;
 		const menuTop = menu.getBoundingClientRect().top;
-		const verticalPadding = 32; // Padding from bottom of viewport
+		const verticalPadding = 32;
 		const maxAvailableHeight = viewportHeight - menuTop - verticalPadding;
 
-		// Get the scrollable content container (the inner div with rounded corners)
 		const scrollContainer = menu.querySelector(":scope > div");
 		if (scrollContainer) {
-			// Only enable scrolling on the inner grid content to avoid double scrollbars
-			const gridContent = scrollContainer.querySelector(
+			const gridContentInner = scrollContainer.querySelector(
 				":scope > .dropdown-grid",
 			);
-			if (gridContent) {
-				if (gridContent.scrollHeight > maxAvailableHeight) {
-					gridContent.style.maxHeight = `${maxAvailableHeight}px`;
-					gridContent.style.overflowY = "auto";
-					gridContent.style.scrollBehavior = "smooth";
-					gridContent.style.scrollbarWidth = "thin";
-					// Ensure outer container stays overflow-visible
+			if (gridContentInner) {
+				if (gridContentInner.scrollHeight > maxAvailableHeight) {
+					gridContentInner.style.maxHeight = `${maxAvailableHeight}px`;
+					gridContentInner.style.overflowY = "auto";
+					gridContentInner.style.scrollBehavior = "smooth";
+					gridContentInner.style.scrollbarWidth = "thin";
 					scrollContainer.style.overflow = "visible";
 				} else {
-					gridContent.style.maxHeight = "";
-					gridContent.style.overflowY = "";
-					gridContent.style.scrollBehavior = "";
-					gridContent.style.scrollbarWidth = "";
+					gridContentInner.style.maxHeight = "";
+					gridContentInner.style.overflowY = "";
+					gridContentInner.style.scrollBehavior = "";
+					gridContentInner.style.scrollbarWidth = "";
 				}
 			}
 		}
 	}
 
 	/**
-	 * Creates a mobile dropdown accordion menu
-	 * @param {string} label - The dropdown button label
-	 * @param {Array} items - Array of {href, text} objects
-	 * @returns {HTMLElement} The mobile dropdown element
-	 */
-	#createMobileDropdown(label, items) {
-		const _dropdownId = `mobile-dropdown-${label.toLowerCase().replace(/\s+/g, "-")}`;
-
-		return this.h(
-			"div",
-			{ class: "-mx-3" },
-			this.h(
-				"button",
-				{
-					type: "button",
-					class:
-						"flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base/7 font-semibold text-canvas",
-					"aria-expanded": "false",
-					onClick: (e) => {
-						const content = e.currentTarget.nextElementSibling;
-						const icon = e.currentTarget.querySelector("svg");
-						const isOpen = !content.classList.contains("hidden");
-
-						if (isOpen) {
-							content.classList.add("hidden");
-							icon.style.transform = "rotate(0deg)";
-						} else {
-							content.classList.remove("hidden");
-							icon.style.transform = "rotate(180deg)";
-						}
-					},
-				},
-				label,
-				this.svg(
-					"svg",
-					{
-						viewBox: "0 0 20 20",
-						fill: "currentColor",
-						"aria-hidden": "true",
-						class: "size-5 flex-none transition-transform duration-200",
-						style: "transform: rotate(0deg)",
-					},
-					this.svg("path", {
-						d: "M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z",
-						"clip-rule": "evenodd",
-						"fill-rule": "evenodd",
-					}),
-				),
-			),
-			this.h(
-				"div",
-				{ class: "hidden mt-2 space-y-2" },
-				...items.map((item) =>
-					this.h(
-						"a",
-						{
-							href: item.href,
-							class:
-								"block rounded-lg py-2 pl-6 pr-3 text-sm/7 font-semibold text-canvas",
-							onClick: () => this.closeMenu(),
-						},
-						item.text,
-					),
-				),
-			),
-		);
-	}
-
-	/**
 	 * Creates a dropdown menu with items
 	 * @param {string} label - The dropdown button label
-	 * @param {string} mainHref - The main page URL
 	 * @param {Array} items - Array of {href, text, desc, icon} objects
 	 * @param {Object} action - Optional action section {title, badge, description}
 	 * @returns {HTMLElement} The dropdown element
 	 */
-	#createDropdown(label, _mainHref, items, action = null) {
-		const _dropdownId = `dropdown-${label.toLowerCase().replace(/\s+/g, "-")}`;
-
+	#createDropdown(label, items, action = null) {
 		return this.h(
 			"div",
 			{ class: "relative" },
@@ -852,20 +262,17 @@ class NavBar extends BaseComponent {
 						const menu = e.currentTarget.nextElementSibling;
 						const isOpen = menu.classList.contains("opacity-100");
 
-						// Close all other dropdowns and reset their styles
 						this.querySelectorAll(".dropdown-menu").forEach((m) => {
 							if (m !== menu) {
 								this.#resetDropdownStyles(m);
 							}
 						});
 
-						// Toggle this dropdown
 						if (isOpen) {
 							this.#resetDropdownStyles(menu);
 						} else {
 							menu.classList.remove("hidden", "opacity-0", "translate-y-1");
 							menu.classList.add("opacity-100", "translate-y-0");
-							// Position dropdown within viewport after it becomes visible
 							requestAnimationFrame(() => {
 								this.#positionDropdownInViewport(menu);
 							});
@@ -913,9 +320,7 @@ class NavBar extends BaseComponent {
 						...items.map((item) =>
 							this.h(
 								"div",
-								{
-									class: "group relative flex gap-x-6 rounded-lg p-4",
-								},
+								{ class: "group relative flex gap-x-6 rounded-lg p-4" },
 								this.h(
 									"div",
 									{
@@ -1029,29 +434,6 @@ class NavBar extends BaseComponent {
 	}
 
 	/**
-	 * Creates the close button icon SVG element
-	 * @returns {SVGElement} The close button icon
-	 */
-	#createCloseButtonIcon() {
-		return this.svg(
-			"svg",
-			{
-				fill: "none",
-				viewBox: "0 0 24 24",
-				"stroke-width": "1.5",
-				stroke: "currentColor",
-				"aria-hidden": "true",
-				class: "size-6",
-			},
-			this.svg("path", {
-				"stroke-linecap": "round",
-				"stroke-linejoin": "round",
-				d: "M6 18 18 6M6 6l12 12",
-			}),
-		);
-	}
-
-	/**
 	 * Creates the brand logo SVG element
 	 * @param {string} className - CSS class names to apply to the SVG
 	 * @returns {SVGElement} The brand logo SVG
@@ -1093,9 +475,33 @@ class NavBar extends BaseComponent {
 					d: "M17.2 4.45q-2.43.14-3.54.54t-1.52 1.56q-.4 1.14-.4 3.7v33.47q0 2.56.4 3.7.4 1.16 1.52 1.53 1.11.37 3.54.37h4.93q4.18 0 6.37-1.18a7 7 0 0 0 3.2-3.81q1.02-2.64 1.5-7.63h1.54q-.2 2.1-.2 5.54 0 3.84.47 8.63-4.58-.2-15.45-.2-12.95 0-19.56.2v-1.35q2.43-.14 3.54-.54a2.4 2.4 0 0 0 1.52-1.55q.4-1.15.4-3.71V10.26q0-2.57-.4-3.71a2.4 2.4 0 0 0-1.52-1.56A14 14 0 0 0 0 4.45V3.11q2.84.2 8.63.2 5.4 0 8.57-.2zm78.63 31.07c5.23-3.54 11.57-5.77 17.98-5.05 15.64 1.93 30.15 9.6 45.9 3.58 2.15-.82 4.47-1.58 5.72-3.61.4-.64.58-1.46.25-2.2 1.38 3.25-3.26 5.54-5.67 6.55-5.12 2.2-10.79 2.98-16.34 2.9-10.24-.47-20.01-4.44-30-6.06-6.2-.94-12.4.89-17.84 3.9M74.68 50.87q-4.58-.2-15.45-.2-12.95 0-19.56.2v-1.35q2.43-.14 3.54-.54a2.4 2.4 0 0 0 1.52-1.55q.4-1.15.4-3.71V10.25q0-2.55-.4-3.7a2.4 2.4 0 0 0-1.52-1.56 14 14 0 0 0-3.54-.54V3.1q6.6.2 19.56.2 9.91 0 14.1-.2a76 76 0 0 0-.47 7.96q0 2.64.2 4.18h-1.55a32 32 0 0 0-1.22-6.5 5.5 5.5 0 0 0-2.5-3.1q-1.74-.99-5.32-.99h-5.6q-2.43 0-3.55.38-1.1.37-1.51 1.51t-.4 3.71v15.93h4.44q2.37 0 3.65-1.12a5.5 5.5 0 0 0 1.72-2.63q.44-1.52.7-3.81l.2-1.35h1.56q-.2 2.83-.2 6.34v3.24q0 3.45.4 9.58h-1.55l-.4-3.27q-.34-2.8-1.86-4.22-1.52-1.41-4.22-1.41H51.4v16.19q0 2.56.4 3.7.41 1.16 1.52 1.52 1.12.38 3.55.38h4.92q4.19 0 6.38-1.12a6.7 6.7 0 0 0 3.2-3.57q1.01-2.46 1.48-7.25h1.56q-.2 1.82-.2 4.85 0 3.85.47 8.64",
 				}),
 				this.svg("path", {
-					d: "M120.52 31.94a.7.7 0 0 1-.38-.26h-.1q-1.5-.31-3.02-.43c-1.05-.1-2.13-.1-3.17-.27a.7.7 0 0 1-.5-.43l-3.84-.07-.07.07a2 2 0 0 1-1.24.25q-.5 0-1 .05l-.68.12v.74q3.04.14 4.39.6 1.35.48 1.89 1.76t.54 4.11v6.48a5 5 0 0 1-.37 2.13 4.4 4.4 0 0 1-1.59 1.58 12 12 0 0 1-7.02 2.1q-8.3 0-12.17-5.64-3.88-5.63-3.88-17.78 0-7.14 1.82-12.51 1.83-5.37 5.2-8.26a11.6 11.6 0 0 1 7.82-2.9q3.45 0 6.58 1.41a13.6 13.6 0 0 1 5.1 3.85 12 12 0 0 1 2.08 4.08q.68 2.33 1.28 5.9h1.56q0-11.14.27-15.52h-1.56q-.4 4.12-1.68 4.12-.48 0-1.35-.67a32 32 0 0 0-5.6-3.28 17 17 0 0 0-6.55-1.1 20.4 20.4 0 0 0-11.2 3.13 21 21 0 0 0-7.72 8.97q-2.8 5.84-2.8 13.53 0 7.48 2.63 12.88a19 19 0 0 0 7.6 8.26q4.95 2.88 11.9 2.87 3.1 0 5.63-.91 2.54-.9 4.9-2.73 1-.75 1.41-.95t.81-.2q.81 0 1.28 1.25.48 1.25.54 2.6h1.35V37.5q0-2.55.24-3.71.23-1.14.94-1.55.17-.1.38-.17zM163.6 45.2 147.13 2.77h-1.07L130.2 43.65q-1.95 5.06-5.33 5.87v1.35a52 52 0 0 1 5.06-.2q3.92 0 7.76.2v-1.35q-2.97-.07-4.42-1.01t-1.45-3.04q0-1.89 1.35-5.53l11-28.67 7.55 20.17.54 1.35 4.11 11.06q.81 2.02.81 3.17 0 1.35-1.1 1.86-1.12.5-3.69.64v1.35q2.84-.2 8.64-.2 4.52 0 7.22.2v-1.35q-3.03-.14-4.66-4.32m35.49-41.9q2.83 1.15 5.53 3.25.74.6 1.28.6 1.35 0 1.76-4.05h1.55q-.27 4.4-.27 15.52h-1.55q-.75-4.39-1.35-6.3-.6-1.93-2.02-3.68a12.5 12.5 0 0 0-5.16-3.95 17 17 0 0 0-6.78-1.32q-4.4 0-7.66 2.9-3.28 2.91-5.1 8.27a39 39 0 0 0-1.82 12.58q0 7.35 1.96 12.62 1.95 5.26 5.43 7.99a12.4 12.4 0 0 0 7.86 2.73q3.38 0 6.54-1.28a11 11 0 0 0 5-3.85q1.35-1.88 1.95-4.04t1.15-6.62h1.55q0 11.61.27 16.2h-1.55a12 12 0 0 0-.58-3.08q-.38-.9-1.04-.9-.55 0-1.42.53a29 29 0 0 1-5.8 3.28 18 18 0 0 1-6.68 1.1q-6.4 0-11.23-2.9a19.4 19.4 0 0 1-7.49-8.4q-2.66-5.49-2.66-13.11 0-7.42 2.73-13.16a21 21 0 0 1 7.62-8.9 20 20 0 0 1 11.1-3.17q4.05 0 6.88 1.15m54.17-.21v1.35q-1.35.34-2.63 1.72a20 20 0 0 0-2.77 4.29l-10.59 20.98v12.28q0 2.55.4 3.7t1.52 1.56 3.55.54v1.35q-3.1-.2-8.57-.2-5.8 0-8.64.2v-1.35q2.43-.14 3.54-.54a2.4 2.4 0 0 0 1.52-1.55q.4-1.15.4-3.71V33.6L217.3 8.3a11 11 0 0 0-2.12-3q-.9-.78-1.79-.78V3.11q2.63.2 5.94.2 6.53 0 9.44-.2v1.41q-4.72 0-4.72 2.57 0 1 .67 2.36l11.2 21.52 8.64-17.14q1.82-3.57 1.82-5.8 0-1.89-1.49-2.7-1.48-.8-4.45-.88V3.11q3.84.2 7.76.2 3.03 0 5.06-.2m58.54 15.51h-1.48q.4-2.63.4-4.65 0-3.24-1.07-5.33a9 9 0 0 0-3.61-3.88 10.3 10.3 0 0 0-5.23-1.38q-5.6 0-10.82 5.26a40 40 0 0 0-8.47 13.25 41 41 0 0 0-3.24 15.49q0 6.47 2.57 9.85a8.4 8.4 0 0 0 7.08 3.37q2.97 0 6.27-1.38t5.74-3.88a18 18 0 0 0 3.03-4.08 69 69 0 0 0 3.04-6.58h1.48q-3.17 11.67-3.98 16.19h-1.48q.2-1.41.2-2.3 0-1.74-.81-1.75-.47 0-1.42.6a36 36 0 0 1-6.13 3.35q-2.63 1.05-6.62 1.04-7.49 0-11.6-4.05t-4.11-11.8 3.88-15.65a36 36 0 0 1 10.65-13.02 24 24 0 0 1 14.88-5.13q3.9 0 5.97 1.11 2.06 1.12 4.08 3.28.47.6 1.01.6.6 0 1.25-.98.64-.97 1.45-3.07h1.42q-2.23 5.8-4.32 15.52m8.7 1.55a34.4 34.4 0 0 1 10.02-12.92q6.44-5.1 14.54-5.09 7.55 0 11.74 4.25 4.17 4.25 4.18 12 0 7.64-3.61 15.42a34.6 34.6 0 0 1-10.09 12.89 23 23 0 0 1-14.5 5.1q-7.5 0-11.67-4.26-4.2-4.24-4.19-11.94 0-7.62 3.58-15.45m14.13-11.94q-4.76 4.87-7.65 12.58a44 44 0 0 0-2.9 15.69q0 6.54 2.56 10.32t6.75 3.78q5.06 0 9.81-4.86t7.66-12.58a44 44 0 0 0 2.9-15.69q0-6.54-2.56-10.32t-6.75-3.78q-5.05 0-9.82 4.86m79.58-6.81a5.4 5.4 0 0 1 4.38 2.04v-.02q0-1.54-.95-2.5-.94-.93-3.1-.94-4.31 0-7.28 4.32-2.91 4.18-5.67 13.66a368 368 0 0 0-5.67 22.43L383.18 3.1q-2.36.2-5.46.2a69 69 0 0 1-6-.2l-.35 1.34q3.04.14 4.12.64 1.08.51 1.08 2.13 0 1.08-.4 3.03a439 439 0 0 1-5.88 26.45q-2.7 10.26-5.2 14.23-2.15 3.45-5.59 3.51h-.2c-2.38.06-2.96-.46-4.35-1.64q.25 3.05 4.01 3.06 2.43 0 4.08-1.15t3.14-3.1q2.7-3.58 5.63-15.25a560 560 0 0 0 6.24-28.6l15.38 43.44h1.49q4.12-19.43 7.35-30.66 3.24-11.23 6.2-15.68 2.24-3.38 5.54-3.44zm40.54 17.2h-1.49q.42-2.63.41-4.65 0-3.24-1.08-5.33a9 9 0 0 0-3.6-3.88 10.3 10.3 0 0 0-5.24-1.38q-5.6 0-10.82 5.26a40 40 0 0 0-8.47 13.25 41 41 0 0 0-3.24 15.49q0 6.47 2.57 9.85a8.4 8.4 0 0 0 7.08 3.37q2.97 0 6.27-1.38t5.74-3.88a18 18 0 0 0 3.04-4.08 69 69 0 0 0 3.03-6.58h1.49q-3.17 11.67-3.99 16.19h-1.48q.2-1.41.2-2.3 0-1.74-.8-1.75-.48 0-1.42.6a36 36 0 0 1-6.14 3.35q-2.63 1.05-6.62 1.04-7.48 0-11.6-4.05t-4.11-11.8 3.88-15.65a36 36 0 0 1 10.66-13.02 24 24 0 0 1 14.87-5.13q3.9 0 5.97 1.11 2.06 1.12 4.08 3.28.47.6 1.01.6.6 0 1.25-.98.64-.97 1.45-3.07h1.42q-2.23 5.8-4.32 15.52m12.08 28.4q0 1.42.98 1.9.97.45 3.6.6l-.27 1.35q-3.1-.2-8.56-.2-5.67 0-8.57.2l.34-1.35q2.36-.14 3.54-.54a3.5 3.5 0 0 0 1.89-1.59q.7-1.17 1.38-3.67l8.9-33.46q.54-2.3.54-3.24 0-1.49-.98-1.96t-3.54-.6l.34-1.35q2.76.2 8.57.2 5.4 0 8.63-.2l-.34 1.34q-2.5.14-3.67.54-1.18.41-1.9 1.56-.7 1.14-1.37 3.7l-8.9 33.47a19 19 0 0 0-.61 3.3M522.56 3.1a95 95 0 0 0-2.56 7.97 24 24 0 0 0-.95 4.18h-1.55q.6-3.91.6-5.4 0-2.9-1.48-4.05-1.48-1.14-5.33-1.14h-4.92q-2.44 0-3.61.37-1.18.37-1.93 1.52-.74 1.14-1.41 3.7l-4.25 15.93h4.45q2.36 0 3.92-1.12a9 9 0 0 0 2.42-2.6q.88-1.47 1.76-3.77.2-.67.54-1.42h1.55q-1.42 4.46-2.36 8.03l-.4 1.55q-.96 3.58-2.17 9.58h-1.55l.2-1.34q.08-.48.2-1.49.14-1.01.14-1.75 0-2.02-1.05-3.17t-3.6-1.15h-4.46l-4.31 16.19q-.61 2.1-.61 3.3 0 1.42 1.01 1.86t3.57.44h4.93q4.18 0 6.68-1.11a9.7 9.7 0 0 0 4.15-3.58 35 35 0 0 0 3.4-7.25h1.56a46 46 0 0 0-1.49 4.86 70 70 0 0 0-1.82 8.63q-4.58-.2-15.45-.2-12.94 0-19.5.2l.34-1.35q2.43-.14 3.61-.54a3.7 3.7 0 0 0 1.92-1.55q.75-1.14 1.42-3.71l8.97-33.46q.6-2.16.6-3.3 0-1.42-.97-1.9-.98-.46-3.54-.6l.33-1.35q6.61.2 19.57.2 9.45 0 13.42-.2m37.79 39.59h1.55l-.27.88q-1.21 4.26-3.07 6.24a6.5 6.5 0 0 1-4.96 2q-3.17 0-4.72-1.9a6.2 6.2 0 0 1-1.35-4.58l.54-7.56q.06-.81.07-2.16 0-2.84-1.02-4.38-1.01-1.57-3.67-2.26-2.66-.7-7.73-.78l-4.11 15.52q-.6 2.03-.6 3.3 0 1.35.97 1.9.98.53 3.61.6l-.27 1.35q-3.1-.2-8.36-.2a137 137 0 0 0-8.78.2l.27-1.35q2.43-.14 3.65-.54a3.5 3.5 0 0 0 1.92-1.55q.7-1.15 1.38-3.71l8.9-33.46q.61-2.3.61-3.17 0-1.42-1-2-1.02-.57-3.58-.64l.33-1.34q2.7.2 8.3.2 3.24 0 4.86-.07l5-.07q6.6 0 10.01 2.53a8.2 8.2 0 0 1 3.4 6.98q0 5.54-4.78 9.58-4.8 4.05-12.82 5.4.87.07 2.36.34 3.97.74 5.73 2.36t1.76 5.2q0 .87-.07 1.34l-.54 6.88q-.07.48-.07 1.42 0 4.11 2.16 4.11 1.14 0 2.1-1.38.93-1.38 1.95-4.28zm-24.22-15.85h2.02q9.1 0 13.19-3.98t4.08-10.6q0-3.96-2.02-5.9-2.02-1.91-6.55-1.92-2.02 0-3.17.51a4 4 0 0 0-1.85 1.72q-.7 1.21-1.32 3.58zm54.61 23.01q1.98-.6 3.47-1.49a6 6 0 0 0 2.02-1.82q.67-1 1.08-2.43l1.56-5.94q.6-2.22.6-3.5 0-1.7-1.21-2.26-1.22-.57-4.46-.71l.34-1.35a174 174 0 0 0 16.53 0l-.34 1.35a7 7 0 0 0-2.4.54q-.77.4-1.34 1.51-.57 1.13-1.25 3.75l-3.58 13.36h-1.34q.2-.81.2-1.76 0-2.1-1.01-2.09-.41 0-.91.2-.51.2-1.66.95a28 28 0 0 1-5.6 2.7q-2.76.93-5.87.94-8.23 0-12.61-4.01-4.4-4.02-4.39-11.44 0-7.83 3.81-15.78 3.82-7.96 10.6-13.2a24.2 24.2 0 0 1 15.14-5.22q4.05 0 6.44 1.11 2.4 1.12 4.63 3.27.6.6 1.14.61.68 0 1.32-.94.64-.95 1.38-3.1h1.48q-2.22 5.79-4.31 15.51h-1.49q.34-2.9.34-5.06 0-3.1-.95-4.92a9.6 9.6 0 0 0-4.18-3.88 14 14 0 0 0-6.2-1.38q-6.96 0-12.18 5.86a40 40 0 0 0-7.96 14.17q-2.74 8.3-2.74 15.18 0 6.08 2.87 8.97t8.8 2.9q2.24 0 4.22-.6M656.06 3.1a96 96 0 0 0-2.56 7.97 24 24 0 0 0-.94 4.18H651q.6-3.91.61-5.4 0-2.9-1.48-4.05-1.5-1.14-5.33-1.14h-4.93q-2.43 0-3.6.37a3.5 3.5 0 0 0-1.93 1.52q-.75 1.14-1.42 3.7l-4.25 15.93h4.46q2.36 0 3.91-1.12a9 9 0 0 0 2.43-2.6q.88-1.47 1.75-3.77.21-.67.54-1.42h1.56a168 168 0 0 0-2.37 8.03l-.4 1.55q-.94 3.58-2.16 9.58h-1.55l.2-1.34.2-1.49q.14-1.01.14-1.75 0-2.02-1.05-3.17t-3.6-1.15h-4.46l-4.32 16.19q-.6 2.1-.6 3.3 0 1.42 1 1.86 1.02.44 3.58.44h4.93q4.17 0 6.67-1.11a9.7 9.7 0 0 0 4.15-3.58 35 35 0 0 0 3.41-7.25h1.55q-.75 1.95-1.48 4.86a70 70 0 0 0-1.82 8.63q-4.59-.2-15.45-.2-12.96 0-19.5.2l.34-1.35q2.43-.14 3.6-.54a3.7 3.7 0 0 0 1.93-1.55q.75-1.14 1.41-3.71l8.98-33.46q.6-2.16.6-3.3 0-1.42-.98-1.9-.98-.46-3.54-.6l.34-1.35q6.6.2 19.56.2 9.45 0 13.43-.2",
+					d: "M120.52 31.94a.7.7 0 0 1-.38-.26h-.1q-1.5-.31-3.02-.43c-1.05-.1-2.13-.1-3.17-.27a.7.7 0 0 1-.5-.43l-3.84-.07-.07.07a2 2 0 0 1-1.24.25q-.5 0-1 .05l-.68.12v.74q3.04.14 4.39.6 1.35.48 1.89 1.76t.54 4.11v6.48a5 5 0 0 1-.37 2.13 4.4 4.4 0 0 1-1.59 1.58 12 12 0 0 1-7.02 2.1q-8.3 0-12.17-5.64-3.88-5.63-3.88-17.78 0-7.14 1.82-12.51 1.83-5.37 5.2-8.26a11.6 11.6 0 0 1 7.82-2.9q3.45 0 6.58 1.41a13.6 13.6 0 0 1 5.1 3.85 12 12 0 0 1 2.08 4.08q.68 2.33 1.28 5.9h1.56q0-11.14.27-15.52h-1.56q-.4 4.12-1.68 4.12-.48 0-1.35-.67a32 32 0 0 0-5.6-3.28 17 17 0 0 0-6.55-1.1 20.4 20.4 0 0 0-11.2 3.13 21 21 0 0 0-7.72 8.97q-2.8 5.84-2.8 13.53 0 7.48 2.63 12.88a19 19 0 0 0 7.6 8.26q4.95 2.88 11.9 2.87 3.1 0 5.63-.91 2.54-.9 4.9-2.73 1-.75 1.41-.95t.81-.2q.81 0 1.28 1.25.48 1.25.54 2.6h1.35V37.5q0-2.55.24-3.71.23-1.14.94-1.55.17-.1.38-.17zM163.6 45.2 147.13 2.77h-1.07L130.2 43.65q-1.95 5.06-5.33 5.87v1.35a52 52 0 0 1 5.06-.2q3.92 0 7.76.2v-1.35q-2.97-.07-4.42-1.01t-1.45-3.04q0-1.89 1.35-5.53l11-28.67 7.55 20.17.54 1.35 4.11 11.06q.81 2.02.81 3.17 0 1.35-1.1 1.86-1.12.5-3.69.64v1.35q2.84-.2 8.64-.2 4.52 0 7.22.2v-1.35q-3.03-.14-4.66-4.32m35.49-41.9q2.83 1.15 5.53 3.25.74.6 1.28.6 1.35 0 1.76-4.05h1.55q-.27 4.4-.27 15.52h-1.55q-.75-4.39-1.35-6.3-.6-1.93-2.02-3.68a12.5 12.5 0 0 0-5.16-3.95 17 17 0 0 0-6.78-1.32q-4.4 0-7.66 2.9-3.28 2.91-5.1 8.27a39 39 0 0 0-1.82 12.58q0 7.35 1.96 12.62 1.95 5.26 5.43 7.99a12.4 12.4 0 0 0 7.86 2.73q3.38 0 6.54-1.28a11 11 0 0 0 5-3.85q1.35-1.88 1.95-4.04t1.15-6.62h1.55q0 11.61.27 16.2h-1.55a12 12 0 0 0-.58-3.08q-.38-.9-1.04-.9-.55 0-1.42.53a29 29 0 0 1-5.8 3.28 18 18 0 0 1-6.68 1.1q-6.4 0-11.23-2.9a19.4 19.4 0 0 1-7.49-8.4q-2.66-5.49-2.66-13.11 0-7.42 2.73-13.16a21 21 0 0 1 7.62-8.9 20 20 0 0 1 11.1-3.17q4.05 0 6.88 1.15m54.17-.21v1.35q-1.35.34-2.63 1.72a20 20 0 0 0-2.77 4.29l-10.59 20.98v12.28q0 2.55.4 3.7t1.52 1.56 3.55.54v1.35q-3.1-.2-8.57-.2-5.8 0-8.64.2v-1.35q2.43-.14 3.54-.54a2.4 2.4 0 0 0 1.52-1.55q.4-1.15.4-3.71V33.6L217.3 8.3a11 11 0 0 0-2.12-3q-.9-.78-1.79-.78V3.11q2.63.2 5.94.2 6.53 0 9.44-.2v1.41q-4.72 0-4.72 2.57 0 1 .67 2.36l11.2 21.52 8.64-17.14q1.82-3.57 1.82-5.8 0-1.89-1.49-2.7-1.48-.8-4.45-.88V3.11q3.84.2 7.76.2 3.03 0 5.06-.2m58.54 15.51h-1.48q.4-2.63.4-4.65 0-3.24-1.07-5.33a9 9 0 0 0-3.61-3.88 10.3 10.3 0 0 0-5.23-1.38q-5.6 0-10.82 5.26a40 40 0 0 0-8.47 13.25 41 41 0 0 0-3.24 15.49q0 6.47 2.57 9.85a8.4 8.4 0 0 0 7.08 3.37q2.97 0 6.27-1.38t5.74-3.88a18 18 0 0 0 3.03-4.08 69 69 0 0 0 3.04-6.58h1.48q-3.17 11.67-3.98 16.19h-1.48q.2-1.41.2-2.3 0-1.74-.81-1.75-.47 0-1.42.6a36 36 0 0 1-6.13 3.35q-2.63 1.05-6.62 1.04-7.49 0-11.6-4.05t-4.11-11.8 3.88-15.65a36 36 0 0 1 10.65-13.02 24 24 0 0 1 14.88-5.13q3.9 0 5.97 1.11 2.06 1.12 4.08 3.28.47.6 1.01.6.68 0 1.32-.98.64-.97 1.45-3.07h1.42q-2.23 5.8-4.32 15.52m8.7 1.55a34.4 34.4 0 0 1 10.02-12.92q6.44-5.1 14.54-5.09 7.55 0 11.74 4.25 4.17 4.25 4.18 12 0 7.64-3.61 15.42a34.6 34.6 0 0 1-10.09 12.89 23 23 0 0 1-14.5 5.1q-7.5 0-11.67-4.26-4.2-4.24-4.19-11.94 0-7.62 3.58-15.45m14.13-11.94q-4.76 4.87-7.65 12.58a44 44 0 0 0-2.9 15.69q0 6.54 2.56 10.32t6.75 3.78q5.06 0 9.81-4.86t7.66-12.58a44 44 0 0 0 2.9-15.69q0-6.54-2.56-10.32t-6.75-3.78q-5.05 0-9.82 4.86m79.58-6.81a5.4 5.4 0 0 1 4.38 2.04v-.02q0-1.54-.95-2.5-.94-.93-3.1-.94-4.31 0-7.28 4.32-2.91 4.18-5.67 13.66a368 368 0 0 0-5.67 22.43L383.18 3.1q-2.36.2-5.46.2a69 69 0 0 1-6-.2l-.35 1.34q3.04.14 4.12.64 1.08.51 1.08 2.13 0 1.08-.4 3.03a439 439 0 0 1-5.88 26.45q-2.7 10.26-5.2 14.23-2.15 3.45-5.59 3.51h-.2c-2.38.06-2.96-.46-4.35-1.64q.25 3.05 4.01 3.06 2.43 0 4.08-1.15t3.14-3.1q2.7-3.58 5.63-15.25a560 560 0 0 0 6.24-28.6l15.38 43.44h1.49q4.12-19.43 7.35-30.66 3.24-11.23 6.2-15.68 2.24-3.38 5.54-3.44zm40.54 17.2h-1.49q.42-2.63.41-4.65 0-3.24-1.08-5.33a9 9 0 0 0-3.6-3.88 10.3 10.3 0 0 0-5.24-1.38q-5.6 0-10.82 5.26a40 40 0 0 0-8.47 13.25 41 41 0 0 0-3.24 15.49q0 6.47 2.57 9.85a8.4 8.4 0 0 0 7.08 3.37q2.97 0 6.27-1.38t5.74-3.88a18 18 0 0 0 3.04-4.08 69 69 0 0 0 3.03-6.58h1.49q-3.17 11.67-3.99 16.19h-1.48q.2-1.41.2-2.3 0-1.74-.8-1.75-.48 0-1.42.6a36 36 0 0 1-6.14 3.35q-2.63 1.05-6.62 1.04-7.48 0-11.6-4.05t-4.11-11.8 3.88-15.65a36 36 0 0 1 10.66-13.02 24 24 0 0 1 14.87-5.13q3.9 0 5.97 1.11 2.06 1.12 4.08 3.28.47.6 1.01.6.6 0 1.25-.98.64-.97 1.45-3.07h1.42q-2.23 5.8-4.32 15.52m12.08 28.4q0 1.42.98 1.9.97.45 3.6.6l-.27 1.35q-3.1-.2-8.56-.2-5.67 0-8.57.2l.34-1.35q2.36-.14 3.54-.54a3.5 3.5 0 0 0 1.89-1.59q.7-1.17 1.38-3.67l8.9-33.46q.54-2.3.54-3.24 0-1.49-.98-1.96t-3.54-.6l.34-1.35q2.76.2 8.57.2 5.4 0 8.63-.2l-.34 1.34q-2.5.14-3.67.54-1.18.41-1.9 1.56-.7 1.14-1.37 3.7l-8.9 33.47a19 19 0 0 0-.61 3.3M522.56 3.1a95 95 0 0 0-2.56 7.97 24 24 0 0 0-.95 4.18h-1.55q.6-3.91.6-5.4 0-2.9-1.48-4.05-1.48-1.14-5.33-1.14h-4.92q-2.44 0-3.61.37-1.18.37-1.93 1.52-.74 1.14-1.41 3.7l-4.25 15.93h4.45q2.36 0 3.92-1.12a9 9 0 0 0 2.42-2.6q.88-1.47 1.76-3.77.2-.67.54-1.42h1.55q-1.42 4.46-2.36 8.03l-.4 1.55q-.96 3.58-2.17 9.58h-1.55l.2-1.34q.08-.48.2-1.49.14-1.01.14-1.75 0-2.02-1.05-3.17t-3.6-1.15h-4.46l-4.31 16.19q-.61 2.1-.61 3.3 0 1.42 1.01 1.86t3.57.44h4.93q4.18 0 6.68-1.11a9.7 9.7 0 0 0 4.15-3.58 35 35 0 0 0 3.4-7.25h1.56a46 46 0 0 0-1.49 4.86 70 70 0 0 0-1.82 8.63q-4.58-.2-15.45-.2-12.94 0-19.5.2l.34-1.35q2.43-.14 3.61-.54a3.7 3.7 0 0 0 1.92-1.55q.75-1.14 1.42-3.71l8.97-33.46q.6-2.16.6-3.3 0-1.42-.97-1.9-.98-.46-3.54-.6l.33-1.35q6.61.2 19.57.2 9.45 0 13.42-.2m37.79 39.59h1.55l-.27.88q-1.21 4.26-3.07 6.24a6.5 6.5 0 0 1-4.96 2q-3.17 0-4.72-1.9a6.2 6.2 0 0 1-1.35-4.58l.54-7.56q.06-.81.07-2.16 0-2.84-1.02-4.38-1.01-1.57-3.67-2.26-2.66-.7-7.73-.78l-4.11 15.52q-.6 2.03-.6 3.3 0 1.35.97 1.9.98.53 3.61.6l-.27 1.35q-3.1-.2-8.36-.2a137 137 0 0 0-8.78.2l.27-1.35q2.43-.14 3.65-.54a3.5 3.5 0 0 0 1.92-1.55q.7-1.15 1.38-3.71l8.9-33.46q.61-2.3.61-3.17 0-1.42-1-2-1.02-.57-3.58-.64l.33-1.34q2.7.2 8.3.2 3.24 0 4.86-.07l5-.07q6.6 0 10.01 2.53a8.2 8.2 0 0 1 3.4 6.98q0 5.54-4.78 9.58-4.8 4.05-12.82 5.4.87.07 2.36.34 3.97.74 5.73 2.36t1.76 5.2q0 .87-.07 1.34l-.54 6.88q-.07.48-.07 1.42 0 4.11 2.16 4.11 1.14 0 2.1-1.38.93-1.38 1.95-4.28zm-24.22-15.85h2.02q9.1 0 13.19-3.98t4.08-10.6q0-3.96-2.02-5.9-2.02-1.91-6.55-1.92-2.02 0-3.17.51a4 4 0 0 0-1.85 1.72q-.7 1.21-1.32 3.58zm54.61 23.01q1.98-.6 3.47-1.49a6 6 0 0 0 2.02-1.82q.67-1 1.08-2.43l1.56-5.94q.6-2.22.6-3.5 0-1.7-1.21-2.26-1.22-.57-4.46-.71l.34-1.35a174 174 0 0 0 16.53 0l-.34 1.35a7 7 0 0 0-2.4.54q-.77.4-1.34 1.51-.57 1.13-1.25 3.75l-3.58 13.36h-1.34q.2-.81.2-1.76 0-2.1-1.01-2.09-.41 0-.91.2-.51.2-1.66.95a28 28 0 0 1-5.6 2.7q-2.76.93-5.87.94-8.23 0-12.61-4.01-4.4-4.02-4.39-11.44 0-7.83 3.81-15.78 3.82-7.96 10.6-13.2a24.2 24.2 0 0 1 15.14-5.22q4.05 0 6.44 1.11 2.4 1.12 4.63 3.27.6.6 1.14.61.68 0 1.32-.94.64-.95 1.38-3.1h1.48q-2.22 5.79-4.31 15.51h-1.49q.34-2.9.34-5.06 0-3.1-.95-4.92a9.6 9.6 0 0 0-4.18-3.88 14 14 0 0 0-6.2-1.38q-6.96 0-12.18 5.86a40 40 0 0 0-7.96 14.17q-2.74 8.3-2.74 15.18 0 6.08 2.87 8.97t8.8 2.9q2.24 0 4.22-.6M656.06 3.1a96 96 0 0 0-2.56 7.97 24 24 0 0 0-.94 4.18H651q.6-3.91.61-5.4 0-2.9-1.48-4.05-1.5-1.14-5.33-1.14h-4.93q-2.43 0-3.6.37a3.5 3.5 0 0 0-1.93 1.52q-.75 1.14-1.42 3.7l-4.25 15.93h4.46q2.36 0 3.91-1.12a9 9 0 0 0 2.43-2.6q.88-1.47 1.75-3.77.21-.67.54-1.42h1.56a168 168 0 0 0-2.37 8.03l-.4 1.55q-.94 3.58-2.16 9.58h-1.55l.2-1.34.2-1.49q.14-1.01.14-1.75 0-2.02-1.05-3.17t-3.6-1.15h-4.46l-4.32 16.19q-.6 2.1-.6 3.3 0 1.42 1 1.86 1.02.44 3.58.44h4.93q4.17 0 6.67-1.11a9.7 9.7 0 0 0 4.15-3.58 35 35 0 0 0 3.41-7.25h1.55q-.75 1.95-1.48 4.86a70 70 0 0 0-1.82 8.63q-4.59-.2-15.45-.2-12.96 0-19.5.2l.34-1.35q2.43-.14 3.6-.54a3.7 3.7 0 0 0 1.93-1.55q.75-1.14 1.41-3.71l8.98-33.46q.6-2.16.6-3.3 0-1.42-.98-1.9-.98-.46-3.54-.6l.34-1.35q6.6.2 19.56.2 9.45 0 13.43-.2",
 				}),
 			),
+		);
+	}
+
+	/**
+	 * Creates the search icon SVG
+	 * @returns {SVGElement} The search icon
+	 */
+	#createSearchIcon() {
+		return this.svg(
+			"svg",
+			{
+				fill: "currentColor",
+				width: "18",
+				height: "18",
+				"aria-hidden": "true",
+				role: "img",
+				xmlns: "http://www.w3.org/2000/svg",
+				viewBox: "0 0 24 24",
+			},
+			this.svg("title", {}, "Search"),
+			this.svg("desc", {}, "Icon"),
+			this.svg("path", {
+				d: "M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z",
+			}),
 		);
 	}
 
@@ -1104,43 +510,145 @@ class NavBar extends BaseComponent {
 		const isFixed = this.hasAttribute("fixed") || true;
 		const isTransparent = this.hasAttribute("transparent");
 
-		// Collect nav links from children before clearing
-		const navLinks = Array.from(this.querySelectorAll(":scope > a")).map(
-			(a) => ({
-				href: a.getAttribute("href") || "#",
-				text: a.textContent,
-			}),
-		);
-
-		// Use default links if none provided
-		const _links =
-			navLinks.length > 0
-				? navLinks
-				: [
-						{ href: "#", text: "Home" },
-						{ href: "#", text: "About" },
-						{ href: "#", text: "Services" },
-						{ href: "#", text: "Team" },
-						{ href: "#", text: "Contact" },
-					];
-
 		const headerClass = this.clsx(
 			isFixed ? "fixed" : "absolute",
 			"inset-x-0 top-0 z-50",
 			!isTransparent && "bg-white/92 backdrop-blur-sm",
 		);
 
+		// Navigation data
+		const homeDropdownItems = [
+			{
+				href: resolvePath("/pages/about"),
+				text: "About Legacy",
+				desc: "Learn about our mission and values",
+			},
+			{
+				href: resolvePath("/pages/partners"),
+				text: "Partners",
+				desc: "Our healthcare partnerships",
+			},
+			{
+				href: resolvePath("/pages/locations"),
+				text: "Locations",
+				desc: "Find a location near you",
+			},
+		];
+
+		const treatmentsDropdownItems = [
+			{
+				href: resolvePath("/pages/treatments/cardiac"),
+				text: "Cardiac Care",
+				desc: "Comprehensive cardiac recovery and monitoring",
+			},
+			{
+				href: resolvePath("/pages/treatments/eating-disorders"),
+				text: "Eating Disorders",
+				desc: "Compassionate eating disorder care and monitoring",
+			},
+			{
+				href: resolvePath("/pages/treatments/iv"),
+				text: "IV Therapy",
+				desc: "Hydration and medication infusions",
+			},
+			{
+				href: resolvePath("/pages/treatments/mental-health"),
+				text: "Mental Health",
+				desc: "Personalized mental health support and care",
+			},
+			{
+				href: resolvePath("/pages/treatments/pain"),
+				text: "Pain Management",
+				desc: "Advanced pain relief strategies",
+			},
+			{
+				href: resolvePath("/pages/treatments/post-op"),
+				text: "Post-Operative Care",
+				desc: "Surgical recovery and wound care",
+			},
+			{
+				href: resolvePath("/pages/treatments/rehab"),
+				text: "Rehabilitation",
+				desc: "Recovery and rehabilitation programs",
+			},
+		];
+
+		const expertiseDropdownItems = [
+			{
+				href: resolvePath("/pages/services/als"),
+				text: "ALS Care",
+				desc: "Compassionate ALS patient support",
+			},
+			{
+				href: resolvePath("/pages/services/alzheimers"),
+				text: "Alzheimer's Care",
+				desc: "Memory care and cognitive support",
+			},
+			{
+				href: resolvePath("/pages/services/dementia"),
+				text: "Dementia Care",
+				desc: "Dementia-specific care strategies",
+			},
+			{
+				href: resolvePath("/pages/services/diabetes"),
+				text: "Diabetes Management",
+				desc: "Blood sugar monitoring and insulin support",
+			},
+			{
+				href: resolvePath("/pages/services/heart-disease"),
+				text: "Heart Disease",
+				desc: "Cardiovascular disease management",
+			},
+			{
+				href: resolvePath("/pages/services/ms"),
+				text: "Multiple Sclerosis",
+				desc: "MS symptom management and support",
+			},
+			{
+				href: resolvePath("/pages/services/oncology"),
+				text: "Oncology Services",
+				desc: "Cancer care coordination",
+			},
+			{
+				href: resolvePath("/pages/services/ostomy"),
+				text: "Ostomy Care",
+				desc: "Ostomy management and education",
+			},
+			{
+				href: resolvePath("/pages/services/parkinsons"),
+				text: "Parkinson's Care",
+				desc: "Parkinson's disease support",
+			},
+			{
+				href: resolvePath("/pages/services/stroke"),
+				text: "Stroke Recovery",
+				desc: "Post-stroke rehabilitation",
+			},
+			{
+				href: resolvePath("/pages/services/tbi"),
+				text: "Traumatic Brain Injury",
+				desc: "TBI recovery and cognitive rehabilitation",
+			},
+		];
+
+		// Skip to main content link
+		const skipLink = this.h(
+			"a",
+			{
+				href: "#main-content",
+				class:
+					"sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-primary focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary",
+			},
+			"Skip to main content",
+		);
+
 		// Build the header
 		const header = this.h(
 			"header",
 			{ class: headerClass, role: "banner" },
-			// Container wrapper
 			this.h(
 				"div",
-				{
-					class: "region-contain",
-				},
-				// Main nav
+				{ class: "region-contain" },
 				this.h(
 					"nav",
 					{
@@ -1182,161 +690,24 @@ class NavBar extends BaseComponent {
 					this.h(
 						"div",
 						{ class: "hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12" },
-						this.#createDropdown(
-							"Home",
-							resolvePath("/"),
-							[
-								{
-									href: resolvePath("/pages/about"),
-									text: "About Legacy",
-									desc: "Learn about our mission and values",
-								},
-								// {
-								// 	href: resolvePath("/pages/team/careers"),
-								// 	text: "Careers",
-								// 	desc: "Join our team of healthcare professionals",
-								// },
-								{
-									href: resolvePath("/pages/partners"),
-									text: "Partners",
-									desc: "Our healthcare partnerships",
-								},
-								{
-									href: resolvePath("/pages/locations"),
-									text: "Locations",
-									desc: "Find a location near you",
-								},
-							],
-							{
-								title: "Company",
-								badge: "We're Hiring",
-								description:
-									"Join our team of dedicated healthcare professionals making a difference.",
-							},
-						),
-						this.#createDropdown(
-							"Treatments",
-							resolvePath("/pages/treatments"),
-							[
-								{
-									href: resolvePath("/pages/treatments/cardiac"),
-									text: "Cardiac Care",
-									desc: "Comprehensive cardiac recovery and monitoring",
-								},
-								{
-									href: resolvePath("/pages/treatments/eating-disorders"),
-									text: "Eating Disorders",
-									desc: "Compassionate eating disorder care and monitoring",
-								},
-								{
-									href: resolvePath("/pages/treatments/iv"),
-									text: "IV Therapy",
-									desc: "Hydration and medication infusions",
-								},
-								{
-									href: resolvePath("/pages/treatments/mental-health"),
-									text: "Mental Health",
-									desc: "Personalized mental health support and care",
-								},
-								{
-									href: resolvePath("/pages/treatments/pain"),
-									text: "Pain Management",
-									desc: "Advanced pain relief strategies",
-								},
-								{
-									href: resolvePath("/pages/treatments/post-op"),
-									text: "Post-Operative Care",
-									desc: "Surgical recovery and wound care",
-								},
-								{
-									href: resolvePath("/pages/treatments/rehab"),
-									text: "Rehabilitation",
-									desc: "Recovery and rehabilitation programs",
-								},
-							],
-							{
-								title: "Medical Services",
-								badge: "24/7",
-								description:
-									"Expert care available around the clock for your peace of mind.",
-							},
-						),
-						this.#createDropdown(
-							"Expertise",
-							resolvePath("/pages/services"),
-							[
-								{
-									href: resolvePath("/pages/services/als"),
-									text: "ALS Care",
-									desc: "Compassionate ALS patient support",
-								},
-								{
-									href: resolvePath("/pages/services/alzheimers"),
-									text: "Alzheimer's Care",
-									desc: "Memory care and cognitive support",
-								},
-								{
-									href: resolvePath("/pages/services/dementia"),
-									text: "Dementia Care",
-									desc: "Dementia-specific care strategies",
-								},
-								{
-									href: resolvePath("/pages/services/diabetes"),
-									text: "Diabetes Management",
-									desc: "Blood sugar monitoring and insulin support",
-								},
-								{
-									href: resolvePath("/pages/services/heart-disease"),
-									text: "Heart Disease",
-									desc: "Cardiovascular disease management",
-								},
-								{
-									href: resolvePath("/pages/services/ms"),
-									text: "Multiple Sclerosis",
-									desc: "MS symptom management and support",
-								},
-								{
-									href: resolvePath("/pages/services/oncology"),
-									text: "Oncology Services",
-									desc: "Cancer care coordination",
-								},
-								{
-									href: resolvePath("/pages/services/ostomy"),
-									text: "Ostomy Care",
-									desc: "Ostomy management and education",
-								},
-								{
-									href: resolvePath("/pages/services/parkinsons"),
-									text: "Parkinson's Care",
-									desc: "Parkinson's disease support",
-								},
-								{
-									href: resolvePath("/pages/services/stroke"),
-									text: "Stroke Recovery",
-									desc: "Post-stroke rehabilitation",
-								},
-								{
-									href: resolvePath("/pages/services/tbi"),
-									text: "Traumatic Brain Injury",
-									desc: "TBI recovery and cognitive rehabilitation",
-								},
-							],
-							{
-								title: "Specialized Care",
-								badge: "New",
-								description:
-									"Advanced treatments tailored to your unique health needs.",
-							},
-						),
-						// Team link commented out for launch
-						// this.h(
-						// 	"a",
-						// 	{
-						// 		href: resolvePath("/pages/team"),
-						// 		class: "text-sm/6 font-semibold text-canvas text-uppercase",
-						// 	},
-						// 	"Team",
-						// ),
+						this.#createDropdown("Home", homeDropdownItems, {
+							title: "Company",
+							badge: "We're Hiring",
+							description:
+								"Join our team of dedicated healthcare professionals making a difference.",
+						}),
+						this.#createDropdown("Treatments", treatmentsDropdownItems, {
+							title: "Medical Services",
+							badge: "24/7",
+							description:
+								"Expert care available around the clock for your peace of mind.",
+						}),
+						this.#createDropdown("Expertise", expertiseDropdownItems, {
+							title: "Specialized Care",
+							badge: "New",
+							description:
+								"Advanced treatments tailored to your unique health needs.",
+						}),
 						this.h(
 							"a",
 							{
@@ -1359,304 +730,39 @@ class NavBar extends BaseComponent {
 								"aria-label": "Search",
 								onClick: () => this.openSearch(),
 							},
-							this.svg(
-								"svg",
-								{
-									fill: "currentColor",
-									width: "18",
-									height: "18",
-									"aria-hidden": "true",
-									role: "img",
-									xmlns: "http://www.w3.org/2000/svg",
-									"xmlns:xlink": "http://www.w3.org/1999/xlink",
-									viewBox: "0 0 24 24",
-									name: "icon-search",
-								},
-								this.svg("title", {}, "Search"),
-								this.svg("desc", {}, "Icon"),
-								this.svg("path", {
-									d: "M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z",
-								}),
-							),
+							this.#createSearchIcon(),
 						),
 					),
 				),
 			),
 		);
 
-		// Search Dialog (outside header)
-		const searchDialog = this.h(
-			"dialog",
-			{
-				class:
-					"backdrop:p-0 w-full max-w-lg rounded-xl fixed top-[87px] right-[6px] left-auto m-0 z-50",
-				ref: (el) => {
-					this.#searchDialog = el;
-				},
-			},
-			this.h(
-				"div",
-				{
-					class: "bg-canvas rounded-xl shadow-2xl overflow-hidden",
-				},
-				this.h(
-					"form",
-					{ method: "dialog", class: "relative" },
-					this.svg(
-						"svg",
-						{
-							fill: "none",
-							width: "18",
-							height: "18",
-							"aria-hidden": "true",
-							role: "img",
-							xmlns: "http://www.w3.org/2000/svg",
-							"xmlns:xlink": "http://www.w3.org/1999/xlink",
-							viewBox: "0 0 24 24",
-							name: "icon-search",
-							class:
-								"pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-gray-400",
-						},
-						this.svg("title", {}, "Search"),
-						this.svg("desc", {}, "Icon"),
-						this.svg("path", {
-							fill: "currentColor",
-							d: "M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z",
-						}),
-					),
-					this.h("input", {
-						type: "search",
-						name: "search",
-						placeholder: "Search...",
-						autofocus: true,
-						class:
-							"w-full rounded-t-xl border-0 py-4 pl-12 pr-14 input-fg placeholder-muted sm:text-sm/6",
-						onInput: this.#handleSearchInput,
-						onKeydown: this.#handleSearchKeydown,
-						ref: (el) => {
-							this.#searchInput = el;
-						},
-					}),
-					this.h(
-						"button",
-						{
-							type: "button",
-							class:
-								"absolute right-3 top-1/2 -translate-y-1/2 rounded-md px-2 py-1 text-xs font-medium text-muted",
-							onClick: () => this.closeSearch(),
-						},
-						"ESC",
-					),
-				),
-				// Search results container
-				this.h("div", {
-					class:
-						"search-results hidden max-h-80 overflow-y-auto border-t border-soft",
-					ref: (el) => {
-						this.#searchResults = el;
-					},
-				}),
-			),
-		);
-
-		// Mobile menu backdrop (outside header)
-		const backdrop = this.h("div", {
-			class: "mobile-menu-backdrop fixed inset-0 lg:hidden hidden z-40",
-			onClick: () => this.closeMenu(),
+		// Search Dialog component
+		const searchDialog = this.h("search-dialog", {
 			ref: (el) => {
-				this.#backdrop = el;
+				this.#searchDialog = el;
 			},
 		});
 
-		// Mobile menu panel (outside header)
-		const mobileMenu = this.h(
-			"div",
-			{
-				class:
-					"mobile-menu-panel fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-canvas p-6 sm:max-w-sm lg:hidden hidden",
-				role: "dialog",
-				"aria-modal": "true",
-				ref: (el) => {
-					this.#panel = el;
-				},
+		// Mobile Nav component
+		const mobileNav = this.h("mobile-nav", {
+			brand: brand,
+			ref: (el) => {
+				this.#mobileNav = el;
+				// Listen for search request from mobile nav
+				if (el) {
+					el.addEventListener("search-request", () => {
+						this.openSearch();
+					});
+				}
 			},
-			// Mobile header
-			this.h(
-				"div",
-				{ class: "flex items-center justify-between" },
-				this.h(
-					"a",
-					{ href: resolvePath("/"), class: "-m-1.5 p-1.5 text-canvas" },
-					this.h("span", { class: "sr-only" }, brand),
-					this.#createBrandLogoSVG("h-8 w-auto"),
-				),
-				this.h(
-					"button",
-					{
-						type: "button",
-						class: "-m-2.5 rounded-md p-2.5 text-muted",
-						"aria-label": "Close menu",
-						onClick: () => this.closeMenu(),
-					},
-					this.#createCloseButtonIcon(),
-				),
-			),
-			// Mobile nav content
-			this.h(
-				"div",
-				{ class: "mt-6 flow-root" },
-				this.h(
-					"div",
-					{
-						class: "-my-6 divide-y",
-					},
-					this.h(
-						"div",
-						{ class: "space-y-2 py-6" },
-						this.#createMobileDropdown("Home", [
-							{ href: resolvePath("/pages/about"), text: "About Legacy" },
-							{ href: resolvePath("/pages/team/careers"), text: "Careers" },
-							{ href: resolvePath("/pages/partners"), text: "Partners" },
-							{ href: resolvePath("/pages/locations"), text: "Locations" },
-						]),
-						this.#createMobileDropdown("Treatments", [
-							{
-								href: resolvePath("/pages/treatments/cardiac"),
-								text: "Cardiac Care",
-							},
-							{
-								href: resolvePath("/pages/treatments/eating-disorders"),
-								text: "Eating Disorders",
-							},
-							{ href: resolvePath("/pages/treatments/iv"), text: "IV Therapy" },
-							{
-								href: resolvePath("/pages/treatments/mental-health"),
-								text: "Mental Health",
-							},
-							{
-								href: resolvePath("/pages/treatments/pain"),
-								text: "Pain Management",
-							},
-							{
-								href: resolvePath("/pages/treatments/post-op"),
-								text: "Post-Operative Care",
-							},
-							{
-								href: resolvePath("/pages/treatments/rehab"),
-								text: "Rehabilitation",
-							},
-						]),
-						this.#createMobileDropdown("Expertise", [
-							{ href: resolvePath("/pages/services/als"), text: "ALS Care" },
-							{
-								href: resolvePath("/pages/services/alzheimers"),
-								text: "Alzheimer's Care",
-							},
-							{
-								href: resolvePath("/pages/services/dementia"),
-								text: "Dementia Care",
-							},
-							{
-								href: resolvePath("/pages/services/diabetes"),
-								text: "Diabetes Management",
-							},
-							{
-								href: resolvePath("/pages/services/heart-disease"),
-								text: "Heart Disease",
-							},
-							{
-								href: resolvePath("/pages/services/ms"),
-								text: "Multiple Sclerosis",
-							},
-							{
-								href: resolvePath("/pages/services/oncology"),
-								text: "Oncology Services",
-							},
-							{
-								href: resolvePath("/pages/services/ostomy"),
-								text: "Ostomy Care",
-							},
-							{
-								href: resolvePath("/pages/services/parkinsons"),
-								text: "Parkinson's Care",
-							},
-							{
-								href: resolvePath("/pages/services/stroke"),
-								text: "Stroke Recovery",
-							},
-							{
-								href: resolvePath("/pages/services/tbi"),
-								text: "Traumatic Brain Injury",
-							},
-						]),
-						// Team link commented out for launch
-						// this.h(
-						// 	"a",
-						// 	{
-						// 		href: resolvePath("/pages/team"),
-						// 		class:
-						// 			"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas text-uppercase",
-						// 		onClick: () => this.closeMenu(),
-						// 	},
-						// 	"TEAM",
-						// ),
-						this.h(
-							"a",
-							{
-								href: resolvePath("/pages/contact"),
-								class:
-									"-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-canvas text-uppercase",
-								onClick: () => this.closeMenu(),
-							},
-							"CONTACT",
-						),
-					),
-					this.h(
-						"div",
-						{ class: "py-6" },
-						this.h(
-							"button",
-							{
-								type: "button",
-								class:
-									"-mx-3 flex items-center gap-3 rounded-lg px-3 py-2.5 text-base/7 font-semibold text-canvas",
-								onClick: () => {
-									this.closeMenu();
-									this.openSearch();
-								},
-							},
-							this.svg(
-								"svg",
-								{
-									fill: "none",
-									width: "18",
-									height: "18",
-									"aria-hidden": "true",
-									role: "img",
-									xmlns: "http://www.w3.org/2000/svg",
-									"xmlns:xlink": "http://www.w3.org/1999/xlink",
-									viewBox: "0 0 24 24",
-									name: "icon-search",
-								},
-								this.svg("title", {}, "Search"),
-								this.svg("desc", {}, "Icon"),
-								this.svg("path", {
-									fill: "currentColor",
-									d: "M16.32 14.9l1.1 1.1c.4-.02.83.13 1.14.44l3 3a1.5 1.5 0 0 1-2.12 2.12l-3-3a1.5 1.5 0 0 1-.44-1.14l-1.1-1.1a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z",
-								}),
-							),
-							"Search",
-						),
-					),
-				),
-			),
-		);
+		});
 
 		this.innerHTML = "";
+		this.appendChild(skipLink);
 		this.appendChild(header);
 		this.appendChild(searchDialog);
-		this.appendChild(backdrop);
-		this.appendChild(mobileMenu);
+		this.appendChild(mobileNav);
 	}
 }
 
