@@ -172,7 +172,11 @@ export function initRouter() {
 	const currentPath = window.location.pathname;
 	if (currentPath.endsWith(".html")) {
 		const cleanPath = normalizePath(currentPath);
-		window.history.replaceState(null, "", cleanPath + window.location.search + window.location.hash);
+		window.history.replaceState(
+			null,
+			"",
+			cleanPath + window.location.search + window.location.hash,
+		);
 	}
 }
 

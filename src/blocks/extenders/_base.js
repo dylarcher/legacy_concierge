@@ -9,11 +9,11 @@
 export {
 	BaseComponent,
 	defineElement,
-	uniqueId,
 	FocusTrap,
+	getBaseUrl,
 	KEYS,
 	resolvePath,
-	getBaseUrl,
+	uniqueId,
 } from "../_base.js";
 
 // Import clsx from utilities for re-export
@@ -85,7 +85,7 @@ export const hashUtils = {
 	 */
 	matches(prefix) {
 		const hash = this.get();
-		return hash.startsWith(prefix + "-");
+		return hash.startsWith(`${prefix}-`);
 	},
 
 	/**

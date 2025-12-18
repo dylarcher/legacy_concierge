@@ -13,16 +13,16 @@ export const FOOTER_TEMPLATE = `
 						<h3 class="text-sm font-bold text-white">Company</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
-								<a href="/pages/about" class="text-sm/6 text-white text-underline">About</a>
+								<a href="/pages/about" class="text-sm/6 text-white underline">About</a>
 							</li>
 							<li>
-								<a href="/pages/partners" class="text-sm/6 text-white text-underline">Partners</a>
+								<a href="/pages/partners" class="text-sm/6 text-white underline">Partners</a>
 							</li>
 							<li>
-								<a href="/pages/locations" class="text-sm/6 text-white text-underline">Locations</a>
+								<a href="/pages/locations" class="text-sm/6 text-white underline">Locations</a>
 							</li>
 							<li>
-								<a href="/pages/contact" class="text-sm/6 text-white text-underline">Contact</a>
+								<a href="/pages/contact" class="text-sm/6 text-white underline">Contact</a>
 							</li>
 						</ul>
 					</div>
@@ -30,19 +30,19 @@ export const FOOTER_TEMPLATE = `
 						<h3 class="text-sm font-bold text-white">Services</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
-								<a href="/pages/treatments/cardiac" class="text-sm/6 text-white text-underline">Cardiac Care</a>
+								<a href="/pages/treatments/cardiac" class="text-sm/6 text-white underline">Cardiac Care</a>
 							</li>
 							<li>
-								<a href="/pages/treatments/iv" class="text-sm/6 text-white text-underline">IV Infusion Therapy</a>
+								<a href="/pages/treatments/iv" class="text-sm/6 text-white underline">IV Infusion Therapy</a>
 							</li>
 							<li>
-								<a href="/pages/treatments/pain" class="text-sm/6 text-white text-underline">Pain Management</a>
+								<a href="/pages/treatments/pain" class="text-sm/6 text-white underline">Pain Management</a>
 							</li>
 							<li>
-								<a href="/pages/treatments/post-op" class="text-sm/6 text-white text-underline">Post-Op Recovery</a>
+								<a href="/pages/treatments/post-op" class="text-sm/6 text-white underline">Post-Op Recovery</a>
 							</li>
 							<li>
-								<a href="/pages/treatments/rehab" class="text-sm/6 text-white text-underline">Rehab &amp; Addiction Recovery</a>
+								<a href="/pages/treatments/rehab" class="text-sm/6 text-white underline">Rehab &amp; Addiction Recovery</a>
 							</li>
 						</ul>
 					</div>
@@ -50,37 +50,37 @@ export const FOOTER_TEMPLATE = `
 						<h3 class="text-sm font-bold text-white">Conditions</h3>
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
-								<a href="/pages/services/als" class="text-sm/6 text-white text-underline">Amyotrophic Lateral Sclerosis</a>
+								<a href="/pages/services/als" class="text-sm/6 text-white underline">Amyotrophic Lateral Sclerosis</a>
 							</li>
 							<li>
-								<a href="/pages/services/alzheimers" class="text-sm/6 text-white text-underline">Alzheimer's</a>
+								<a href="/pages/services/alzheimers" class="text-sm/6 text-white underline">Alzheimer's</a>
 							</li>
 							<li>
-								<a href="/pages/services/dementia" class="text-sm/6 text-white text-underline">Dementia</a>
+								<a href="/pages/services/dementia" class="text-sm/6 text-white underline">Dementia</a>
 							</li>
 							<li>
-								<a href="/pages/services/diabetes" class="text-sm/6 text-white text-underline">Diabetes</a>
+								<a href="/pages/services/diabetes" class="text-sm/6 text-white underline">Diabetes</a>
 							</li>
 							<li>
-								<a href="/pages/services/heart-disease" class="text-sm/6 text-white text-underline">Heart Disease</a>
+								<a href="/pages/services/heart-disease" class="text-sm/6 text-white underline">Heart Disease</a>
 							</li>
 							<li>
-								<a href="/pages/services/ms" class="text-sm/6 text-white text-underline">Multiple Sclerosis</a>
+								<a href="/pages/services/ms" class="text-sm/6 text-white underline">Multiple Sclerosis</a>
 							</li>
 							<li>
-								<a href="/pages/services/oncology" class="text-sm/6 text-white text-underline">Oncology</a>
+								<a href="/pages/services/oncology" class="text-sm/6 text-white underline">Oncology</a>
 							</li>
 							<li>
-								<a href="/pages/services/ostomy" class="text-sm/6 text-white text-underline">Ostomy</a>
+								<a href="/pages/services/ostomy" class="text-sm/6 text-white underline">Ostomy</a>
 							</li>
 							<li>
-								<a href="/pages/services/parkinsons" class="text-sm/6 text-white text-underline">Parkinson's</a>
+								<a href="/pages/services/parkinsons" class="text-sm/6 text-white underline">Parkinson's</a>
 							</li>
 							<li>
-								<a href="/pages/services/stroke" class="text-sm/6 text-white text-underline">Stroke Recovery</a>
+								<a href="/pages/services/stroke" class="text-sm/6 text-white underline">Stroke Recovery</a>
 							</li>
 							<li>
-								<a href="/pages/services/tbi" class="text-sm/6 text-white text-underline">Traumatic Brain Injury</a>
+								<a href="/pages/services/tbi" class="text-sm/6 text-white underline">Traumatic Brain Injury</a>
 							</li>
 						</ul>
 					</div>

@@ -21,7 +21,7 @@
 </head>
 
 <body role="document" class="bg-gray-100">
-	<div role="application" class="text-cyan-950">
+	<div class="text-cyan-950">
 		<header class="card-shadow absolute bg-canvas inset-x-0 top-0 w-full z-50" role="banner">
 			<global-nav>
 				<a href="./">Home</a>
@@ -31,7 +31,7 @@
 				<a href="./pages/contact">Contact</a>
 			</global-nav>
 		</header>
-		<main role="main">
+		<main id="main-content">
 			<header class="bg-primary relative isolate overflow-hidden min-h-dvh">
 				<img role="presentation"
 					src="/assets/media/images/blue-green-waves-brown-beach.webp" alt=""
@@ -113,7 +113,7 @@
 					class="scrollbar-minimal mt-11 flex items-stretch gap-6 sm:mt-16 px-4 sm:px-6 md:px-8 lg:px-14 overflow-x-auto 3xl:overflow-x-visible 2xl:justify-center pb-8 mb-8">
 					<div class="flex flex-col-reverse shrink-0 w-64 sm:w-72 md:w-80 2xl:w-[calc(20%-1.2rem)] 2xl:min-w-64">
 						<div class="relative flex-1 bg-accent p-6 rounded-b-lg">
-							<h3 class="font-serif italic text-[#231f20] text-2xl mb-3">
+							<h3 class="font-serif italic text-primary text-2xl mb-3">
 								Loyalty
 							</h3>
 							<p class="text-primary text-sm lg:text-base">
@@ -129,7 +129,7 @@
 					</div>
 					<div class="flex flex-col-reverse shrink-0 w-64 sm:w-72 md:w-80 2xl:w-[calc(20%-1.2rem)] 2xl:min-w-64">
 						<div class="relative flex-1 bg-accent p-6 rounded-b-lg">
-							<h3 class="font-serif italic text-[#231f20] text-2xl mb-3">
+							<h3 class="font-serif italic text-primary text-2xl mb-3">
 								Personalized Care
 							</h3>
 							<p class="text-primary text-sm lg:text-base">
@@ -144,7 +144,7 @@
 					</div>
 					<div class="flex flex-col-reverse shrink-0 w-64 sm:w-72 md:w-80 2xl:w-[calc(20%-1.2rem)] 2xl:min-w-64">
 						<div class="relative flex-1 bg-accent p-6 rounded-b-lg">
-							<h3 class="font-serif italic text-[#231f20] text-2xl mb-3">
+							<h3 class="font-serif italic text-primary text-2xl mb-3">
 								Elite Nurses
 							</h3>
 							<p class="text-primary text-sm lg:text-base">
@@ -159,7 +159,7 @@
 					</div>
 					<div class="flex flex-col-reverse shrink-0 w-64 sm:w-72 md:w-80 2xl:w-[calc(20%-1.2rem)] 2xl:min-w-64">
 						<div class="relative flex-1 bg-accent p-6 rounded-b-lg">
-							<h3 class="font-serif italic text-[#231f20] text-2xl mb-3">
+							<h3 class="font-serif italic text-primary text-2xl mb-3">
 								Trusted Network
 							</h3>
 							<p class="text-primary text-sm lg:text-base">
@@ -175,7 +175,7 @@
 					</div>
 					<div class="flex flex-col-reverse shrink-0 w-64 sm:w-72 md:w-80 2xl:w-[calc(20%-1.2rem)] 2xl:min-w-64">
 						<div class="relative flex-1 bg-accent p-6 rounded-b-lg">
-							<h3 class="font-serif italic text-[#231f20] text-2xl mb-3">
+							<h3 class="font-serif italic text-primary text-2xl mb-3">
 								24/7 Care
 							</h3>
 							<p class="text-primary text-sm lg:text-base">
@@ -216,7 +216,7 @@
 									<span>24/7 Oversight.</span>
 									<span>Infinite Dedication.</span>
 								</p>
-								<p class="text-base mt-6 text-gray-300">
+								<p class="text-base mt-6 text-white/90">
 									Where traditional care ends, Legacy begins. While hospitals
 									and facilities divide attention among dozens of patients, we
 									dedicate one nurse to one client — ensuring round-the-clock
@@ -409,12 +409,13 @@
 
 			<section id="ceo-note" class="py-8">
 				<div class="relative mx-auto max-w-4xl px-4 sm:px-6 md:px-8 lg:px-14 mt-12 text-center">
-					<video 
+					<video
 						class="w-full max-w-4xl mx-auto h-auto rounded-2xl shadow-lg ring-1 ring-zinc-950/5"
 						poster="/assets/media/videos/lcintro-poster.png"
 						preload="metadata"
 						playsinline
-						controls>
+						controls
+						aria-label="Introduction to Legacy Concierge nursing services">
 						<source src="/assets/media/videos/lcintro.webm" type="video/webm">
 						<source src="/assets/media/videos/lcintro.mp4" type="video/mp4">
 						<source src="/assets/media/videos/lcintro.ogv" type="video/ogg">

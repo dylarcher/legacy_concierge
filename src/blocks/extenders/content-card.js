@@ -61,8 +61,6 @@ export class ContentCard extends BaseComponent {
 	}
 
 	#dialog = null;
-	#expandedContent = null;
-	#isExpanded = false;
 	#boundHashChange = null;
 
 	connectedCallback() {

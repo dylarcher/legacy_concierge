@@ -16,23 +16,26 @@
  */
 
 // Base utilities
-export { BaseComponent, defineElement, uniqueId, clsx, KEYS, hashUtils } from "./_base.js";
-
-// Layout Components
-export { ContentSection } from "./content-section.js";
-export { SplitSection } from "./split-section.js";
-
+export {
+	BaseComponent,
+	clsx,
+	defineElement,
+	hashUtils,
+	KEYS,
+	uniqueId,
+} from "./_base.js";
 // Content Components
 export { ContentCard } from "./content-card.js";
-export { ScrollSlider } from "./scroll-slider.js";
-
-// Media Components
-export { VideoPlayer } from "./video-player.js";
-export { MediaText } from "./media-text.js";
-
+// Layout Components
+export { ContentSection } from "./content-section.js";
 // Interactive Components
 export { DetailsAccordion } from "./details-accordion.js";
+export { MediaText } from "./media-text.js";
+export { ScrollSlider } from "./scroll-slider.js";
+export { SplitSection } from "./split-section.js";
 export { TabPanel } from "./tab-panel.js";
+// Media Components
+export { VideoPlayer } from "./video-player.js";
 
 /**
  * Component Hash Prefixes (for URL state management)

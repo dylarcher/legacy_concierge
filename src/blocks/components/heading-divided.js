@@ -3,7 +3,7 @@ import { BaseComponent, defineElement, h } from "../_base.js";
 /**
  * HeadingDivided component
  * Heading text with an integrated horizontal divider
- * Based on heading-divided.svg: 1435×43px, teal text (#668D8E)
+ * Based on heading-divided.svg: 1435×43px, uses text-secondary design token
  */
 class HeadingDivided extends BaseComponent {
 	static observedAttributes = ["level", "divider-width"];
@@ -16,7 +16,7 @@ class HeadingDivided extends BaseComponent {
 		const level = this.getAttribute("level") || "h2";
 
 		const headingClasses = this.combineClassNames(
-			"text-[#668D8E]",
+			"text-secondary",
 			"font-serif",
 			"text-4xl",
 			"lg:text-5xl",
@@ -32,7 +32,7 @@ class HeadingDivided extends BaseComponent {
 			"h-px",
 			"bg-linear-to-r",
 			"from-transparent",
-			"via-[#668D8E]/40",
+			"via-secondary/40",
 			"to-transparent",
 		);
 

@@ -17,7 +17,7 @@
  * @slot end - Content for the second/right column
  */
 
-import { BaseComponent, defineElement, clsx } from "./_base.js";
+import { BaseComponent, clsx, defineElement } from "./_base.js";
 
 export class SplitSection extends BaseComponent {
 	static get observedAttributes() {
@@ -36,7 +36,7 @@ export class SplitSection extends BaseComponent {
 		this.render();
 	}
 
-	attributeChangedCallback(name, oldValue, newValue) {
+	attributeChangedCallback(_name, oldValue, newValue) {
 		if (oldValue !== newValue && this.isConnected) {
 			this.render();
 		}
@@ -139,7 +139,8 @@ export class SplitSection extends BaseComponent {
 							this.h("div", {
 								class: "w-1.5 h-1.5 rounded-full",
 								style: {
-									backgroundColor: this.dividerColor || "var(--color-border-muted)",
+									backgroundColor:
+										this.dividerColor || "var(--color-border-muted)",
 								},
 							}),
 						),

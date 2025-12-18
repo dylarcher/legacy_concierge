@@ -42,7 +42,7 @@
  * </media-text>
  */
 
-import { BaseComponent, defineElement, clsx } from "./_base.js";
+import { BaseComponent, clsx, defineElement } from "./_base.js";
 
 export class MediaText extends BaseComponent {
 	static get observedAttributes() {
@@ -64,7 +64,7 @@ export class MediaText extends BaseComponent {
 		this.render();
 	}
 
-	attributeChangedCallback(name, oldValue, newValue) {
+	attributeChangedCallback(_name, oldValue, newValue) {
 		if (oldValue !== newValue && this.isConnected) {
 			this.render();
 		}
@@ -99,7 +99,9 @@ export class MediaText extends BaseComponent {
 		return this.getAttribute("ratio") || "50-50";
 	}
 	get rounded() {
-		return !this.hasAttribute("rounded") || this.getAttribute("rounded") !== "false";
+		return (
+			!this.hasAttribute("rounded") || this.getAttribute("rounded") !== "false"
+		);
 	}
 
 	#getRatioClasses() {
@@ -209,7 +211,9 @@ export class MediaText extends BaseComponent {
 			: [imageColumn, textColumn];
 
 		// Mobile order - default: image first, reverse-mobile: text first
-		const mobileOrderClass = this.reverseMobile ? "flex-col-reverse" : "flex-col";
+		const mobileOrderClass = this.reverseMobile
+			? "flex-col-reverse"
+			: "flex-col";
 
 		const container = this.h(
 			"div",

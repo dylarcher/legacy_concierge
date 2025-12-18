@@ -24,7 +24,7 @@
 	</head>
 
 	<body role="document" class="bg-depth-1">
-		<div role="application" class="text-primary">
+		<div class="text-primary">
 			<global-nav>
 				<a href="/">Home</a>
 				<a href="/pages/services">Services</a>
@@ -32,7 +32,7 @@
 				<a href="/pages/team">Team</a>
 				<a href="/pages/contact">Contact</a>
 			</global-nav>
-			<main role="main">
+			<main id="main-content">
 				<!-- Page Header -->
 				<header class="relative min-h-[50vh] overflow-hidden pt-20 md:pt-28 lg:pt-40 pb-8 md:pb-12 lg:pb-16">
 					<img
@@ -1990,7 +1990,7 @@
 				</section>
 
 				<section class="bg-canvas py-16">
-					<div class="mx-auto max-w-7xl px-[56px]">
+					<div class="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-14">
 						<h2 class="font-serif text-secondary text-center mb-4">Our Commitment to Excellence</h2>
 						<p class="text-xl text-center text-muted mb-12 max-w-3xl mx-auto">
 							Our nurses represent the top 3% of expertly vetted, highly trained
@@ -2034,7 +2034,7 @@
 						></div>
 					</div>
 
-					<div class="relative mx-auto max-w-7xl px-[56px]">
+					<div class="relative mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-14">
 						<div
 							class="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)]"
 						>
@@ -2206,7 +2206,7 @@
 				</section> -->
 
 				<section class="py-16">
-					<div class="mx-auto max-w-4xl px-[56px] text-center">
+					<div class="mx-auto max-w-4xl px-4 sm:px-6 md:px-8 lg:px-14 text-center">
 						<h2 class="font-serif text-secondary mb-6">Join Our Team</h2>
 						<p class="text-xl text-muted mb-8">
 							Are you a passionate healthcare professional looking to make a
@@ -2228,91 +2228,115 @@
 		</div>
 		<script type="module" src="/main.js"></script>
 		<script>
-			// Team page tab switching functionality
-			const initTeamTabs = () => {
-				// Handle tab switching for each team member card
-				document.querySelectorAll(".team-tab-btn").forEach((button) => {
-					button.addEventListener("click", () => {
-						const tabId = button.dataset.tab;
-						const container = button.closest(".lg\\:flex-1");
-						if (!container) return;
+		// Team page tab switching functionality
+		const initTeamTabs = () => {
+			// Handle tab switching for each team member card
+			document.querySelectorAll(".team-tab-btn").forEach((button) => {
+				button.addEventListener("click", () => {
+					const tabId = button.dataset.tab;
+					const container = button.closest(".lg\\:flex-1");
+					if (!container) return;
 
-						// Update button states within this container
-						container.querySelectorAll(".team-tab-btn").forEach((btn) => {
-							if (btn.dataset.tab === tabId) {
-								btn.classList.add("active", "border-2", "border-primary/20", "bg-white", "text-primary");
-								btn.classList.remove("bg-secondary", "text-white");
-							} else {
-								btn.classList.remove("active", "border-2", "border-primary/20", "bg-white", "text-primary");
-								btn.classList.add("bg-secondary", "text-white");
-							}
-						});
-
-						// Update content visibility within this container
-						container.querySelectorAll(".team-tab-content").forEach((content) => {
-							if (content.dataset.content === tabId) {
-								content.classList.remove("hidden");
-							} else {
-								content.classList.add("hidden");
-							}
-						});
-					});
-				});
-			};
-
-			// Single-open accordion behavior with dynamic styling
-			const initTeamAccordion = () => {
-				const accordion = document.getElementById("team-accordion");
-				if (!accordion) return;
-
-				const details = accordion.querySelectorAll("details");
-
-				const updateAccordionStyling = (openedDetails) => {
-					details.forEach((detail) => {
-						const summary = detail.querySelector("summary");
-						if (detail === openedDetails && detail.open) {
-							// Open state: bg-secondary with white text
-							summary.classList.remove("bg-white", "border", "border-zinc-200", "text-primary", "shadow-sm");
-							summary.classList.add("bg-secondary", "text-white");
+					// Update button states within this container
+					container.querySelectorAll(".team-tab-btn").forEach((btn) => {
+						if (btn.dataset.tab === tabId) {
+							btn.classList.add(
+								"active",
+								"border-2",
+								"border-primary/20",
+								"bg-white",
+								"text-primary",
+							);
+							btn.classList.remove("bg-secondary", "text-white");
 						} else {
-							// Closed state: bg-white with border
-							summary.classList.remove("bg-secondary", "text-white");
-							summary.classList.add("bg-white", "border", "border-zinc-200", "text-primary", "shadow-sm");
+							btn.classList.remove(
+								"active",
+								"border-2",
+								"border-primary/20",
+								"bg-white",
+								"text-primary",
+							);
+							btn.classList.add("bg-secondary", "text-white");
 						}
 					});
-				};
 
-				details.forEach((detail) => {
-					detail.addEventListener("toggle", () => {
-						if (detail.open) {
-							// Close all other details
-							details.forEach((otherDetail) => {
-								if (otherDetail !== detail && otherDetail.open) {
-									otherDetail.open = false;
-								}
-							});
+					// Update content visibility within this container
+					container.querySelectorAll(".team-tab-content").forEach((content) => {
+						if (content.dataset.content === tabId) {
+							content.classList.remove("hidden");
+						} else {
+							content.classList.add("hidden");
 						}
-						updateAccordionStyling(detail);
 					});
 				});
+			});
+		};
 
-				// Initialize styling for the default open accordion
-				const openDetail = accordion.querySelector("details[open]");
-				if (openDetail) {
-					updateAccordionStyling(openDetail);
-				}
+		// Single-open accordion behavior with dynamic styling
+		const initTeamAccordion = () => {
+			const accordion = document.getElementById("team-accordion");
+			if (!accordion) return;
+
+			const details = accordion.querySelectorAll("details");
+
+			const updateAccordionStyling = (openedDetails) => {
+				details.forEach((detail) => {
+					const summary = detail.querySelector("summary");
+					if (detail === openedDetails && detail.open) {
+						// Open state: bg-secondary with white text
+						summary.classList.remove(
+							"bg-white",
+							"border",
+							"border-zinc-200",
+							"text-primary",
+							"shadow-sm",
+						);
+						summary.classList.add("bg-secondary", "text-white");
+					} else {
+						// Closed state: bg-white with border
+						summary.classList.remove("bg-secondary", "text-white");
+						summary.classList.add(
+							"bg-white",
+							"border",
+							"border-zinc-200",
+							"text-primary",
+							"shadow-sm",
+						);
+					}
+				});
 			};
 
-			// Initialize when DOM is ready
-			if (document.readyState === "loading") {
-				document.addEventListener("DOMContentLoaded", () => {
-					initTeamTabs();
-					initTeamAccordion();
+			details.forEach((detail) => {
+				detail.addEventListener("toggle", () => {
+					if (detail.open) {
+						// Close all other details
+						details.forEach((otherDetail) => {
+							if (otherDetail !== detail && otherDetail.open) {
+								otherDetail.open = false;
+							}
+						});
+					}
+					updateAccordionStyling(detail);
 				});
-			} else {
+			});
+
+			// Initialize styling for the default open accordion
+			const openDetail = accordion.querySelector("details[open]");
+			if (openDetail) {
+				updateAccordionStyling(openDetail);
+			}
+		};
+
+		// Initialize when DOM is ready
+		if (document.readyState === "loading") {
+			document.addEventListener("DOMContentLoaded", () => {
 				initTeamTabs();
 				initTeamAccordion();
-			}
+			});
+		} else {
+			initTeamTabs();
+			initTeamAccordion();
+		}
 		</script>
 	</body>
 </html>

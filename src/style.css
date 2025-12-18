@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./tokens/_variables.css";
+
 @source "../blocks/**/*.{js,css}";
 @source "../pages/**/*.html";
 
@@ -52,9 +53,9 @@
 		--color-border-soft: var(--color-border-soft);
 
 		/** OVERLAY ROLES */
-		--overlay-1: rgb(var(--hues-canvas-inverted) / 0.12);
-		--overlay-2: rgb(var(--hues-canvas-inverted) / 0.48);
-		--overlay-3: rgb(var(--hues-canvas-inverted) / 0.8);
+		--overlay-1: rgb(var(--hues-canvas-inverted) / 12%);
+		--overlay-2: rgb(var(--hues-canvas-inverted) / 48%);
+		--overlay-3: rgb(var(--hues-canvas-inverted) / 80%);
 
 		/** SELECTION & FOCUS */
 		--selection-fg: var(--color-canvas);
@@ -68,28 +69,28 @@
 		--status-error-fg: rgb(180 60 60);
 		--status-error-bg: rgb(254 242 242);
 		--status-error-border: rgb(252 165 165);
-		--status-error-ring: rgb(239 68 68 / 0.4);
+		--status-error-ring: rgb(239 68 68 / 40%);
 		--status-error-text: rgb(153 27 27);
 
 		/** STATUS TOKENS - Success */
 		--status-success-fg: rgb(34 197 94);
 		--status-success-bg: rgb(240 253 244);
 		--status-success-border: rgb(134 239 172);
-		--status-success-ring: rgb(34 197 94 / 0.4);
+		--status-success-ring: rgb(34 197 94 / 40%);
 		--status-success-text: rgb(21 128 61);
 
 		/** STATUS TOKENS - Warning */
 		--status-warning-fg: rgb(234 179 8);
 		--status-warning-bg: rgb(254 252 232);
 		--status-warning-border: rgb(253 224 71);
-		--status-warning-ring: rgb(234 179 8 / 0.4);
+		--status-warning-ring: rgb(234 179 8 / 40%);
 		--status-warning-text: rgb(161 98 7);
 
 		/** STATUS TOKENS - Info */
 		--status-info-fg: rgb(59 130 246);
 		--status-info-bg: rgb(239 246 255);
 		--status-info-border: rgb(147 197 253);
-		--status-info-ring: rgb(59 130 246 / 0.4);
+		--status-info-ring: rgb(59 130 246 / 40%);
 		--status-info-text: rgb(30 64 175);
 
 		/** BUTTON TOKENS - Solid */
@@ -229,6 +230,7 @@
 	 * ============================================ */
 	.scrollbar-minimal {
 		@apply relative;
+
 		scrollbar-width: none;
 		-ms-overflow-style: none;
 	}
@@ -338,30 +340,35 @@
 	/** Body text in primary color */
 	.text-body-canvas {
 		@apply text-base/6 sm:text-sm/6;
+
 		color: var(--color-text);
 	}
 
 	/** Body text in muted color - descriptions, secondary content */
 	.text-body-muted {
 		@apply text-base/6;
+
 		color: var(--color-text-muted);
 	}
 
 	/** Small description text with top margin */
 	.text-description {
 		@apply mt-1 text-sm/6;
+
 		color: var(--color-text-muted);
 	}
 
 	/** Smaller description - dropdowns, compact UI */
 	.text-description-sm {
 		@apply text-sm/5;
+
 		color: var(--color-text-muted);
 	}
 
 	/** Section/group heading - dropdowns, menus */
 	.text-heading-sm {
 		@apply text-sm/5 font-medium;
+
 		color: var(--color-text-muted);
 	}
 
@@ -378,6 +385,7 @@
 	/** Standard card container */
 	.card-base {
 		@apply rounded-xl p-6 shadow-lg ring-1;
+
 		background: var(--color-surface-muted);
 		border-color: var(--color-border-soft);
 	}
@@ -386,6 +394,7 @@
 	.card-interactive {
 		@apply rounded-xl p-6 shadow-lg ring-1 transition-shadow;
 		@apply hover:shadow-xl;
+
 		background: var(--color-surface-muted);
 		border-color: var(--color-border-soft);
 	}
@@ -393,6 +402,7 @@
 	/** Elevated panel - drawers, modals */
 	.panel-elevated {
 		@apply shadow-xl rounded-xl;
+
 		background-color: var(--color-canvas);
 	}
 
@@ -405,6 +415,7 @@
 	.panel-dialog {
 		@apply rounded-t-3xl p-8 shadow-lg ring-1;
 		@apply sm:rounded-2xl;
+
 		background-color: var(--color-canvas);
 		border-color: var(--color-border-soft);
 	}
@@ -412,6 +423,7 @@
 	/** Inset panel - nested content areas */
 	.panel-inset {
 		@apply rounded-lg p-4;
+
 		background-color: var(--color-surface-muted);
 	}
 
@@ -471,6 +483,7 @@
 	/** Input text styling */
 	.input-text {
 		@apply text-base/6 sm:text-sm/6;
+
 		color: var(--color-text);
 	}
 	.input-text::placeholder {
@@ -490,6 +503,7 @@
 		@apply sm:px-[calc(var(--spacing,0.25rem)*3-1px)] sm:py-[calc(var(--spacing,0.25rem)*1.5-1px)];
 		@apply text-base/6 sm:text-sm/6;
 		@apply focus:outline-none focus:ring-2 focus:ring-blue-500;
+
 		color: var(--color-text);
 	}
 	.input-field::placeholder {
@@ -539,6 +553,7 @@
 		@apply px-3.5 py-2.5 sm:px-3 sm:py-1.5;
 		@apply text-left text-base/6 sm:text-sm/6;
 		@apply w-full flex items-center gap-2;
+
 		color: var(--color-text);
 	}
 
@@ -550,6 +565,7 @@
 	/** Dropdown divider line */
 	.dropdown-divider {
 		@apply mx-3.5 my-1 h-px border-0 sm:mx-3;
+
 		border-color: var(--color-border-soft);
 	}
 
@@ -606,12 +622,14 @@
 	/** Top border divider */
 	.divider-top {
 		@apply border-t;
+
 		border-color: var(--color-border-soft);
 	}
 
 	/** Bottom border divider */
 	.divider-bottom {
 		@apply border-b;
+
 		border-color: var(--color-border-soft);
 	}
 
@@ -879,6 +897,7 @@
 	}
 	.btn-outline {
 		@apply rounded-full;
+
 		color: var(--color-primary);
 		background: transparent;
 		border-color: var(--color-primary);
@@ -912,6 +931,7 @@
 	}
 	.btn-subtle {
 		@apply rounded-full;
+
 		color: var(--color-primary);
 		background: var(--color-surface-soft);
 		transition:
@@ -1000,7 +1020,7 @@
 	h4,
 	h5,
 	h6 {
-		font-weight: 400 !important;
+		font-weight: 400;
 	}
 
 	/* ============================================
@@ -1030,7 +1050,7 @@
 	}
 
 	/** Responsive adjustment for smaller screens */
-	@media (max-width: 768px) {
+	@media (width <= 768px) {
 		.px-edge,
 		main section,
 		main section > div,
@@ -1049,7 +1069,7 @@
 	/** Concierge Nursing vs Home Care - Left align table content */
 	#us-verse table th,
 	#us-verse table td {
-		text-align: left !important;
+		text-align: left;
 	}
 
 	/** Our Process - Left align paragraph */
@@ -1063,6 +1083,6 @@
 
 	/** Neutralize any Tailwind max-w-* constraints globally */
 	:where([class*="max-w-"]) {
-		max-width: 100% !important;
+		max-width: 100%;
 	}
 }
