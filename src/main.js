@@ -6,19 +6,100 @@
 	// Import UI components
 	await import("./blocks/ui.js");
 
-	// Initialize treatment card dialog triggers
-	const initTreatmentDialogs = () => {
-		const triggers = document.querySelectorAll(".treatment-card-trigger");
-		triggers.forEach((trigger) => {
-			trigger.addEventListener("click", (event) => {
-				event.preventDefault();
-				event.stopPropagation();
-				const dialogId = trigger.dataset.dialog;
-				const dialog = document.getElementById(dialogId);
-				if (dialog && typeof dialog.open === "function") {
-					dialog.open();
+	// Initialize treatment card inline expansion
+	const initTreatmentCards = () => {
+		const cards = document.querySelectorAll(".treatment-card");
+		const CARD_SIZE = 384; // Base size for 1:1 aspect ratio (w-96)
+		const EXPANDED_WIDTH = CARD_SIZE * 2; // 2x width when expanded
+
+		const collapseCard = (card) => {
+			card.dataset.expanded = "false";
+			const collapsed = card.querySelector(".treatment-card-collapsed");
+			const expanded = card.querySelector(".treatment-card-expanded");
+			const icon = card.querySelector(".treatment-card-icon");
+
+			// Reset card width to square
+			card.style.width = `${CARD_SIZE}px`;
+
+			// Toggle content visibility
+			if (collapsed) collapsed.style.opacity = "1";
+			if (expanded) expanded.style.opacity = "0";
+			if (icon) icon.style.transform = "rotate(0deg)";
+		};
+
+		const expandCard = (card, skipCollapse = false) => {
+			// Collapse all other cards first
+			if (!skipCollapse) {
+				cards.forEach((otherCard) => {
+					if (otherCard !== card) collapseCard(otherCard);
+				});
+			}
+
+			// Toggle this card
+			const isExpanded = card.dataset.expanded === "true";
+			if (isExpanded && !skipCollapse) {
+				collapseCard(card);
+			} else {
+				card.dataset.expanded = "true";
+				const collapsed = card.querySelector(".treatment-card-collapsed");
+				const expanded = card.querySelector(".treatment-card-expanded");
+				const icon = card.querySelector(".treatment-card-icon");
+
+				// Expand card to 2x width, height stays the same
+				card.style.width = `${EXPANDED_WIDTH}px`;
+
+				// Toggle content visibility
+				if (collapsed) collapsed.style.opacity = "0";
+				if (expanded) expanded.style.opacity = "1";
+				if (icon) icon.style.transform = "rotate(45deg)";
+
+				// Scroll the expanded card into view after transition
+				if (!skipCollapse) {
+					setTimeout(() => {
+						card.scrollIntoView({
+							behavior: "smooth",
+							inline: "center",
+							block: "nearest",
+						});
+					}, 100);
 				}
-			});
+			}
+		};
+
+		// Initialize all cards with fixed dimensions
+		cards.forEach((card, index) => {
+			card.style.height = `${CARD_SIZE}px`;
+			card.style.width = `${CARD_SIZE}px`;
+
+			// Expand first card by default
+			if (index === 0) {
+				expandCard(card, true);
+			}
+		});
+
+		cards.forEach((card) => {
+			const trigger = card.querySelector(".treatment-card-trigger");
+			if (trigger) {
+				trigger.addEventListener("click", (event) => {
+					event.preventDefault();
+					event.stopPropagation();
+					expandCard(card);
+				});
+			}
+		});
+
+		// Close expanded cards when clicking outside
+		document.addEventListener("click", (event) => {
+			if (!event.target.closest(".treatment-card")) {
+				// When clicking outside, collapse all and expand first card
+				cards.forEach((card, index) => {
+					if (index === 0) {
+						expandCard(card, true);
+					} else {
+						collapseCard(card);
+					}
+				});
+			}
 		});
 	};
 
@@ -126,12 +207,12 @@
 	if (document.readyState === "loading") {
 		document.addEventListener("DOMContentLoaded", () => {
 			initAllScrollbars();
-			initTreatmentDialogs();
+			initTreatmentCards();
 			initVideoPoster();
 		});
 	} else {
 		initAllScrollbars();
-		initTreatmentDialogs();
+		initTreatmentCards();
 		initVideoPoster();
 	}
 })();
