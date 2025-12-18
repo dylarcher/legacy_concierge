@@ -14,6 +14,7 @@
 - [X] Lighten background overlays in "our process" cards
 - [X] Update video image above "our process"
 - [X] Align "Our process" section text with the left side of the first card's left border (needs design assets)
+- [X] Add missing section to the homepage (YEAH! the pesky one I keep forgetting)
 
 ## Treatment/Services Subpages (Care pages)
 
