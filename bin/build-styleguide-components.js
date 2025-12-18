@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /**
  * Build script for styleguide component bundle
  *
@@ -10,9 +11,9 @@
  * Usage: bun run build:styleguide
  */
 
-import { build } from "vite";
-import { resolve, dirname } from "node:path";
+import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { build } from "vite";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const projectRoot = resolve(__dirname, "..");

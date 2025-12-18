@@ -41,7 +41,7 @@
  * ></video-player>
  */
 
-import { BaseComponent, defineElement, clsx } from "./_base.js";
+import { BaseComponent, clsx, defineElement } from "./_base.js";
 
 export class VideoPlayer extends BaseComponent {
 	static get observedAttributes() {
@@ -100,7 +100,10 @@ export class VideoPlayer extends BaseComponent {
 	}
 	get controls() {
 		// Default to true if attribute not explicitly set to false
-		return !this.hasAttribute("controls") || this.getAttribute("controls") !== "false";
+		return (
+			!this.hasAttribute("controls") ||
+			this.getAttribute("controls") !== "false"
+		);
 	}
 	get preload() {
 		return this.getAttribute("preload") || "metadata";
@@ -112,7 +115,10 @@ export class VideoPlayer extends BaseComponent {
 		return this.getAttribute("aspect-ratio") || "16/9";
 	}
 	get playsinline() {
-		return !this.hasAttribute("playsinline") || this.getAttribute("playsinline") !== "false";
+		return (
+			!this.hasAttribute("playsinline") ||
+			this.getAttribute("playsinline") !== "false"
+		);
 	}
 
 	/**
@@ -333,10 +339,7 @@ export class VideoPlayer extends BaseComponent {
 			controls: this.controls,
 			preload: this.preload,
 			playsinline: this.playsinline,
-			class: clsx(
-				"w-full h-full object-cover",
-				"rounded-lg",
-			),
+			class: clsx("w-full h-full object-cover", "rounded-lg"),
 			style: {
 				aspectRatio: this.aspectRatio,
 			},

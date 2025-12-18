@@ -9,11 +9,11 @@
 export {
 	BaseComponent,
 	defineElement,
-	uniqueId,
 	FocusTrap,
+	getBaseUrl,
 	KEYS,
 	resolvePath,
-	getBaseUrl,
+	uniqueId,
 } from "../_base.js";
 
 // Import clsx from utilities for re-export

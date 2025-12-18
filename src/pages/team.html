@@ -2228,91 +2228,115 @@
 		</div>
 		<script type="module" src="/main.js"></script>
 		<script>
-			// Team page tab switching functionality
-			const initTeamTabs = () => {
-				// Handle tab switching for each team member card
-				document.querySelectorAll(".team-tab-btn").forEach((button) => {
-					button.addEventListener("click", () => {
-						const tabId = button.dataset.tab;
-						const container = button.closest(".lg\\:flex-1");
-						if (!container) return;
+		// Team page tab switching functionality
+		const initTeamTabs = () => {
+			// Handle tab switching for each team member card
+			document.querySelectorAll(".team-tab-btn").forEach((button) => {
+				button.addEventListener("click", () => {
+					const tabId = button.dataset.tab;
+					const container = button.closest(".lg\\:flex-1");
+					if (!container) return;
 
-						// Update button states within this container
-						container.querySelectorAll(".team-tab-btn").forEach((btn) => {
-							if (btn.dataset.tab === tabId) {
-								btn.classList.add("active", "border-2", "border-primary/20", "bg-white", "text-primary");
-								btn.classList.remove("bg-secondary", "text-white");
-							} else {
-								btn.classList.remove("active", "border-2", "border-primary/20", "bg-white", "text-primary");
-								btn.classList.add("bg-secondary", "text-white");
-							}
-						});
-
-						// Update content visibility within this container
-						container.querySelectorAll(".team-tab-content").forEach((content) => {
-							if (content.dataset.content === tabId) {
-								content.classList.remove("hidden");
-							} else {
-								content.classList.add("hidden");
-							}
-						});
-					});
-				});
-			};
-
-			// Single-open accordion behavior with dynamic styling
-			const initTeamAccordion = () => {
-				const accordion = document.getElementById("team-accordion");
-				if (!accordion) return;
-
-				const details = accordion.querySelectorAll("details");
-
-				const updateAccordionStyling = (openedDetails) => {
-					details.forEach((detail) => {
-						const summary = detail.querySelector("summary");
-						if (detail === openedDetails && detail.open) {
-							// Open state: bg-secondary with white text
-							summary.classList.remove("bg-white", "border", "border-zinc-200", "text-primary", "shadow-sm");
-							summary.classList.add("bg-secondary", "text-white");
+					// Update button states within this container
+					container.querySelectorAll(".team-tab-btn").forEach((btn) => {
+						if (btn.dataset.tab === tabId) {
+							btn.classList.add(
+								"active",
+								"border-2",
+								"border-primary/20",
+								"bg-white",
+								"text-primary",
+							);
+							btn.classList.remove("bg-secondary", "text-white");
 						} else {
-							// Closed state: bg-white with border
-							summary.classList.remove("bg-secondary", "text-white");
-							summary.classList.add("bg-white", "border", "border-zinc-200", "text-primary", "shadow-sm");
+							btn.classList.remove(
+								"active",
+								"border-2",
+								"border-primary/20",
+								"bg-white",
+								"text-primary",
+							);
+							btn.classList.add("bg-secondary", "text-white");
 						}
 					});
-				};
 
-				details.forEach((detail) => {
-					detail.addEventListener("toggle", () => {
-						if (detail.open) {
-							// Close all other details
-							details.forEach((otherDetail) => {
-								if (otherDetail !== detail && otherDetail.open) {
-									otherDetail.open = false;
-								}
-							});
+					// Update content visibility within this container
+					container.querySelectorAll(".team-tab-content").forEach((content) => {
+						if (content.dataset.content === tabId) {
+							content.classList.remove("hidden");
+						} else {
+							content.classList.add("hidden");
 						}
-						updateAccordionStyling(detail);
 					});
 				});
+			});
+		};
 
-				// Initialize styling for the default open accordion
-				const openDetail = accordion.querySelector("details[open]");
-				if (openDetail) {
-					updateAccordionStyling(openDetail);
-				}
+		// Single-open accordion behavior with dynamic styling
+		const initTeamAccordion = () => {
+			const accordion = document.getElementById("team-accordion");
+			if (!accordion) return;
+
+			const details = accordion.querySelectorAll("details");
+
+			const updateAccordionStyling = (openedDetails) => {
+				details.forEach((detail) => {
+					const summary = detail.querySelector("summary");
+					if (detail === openedDetails && detail.open) {
+						// Open state: bg-secondary with white text
+						summary.classList.remove(
+							"bg-white",
+							"border",
+							"border-zinc-200",
+							"text-primary",
+							"shadow-sm",
+						);
+						summary.classList.add("bg-secondary", "text-white");
+					} else {
+						// Closed state: bg-white with border
+						summary.classList.remove("bg-secondary", "text-white");
+						summary.classList.add(
+							"bg-white",
+							"border",
+							"border-zinc-200",
+							"text-primary",
+							"shadow-sm",
+						);
+					}
+				});
 			};
 
-			// Initialize when DOM is ready
-			if (document.readyState === "loading") {
-				document.addEventListener("DOMContentLoaded", () => {
-					initTeamTabs();
-					initTeamAccordion();
+			details.forEach((detail) => {
+				detail.addEventListener("toggle", () => {
+					if (detail.open) {
+						// Close all other details
+						details.forEach((otherDetail) => {
+							if (otherDetail !== detail && otherDetail.open) {
+								otherDetail.open = false;
+							}
+						});
+					}
+					updateAccordionStyling(detail);
 				});
-			} else {
+			});
+
+			// Initialize styling for the default open accordion
+			const openDetail = accordion.querySelector("details[open]");
+			if (openDetail) {
+				updateAccordionStyling(openDetail);
+			}
+		};
+
+		// Initialize when DOM is ready
+		if (document.readyState === "loading") {
+			document.addEventListener("DOMContentLoaded", () => {
 				initTeamTabs();
 				initTeamAccordion();
-			}
+			});
+		} else {
+			initTeamTabs();
+			initTeamAccordion();
+		}
 		</script>
 	</body>
 </html>

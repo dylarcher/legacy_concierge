@@ -260,32 +260,28 @@
 	font-display: swap;
 }
 
-/** TODO - unavailable webfonts
- *  Get the missing variable weight typefaces listed below
+/**
+ * FONT WEIGHT LIMITATION
+ * -----------------------
+ * Sackers Gothic is only available in Heavy (800) weight.
+ * Light (300) and Medium (500) weights are not licensed.
+ * The design system falls back to system fonts for lighter weights.
  *
- *  <Slackers Gothic Std Light> @font-face {
- *		font-family: "Sackers Gothic";
- *		src:
- *			url("../assets/fonts/sackers-gothic/SackersGothicStd-Light.woff2")
- *			format("woff2"),
- *			url("../assets/fonts/sackers-gothic/SackersGothicStd-Light.woff")
- *			format("woff");
- *		font-weight: 300;
- *		font-style: normal;
- *		font-display: swap;
- *	}
+ * If additional weights become available, uncomment and update:
  *
- *  <Slackers Gothic Std Medium> @font-face {
- *		font-family: "Sackers Gothic";
- *		src:
- *			url("../assets/fonts/sackers-gothic/SackersGothicStd-Medium.woff2")
- *			format("woff2"),
- *			url("../assets/fonts/sackers-gothic/SackersGothicStd-Medium.woff")
- *			format("woff");
- *		font-weight: 500;
- *		font-style: normal;
- *		font-display: swap;
- *	}
+ * @font-face {
+ *   font-family: "Sackers Gothic";
+ *   src: url("../assets/fonts/sackers-gothic/SackersGothicStd-Light.woff2") format("woff2");
+ *   font-weight: 300;
+ *   font-display: swap;
+ * }
+ *
+ * @font-face {
+ *   font-family: "Sackers Gothic";
+ *   src: url("../assets/fonts/sackers-gothic/SackersGothicStd-Medium.woff2") format("woff2");
+ *   font-weight: 500;
+ *   font-display: swap;
+ * }
  */
 
 :root {

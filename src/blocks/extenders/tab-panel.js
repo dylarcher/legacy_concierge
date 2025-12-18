@@ -29,7 +29,7 @@
  * </tab-panel>
  */
 
-import { BaseComponent, defineElement, clsx, uniqueId } from "./_base.js";
+import { BaseComponent, clsx, defineElement, uniqueId } from "./_base.js";
 
 export class TabPanel extends BaseComponent {
 	static get observedAttributes() {
@@ -381,7 +381,8 @@ export class TabPanel extends BaseComponent {
 			panel.setAttribute("tabindex", "0");
 
 			const isActive =
-				this.active === panelId || (!this.active && panels.indexOf(panel) === 0);
+				this.active === panelId ||
+				(!this.active && panels.indexOf(panel) === 0);
 			panel.hidden = !isActive;
 			panel.setAttribute("aria-hidden", String(!isActive));
 		});
