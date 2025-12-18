@@ -59,7 +59,7 @@
 						</div>
 					</div>
 				</div>
-				<button type="button" class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator rounded-full p-4 cursor-pointer transition-colors" aria-label="Scroll to content">
+				<button type="button" id="scroll-indicator" class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator rounded-full p-4 cursor-pointer transition-colors" aria-label="Scroll to content">
 					<svg class="size-8 text-white/70" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
 					</svg>
@@ -289,41 +289,29 @@
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-base no-underline">
 							Cardiac Care
 						</a>
-						<a href="./pages/treatments/eating"
+						<a href="./pages/treatments/eating-disorders"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-base no-underline">
-							Eating Disorder Support
+							Eating Disorders
 						</a>
 						<a href="./pages/treatments/iv"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-base no-underline">
 							IV Therapy
 						</a>
-						<a href="./pages/treatments/neurological"
+						<a href="./pages/treatments/mental-health"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-base no-underline">
-							Neurological Care
-						</a>
-						<a href="./pages/treatments/oncology"
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-base no-underline">
-							Oncology Care
+							Mental Health
 						</a>
 						<a href="./pages/treatments/pain"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-base no-underline">
 							Pain Management
 						</a>
-						<a href="./pages/treatments/palliative"
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-base no-underline">
-							Palliative Care
-						</a>
 						<a href="./pages/treatments/post-op"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-base no-underline">
 							Post-Operative Care
 						</a>
-						<a href="./pages/treatments/respiratory"
+						<a href="./pages/treatments/rehab"
 							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-base no-underline">
-							Respiratory Care
-						</a>
-						<a href="./pages/treatments/wellness"
-							class="bg-primary text-white rounded-xl p-6 shadow-lg ring-1 ring-zinc-950/5 hover:bg-primary/90 transition-colors text-center text-base no-underline">
-							Wellness Programs
+							Rehabilitation
 						</a>
 					</div>
 				</div>
@@ -474,7 +462,7 @@
 						class="scrollbar-minimal mt-11 flex items-stretch gap-6 sm:mt-16 pr-[56px] overflow-x-auto">
 					<!-- Treatment Card A: Comprehensive Medical & Environmental Assessment -->
 					<div
-						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[320px] sm:min-h-[400px] md:min-h-[480px]"
+						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[384px] sm:min-h-[480px] md:min-h-[576px]"
 						data-expanded="true">
 						<!-- Background Image (spans full card when expanded) -->
 						<div class="absolute inset-0">
@@ -516,7 +504,7 @@
 
 					<!-- Treatment Card B: Build Your Personalized Care Team -->
 					<div
-						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[320px] sm:min-h-[400px] md:min-h-[480px]"
+						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[384px] sm:min-h-[480px] md:min-h-[576px]"
 						data-expanded="false">
 						<!-- Background Image (spans full card when expanded) -->
 						<div class="absolute inset-0">
@@ -561,7 +549,7 @@
 
 					<!-- Treatment Card C: Develop & Approve Your Personalized Care Plan -->
 					<div
-						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[320px] sm:min-h-[400px] md:min-h-[480px]"
+						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[384px] sm:min-h-[480px] md:min-h-[576px]"
 						data-expanded="false">
 						<!-- Background Image (spans full card when expanded) -->
 						<div class="absolute inset-0">
@@ -617,7 +605,7 @@
 
 					<!-- Treatment Card D: Begin Ongoing Clinical Oversight & Adaptive Care -->
 					<div
-						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[320px] sm:min-h-[400px] md:min-h-[480px]"
+						class="treatment-card relative shrink-0 rounded-2xl overflow-hidden group transition-all duration-300 ease-out min-h-[384px] sm:min-h-[480px] md:min-h-[576px]"
 						data-expanded="false">
 						<!-- Background Image (spans full card when expanded) -->
 						<div class="absolute inset-0">
@@ -833,6 +821,18 @@
 	</div>
 	<script type="module" src="main.js"></script>
 	<script>
+		// Scroll indicator - smooth scroll to first section
+		document.addEventListener('DOMContentLoaded', () => {
+			const scrollIndicator = document.getElementById('scroll-indicator');
+			const featuredSection = document.getElementById('featured');
+
+			if (scrollIndicator && featuredSection) {
+				scrollIndicator.addEventListener('click', () => {
+					featuredSection.scrollIntoView({ behavior: 'smooth' });
+				});
+			}
+		});
+
 		// Back-to-top button visibility based on hero scroll position
 		document.addEventListener('DOMContentLoaded', () => {
 			const heroHeader = document.querySelector('main > header');
