@@ -805,6 +805,17 @@
 			<global-footer></global-footer>
 		</footer>
 	</div>
+
+	<!-- Back to Top Button -->
+	<button type="button"
+		id="back-to-top"
+		class="fixed bottom-8 right-8 z-50 rounded-full bg-primary/90 p-3 text-white shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary cursor-pointer"
+		aria-label="Scroll to top">
+		<svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+		</svg>
+	</button>
+
 	<div class="fixed inset-0 bg-black/50 z-50 hidden" id="fullscreen-modal">
 		<div class="fixed inset-0 flex items-center justify-center p-4 overflow-y-auto">
 			<!-- Modal Content Goes Here -->
@@ -821,6 +832,35 @@
 		</div>
 	</div>
 	<script type="module" src="main.js"></script>
+	<script>
+		// Back-to-top button visibility based on hero scroll position
+		document.addEventListener('DOMContentLoaded', () => {
+			const heroHeader = document.querySelector('main > header');
+			const backToTop = document.getElementById('back-to-top');
+
+			if (heroHeader && backToTop) {
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							// Hero visible - hide back-to-top
+							backToTop.classList.add('opacity-0', 'invisible');
+							backToTop.classList.remove('opacity-100', 'visible');
+						} else {
+							// Hero not visible - show back-to-top
+							backToTop.classList.remove('opacity-0', 'invisible');
+							backToTop.classList.add('opacity-100', 'visible');
+						}
+					});
+				}, { threshold: 0 });
+
+				observer.observe(heroHeader);
+
+				backToTop.addEventListener('click', () => {
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+				});
+			}
+		});
+	</script>
 </body>
 
 </html>
