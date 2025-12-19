@@ -9,7 +9,7 @@
 #
 # See /DEPLOYMENTS.md for complete setup instructions
 
-name: hosting.com deployment
+name: Launch
 
 permissions:
   contents: read
@@ -21,7 +21,7 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Deploy to environment'
+        description: 'Release'
         required: false
         default: 'production'
 
@@ -30,26 +30,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup environment
+      - name: Prepare
         uses: oven-sh/setup-bun@v2
 
-      - name: Install dependencies
+      - name: Install
         run: bun install --frozen-lockfile
 
-      - name: Build distribution
+      - name: Build
         run: bun run build
 
-      - name: Setup secure shell
+      - name: Setup
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy via rsync
+      - name: Deploy
         run: |
           rsync -avz --delete \
             ./dist/ \
