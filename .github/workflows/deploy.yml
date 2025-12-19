@@ -3,11 +3,11 @@
 # Requires SSH access on your hosting plan
 #
 # Required GitHub Secrets:
-#   SSH_HOST - Server hostname from cPanel (e.g., server123.hosting.com)
-#   SSH_USER - cPanel username
+#   SSH_HOST - Server hostname from cPanel (e.g., legacyhome.hosted.com)
+#   SSH_USER - cPanel username (e.g. legacyh2)
 #   SSH_KEY  - Private key contents (including BEGIN/END markers)
 #
-# See LAUNCH_PROCESS.md for complete setup instructions
+# See /DEPLOYMENTS.md for complete setup instructions
 
 name: Deploy via rsync
 
