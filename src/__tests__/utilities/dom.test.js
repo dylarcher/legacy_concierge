@@ -1,10 +1,10 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import {
 	clsx,
 	combineClassNames,
 	createElement,
-	h,
 	createSVGElement,
+	h,
 	uniqueId,
 } from "../../utilities/dom.js";
 
@@ -108,27 +108,39 @@ describe("DOM Utilities", () => {
 		});
 
 		it("should set inline styles from object", () => {
-			const el = createElement("div", { style: { color: "red", fontSize: "14px" } });
+			const el = createElement("div", {
+				style: { color: "red", fontSize: "14px" },
+			});
 			expect(el.style.color).toBe("red");
 			expect(el.style.fontSize).toBe("14px");
 		});
 
 		it("should set dataset attributes", () => {
-			const el = createElement("div", { dataset: { testId: "123", role: "button" } });
+			const el = createElement("div", {
+				dataset: { testId: "123", role: "button" },
+			});
 			expect(el.dataset.testId).toBe("123");
 			expect(el.dataset.role).toBe("button");
 		});
 
 		it("should add event listeners", () => {
 			let clicked = false;
-			const el = createElement("button", { onClick: () => (clicked = true) });
+			const el = createElement("button", {
+				onClick: () => {
+					clicked = true;
+				},
+			});
 			el.click();
 			expect(clicked).toBe(true);
 		});
 
 		it("should call ref function with element", () => {
 			let refElement = null;
-			const el = createElement("div", { ref: (el) => (refElement = el) });
+			const el = createElement("div", {
+				ref: (element) => {
+					refElement = element;
+				},
+			});
 			expect(refElement).toBe(el);
 		});
 	});
@@ -149,7 +161,10 @@ describe("DOM Utilities", () => {
 		});
 
 		it("should set attributes on SVG elements", () => {
-			const svg = createSVGElement("svg", { viewBox: "0 0 24 24", width: "24" });
+			const svg = createSVGElement("svg", {
+				viewBox: "0 0 24 24",
+				width: "24",
+			});
 			expect(svg.getAttribute("viewBox")).toBe("0 0 24 24");
 			expect(svg.getAttribute("width")).toBe("24");
 		});
