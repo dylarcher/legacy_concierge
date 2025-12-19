@@ -11,20 +11,13 @@
 
 name: hosting.com deployment
 
-on:
-  push:
-    branches: [release]
-  workflow_dispatch:
-
 permissions:
   contents: read
 
 on:
-  # Uncomment the following lines to enable automatic deployment on push:
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
 
-  # Manual trigger (default - keeps workflow disabled until configured)
   workflow_dispatch:
     inputs:
       environment:
