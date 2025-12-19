@@ -62,6 +62,8 @@ export class ContentCard extends BaseComponent {
 
 	#dialog = null;
 	#boundHashChange = null;
+	// biome-ignore lint/correctness/noUnusedPrivateClassMembers: used in expand()/collapse()
+	#isExpanded = false;
 
 	connectedCallback() {
 		this.render();
