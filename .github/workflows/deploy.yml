@@ -11,6 +11,9 @@
 
 name: Deploy via rsync
 
+permissions:
+  contents: read
+
 on:
   # Uncomment the following lines to enable automatic deployment on push:
   # push:
