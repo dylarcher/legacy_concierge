@@ -1,0 +1,55 @@
+# SSH/rsync Deployment Workflow
+# More secure and faster than FTP deployment
+# Requires SSH access on your hosting plan
+#
+# Required GitHub Secrets:
+#   SSH_HOST - Server hostname from cPanel (e.g., server123.hosting.com)
+#   SSH_USER - cPanel username
+#   SSH_KEY  - Private key contents (including BEGIN/END markers)
+#
+# See LAUNCH_PROCESS.md for complete setup instructions
+
+name: Deploy via rsync
+
+on:
+  # Uncomment the following lines to enable automatic deployment on push:
+  # push:
+  #   branches: [main]
+
+  # Manual trigger (default - keeps workflow disabled until configured)
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment environment'
+        required: false
+        default: 'production'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build site
+        run: bun run build
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy via rsync
+        run: |
+          rsync -avz --delete \
+            ./dist/ \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/public_html/
