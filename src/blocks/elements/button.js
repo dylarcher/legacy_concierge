@@ -5,7 +5,7 @@
  * @module elements/button
  */
 
-import { clsx, createElement, createSVGElement } from "../../utilities/dom.js";
+import { clsx, createElement } from "../../utilities/dom.js";
 
 /**
  * Button color variants with CSS custom properties

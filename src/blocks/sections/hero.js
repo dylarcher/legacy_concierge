@@ -294,7 +294,7 @@ export class HeroBanner extends BaseComponent {
 					{
 						href: "#",
 						class:
-							"rounded-md px-6 py-4 text-md font-semibold text-shadow-lg shadow-xs no-underline",
+							"rounded-md px-6 py-4 text-base font-semibold text-shadow-lg shadow-xs no-underline",
 					},
 					"Call for more details…",
 				),

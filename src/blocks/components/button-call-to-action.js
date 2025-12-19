@@ -33,6 +33,7 @@ class ButtonCallToAction extends BaseComponent {
 					"border border-white/80",
 					"transition-colors duration-200",
 					"cursor-pointer",
+					"focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white",
 				),
 			},
 			[this.h("slot")],

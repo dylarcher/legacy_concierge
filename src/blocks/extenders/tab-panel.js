@@ -29,15 +29,12 @@
  * </tab-panel>
  */
 
-import { BaseComponent, defineElement, clsx, uniqueId } from "./_base.js";
+import { BaseComponent, defineElement, uniqueId } from "./_base.js";
 
 export class TabPanel extends BaseComponent {
 	static get observedAttributes() {
 		return ["active", "hash-prefix", "sync-hash", "tab-align", "tab-style"];
 	}
-
-	#tabsContainer = null;
-	#panelsContainer = null;
 	#boundHashChange = null;
 
 	connectedCallback() {
@@ -137,7 +134,7 @@ export class TabPanel extends BaseComponent {
 		if (!this.syncHash) return;
 
 		const hash = window.location.hash.slice(1);
-		if (hash.startsWith(this.hashPrefix + "-")) {
+		if (hash.startsWith(`${this.hashPrefix}-`)) {
 			const tabId = hash.slice(this.hashPrefix.length + 1);
 			if (this.#hasTab(tabId)) {
 				this.active = tabId;
@@ -277,7 +274,7 @@ export class TabPanel extends BaseComponent {
 		if (!this.syncHash) return;
 
 		const hash = window.location.hash.slice(1);
-		if (hash.startsWith(this.hashPrefix + "-")) {
+		if (hash.startsWith(`${this.hashPrefix}-`)) {
 			const tabId = hash.slice(this.hashPrefix.length + 1);
 			if (this.#hasTab(tabId) && this.active !== tabId) {
 				this.active = tabId;
@@ -381,7 +378,8 @@ export class TabPanel extends BaseComponent {
 			panel.setAttribute("tabindex", "0");
 
 			const isActive =
-				this.active === panelId || (!this.active && panels.indexOf(panel) === 0);
+				this.active === panelId ||
+				(!this.active && panels.indexOf(panel) === 0);
 			panel.hidden = !isActive;
 			panel.setAttribute("aria-hidden", String(!isActive));
 		});

@@ -1652,7 +1652,19 @@ class NavBar extends BaseComponent {
 			),
 		);
 
+		// Skip to main content link for accessibility
+		const skipLink = this.h(
+			"a",
+			{
+				href: "#main-content",
+				class:
+					"sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:text-primary focus:px-4 focus:py-2 focus:rounded focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary",
+			},
+			"Skip to main content",
+		);
+
 		this.innerHTML = "";
+		this.appendChild(skipLink);
 		this.appendChild(header);
 		this.appendChild(searchDialog);
 		this.appendChild(backdrop);

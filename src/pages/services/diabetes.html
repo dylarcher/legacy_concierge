@@ -28,7 +28,7 @@
 		<link href="../../style.css" rel="stylesheet">
 	</head>
 	<body role="document" class="bg-depth-1">
-		<div role="application" class="text-primary">
+		<div class="text-primary">
 			<global-nav>
 				<a href="../../">Home</a>
 				<a href="../services">Services</a>
@@ -36,7 +36,7 @@
 				<a href="../team">Team</a>
 				<a href="../contact">Contact</a>
 			</global-nav>
-			<main role="main">
+			<main id="main-content">
 				<section class="relative isolate overflow-hidden bg-canvas pt-24 pb-16">
 					<img
 						role="presentation"
@@ -45,11 +45,13 @@
 						class="absolute inset-0 -z-10 size-full object-cover opacity-30"
 						loading="eager"
 					>
-					<div class="mx-auto max-w-4xl px-[56px]">
+					<div class="mx-auto max-w-4xl px-4 sm:px-6 md:px-8 lg:px-14">
 						<p class="text-sm text-primary mb-4">
 							<a href="../services" class="">&larr; Back to Services</a>
 						</p>
-						<h1 class="font-serif text-[60px] tracking-wide text-primary mb-8">
+						<h1
+							class="font-serif text-4xl md:text-5xl lg:text-6xl tracking-wide text-primary mb-8"
+						>
 							Diabetes Management
 						</h1>
 						<p class="text-xl text-muted max-w-3xl">
@@ -63,72 +65,76 @@
 				</section>
 
 				<section class="bg-depth-1 py-16">
-					<div class="mx-auto max-w-6xl px-[56px]">
+					<div class="mx-auto max-w-6xl px-4 sm:px-6 md:px-8 lg:px-14">
 						<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
 							<details-accordion animate>
 								<details>
 									<summary>Blood Glucose Monitoring</summary>
 									<div class="p-5 text-muted">
 										Our compassionate nurses monitor blood glucose levels with
-										meticulous care, helping you manage insulin or medications to
-										maintain stable control. Their expert guidance promotes health
-										and comfort, ensuring you feel confident in your daily
-										routine.
+										meticulous care, helping you manage insulin or medications
+										to maintain stable control. Their expert guidance promotes
+										health and comfort, ensuring you feel confident in your
+										daily routine.
 									</div>
 								</details>
 								<details>
 									<summary>Medication Management</summary>
 									<div class="p-5 text-muted">
 										Our reliable team oversees diabetes medications and insulin
-										with tailored precision, ensuring proper dosing and monitoring
-										for side effects. This trusted support enhances your longevity
-										and well-being, offering peace of mind to you and your family.
+										with tailored precision, ensuring proper dosing and
+										monitoring for side effects. This trusted support enhances
+										your longevity and well-being, offering peace of mind to you
+										and your family.
 									</div>
 								</details>
 								<details>
 									<summary>Nutrition Guidance</summary>
 									<div class="p-5 text-muted">
 										Our caring nurses provide personalized advice on balanced
-										nutrition and meal planning to support blood sugar control and
-										overall health. This gentle guidance fosters strength and
-										comfort, helping you thrive with diabetes.
+										nutrition and meal planning to support blood sugar control
+										and overall health. This gentle guidance fosters strength
+										and comfort, helping you thrive with diabetes.
 									</div>
 								</details>
 								<details>
 									<summary>Emotional Support</summary>
 									<div class="p-5 text-muted">
-										Our gentle nurses offer compassionate companionship to address
-										the emotional challenges of living with diabetes, such as
-										stress or frustration. This trusting support nurtures
-										well-being and helps you feel valued and understood.
+										Our gentle nurses offer compassionate companionship to
+										address the emotional challenges of living with diabetes,
+										such as stress or frustration. This trusting support
+										nurtures well-being and helps you feel valued and
+										understood.
 									</div>
 								</details>
 								<details>
 									<summary>Education &amp; Empowerment</summary>
 									<div class="p-5 text-muted">
-										We provide bespoke education on diabetes management, including
-										glucose monitoring, insulin use, and lifestyle adjustments,
-										tailored to your needs. Our expert nurses empower you with
-										knowledge and confidence, promoting independence and peace of
-										mind.
+										We provide bespoke education on diabetes management,
+										including glucose monitoring, insulin use, and lifestyle
+										adjustments, tailored to your needs. Our expert nurses
+										empower you with knowledge and confidence, promoting
+										independence and peace of mind.
 									</div>
 								</details>
 								<details>
 									<summary>Care Coordination</summary>
 									<div class="p-5 text-muted">
-										Our dedicated nurses liaise with endocrinologists, dietitians,
-										and other specialists, ensuring seamless communication and
-										adherence to your care plan. This meticulous coordination
-										supports your health and reduces family stress.
+										Our dedicated nurses liaise with endocrinologists,
+										dietitians, and other specialists, ensuring seamless
+										communication and adherence to your care plan. This
+										meticulous coordination supports your health and reduces
+										family stress.
 									</div>
 								</details>
 								<details>
 									<summary>Complication Monitoring</summary>
 									<div class="p-5 text-muted">
-										Our trusted team monitors for diabetes-related complications,
-										such as neuropathy or infections, with unwavering attention to
-										detail. Their caring approach ensures safety and comfort,
-										helping you maintain confidence in your health.
+										Our trusted team monitors for diabetes-related
+										complications, such as neuropathy or infections, with
+										unwavering attention to detail. Their caring approach
+										ensures safety and comfort, helping you maintain confidence
+										in your health.
 									</div>
 								</details>
 								<details>
@@ -160,8 +166,10 @@
 				</section>
 
 				<section class="bg-canvas py-16">
-					<div class="mx-auto max-w-4xl px-[56px]">
-						<h2 class="font-serif text-[52px] text-[#668D8E] mb-8 text-center">
+					<div class="mx-auto max-w-4xl px-4 sm:px-6 md:px-8 lg:px-14">
+						<h2
+							class="font-serif text-3xl md:text-4xl lg:text-5xl text-secondary mb-8 text-center"
+						>
 							Your Trusted Partner in Diabetes Care
 						</h2>
 						<div class="prose prose-lg prose-zinc mx-auto text-center">
@@ -183,8 +191,12 @@
 				</section>
 
 				<section class="bg-secondary py-16">
-					<div class="mx-auto max-w-4xl px-[56px] text-center">
-						<h2 class="font-serif text-[52px] text-[#668D8E] mb-4">
+					<div
+						class="mx-auto max-w-4xl px-4 sm:px-6 md:px-8 lg:px-14 text-center"
+					>
+						<h2
+							class="font-serif text-3xl md:text-4xl lg:text-5xl text-secondary mb-4"
+						>
 							Call for Diabetes Management Consultation
 						</h2>
 						<p class="text-white/80 text-lg mb-8 max-w-2xl mx-auto">

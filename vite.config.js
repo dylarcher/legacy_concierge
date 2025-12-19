@@ -2,7 +2,10 @@ import { resolve } from "node:path";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import { analyzer } from "vite-bundle-analyzer";
-import { cleanUrlsPlugin, generateInputConfig } from "./vite-plugin-clean-urls.js";
+import {
+	cleanUrlsPlugin,
+	generateInputConfig,
+} from "./vite-plugin-clean-urls.js";
 
 const root = resolve(import.meta.dirname, "src");
 

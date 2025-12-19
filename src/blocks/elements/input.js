@@ -5,7 +5,7 @@
  * @module elements/input
  */
 
-import { clsx, createElement, createSVGElement } from "../../utilities/dom.js";
+import { clsx, createElement } from "../../utilities/dom.js";
 
 /**
  * Date-related input types that need special styling
@@ -171,7 +171,7 @@ export function createInputGroup(options = {}) {
 	const { leadingIcon, trailingIcon, inputOptions = {} } = options;
 
 	const inputWrapper = createInput(inputOptions);
-	const inputElement = inputWrapper.querySelector("input");
+	const _inputElement = inputWrapper.querySelector("input");
 
 	const group = createElement("span", {
 		class: INPUT_GROUP,

@@ -24,11 +24,17 @@
  * </details-accordion>
  */
 
-import { BaseComponent, defineElement, clsx, hashUtils } from "./_base.js";
+import { BaseComponent, clsx, defineElement, hashUtils } from "./_base.js";
 
 export class DetailsAccordion extends BaseComponent {
 	static get observedAttributes() {
-		return ["show-controls", "single-open", "animate", "hash-prefix", "sync-hash"];
+		return [
+			"show-controls",
+			"single-open",
+			"animate",
+			"hash-prefix",
+			"sync-hash",
+		];
 	}
 
 	#boundToggleHandler = null;
@@ -44,7 +50,7 @@ export class DetailsAccordion extends BaseComponent {
 		this.#detachListeners();
 	}
 
-	attributeChangedCallback(name, oldValue, newValue) {
+	attributeChangedCallback(_name, oldValue, newValue) {
 		if (oldValue !== newValue && this.isConnected) {
 			this.render();
 			this.#attachListeners();
@@ -198,10 +204,7 @@ export class DetailsAccordion extends BaseComponent {
 	#createControls() {
 		if (!this.showControls) return null;
 
-		const buttonClasses = clsx(
-			"btn-base btn-padding btn-subtle",
-			"text-sm",
-		);
+		const buttonClasses = clsx("btn-base btn-padding btn-subtle", "text-sm");
 
 		return this.h(
 			"div",

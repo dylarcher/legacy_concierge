@@ -81,7 +81,9 @@ async function hasNoIndexMeta(filePath) {
 	try {
 		const content = await readFile(filePath, "utf-8");
 		// Check for noindex in robots meta tag
-		return /<meta\s+name=["']robots["'][^>]*content=["'][^"']*noindex[^"']*["']/i.test(content);
+		return /<meta\s+name=["']robots["'][^>]*content=["'][^"']*noindex[^"']*["']/i.test(
+			content,
+		);
 	} catch {
 		return false;
 	}
@@ -155,7 +157,9 @@ async function main() {
 		}
 
 		if (excludedFiles.length > 0) {
-			console.log(`Excluding ${excludedFiles.length} file(s) with noindex meta tag`);
+			console.log(
+				`Excluding ${excludedFiles.length} file(s) with noindex meta tag`,
+			);
 		}
 
 		const urls = indexableFiles.map(filePathToUrl).sort();
