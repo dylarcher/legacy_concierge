@@ -9,7 +9,12 @@
 #
 # See /DEPLOYMENTS.md for complete setup instructions
 
-name: Deploy via rsync
+name: hosting.com deployment
+
+on:
+  push:
+    branches: [release]
+  workflow_dispatch:
 
 on:
   # Uncomment the following lines to enable automatic deployment on push:
@@ -20,7 +25,7 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Deployment environment'
+        description: 'Deploy https://legacyconcierge.com'
         required: false
         default: 'production'
 
@@ -32,16 +37,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Bun
+      - name: Setup environment
         uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Build site
+      - name: Build distribution
         run: bun run build
 
-      - name: Setup SSH
+      - name: Setup secure shell
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
