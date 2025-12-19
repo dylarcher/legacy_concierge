@@ -10,9 +10,9 @@
 
 | Item | Where | Example |
 | :--- | :---- | :------ |
-| Server Hostname | General Information → "Server Name" | server123.hosting.com |
-| Username | General Information → "Current User" | yourusername |
-| Home Directory | General Information → "Home Directory" | /home/yourusername |
+| Server Hostname | General Information → "Server Name" | <legacyhome.a2hosted.com> |
+| Username | General Information → "Current User" | `legacyh2` |
+| Home Directory | General Information → "Home Directory" | /home/legacyh2 |
 
 ## Step 2: Generate SSH Key in cPanel
 
@@ -38,9 +38,9 @@
 2. Click **View/Download**
 3. Copy the entire contents including:
 
-```
+```sh
 -----BEGIN RSA PRIVATE KEY-----
-...
+# Add unique SSH token key here
 -----END RSA PRIVATE KEY-----
 ```
 
@@ -179,7 +179,7 @@ Your domain will serve the new static site immediately after the first successfu
 
 ## File Structure Reference
 
-```
+```sh
 your-repo/
 ├── .github/
 │   └── workflows/
@@ -189,3 +189,20 @@ your-repo/
 ├── package.json
 └── ...
 ```
+
+---
+
+## Web Hosting Details
+
+| Name | Value |
+| :--- | :---- |
+| Account Username | `legacyh2` |
+| Nameserver1 | <ns1.a2hosting.com> |
+| Nameserver2 | <ns2.a2hosting.com> |
+| Nameserver3 | <ns3.a2hosting.com> |
+| Nameserver4 | <ns4.a2hosting.com> |
+| Control Panel | <az1-cl8-ats1.a2hosting.com> |
+| Account IP Address | <106.0.62.102> |
+| Account Domain Name | <legacyhome.a2hosted.com> |
+| User Analytics ID | `aba55eef-734a-431c-9819-c9942a90e0ae` |
+| SSH Access Passkey | `,tq[+e^]7~oAy!iB` |

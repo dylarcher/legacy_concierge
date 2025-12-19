@@ -30,3 +30,8 @@ _pkgs/
 .cache/
 .pkgs/
 .tmp/
+
+# SSH keys (never commit)
+.keys/
+*.pem
+id_rsa*
