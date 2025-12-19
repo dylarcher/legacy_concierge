@@ -215,7 +215,9 @@ export class ContentSection extends BaseComponent {
 		// Clear UI elements
 		Array.from(this.children)
 			.filter((child) => child.hasAttribute("data-section-ui"))
-			.forEach((element) => element.remove());
+			.forEach((element) => {
+				element.remove();
+			});
 
 		// Build background layer
 		const backgroundLayer =
@@ -280,7 +282,9 @@ export class ContentSection extends BaseComponent {
 		// Move children into the slot
 		const slot = section.querySelector("slot");
 		if (slot) {
-			children.forEach((child) => this.appendChild(child));
+			children.forEach((child) => {
+				this.appendChild(child);
+			});
 		}
 
 		// Apply base styles

@@ -164,7 +164,9 @@ export class SplitSection extends BaseComponent {
 		// Clear previous render
 		Array.from(this.children)
 			.filter((child) => child.hasAttribute("data-split-ui"))
-			.forEach((element) => element.remove());
+			.forEach((element) => {
+				element.remove();
+			});
 
 		// Build container
 		const container = this.h(
@@ -203,7 +205,9 @@ export class SplitSection extends BaseComponent {
 
 		// Append container and restore slots
 		this.appendChild(container);
-		slots.forEach((slot) => this.appendChild(slot));
+		slots.forEach((slot) => {
+			this.appendChild(slot);
+		});
 
 		// Apply base styles
 		if (!this.classList.contains("block")) {

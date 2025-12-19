@@ -231,7 +231,16 @@
 	// ═══════════════════════════════════════════════════════════════════════════
 	// OVERRIDES - File-specific configuration overrides
 	// ═══════════════════════════════════════════════════════════════════════════
-	"overrides": [], // Array of { includes: ["glob"], formatter: {...}, linter: {...}, ... }
+	"overrides": [
+		{
+			// Workaround for Biome HTML parser bug with src/index.html
+			// https://github.com/biomejs/biome/issues - "Expected end tag of kind Fill but found Indent"
+			"includes": ["src/index.html"],
+			"formatter": {
+				"enabled": false
+			}
+		}
+	],
 
 	// ═══════════════════════════════════════════════════════════════════════════
 	// PLUGINS - External plugins
