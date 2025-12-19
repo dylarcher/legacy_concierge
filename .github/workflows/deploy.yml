@@ -21,7 +21,7 @@ on:
   workflow_dispatch:
     inputs:
       environment:
-        description: 'Deploy https://legacyconcierge.com'
+        description: 'Deploy to environment'
         required: false
         default: 'production'
 
