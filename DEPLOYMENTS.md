@@ -189,20 +189,3 @@ your-repo/
 ├── package.json
 └── ...
 ```
-
----
-
-## Web Hosting Details
-
-| Name | Value |
-| :--- | :---- |
-| Account Username | `legacyh2` |
-| Nameserver1 | <ns1.a2hosting.com> |
-| Nameserver2 | <ns2.a2hosting.com> |
-| Nameserver3 | <ns3.a2hosting.com> |
-| Nameserver4 | <ns4.a2hosting.com> |
-| Control Panel | <az1-cl8-ats1.a2hosting.com> |
-| Account IP Address | <106.0.62.102> |
-| Account Domain Name | <legacyhome.a2hosted.com> |
-| User Analytics ID | `aba55eef-734a-431c-9819-c9942a90e0ae` |
-| SSH Access Passkey | `,tq[+e^]7~oAy!iB` |
