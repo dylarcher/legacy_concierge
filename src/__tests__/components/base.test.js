@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { BaseComponent, defineElement } from "../../blocks/_base.js";
 
 // Create a test component for testing purposes
@@ -9,7 +9,7 @@ class TestComponent extends BaseComponent {
 		this.render();
 	}
 
-	attributeChangedCallback(name, oldValue, newValue) {
+	attributeChangedCallback(_name, oldValue, newValue) {
 		if (oldValue !== newValue && this.isConnected) {
 			this.render();
 		}
@@ -23,7 +23,11 @@ class TestComponent extends BaseComponent {
 			this.h(
 				"div",
 				{
-					class: this.clsx("test-component", `variant-${variant}`, `size-${size}`),
+					class: this.clsx(
+						"test-component",
+						`variant-${variant}`,
+						`size-${size}`,
+					),
 				},
 				this.h("slot"),
 			),

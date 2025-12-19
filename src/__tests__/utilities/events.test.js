@@ -1,5 +1,10 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { debounce, throttle, emit, onClickOutside } from "../../utilities/events.js";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import {
+	debounce,
+	emit,
+	onClickOutside,
+	throttle,
+} from "../../utilities/events.js";
 
 describe("Event Utilities", () => {
 	beforeEach(() => {
