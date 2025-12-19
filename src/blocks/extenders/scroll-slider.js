@@ -526,7 +526,9 @@ export class ScrollSlider extends BaseComponent {
 		// Clear UI elements
 		Array.from(this.children)
 			.filter((child) => child.hasAttribute("data-slider-ui"))
-			.forEach((element) => element.remove());
+			.forEach((element) => {
+				element.remove();
+			});
 
 		// Create container
 		const containerId = uniqueId("slider");

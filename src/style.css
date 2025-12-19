@@ -184,7 +184,12 @@
 		-moz-osx-font-smoothing: grayscale;
 		text-rendering: geometricPrecision;
 		font-family: var(--text-body);
-		font-size: clamp(0.75rem, 0.625rem + 0.5vw, 1.125rem); /*? 12px→18px fluid body text */
+		font-size: clamp(
+			0.75rem,
+			0.625rem +
+			0.5vw,
+			1.125rem
+		); /*? 12px→18px fluid body text */
 		line-height: var(--line-height-md);
 		letter-spacing: var(--letter-spacing-md);
 		color: var(--color-text);
