@@ -15,6 +15,7 @@
 Legacy Concierge is a multi-page static marketing website currently built with vanilla HTML/CSS/JS, Tailwind CSS v4, and Vite. The site is deployed to shared hosting via rsync from a GitHub Actions CI/CD pipeline. The agency will be rebuilding the site in Webflow.
 
 **Live URL:** https://legacyconcierge.com/
+
 **Current version:** 0.38.5
 
 ---
@@ -189,7 +190,7 @@ The production build outputs to `dist/`, which is what gets deployed to `public_
 
 Deployments happen automatically on push to `main` via GitHub Actions:
 
-1. Checkout → Install (Bun) → Build (Vite) → rsync to hosting.com
+> Checkout → Install (Bun) → Build (Vite) → rsync to hosting.com
 
 The workflow is at `.github/workflows/deploy.yml`. Once the Webflow site is live, this pipeline should be disabled or the repo archived.
 
