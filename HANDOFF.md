@@ -196,22 +196,20 @@ The workflow is at `.github/workflows/deploy.yml`. Once the Webflow site is live
 
 Tasks for the agency to complete during the transition:
 
-| #  | Task                                                              | Status |
-|----|-------------------------------------------------------------------|--------|
-| 1  | Receive and confirm access to all accounts listed above           | ☐      |
-| 2  | Download all assets from `src/assets/` and `public/`                  | ☐      |
-| 3  | Review design tokens for brand colors, typography, spacing        | ☐      |
-| 4  | Recreate page structure in Webflow (reference `src/pages/`)         | ☐      |
-| 5  | Set up 301 redirects for any URL changes (preserve SEO)           | ☐      |
-| 6  | Transfer sitemap.xml structure to Webflow auto-sitemap            | ☐      |
-| 7  | Configure `robots.txt` in Webflow                                   | ☐      |
-| 8  | Upload favicons and set meta/OG tags                              | ☐      |
-| 9  | Set up custom fonts in Webflow (from `src/assets/fonts/`)           | ☐      |
-| 10 | Point DNS to Webflow hosting                                      | ☐      |
-| 11 | Verify SSL certificate on Webflow                                 | ☐      |
-| 12 | Disable GitHub Actions deploy workflow                            | ☐      |
-| 13 | Final QA — cross-browser, mobile, accessibility                   | ☐      |
-| 14 | Confirm WordPress backup is archived and accessible               | ☐      |
+- [ ] Receive and confirm access to all accounts listed above
+- [ ] Download all assets from `src/assets/` and `public/`       
+- [ ] Review design tokens for brand colors, typography, spacing
+- [ ] Recreate page structure in Webflow (reference `src/pages/`)
+- [ ] Set up 301 redirects for any URL changes (preserve SEO)
+- [ ] Transfer sitemap.xml structure to Webflow auto-sitemap 
+- [ ] Configure `robots.txt` in Webflow                        
+- [ ] Upload favicons and set meta/OG tags                   
+- [ ] Set up custom fonts in Webflow (from `src/assets/fonts/`)
+- [ ] Point DNS to Webflow hosting                           
+- [ ] Verify SSL certificate on Webflow                      
+- [ ] Disable GitHub Actions deploy workflow                 
+- [ ] Final QA — cross-browser, mobile, accessibility        
+- [ ] Confirm WordPress backup is archived and accessible    
 
 ---
 
