@@ -5,7 +5,7 @@
 		"url": "https://github.com/dylarcher/legacy_concierge/issues"
 	},
 	"dependencies": {
-		"@tailwindplus/elements": "^1.0.19",
+		"@tailwindplus/elements": "^1.0.22",
 		"tailwindcss": "^4.1.17"
 	},
 	"devDependencies": {
