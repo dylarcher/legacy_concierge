@@ -121,14 +121,24 @@ export const FOOTER_TEMPLATE = `
 				<div class="border-t border-white/48 pt-4 md:flex md:items-center md:justify-between">
 					<p class="mt-8 mr-auto text-sm/6 md:mt-0 text-white/80" data-copyright>&copy; Legacy Concierge</p>
 					<nav class="flex gap-6" aria-label="Legal links">
-						<a href="#" class="text-sm/6 text-white/92">Privacy Policy</a>
-						<a href="#" class="text-sm/6 text-white/92">Terms of Service</a>
-						<a href="#" class="text-sm/6 text-white/92"><abbr title="Health Insurance Portability and Accountability Act (1996)">HIPAA</abbr></a>
+						<a href="/pages/legal/privacy" class="text-sm/6 text-white/92">Privacy Policy</a>
+						<a href="/pages/legal/terms" class="text-sm/6 text-white/92">Terms of Service</a>
+						<a href="/pages/legal/hipaa" class="text-sm/6 text-white/92"><abbr title="Health Insurance Portability and Accountability Act (1996)">HIPAA</abbr></a>
 					</nav>
 				</div>
 			</div>
 		</div>
-    </template>
+		<script>
+			globalThis.dataLayer = globalThis.dataLayer || [];
+			
+			function gtag() {
+			  dataLayer.push(arguments);
+			}
+
+			gtag('js', new Date());
+			gtag('config', 'G-RZZK2MB7DJ');
+		</script>
+	</template>
 `;
 
 /**
