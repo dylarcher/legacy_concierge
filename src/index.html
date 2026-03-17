@@ -1,3 +1,6 @@
+<!-- biome-ignore-all lint/a11y/noSvgWithoutTitle: SVG elements can be decorative -->
+<!-- biome-ignore-all lint/a11y/useMediaCaption: Media elements can be decorative -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -808,7 +811,7 @@
 				<p class="mb-6">
 					This is a fullscreen modal popup built with Tailwind CSS.
 				</p>
-				<button class="px-4 py-2 rounded"
+				<button type="button" class="px-4 py-2 rounded"
 					onclick="document.getElementById('fullscreen-modal').classList.add('hidden')">
 					Close
 				</button>
