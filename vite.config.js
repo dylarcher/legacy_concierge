@@ -14,7 +14,7 @@ const htmlInputs = generateInputConfig(root);
 
 export default defineConfig({
 	root,
-	base: process.env.VITE_BASE_PATH || "/",
+	base: process.env.VITE_BASE_PATH || "./",
 	publicDir: resolve(import.meta.dirname, "public"),
 	plugins: [
 		tailwindcss(),

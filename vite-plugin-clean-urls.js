@@ -142,16 +142,34 @@ function calculateRelativePath(from, to) {
 export function cleanUrlsPlugin() {
 	let outDir = "";
 	let _base = "/";
+	let _command = "build";
 	/** @type {Map<string, string>} Maps original paths to new paths after restructuring */
 	const _pathMap = new Map();
 
 	return {
 		name: "vite-plugin-clean-urls",
-		apply: "build",
 
 		configResolved(config) {
 			outDir = config.build.outDir;
 			_base = config.base;
+			_command = config.command;
+		},
+
+		/**
+		 * Add middleware to preview server for clean URL resolution.
+		 * Redirects /path to /path/ so the static server finds dir/index.html.
+		 */
+		configurePreviewServer(server) {
+			server.middlewares.use((req, _res, next) => {
+				if (req.url && !req.url.endsWith("/") && !req.url.includes(".")) {
+					const urlPath = req.url.split("?")[0];
+					const candidate = join(outDir, urlPath, "index.html");
+					if (existsSync(candidate)) {
+						req.url = `${urlPath}/`;
+					}
+				}
+				next();
+			});
 		},
 
 		/**
