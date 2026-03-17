@@ -128,6 +128,7 @@ export const FOOTER_TEMPLATE = `
 				</div>
 			</div>
 		</div>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-RZZK2MB7DJ"></script>
 		<script>
 			globalThis.dataLayer = globalThis.dataLayer || [];
 			
