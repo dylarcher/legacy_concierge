@@ -33,5 +33,10 @@ _pkgs/
 
 # SSH keys (never commit)
 .keys/
-*.pem
 id_rsa*
+*.pem
+*.7z
+*.gz
+*.tar
+*.zip
+*.tar.gz

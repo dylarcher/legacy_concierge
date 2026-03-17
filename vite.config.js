@@ -5,16 +5,16 @@ import { analyzer } from "vite-bundle-analyzer";
 import {
 	cleanUrlsPlugin,
 	generateInputConfig,
-} from "./vite-plugin-clean-urls.js";
+} from "./bin/vite-plugin-clean-urls.js";
 
 const root = resolve(import.meta.dirname, "src");
 
 // Auto-discover all HTML pages
-const htmlInputs = generateInputConfig(root);
+const input = generateInputConfig(root);
 
 export default defineConfig({
 	root,
-	base: process.env.VITE_BASE_PATH || "./",
+	base: process.env.VITE_BASE_PATH || "/",
 	publicDir: resolve(import.meta.dirname, "public"),
 	plugins: [
 		tailwindcss(),
@@ -27,8 +27,6 @@ export default defineConfig({
 					analyzerMode: "static",
 					fileName: "bundle-report",
 					openAnalyzer: false,
-					gzipSize: false,
-					brotliSize: false,
 				}),
 			]
 			: []),
@@ -39,9 +37,8 @@ export default defineConfig({
 		cssCodeSplit: false,
 		sourcemap: true,
 		assetsInlineLimit: 0,
-		rollupOptions: {
-			input: htmlInputs,
-		},
+		// @ts-expect-error
+		rollupOptions: { input },
 	},
 	server: {
 		// Handle clean URLs in dev server

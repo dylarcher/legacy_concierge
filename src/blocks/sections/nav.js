@@ -1206,6 +1206,11 @@ class NavBar extends BaseComponent {
 									text: "Locations",
 									desc: "Find a location near you",
 								},
+								{
+									href: resolvePath("/pages/legal"),
+									text: "Legal",
+									desc: "Terms, privacy, and compliance",
+								},
 							],
 							{
 								title: "Company",
@@ -1518,6 +1523,7 @@ class NavBar extends BaseComponent {
 							{ href: resolvePath("/pages/team/careers"), text: "Careers" },
 							{ href: resolvePath("/pages/partners"), text: "Partners" },
 							{ href: resolvePath("/pages/locations"), text: "Locations" },
+							{ href: resolvePath("/pages/legal"), text: "Legal" },
 						]),
 						this.#createMobileDropdown("Treatments", [
 							{
