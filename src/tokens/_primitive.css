@@ -8,95 +8,54 @@
 	/** CANVAS COLORS
 	 *  Black & white maximum contrast tones
 	 */
-	--hues-canvas-baseline: var(
-		--canvas-baseline,
-		255 255 255 /
-		var(--alpha-canvas-baseline, 1)
-	);
-	--hues-canvas-inverted: var(
-		--canvas-inverted,
-		0 0 0 /
-		var(--alpha-canvas-inverted, 1)
-	);
+	--hues-canvas-baseline: var(--canvas-baseline,
+			255 255 255 / var(--alpha-canvas-baseline, 1));
+	--hues-canvas-inverted: var(--canvas-inverted,
+			0 0 0 / var(--alpha-canvas-inverted, 1));
 	--hues-canvas-transparent: transparent;
 
 	/** COOL COLORS
 	 *  Blue, navy, teal, cyan & turquoise tones
 	 */
-	--hues-cool-dark-blue: var(
-		--cool-dark-blue,
-		9 41 53 /
-		var(--alpha-cool-dark-blue, 1)
-	);
+	--hues-cool-dark-blue: var(--cool-dark-blue,
+			9 41 53 / var(--alpha-cool-dark-blue, 1));
 	--hues-cool-teal: var(--cool-teal, 102 141 142 / var(--alpha-cool-teal, 1));
-	--hues-cool-dark-teal: var(
-		--cool-dark-teal,
-		90 130 133 /
-		var(--alpha-cool-dark-teal, 1)
-	);
+	--hues-cool-dark-teal: var(--cool-dark-teal,
+			90 130 133 / var(--alpha-cool-dark-teal, 1));
 
 	/** NEUTRAL COLORS
 	 *  Light to dark gray/greyscale tones
 	 */
-	--hues-neutral-greyscale: var(
-		--neutral-greyscale,
-		79 79 79 /
-		var(--alpha-neutral-greyscale, 1)
-	);
-	--hues-neutral-dark-shadowy: var(
-		--neutral-dark-shadowy,
-		35 31 32 /
-		var(--alpha-neutral-dark-shadowy, 1)
-	);
-	--hues-neutral-dark-charcoal: var(
-		--neutral-dark-charcoal,
-		24 24 24 /
-		var(--alpha-neutral-dark-charcoal, 1)
-	);
-	--hues-neutral-dark-onyx: var(
-		--neutral-dark-onyx,
-		29 29 29 /
-		var(--alpha-neutral-dark-onyx, 1)
-	);
-	--hues-neutral-dark-gray: var(
-		--neutral-dark-gray,
-		79 79 79 /
-		var(--alpha-neutral-dark-gray, 1)
-	);
-	--hues-neutral-medium-grey: var(
-		--neutral-medium-grey,
-		137 121 125 /
-		var(--alpha-neutral-medium-grey, 1)
-	);
-	--hues-neutral-light-gray: var(
-		--neutral-light-gray,
-		220 224 223 /
-		var(--alpha-neutral-light-gray, 1)
-	);
-	--hues-neutral-off-white: var(
-		--neutral-off-white,
-		241 241 241 /
-		var(--alpha-neutral-off-white, 1)
-	);
+	--hues-neutral-greyscale: var(--neutral-greyscale,
+			79 79 79 / var(--alpha-neutral-greyscale, 1));
+	--hues-neutral-dark-shadowy: var(--neutral-dark-shadowy,
+			35 31 32 / var(--alpha-neutral-dark-shadowy, 1));
+	--hues-neutral-dark-charcoal: var(--neutral-dark-charcoal,
+			24 24 24 / var(--alpha-neutral-dark-charcoal, 1));
+	--hues-neutral-dark-onyx: var(--neutral-dark-onyx,
+			29 29 29 / var(--alpha-neutral-dark-onyx, 1));
+	--hues-neutral-dark-gray: var(--neutral-dark-gray,
+			79 79 79 / var(--alpha-neutral-dark-gray, 1));
+	--hues-neutral-medium-grey: var(--neutral-medium-grey,
+			137 121 125 / var(--alpha-neutral-medium-grey, 1));
+	--hues-neutral-light-gray: var(--neutral-light-gray,
+			220 224 223 / var(--alpha-neutral-light-gray, 1));
+	--hues-neutral-off-white: var(--neutral-off-white,
+			241 241 241 / var(--alpha-neutral-off-white, 1));
 
 	/** WARM COLORS
 	 *  Brown, tan & cream tones
 	 */
 	--hues-warm-tan: var(--warm-tan, 184 172 159 / var(--alpha-warm-tan, 1));
-	--hues-warm-beige: var(
-		--warm-beige,
-		221 212 207 /
-		var(--alpha-warm-beige, 1)
-	);
+	--hues-warm-beige: var(--warm-beige,
+			221 212 207 / var(--alpha-warm-beige, 1));
 	--hues-warm-brown: var(--warm-brown, 130 98 76 / var(--alpha-warm-brown, 1));
-	--hues-warm-cream: var(
-		--warm-cream,
-		247 243 235 /
-		var(--alpha-warm-cream, 1)
-	);
+	--hues-warm-cream: var(--warm-cream,
+			247 243 235 / var(--alpha-warm-cream, 1));
 }
 
 @supports (color: oklch(0% 0 0 / 1)) {
+
 	/*? OKLCH TOKENS
 	 *  Modern color space for wider gamut & perceptual uniformity
 	 */
@@ -139,10 +98,8 @@
 @font-face {
 	font-family: "Work Sans";
 	src:
-		url("../assets/fonts/work-sans/WorkSans-VariableFont_wght.woff2")
-		format("woff2-variations"),
-		url("../assets/fonts/work-sans/WorkSans-VariableFont_wght.woff")
-		format("woff-variations");
+		url("../assets/fonts/work-sans/WorkSans-VariableFont_wght.woff2") format("woff2-variations"),
+		url("../assets/fonts/work-sans/WorkSans-VariableFont_wght.woff") format("woff-variations");
 	font-weight: 100 900;
 	font-style: normal;
 	font-display: swap;
@@ -151,10 +108,8 @@
 @font-face {
 	font-family: "Work Sans";
 	src:
-		url("../assets/fonts/work-sans/WorkSans-Italic-VariableFont_wght.woff2")
-		format("woff2-variations"),
-		url("../assets/fonts/work-sans/WorkSans-Italic-VariableFont_wght.woff")
-		format("woff-variations");
+		url("../assets/fonts/work-sans/WorkSans-Italic-VariableFont_wght.woff2") format("woff2-variations"),
+		url("../assets/fonts/work-sans/WorkSans-Italic-VariableFont_wght.woff") format("woff-variations");
 	font-weight: 100 900;
 	font-style: italic;
 	font-display: swap;
@@ -163,10 +118,8 @@
 @font-face {
 	font-family: "Playfair Display";
 	src:
-		url("../assets/fonts/playfair-display/PlayfairDisplay-VariableFont_wght.woff2")
-		format("woff2-variations"),
-		url("../assets/fonts/playfair-display/PlayfairDisplay-VariableFont_wght.woff")
-		format("woff-variations");
+		url("../assets/fonts/playfair-display/PlayfairDisplay-VariableFont_wght.woff2") format("woff2-variations"),
+		url("../assets/fonts/playfair-display/PlayfairDisplay-VariableFont_wght.woff") format("woff-variations");
 	font-weight: 400 900;
 	font-style: normal;
 	font-display: swap;
@@ -175,10 +128,8 @@
 @font-face {
 	font-family: "Playfair Display";
 	src:
-		url("../assets/fonts/playfair-display/PlayfairDisplay-Italic-VariableFont_wght.woff2")
-		format("woff2-variations"),
-		url("../assets/fonts/playfair-display/PlayfairDisplay-Italic-VariableFont_wght.woff")
-		format("woff-variations");
+		url("../assets/fonts/playfair-display/PlayfairDisplay-Italic-VariableFont_wght.woff2") format("woff2-variations"),
+		url("../assets/fonts/playfair-display/PlayfairDisplay-Italic-VariableFont_wght.woff") format("woff-variations");
 	font-weight: 400 900;
 	font-style: italic;
 	font-display: swap;
@@ -227,10 +178,8 @@
 @font-face {
 	font-family: "Nunito";
 	src:
-		url("../assets/fonts/nunito/Nunito-VariableFont_wght.woff2")
-		format("woff2-variations"),
-		url("../assets/fonts/nunito/Nunito-VariableFont_wght.woff")
-		format("woff-variations");
+		url("../assets/fonts/nunito/Nunito-VariableFont_wght.woff2") format("woff2-variations"),
+		url("../assets/fonts/nunito/Nunito-VariableFont_wght.woff") format("woff-variations");
 	font-weight: 200 1000;
 	font-style: normal;
 	font-display: swap;
@@ -239,10 +188,8 @@
 @font-face {
 	font-family: "Nunito";
 	src:
-		url("../assets/fonts/nunito/Nunito-Italic-VariableFont_wght.woff2")
-		format("woff2-variations"),
-		url("../assets/fonts/nunito/Nunito-Italic-VariableFont_wght.woff")
-		format("woff-variations");
+		url("../assets/fonts/nunito/Nunito-Italic-VariableFont_wght.woff2") format("woff2-variations"),
+		url("../assets/fonts/nunito/Nunito-Italic-VariableFont_wght.woff") format("woff-variations");
 	font-weight: 200 1000;
 	font-style: italic;
 	font-display: swap;
@@ -251,10 +198,8 @@
 @font-face {
 	font-family: "Sackers Gothic";
 	src:
-		url("../assets/fonts/sackers-gothic/SackersGothicStd-Heavy.woff2")
-		format("woff2"),
-		url("../assets/fonts/sackers-gothic/SackersGothicStd-Heavy.woff")
-		format("woff");
+		url("../assets/fonts/sackers-gothic/SackersGothic-Std_Heavy.woff2") format("woff2"),
+		url("../assets/fonts/sackers-gothic/SackersGothic-Std_Heavy.woff") format("woff");
 	font-weight: 800;
 	font-style: normal;
 	font-display: swap;
@@ -323,33 +268,30 @@
 	/** FONT SIZE TOKENS
 	 *  Font size values for typographic hierarchy
 	 */
-	--text-size-xxl: clamp(2rem, calc(2rem + 1.5vw), 3.25rem); /*? 32px→52px */
-	--text-size-xl: clamp(1.5rem, calc(1.5rem + 0.5vw), 2rem); /*? 24px→32px */
-	--text-size-lg: clamp(
-		1.125rem,
-		calc(1.25rem + 0.25vw),
-		1.625rem
-	); /*? 18px→26px */
-	--text-size-md: clamp(
-		0.9375rem,
-		calc(1rem + 0.125vw),
-		1.125rem
-	); /*? 15px→18px */
-	--text-size-sm: clamp(
-		0.875rem,
-		calc(0.875rem + 0.0625vw),
-		1rem
-	); /*? 14px→16px */
-	--text-size-xs: clamp(
-		0.75rem,
-		calc(0.75rem + 0.0625vw),
-		0.875rem
-	); /*? 12px→14px */
-	--text-size-xxs: clamp(
-		0.625rem,
-		calc(0.6875rem + 0.0625vw),
-		0.8125rem
-	); /*? 10px→13px */
+	--text-size-xxl: clamp(2rem, calc(2rem + 1.5vw), 3.25rem);
+	/*? 32px→52px */
+	--text-size-xl: clamp(1.5rem, calc(1.5rem + 0.5vw), 2rem);
+	/*? 24px→32px */
+	--text-size-lg: clamp(1.125rem,
+			calc(1.25rem + 0.25vw),
+			1.625rem);
+	/*? 18px→26px */
+	--text-size-md: clamp(0.9375rem,
+			calc(1rem + 0.125vw),
+			1.125rem);
+	/*? 15px→18px */
+	--text-size-sm: clamp(0.875rem,
+			calc(0.875rem + 0.0625vw),
+			1rem);
+	/*? 14px→16px */
+	--text-size-xs: clamp(0.75rem,
+			calc(0.75rem + 0.0625vw),
+			0.875rem);
+	/*? 12px→14px */
+	--text-size-xxs: clamp(0.625rem,
+			calc(0.6875rem + 0.0625vw),
+			0.8125rem);
+	/*? 10px→13px */
 
 	/** TEXT TRACK HEIGHT TOKENS
 	 *  Line height values for typographic hierarchy
