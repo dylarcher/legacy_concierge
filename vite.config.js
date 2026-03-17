@@ -14,7 +14,7 @@ const htmlInputs = generateInputConfig(root);
 
 export default defineConfig({
 	root,
-	base: process.env.VITE_BASE_PATH || "/",
+	base: process.env.VITE_BASE_PATH || "./",
 	publicDir: resolve(import.meta.dirname, "public"),
 	plugins: [
 		tailwindcss(),
@@ -23,14 +23,14 @@ export default defineConfig({
 		// Bundle analyzer - disabled by default, enable with ANALYZE=true
 		...(process.env.ANALYZE
 			? [
-					analyzer({
-						analyzerMode: "static",
-						fileName: "bundle-report",
-						openAnalyzer: false,
-						gzipSize: false,
-						brotliSize: false,
-					}),
-				]
+				analyzer({
+					analyzerMode: "static",
+					fileName: "bundle-report",
+					openAnalyzer: false,
+					gzipSize: false,
+					brotliSize: false,
+				}),
+			]
 			: []),
 	],
 	build: {
